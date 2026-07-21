@@ -843,15 +843,18 @@
       border: 0;
       background: transparent;
       box-shadow: none;
-      display: flex;
-      flex-direction: column;
-      gap: 0.28rem;
-      align-items: flex-start;
-      justify-content: flex-start;
-      padding: 0.08rem;
+      display: block;
+      position: relative;
+      overflow: visible;
+      padding: 0;
     }
 
     .audio-panel__label {
+      position: absolute;
+      z-index: 2;
+      top: 0.15rem;
+      left: 0.15rem;
+      right: 0.15rem;
       min-height: 0;
       padding: 0.08rem 0.14rem;
       font-size: 0.82rem;
@@ -874,12 +877,39 @@
       flex-wrap: nowrap;
       gap: 0.45rem;
       width: max-content;
+      position: absolute;
+      z-index: 3;
+      left: 50%;
+      bottom: 0.35rem;
+      transform: translateX(-50%);
+    }
+
+    .audio-panel__art {
+      display: block;
+      width: 100%;
+      height: 100%;
+      max-height: none;
+      object-fit: contain;
+      margin: 0;
+      pointer-events: none;
     }
 
     .video-stage__controls {
-      display: grid;
-      grid-template-columns: repeat(2, minmax(0, 1fr));
+      display: flex;
+      justify-content: center;
+      align-items: center;
       gap: 0.55rem;
+      padding: 0.7rem;
+      border-top: 4px solid var(--black);
+      background: #f1f332;
+    }
+
+    .video-stage__controls .media-control-button {
+      width: 4.4rem;
+      height: 4.4rem;
+      border: 3px solid var(--black);
+      background: var(--white);
+      box-shadow: 4px 4px 0 var(--black);
     }
 
     .media-control-button {
@@ -1298,9 +1328,9 @@
       min-width: 52px;
       min-height: 52px;
       padding: 0;
-      border: 0;
-      background: transparent;
-      box-shadow: none;
+      border: 3px solid var(--black);
+      background: var(--white);
+      box-shadow: 4px 4px 0 var(--black);
       font-family: var(--title-font);
       font-size: clamp(1.4rem, 3vw, 2.3rem);
       line-height: 1;
@@ -1697,7 +1727,8 @@
         { key: 'circle-d', label: 'circle-d', url: 'builtin://markup/circle-d' },
         { key: 'square-d', label: 'square-d', url: 'builtin://markup/square-d' }
       ];
-      const VIDEO_ANNOTATION_ICON_URL = 'https://i.imgur.com/3W8CzUn.png';
+      const VIDEO_ANNOTATION_ICON_URL = `${MEDIA_LIBRARY_SITE_ORIGIN}/images/play-video-image.png`;
+      const AUDIO_ANNOTATION_ICON_URL = `${MEDIA_LIBRARY_SITE_ORIGIN}/images/play-audio-image.png`;
       const LINK_ANNOTATION_ICON_URL = 'https://i.imgur.com/MCTvpVC.png';
       const IMAGE_ANNOTATION_PRESETS = [
         { key: 'pointer', label: 'pointer', url: `${MEDIA_LIBRARY_SITE_ORIGIN}/images/tutorial-annotations/pointer.png` },
@@ -1860,12 +1891,24 @@
         files.forEach((file) => {
           const relativePath = String(file.webkitRelativePath || file.name || '');
           const segments = relativePath.split('/').filter(Boolean);
-          if (segments.length < 4) {
+          if (segments.length < 2) {
             return;
           }
 
-          segments.shift();
-          const tutorialSlug = normalizeTutorialFolderPath(`${segments.shift()}/${segments.shift()}`);
+          const selectedRootName = segments.shift();
+          let topic = '';
+          let tutorialFolder = '';
+          if (selectedRootName.toLowerCase() === 'tutorials' && segments.length >= 3) {
+            topic = segments.shift();
+            tutorialFolder = segments.shift();
+          } else if (segments.length >= 2) {
+            topic = selectedRootName;
+            tutorialFolder = segments.shift();
+          } else {
+            topic = state.meta.category || selectedTutorialFolderSlug().split('/')[0] || 'tutorials';
+            tutorialFolder = selectedRootName;
+          }
+          const tutorialSlug = normalizeTutorialFolderPath(`${topic}/${tutorialFolder}`);
           const filename = segments.join('/');
           const assetType = mediaTypeFromUrl(filename);
           if (!tutorialSlug || tutorialSlug.startsWith('.') || tutorialSlug.startsWith('codex-disposable-') || !assetType || !filename || filename.split('/').some((part) => part.startsWith('.'))) {
@@ -1880,7 +1923,7 @@
         const nextCatalog = normalizeTutorialMediaCatalog(catalog);
         const nextFolders = uniqueCatalogPaths([...folders, ...Object.keys(nextCatalog)]).sort();
         if (!nextFolders.length) {
-          setStatus('No tutorial media folders were found. Choose the main mh_media/tutorials folder, which contains topic folders and their tutorial asset folders.');
+          setStatus('No tutorial media files were found. You may choose mh_media/tutorials, one topic folder, or one tutorial assets folder.');
           return;
         }
 
@@ -2714,6 +2757,7 @@
             style="${style}"
           >
             <div class="stage-object__frame${outlineClass}">
+              <img class="audio-panel__art" src="${escapeAttr(previewAssetUrl(normalizeAssetUrl(AUDIO_ANNOTATION_ICON_URL, 'image')))}" alt="Play audio" loading="lazy" />
               ${audioLabelMarkup}
               <div class="audio-panel__controls">
                 <button type="button" class="media-control-button" data-action="rewind-audio" data-media-control="true" data-annotation-id="${annotation.id}" aria-label="Rewind audio">
@@ -2927,7 +2971,13 @@
                 <div class="video-stage">
                   ${isEmbed
                     ? `<iframe src="${escapeAttr(previewAssetUrl(normalizeAssetUrl(modal.url, 'video')))}" allowfullscreen title="${escapeAttr(modal.title || 'Video')}"></iframe>`
-                    : `<video id="videoModalMedia" src="${escapeAttr(previewAssetUrl(normalizeAssetUrl(modal.url, 'video')))}" controls playsinline preload="auto"></video>`}
+                    : `
+                        <video id="videoModalMedia" src="${escapeAttr(previewAssetUrl(normalizeAssetUrl(modal.url, 'video')))}" playsinline preload="auto"></video>
+                        <div class="video-stage__controls" aria-label="Video controls">
+                          <button type="button" class="media-control-button" data-action="rewind-video-modal" aria-label="Rewind video 5 seconds">${renderTransportIcon('rewind')}</button>
+                          <button type="button" class="media-control-button" data-action="toggle-video-modal-playback" data-video-toggle aria-label="Play video">${renderTransportIcon('play')}</button>
+                        </div>
+                      `}
                 </div>
                 ${bodyMarkup}
               </div>
@@ -3000,20 +3050,23 @@
                   <select id="objectAnnotationPreset" aria-label="Annotations"><option value="">Annotations</option>${annotationPickerItems().map((preset) => `<option value="${escapeAttr(preset.url)}">${escapeHtml(decodeURIComponent(preset.url.split('/').pop() || preset.label))}</option>`).join('')}</select>
                   <div class="dock-button-row">
                     <button type="button" data-action="add-hotspot" ${allowHotspots && slide.hotspots.length < MAX_HOTSPOTS ? '' : 'disabled'}>Add Hotspot</button>
-                    <button type="button" data-action="add-link" ${slide.kind !== 'cover' ? '' : 'disabled'}>Add Link</button>
+                    <button type="button" data-action="add-link">Add Link</button>
+                    <button type="button" data-action="add-video-modal">Add Video Modal</button>
+                    <button type="button" data-action="add-audio">Add Audio</button>
                     <button type="button" data-action="add-text">Add Text</button>
                     <button type="button" data-action="duplicate-selected" ${state.ui.selectedId ? '' : 'disabled'}>Duplicate Selected</button>
                     <button type="button" data-action="delete-selected" class="is-danger" ${state.ui.selectedId ? '' : 'disabled'}>Delete Selected</button>
                   </div>
                   <select id="objectMarkupPreset" aria-label="Markups"><option value="">Add markup</option>${MARKUP_PRESETS.map((preset) => `<option value="${escapeAttr(preset.key)}">${escapeHtml(preset.label)}</option>`).join('')}</select>
-                  <div class="dock-label">Add Image / GIF / Video / Audio</div>
+                  <div class="dock-label">Add Image / GIF Annotation</div>
+                  <div class="dock-button-row">
+                    <button type="button" class="${objectMediaType === 'image' ? 'is-active' : ''}" data-action="prepare-media-annotation" data-media-type="image">Add Image</button>
+                    <button type="button" class="${objectMediaType === 'gif' ? 'is-active' : ''}" data-action="prepare-media-annotation" data-media-type="gif">Add GIF</button>
+                  </div>
                   <div class="dock-input-stack">
-                    <select id="objectMediaType" aria-label="Media object type">
-                      ${['image', 'gif', 'video', 'audio'].map((type) => `<option value="${type}" ${objectMediaType === type ? 'selected' : ''}>${type === 'gif' ? 'GIF' : type[0].toUpperCase() + type.slice(1)}</option>`).join('')}
-                    </select>
                     ${renderTutorialFileSelect(objectMediaType, objectMediaUrl, 'objectTutorialMediaFile')}
                     <input type="hidden" id="objectMediaUrl" value="${escapeAttr(objectMediaUrl)}" />
-                    <button type="button" data-action="add-media-object" ${objectMediaUrl ? '' : 'disabled'}>Add ${objectMediaType === 'gif' ? 'GIF' : objectMediaType}</button>
+                    <button type="button" data-action="add-media-object" ${objectMediaUrl ? '' : 'disabled'}>Place ${objectMediaType === 'gif' ? 'GIF' : objectMediaType === 'video' ? 'Video Modal' : objectMediaType}</button>
                   </div>
                   ${renderSelectedControls(hotspot, annotation)}
                 </div>
@@ -3073,10 +3126,9 @@
                 <button type="button" data-action="send-backward">Send Back</button>
               </div>
               <div class="dock-input-stack">
-                ${renderMediaFolderSelect('video', 'videoAnnotationUrl', annotation.modalUrl || '', 'Choose video folder')}
-                ${renderMediaLibrarySelect('video', 'videoAnnotationUrl', annotation.modalUrl || '', 'Choose video file')}
+                ${renderTutorialFileSelect('video', annotation.modalUrl || '', 'videoTutorialMediaFile')}
                 <input type="text" id="videoAnnotationUrl" value="${escapeAttr(annotation.modalUrl || '')}" placeholder="example.mp4" />
-                <div class="status-bar">Bare file names use ${escapeHtml(MANAGED_ASSET_BASE_URLS.video)}</div>
+                <div class="status-bar">Video files use ${escapeHtml(tutorialMediaBaseUrl(selectedTutorialFolderSlug()))}</div>
                 <textarea id="videoAnnotationNote" rows="3" placeholder="${escapeAttr(DEFAULT_VIDEO_MODAL_NOTE)}">${escapeHtml(annotation.text || '')}</textarea>
                 <textarea id="videoAnnotationBody" rows="5" placeholder="${escapeAttr(DEFAULT_VIDEO_MODAL_BODY_PLACEHOLDER)}">${escapeHtml(annotation.modalBody || '')}</textarea>
               </div>
@@ -3115,10 +3167,9 @@
             </div>
             ${annotation.type === 'audio' ? `
               <div class="dock-input-stack">
-                ${renderMediaFolderSelect('audio', 'annotationSource', annotation.src, 'Choose audio folder')}
-                ${renderMediaLibrarySelect('audio', 'annotationSource', annotation.src, 'Choose audio file')}
+                ${renderTutorialFileSelect('audio', annotation.src, 'audioTutorialMediaFile')}
                 <input type="text" id="annotationSource" value="${escapeAttr(annotation.src)}" placeholder="example.mp3" />
-                <div class="status-bar">Bare file names use ${escapeHtml(MANAGED_ASSET_BASE_URLS.audio)}</div>
+                <div class="status-bar">Audio files use ${escapeHtml(tutorialMediaBaseUrl(selectedTutorialFolderSlug()))}</div>
               </div>
             ` : annotation.type === 'image' ? `<input type="hidden" id="annotationSource" value="${escapeAttr(annotation.src)}" />` : ''}
             ${annotation.type === 'text' ? `
@@ -3988,6 +4039,26 @@
             objectMediaUrl = '';
             setStatus(`Media Box now shows ${objectMediaType === 'gif' ? 'GIF' : objectMediaType} folders and files.`);
             render();
+          });
+        }
+
+        const videoTutorialMediaFile = root.querySelector('#videoTutorialMediaFile');
+        if (videoTutorialMediaFile) {
+          videoTutorialMediaFile.addEventListener('change', () => {
+            const annotation = selectedAnnotation();
+            if (!annotation || annotation.type !== 'video' || !videoTutorialMediaFile.value) return;
+            annotation.modalUrl = `${tutorialMediaBaseUrl(selectedTutorialFolderSlug())}${videoTutorialMediaFile.value.split('/').map(encodeURIComponent).join('/')}`;
+            commit('Selected video-modal file from the tutorial assets folder.');
+          });
+        }
+
+        const audioTutorialMediaFile = root.querySelector('#audioTutorialMediaFile');
+        if (audioTutorialMediaFile) {
+          audioTutorialMediaFile.addEventListener('change', () => {
+            const annotation = selectedAnnotation();
+            if (!annotation || annotation.type !== 'audio' || !audioTutorialMediaFile.value) return;
+            annotation.src = `${tutorialMediaBaseUrl(selectedTutorialFolderSlug())}${audioTutorialMediaFile.value.split('/').map(encodeURIComponent).join('/')}`;
+            commit('Selected audio file from the tutorial assets folder.');
           });
         }
 
@@ -4904,6 +4975,15 @@
           return;
         }
 
+        if (action === 'prepare-media-annotation') {
+          objectMediaType = element.dataset.mediaType || 'image';
+          objectMediaUrl = '';
+          setStatus(`Choose a ${objectMediaType === 'gif' ? 'GIF' : objectMediaType} file from the selected tutorial assets folder.`);
+          render();
+          root.querySelector('#objectTutorialMediaFile')?.focus();
+          return;
+        }
+
         const handlers = {
           'go-next': moveNext,
           'go-back': moveBack,
@@ -5688,6 +5768,13 @@
           pendingFocus = `annotation.label:${annotation.id}`;
         }
         commit(isVideoAnnotation ? 'Added a video modal annotation.' : isLinkAnnotation ? 'Added a link annotation.' : `Added a ${type} annotation.`);
+        if (isLinkAnnotation) {
+          const linkInput = root.querySelector('#annotationLinkUrl');
+          if (linkInput) {
+            linkInput.focus();
+            placeInputCursorAtEnd(linkInput);
+          }
+        }
       }
 
       function duplicateSelected() {
