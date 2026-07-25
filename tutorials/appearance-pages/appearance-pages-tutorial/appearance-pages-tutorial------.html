@@ -1165,54 +1165,6 @@
       gap: 12px;
     }
 
-    .builder-quickbar {
-      position: sticky;
-      top: 8px;
-      z-index: 90;
-      display: flex;
-      flex-wrap: wrap;
-      align-items: center;
-      gap: 10px;
-      border: 4px solid var(--black);
-      background: var(--yellow);
-      box-shadow: var(--outer-shadow);
-      padding: 10px 12px;
-    }
-
-    .builder-quickbar__title {
-      font-weight: 800;
-      text-transform: uppercase;
-      letter-spacing: 0.05em;
-    }
-
-    .builder-quickbar__steps {
-      flex: 1 1 360px;
-      font-size: 0.82rem;
-      line-height: 1.35;
-    }
-
-    .builder-quickbar button {
-      min-height: 44px;
-      background: var(--white);
-    }
-
-    .builder-quickbar__image-picker {
-      display: grid;
-      gap: 3px;
-      min-width: min(100%, 250px);
-      font-size: 0.72rem;
-      font-weight: 800;
-      letter-spacing: 0.04em;
-      text-transform: uppercase;
-    }
-
-    .builder-quickbar__image-picker select {
-      min-height: 44px;
-      max-width: 300px;
-      background: var(--white);
-      text-transform: none;
-    }
-
     .dock-row {
       display: grid;
       gap: 10px;
@@ -1328,38 +1280,6 @@
       font-size: 0.8rem;
       line-height: 1.35;
       min-height: 42px;
-    }
-
-    .social-preview-card {
-      display: grid;
-      grid-template-columns: minmax(120px, 0.8fr) minmax(0, 1.2fr);
-      gap: 10px;
-      align-items: center;
-      border: 2px solid var(--black);
-      background: var(--white);
-      box-shadow: 3px 3px 0 0 #000;
-      padding: 8px;
-    }
-
-    .social-preview-card img {
-      display: block;
-      width: 100%;
-      aspect-ratio: 1.91 / 1;
-      object-fit: cover;
-      border: 2px solid var(--black);
-      background: #000;
-    }
-
-    .social-preview-card__copy {
-      display: grid;
-      gap: 5px;
-      min-width: 0;
-      font-size: 0.72rem;
-      line-height: 1.3;
-    }
-
-    .social-preview-card__copy strong {
-      font-size: 0.82rem;
     }
 
     .modal {
@@ -1766,7 +1686,7 @@
       ];
       const SITE_HOME_HREF = '/index.html';
       const SITE_CONTACT_HREF = '/index.html#contact';
-      const SITE_HEADER_LOGO_URL = 'https://iridescent-wisp-57bcb1.netlify.app/images/mhnavlogo.png';
+      const SITE_HEADER_LOGO_URL = 'https://iridescent-wisp-57bcb1.netlify.app/images/logo73.png?v=2026-07-08-1';
       const MEDIA_LIBRARY_SITE_ORIGIN = 'https://iridescent-wisp-57bcb1.netlify.app';
       const MANAGED_ASSET_BASE_URLS = Object.freeze(buildManagedAssetBaseUrls());
       const MEDIA_FOLDER_PRESETS = Object.freeze({
@@ -1807,8 +1727,8 @@
         { key: 'circle-d', label: 'circle-d', url: 'builtin://markup/circle-d' },
         { key: 'square-d', label: 'square-d', url: 'builtin://markup/square-d' }
       ];
-      const VIDEO_ANNOTATION_ICON_URL = `${MEDIA_LIBRARY_SITE_ORIGIN}/images/tutorial-annotations/play-video-annotation.png`;
-      const AUDIO_ANNOTATION_ICON_URL = `${MEDIA_LIBRARY_SITE_ORIGIN}/images/tutorial-annotations/play-video-annotation.png`;
+      const VIDEO_ANNOTATION_ICON_URL = `${MEDIA_LIBRARY_SITE_ORIGIN}/images/play-video-image.png`;
+      const AUDIO_ANNOTATION_ICON_URL = `${MEDIA_LIBRARY_SITE_ORIGIN}/images/play-audio-image.png`;
       const LINK_ANNOTATION_ICON_URL = 'https://i.imgur.com/MCTvpVC.png';
       const IMAGE_ANNOTATION_PRESETS = [
         { key: 'pointer', label: 'pointer', url: `${MEDIA_LIBRARY_SITE_ORIGIN}/images/tutorial-annotations/pointer.png` },
@@ -1918,7 +1838,7 @@
         const source = value && typeof value === 'object' ? value : {};
         const catalog = {};
         Object.entries(source).forEach(([rawSlug, rawTypes]) => {
-          const tutorialSlug = normalizeTutorialFolderPath(rawSlug);
+          const tutorialSlug = slugify(rawSlug);
           if (!tutorialSlug || tutorialSlug.startsWith('codex-disposable-') || !rawTypes || typeof rawTypes !== 'object') {
             return;
           }
@@ -1941,7 +1861,7 @@
           const parsed = JSON.parse(raw);
           const catalog = normalizeTutorialMediaCatalog(parsed?.catalog);
           const folders = uniqueCatalogPaths([
-            ...(Array.isArray(parsed?.folders) ? parsed.folders.map(normalizeTutorialFolderPath) : []),
+            ...(Array.isArray(parsed?.folders) ? parsed.folders.map(slugify) : []),
             ...Object.keys(catalog)
           ]).filter((slug) => slug && !slug.startsWith('codex-disposable-'));
           return { folders, catalog };
@@ -2010,16 +1930,7 @@
         tutorialFolderCatalog = Object.freeze(nextFolders);
         tutorialMediaCatalog = Object.freeze(nextCatalog);
         saveTutorialMediaCatalog(nextFolders, nextCatalog);
-        if (nextFolders.length === 1) {
-          const selectedSlug = nextFolders[0];
-          const [topic, tutorialFolder] = selectedSlug.split('/');
-          state.meta.mediaTutorialSlug = selectedSlug;
-          state.meta.category = topic || state.meta.category;
-          state.meta.filename ||= `${tutorialFolder || 'tutorial'}.html`;
-          setStatus(`Loaded and selected ${selectedSlug}. Add a slide, then choose one of its media files.`);
-        } else {
-          setStatus(`Loaded ${nextFolders.length} tutorial asset folders. Choose a topic, then choose a tutorial assets folder.`);
-        }
+        setStatus(`Loaded ${nextFolders.length} tutorial asset folder${nextFolders.length === 1 ? '' : 's'}. Choose a topic, then choose a tutorial assets folder.`);
         render();
       }
 
@@ -2093,8 +2004,6 @@
             category: slugify(base.meta?.category || 'sidekicks'),
             summary: text(base.meta?.summary),
             popupDescription: text(base.meta?.popupDescription),
-            socialImageUrl: text(base.meta?.socialImageUrl),
-            socialImageAlt: text(base.meta?.socialImageAlt),
             order: Number(base.meta?.order || 10),
             publishStatus: base.meta?.publishStatus === 'published' ? 'published' : 'draft',
             publicUrl: text(base.meta?.publicUrl),
@@ -2162,7 +2071,7 @@
       }
 
       function normalizeMedia(value, kind) {
-        const inferredType = kind === 'video' ? 'video' : (mediaTypeFromUrl(value?.url) || 'image');
+        const inferredType = kind === 'video' ? 'video' : mediaTypeFromUrl(value?.url);
         return {
           url: text(value?.url),
           type: ['image', 'gif', 'video', 'audio'].includes(value?.type) ? value.type : inferredType,
@@ -2259,8 +2168,7 @@
         if (/\.gif$/.test(clean)) return 'gif';
         if (/\.(mp4|webm|mov|m4v)$/.test(clean)) return 'video';
         if (/\.(mp3|wav|m4a|aac|ogg)$/.test(clean)) return 'audio';
-        if (/\.(png|jpe?g|webp|avif|svg|bmp)$/.test(clean)) return 'image';
-        return '';
+        return 'image';
       }
 
       function isLineMarkupKey(key) {
@@ -2535,7 +2443,6 @@
                 >${escapeHtml(state.tutorial.title)}</div>
               </header>
               <div class="tutorial-divider"></div>
-              ${MODE === 'builder' ? renderBuilderQuickbar() : ''}
               ${renderMain(slide)}
               ${MODE === 'builder' ? renderBuilderDock(slide) : ''}
             </div>
@@ -2545,27 +2452,9 @@
         `;
 
         bindInteractiveEvents();
-        applyDocumentMetadata(document.documentElement, state, MODE);
         if (MODE === 'builder') {
           focusPendingBinding();
         }
-      }
-
-      function renderBuilderQuickbar() {
-        const slide = currentSlide();
-        const currentImage = slideMediaAssetType(slide) === 'image' ? slide.media.url : '';
-        return `
-          <section class="builder-quickbar" aria-label="Tutorial builder quick start">
-            <div class="builder-quickbar__title">Build tutorial</div>
-            <div class="builder-quickbar__steps">1. Select the tutorial asset folder &nbsp; 2. Add a slide &nbsp; 3. Choose its image, audio, or video &nbsp; 4. Save Builder, then Export Tutorial HTML</div>
-            <button type="button" data-action="refresh-tutorial-folders">1. Select Asset Folder</button>
-            <button type="button" data-action="add-slide">2. Add Slide</button>
-            <label class="builder-quickbar__image-picker">
-              <span>3. Slide Image</span>
-              ${renderTutorialFileSelect('image', currentImage, 'quickbarSlideImageFile')}
-            </label>
-          </section>
-        `;
       }
 
       function renderMain(slide) {
@@ -2871,7 +2760,7 @@
               <img class="audio-panel__art" src="${escapeAttr(previewAssetUrl(normalizeAssetUrl(AUDIO_ANNOTATION_ICON_URL, 'image')))}" alt="Play audio" loading="lazy" />
               ${audioLabelMarkup}
               <div class="audio-panel__controls">
-                <button type="button" class="media-control-button" data-action="rewind-audio" data-media-control="true" data-annotation-id="${annotation.id}" aria-label="Rewind audio to beginning">
+                <button type="button" class="media-control-button" data-action="rewind-audio" data-media-control="true" data-annotation-id="${annotation.id}" aria-label="Rewind audio">
                   ${renderTransportIcon('rewind')}
                 </button>
                 <button type="button" class="media-control-button" data-action="toggle-audio" data-media-control="true" data-annotation-id="${annotation.id}" aria-label="${activeAudio === annotation.id ? 'Pause audio' : 'Play audio'}">
@@ -3085,7 +2974,7 @@
                     : `
                         <video id="videoModalMedia" src="${escapeAttr(previewAssetUrl(normalizeAssetUrl(modal.url, 'video')))}" playsinline preload="auto"></video>
                         <div class="video-stage__controls" aria-label="Video controls">
-                          <button type="button" class="media-control-button" data-action="rewind-video-modal" aria-label="Rewind video to beginning">${renderTransportIcon('rewind')}</button>
+                          <button type="button" class="media-control-button" data-action="rewind-video-modal" aria-label="Rewind video 5 seconds">${renderTransportIcon('rewind')}</button>
                           <button type="button" class="media-control-button" data-action="toggle-video-modal-playback" data-video-toggle aria-label="Play video">${renderTransportIcon('play')}</button>
                         </div>
                       `}
@@ -3118,16 +3007,11 @@
                   </div>
                 </div>
                 <div class="dock-section">
-                  <div class="dock-label">Slide Image / Media Folder</div>
+                  <div class="dock-label">Media Folder</div>
                   <div class="dock-input-stack">
                     <div class="dock-button-row"><button type="button" data-action="refresh-tutorial-folders">Refresh Folders</button></div>
                     <input class="hidden" id="tutorialFolderPicker" type="file" webkitdirectory multiple />
                     ${renderTutorialFolderSelect(mediaAssetType, slide.media.url)}
-                    <div class="dock-label">Choose This Slide's Image</div>
-                    ${renderTutorialFileSelect('image', mediaAssetType === 'image' ? slide.media.url : '', 'pageTutorialImageFile')}
-                    <div class="dock-label">Or Choose GIF, Video, or Audio</div>
-                    ${renderTutorialAllMediaSelect(slide.media.url)}
-                    <div class="status-bar">The selected file becomes the main image or media for the current slide.</div>
                   </div>
                 </div>
                 <div class="dock-section">
@@ -3158,23 +3042,6 @@
                   </div>
                   <div class="dock-button-row"><button type="button" data-action="connect-tutorial-catalog">Connect Catalog</button><button type="button" data-action="save-tutorial-listing">Save Listing</button></div>
                 </div>
-                <div class="dock-section">
-                  <div class="dock-label">Social Sharing Preview</div>
-                  <div class="social-preview-card">
-                    <img src="${escapeAttr(previewAssetUrl(socialPreviewImageUrl(state)))}" alt="" loading="lazy" />
-                    <div class="social-preview-card__copy">
-                      <strong>${escapeHtml(socialShareTitle(state))}</strong>
-                      <span>${escapeHtml(socialShareDescription(state))}</span>
-                      <span>${escapeHtml(tutorialPublicUrl())}</span>
-                    </div>
-                  </div>
-                  <div class="dock-input-stack">
-                    ${renderTutorialFileSelect('image', state.meta.socialImageUrl || socialPreviewImageUrl(state), 'socialTutorialImageFile')}
-                    <input id="metaSocialImageUrl" value="${escapeAttr(state.meta.socialImageUrl || '')}" placeholder="Leave blank to use the cover image" />
-                    <input id="metaSocialImageAlt" value="${escapeAttr(state.meta.socialImageAlt || '')}" placeholder="Describe the preview image for accessibility" />
-                    <div class="status-bar">Recommended preview shape: 1200 × 630. If this is blank, export uses the cover image, then the Magic Hashtags logo as a fallback.</div>
-                  </div>
-                </div>
               </div>
 
               <div class="dock-group dock-column--right">
@@ -3202,6 +3069,10 @@
                     <button type="button" data-action="add-media-object" ${objectMediaUrl ? '' : 'disabled'}>Place ${objectMediaType === 'gif' ? 'GIF' : objectMediaType === 'video' ? 'Video Modal' : objectMediaType}</button>
                   </div>
                   ${renderSelectedControls(hotspot, annotation)}
+                </div>
+                <div class="dock-section">
+                  <div class="dock-label">Select Media</div>
+                  ${renderTutorialAllMediaSelect(slide.media.url)}
                 </div>
                 <div class="dock-section">
                   <div class="dock-label">Save + Export</div>
@@ -3696,21 +3567,10 @@
         return normalizeTutorialFolderPath(
           state.meta.mediaTutorialSlug
           || tutorialSlugFromMediaUrl(currentSlide()?.media?.url)
-          || tutorialSlugFromLocation()
           || String(state.meta.filename || '').replace(/\.html$/i, '')
           || state.tutorial.title
           || 'tutorial'
         );
-      }
-
-      function tutorialSlugFromLocation() {
-        try {
-          const decodedPath = decodeURIComponent(location.pathname || '');
-          const match = decodedPath.match(/\/tutorials\/([^/]+)\/([^/]+)\/(?:[^/]+\.html)?$/i);
-          return match ? normalizeTutorialFolderPath(`${match[1]}/${match[2]}`) : '';
-        } catch (error) {
-          return '';
-        }
       }
 
       function tutorialMediaBaseUrl(tutorialSlug) {
@@ -4202,15 +4062,6 @@
           });
         }
 
-        const socialTutorialImageFile = root.querySelector('#socialTutorialImageFile');
-        if (socialTutorialImageFile) {
-          socialTutorialImageFile.addEventListener('change', () => {
-            if (!socialTutorialImageFile.value) return;
-            state.meta.socialImageUrl = `${tutorialMediaBaseUrl(selectedTutorialFolderSlug())}${socialTutorialImageFile.value.split('/').map(encodeURIComponent).join('/')}`;
-            commit('Selected the social preview image from the tutorial assets folder.');
-          });
-        }
-
         const tutorialFolderPicker = root.querySelector('#tutorialFolderPicker');
         if (tutorialFolderPicker) {
           tutorialFolderPicker.addEventListener('change', () => {
@@ -4284,25 +4135,6 @@
             currentSlide().media.url = `${tutorialMediaBaseUrl(selectedTutorialFolderSlug(), assetType)}${pageTutorialFile.value.split('/').map(encodeURIComponent).join('/')}`;
             commit(`Selected main ${mediaTypeLabel(assetType)} from ${selectedTutorialFolderSlug()}.`);
           });
-        }
-
-        const setCurrentSlideImage = (filename) => {
-          if (!filename) return;
-          const media = currentSlide().media;
-          media.type = 'image';
-          media.url = `${tutorialMediaBaseUrl(selectedTutorialFolderSlug())}${filename.split('/').map(encodeURIComponent).join('/')}`;
-          if (currentSlide().kind === 'video') currentSlide().kind = 'slide';
-          commit(`Selected slide image from ${selectedTutorialFolderSlug()}.`);
-        };
-
-        const quickbarSlideImageFile = root.querySelector('#quickbarSlideImageFile');
-        if (quickbarSlideImageFile) {
-          quickbarSlideImageFile.addEventListener('change', () => setCurrentSlideImage(quickbarSlideImageFile.value));
-        }
-
-        const pageTutorialImageFile = root.querySelector('#pageTutorialImageFile');
-        if (pageTutorialImageFile) {
-          pageTutorialImageFile.addEventListener('change', () => setCurrentSlideImage(pageTutorialImageFile.value));
         }
 
         const pageTutorialMediaFile = root.querySelector('#pageTutorialMediaFile');
@@ -4401,8 +4233,7 @@
         const metadataFields = {
           metaCategory: 'category', metaFilename: 'filename', metaCardName: 'cardName',
           metaNavigationName: 'navigationName', metaSummary: 'summary',
-          metaPopupDescription: 'popupDescription', metaSocialImageAlt: 'socialImageAlt',
-          metaPublishStatus: 'publishStatus', metaOrder: 'order'
+          metaPopupDescription: 'popupDescription', metaPublishStatus: 'publishStatus', metaOrder: 'order'
         };
         Object.entries(metadataFields).forEach(([id, key]) => {
           const field = root.querySelector(`#${id}`);
@@ -4416,21 +4247,6 @@
           });
           field.addEventListener('change', () => commit(`Updated ${field.previousElementSibling?.textContent || 'tutorial metadata'}.`));
         });
-
-        const metaSocialImageUrl = root.querySelector('#metaSocialImageUrl');
-        if (metaSocialImageUrl) {
-          metaSocialImageUrl.addEventListener('input', () => {
-            state.meta.socialImageUrl = metaSocialImageUrl.value.trim();
-            markDirty();
-          });
-          metaSocialImageUrl.addEventListener('change', () => {
-            const rawValue = metaSocialImageUrl.value.trim();
-            state.meta.socialImageUrl = rawValue && !/^(?:[a-z][a-z0-9+.-]*:|\/|\.\.?\/)/i.test(rawValue)
-              ? `${tutorialMediaBaseUrl(selectedTutorialFolderSlug())}${rawValue.split('/').map(encodeURIComponent).join('/')}`
-              : rawValue;
-            commit('Updated the social preview image.');
-          });
-        }
 
         const hotspotActionUrl = root.querySelector('#hotspotActionUrl');
         if (hotspotActionUrl) {
@@ -5062,6 +4878,9 @@
 
         if (action === 'open-video-annotation') {
           event.preventDefault();
+          if (MODE !== 'player') {
+            return;
+          }
           openVideoAnnotationById(element.dataset.annotationId);
           return;
         }
@@ -5949,15 +5768,6 @@
           pendingFocus = `annotation.label:${annotation.id}`;
         }
         commit(isVideoAnnotation ? 'Added a video modal annotation.' : isLinkAnnotation ? 'Added a link annotation.' : `Added a ${type} annotation.`);
-        if (isVideoAnnotation) {
-          const videoInput = root.querySelector('#videoAnnotationUrl');
-          videoInput?.focus();
-          placeInputCursorAtEnd(videoInput);
-        } else if (type === 'audio') {
-          const audioInput = root.querySelector('#annotationSource');
-          audioInput?.focus();
-          placeInputCursorAtEnd(audioInput);
-        }
         if (isLinkAnnotation) {
           const linkInput = root.querySelector('#annotationLinkUrl');
           if (linkInput) {
@@ -6205,15 +6015,7 @@
       }
 
       function openVideoAnnotationModal(annotation) {
-        if (!annotation || annotation.type !== 'video') {
-          return;
-        }
-        if (!annotation.modalUrl) {
-          state.ui.selectedKind = 'annotation';
-          state.ui.selectedId = annotation.id;
-          setStatus('Choose a video file from the tutorial folder or paste a direct video URL, then click the icon again.');
-          render();
-          root.querySelector('#videoAnnotationUrl')?.focus();
+        if (!annotation || annotation.type !== 'video' || !annotation.modalUrl) {
           return;
         }
         state.ui.videoModal = {
@@ -6319,8 +6121,13 @@
           return;
         }
         const audio = primeAudioForAnnotation(annotation);
-        audio.currentTime = 0;
-        setStatus('Rewound audio to the beginning.');
+        if (activeAudio !== annotation.id) {
+          audio.currentTime = 0;
+          playPreparedAudio(audio, annotation.id).then(() => render());
+          return;
+        }
+        audio.currentTime = Math.max(0, (audio.currentTime || 0) - 5);
+        setStatus('Rewound audio 5 seconds.');
         render();
       }
 
@@ -6344,7 +6151,7 @@
         if (!video) {
           return;
         }
-        video.currentTime = 0;
+        video.currentTime = Math.max(0, (video.currentTime || 0) - 5);
       }
 
       function closeVideoModal() {
@@ -6472,7 +6279,7 @@
         const exportState = buildExportState();
         const html = serializeDocumentHtml('player', exportState);
         downloadTextFile(exportPlayerFileName(), html);
-        setStatus(`Exported standalone tutorial HTML with social sharing metadata and preview image.`);
+        setStatus('Exported standalone tutorial HTML.');
         render();
       }
 
@@ -6511,7 +6318,6 @@
 
       function serializeDocumentHtml(mode, exportState) {
         const clone = document.documentElement.cloneNode(true);
-        applyDocumentMetadata(clone, exportState, mode);
         const body = clone.querySelector('body');
         if (body) {
           body.dataset.mode = mode;
@@ -6535,61 +6341,6 @@
           body?.append(navigation);
         }
         return `<!DOCTYPE html>\n${clone.outerHTML}`;
-      }
-
-      function applyDocumentMetadata(documentElement, projectState, mode) {
-        const head = documentElement.querySelector('head');
-        if (!head) return;
-        const titleText = socialShareTitle(projectState);
-        const description = socialShareDescription(projectState);
-        const publicUrl = tutorialPublicUrlForState(projectState);
-        const imageUrl = socialPreviewImageUrl(projectState);
-        const imageAlt = projectState.meta?.socialImageAlt || `${titleText} tutorial preview`;
-
-        let titleElement = head.querySelector('title');
-        if (!titleElement) {
-          titleElement = head.ownerDocument.createElement('title');
-          head.prepend(titleElement);
-        }
-        titleElement.textContent = mode === 'player'
-          ? `${titleText} | Magic Hashtags`
-          : `${titleText} — Tutorial Builder`;
-
-        setHeadMeta(head, 'name', 'description', description);
-        setHeadLink(head, 'canonical', publicUrl);
-        setHeadMeta(head, 'property', 'og:type', 'website');
-        setHeadMeta(head, 'property', 'og:site_name', 'Magic Hashtags');
-        setHeadMeta(head, 'property', 'og:locale', 'en_US');
-        setHeadMeta(head, 'property', 'og:title', titleText);
-        setHeadMeta(head, 'property', 'og:description', description);
-        setHeadMeta(head, 'property', 'og:url', publicUrl);
-        setHeadMeta(head, 'property', 'og:image', imageUrl);
-        setHeadMeta(head, 'property', 'og:image:alt', imageAlt);
-        setHeadMeta(head, 'name', 'twitter:card', 'summary_large_image');
-        setHeadMeta(head, 'name', 'twitter:title', titleText);
-        setHeadMeta(head, 'name', 'twitter:description', description);
-        setHeadMeta(head, 'name', 'twitter:image', imageUrl);
-        setHeadMeta(head, 'name', 'twitter:image:alt', imageAlt);
-      }
-
-      function setHeadMeta(head, attributeName, key, content) {
-        let element = head.querySelector(`meta[${attributeName}="${key}"]`);
-        if (!element) {
-          element = head.ownerDocument.createElement('meta');
-          element.setAttribute(attributeName, key);
-          head.append(element);
-        }
-        element.setAttribute('content', String(content || ''));
-      }
-
-      function setHeadLink(head, relation, href) {
-        let element = head.querySelector(`link[rel="${relation}"]`);
-        if (!element) {
-          element = head.ownerDocument.createElement('link');
-          element.setAttribute('rel', relation);
-          head.append(element);
-        }
-        element.setAttribute('href', String(href || ''));
       }
 
       async function connectTutorialCatalog() {
@@ -7165,66 +6916,9 @@
       }
 
       function tutorialPublicUrl() {
-        return tutorialPublicUrlForState(state);
-      }
-
-      function tutorialPublicUrlForState(projectState) {
-        const folderParts = normalizeTutorialFolderPath(
-          projectState?.meta?.mediaTutorialSlug
-          || String(projectState?.meta?.filename || '').replace(/\.html$/i, '')
-          || projectState?.tutorial?.title
-          || 'tutorial'
-        ).split('/');
-        const category = normalizeTutorialFolderPath(`${projectState?.meta?.category || folderParts[0] || 'learn'}/placeholder`).split('/')[0];
-        const filename = String(projectState?.meta?.filename || `${folderParts[1] || folderParts[0] || 'tutorial'}.html`).replace(/^\/+/, '');
+        const category = normalizeTutorialFolderPath(`${state.meta.category || selectedTutorialFolderSlug().split('/')[0] || 'learn'}/placeholder`).split('/')[0];
+        const filename = String(state.meta.filename || `${selectedTutorialFolderSlug().split('/')[1] || 'tutorial'}.html`).replace(/^\/+/, '');
         return `https://magichashtags.com/learn/${encodeURIComponent(category)}/${filename.split('/').map(encodeURIComponent).join('/')}`;
-      }
-
-      function socialShareTitle(projectState) {
-        const tutorialTitle = String(projectState?.tutorial?.title || '').trim();
-        if (tutorialTitle && tutorialTitle !== 'TUTORIAL TITLE') {
-          return tutorialTitle;
-        }
-        const filenameTitle = titleFromSlug(String(projectState?.meta?.filename || '').replace(/\.html$/i, ''));
-        return String(
-          projectState?.meta?.cardName
-          || projectState?.meta?.navigationName
-          || filenameTitle
-          || 'Magic Hashtags Tutorial'
-        ).trim();
-      }
-
-      function socialShareDescription(projectState) {
-        const coverNotes = projectState?.tutorial?.slides?.find((slide) => slide.kind === 'cover')?.notes;
-        return String(
-          projectState?.meta?.summary
-          || projectState?.meta?.popupDescription
-          || coverNotes
-          || 'An interactive tutorial from Magic Hashtags.'
-        ).trim();
-      }
-
-      function socialPreviewImageUrl(projectState) {
-        const explicitImage = String(projectState?.meta?.socialImageUrl || '').trim();
-        if (explicitImage) {
-          return absoluteSocialAssetUrl(explicitImage, 'image');
-        }
-        const slides = Array.isArray(projectState?.tutorial?.slides) ? projectState.tutorial.slides : [];
-        const cover = slides.find((slide) => slide.kind === 'cover') || slides[0];
-        const assetType = slideMediaAssetType(cover);
-        if (cover?.media?.url && (assetType === 'image' || assetType === 'gif')) {
-          return absoluteSocialAssetUrl(cover.media.url, assetType);
-        }
-        return `${MEDIA_LIBRARY_SITE_ORIGIN}/images/mhnavlogo.png`;
-      }
-
-      function absoluteSocialAssetUrl(value, assetType = 'image') {
-        const normalized = normalizeAssetUrl(value, assetType);
-        try {
-          return new URL(normalized, MEDIA_LIBRARY_SITE_ORIGIN).href;
-        } catch (error) {
-          return normalized;
-        }
       }
 
       function focusPendingBinding() {

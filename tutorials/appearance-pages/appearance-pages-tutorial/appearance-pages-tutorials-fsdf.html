@@ -1196,23 +1196,6 @@
       background: var(--white);
     }
 
-    .builder-quickbar__image-picker {
-      display: grid;
-      gap: 3px;
-      min-width: min(100%, 250px);
-      font-size: 0.72rem;
-      font-weight: 800;
-      letter-spacing: 0.04em;
-      text-transform: uppercase;
-    }
-
-    .builder-quickbar__image-picker select {
-      min-height: 44px;
-      max-width: 300px;
-      background: var(--white);
-      text-transform: none;
-    }
-
     .dock-row {
       display: grid;
       gap: 10px;
@@ -2552,18 +2535,12 @@
       }
 
       function renderBuilderQuickbar() {
-        const slide = currentSlide();
-        const currentImage = slideMediaAssetType(slide) === 'image' ? slide.media.url : '';
         return `
           <section class="builder-quickbar" aria-label="Tutorial builder quick start">
             <div class="builder-quickbar__title">Build tutorial</div>
             <div class="builder-quickbar__steps">1. Select the tutorial asset folder &nbsp; 2. Add a slide &nbsp; 3. Choose its image, audio, or video &nbsp; 4. Save Builder, then Export Tutorial HTML</div>
             <button type="button" data-action="refresh-tutorial-folders">1. Select Asset Folder</button>
             <button type="button" data-action="add-slide">2. Add Slide</button>
-            <label class="builder-quickbar__image-picker">
-              <span>3. Slide Image</span>
-              ${renderTutorialFileSelect('image', currentImage, 'quickbarSlideImageFile')}
-            </label>
           </section>
         `;
       }
@@ -3118,16 +3095,11 @@
                   </div>
                 </div>
                 <div class="dock-section">
-                  <div class="dock-label">Slide Image / Media Folder</div>
+                  <div class="dock-label">Media Folder</div>
                   <div class="dock-input-stack">
                     <div class="dock-button-row"><button type="button" data-action="refresh-tutorial-folders">Refresh Folders</button></div>
                     <input class="hidden" id="tutorialFolderPicker" type="file" webkitdirectory multiple />
                     ${renderTutorialFolderSelect(mediaAssetType, slide.media.url)}
-                    <div class="dock-label">Choose This Slide's Image</div>
-                    ${renderTutorialFileSelect('image', mediaAssetType === 'image' ? slide.media.url : '', 'pageTutorialImageFile')}
-                    <div class="dock-label">Or Choose GIF, Video, or Audio</div>
-                    ${renderTutorialAllMediaSelect(slide.media.url)}
-                    <div class="status-bar">The selected file becomes the main image or media for the current slide.</div>
                   </div>
                 </div>
                 <div class="dock-section">
@@ -3202,6 +3174,10 @@
                     <button type="button" data-action="add-media-object" ${objectMediaUrl ? '' : 'disabled'}>Place ${objectMediaType === 'gif' ? 'GIF' : objectMediaType === 'video' ? 'Video Modal' : objectMediaType}</button>
                   </div>
                   ${renderSelectedControls(hotspot, annotation)}
+                </div>
+                <div class="dock-section">
+                  <div class="dock-label">Select Media</div>
+                  ${renderTutorialAllMediaSelect(slide.media.url)}
                 </div>
                 <div class="dock-section">
                   <div class="dock-label">Save + Export</div>
@@ -4284,25 +4260,6 @@
             currentSlide().media.url = `${tutorialMediaBaseUrl(selectedTutorialFolderSlug(), assetType)}${pageTutorialFile.value.split('/').map(encodeURIComponent).join('/')}`;
             commit(`Selected main ${mediaTypeLabel(assetType)} from ${selectedTutorialFolderSlug()}.`);
           });
-        }
-
-        const setCurrentSlideImage = (filename) => {
-          if (!filename) return;
-          const media = currentSlide().media;
-          media.type = 'image';
-          media.url = `${tutorialMediaBaseUrl(selectedTutorialFolderSlug())}${filename.split('/').map(encodeURIComponent).join('/')}`;
-          if (currentSlide().kind === 'video') currentSlide().kind = 'slide';
-          commit(`Selected slide image from ${selectedTutorialFolderSlug()}.`);
-        };
-
-        const quickbarSlideImageFile = root.querySelector('#quickbarSlideImageFile');
-        if (quickbarSlideImageFile) {
-          quickbarSlideImageFile.addEventListener('change', () => setCurrentSlideImage(quickbarSlideImageFile.value));
-        }
-
-        const pageTutorialImageFile = root.querySelector('#pageTutorialImageFile');
-        if (pageTutorialImageFile) {
-          pageTutorialImageFile.addEventListener('change', () => setCurrentSlideImage(pageTutorialImageFile.value));
         }
 
         const pageTutorialMediaFile = root.querySelector('#pageTutorialMediaFile');

@@ -1,0 +1,33 @@
+# Allow the tutorial builder and exported tutorial pages to load hosted media
+# from another origin. The browser requires this before a remote image or video
+# can be included in an exported PNG canvas.
+
+[[headers]]
+  for = "/images/*"
+  [headers.values]
+    Access-Control-Allow-Origin = "*"
+    Cross-Origin-Resource-Policy = "cross-origin"
+
+[[headers]]
+  for = "/tutorials/*"
+  [headers.values]
+    Access-Control-Allow-Origin = "*"
+    Cross-Origin-Resource-Policy = "cross-origin"
+
+[[headers]]
+  for = "/gifs/*"
+  [headers.values]
+    Access-Control-Allow-Origin = "*"
+    Cross-Origin-Resource-Policy = "cross-origin"
+
+[[headers]]
+  for = "/video/*"
+  [headers.values]
+    Access-Control-Allow-Origin = "*"
+    Cross-Origin-Resource-Policy = "cross-origin"
+
+[[headers]]
+  for = "/audio/*"
+  [headers.values]
+    Access-Control-Allow-Origin = "*"
+    Cross-Origin-Resource-Policy = "cross-origin"
