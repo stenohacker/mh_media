@@ -1,2 +1,5 @@
 .DS_Store
 tutorial-builder-work/
+
+# Local Netlify folder
+.netlify
