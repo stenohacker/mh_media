@@ -31,3 +31,10 @@
   [headers.values]
     Access-Control-Allow-Origin = "*"
     Cross-Origin-Resource-Policy = "cross-origin"
+
+[[headers]]
+  for = "/shapes.csv"
+  [headers.values]
+    Access-Control-Allow-Origin = "*"
+    Cross-Origin-Resource-Policy = "cross-origin"
+    Content-Type = "text/csv; charset=UTF-8"

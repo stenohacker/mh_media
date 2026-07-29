@@ -1,5 +1,7 @@
 .DS_Store
-tutorial-builder-work/
+tutorial-builder-work/*
+!tutorial-builder-work/tutorial-builder-v3.html
+!tutorial-builder-work/TUTORIAL_BUILDER_V3_HANDOFF.md
 
 # Local Netlify folder
 .netlify
