@@ -1,6 +1,6 @@
 # Tutorial Builder v3 — Working Handoff and Completion Checklist
 
-Last updated: 2026-07-28
+Last updated: 2026-08-02
 
 This file is the source of truth for finishing Tutorial Builder v3. Check an
 item only after the behavior exists and has been tested. Do not add features
@@ -85,6 +85,22 @@ tutorials/
 - [x] Media-site CORS and cross-origin headers exist for images, GIFs, audio, video, and tutorial assets.
 - [x] Broken Imgur links can be replaced with a file in the tutorial's media folder without rebuilding unrelated slides.
 
+### Publishing the media website
+
+Double-click `/Users/tamchap/Dev/mh_media/PUBLISH MEDIA WEBSITE.command` only
+when the media changes are ready to go live. It shows the pending files, runs
+the Tutorial Builder v3 audit, asks for a short description, and requires the
+exact confirmation `PUBLISH MEDIA` before it commits or pushes anything.
+
+The button publishes all current non-archive media changes to GitHub `main`,
+which starts the Netlify production deployment. It excludes `.DS_Store` and
+anything inside an `archive` folder, then opens the correct Netlify dashboard.
+Review the displayed file list before confirming.
+
+The publisher also removes any previously tracked `.DS_Store`, `archive/`, or
+`node_modules/` content from GitHub. Recovery copies and older builders remain
+local and ignored; they are never deployed.
+
 ## 5. Shared annotation assets
 
 Source:
@@ -146,15 +162,19 @@ Source:
 
 - [x] Video slide has no hotspot sidebar.
 - [x] Video slide has no inactive/no-hotspots message.
-- [x] Video media box is centered in the full-width slide canvas.
+- [x] Video media box matches the regular image-slide media-box size and is centered in the full-width slide canvas.
+- [x] Moving between an image page and a video page does not move the bottom edge of the tutorial canvas or the reader navigation.
+- [x] Video media uses its intrinsic source dimensions and the same uncropped Contain / cropped Cover fit behavior as image media without changing the page height.
+- [x] Video media has persistent play/pause and seek controls at the bottom.
 - [x] The Contents title for a video slide is edited in the lower “Slides and main media” area.
-- [x] Annotations can be placed anywhere across the full video-slide canvas.
+- [x] Non-hotspot annotations can be placed anywhere across the full video-slide canvas, including over the video and its side padding.
 - [x] Video slide retains Back, Contents, and Next navigation.
 - [x] Builder and exported behavior match.
 
 ## 10. Permanent tutorial navigation
 
 - [x] Navigation is required on every slide type.
+- [x] Reader-facing navigation is labeled only Back and Next; it does not say Previous slide, Next slide, or hotspot.
 - [x] Back button remains at the left.
 - [x] Dotted 3×3 Contents button remains centered.
 - [x] Next button remains at the right.
@@ -162,6 +182,11 @@ Source:
 - [x] Reliable inline SVG is used for the dotted symbol.
 - [x] Back and Next have correct disabled behavior at the ends.
 - [x] Navigation is present in the exported tutorial.
+- [x] Moving Back or Next between hotspots visibly pulses/enlarges the active
+  canvas marker and draws attention to its left-side title/details.
+- [x] Clicking a hotspot title or description on the left replays the same
+  attention treatment in both builder and exported player.
+- [x] Player hotspot descriptions are mouse- and keyboard-activatable.
 
 ## 11. Contents modal
 
@@ -250,7 +275,9 @@ Source:
 
 - [x] Add text annotation.
 - [x] Text content is directly editable.
-- [x] Three approved visual styles are available.
+- [x] Three approved visual styles are available: Geist Mono regular, Geist Mono italic, and Shadows Into Light Two handwriting.
+- [x] The three text-style controls are equal-size boxes labeled `Tt` and preview their actual styles.
+- [x] Text temporarily saved as bold by the prior regression reopens as italic.
 - [x] A selected text annotation has a separate Move handle so editing text does not prevent dragging it.
 - [x] Clicking an existing text annotation reselects it without interrupting direct editing.
 - [x] Text can be selected, moved, resized, reordered, locked, and deleted.

@@ -96,6 +96,17 @@ check.call(builder.include?('const slotIndex = drag.kind === "hotspot" ? hotspot
            "Live hotspot styling is not resolved from the current numbered slot.")
 check.call(!builder.include?('(item.color ? `;--hotspot-color:${item.color}` : "")'),
            "Live hotspot styling can still reapply a stale per-object color.")
+check.call(builder.include?("function drawAttentionToHotspot(id, scrollRow = true)") &&
+           builder.include?('hotspot-object.is-attention') &&
+           builder.include?('hotspot-entry.is-attention'),
+           "The active-hotspot attention animation is missing from the marker or sidebar.")
+check.call(builder.include?("drawAttentionToHotspot(nextHotspotId)") &&
+           builder.include?("drawAttentionToHotspot(previousHotspotId)") &&
+           builder.include?('binding.startsWith("hotspot.body:")'),
+           "Hotspot attention is not connected to reader navigation and sidebar editing.")
+check.call(builder.include?('aria-live="polite" data-action="activate-hotspot"') &&
+           builder.include?('tabindex="0">${detail}</div>'),
+           "Player hotspot details are not clickable and keyboard-activatable.")
 
 fallback_block = builder[/const FALLBACK_SHAPES = \[(.*?)\n    \];/m, 1].to_s
 fallback_rows = fallback_block.scan(/\["([^"]+)", "([^"]+)"\]/)
@@ -117,6 +128,18 @@ check.call(builder.include?('function markupSvg(annotation)'),
            "Native SVG markup rendering is missing.")
 check.call(builder.include?("data-main-media-error"),
            "Main hosted media does not have a visible failure state.")
+check.call(builder.include?('--hand: "Shadows Into Light Two", cursive;'),
+           "The approved handwriting font is not connected.")
+check.call(builder.include?('data-style="regular"') &&
+           builder.include?('data-style="italic"') &&
+           builder.include?('data-style="hand"') &&
+           !builder.include?('data-style="bold"'),
+           "Text controls must be regular, italic, and handwriting.")
+check.call(builder.include?('grid-template-columns: repeat(3, 36px);'),
+           "The three text-style controls are no longer equal width.")
+check.call(builder.include?('item?.textStyle === "bold"') &&
+           builder.include?('? "italic"'),
+           "Text saved by the bold-style regression is not migrated to italic.")
 
 netlify = File.read(NETLIFY_CONFIG)
 %w[/images/* /tutorials/* /gifs/* /video/* /audio/* /shapes.csv].each do |path|
@@ -184,6 +207,7 @@ if errors.empty?
   puts "  required shared assets: #{required_shared.length}"
   puts "  hotspot artwork/color slots: #{expected_hotspot_styles.length} (fixed, repeating)"
   puts "  hotspot reorder fields: title + body only"
+  puts "  hotspot attention: navigation + sidebar + marker"
   puts "  upload controls: 0"
   puts "  oversized annotation PNGs: 0"
   exit 0

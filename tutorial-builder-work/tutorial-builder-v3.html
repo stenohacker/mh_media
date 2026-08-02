@@ -6,10 +6,15 @@
   <meta name="color-scheme" content="light">
   <title>Tutorial Builder v3</title>
   <link id="geist-mono-preload" rel="preload" href="../../website/fonts/geist-mono-latin.woff2" as="font" type="font/woff2" crossorigin>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Shadows+Into+Light+Two&display=swap" rel="stylesheet">
   <style id="geist-mono-font-face">
     @font-face {
       font-family: "Geist Mono";
-      src: url("../../website/fonts/geist-mono-latin.woff2") format("woff2");
+      src:
+        url("../../website/fonts/geist-mono-latin.woff2") format("woff2"),
+        url("https://magichashtags.com/fonts/geist-mono-latin.woff2") format("woff2");
       font-style: normal;
       font-weight: 100 900;
       font-display: swap;
@@ -31,7 +36,7 @@
       --mono: var(--font-interface);
       --sans: var(--font-interface);
       --body: var(--font-interface);
-      --hand: var(--font-interface);
+      --hand: "Shadows Into Light Two", cursive;
       --border-width: 3px;
       --border-heavy: 4px;
       --shadow-small: 4px 4px 0 var(--black);
@@ -41,6 +46,7 @@
       --shadow: var(--shadow-medium);
       --small-shadow: var(--shadow-small);
       --shell: min(1500px, calc(100vw - clamp(32px, 5vw, 72px)));
+      --page-media-aspect: 5 / 3;
     }
 
     * {
@@ -369,9 +375,95 @@
       background: var(--white);
       box-shadow: 7px 7px 0 var(--black);
     }
-    .site-nav__mobile-panel:not([hidden]) { display: grid; }
+	    .site-nav__mobile-panel:not([hidden]) { display: grid; }
 
-    .builder-app { width: 100%; padding: 12px 0 48px; }
+	    .tutorial-page-links {
+	      width: var(--shell);
+	      display: grid;
+	      gap: 12px;
+	      margin: 0 auto 14px;
+	    }
+	    .tutorial-breadcrumbs {
+	      display: flex;
+	      flex-wrap: wrap;
+	      align-items: center;
+	      gap: 8px;
+	      border: 3px solid var(--black);
+	      padding: 8px 10px;
+	      background: var(--white);
+	      box-shadow: var(--shadow-small);
+	      font-size: 12px;
+	      font-weight: 600;
+	      letter-spacing: .045em;
+	      text-transform: uppercase;
+	    }
+	    .tutorial-breadcrumbs a {
+	      color: var(--black);
+	      text-decoration: none;
+	    }
+	    .tutorial-breadcrumbs a:hover,
+	    .tutorial-breadcrumbs a:focus-visible {
+	      background: var(--yellow);
+	      outline: 2px solid var(--black);
+	      outline-offset: 2px;
+	    }
+	    .tutorial-breadcrumbs span { opacity: .55; }
+	    .tutorial-link-callout {
+	      display: flex;
+	      align-items: center;
+	      justify-content: space-between;
+	      gap: 18px;
+	      border: 4px solid var(--black);
+	      padding: 14px 16px;
+	      background: var(--yellow);
+	      box-shadow: var(--shadow);
+	    }
+	    .tutorial-link-callout--related { background: var(--soft-pink); }
+	    .tutorial-link-callout__copy { min-width: 0; }
+	    .tutorial-link-callout__eyebrow {
+	      margin: 0 0 3px;
+	      font-size: 11px;
+	      font-weight: 600;
+	      letter-spacing: .06em;
+	      text-transform: uppercase;
+	    }
+	    .tutorial-link-callout h2 {
+	      margin: 0;
+	      font-size: clamp(16px, 2.2vw, 22px);
+	      line-height: 1.2;
+	      text-transform: uppercase;
+	    }
+	    .tutorial-link-callout p {
+	      margin: 4px 0 0;
+	      font-size: 14px;
+	      font-weight: 500;
+	      line-height: 1.4;
+	    }
+	    .tutorial-link-callout__button {
+	      flex: 0 0 auto;
+	      display: inline-flex;
+	      align-items: center;
+	      justify-content: center;
+	      min-height: 44px;
+	      border: 3px solid var(--black);
+	      padding: 8px 12px;
+	      color: var(--black);
+	      background: var(--white);
+	      box-shadow: var(--shadow-small);
+	      font-size: 12px;
+	      font-weight: 600;
+	      letter-spacing: .045em;
+	      text-decoration: none;
+	      text-transform: uppercase;
+	    }
+	    .tutorial-link-callout__button:hover,
+	    .tutorial-link-callout__button:focus-visible {
+	      background: var(--pink);
+	      transform: translate(2px, 2px);
+	      box-shadow: 2px 2px 0 var(--black);
+	    }
+
+	    .builder-app { width: 100%; padding: 12px 0 48px; }
     .builder-toolbar,
     .tutorial-shell,
     .builder-lower,
@@ -418,6 +510,33 @@
     .tool-group:last-child { margin-left: auto; padding-right: 0; border-right: 0; }
     .tool-group:last-child button { padding: 5px 7px; font-size: 14px; }
     .tool-stack { display: grid; gap: 3px; min-width: 0; }
+    .text-style-buttons {
+      display: grid;
+      grid-template-columns: repeat(3, 36px);
+      gap: 3px;
+    }
+    .builder-toolbar button.text-style-button {
+      width: 36px;
+      min-width: 36px;
+      height: 36px;
+      min-height: 36px;
+      padding: 0;
+      font-family: var(--font-interface);
+      font-size: 16px;
+      font-style: normal;
+      font-weight: 400;
+      line-height: 1;
+      letter-spacing: 0;
+      text-transform: none;
+    }
+    .builder-toolbar button.text-style-button--italic {
+      font-style: italic;
+      font-synthesis: style;
+    }
+    .builder-toolbar button.text-style-button--hand {
+      font-family: var(--hand);
+      font-size: 19px;
+    }
     .edit-object-buttons { display: flex; gap: 2px; }
     .tool-label {
       font-size: 12px;
@@ -517,7 +636,8 @@
       background: var(--white);
     }
     .tutorial-body.is-video {
-      grid-template-columns: 1fr;
+      position: relative;
+      grid-template-columns: minmax(340px, 40%) minmax(0, 1fr);
     }
     .slide-sidebar {
       display: flex;
@@ -675,7 +795,7 @@
       background: var(--hotspot-color, var(--pink));
       box-shadow: none;
       cursor: pointer;
-      transition: box-shadow 140ms ease;
+      transition: box-shadow 140ms ease, transform 140ms ease, filter 140ms ease;
     }
     .hotspot-row:hover,
     .hotspot-row:focus-within {
@@ -684,6 +804,14 @@
     .hotspot-row.is-active {
       outline: 0;
       box-shadow: 4px 4px 0 var(--black);
+    }
+    .hotspot-entry.is-attention .hotspot-row {
+      position: relative;
+      z-index: 2;
+      animation: hotspot-row-attention 720ms cubic-bezier(.2, .9, .3, 1);
+    }
+    .hotspot-entry.is-attention .hotspot-detail {
+      animation: hotspot-detail-attention 720ms ease-out;
     }
     .hotspot-row__title {
       min-width: 0;
@@ -721,7 +849,15 @@
       padding: clamp(20px, 2.5vw, 32px);
       background: var(--white);
     }
-    .tutorial-body.is-video .stage-wrap { padding: clamp(16px, 3vw, 44px); }
+    .tutorial-body.is-video .stage-wrap {
+      grid-column: 2;
+    }
+    .tutorial-body.is-video .stage-wrap::before {
+      content: "";
+      display: block;
+      width: 100%;
+      aspect-ratio: var(--page-media-aspect);
+    }
     .stage {
       position: relative;
       width: 100%;
@@ -736,10 +872,21 @@
     .tutorial-body:not(.is-video) .stage {
       height: auto;
       min-height: 520px;
-      aspect-ratio: var(--media-aspect, 5 / 3);
+      aspect-ratio: var(--media-aspect, var(--page-media-aspect));
     }
     @supports (aspect-ratio: 5 / 3) {
       .tutorial-body:not(.is-video) .stage { min-height: 0; }
+    }
+    .tutorial-body.is-video .stage {
+      position: absolute;
+      inset: clamp(20px, 2.5vw, 32px);
+      z-index: 1;
+      width: auto;
+      height: auto;
+      min-height: 0;
+      border: 0;
+      outline: 4px solid var(--black);
+      outline-offset: -4px;
     }
     .media-layer {
       position: absolute;
@@ -786,12 +933,58 @@
       object-fit: contain;
     }
     .tutorial-body.is-video .media-layer {
-      inset: 12% 9%;
+      inset: auto;
+      left: 50%;
+      top: 50%;
+      width: calc(60% - clamp(16px, 2vw, 26px));
+      height: auto;
+      aspect-ratio: var(--page-media-aspect);
+      grid-template-rows: minmax(0, 1fr) auto;
+      transform: translate(-50%, -50%);
       border: 3px solid var(--black);
       background: var(--white);
       pointer-events: auto;
     }
-    .tutorial-body.is-video .media-layer video { object-fit: contain; }
+    .tutorial-body.is-video .media-layer video {
+      min-width: 0;
+      min-height: 0;
+      object-fit: var(--media-fit, contain);
+      image-rendering: auto;
+    }
+    .main-video-controls {
+      position: relative;
+      z-index: 2;
+      display: grid;
+      grid-template-columns: 36px minmax(0, 1fr);
+      align-items: center;
+      gap: 9px;
+      width: 100%;
+      border-top: 3px solid var(--black);
+      padding: 6px 9px;
+      background: var(--white);
+      touch-action: auto;
+    }
+    .main-video-controls .icon-button {
+      width: 34px;
+      min-width: 34px;
+      height: 32px;
+      min-height: 32px;
+      padding: 4px;
+      box-shadow: none;
+    }
+    .main-video-controls input[type="range"] {
+      width: 100%;
+      min-height: 28px;
+      margin: 0;
+      border: 0;
+      padding: 0;
+      background: transparent;
+      box-shadow: none;
+      accent-color: var(--pink);
+      cursor: pointer;
+      touch-action: auto;
+    }
+    .main-video-frame.has-media-error .main-video-controls { display: none; }
     .media-placeholder {
       display: grid;
       width: min(74%, 720px);
@@ -891,7 +1084,12 @@
       overflow-wrap: anywhere;
       outline: 0;
     }
-    .annotation-text[data-text-style="bold"] .object-frame { font-family: var(--sans); font-weight: 600; }
+    .annotation-text[data-text-style="italic"] .object-frame,
+    .annotation-text[data-text-style="bold"] .object-frame {
+      font-family: var(--sans);
+      font-style: italic;
+      font-synthesis: style;
+    }
     .annotation-text[data-text-style="hand"] .object-frame { font-family: var(--hand); font-size: 1.35em; }
     .annotation-cover .object-frame {
       background: var(--cover-color, #ffffff);
@@ -976,6 +1174,10 @@
     .hotspot-object.is-active .object-frame {
       animation: hotspot-active-pop 380ms cubic-bezier(.2, .9, .3, 1);
     }
+    .hotspot-object.is-attention .object-frame {
+      animation: hotspot-marker-attention 720ms cubic-bezier(.16, 1, .3, 1);
+      filter: drop-shadow(0 0 0 var(--white)) drop-shadow(7px 7px 0 var(--black));
+    }
     .hotspot-object:focus-visible .object-frame,
     .annotation-audio:focus-within .object-frame,
     .annotation-video:focus-visible .object-frame {
@@ -989,6 +1191,7 @@
       }
       .hotspot-object:hover .object-frame,
       .hotspot-object.is-active .object-frame,
+      .hotspot-object.is-attention .object-frame,
       .hotspot-object:focus-visible .object-frame,
       .annotation-audio:hover .object-frame,
       .annotation-audio:focus-within .object-frame,
@@ -997,11 +1200,39 @@
         transform: none;
         animation: none;
       }
+      .hotspot-object.is-attention .object-frame {
+        outline: 5px solid var(--yellow);
+        outline-offset: 4px;
+        filter: drop-shadow(5px 5px 0 var(--black));
+      }
+      .hotspot-entry.is-attention .hotspot-row,
+      .hotspot-entry.is-attention .hotspot-detail {
+        animation: none;
+        outline: 5px solid var(--black);
+        outline-offset: 3px;
+      }
     }
     @keyframes hotspot-active-pop {
       0% { transform: translateY(0); }
       58% { transform: translateY(-10px); }
       100% { transform: translateY(-7px); }
+    }
+    @keyframes hotspot-marker-attention {
+      0% { transform: translateY(-7px) scale(1); }
+      32% { transform: translateY(-15px) scale(1.24); }
+      56% { transform: translateY(-5px) scale(.94); }
+      78% { transform: translateY(-11px) scale(1.1); }
+      100% { transform: translateY(-7px) scale(1); }
+    }
+    @keyframes hotspot-row-attention {
+      0% { transform: translateX(0); box-shadow: 4px 4px 0 var(--black); filter: brightness(1); }
+      35% { transform: translateX(7px); box-shadow: 8px 8px 0 var(--black); filter: brightness(1.12); }
+      65% { transform: translateX(-2px); box-shadow: 3px 3px 0 var(--black); filter: brightness(1); }
+      100% { transform: translateX(0); box-shadow: 4px 4px 0 var(--black); filter: brightness(1); }
+    }
+    @keyframes hotspot-detail-attention {
+      0%, 100% { background: var(--white); }
+      40% { background: #fff7bd; }
     }
 
     .annotation-trigger .object-frame {
@@ -1350,14 +1581,32 @@
       min-height: 42px;
       white-space: nowrap;
     }
-    .metadata-note {
+	    .metadata-note {
       grid-column: 1 / -1;
       border-left: 4px solid var(--yellow);
       padding: 9px 11px;
       background: var(--white);
       font-size: 14px;
-      line-height: 1.5;
-    }
+	      line-height: 1.5;
+	    }
+	    .metadata-checkbox {
+	      display: flex;
+	      align-items: center;
+	      align-self: end;
+	      gap: 8px;
+	      min-height: 42px;
+	      border: 3px solid var(--black);
+	      padding: 8px 10px;
+	      background: var(--white);
+	    }
+	    .metadata-checkbox input {
+	      width: 18px;
+	      min-height: 18px;
+	      height: 18px;
+	      margin: 0;
+	      padding: 0;
+	      box-shadow: none;
+	    }
 
     .modal {
       position: fixed;
@@ -1553,16 +1802,23 @@
         padding-top: calc(90px + clamp(12px, 2.5vw, 28px));
       }
       .tutorial-body { grid-template-columns: 1fr; min-height: 0; }
+      .tutorial-body.is-video { grid-template-columns: 1fr; }
+      .tutorial-body.is-video .stage-wrap { grid-column: 1; }
       .slide-sidebar { max-height: none; padding: 20px; border-right: 0; border-bottom: 4px solid var(--black); }
       .hotspot-list { max-height: 340px; }
       .stage { min-height: 58vw; }
+      .tutorial-body.is-video .media-layer {
+        width: 100%;
+        height: 100%;
+        aspect-ratio: auto;
+      }
       .annotation-rows, .metadata-grid { grid-template-columns: 1fr 1fr; }
       .main-media-grid,
       .main-media-grid.has-video-title { grid-template-columns: 1fr 1fr; }
       .metadata-grid .span-3 { grid-column: 1 / -1; }
       .contents-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); }
     }
-    @media (max-width: 620px) {
+	    @media (max-width: 620px) {
       :root { --shell: calc(100vw - 24px); }
       .builder-app { padding-top: 6px; }
       .builder-toolbar {
@@ -1611,14 +1867,15 @@
       .toolbar-opacity {
         width: 100%;
       }
-      .tutorial-shell { border-width: 3px; }
+	      .tutorial-shell { border-width: 3px; }
+	      .tutorial-link-callout { align-items: stretch; flex-direction: column; }
+	      .tutorial-link-callout__button { width: 100%; text-align: center; }
       .tutorial-title { min-height: 54px; font-size: clamp(23px, 9vw, 38px); letter-spacing: .015em; }
       .slide-sidebar { padding: 16px; }
       .slide-sidebar__title { padding: 12px 14px; font-size: 17px; }
       .slide-sidebar__description { padding-inline: 2px; font-size: 15px; }
       .stage-wrap { padding: 12px; }
       .stage { min-height: 72vw; border-width: 3px; }
-      .tutorial-body.is-video .media-layer { inset: 8%; }
       .reader-nav { gap: 5px; padding: 8px; }
       .nav-button { min-width: 0; width: 100%; padding-inline: 6px; }
       .contents-button span { display: none; }
@@ -1648,16 +1905,25 @@
 
   <script id="project-state" type="application/json">
 {
-  "meta": {
-    "version": 3,
-    "section": "",
-    "tutorialSlug": "",
+	  "meta": {
+	    "version": 3,
+	    "pageType": "tutorial",
+	    "section": "",
+	    "group": "",
+	    "tutorialSlug": "",
     "mediaFolder": "",
     "cardTitle": "",
     "summary": "",
     "modalDescription": "",
     "order": 10,
-    "publicUrl": "",
+	    "publicUrl": "",
+	    "primaryActionLabel": "Open Tool",
+	    "primaryActionUrl": "",
+	    "relatedCalloutEnabled": false,
+	    "relatedCalloutTitle": "",
+	    "relatedCalloutText": "",
+	    "relatedCalloutLabel": "",
+	    "relatedCalloutUrl": "",
     "socialTitle": "",
     "socialDescription": "",
     "socialImage": "",
@@ -1722,12 +1988,15 @@
     const MEDIA_SITE_ORIGIN = new URL(MEDIA_ROOT).origin;
     const SHAPES_CSV_URL = "https://iridescent-wisp-57bcb1.netlify.app/shapes.csv";
     const CANONICAL_SITE = "https://magichashtags.com";
-    const SITE_LEARN_LINKS = [
-      { href: `${CANONICAL_SITE}/learn/sidekicks/`, label: "Sidekick Tutorials", hover: "#ff90e7" },
-      { href: `${CANONICAL_SITE}/learn/chatgpt-tips/`, label: "ChatGPT Tips", hover: "#f1f332" },
-      { href: `${CANONICAL_SITE}/learn/tech-tips/`, label: "Other Tech Tips", hover: "#ffc900" },
-      { href: `${CANONICAL_SITE}/learn/steno-tips/`, label: "Steno Tips", hover: "#91a8ed" }
-    ];
+	    const SITE_LEARN_HOME = { href: `${CANONICAL_SITE}/learn/learn-index.html`, label: "learn", hover: "#f1f332" };
+	    const SITE_LEARN_SECTIONS = Object.freeze({
+	      "chatgpt-tips": { href: `${CANONICAL_SITE}/learn/chatgpt-tips/`, label: "ChatGPT Tips" },
+	      "reporter-tools": { href: `${CANONICAL_SITE}/learn/sidekicks/`, label: "Reporter Tools" },
+	      "sidekicks": { href: `${CANONICAL_SITE}/learn/sidekicks/`, label: "Reporter Tools" },
+	      "steno-tips": { href: `${CANONICAL_SITE}/learn/steno-tips/`, label: "Steno Tips & Briefs" },
+	      "tech-tips": { href: `${CANONICAL_SITE}/learn/tech-tips/`, label: "Tech Tips" }
+	    });
+	    const PUBLIC_SECTION_FOLDERS = Object.freeze({ "reporter-tools": "sidekicks" });
     const SITE_PRIMARY_LINKS = [
       { href: `${CANONICAL_SITE}/reporter-tools.html`, label: "reporter tools" },
       { href: `${CANONICAL_SITE}/customizer.html`, label: "customizer" },
@@ -1847,6 +2116,7 @@
     let activeAudio = null;
     let audioPlaying = false;
     let toastTimer = 0;
+    let hotspotAttentionTimer = 0;
     let drag = null;
     let multiSelection = [];
     let lastVideoTriggerId = null;
@@ -1872,14 +2142,19 @@
       return Math.min(max, Math.max(min, Number(value) || 0));
     }
 
-    function escapeHtml(value) {
+	    function escapeHtml(value) {
       return String(value ?? "")
         .replace(/&/g, "&amp;")
         .replace(/</g, "&lt;")
         .replace(/>/g, "&gt;")
         .replace(/"/g, "&quot;")
         .replace(/'/g, "&#039;");
-    }
+	    }
+
+	    function safeLinkUrl(value) {
+	      const url = String(value || "").trim();
+	      return !url || /^(?:javascript|data):/i.test(url) ? "" : url;
+	    }
 
     function readJson(value, fallback) {
       try { return value ? JSON.parse(value) : fallback; }
@@ -1983,8 +2258,17 @@
 
     function normalizeState() {
       state.meta ||= {};
-      state.meta.version = 3;
-      state.meta.touched ||= {};
+	      state.meta.version = 3;
+	      state.meta.touched ||= {};
+	      state.meta.pageType = state.meta.pageType === "demo" ? "demo" : "tutorial";
+	      state.meta.group = String(state.meta.group || "");
+	      state.meta.primaryActionLabel = String(state.meta.primaryActionLabel || (state.meta.pageType === "demo" ? "Open Tutorial" : "Open Tool"));
+	      state.meta.primaryActionUrl = String(state.meta.primaryActionUrl || "");
+	      state.meta.relatedCalloutEnabled = Boolean(state.meta.relatedCalloutEnabled);
+	      state.meta.relatedCalloutTitle = String(state.meta.relatedCalloutTitle || "");
+	      state.meta.relatedCalloutText = String(state.meta.relatedCalloutText || "");
+	      state.meta.relatedCalloutLabel = String(state.meta.relatedCalloutLabel || "");
+	      state.meta.relatedCalloutUrl = String(state.meta.relatedCalloutUrl || "");
       delete state.meta.status;
       delete state.meta.touched.status;
       state.tutorial ||= { title: "TUTORIAL TITLE", slides: [] };
@@ -2073,7 +2357,9 @@
         src: String(item?.src || ""),
         url: normalizeHostedAnnotationUrl(type, item?.url),
         text: String(item?.text || (type === "text" ? "new note" : "")),
-        textStyle: ["regular", "bold", "hand"].includes(item?.textStyle) ? item.textStyle : "regular",
+        textStyle: item?.textStyle === "bold"
+          ? "italic"
+          : (["regular", "italic", "hand"].includes(item?.textStyle) ? item.textStyle : "regular"),
         textColor: String(item?.textColor || "#000000"),
         fillColor: /^#[0-9a-f]{6}$/i.test(String(item?.fillColor || "")) ? String(item.fillColor) : "#ffffff",
         blurStrength: clamp(item?.blurStrength ?? 12, 1, 30),
@@ -2235,8 +2521,9 @@
       });
     }
 
-    function computedPublicUrl(meta = state.meta) {
-      const section = slugify(meta.section);
+	    function computedPublicUrl(meta = state.meta) {
+	      const sectionSlug = slugify(meta.section);
+	      const section = PUBLIC_SECTION_FOLDERS[sectionSlug] || sectionSlug;
       const tutorial = slugify(meta.tutorialSlug);
       if (section && tutorial) return `${CANONICAL_SITE}/learn/${section}/${tutorial}/`;
       if (section) return `${CANONICAL_SITE}/learn/${section}/`;
@@ -2266,7 +2553,8 @@
       set("socialTitle", title);
       set("socialDescription", cover?.description || "");
       set("socialImage", cover?.media?.url || "");
-      set("socialImageAlt", title ? `${title} tutorial preview` : "");
+	      set("socialImageAlt", title ? `${title} tutorial preview` : "");
+	      set("primaryActionLabel", state.meta.pageType === "demo" ? "Open Tutorial" : "Open Tool");
       set("publicUrl", computedPublicUrl());
     }
 
@@ -2485,9 +2773,9 @@
       return `--x:${item.x}%;--y:${item.y}%;--w:${item.w}%;--h:${item.h}%;--z:${item.z};--opacity:${item.opacity};--rotation:${item.rotation || 0}deg;--flip-x:${item.flipX ? -1 : 1};--markup-width:${item.strokeWidth || 5};--cover-color:${item.fillColor || "#ffffff"};--blur-strength:${item.blurStrength || 12}px`;
     }
 
-    function renderSiteHeader() {
-      const mobileLinks = [...SITE_LEARN_LINKS, ...SITE_PRIMARY_LINKS];
-      return `
+	    function renderSiteHeader() {
+	      const mobileLinks = [SITE_LEARN_HOME, ...SITE_PRIMARY_LINKS];
+	      return `
         <header class="site-header">
           <div class="site-header__inner">
             <nav class="site-nav" aria-label="Site">
@@ -2496,18 +2784,10 @@
                   <span class="sr-only">Magic Hashtags home</span>
                   <img class="site-header-logo" src="${SITE_HEADER_LOGO_URL}" alt="Magic Hashtags — AI tools for court reporters" decoding="async" loading="eager">
                 </a>
-              </div>
-              <div class="site-nav__desktop">
-                <div class="site-nav__dropdown" data-site-dropdown data-open="false">
-                  <button type="button" class="site-nav__dropdown-trigger" data-action="toggle-site-learn" aria-expanded="false" aria-haspopup="true">learn</button>
-                  <div class="site-nav__dropdown-menu">
-                    <div class="site-nav__dropdown-shadow" aria-hidden="true"></div>
-                    <div class="site-nav__dropdown-card">
-                      ${SITE_LEARN_LINKS.map((link) => `<a href="${link.href}" style="--hover-color:${link.hover}">${escapeHtml(link.label)}</a>`).join("")}
-                    </div>
-                  </div>
-                </div>
-                ${SITE_PRIMARY_LINKS.map((link) => `<a class="site-nav__link" href="${link.href}">${escapeHtml(link.label)}</a>`).join("")}
+	              </div>
+	              <div class="site-nav__desktop">
+	                <a class="site-nav__link" href="${SITE_LEARN_HOME.href}">${escapeHtml(SITE_LEARN_HOME.label)}</a>
+	                ${SITE_PRIMARY_LINKS.map((link) => `<a class="site-nav__link" href="${link.href}">${escapeHtml(link.label)}</a>`).join("")}
               </div>
               <a class="site-header-contact" href="${CANONICAL_SITE}/#contact">contact</a>
               <button type="button" class="site-nav__mobile-toggle" data-action="toggle-site-mobile" aria-expanded="false" aria-label="Open navigation">
@@ -2520,18 +2800,55 @@
             </nav>
           </div>
         </header>
-      `;
-    }
+	      `;
+	    }
+
+	    function renderTutorialPageLinks() {
+	      const meta = state.meta;
+	      const section = SITE_LEARN_SECTIONS[slugify(meta.section)];
+	      const primaryUrl = safeLinkUrl(meta.primaryActionUrl);
+	      const relatedUrl = meta.relatedCalloutEnabled ? safeLinkUrl(meta.relatedCalloutUrl) : "";
+	      const pageLabel = meta.pageType === "demo" ? "Tool Demo" : "Tutorial";
+	      return `
+	        <section class="tutorial-page-links" aria-label="Page links">
+	          <nav class="tutorial-breadcrumbs" aria-label="Learning navigation">
+	            <a href="${SITE_LEARN_HOME.href}">← Learn Home</a>
+	            ${section ? `<span>/</span><a href="${section.href}">${escapeHtml(section.label)}</a>` : ""}
+	            <span>/</span><strong>${escapeHtml(pageLabel)}</strong>
+	          </nav>
+	          ${primaryUrl ? `
+	            <aside class="tutorial-link-callout">
+	              <div class="tutorial-link-callout__copy">
+	                <p class="tutorial-link-callout__eyebrow">${escapeHtml(pageLabel)}</p>
+	                <h2>${escapeHtml(meta.pageType === "demo" ? "Ready for the tutorial?" : "Ready to use it?")}</h2>
+	              </div>
+	              <a class="tutorial-link-callout__button" href="${escapeHtml(primaryUrl)}">${escapeHtml(meta.primaryActionLabel || (meta.pageType === "demo" ? "Open Tutorial" : "Open Tool"))}</a>
+	            </aside>
+	          ` : ""}
+	          ${relatedUrl ? `
+	            <aside class="tutorial-link-callout tutorial-link-callout--related">
+	              <div class="tutorial-link-callout__copy">
+	                <p class="tutorial-link-callout__eyebrow">Related setup</p>
+	                <h2>${escapeHtml(meta.relatedCalloutTitle || "Before you continue")}</h2>
+	                ${meta.relatedCalloutText ? `<p>${escapeHtml(meta.relatedCalloutText)}</p>` : ""}
+	              </div>
+	              <a class="tutorial-link-callout__button" href="${escapeHtml(relatedUrl)}">${escapeHtml(meta.relatedCalloutLabel || "Open Related Page")}</a>
+	            </aside>
+	          ` : ""}
+	        </section>
+	      `;
+	    }
 
     function render() {
       syncObjectSelection();
       const slide = currentSlide();
       const selected = selectedObject();
       root.innerHTML = `
-        <div class="builder-app">
-          ${MODE === "player" ? renderSiteHeader() : ""}
-          ${MODE === "builder" ? renderToolbar(slide, selected) : ""}
-          <main class="tutorial-shell" aria-label="Interactive tutorial">
+	        <div class="builder-app">
+	          ${MODE === "player" ? renderSiteHeader() : ""}
+	          ${MODE === "builder" ? renderToolbar(slide, selected) : ""}
+	          ${MODE === "player" ? renderTutorialPageLinks() : ""}
+	          <main class="tutorial-shell" aria-label="Interactive tutorial">
             <div class="tutorial-title" ${MODE === "builder" ? 'contenteditable="true" role="textbox" aria-label="Tutorial title" data-bind="tutorial.title"' : ""} data-placeholder="TUTORIAL TITLE">${escapeHtml(state.tutorial.title)}</div>
             <div class="tutorial-body ${slide.kind === "video" ? "is-video" : ""}">
               ${slide.kind === "video" ? "" : renderSidebar(slide)}
@@ -2641,10 +2958,10 @@
           <div class="tool-group">
             <div class="tool-stack">
               <span class="tool-label">Text</span>
-              <div>
-                <button type="button" data-action="add-text" data-style="regular" title="Add regular text" aria-label="Add regular text">Tt</button>
-                <button type="button" data-action="add-text" data-style="bold" title="Add bold text" aria-label="Add bold text"><strong>Tt</strong></button>
-                <button type="button" data-action="add-text" data-style="hand" title="Add handwritten text" aria-label="Add handwritten text" style="font-family:var(--hand);font-size:18px">Tt</button>
+              <div class="text-style-buttons" role="group" aria-label="Add text annotation">
+                <button class="text-style-button text-style-button--regular" type="button" data-action="add-text" data-style="regular" title="Add regular text" aria-label="Add regular text">Tt</button>
+                <button class="text-style-button text-style-button--italic" type="button" data-action="add-text" data-style="italic" title="Add italic text" aria-label="Add italic text">Tt</button>
+                <button class="text-style-button text-style-button--hand" type="button" data-action="add-text" data-style="hand" title="Add handwritten text" aria-label="Add handwritten text">Tt</button>
               </div>
             </div>
           </div>
@@ -2711,7 +3028,7 @@
         listStyle: hotspot.bodyListStyle
       });
       if (MODE !== "builder") {
-        return `<div class="hotspot-detail-panel" id="${detailId}" role="region" aria-labelledby="${titleId}" aria-live="polite">${detail}</div>`;
+        return `<div class="hotspot-detail-panel" id="${detailId}" role="region" aria-labelledby="${titleId}" aria-live="polite" data-action="activate-hotspot" data-id="${hotspot.id}" tabindex="0">${detail}</div>`;
       }
       return `
         <div class="hotspot-detail-panel" id="${detailId}" aria-live="polite">
@@ -2746,6 +3063,7 @@
     }
 
     function isVisibleForActiveHotspot(item) {
+      if (currentSlide()?.kind === "video") return true;
       return !item.hotspotGroupId || item.locked || item.hotspotGroupId === state.ui.activeHotspotId;
     }
 
@@ -2757,14 +3075,15 @@
         ? `;--media-natural-width:${media.naturalWidth}px;--media-natural-height:${media.naturalHeight}px`
         : "";
       const style = `--media-fit:${objectFit};--media-x:${media.x}%;--media-y:${media.y}%;--media-scale:${media.scale}${naturalSizeStyle}`;
-      const layerStart = `<div class="media-layer" data-fit="${media.fit}" data-has-transform="${hasTransform}" style="${style}">`;
+      const layerClass = slide.kind === "video" ? "media-layer main-video-frame" : "media-layer";
+      const layerStart = `<div class="${layerClass}" data-fit="${media.fit}" data-has-transform="${hasTransform}" style="${style}">`;
       const mediaKind = slide.kind === "video" || media.type === "video"
         ? "Video"
         : media.type === "audio" ? "Audio" : "Image";
       const failure = `<div class="media-placeholder" data-main-media-error hidden>${mediaKind} link could not be loaded. Check that it opens the media file directly.</div>`;
       if (!media.url) return `${layerStart}<div class="media-placeholder">${slide.kind === "video" ? "Video media box" : "Image media box"}</div></div>`;
       if (slide.kind === "video" || media.type === "video") {
-        return `${layerStart}${failure}<video src="${escapeHtml(media.url)}" controls playsinline preload="metadata" aria-label="${escapeHtml(slide.title || "Tutorial video")}" onloadedmetadata="this.hidden=false;this.previousElementSibling.hidden=true" onerror="this.hidden=true;this.previousElementSibling.hidden=false"></video></div>`;
+        return `${layerStart}${failure}<video data-main-video src="${escapeHtml(media.url)}" playsinline preload="metadata" aria-label="${escapeHtml(slide.title || "Tutorial video")}" onloadedmetadata="this.hidden=false;this.previousElementSibling.hidden=true;this.closest('.main-video-frame')?.classList.remove('has-media-error')" onerror="this.hidden=true;this.previousElementSibling.hidden=false;this.closest('.main-video-frame')?.classList.add('has-media-error')"></video><div class="main-video-controls" aria-label="Video controls"><button class="icon-button" type="button" data-action="toggle-main-video" aria-label="Play video">${icon("play")}</button><input type="range" min="0" max="0" step="0.05" value="0" data-main-video-timeline aria-label="Video timeline" aria-valuetext="0:00 of 0:00"></div></div>`;
       }
       if (media.type === "audio") {
         return `${layerStart}${failure}<audio src="${escapeHtml(media.url)}" controls preload="metadata" aria-label="${escapeHtml(slide.title || "Tutorial audio")}" onloadedmetadata="this.hidden=false;this.previousElementSibling.hidden=true" onerror="this.hidden=true;this.previousElementSibling.hidden=false"></audio></div>`;
@@ -2894,18 +3213,10 @@
     }
 
     function readerBackLabel() {
-      const slide = currentSlide();
-      const hotspotIndex = slide.hotspots.findIndex((item) => item.id === state.ui.activeHotspotId);
-      if (hotspotIndex > 0) return "Previous hotspot";
-      if (state.ui.slideIndex > 0) return "Previous slide";
       return "Back";
     }
 
     function readerNextLabel() {
-      const slide = currentSlide();
-      const hotspotIndex = slide.hotspots.findIndex((item) => item.id === state.ui.activeHotspotId);
-      if (slide.hotspots.length && hotspotIndex < slide.hotspots.length - 1) return "Next hotspot";
-      if (state.ui.slideIndex < state.tutorial.slides.length - 1) return "Next slide";
       return "Next";
     }
 
@@ -2986,13 +3297,24 @@
       const meta = state.meta;
       return `
         <details class="metadata-panel" data-builder-only>
-          <summary>Metadata and social sharing</summary>
-          <div class="metadata-grid">
-            ${metaInput("section", "Learning section", meta.section, "appearance-pages")}
-            ${metaInput("tutorialSlug", "Tutorial slug / filename", meta.tutorialSlug, "pinning-chatgpt")}
-            ${metaInput("mediaFolder", "Media tutorial folder", meta.mediaFolder, "pinning-chatgpt")}
-            ${metaInput("cardTitle", "Card title", meta.cardTitle)}
-            ${metaInput("order", "Display order", meta.order, "10", "number")}
+	          <summary>Metadata and social sharing</summary>
+	          <div class="metadata-grid">
+	            ${metaSelect("pageType", "Page type", meta.pageType, [
+	              ["tutorial", "Tutorial"],
+	              ["demo", "Tool Demo"]
+	            ])}
+	            ${metaSelect("section", "Learning section", meta.section, [
+	              ["", "Choose a section"],
+	              ["chatgpt-tips", "ChatGPT Tips"],
+	              ["reporter-tools", "Reporter Tools"],
+	              ["steno-tips", "Steno Tips & Briefs"],
+	              ["tech-tips", "Tech Tips"]
+	            ])}
+	            ${metaInput("group", "Section group (optional)", meta.group, "ChatGPT Tools")}
+	            ${metaInput("tutorialSlug", "Tutorial slug / filename", meta.tutorialSlug, "pinning-chatgpt")}
+	            ${metaInput("mediaFolder", "Media tutorial folder", meta.mediaFolder, "pinning-chatgpt")}
+	            ${metaInput("cardTitle", "Card title", meta.cardTitle)}
+	            ${metaInput("order", "Display order", meta.order, "10", "number")}
             <div class="metadata-public-url">
               <label for="metadata-public-url">Public / social share URL</label>
               <div class="metadata-url-row">
@@ -3000,14 +3322,21 @@
                 <button type="button" data-action="copy-public-url">Copy Share Link</button>
               </div>
             </div>
-            ${metaArea("summary", "Card summary", meta.summary)}
-            ${metaArea("modalDescription", "Modal description", meta.modalDescription)}
-            ${metaInput("socialTitle", "Social share title", meta.socialTitle)}
+	            ${metaArea("summary", "Card summary", meta.summary)}
+	            ${metaArea("modalDescription", "Modal description", meta.modalDescription)}
+	            ${metaInput("primaryActionLabel", "Primary button label", meta.primaryActionLabel, meta.pageType === "demo" ? "Open Tutorial" : "Open Tool")}
+	            ${metaInput("primaryActionUrl", "Primary button destination", meta.primaryActionUrl, "https://…", "url")}
+	            ${metaCheckbox("relatedCalloutEnabled", "Show an additional related-page callout", meta.relatedCalloutEnabled)}
+	            ${metaInput("relatedCalloutTitle", "Related callout title", meta.relatedCalloutTitle, "Before you continue")}
+	            ${metaArea("relatedCalloutText", "Related callout explanation", meta.relatedCalloutText)}
+	            ${metaInput("relatedCalloutLabel", "Related button label", meta.relatedCalloutLabel, "Open Customizer")}
+	            ${metaInput("relatedCalloutUrl", "Related button destination", meta.relatedCalloutUrl, "https://…", "url")}
+	            ${metaInput("socialTitle", "Social share title", meta.socialTitle)}
             ${metaArea("socialDescription", "Social share description", meta.socialDescription)}
             ${metaInput("socialImage", "Social preview image URL", meta.socialImage)}
             ${metaInput("socialImageAlt", "Social image alt text", meta.socialImageAlt)}
-            <div class="metadata-note">The tutorial slug controls the downloaded filename and the final folder in the automatic public URL. For a clean folder URL, place the export at <code>/learn/section/tutorial-slug/index.html</code>; renaming the downloaded file to <code>index.html</code> does not change its embedded metadata. Any field you edit manually becomes your override.</div>
-          </div>
+	            <div class="metadata-note">Choose <strong>Tool Demo</strong> when the exported page should send visitors to a tutorial. Choose <strong>Tutorial</strong> when it should send visitors to the tool or setup page. The optional related callout is for connections such as Exhibit Descriptions → Customizer. The export stays a standalone HTML file.</div>
+	          </div>
         </details>
       `;
     }
@@ -3016,9 +3345,17 @@
       return `<label>${escapeHtml(label)}<input data-meta="${key}" type="${type}" value="${escapeHtml(value ?? "")}" placeholder="${escapeHtml(placeholder)}" ${readonly ? "readonly" : ""}></label>`;
     }
 
-    function metaArea(key, label, value) {
-      return `<label>${escapeHtml(label)}<textarea data-meta="${key}">${escapeHtml(value ?? "")}</textarea></label>`;
-    }
+	    function metaArea(key, label, value) {
+	      return `<label>${escapeHtml(label)}<textarea data-meta="${key}">${escapeHtml(value ?? "")}</textarea></label>`;
+	    }
+
+	    function metaSelect(key, label, value, options) {
+	      return `<label>${escapeHtml(label)}<select data-meta="${key}">${options.map(([optionValue, optionLabel]) => `<option value="${escapeHtml(optionValue)}" ${optionValue === value ? "selected" : ""}>${escapeHtml(optionLabel)}</option>`).join("")}</select></label>`;
+	    }
+
+	    function metaCheckbox(key, label, checked) {
+	      return `<label class="metadata-checkbox"><input data-meta="${key}" type="checkbox" ${checked ? "checked" : ""}><span>${escapeHtml(label)}</span></label>`;
+	    }
 
     function renderContentsModal() {
       return `
@@ -3098,6 +3435,7 @@
         if (mainImage.complete && mainImage.naturalWidth > 0) syncImage();
         else mainImage.addEventListener("load", syncImage, { once: true });
       }
+      syncMainVideo();
       if (!state.ui.videoModalId) return;
       const annotation = state.tutorial.slides.flatMap((slide) => slide.annotations).find((item) => item.id === state.ui.videoModalId);
       const youtube = youtubeVideoInfo(annotation?.url);
@@ -3121,6 +3459,57 @@
       updateAspect();
       updateDirectVideoControls();
       video.play().catch(() => updateDirectVideoControls());
+    }
+
+    function syncMainVideo() {
+      const video = root.querySelector("[data-main-video]");
+      if (!video) return;
+      const update = () => updateMainVideoControls(video);
+      const syncDimensions = () => syncMainVideoDimensions(video);
+      video.addEventListener("play", update);
+      video.addEventListener("pause", update);
+      video.addEventListener("ended", update);
+      video.addEventListener("durationchange", update);
+      video.addEventListener("timeupdate", update);
+      video.addEventListener("loadedmetadata", update);
+      video.addEventListener("loadedmetadata", syncDimensions);
+      if (video.readyState >= 1) syncDimensions();
+      update();
+    }
+
+    function syncMainVideoDimensions(video) {
+      const naturalWidth = Math.max(0, Math.round(video.videoWidth || 0));
+      const naturalHeight = Math.max(0, Math.round(video.videoHeight || 0));
+      if (!naturalWidth || !naturalHeight) return;
+      video.setAttribute("width", String(naturalWidth));
+      video.setAttribute("height", String(naturalHeight));
+      video.closest(".main-video-frame")?.style.setProperty("--video-source-aspect", `${naturalWidth} / ${naturalHeight}`);
+      const slide = currentSlide();
+      if (slide?.kind !== "video"
+          || slide.media.naturalWidth === naturalWidth
+          && slide.media.naturalHeight === naturalHeight) return;
+      slide.media.naturalWidth = naturalWidth;
+      slide.media.naturalHeight = naturalHeight;
+      scheduleSave();
+    }
+
+    function updateMainVideoControls(video = root.querySelector("[data-main-video]")) {
+      if (!video) return;
+      const frame = video.closest(".main-video-frame");
+      const button = frame?.querySelector('[data-action="toggle-main-video"]');
+      const timeline = frame?.querySelector("[data-main-video-timeline]");
+      const duration = Number.isFinite(video.duration) ? video.duration : 0;
+      const currentTime = clamp(video.currentTime || 0, 0, duration);
+      if (button) {
+        button.innerHTML = icon(video.paused ? "play" : "pause");
+        button.setAttribute("aria-label", video.paused ? "Play video" : "Pause video");
+      }
+      if (timeline) {
+        timeline.max = String(duration);
+        timeline.value = String(currentTime);
+        timeline.disabled = duration <= 0;
+        timeline.setAttribute("aria-valuetext", `${formatVideoTime(currentTime)} of ${formatVideoTime(duration)}`);
+      }
     }
 
     function youtubeVideoInfo(value) {
@@ -3284,6 +3673,8 @@
         const binding = editable.dataset.bind || "";
         if (binding.startsWith("hotspot.title:")) {
           activateHotspotForEditing(binding.split(":")[1]);
+        } else if (binding.startsWith("hotspot.body:")) {
+          drawAttentionToHotspot(binding.split(":")[1], false);
         } else if (binding.startsWith("annotation.text:")) {
           activateAnnotationForEditing(binding.split(":")[1]);
         }
@@ -3353,6 +3744,7 @@
         "add-annotation-url": () => addUrlAnnotation(actionNode.dataset.type),
         "rewind-audio": () => rewindAudio(id),
         "toggle-audio": () => toggleAudio(id),
+        "toggle-main-video": toggleMainVideo,
         "toggle-video": toggleVideo,
         "close-video": closeVideo,
         "toggle-site-learn": () => toggleSiteLearn(actionNode),
@@ -3390,6 +3782,7 @@
       root.querySelectorAll(".hotspot-detail-panel").forEach((detail) => detail.remove());
       root.querySelector(`.hotspot-entry[data-id="${CSS.escape(id)}"]`)?.insertAdjacentHTML("beforeend", renderHotspotDetail(hotspot));
       syncRuntimeMedia();
+      drawAttentionToHotspot(id);
       scheduleSave();
     }
 
@@ -3398,6 +3791,7 @@
       const hotspotId = id || actionNode.closest("[data-id]")?.dataset.id;
       if (MODE === "builder" && (object || event.shiftKey)) {
         selectObject("hotspot", hotspotId, event.shiftKey);
+        drawAttentionToHotspot(hotspotId);
         return;
       }
       activateHotspot(hotspotId);
@@ -3566,7 +3960,11 @@
       if (target.matches("[data-meta]")) {
         const key = target.dataset.meta;
         const previousMediaBase = key === "mediaFolder" ? mediaBase() : "";
-        state.meta[key] = key === "order" ? Number(target.value || 10) : target.value;
+	        state.meta[key] = target.type === "checkbox"
+	          ? target.checked
+	          : key === "order"
+	            ? Number(target.value || 10)
+	            : target.value;
         markTouched(key);
         state.meta.publicUrl = publicUrl();
         if (previousMediaBase) syncMediaUrlSeeds(previousMediaBase);
@@ -3586,6 +3984,14 @@
       if (target.id === "videoSlideTitle") {
         currentSlide().title = target.value;
         scheduleSave();
+        return;
+      }
+      if (target.matches("[data-main-video-timeline]")) {
+        const video = root.querySelector("[data-main-video]");
+        if (video) {
+          video.currentTime = clamp(Number(target.value), 0, Number.isFinite(video.duration) ? video.duration : 0);
+          updateMainVideoControls(video);
+        }
         return;
       }
       if (target.id === "videoTimeline") {
@@ -3647,7 +4053,11 @@
       if (target.matches("[data-meta]")) {
         const key = target.dataset.meta;
         const previousMediaBase = key === "mediaFolder" ? mediaBase() : "";
-        state.meta[key] = key === "order" ? Number(target.value || 10) : target.value;
+	        state.meta[key] = target.type === "checkbox"
+	          ? target.checked
+	          : key === "order"
+	            ? Number(target.value || 10)
+	            : target.value;
         markTouched(key);
         state.meta.publicUrl = publicUrl();
         if (previousMediaBase) syncMediaUrlSeeds(previousMediaBase);
@@ -4044,8 +4454,30 @@
         state.ui.selectedId = id;
       }
       render();
-      root.querySelector(`.hotspot-row[data-id="${CSS.escape(id)}"]`)?.scrollIntoView({ block: "nearest" });
+      drawAttentionToHotspot(id);
       if (MODE === "builder") scheduleSave();
+    }
+
+    function drawAttentionToHotspot(id, scrollRow = true) {
+      if (!id) return;
+      window.clearTimeout(hotspotAttentionTimer);
+      root.querySelectorAll(".hotspot-object.is-attention, .hotspot-entry.is-attention").forEach((element) => {
+        element.classList.remove("is-attention");
+      });
+      const escapedId = CSS.escape(id);
+      const marker = root.querySelector(`.hotspot-object[data-id="${escapedId}"]`);
+      const entry = root.querySelector(`.hotspot-entry[data-id="${escapedId}"]`);
+      const targets = [marker, entry].filter(Boolean);
+      targets.forEach((element) => {
+        void element.offsetWidth;
+        element.classList.add("is-attention");
+      });
+      if (scrollRow) entry?.querySelector(".hotspot-row")?.scrollIntoView({ block: "nearest" });
+      hotspotAttentionTimer = window.setTimeout(() => {
+        root.querySelectorAll(".hotspot-object.is-attention, .hotspot-entry.is-attention").forEach((element) => {
+          element.classList.remove("is-attention");
+        });
+      }, 850);
     }
 
     function moveHotspot(id, direction) {
@@ -4419,11 +4851,13 @@
         const index = slide.hotspots.findIndex((item) => item.id === state.ui.activeHotspotId);
         if (index < slide.hotspots.length - 1) {
           stopAudio();
-          state.ui.activeHotspotId = slide.hotspots[index + 1].id;
+          const nextHotspotId = slide.hotspots[index + 1].id;
+          state.ui.activeHotspotId = nextHotspotId;
           state.ui.selectedKind = null;
           state.ui.selectedId = null;
           multiSelection = [];
           render();
+          drawAttentionToHotspot(nextHotspotId);
           return;
         }
       }
@@ -4436,11 +4870,13 @@
         const index = slide.hotspots.findIndex((item) => item.id === state.ui.activeHotspotId);
         if (index > 0) {
           stopAudio();
-          state.ui.activeHotspotId = slide.hotspots[index - 1].id;
+          const previousHotspotId = slide.hotspots[index - 1].id;
+          state.ui.activeHotspotId = previousHotspotId;
           state.ui.selectedKind = null;
           state.ui.selectedId = null;
           multiSelection = [];
           render();
+          drawAttentionToHotspot(previousHotspotId);
           return;
         }
       }
@@ -4461,6 +4897,7 @@
       state.ui.contentsOpen = false;
       state.ui.videoModalId = null;
       render();
+      drawAttentionToHotspot(state.ui.activeHotspotId);
     }
 
     function openContents(trigger) {
@@ -4514,6 +4951,22 @@
         video.pause();
       }
       updateDirectVideoControls();
+    }
+
+    async function toggleMainVideo() {
+      const video = root.querySelector("[data-main-video]");
+      if (!video) return;
+      if (video.paused) {
+        if (Number.isFinite(video.duration) && video.currentTime >= video.duration) video.currentTime = 0;
+        try {
+          await video.play();
+        } catch (_) {
+          showToast("The browser could not start this video.");
+        }
+      } else {
+        video.pause();
+      }
+      updateMainVideoControls(video);
     }
 
     function openLink(url) {
@@ -4697,7 +5150,7 @@
       applyHeadMetadata(documentElement, exportState);
       const html = `<!DOCTYPE html>\n${documentElement.outerHTML}`;
       download(`${slugify(state.meta.tutorialSlug || state.tutorial.title) || "tutorial"}.html`, html, "text/html");
-      showToast("Exported the standalone tutorial HTML.");
+	      showToast(`Exported the standalone ${state.meta.pageType === "demo" ? "demo" : "tutorial"} HTML.`);
     }
 
     async function exportPng() {
