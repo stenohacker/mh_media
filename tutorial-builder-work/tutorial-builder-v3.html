@@ -68,7 +68,7 @@
 
     body[data-mode="player"] {
       padding: 0;
-      background: #050505;
+      background: #9ca3af;
     }
 
     button, input, select, textarea {
@@ -272,8 +272,8 @@
       top: calc(100% + 16px);
       left: 50%;
       z-index: 280;
-      width: max-content;
-      min-width: 320px;
+      width: min(42rem, calc(100vw - 2rem));
+      min-width: 0;
       max-width: calc(100vw - 2rem);
       display: none;
       transform: translateX(-50%);
@@ -301,6 +301,7 @@
     .site-nav__dropdown-card {
       position: relative;
       display: grid;
+      grid-template-columns: repeat(2, minmax(0, 1fr));
       gap: .5rem;
       border: 4px solid var(--black);
       padding: .75rem;
@@ -313,7 +314,7 @@
       padding: .78rem .95rem;
       color: var(--black);
       background: var(--white);
-      box-shadow: 4px 4px 0 var(--black);
+      box-shadow: none;
       font-family: var(--sans);
       font-size: .78rem;
       font-weight: 600;
@@ -330,7 +331,7 @@
     .site-nav__mobile-panel a:focus-visible {
       color: var(--black);
       background: var(--hover-color, var(--yellow));
-      transform: translate(4px, 4px);
+      transform: none;
     }
     button.site-nav__mobile-toggle {
       width: 2.45rem;
@@ -373,15 +374,43 @@
       border: 4px solid var(--black);
       padding: .55rem;
       background: var(--white);
-      box-shadow: 7px 7px 0 var(--black);
+      box-shadow: none;
     }
 	    .site-nav__mobile-panel:not([hidden]) { display: grid; }
+
+    .site-nav__mobile-tools {
+      border: 0;
+      background: transparent;
+    }
+    .site-nav__mobile-tools summary {
+      display: block;
+      border: 3px solid var(--black);
+      padding: .72rem .8rem;
+      color: var(--black);
+      background: var(--white);
+      font-size: .78rem;
+      font-weight: 600;
+      letter-spacing: .045em;
+      line-height: 1.1;
+      text-transform: uppercase;
+      cursor: pointer;
+    }
+    .site-nav__mobile-tools summary:hover,
+    .site-nav__mobile-tools summary:focus-visible {
+      background: var(--yellow);
+      outline: 0;
+    }
+    .site-nav__mobile-tools-links {
+      display: grid;
+      gap: .4rem;
+      padding: .4rem 0 .15rem .55rem;
+    }
 
 	    .tutorial-page-links {
 	      width: var(--shell);
 	      display: grid;
-	      gap: 12px;
-	      margin: 0 auto 14px;
+	      gap: 6px;
+	      margin: 0 auto 6px;
 	    }
 	    .tutorial-breadcrumbs {
 	      display: flex;
@@ -389,9 +418,9 @@
 	      align-items: center;
 	      gap: 8px;
 	      border: 3px solid var(--black);
-	      padding: 8px 10px;
+	      padding: 5px 8px;
 	      background: var(--white);
-	      box-shadow: var(--shadow-small);
+	      box-shadow: none;
 	      font-size: 12px;
 	      font-weight: 600;
 	      letter-spacing: .045em;
@@ -1273,7 +1302,7 @@
     .annotation-audio .object-frame > img {
       width: 100%;
       height: 100%;
-      object-fit: fill;
+      object-fit: contain;
     }
     button.audio-image-control {
       position: absolute;
@@ -1758,10 +1787,21 @@
 
     body[data-mode="builder"] .site-header { display: none; }
     body[data-mode="player"] .builder-app {
-      padding: calc(112px + clamp(24px, 3vw, 48px)) 0 clamp(24px, 3vw, 48px);
+      padding: calc(92px + .5rem) 0 calc(6.5rem + env(safe-area-inset-bottom));
     }
     body[data-mode="player"] [data-builder-only] { display: none !important; }
     body[data-mode="player"] .tutorial-shell { margin-top: 0; }
+    body[data-mode="player"] .reader-nav {
+      position: fixed;
+      right: auto;
+      bottom: max(.5rem, env(safe-area-inset-bottom));
+      left: 50%;
+      z-index: 240;
+      width: var(--shell);
+      transform: translateX(-50%);
+      border: 4px solid var(--black);
+      box-shadow: none;
+    }
     body[data-mode="player"] [contenteditable="true"] { cursor: default; }
     body[data-mode="player"] .stage-object { cursor: pointer; }
 
@@ -1799,7 +1839,7 @@
       .site-header-contact { display: none; }
       button.site-nav__mobile-toggle { display: inline-flex; }
       body[data-mode="player"] .builder-app {
-        padding-top: calc(90px + clamp(12px, 2.5vw, 28px));
+        padding-top: calc(90px + .5rem);
       }
       .tutorial-body { grid-template-columns: 1fr; min-height: 0; }
       .tutorial-body.is-video { grid-template-columns: 1fr; }
@@ -1991,18 +2031,36 @@
 	    const SITE_LEARN_HOME = { href: `${CANONICAL_SITE}/learn/learn-index.html`, label: "learn", hover: "#f1f332" };
 	    const SITE_LEARN_SECTIONS = Object.freeze({
 	      "chatgpt-tips": { href: `${CANONICAL_SITE}/learn/chatgpt-tips/`, label: "ChatGPT Tips" },
+	      "chatgpt": { href: `${CANONICAL_SITE}/learn/chatgpt-tips/`, label: "ChatGPT Tips" },
 	      "reporter-tools": { href: `${CANONICAL_SITE}/learn/sidekicks/`, label: "Reporter Tools" },
 	      "sidekicks": { href: `${CANONICAL_SITE}/learn/sidekicks/`, label: "Reporter Tools" },
+	      "appearance": { href: `${CANONICAL_SITE}/learn/sidekicks/`, label: "Reporter Tools" },
+	      "dictionary": { href: `${CANONICAL_SITE}/learn/sidekicks/`, label: "Reporter Tools" },
+	      "exhibits": { href: `${CANONICAL_SITE}/learn/sidekicks/`, label: "Reporter Tools" },
+	      "practice": { href: `${CANONICAL_SITE}/learn/sidekicks/`, label: "Reporter Tools" },
+	      "proofreader": { href: `${CANONICAL_SITE}/learn/sidekicks/`, label: "Reporter Tools" },
+	      "spotcheck": { href: `${CANONICAL_SITE}/learn/sidekicks/`, label: "Reporter Tools" },
 	      "steno-tips": { href: `${CANONICAL_SITE}/learn/steno-tips/`, label: "Steno Tips & Briefs" },
-	      "tech-tips": { href: `${CANONICAL_SITE}/learn/tech-tips/`, label: "Tech Tips" }
+	      "steno": { href: `${CANONICAL_SITE}/learn/steno-tips/`, label: "Steno Tips & Briefs" },
+	      "tech-tips": { href: `${CANONICAL_SITE}/learn/tech-tips/`, label: "Tech Tips" },
+	      "tech": { href: `${CANONICAL_SITE}/learn/tech-tips/`, label: "Tech Tips" }
 	    });
 	    const PUBLIC_SECTION_FOLDERS = Object.freeze({ "reporter-tools": "sidekicks" });
     const SITE_PRIMARY_LINKS = [
-      { href: `${CANONICAL_SITE}/reporter-tools.html`, label: "reporter tools" },
       { href: `${CANONICAL_SITE}/customizer.html`, label: "customizer" },
       { href: `${CANONICAL_SITE}/purchase.html`, label: "store" }
     ];
-    const SITE_HEADER_LOGO_URL = "https://iridescent-wisp-57bcb1.netlify.app/images/mhnavlogo.png";
+    const SITE_TOOL_LINKS = Object.freeze([
+      { href: `${CANONICAL_SITE}/reporter-tools.html`, label: "All Reporter Tools" },
+      { href: `${CANONICAL_SITE}/customizer.html`, label: "Customizer" },
+      { href: `${CANONICAL_SITE}/customizer.html`, label: "Exhibit Descriptions Sidekick" },
+      { href: `${CANONICAL_SITE}/proofreader-setup.html`, label: "Proofreader Sidekick" },
+      { href: "https://chatgpt.com/g/g-6a54931217f48191857f120b496da017-appearance-pages-sidekick-magichashtags", label: "Appearance Pages Sidekick" },
+      { href: "https://chatgpt.com/g/g-6a34be4bf9e881918a4d0c23eeac0303-transcript-sidekick-magichashtags", label: "Transcript Sidekick" },
+      { href: "https://chatgpt.com/g/g-6a3771baaddc81919b97d216d059cc27-dictionary-builder-sidekick-magichashtags", label: "Dictionary Builder Sidekick" },
+      { href: "https://chatgpt.com/g/g-6a5af7a499a08191934293cc1cdf476b-practice-dictation-sidekick-magichashtags", label: "Practice Dictation Sidekick" }
+    ]);
+    const SITE_HEADER_LOGO_URL = `${CANONICAL_SITE}/images/logosmaller.png`;
     const MODE = document.body.dataset.mode === "player" ? "player" : "builder";
     const PUBLIC_ANNOTATION_ASSET_ROOT = "https://iridescent-wisp-57bcb1.netlify.app/images/tutorial-annotations/";
     // Builder and player deliberately use the same hosted artwork. A local-file
@@ -2774,7 +2832,9 @@
     }
 
 	    function renderSiteHeader() {
-	      const mobileLinks = [SITE_LEARN_HOME, ...SITE_PRIMARY_LINKS];
+	      const toolLinks = SITE_TOOL_LINKS.map((link) => `
+                <a href="${link.href}"${link.href.startsWith(CANONICAL_SITE) ? "" : ' target="_blank" rel="noopener noreferrer"'}>${escapeHtml(link.label)}</a>
+              `).join("");
 	      return `
         <header class="site-header">
           <div class="site-header__inner">
@@ -2787,6 +2847,12 @@
 	              </div>
 	              <div class="site-nav__desktop">
 	                <a class="site-nav__link" href="${SITE_LEARN_HOME.href}">${escapeHtml(SITE_LEARN_HOME.label)}</a>
+	                <div class="site-nav__dropdown" data-site-dropdown data-open="false">
+	                  <button type="button" class="site-nav__dropdown-trigger" data-action="toggle-site-tools" aria-expanded="false" aria-haspopup="menu">tool links</button>
+	                  <div class="site-nav__dropdown-menu" role="menu">
+	                    <div class="site-nav__dropdown-card">${toolLinks}</div>
+	                  </div>
+	                </div>
 	                ${SITE_PRIMARY_LINKS.map((link) => `<a class="site-nav__link" href="${link.href}">${escapeHtml(link.label)}</a>`).join("")}
               </div>
               <a class="site-header-contact" href="${CANONICAL_SITE}/#contact">contact</a>
@@ -2794,7 +2860,12 @@
                 <span></span><span></span><span></span>
               </button>
               <div class="site-nav__mobile-panel" data-site-mobile-panel hidden>
-                ${mobileLinks.map((link) => `<a href="${link.href}"${link.hover ? ` style="--hover-color:${link.hover}"` : ""}>${escapeHtml(link.label)}</a>`).join("")}
+	              <a href="${SITE_LEARN_HOME.href}" style="--hover-color:${SITE_LEARN_HOME.hover}">${escapeHtml(SITE_LEARN_HOME.label)}</a>
+	              <details class="site-nav__mobile-tools">
+	                <summary>tool links</summary>
+	                <div class="site-nav__mobile-tools-links">${toolLinks}</div>
+	              </details>
+	              ${SITE_PRIMARY_LINKS.map((link) => `<a href="${link.href}">${escapeHtml(link.label)}</a>`).join("")}
                 <a href="${CANONICAL_SITE}/#contact" style="--hover-color:#ff90e7">contact</a>
               </div>
             </nav>
@@ -3633,7 +3704,7 @@
       const dropdown = root.querySelector("[data-site-dropdown]");
       if (dropdown && (!target || !target.closest?.("[data-site-dropdown]"))) {
         dropdown.dataset.open = "false";
-        dropdown.querySelector("[data-action='toggle-site-learn']")?.setAttribute("aria-expanded", "false");
+        dropdown.querySelector("[data-action='toggle-site-tools']")?.setAttribute("aria-expanded", "false");
       }
       const mobileToggle = root.querySelector("[data-action='toggle-site-mobile']");
       const mobilePanel = root.querySelector("[data-site-mobile-panel]");
@@ -3644,7 +3715,7 @@
       }
     }
 
-    function toggleSiteLearn(button) {
+    function toggleSiteTools(button) {
       const dropdown = button.closest("[data-site-dropdown]");
       if (!dropdown) return;
       const open = dropdown.dataset.open !== "true";
@@ -3747,7 +3818,7 @@
         "toggle-main-video": toggleMainVideo,
         "toggle-video": toggleVideo,
         "close-video": closeVideo,
-        "toggle-site-learn": () => toggleSiteLearn(actionNode),
+        "toggle-site-tools": () => toggleSiteTools(actionNode),
         "toggle-site-mobile": () => toggleSiteMobile(actionNode)
       };
       if (actions[action]) {
@@ -5072,7 +5143,7 @@
       const cover = exportState.tutorial.slides[0];
       const title = exportState.meta.socialTitle || exportState.tutorial.title || "Magic Hashtags Tutorial";
       const description = exportState.meta.socialDescription || exportState.meta.summary || cover?.description || "An interactive tutorial from Magic Hashtags.";
-      const image = exportState.meta.socialImage || cover?.media?.url || "https://iridescent-wisp-57bcb1.netlify.app/images/mhnavlogo.png";
+      const image = exportState.meta.socialImage || cover?.media?.url || `${CANONICAL_SITE}/images/logosmaller.png`;
       return { title, description, image, alt: exportState.meta.socialImageAlt || `${title} tutorial preview`, url: publicUrl(exportState.meta) };
     }
 
@@ -5130,6 +5201,18 @@
       }
     }
 
+    function applyExportSiteStyles(documentElement) {
+      const head = documentElement.querySelector("head");
+      let stylesheet = head.querySelector("#magic-hashtags-site-system");
+      if (!stylesheet) {
+        stylesheet = documentElement.ownerDocument.createElement("link");
+        stylesheet.id = "magic-hashtags-site-system";
+        stylesheet.rel = "stylesheet";
+        head.append(stylesheet);
+      }
+      stylesheet.href = `${CANONICAL_SITE}/styles/site-system.css`;
+    }
+
     async function exportHtml() {
       await document.fonts.ready;
       const exportState = clone(state);
@@ -5146,6 +5229,7 @@
       documentElement.querySelector("#app").innerHTML = "";
       documentElement.querySelector("#project-state").textContent = JSON.stringify(exportState, null, 2).replace(/<\/script/gi, "<\\/script");
       documentElement.querySelectorAll(".toast").forEach((node) => node.remove());
+      applyExportSiteStyles(documentElement);
       applyExportFont(documentElement);
       applyHeadMetadata(documentElement, exportState);
       const html = `<!DOCTYPE html>\n${documentElement.outerHTML}`;

@@ -62,6 +62,32 @@ required_shared.each do |filename|
 end
 
 builder = File.read(BUILDER)
+check.call(
+  builder.match?(/body\[data-mode="player"\]\s*\{[^}]*background:\s*#9ca3af;/m),
+  "Exported tutorial pages no longer use the Reporter Tools gray background."
+)
+check.call(
+  (builder.match?(/\.annotation-audio \.object-frame > img\s*\{[^}]*object-fit:\s*contain;/m) &&
+    !builder.match?(/\.annotation-audio \.object-frame > img\s*\{[^}]*object-fit:\s*fill;/m)),
+  "The audio cassette annotation is being stretched instead of preserving its proportions."
+)
+check.call(
+  (builder.include?('position: fixed;') &&
+    builder.match?(/body\[data-mode="player"\] \.reader-nav\s*\{[^}]*bottom:/m) &&
+    builder.include?('padding: calc(92px + .5rem)')),
+  "Exported tutorial navigation is no longer kept in view or the tutorial has drifted downward."
+)
+check.call(
+  (builder.include?('const SITE_TOOL_LINKS = Object.freeze([') &&
+    builder.include?('data-action="toggle-site-tools"') &&
+    builder.include?('label: "All Reporter Tools"') &&
+    builder.include?('label: "customizer"') &&
+    builder.include?('label: "store"') &&
+    builder.include?('/images/logosmaller.png') &&
+    builder.include?('/styles/site-system.css') &&
+    !builder.include?('/images/mhnavlogo.png')),
+  "Exported tutorial pages no longer use the current main-site header and destinations."
+)
 expected_hotspot_styles = [
   ["pink", "#ff90e7", "h-pink.png"],
   ["orange", "#ffc900", "h-orange.png"],
