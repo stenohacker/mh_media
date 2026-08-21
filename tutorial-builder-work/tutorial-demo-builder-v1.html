@@ -4,7 +4,7 @@
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <meta name="color-scheme" content="light">
-  <title>Tutorial Builder v3</title>
+  <title>Tutorial Demo Builder v1</title>
   <link id="geist-mono-preload" rel="preload" href="../../website/fonts/geist-mono-latin.woff2" as="font" type="font/woff2" crossorigin>
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -1557,6 +1557,80 @@
     .main-media-grid.has-video-title {
       grid-template-columns: minmax(160px, .45fr) minmax(0, 1fr) auto;
     }
+    .demo-timing-grid {
+      display: grid;
+      grid-template-columns: minmax(150px, .7fr) minmax(170px, .85fr) minmax(140px, .65fr) minmax(260px, 1.8fr);
+      gap: 8px;
+      margin-top: 10px;
+      padding-top: 10px;
+      border-top: 3px solid var(--black);
+    }
+    .demo-timing-note {
+      grid-column: 1 / -1;
+      margin: 0;
+      padding: 8px 10px;
+      border: 3px solid var(--black);
+      background: var(--soft-pink);
+      font-size: 11px;
+      font-weight: 600;
+      line-height: 1.35;
+    }
+
+    .demo-playback-controls {
+      width: var(--shell);
+      display: grid;
+      grid-template-columns: auto auto minmax(0, 1fr) auto;
+      align-items: center;
+      gap: 8px;
+      margin: 12px auto 0;
+      border: 4px solid var(--black);
+      padding: 8px;
+      background: var(--white);
+      box-shadow: var(--shadow);
+    }
+    .demo-playback-controls button {
+      min-width: 7rem;
+    }
+    .demo-playback-progress {
+      width: 100%;
+      height: 1rem;
+      border: 3px solid var(--black);
+      background: var(--white);
+      accent-color: var(--pink);
+    }
+    .demo-playback-status {
+      min-width: 9rem;
+      font-size: 12px;
+      font-weight: 600;
+      text-align: right;
+    }
+    .demo-start-screen {
+      position: fixed;
+      inset: 0;
+      z-index: 420;
+      display: grid;
+      place-items: center;
+      padding: 18px;
+      background: rgba(0, 0, 0, .72);
+    }
+    .demo-start-card {
+      width: min(30rem, calc(100vw - 36px));
+      display: grid;
+      gap: 14px;
+      border: 4px solid var(--black);
+      padding: clamp(20px, 5vw, 36px);
+      background: var(--yellow);
+      box-shadow: 10px 10px 0 var(--black);
+      text-align: center;
+    }
+    .demo-start-card h2,
+    .demo-start-card p { margin: 0; }
+    .demo-start-card button {
+      min-height: 4rem;
+      border-width: 4px;
+      background: var(--white);
+      font-size: 1.1rem;
+    }
 
     .annotation-rows {
       display: grid;
@@ -1815,6 +1889,18 @@
     }
     body[data-mode="player"] [contenteditable="true"] { cursor: default; }
     body[data-mode="player"] .stage-object { cursor: pointer; }
+    body[data-demo-player="true"] .builder-app {
+      padding: clamp(10px, 2vw, 24px) 0 clamp(12px, 2vw, 28px);
+    }
+    body[data-demo-player="true"] .tutorial-page-links,
+    body[data-demo-player="true"] .site-header { display: none !important; }
+    body[data-demo-player="true"] .reader-nav {
+      position: static;
+      width: 100%;
+      transform: none;
+      border: 0;
+      border-top: 4px solid var(--black);
+    }
 
     @media (max-width: 1120px) {
       .site-nav__desktop { gap: .55rem; }
@@ -1937,6 +2023,15 @@
       .annotation-rows, .metadata-grid { grid-template-columns: 1fr; }
       .main-media-grid,
       .main-media-grid.has-video-title { grid-template-columns: 1fr; }
+      .demo-timing-grid { grid-template-columns: 1fr; }
+      .demo-timing-note { grid-column: 1; }
+      .demo-playback-controls {
+        grid-template-columns: 1fr 1fr;
+      }
+      .demo-playback-controls button { min-width: 0; }
+      .demo-playback-progress,
+      .demo-playback-status { grid-column: 1 / -1; }
+      .demo-playback-status { text-align: center; }
       .metadata-grid .span-2, .metadata-grid .span-3, .metadata-public-url { grid-column: 1; }
       .metadata-url-row { grid-template-columns: 1fr; }
       .contents-grid { grid-template-columns: 1fr; }
@@ -2082,6 +2177,7 @@
     ]);
     const SITE_HEADER_LOGO_URL = "https://iridescent-wisp-57bcb1.netlify.app/images/mhnavlogo.png";
     const MODE = document.body.dataset.mode === "player" ? "player" : "builder";
+    const IS_DEMO_PLAYER = MODE === "player" && document.body.dataset.demoPlayer === "true";
     const PUBLIC_ANNOTATION_ASSET_ROOT = "https://iridescent-wisp-57bcb1.netlify.app/images/tutorial-annotations/";
     // Builder and player deliberately use the same hosted artwork. A local-file
     // substitution can make the builder look healthy while an export is broken.
@@ -2114,6 +2210,10 @@
     const MEDIA_ZOOM_STEP = .05;
     const MEDIA_MIN_SCALE = .5;
     const MEDIA_MAX_SCALE = 3;
+    const DEMO_DEFAULT_DURATION = 5;
+    const DEMO_MIN_DURATION = 1;
+    const DEMO_MAX_DURATION = 300;
+    const DEMO_AUDIO_END_DELAY_MS = 500;
     const VISUAL_REFINEMENT_VERSION = 1;
     const MEDIA_TYPES = {
       image: /\.(png|jpe?g|webp|avif|svg|bmp)(?:[?#].*)?$/i,
@@ -2202,6 +2302,18 @@
     let saveTimer = 0;
     let undoStack = [];
     let committedSnapshot = "";
+    let demoTimer = 0;
+    let demoProgressTimer = 0;
+    let demoAudio = null;
+    let demoPlaying = false;
+    let demoStarted = false;
+    let demoFinished = false;
+    let demoDeadline = 0;
+    let demoRemainingMs = 0;
+    let demoTotalMs = 0;
+    let demoSeekPreview = null;
+    let demoSeekResumeAfter = false;
+    let demoAudioEndDelayActive = false;
 
     normalizeState();
     applyVisualRefinements();
@@ -2353,6 +2465,12 @@
 	      state.meta.relatedCalloutText = String(state.meta.relatedCalloutText || "");
 	      state.meta.relatedCalloutLabel = String(state.meta.relatedCalloutLabel || "");
 	      state.meta.relatedCalloutUrl = String(state.meta.relatedCalloutUrl || "");
+      state.meta.demoBuilderVersion = 1;
+      state.meta.demoDefaultDuration = clamp(
+        Number(state.meta.demoDefaultDuration) || DEMO_DEFAULT_DURATION,
+        DEMO_MIN_DURATION,
+        DEMO_MAX_DURATION
+      );
       delete state.meta.status;
       delete state.meta.touched.status;
       state.tutorial ||= { title: "TUTORIAL TITLE", slides: [] };
@@ -2400,6 +2518,11 @@
           scale: clamp(slide?.media?.scale || 1, MEDIA_MIN_SCALE, MEDIA_MAX_SCALE),
           naturalWidth: Math.max(0, Math.round(Number(slide?.media?.naturalWidth) || 0)),
           naturalHeight: Math.max(0, Math.round(Number(slide?.media?.naturalHeight) || 0))
+        },
+        demo: {
+          timing: ["default", "manual", "audio"].includes(slide?.demo?.timing) ? slide.demo.timing : "default",
+          duration: clamp(Number(slide?.demo?.duration) || DEMO_DEFAULT_DURATION, DEMO_MIN_DURATION, DEMO_MAX_DURATION),
+          audioUrl: String(slide?.demo?.audioUrl || "")
         },
         hotspots: kind !== "video" && Array.isArray(slide?.hotspots)
           ? slide.hotspots.map((item, hotspotIndex) => normalizeHotspot(item, hotspotIndex))
@@ -2509,6 +2632,7 @@
         title: kind === "cover" ? "TUTORIAL SUBTITLE" : kind === "video" ? "VIDEO PAGE" : "SLIDE TITLE",
         description: kind === "cover" ? "Tutorial description." : kind === "image" ? "Slide description." : "",
         media: { url: "", type: kind === "video" ? "video" : "image", fit: "contain", matte: kind === "cover" ? "#fbeaf9" : "#ffffff", x: 0, y: 0, scale: 1 },
+        demo: { timing: "default", duration: DEMO_DEFAULT_DURATION, audioUrl: "" },
         hotspots: [],
         annotations: []
       }, kind === "cover" ? 0 : 1);
@@ -2934,9 +3058,9 @@
       const selected = selectedObject();
       root.innerHTML = `
 	        <div class="builder-app">
-	          ${MODE === "player" ? renderSiteHeader() : ""}
+	          ${MODE === "player" && !IS_DEMO_PLAYER ? renderSiteHeader() : ""}
 	          ${MODE === "builder" ? renderToolbar(slide, selected) : ""}
-	          ${MODE === "player" ? renderTutorialPageLinks() : ""}
+	          ${MODE === "player" && !IS_DEMO_PLAYER ? renderTutorialPageLinks() : ""}
 	          <main class="tutorial-shell" aria-label="Interactive tutorial">
             <div class="tutorial-title" ${MODE === "builder" ? 'contenteditable="true" role="textbox" aria-label="Tutorial title" data-bind="tutorial.title"' : ""} data-placeholder="TUTORIAL TITLE">${escapeHtml(state.tutorial.title)}</div>
             <div class="tutorial-body ${slide.kind === "video" ? "is-video" : ""}">
@@ -2945,9 +3069,11 @@
             </div>
             ${renderReaderNav()}
           </main>
+          ${IS_DEMO_PLAYER ? renderDemoPlaybackControls() : ""}
           ${MODE === "builder" ? renderBuilderLower(slide) + renderMetadata() : ""}
           ${renderContentsModal()}
           ${renderVideoModal()}
+          ${IS_DEMO_PLAYER ? renderDemoStartScreen() : ""}
         </div>
       `;
       syncRuntimeMedia();
@@ -3319,6 +3445,31 @@
       `;
     }
 
+    function renderDemoPlaybackControls() {
+      const playLabel = demoStarted && demoPlaying ? "Pause" : demoFinished ? "Replay" : "Play";
+      return `
+        <section class="demo-playback-controls" data-demo-playback aria-label="Demo playback controls">
+          <button type="button" data-action="demo-toggle">${playLabel}</button>
+          <button type="button" data-action="demo-restart">Restart</button>
+          <input class="demo-playback-progress" data-demo-seek type="range" min="0" max="100" step="0.1" value="${demoOverallProgress()}" aria-label="Demo timeline" aria-valuetext="${escapeHtml(demoProgressText())}">
+          <span class="demo-playback-status" data-demo-status aria-live="polite">${escapeHtml(demoProgressText())}</span>
+        </section>
+      `;
+    }
+
+    function renderDemoStartScreen() {
+      if (demoStarted) return "";
+      return `
+        <div class="demo-start-screen" role="dialog" aria-modal="true" aria-labelledby="demoStartTitle">
+          <div class="demo-start-card">
+            <h2 id="demoStartTitle">${escapeHtml(state.tutorial.title || "Demo")}</h2>
+            <p>Click Play to begin this narrated demo.</p>
+            <button type="button" data-action="demo-toggle">Play Demo</button>
+          </div>
+        </div>
+      `;
+    }
+
     function renderBuilderLower(slide) {
       return `
         <div class="builder-lower" data-builder-only>
@@ -3353,6 +3504,25 @@
               <button class="icon-button" type="button" data-action="media-zoom-out" title="Zoom media out" aria-label="Zoom media out">${icon("zoomOut")}</button>
               <button class="icon-button" type="button" data-action="media-reset" title="Reset media position and size" aria-label="Reset media position and size">${icon("reset")}</button>
             </div>
+            <div class="demo-timing-grid" aria-label="Slide playback timing">
+              <label>Default seconds
+                <input id="demoDefaultDuration" type="number" min="${DEMO_MIN_DURATION}" max="${DEMO_MAX_DURATION}" step="0.5" value="${state.meta.demoDefaultDuration}">
+              </label>
+              <label>This slide advances by
+                <select id="demoTimingMode">
+                  <option value="default" ${slide.demo.timing === "default" ? "selected" : ""}>Default duration</option>
+                  <option value="manual" ${slide.demo.timing === "manual" ? "selected" : ""}>Manual duration</option>
+                  <option value="audio" ${slide.demo.timing === "audio" ? "selected" : ""}>When slide audio ends</option>
+                </select>
+              </label>
+              <label>Manual seconds
+                <input id="demoSlideDuration" type="number" min="${DEMO_MIN_DURATION}" max="${DEMO_MAX_DURATION}" step="0.5" value="${slide.demo.duration}" ${slide.demo.timing === "manual" ? "" : "disabled"}>
+              </label>
+              <label>Slide audio URL
+                <input id="demoSlideAudioUrl" value="${escapeHtml(slide.demo.audioUrl)}" placeholder="https://…/slide-narration.mp3">
+              </label>
+              <p class="demo-timing-note">The exported demo always waits for Play. Choose audio timing to advance when this slide's narration ends; a missing or failed audio URL falls back to the default duration.</p>
+            </div>
           </section>
           <section class="builder-panel">
             <h2 class="panel-title">Interactive annotations</h2>
@@ -3364,7 +3534,6 @@
               ${annotationInputRow("video", "Video modal", icon("video"))}
               ${annotationInputRow("gif", "GIF annotation", icon("image"))}
               ${annotationInputRow("link", "External link", icon("link"), "https://")}
-              ${annotationInputRow("audio", "Audio", icon("audio"))}
             </div>
           </section>
         </div>
@@ -3712,9 +3881,13 @@
       document.addEventListener("pointerup", onPointerUp);
       document.addEventListener("keydown", onKeyDown);
       document.addEventListener("visibilitychange", () => {
+        if (IS_DEMO_PLAYER && document.visibilityState === "hidden") pauseDemoPlayback();
         if (document.visibilityState === "hidden") saveStateNow();
       });
-      window.addEventListener("pagehide", saveStateNow);
+      window.addEventListener("pagehide", () => {
+        if (IS_DEMO_PLAYER) stopDemoSlidePlayback();
+        saveStateNow();
+      });
       window.addEventListener("resize", sizeActiveVideoModal);
     }
 
@@ -3827,6 +4000,8 @@
         "export-html": exportHtml,
         "export-png": exportPng,
         "copy-public-url": copyPublicUrl,
+        "demo-toggle": toggleDemoPlayback,
+        "demo-restart": restartDemoPlayback,
         "reader-back": readerBack,
         "reader-next": readerNext,
         "open-contents": () => openContents(actionNode),
@@ -4017,6 +4192,30 @@
 
     function onChange(event) {
       const target = event.target;
+      if (target.matches("[data-demo-seek]")) {
+        commitDemoSeek(target.value);
+        return;
+      }
+      if (target.id === "demoTimingMode") {
+        currentSlide().demo.timing = ["default", "manual", "audio"].includes(target.value) ? target.value : "default";
+        commit("Updated this slide's demo timing.");
+        return;
+      }
+      if (target.id === "demoDefaultDuration") {
+        state.meta.demoDefaultDuration = clamp(Number(target.value) || DEMO_DEFAULT_DURATION, DEMO_MIN_DURATION, DEMO_MAX_DURATION);
+        commit("Updated the default demo duration.");
+        return;
+      }
+      if (target.id === "demoSlideDuration") {
+        currentSlide().demo.duration = clamp(Number(target.value) || DEMO_DEFAULT_DURATION, DEMO_MIN_DURATION, DEMO_MAX_DURATION);
+        commit("Updated this slide's manual duration.");
+        return;
+      }
+      if (target.id === "demoSlideAudioUrl") {
+        currentSlide().demo.audioUrl = target.value.trim();
+        commit("Updated this slide's narration audio.", false);
+        return;
+      }
       if (target.id === "shapeSelect" && target.value) {
         const shape = shapes.find((item) => item.url === target.value);
         addImageAnnotation("shape", target.value, shape?.name || "Shape");
@@ -4080,6 +4279,25 @@
 
     function onInput(event) {
       const target = event.target;
+      if (target.matches("[data-demo-seek]")) {
+        previewDemoSeek(target.value);
+        return;
+      }
+      if (target.id === "demoDefaultDuration") {
+        state.meta.demoDefaultDuration = clamp(Number(target.value) || DEMO_DEFAULT_DURATION, DEMO_MIN_DURATION, DEMO_MAX_DURATION);
+        scheduleSave();
+        return;
+      }
+      if (target.id === "demoSlideDuration") {
+        currentSlide().demo.duration = clamp(Number(target.value) || DEMO_DEFAULT_DURATION, DEMO_MIN_DURATION, DEMO_MAX_DURATION);
+        scheduleSave();
+        return;
+      }
+      if (target.id === "demoSlideAudioUrl") {
+        currentSlide().demo.audioUrl = target.value.trim();
+        scheduleSave();
+        return;
+      }
       if (target.id === "mainMediaUrl") {
         const value = target.value.trim();
         currentSlide().media.url = value === mediaBase() ? "" : value;
@@ -4951,7 +5169,272 @@
       commit("Reset main media.");
     }
 
+    function demoSlideDurationMs(slide = currentSlide()) {
+      const seconds = slide?.demo?.timing === "manual"
+        ? slide.demo.duration
+        : state.meta.demoDefaultDuration;
+      return clamp(Number(seconds) || DEMO_DEFAULT_DURATION, DEMO_MIN_DURATION, DEMO_MAX_DURATION) * 1000;
+    }
+
+    function demoSlideProgress() {
+      if (!demoStarted) return 0;
+      const slide = currentSlide();
+      if (slide?.demo?.timing === "audio" && demoAudio && Number.isFinite(demoAudio.duration) && demoAudio.duration > 0) {
+        return clamp(demoAudio.currentTime / demoAudio.duration, 0, 1);
+      }
+      if (demoTotalMs <= 0) return 0;
+      const remaining = demoPlaying && demoDeadline
+        ? Math.max(0, demoDeadline - performance.now())
+        : demoRemainingMs;
+      return clamp(1 - (remaining / demoTotalMs), 0, 1);
+    }
+
+    function demoOverallProgress() {
+      if (demoFinished) return 100;
+      const count = Math.max(1, state.tutorial.slides.length);
+      return clamp(((state.ui.slideIndex + demoSlideProgress()) / count) * 100, 0, 100).toFixed(1);
+    }
+
+    function formatDemoTime(seconds) {
+      const value = Math.max(0, Number(seconds) || 0);
+      const minutes = Math.floor(value / 60);
+      const remainder = Math.floor(value % 60);
+      return `${minutes}:${String(remainder).padStart(2, "0")}`;
+    }
+
+    function demoProgressText() {
+      const count = Math.max(1, state.tutorial.slides.length);
+      if (demoFinished) return `Finished · ${count} slides`;
+      const slide = currentSlide();
+      const audioTimed = slide?.demo?.timing === "audio" && demoAudio && Number.isFinite(demoAudio.duration) && demoAudio.duration > 0;
+      const totalSeconds = audioTimed ? demoAudio.duration : demoTotalMs / 1000;
+      const currentSeconds = audioTimed
+        ? demoAudio.currentTime
+        : totalSeconds * demoSlideProgress();
+      return `Slide ${state.ui.slideIndex + 1} of ${count} · ${formatDemoTime(currentSeconds)} / ${formatDemoTime(totalSeconds)}`;
+    }
+
+    function updateDemoPlaybackUi() {
+      if (!IS_DEMO_PLAYER || demoSeekPreview !== null) return;
+      const seek = root.querySelector("[data-demo-seek]");
+      const status = root.querySelector("[data-demo-status]");
+      const toggle = root.querySelector('[data-action="demo-toggle"]');
+      const value = String(demoOverallProgress());
+      const text = demoProgressText();
+      if (seek) {
+        seek.value = value;
+        seek.setAttribute("aria-valuetext", text);
+      }
+      if (status) status.textContent = text;
+      if (toggle) toggle.textContent = demoStarted && demoPlaying ? "Pause" : demoFinished ? "Replay" : "Play";
+    }
+
+    function clearDemoTimers() {
+      window.clearTimeout(demoTimer);
+      window.clearInterval(demoProgressTimer);
+      demoTimer = 0;
+      demoProgressTimer = 0;
+      demoDeadline = 0;
+    }
+
+    function ensureDemoAudio() {
+      if (!demoAudio) {
+        demoAudio = new Audio();
+        demoAudio.preload = "metadata";
+      }
+      return demoAudio;
+    }
+
+    function prepareDemoAudio(slide, fraction = 0, resume = false) {
+      const url = String(slide?.demo?.audioUrl || "").trim();
+      if (!url) return null;
+      const audio = ensureDemoAudio();
+      let absoluteUrl = url;
+      try { absoluteUrl = new URL(url, location.href).href; } catch (_) {}
+      if (!resume || audio.src !== absoluteUrl) {
+        audio.pause();
+        audio.src = absoluteUrl;
+        audio.load();
+      }
+      const applyFraction = () => {
+        if (fraction > 0 && Number.isFinite(audio.duration) && audio.duration > 0) {
+          audio.currentTime = clamp(fraction, 0, .999) * audio.duration;
+        } else if (!resume && fraction <= 0) {
+          audio.currentTime = 0;
+        }
+        if (slide.demo.timing === "audio" && Number.isFinite(audio.duration) && audio.duration > 0) {
+          demoTotalMs = audio.duration * 1000;
+          demoRemainingMs = Math.max(0, (audio.duration - audio.currentTime) * 1000);
+        }
+        updateDemoPlaybackUi();
+      };
+      if (audio.readyState >= 1) applyFraction();
+      else audio.addEventListener("loadedmetadata", applyFraction, { once: true });
+      return audio;
+    }
+
+    function scheduleDemoTimer(milliseconds) {
+      const delay = Math.max(0, Number(milliseconds) || 0);
+      window.clearTimeout(demoTimer);
+      demoRemainingMs = delay;
+      demoDeadline = performance.now() + delay;
+      demoTimer = window.setTimeout(advanceDemoPlayback, delay);
+    }
+
+    function startDemoProgressTicker() {
+      window.clearInterval(demoProgressTimer);
+      demoProgressTimer = window.setInterval(updateDemoPlaybackUi, 120);
+      updateDemoPlaybackUi();
+    }
+
+    function startDemoSlidePlayback({ fraction = 0, resume = false } = {}) {
+      if (!IS_DEMO_PLAYER || !demoPlaying) return;
+      clearDemoTimers();
+      const slide = currentSlide();
+      const timing = slide.demo.timing;
+      if (resume && demoAudioEndDelayActive) {
+        scheduleDemoTimer(demoRemainingMs || DEMO_AUDIO_END_DELAY_MS);
+        startDemoProgressTicker();
+        return;
+      }
+      if (!resume) demoAudioEndDelayActive = false;
+      if (!resume) {
+        demoTotalMs = demoSlideDurationMs(slide);
+        demoRemainingMs = demoTotalMs * (1 - clamp(fraction, 0, .999));
+      }
+      const audio = prepareDemoAudio(slide, fraction, resume);
+      if (audio) {
+        const slideId = slide.id;
+        audio.onended = () => {
+          if (demoPlaying && currentSlide()?.id === slideId && timing === "audio") {
+            demoAudioEndDelayActive = true;
+            scheduleDemoTimer(DEMO_AUDIO_END_DELAY_MS);
+          }
+        };
+        audio.onerror = () => {
+          if (!demoPlaying || currentSlide()?.id !== slideId) return;
+          demoAudioEndDelayActive = false;
+          if (timing === "audio") {
+            demoTotalMs = demoSlideDurationMs(slide);
+            scheduleDemoTimer(demoTotalMs * (1 - clamp(fraction, 0, .999)));
+          }
+          updateDemoPlaybackUi();
+        };
+        audio.play().catch(() => {
+          demoAudioEndDelayActive = false;
+          if (timing === "audio" && demoPlaying) {
+            demoTotalMs = demoSlideDurationMs(slide);
+            scheduleDemoTimer(demoRemainingMs || demoTotalMs);
+          }
+          updateDemoPlaybackUi();
+        });
+      }
+      if (timing !== "audio" || !audio) scheduleDemoTimer(demoRemainingMs || demoTotalMs);
+      startDemoProgressTicker();
+    }
+
+    function stopDemoSlidePlayback() {
+      if (demoPlaying && demoDeadline) demoRemainingMs = Math.max(0, demoDeadline - performance.now());
+      clearDemoTimers();
+      if (demoAudio) demoAudio.pause();
+    }
+
+    function pauseDemoPlayback() {
+      if (!demoStarted || !demoPlaying) return;
+      stopDemoSlidePlayback();
+      demoPlaying = false;
+      updateDemoPlaybackUi();
+    }
+
+    function resumeDemoPlayback() {
+      if (!demoStarted || demoPlaying) return;
+      if (demoFinished) {
+        restartDemoPlayback();
+        return;
+      }
+      demoPlaying = true;
+      startDemoSlidePlayback({ resume: true });
+      updateDemoPlaybackUi();
+    }
+
+    function setDemoSlide(index, { fraction = 0, play = demoPlaying } = {}) {
+      stopDemoSlidePlayback();
+      demoAudioEndDelayActive = false;
+      state.ui.slideIndex = clamp(index, 0, state.tutorial.slides.length - 1);
+      const slide = currentSlide();
+      state.ui.activeHotspotId = slide.hotspots[0]?.id || null;
+      state.ui.selectedKind = null;
+      state.ui.selectedId = null;
+      state.ui.contentsOpen = false;
+      state.ui.videoModalId = null;
+      demoFinished = false;
+      demoPlaying = Boolean(play);
+      demoTotalMs = demoSlideDurationMs(slide);
+      demoRemainingMs = demoTotalMs * (1 - clamp(fraction, 0, .999));
+      render();
+      if (demoPlaying) startDemoSlidePlayback({ fraction });
+      else prepareDemoAudio(slide, fraction, false);
+      updateDemoPlaybackUi();
+    }
+
+    function advanceDemoPlayback() {
+      stopDemoSlidePlayback();
+      demoAudioEndDelayActive = false;
+      if (state.ui.slideIndex >= state.tutorial.slides.length - 1) {
+        demoFinished = true;
+        demoPlaying = false;
+        demoRemainingMs = 0;
+        updateDemoPlaybackUi();
+        return;
+      }
+      setDemoSlide(state.ui.slideIndex + 1, { fraction: 0, play: true });
+    }
+
+    function restartDemoPlayback() {
+      demoStarted = true;
+      demoFinished = false;
+      demoPlaying = true;
+      setDemoSlide(0, { fraction: 0, play: true });
+    }
+
+    function toggleDemoPlayback() {
+      if (!demoStarted || demoFinished) restartDemoPlayback();
+      else if (demoPlaying) pauseDemoPlayback();
+      else resumeDemoPlayback();
+    }
+
+    function previewDemoSeek(value) {
+      if (demoSeekPreview === null) {
+        demoSeekResumeAfter = demoPlaying;
+        pauseDemoPlayback();
+      }
+      demoSeekPreview = clamp(Number(value), 0, 100);
+      const count = Math.max(1, state.tutorial.slides.length);
+      const target = Math.min(count - 1, Math.floor((demoSeekPreview / 100) * count));
+      const status = root.querySelector("[data-demo-status]");
+      if (status) status.textContent = `Go to slide ${target + 1} of ${count}`;
+    }
+
+    function commitDemoSeek(value) {
+      const percent = clamp(Number(value), 0, 100);
+      const count = Math.max(1, state.tutorial.slides.length);
+      const position = percent >= 100 ? count - Number.EPSILON : (percent / 100) * count;
+      const index = Math.min(count - 1, Math.floor(position));
+      const fraction = clamp(position - index, 0, .999);
+      const shouldResume = demoSeekResumeAfter;
+      demoSeekPreview = null;
+      demoSeekResumeAfter = false;
+      demoStarted = true;
+      setDemoSlide(index, { fraction, play: shouldResume });
+    }
+
     function readerNext() {
+      if (IS_DEMO_PLAYER) {
+        if (state.ui.slideIndex < state.tutorial.slides.length - 1) {
+          setDemoSlide(state.ui.slideIndex + 1, { play: demoPlaying });
+        }
+        return;
+      }
       const slide = currentSlide();
       if (slide.hotspots.length) {
         const index = slide.hotspots.findIndex((item) => item.id === state.ui.activeHotspotId);
@@ -4971,6 +5454,10 @@
     }
 
     function readerBack() {
+      if (IS_DEMO_PLAYER) {
+        if (state.ui.slideIndex > 0) setDemoSlide(state.ui.slideIndex - 1, { play: demoPlaying });
+        return;
+      }
       const slide = currentSlide();
       if (slide.hotspots.length) {
         const index = slide.hotspots.findIndex((item) => item.id === state.ui.activeHotspotId);
@@ -4992,6 +5479,10 @@
     }
 
     function jumpSlide(index, useLastHotspot = false) {
+      if (IS_DEMO_PLAYER) {
+        setDemoSlide(index, { play: demoPlaying });
+        return;
+      }
       stopAudio();
       state.ui.slideIndex = clamp(index, 0, state.tutorial.slides.length - 1);
       const slide = currentSlide();
@@ -5007,6 +5498,7 @@
     }
 
     function openContents(trigger) {
+      if (IS_DEMO_PLAYER) pauseDemoPlayback();
       state.ui.contentsOpen = true;
       render();
       setTimeout(() => document.querySelector(".contents-card")?.focus(), 0);
@@ -5024,6 +5516,7 @@
         showToast("Add the video URL first.");
         return;
       }
+      if (IS_DEMO_PLAYER) pauseDemoPlayback();
       lastVideoTriggerId = id;
       state.ui.videoModalId = id;
       render();
@@ -5239,6 +5732,7 @@
     async function exportHtml() {
       await document.fonts.ready;
       const exportState = clone(state);
+      exportState.meta.pageType = "demo";
       exportState.ui = {
         slideIndex: 0,
         activeHotspotId: exportState.tutorial.slides[0]?.hotspots[0]?.id || null,
@@ -5248,15 +5742,18 @@
         videoModalId: null
       };
       const documentElement = document.documentElement.cloneNode(true);
-      documentElement.querySelector("body").dataset.mode = "player";
+      const exportBody = documentElement.querySelector("body");
+      exportBody.dataset.mode = "player";
+      exportBody.dataset.demoPlayer = "true";
       documentElement.querySelector("#app").innerHTML = "";
       documentElement.querySelector("#project-state").textContent = JSON.stringify(exportState, null, 2).replace(/<\/script/gi, "<\\/script");
       documentElement.querySelectorAll(".toast").forEach((node) => node.remove());
       applyExportFont(documentElement);
       applyHeadMetadata(documentElement, exportState);
+      setMeta(documentElement.querySelector("head"), "name", "robots", "noindex, nofollow");
       const html = `<!DOCTYPE html>\n${documentElement.outerHTML}`;
-      download(`${slugify(state.meta.tutorialSlug || state.tutorial.title) || "tutorial"}.html`, html, "text/html");
-	      showToast(`Exported the standalone ${state.meta.pageType === "demo" ? "demo" : "tutorial"} HTML.`);
+      download(`${slugify(state.meta.tutorialSlug || state.tutorial.title) || "tool"}-demo.html`, html, "text/html");
+	      showToast("Exported the click-to-play demo HTML for embedding.");
     }
 
     async function exportPng() {

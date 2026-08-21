@@ -6,10 +6,12 @@ require "uri"
 
 ROOT = File.expand_path("..", __dir__)
 BUILDER = File.join(ROOT, "tutorial-builder-work", "tutorial-builder-v3.html")
+DEMO = File.join(ROOT, "tutorial-builder-work", "appearance-pages-demo.html")
 CATALOG = File.join(ROOT, "shapes.csv")
 ANNOTATIONS = File.join(ROOT, "images", "tutorial-annotations")
 NETLIFY_CONFIG = File.join(ROOT, "netlify.toml")
 PUBLIC_ROOT = "https://iridescent-wisp-57bcb1.netlify.app/images/tutorial-annotations/"
+NAV_LOGO_URL = "https://iridescent-wisp-57bcb1.netlify.app/images/mhnavlogo.png"
 MAX_PNG_DIMENSION = 2_048
 
 errors = []
@@ -62,6 +64,7 @@ required_shared.each do |filename|
 end
 
 builder = File.read(BUILDER)
+demo = File.read(DEMO)
 check.call(
   builder.match?(/body\[data-mode="player"\]\s*\{[^}]*background:\s*#9ca3af;/m),
   "Exported tutorial pages no longer use the Reporter Tools gray background."
@@ -74,19 +77,46 @@ check.call(
 check.call(
   (builder.include?('position: fixed;') &&
     builder.match?(/body\[data-mode="player"\] \.reader-nav\s*\{[^}]*bottom:/m) &&
-    builder.include?('padding: calc(92px + .5rem)')),
+    builder.include?('padding: calc(92px + .5rem)') &&
+    builder.include?('body[data-mode="player"] .tutorial-page-links { margin-top: 1mm; }')),
   "Exported tutorial navigation is no longer kept in view or the tutorial has drifted downward."
 )
 check.call(
-  (builder.include?('const SITE_TOOL_LINKS = Object.freeze([') &&
-    builder.include?('data-action="toggle-site-tools"') &&
-    builder.include?('label: "All Reporter Tools"') &&
+  (builder.include?('<a class="site-nav__link" href="${sitePageUrl("reporter-tools.html")}">reporter tools</a>') &&
+    builder.include?('action: "show-store-coming-soon"') &&
+    builder.include?('data-action="${link.action}"') &&
+    builder.include?('function showStoreComingSoon(link)') &&
+    builder.include?('const OFFLINE_SITE_ROOT = "file:///Users/tamchap/Dev/website/"') &&
+    builder.include?('const USING_OFFLINE_BUILDER = location.protocol === "file:"') &&
+    builder.include?('const SITE_NAV_ROOT = new URL(') &&
+    builder.include?('const sitePageUrl = (path = "")') &&
+    builder.include?('sitePageUrl("learn/learn-index.html")') &&
+    builder.include?('sitePageUrl("reporter-tools.html")') &&
+    builder.include?('sitePageUrl("index.html#contact")') &&
     builder.include?('label: "customizer"') &&
     builder.include?('label: "store"') &&
-    builder.include?('/images/logosmaller.png') &&
-    builder.include?('/styles/site-system.css') &&
-    !builder.include?('/images/mhnavlogo.png')),
+    builder.include?(%(const SITE_HEADER_LOGO_URL = "#{NAV_LOGO_URL}")) &&
+    builder.include?('cover?.media?.url || SITE_HEADER_LOGO_URL') &&
+    !builder.include?('/images/logosmaller.png') &&
+    !builder.include?('/styles/site-system.css') &&
+    !builder.include?('applyExportSiteStyles')),
   "Exported tutorial pages no longer use the current main-site header and destinations."
+)
+check.call(File.file?(File.join(ROOT, "images", "mhnavlogo.png")),
+           "The standalone navigation logo is missing locally.")
+check.call(
+  (builder.include?('function contentsNumberStyle(index)') &&
+    builder.include?('background: var(--contents-number-color, var(--pink));') &&
+    builder.include?('style="${contentsNumberStyle(index)}"')),
+  "Contents slide numbers no longer rotate through the Magic Hashtags colors."
+)
+check.call(
+  (demo.include?(%(const SITE_HEADER_LOGO_URL = "#{NAV_LOGO_URL}")) &&
+    demo.include?('function contentsNumberStyle(index)') &&
+    demo.include?('style="${contentsNumberStyle(index)}"') &&
+    !demo.include?('/styles/site-system.css') &&
+    !demo.include?('applyExportSiteStyles')),
+  "appearance-pages-demo.html has drifted from the standalone header or Contents treatment."
 )
 expected_hotspot_styles = [
   ["pink", "#ff90e7", "h-pink.png"],
@@ -189,6 +219,7 @@ if ARGV.include?("--remote")
 
   remote_urls = catalog_rows.map { |_name, url| url }
   remote_urls.concat(required_shared.map { |filename| "#{PUBLIC_ROOT}#{filename}" })
+  remote_urls << NAV_LOGO_URL
   remote_urls.uniq.each do |url|
     uri = URI(url)
     response = Net::HTTP.start(

@@ -90,7 +90,8 @@ tutorials/
 Double-click `/Users/tamchap/Dev/mh_media/PUBLISH MEDIA WEBSITE.command` only
 when the media changes are ready to go live. It shows the pending files, runs
 the Tutorial Builder v3 audit, asks for a short description, and requires the
-exact confirmation `PUBLISH MEDIA` before it commits or pushes anything.
+exact confirmation `PUBLISH MEDIA` before it commits or pushes anything. It
+runs both the protected V3 audit and the separate Demo Builder v1 audit.
 
 The button publishes all current non-archive media changes to GitHub `main`,
 which starts the Netlify production deployment. It excludes `.DS_Store` and
@@ -154,6 +155,8 @@ Source:
 - [x] A 2458×1484 PNG was verified at the exact same rendered aspect ratio in Match mode.
 - [x] Main image can be nudged left/right/up/down.
 - [x] Main image can be zoomed in/out and reset.
+- [x] Brand-new slides start centered at 100%; duplicated slides intentionally
+  retain the source slide's crop, zoom, and offsets.
 - [x] Image canvas starts at a wider 5:3 aspect ratio instead of a tall, nearly square minimum.
 - [x] Main image nudges use 1% steps; zoom uses 5% steps and can zoom out below the reset size.
 - [x] Annotations can be selected, moved, and resized on the canvas.
@@ -197,6 +200,7 @@ Source:
 - [ ] Clicking the backdrop closes the modal.
 - [x] Cover card appears first without a number.
 - [x] Other cards show their slide numbers and slide titles.
+- [x] Numbered cards cycle through the nine Magic Hashtags accent colors.
 - [x] Current slide card is highlighted pale yellow.
 - [x] Selecting a card jumps to that slide and closes the modal.
 - [x] Grid adapts to additional slides and smaller screens.
@@ -404,7 +408,11 @@ Canonical website:
 - [x] Export includes static title, description, canonical, Open Graph, and Twitter metadata.
 - [x] Exported file can be placed directly in the chosen website tutorial folder.
 - [x] Exported page includes the Magic Hashtags site header without listing the current/internal tutorial.
+- [x] The exported header uses the published standalone navigation logo.
+- [x] All exported page CSS remains embedded; no shared site stylesheet is required.
 - [x] Header links are embedded in the exported player, so the tutorial remains readable without a shared navigation script.
+- [x] `appearance-pages-demo.html` mirrors the header and Contents updates while
+  retaining its existing per-slide zoom and offset behavior.
 
 ## 26. PNG export
 

@@ -66,9 +66,12 @@ echo "Pending media changes:"
 git status --short
 
 echo
-echo "Running the protected Tutorial Builder and media wiring audit..."
+echo "Running the protected Tutorial Builder and media wiring audits..."
 if ! ruby scripts/audit-tutorial-builder-v3.rb; then
   stop_with_message "The media safety check failed. Nothing was committed or pushed."
+fi
+if ! ruby scripts/audit-tutorial-demo-builder-v1.rb; then
+  stop_with_message "The demo-builder safety check failed. Nothing was committed or pushed."
 fi
 
 LARGE_FILES="$(find . -path './.git' -prune -o -path './.netlify' -prune -o -path './archive' -prune -o -type f -size +95M -print)"
@@ -110,7 +113,9 @@ if ! remove_tracked_repository_junk; then
   stop_with_message "Git could not remove repository-only junk. Nothing was pushed."
 fi
 
-git add -A
+if ! git add -A; then
+  stop_with_message "Git could not stage the media changes. Nothing was committed or pushed."
+fi
 
 if ! git diff --cached --quiet; then
   echo

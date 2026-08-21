@@ -3,6 +3,8 @@ archive/
 tutorial-builder-work/*
 !tutorial-builder-work/tutorial-builder-v3.html
 !tutorial-builder-work/TUTORIAL_BUILDER_V3_HANDOFF.md
+!tutorial-builder-work/tutorial-demo-builder-v1.html
+!tutorial-builder-work/TUTORIAL_DEMO_BUILDER_V1_HANDOFF.md
 
 # Local Netlify folder
 .netlify
