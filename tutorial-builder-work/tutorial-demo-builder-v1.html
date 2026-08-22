@@ -732,6 +732,8 @@
     .body-format-bar {
       display: flex;
       justify-content: flex-end;
+      flex-wrap: wrap;
+      gap: 5px;
     }
     button.pipe-list-toggle {
       min-height: 27px;
@@ -757,6 +759,12 @@
       gap: 12px;
       padding: 0;
     }
+    .numbered-list {
+      display: grid;
+      gap: 12px;
+      margin: 0;
+      padding-left: 30px;
+    }
     .mixed-body {
       white-space: normal;
     }
@@ -775,11 +783,14 @@
       min-height: 1.35em;
       white-space: pre-wrap;
     }
-    .mixed-body-line.is-pipe + .mixed-body-line.is-pipe {
+    .mixed-body-line.is-pipe + .mixed-body-line.is-pipe,
+    .mixed-body-line.is-numbered + .mixed-body-line.is-numbered {
       margin-top: 12px;
     }
-    .mixed-body-line:not(.is-pipe) + .mixed-body-line.is-pipe,
-    .mixed-body-line.is-pipe + .mixed-body-line:not(.is-pipe) {
+    .mixed-body-line:not(.is-pipe):not(.is-numbered) + .mixed-body-line:is(.is-pipe, .is-numbered),
+    .mixed-body-line:is(.is-pipe, .is-numbered) + .mixed-body-line:not(.is-pipe):not(.is-numbered),
+    .mixed-body-line.is-pipe + .mixed-body-line.is-numbered,
+    .mixed-body-line.is-numbered + .mixed-body-line.is-pipe {
       margin-top: 10px;
     }
     .pipe-list > li,
@@ -798,6 +809,23 @@
       bottom: 3px;
       width: 4px;
       background: currentColor;
+    }
+    .mixed-body-editor { counter-reset: mixed-number; }
+    .mixed-body-line.is-numbered {
+      position: relative;
+      min-height: 1.35em;
+      padding-left: 30px;
+      counter-increment: mixed-number;
+      white-space: pre-wrap;
+    }
+    .mixed-body-line.is-numbered::before {
+      content: counter(mixed-number) ".";
+      position: absolute;
+      left: 0;
+      top: 0;
+      min-width: 24px;
+      font-weight: 600;
+      text-align: right;
     }
     .mixed-body-line[data-placeholder]:empty::after {
       content: attr(data-placeholder);
@@ -1120,6 +1148,61 @@
       white-space: pre-wrap;
       overflow-wrap: anywhere;
       outline: 0;
+    }
+    .annotation-slide-intro {
+      height: auto;
+      min-height: var(--h);
+      max-height: 78%;
+    }
+    .annotation-slide-intro .object-frame {
+      height: auto;
+      min-height: var(--h);
+      display: grid;
+      grid-template-rows: auto minmax(0, auto);
+      border: 3px solid var(--black);
+      background: var(--white);
+      box-shadow: var(--shadow-medium);
+      overflow: hidden;
+    }
+    .slide-intro-card__title {
+      min-height: 48px;
+      padding: 11px 14px;
+      color: var(--white);
+      background: var(--black);
+      font-size: clamp(15px, 1.6vw, 20px);
+      font-weight: 600;
+      line-height: 1.25;
+      letter-spacing: .025em;
+      text-transform: uppercase;
+      overflow-wrap: anywhere;
+      outline: 0;
+    }
+    .slide-intro-card__body-field {
+      display: grid;
+      min-height: 78px;
+      background: var(--white);
+    }
+    .slide-intro-card__body-field .body-format-bar {
+      padding: 7px 9px 0;
+    }
+    .slide-intro-card__body {
+      min-height: 78px;
+      max-height: min(42vh, 390px);
+      padding: 15px 17px;
+      background: var(--white);
+      font-size: clamp(14px, 1.3vw, 17px);
+      line-height: 1.55;
+      overflow: auto;
+      overflow-wrap: anywhere;
+      outline: 0;
+    }
+    .annotation-slide-intro[data-intro-align="center"] .slide-intro-card__title,
+    .annotation-slide-intro[data-intro-align="center"] .slide-intro-card__body {
+      text-align: center;
+    }
+    .slide-intro-card__title:focus,
+    .slide-intro-card__body:focus {
+      box-shadow: inset 0 0 0 3px var(--yellow);
     }
     .annotation-text[data-text-style="italic"] .object-frame,
     .annotation-text[data-text-style="bold"] .object-frame {
@@ -1611,16 +1694,192 @@
       display: grid;
       place-items: center;
       padding: 18px;
-      background: rgba(0, 0, 0, .72);
+      background: rgba(0, 0, 0, .34);
     }
     .demo-start-card {
-      width: min(30rem, calc(100vw - 36px));
+      width: min(25rem, calc(100vw - 36px));
       display: grid;
       gap: 14px;
       border: 4px solid var(--black);
-      padding: clamp(20px, 5vw, 36px);
+      padding: clamp(16px, 4vw, 28px);
       background: var(--yellow);
       box-shadow: 10px 10px 0 var(--black);
+      text-align: center;
+    }
+
+    /* Centered video/demo presentation. The cover keeps the yellow title, while
+       every later image slide gives the media the full visual emphasis. */
+    .tutorial-body.is-demo-cover {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: clamp(12px, 2vw, 24px);
+      padding: clamp(16px, 2vw, 28px);
+      background: #9ca3af;
+    }
+    .tutorial-body.is-demo-cover .stage-wrap {
+      order: 1;
+      width: min(78%, 1280px);
+      padding: 0;
+      background: transparent;
+    }
+    .tutorial-body.is-demo-cover .slide-sidebar {
+      order: 2;
+      width: min(760px, 78%);
+      max-height: none;
+      border: 3px solid var(--black);
+      padding: 0;
+      box-shadow: var(--shadow-medium);
+    }
+    .tutorial-body.is-demo-cover .slide-sidebar__title {
+      text-align: center;
+    }
+    .tutorial-body.is-demo-cover .slide-sidebar__description {
+      padding: 14px 18px;
+      text-align: center;
+    }
+    .tutorial-body.is-demo-cover .sidebar-divider,
+    .tutorial-body.is-demo-cover .hotspot-list {
+      display: none;
+    }
+
+    .tutorial-body.is-demo-centered-slide {
+      display: block;
+      position: relative;
+      overflow: visible;
+      padding: clamp(16px, 2vw, 28px) 0;
+      background: #9ca3af;
+    }
+    .tutorial-body.is-demo-centered-slide .stage-wrap {
+      width: min(80%, 1800px);
+      margin: 0 auto;
+      padding: 0;
+      overflow: visible;
+      background: transparent;
+    }
+    .tutorial-body.is-demo-centered-slide .slide-sidebar.is-demo-popup {
+      position: absolute;
+      z-index: 40;
+      width: var(--popup-width, 290px);
+      min-width: 245px;
+      max-width: min(440px, 42vw);
+      max-height: min(72%, 560px);
+      display: block;
+      border: 3px solid var(--black);
+      padding: 0;
+      background: var(--white);
+      box-shadow: var(--shadow-medium);
+      overflow: hidden;
+    }
+    .tutorial-body.is-demo-centered-slide .slide-sidebar.is-demo-popup.is-empty { display: none; }
+    .tutorial-body.is-demo-centered-slide .slide-sidebar.is-demo-popup.demo-popup-left { left: clamp(8px, 1.6vw, 26px); }
+    .tutorial-body.is-demo-centered-slide .slide-sidebar.is-demo-popup.demo-popup-right { right: clamp(8px, 1.6vw, 26px); }
+    .tutorial-body.is-demo-centered-slide .slide-sidebar.is-demo-popup.demo-popup-top { top: clamp(28px, 7%, 74px); }
+    .tutorial-body.is-demo-centered-slide .slide-sidebar.is-demo-popup.demo-popup-bottom { bottom: clamp(82px, 10%, 120px); }
+    .tutorial-body.is-demo-centered-slide .slide-sidebar.is-demo-popup.is-custom-position {
+      left: var(--popup-x);
+      top: var(--popup-y);
+      right: auto;
+      bottom: auto;
+      transform: translate(-50%, -50%);
+    }
+    .demo-popup-drag-handle {
+      min-height: 30px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      border-bottom: 3px solid var(--black);
+      padding: 4px 9px;
+      color: var(--white);
+      background: var(--black);
+      font-size: 11px;
+      font-weight: 600;
+      letter-spacing: .06em;
+      text-transform: uppercase;
+      cursor: grab;
+      touch-action: none;
+      user-select: none;
+    }
+    .demo-popup-drag-handle:active { cursor: grabbing; }
+    body[data-mode="player"] .demo-popup-drag-handle { display: none; }
+    .tutorial-body.is-demo-centered-slide .slide-sidebar.is-demo-popup > .slide-sidebar__title,
+    .tutorial-body.is-demo-centered-slide .slide-sidebar.is-demo-popup > .body-field,
+    .tutorial-body.is-demo-centered-slide .slide-sidebar.is-demo-popup > .sidebar-divider,
+    .tutorial-body.is-demo-centered-slide .slide-sidebar.is-demo-popup .hotspot-entry:not(.is-active),
+    .tutorial-body.is-demo-centered-slide .slide-sidebar.is-demo-popup .sidebar-empty { display: none; }
+    .tutorial-body.is-demo-centered-slide .slide-sidebar.is-demo-popup .hotspot-list {
+      max-height: none;
+      display: block;
+      overflow: visible;
+      padding: 0;
+    }
+    .tutorial-body.is-demo-centered-slide .slide-sidebar.is-demo-popup .hotspot-row {
+      min-height: 54px;
+      border: 0;
+      border-bottom: 3px solid var(--black);
+      padding: 11px 14px;
+      box-shadow: none;
+    }
+    .tutorial-body.is-demo-centered-slide .slide-sidebar.is-demo-popup .hotspot-detail-panel {
+      display: grid;
+      gap: 7px;
+      padding: 13px 15px 15px;
+      background: var(--white);
+    }
+    .tutorial-body.is-demo-centered-slide .slide-sidebar.is-demo-popup .hotspot-detail {
+      width: auto;
+      max-width: none;
+      max-height: min(42vh, 420px);
+      min-height: 70px;
+      margin: 0;
+      border: 0;
+      padding: 0 0 0 15px;
+      background: var(--white);
+      font-size: 15px;
+      line-height: 1.55;
+      overflow-wrap: anywhere;
+      overflow-x: hidden;
+    }
+    .demo-step-nav {
+      display: grid;
+      grid-template-columns: 44px auto 44px;
+      align-items: center;
+      gap: 10px;
+      width: max-content;
+      margin: 10px auto 0;
+    }
+    button.demo-step-button {
+      width: 44px;
+      min-width: 44px;
+      height: 44px;
+      min-height: 44px;
+      display: grid;
+      place-items: center;
+      border: 0;
+      padding: 0;
+      background: transparent;
+      box-shadow: none;
+    }
+    button.demo-step-button img {
+      width: 44px;
+      height: 44px;
+      display: block;
+      object-fit: contain;
+      pointer-events: none;
+    }
+    .demo-step-fallback {
+      width: 42px;
+      height: 42px;
+      display: grid;
+      place-items: center;
+      border: 3px solid var(--black);
+      border-radius: 50%;
+      background: var(--yellow);
+      font-size: 24px;
+    }
+    .demo-step-count {
+      min-width: 68px;
+      font-weight: 600;
       text-align: center;
     }
     .demo-start-card h2,
@@ -1890,16 +2149,49 @@
     body[data-mode="player"] [contenteditable="true"] { cursor: default; }
     body[data-mode="player"] .stage-object { cursor: pointer; }
     body[data-demo-player="true"] .builder-app {
-      padding: clamp(10px, 2vw, 24px) 0 clamp(12px, 2vw, 28px);
+      height: 100dvh;
+      padding: calc(92px + .5rem) 0 calc(82px + env(safe-area-inset-bottom));
+      overflow: hidden;
     }
-    body[data-demo-player="true"] .tutorial-page-links,
-    body[data-demo-player="true"] .site-header { display: none !important; }
-    body[data-demo-player="true"] .reader-nav {
-      position: static;
+    body[data-demo-embed="true"] .builder-app {
+      padding-top: 8px;
+    }
+    body[data-demo-embed="true"] .site-header { display: none !important; }
+    body[data-demo-player="true"] .reader-nav { display: none; }
+    body[data-demo-player="true"] .tutorial-shell {
+      height: 100%;
+      display: grid;
+      grid-template-rows: auto minmax(0, 1fr);
+      margin-top: 0;
+      overflow: hidden;
+    }
+    body[data-demo-player="true"] .tutorial-body {
+      min-height: 0;
+      height: 100%;
+      overflow: hidden;
+    }
+    body[data-demo-player="true"] .tutorial-body.is-demo-cover .stage-wrap,
+    body[data-demo-player="true"] .tutorial-body.is-demo-centered-slide .stage-wrap {
+      min-height: 0;
+      height: 100%;
+      display: grid;
+      grid-template-rows: minmax(0, 1fr) auto;
+    }
+    body[data-demo-player="true"] .tutorial-body.is-demo-cover .slide-sidebar { display: none; }
+    body[data-demo-player="true"] .tutorial-body.is-demo-cover .stage,
+    body[data-demo-player="true"] .tutorial-body.is-demo-centered-slide .stage {
       width: 100%;
-      transform: none;
-      border: 0;
-      border-top: 4px solid var(--black);
+      height: 100%;
+      min-height: 0;
+      aspect-ratio: auto;
+    }
+    body[data-demo-player="true"] .demo-playback-controls {
+      position: fixed;
+      left: 50%;
+      bottom: max(8px, env(safe-area-inset-bottom));
+      z-index: 260;
+      margin: 0;
+      transform: translateX(-50%);
     }
 
     @media (max-width: 1120px) {
@@ -1955,7 +2247,7 @@
       .metadata-grid .span-3 { grid-column: 1 / -1; }
       .contents-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); }
     }
-	    @media (max-width: 620px) {
+    @media (max-width: 620px) {
       :root { --shell: calc(100vw - 24px); }
       .builder-app { padding-top: 6px; }
       .builder-toolbar {
@@ -2040,6 +2332,74 @@
       .modal-panel { width: calc(100vw - 16px); max-height: calc(100vh - 16px); box-shadow: 7px 7px 0 var(--black); }
       .modal-header { padding: 10px 12px; }
       .modal-body { padding: 12px; }
+    }
+    @media (max-width: 760px) {
+      .demo-start-screen { padding: 12px; overflow: hidden; }
+      .demo-start-card {
+        width: calc(100vw - 36px);
+        max-width: 25rem;
+        padding: 16px;
+      }
+      .demo-start-card h2,
+      .demo-start-card p { overflow-wrap: anywhere; }
+      .tutorial-body.is-demo-cover { padding: 8px; }
+      .tutorial-body.is-demo-cover .stage-wrap,
+      .tutorial-body.is-demo-cover .slide-sidebar { width: 100%; }
+      .tutorial-body.is-demo-centered-slide { display: block; padding: 8px 0; }
+      .tutorial-body.is-demo-centered-slide .stage-wrap {
+        width: calc(100% - 16px);
+        padding: 0;
+      }
+      .tutorial-body.is-demo-centered-slide .slide-sidebar.is-demo-popup {
+        position: absolute;
+        width: min(var(--popup-width, 300px), calc(100% - 24px));
+        min-width: min(72vw, 260px);
+        max-width: calc(100% - 24px);
+        max-height: 46%;
+        margin: 0;
+      }
+      .tutorial-body.is-demo-centered-slide .slide-sidebar.is-demo-popup.is-custom-position {
+        left: 50%;
+        top: clamp(28%, var(--popup-y), 68%);
+        right: auto;
+        bottom: auto;
+      }
+      body[data-demo-player="true"] .builder-app {
+        padding-top: calc(90px + .25rem);
+        padding-bottom: calc(116px + env(safe-area-inset-bottom));
+      }
+      body[data-demo-embed="true"] .builder-app { padding-top: 4px; }
+      body[data-demo-player="true"] .tutorial-title {
+        min-height: 44px;
+        padding: 6px 10px;
+        font-size: clamp(19px, 6vw, 30px);
+      }
+      body[data-demo-player="true"] .demo-playback-controls {
+        left: 12px;
+        width: calc(100vw - 24px);
+        grid-template-columns: minmax(0, 1fr) minmax(0, 1fr);
+        gap: 5px;
+        padding: 6px;
+        transform: none;
+      }
+      body[data-demo-player="true"] .demo-playback-controls button {
+        width: 100%;
+        min-width: 0;
+        padding-inline: 4px;
+        font-size: 11px;
+      }
+      body[data-demo-player="true"] .demo-playback-progress { min-width: 0; }
+      body[data-demo-player="true"] .demo-playback-progress,
+      body[data-demo-player="true"] .demo-playback-status { grid-column: 1 / -1; }
+      body[data-demo-player="true"] .demo-playback-status { text-align: center; }
+      body[data-demo-player="true"] .demo-step-nav { margin-top: 4px; }
+      body[data-demo-player="true"] button.demo-step-button,
+      body[data-demo-player="true"] button.demo-step-button img {
+        width: 36px;
+        min-width: 36px;
+        height: 36px;
+        min-height: 36px;
+      }
     }
     @media (prefers-reduced-motion: reduce) {
       *, *::before, *::after { scroll-behavior: auto !important; transition: none !important; animation: none !important; }
@@ -2178,6 +2538,8 @@
     const SITE_HEADER_LOGO_URL = "https://iridescent-wisp-57bcb1.netlify.app/images/mhnavlogo.png";
     const MODE = document.body.dataset.mode === "player" ? "player" : "builder";
     const IS_DEMO_PLAYER = MODE === "player" && document.body.dataset.demoPlayer === "true";
+    const IS_DEMO_EMBED = IS_DEMO_PLAYER && (new URLSearchParams(location.search).get("embed") === "1" || window.self !== window.top);
+    document.body.dataset.demoEmbed = String(IS_DEMO_EMBED);
     const PUBLIC_ANNOTATION_ASSET_ROOT = "https://iridescent-wisp-57bcb1.netlify.app/images/tutorial-annotations/";
     // Builder and player deliberately use the same hosted artwork. A local-file
     // substitution can make the builder look healthy while an export is broken.
@@ -2186,6 +2548,8 @@
     const AUDIO_PAUSE_IMAGE = annotationAssetUrl("pause-audio-annotation.gif");
     const VIDEO_ANNOTATION_IMAGE = annotationAssetUrl("play-video-annotation.png");
     const LINK_ANNOTATION_IMAGE = annotationAssetUrl("link-interactive.png");
+    const HOTSPOT_LEFT_IMAGE = annotationAssetUrl("left.png");
+    const HOTSPOT_RIGHT_IMAGE = annotationAssetUrl("right.png");
     const storagePageUrl = new URL(location.href);
     storagePageUrl.hash = "";
     const LEGACY_STORAGE_KEY = `tutorial-builder-v3::${storagePageUrl.href}`;
@@ -2296,10 +2660,12 @@
     let toastTimer = 0;
     let hotspotAttentionTimer = 0;
     let drag = null;
+    let popupDrag = null;
     let multiSelection = [];
     let lastVideoTriggerId = null;
     let lastMixedBodySelection = null;
     let saveTimer = 0;
+    let mainMediaPreviewTimer = 0;
     let undoStack = [];
     let committedSnapshot = "";
     let demoTimer = 0;
@@ -2534,6 +2900,8 @@
     }
 
     function normalizeHotspot(item, index) {
+      const hasPopupX = item?.popupX !== null && item?.popupX !== undefined && item?.popupX !== "" && Number.isFinite(Number(item.popupX));
+      const hasPopupY = item?.popupY !== null && item?.popupY !== undefined && item?.popupY !== "" && Number.isFinite(Number(item.popupY));
       return {
         id: item?.id || uid("hotspot"),
         title: String(item?.title || `HOTSPOT ${index + 1}`),
@@ -2549,12 +2917,14 @@
         locked: Boolean(item?.locked),
         hotspotGroupId: String(item?.hotspotGroupId || ""),
         rotation: clamp(item?.rotation, -180, 180),
+        popupX: hasPopupX && hasPopupY ? clamp(Number(item.popupX), 2, 98) : null,
+        popupY: hasPopupX && hasPopupY ? clamp(Number(item.popupY), 2, 98) : null,
         markerStyle: "number-box"
       };
     }
 
     function normalizeAnnotation(item, index) {
-      const type = ["shape", "image", "gif", "video", "audio", "link", "text", "markup", "cover", "blur"].includes(item?.type)
+      const type = ["shape", "image", "gif", "video", "audio", "link", "text", "slide-intro", "markup", "cover", "blur"].includes(item?.type)
         ? item.type : "image";
       const markup = normalizeMarkupKind(item?.markup);
       return {
@@ -2564,6 +2934,10 @@
         src: String(item?.src || ""),
         url: normalizeHostedAnnotationUrl(type, item?.url),
         text: String(item?.text || (type === "text" ? "new note" : "")),
+        introTitle: String(item?.introTitle || (type === "slide-intro" ? "SLIDE INTRODUCTION" : "")),
+        introBody: normalizeMixedBodyValue(String(item?.introBody || (type === "slide-intro" ? "Add the introductory text for this slide." : "")), item?.introBodyListStyle),
+        introBodyListStyle: "",
+        introAlign: item?.introAlign === "center" ? "center" : "left",
         textStyle: item?.textStyle === "bold"
           ? "italic"
           : (["regular", "italic", "hand"].includes(item?.textStyle) ? item.textStyle : "regular"),
@@ -2577,8 +2951,8 @@
           : null,
         x: clamp(item?.x ?? 50, 3, 97),
         y: clamp(item?.y ?? 48, 3, 97),
-        w: clamp(item?.w ?? (type === "audio" ? 30 : 18), 5, 90),
-        h: clamp(item?.h ?? (type === "audio" ? 30 : ["cover", "blur"].includes(type) ? 30 : 16), 4, 90),
+        w: clamp(item?.w ?? (type === "audio" ? 30 : type === "slide-intro" ? 38 : 18), 5, 90),
+        h: clamp(item?.h ?? (type === "audio" ? 30 : ["cover", "blur"].includes(type) ? 30 : type === "slide-intro" ? 18 : 16), 4, 90),
         z: Number.isFinite(item?.z) ? item.z : index + 50,
         opacity: clamp(item?.opacity ?? 1, .1, 1),
         locked: Boolean(item?.locked),
@@ -2644,6 +3018,14 @@
 
     function activeHotspot() {
       return currentSlide()?.hotspots.find((item) => item.id === state.ui.activeHotspotId) || null;
+    }
+
+    function slideIntroCard(slide = currentSlide()) {
+      return slide?.annotations.find((item) => item.type === "slide-intro") || null;
+    }
+
+    function isSlideIntroState(slide = currentSlide()) {
+      return Boolean(slideIntroCard(slide)) && !slide.hotspots.some((item) => item.id === state.ui.activeHotspotId);
     }
 
     function selectedObject() {
@@ -2810,8 +3192,8 @@
       state.tutorial = previous.tutorial;
       normalizeState();
       const slide = currentSlide();
-      if (!slide.hotspots.some((item) => item.id === state.ui.activeHotspotId)) {
-        state.ui.activeHotspotId = slide.hotspots[0]?.id || null;
+      if (!isSlideIntroState(slide) && !slide.hotspots.some((item) => item.id === state.ui.activeHotspotId)) {
+        state.ui.activeHotspotId = slideIntroCard(slide) ? null : slide.hotspots[0]?.id || null;
       }
       const selectedStillExists = state.ui.selectedKind === "hotspot"
         ? slide.hotspots.some((item) => item.id === state.ui.selectedId)
@@ -2893,6 +3275,10 @@
       return /^\s*\|(?:\s|$)/.test(line);
     }
 
+    function isNumberedBodyLine(line) {
+      return /^\s*\d+[.)](?:\s|$)/.test(line);
+    }
+
     function normalizeMixedBodyValue(value, legacyListStyle = "") {
       const normalized = String(value || "").replace(/\r/g, "");
       if (legacyListStyle !== "pipe") return normalized;
@@ -2906,20 +3292,30 @@
       return String(value || "")
         .replace(/\r/g, "")
         .split("\n")
-        .map((line) => ({
-          pipe: isPipeBodyLine(line),
-          text: isPipeBodyLine(line) ? line.replace(/^\s*\|\s?/, "") : line
-        }));
+        .map((line) => {
+          const kind = isPipeBodyLine(line) ? "pipe" : isNumberedBodyLine(line) ? "numbered" : "plain";
+          const text = kind === "pipe"
+            ? line.replace(/^\s*\|\s?/, "")
+            : kind === "numbered"
+              ? line.replace(/^\s*\d+[.)]\s?/, "")
+              : line;
+          return { kind, pipe: kind === "pipe", numbered: kind === "numbered", text };
+        });
     }
 
     function bodyHasPipeLines(value) {
       return mixedBodyLines(value).some((line) => line.pipe);
     }
 
+    function bodyHasNumberedLines(value) {
+      return mixedBodyLines(value).some((line) => line.numbered);
+    }
+
     function renderMixedBodyContent(value) {
       const blocks = [];
       let paragraphs = [];
       let bullets = [];
+      let numbered = [];
       const flushParagraph = () => {
         if (!paragraphs.length) return;
         blocks.push(`<p>${paragraphs.map((line) => escapeHtml(line)).join("<br>")}</p>`);
@@ -2930,14 +3326,27 @@
         blocks.push(`<ul class="pipe-list">${bullets.map((line) => `<li>${escapeHtml(line)}</li>`).join("")}</ul>`);
         bullets = [];
       };
+      const flushNumbered = () => {
+        if (!numbered.length) return;
+        blocks.push(`<ol class="numbered-list">${numbered.map((line) => `<li>${escapeHtml(line)}</li>`).join("")}</ol>`);
+        numbered = [];
+      };
 
       mixedBodyLines(value).forEach((line) => {
         if (line.pipe) {
           flushParagraph();
+          flushNumbered();
           bullets.push(line.text);
           return;
         }
+        if (line.numbered) {
+          flushParagraph();
+          flushBullets();
+          numbered.push(line.text);
+          return;
+        }
         flushBullets();
+        flushNumbered();
         if (line.text) {
           paragraphs.push(line.text);
         } else {
@@ -2946,17 +3355,23 @@
       });
       flushParagraph();
       flushBullets();
+      flushNumbered();
       return blocks.join("");
     }
 
-    function renderPipeToggle(action, id, active, label) {
+    function renderBodyFormatBar(pipeAction, numberedAction, id, pipeActive, numberedActive) {
       if (MODE !== "builder") return "";
       return `
         <div class="body-format-bar">
-          <button class="pipe-list-toggle ${active ? "is-active" : ""}" type="button"
-            data-action="${action}" data-id="${id}" aria-pressed="${active}"
+          <button class="body-list-toggle pipe-list-toggle ${pipeActive ? "is-active" : ""}" type="button"
+            data-list-kind="pipe" data-action="${pipeAction}" data-id="${id}" aria-pressed="${pipeActive}"
             title="Toggle pipe bullets for the current or selected lines">
-            <span class="pipe-list-toggle__mark" aria-hidden="true">|</span>${label}
+            <span class="pipe-list-toggle__mark" aria-hidden="true">|</span>Pipe bullets
+          </button>
+          <button class="body-list-toggle numbered-list-toggle ${numberedActive ? "is-active" : ""}" type="button"
+            data-list-kind="numbered" data-action="${numberedAction}" data-id="${id}" aria-pressed="${numberedActive}"
+            title="Toggle a numbered list for the current or selected lines">
+            <span class="pipe-list-toggle__mark" aria-hidden="true">1.</span>Numbered
           </button>
         </div>
       `;
@@ -2970,7 +3385,8 @@
           const placeholderAttribute = lines.length === 1 && !line.text
             ? ` data-placeholder="${escapeHtml(placeholder)}"`
             : "";
-          return `<div class="mixed-body-line ${line.pipe ? "is-pipe" : ""}" data-pipe="${line.pipe}"${placeholderAttribute}>${escapeHtml(line.text)}</div>`;
+          const listClass = line.kind === "pipe" ? "is-pipe" : line.kind === "numbered" ? "is-numbered" : "";
+          return `<div class="mixed-body-line ${listClass}" data-list-kind="${line.kind}" data-pipe="${line.pipe}"${placeholderAttribute}>${escapeHtml(line.text)}</div>`;
         }).join("");
         return `<div class="${className} mixed-body-editor" contenteditable="true" role="textbox" aria-multiline="true" aria-label="${escapeHtml(label)}" data-bind="${binding}">${content}</div>`;
       }
@@ -3052,19 +3468,51 @@
 	      `;
 	    }
 
+    function isDemoCoverSlide() {
+      return state.ui.slideIndex === 0;
+    }
+
+    function isDemoCenteredSlide(slide = currentSlide()) {
+      return state.ui.slideIndex > 0 && slide?.kind !== "cover";
+    }
+
+    function demoPopupClasses(slide) {
+      const hotspot = slide.hotspots.find((item) => item.id === state.ui.activeHotspotId);
+      if (!hotspot) return "is-demo-popup is-empty";
+      if (Number.isFinite(hotspot.popupX) && Number.isFinite(hotspot.popupY)) return "is-demo-popup is-custom-position";
+      const horizontal = hotspot.x <= 50 ? "demo-popup-right" : "demo-popup-left";
+      const vertical = hotspot.y <= 50 ? "demo-popup-bottom" : "demo-popup-top";
+      return `is-demo-popup ${horizontal} ${vertical}`;
+    }
+
+    function demoPopupStyle(slide) {
+      const hotspot = slide.hotspots.find((item) => item.id === state.ui.activeHotspotId);
+      if (!hotspot) return "";
+      const longestLine = Math.max(
+        String(hotspot.title || "").length,
+        ...String(hotspot.body || "").replace(/\r/g, "").split("\n").map((line) => line.replace(/^\s*(?:\||\d+[.)])\s?/, "").length)
+      );
+      const popupWidth = clamp(Math.round(205 + longestLine * 5.2), 245, 440);
+      const position = Number.isFinite(hotspot.popupX) && Number.isFinite(hotspot.popupY)
+        ? `;--popup-x:${hotspot.popupX}%;--popup-y:${hotspot.popupY}%`
+        : "";
+      return ` style="--popup-width:${popupWidth}px${position}"`;
+    }
+
     function render() {
       syncObjectSelection();
       const slide = currentSlide();
       const selected = selectedObject();
+      const coverSlide = isDemoCoverSlide();
+      const centeredSlide = isDemoCenteredSlide(slide);
       root.innerHTML = `
-	        <div class="builder-app">
-	          ${MODE === "player" && !IS_DEMO_PLAYER ? renderSiteHeader() : ""}
+	        <div class="builder-app ${coverSlide ? "has-demo-cover" : ""} ${centeredSlide ? "has-demo-centered-slide" : ""}">
+	          ${MODE === "player" && (!IS_DEMO_PLAYER || !IS_DEMO_EMBED) ? renderSiteHeader() : ""}
 	          ${MODE === "builder" ? renderToolbar(slide, selected) : ""}
-	          ${MODE === "player" && !IS_DEMO_PLAYER ? renderTutorialPageLinks() : ""}
-	          <main class="tutorial-shell" aria-label="Interactive tutorial">
-            <div class="tutorial-title" ${MODE === "builder" ? 'contenteditable="true" role="textbox" aria-label="Tutorial title" data-bind="tutorial.title"' : ""} data-placeholder="TUTORIAL TITLE">${escapeHtml(state.tutorial.title)}</div>
-            <div class="tutorial-body ${slide.kind === "video" ? "is-video" : ""}">
-              ${slide.kind === "video" ? "" : renderSidebar(slide)}
+	          <main class="tutorial-shell ${coverSlide ? "is-demo-cover" : ""} ${centeredSlide ? "is-demo-centered-slide" : ""}" aria-label="Interactive demo">
+            ${coverSlide ? `<div class="tutorial-title" ${MODE === "builder" ? 'contenteditable="true" role="textbox" aria-label="Demo title" data-bind="tutorial.title"' : ""} data-placeholder="DEMO TITLE">${escapeHtml(state.tutorial.title)}</div>` : ""}
+            <div class="tutorial-body ${slide.kind === "video" ? "is-video" : ""} ${coverSlide ? "is-demo-cover" : ""} ${centeredSlide ? "is-demo-centered-slide" : ""}">
+              ${slide.kind === "video" || coverSlide ? "" : renderSidebar(slide)}
               ${renderStage(slide)}
             </div>
             ${renderReaderNav()}
@@ -3085,6 +3533,7 @@
       const selectedMarkup = state.ui.selectedKind === "annotation" && selected?.type === "markup" ? selected : null;
       const selectedCover = state.ui.selectedKind === "annotation" && selected?.type === "cover" ? selected : null;
       const selectedBlur = state.ui.selectedKind === "annotation" && selected?.type === "blur" ? selected : null;
+      const introCard = slideIntroCard(slide);
       const coverColor = selectedCover?.fillColor || "#ffffff";
       const blurStrength = selectedBlur?.blurStrength || 12;
       const selection = selectedObjects();
@@ -3178,6 +3627,11 @@
                 <button class="text-style-button text-style-button--italic" type="button" data-action="add-text" data-style="italic" title="Add italic text" aria-label="Add italic text">Tt</button>
                 <button class="text-style-button text-style-button--hand" type="button" data-action="add-text" data-style="hand" title="Add handwritten text" aria-label="Add handwritten text">Tt</button>
               </div>
+              <button type="button" data-action="add-slide-intro" title="${introCard ? "Open this slide's intro card for editing" : "Add an intro card shown before hotspot 1"}">${introCard ? "Edit Intro Card" : "Add Intro Card"}</button>
+              <div class="text-style-buttons" role="group" aria-label="Intro card text alignment">
+                <button type="button" data-action="set-intro-align" data-value="left" class="${introCard?.introAlign !== "center" ? "is-active" : ""}" ${introCard ? "" : "disabled"}>Left</button>
+                <button type="button" data-action="set-intro-align" data-value="center" class="${introCard?.introAlign === "center" ? "is-active" : ""}" ${introCard ? "" : "disabled"}>Center</button>
+              </div>
             </div>
           </div>
           <div class="tool-group">
@@ -3191,11 +3645,17 @@
 
     function renderSidebar(slide) {
       const descriptionUsesPipes = bodyHasPipeLines(slide.description);
+      const descriptionUsesNumbers = bodyHasNumberedLines(slide.description);
+      const sidebarClasses = isDemoCenteredSlide(slide)
+        ? `slide-sidebar ${demoPopupClasses(slide)}`
+        : "slide-sidebar";
+      const activeHotspot = slide.hotspots.find((item) => item.id === state.ui.activeHotspotId);
       return `
-        <aside class="slide-sidebar">
+        <aside class="${sidebarClasses}"${isDemoCenteredSlide(slide) ? demoPopupStyle(slide) : ""}>
+          ${MODE === "builder" && isDemoCenteredSlide(slide) && activeHotspot ? `<div class="demo-popup-drag-handle" data-popup-drag-handle data-id="${activeHotspot.id}" title="Drag to position this hotspot text box">↕ Drag text box</div>` : ""}
           <div class="editable-box slide-sidebar__title" ${MODE === "builder" ? `contenteditable="true" role="textbox" aria-label="Slide title" data-bind="slide.title:${slide.id}"` : ""} data-placeholder="SLIDE TITLE">${escapeHtml(slide.title)}</div>
           <div class="body-field">
-            ${renderPipeToggle("toggle-slide-pipe-list", slide.id, descriptionUsesPipes, "Pipe bullets")}
+            ${renderBodyFormatBar("toggle-slide-pipe-list", "toggle-slide-numbered-list", slide.id, descriptionUsesPipes, descriptionUsesNumbers)}
             ${renderBody(slide.description, {
               className: "editable-box slide-sidebar__description",
               binding: `slide.description:${slide.id}`,
@@ -3247,7 +3707,7 @@
       }
       return `
         <div class="hotspot-detail-panel" id="${detailId}" aria-live="polite">
-          ${renderPipeToggle("toggle-hotspot-pipe-list", hotspot.id, bodyHasPipeLines(hotspot.body), "Pipe bullets")}
+          ${renderBodyFormatBar("toggle-hotspot-pipe-list", "toggle-hotspot-numbered-list", hotspot.id, bodyHasPipeLines(hotspot.body), bodyHasNumberedLines(hotspot.body))}
           ${detail}
         </div>
       `;
@@ -3266,11 +3726,27 @@
             ${slide.annotations.slice().sort((a,b) => a.z - b.z).filter(isVisibleForActiveHotspot).map(renderAnnotation).join("")}
             ${slide.hotspots.map((hotspot, index) => isHotspotVisibleForActiveState(hotspot, slide) ? renderHotspot(hotspot, index) : "").join("")}
           </div>
+          ${slide.hotspots.length || slideIntroCard(slide) ? renderDemoHotspotNav(slide) : ""}
         </div>
       `;
     }
 
+    function renderDemoHotspotNav(slide) {
+      if (!slide.hotspots.length && !slideIntroCard(slide)) return "";
+      const activeIndex = slide.hotspots.findIndex((item) => item.id === state.ui.activeHotspotId);
+      const current = isSlideIntroState(slide) ? 0 : Math.max(1, activeIndex + 1);
+      const arrowImage = (src, fallback) => `<img src="${escapeHtml(src)}" alt="" onerror="this.hidden=true;this.nextElementSibling.hidden=false"><span class="demo-step-fallback" hidden aria-hidden="true">${fallback}</span>`;
+      return `
+        <nav class="demo-step-nav" aria-label="Hotspot navigation">
+          <button class="demo-step-button" type="button" data-action="reader-back" aria-label="Previous hotspot or slide" ${atBeginning() ? "disabled" : ""}>${arrowImage(HOTSPOT_LEFT_IMAGE, "←")}</button>
+          <span class="demo-step-count" aria-live="polite">${isSlideIntroState(slide) ? "Intro" : `${current} of ${slide.hotspots.length}`}</span>
+          <button class="demo-step-button" type="button" data-action="reader-next" aria-label="Next hotspot or slide" ${atEnd() ? "disabled" : ""}>${arrowImage(HOTSPOT_RIGHT_IMAGE, "→")}</button>
+        </nav>
+      `;
+    }
+
     function isHotspotVisibleForActiveState(hotspot, slide = currentSlide()) {
+      if (isSlideIntroState(slide)) return false;
       const activeId = slide.hotspots.some((item) => item.id === state.ui.activeHotspotId)
         ? state.ui.activeHotspotId
         : slide.hotspots[0]?.id || null;
@@ -3278,6 +3754,7 @@
     }
 
     function isVisibleForActiveHotspot(item) {
+      if (item.type === "slide-intro") return isSlideIntroState();
       if (currentSlide()?.kind === "video") return true;
       return !item.hotspotGroupId || item.locked || item.hotspotGroupId === state.ui.activeHotspotId;
     }
@@ -3335,6 +3812,19 @@
       let content = "";
       if (["shape","image","gif"].includes(annotation.type)) {
         content = `<div class="object-frame annotation-asset-frame">${renderAnnotationAssetImage(annotation.src, annotation.label || "Annotation", "lazy")}</div>`;
+      } else if (annotation.type === "slide-intro") {
+        content = `<div class="object-frame slide-intro-card">
+          <div class="slide-intro-card__title" ${MODE === "builder" ? `contenteditable="true" role="textbox" aria-label="Slide intro title" data-bind="annotation.introTitle:${annotation.id}"` : ""}>${escapeHtml(annotation.introTitle)}</div>
+          <div class="slide-intro-card__body-field">
+            ${renderBodyFormatBar("toggle-intro-pipe-list", "toggle-intro-numbered-list", annotation.id, bodyHasPipeLines(annotation.introBody), bodyHasNumberedLines(annotation.introBody))}
+            ${renderBody(annotation.introBody, {
+              className: "slide-intro-card__body",
+              binding: `annotation.introBody:${annotation.id}`,
+              label: "Slide intro body",
+              placeholder: "Add the introductory text for this slide."
+            })}
+          </div>
+        </div>`;
       } else if (annotation.type === "cover") {
         content = `<div class="object-frame" role="img" aria-label="${escapeHtml(annotation.label || "Cover area")}"></div>`;
       } else if (annotation.type === "blur") {
@@ -3362,7 +3852,7 @@
         </div>`;
       }
       return `
-        <div class="${classes}" data-object data-kind="annotation" data-id="${annotation.id}" data-text-style="${annotation.textStyle}" ${annotation.type === "markup" ? `data-markup-kind="${escapeHtml(annotation.markup)}"` : ""} ${annotation.type === "video" ? `role="button" tabindex="0" aria-label="Open ${escapeHtml(annotation.label || "video")}"` : ""} ${MODE === "builder" && annotation.type === "video" ? 'title="Click once to select; click the selected video again to preview"' : ""} style="${objectStyle(annotation)}">
+        <div class="${classes}" data-object data-kind="annotation" data-id="${annotation.id}" data-text-style="${annotation.textStyle}" ${annotation.type === "slide-intro" ? `data-intro-align="${escapeHtml(annotation.introAlign)}"` : ""} ${annotation.type === "markup" ? `data-markup-kind="${escapeHtml(annotation.markup)}"` : ""} ${annotation.type === "video" ? `role="button" tabindex="0" aria-label="Open ${escapeHtml(annotation.label || "video")}"` : ""} ${MODE === "builder" && annotation.type === "video" ? 'title="Click once to select; click the selected video again to preview"' : ""} style="${objectStyle(annotation)}">
           ${content}
           ${primary && !annotation.locked ? renderHandles(annotation) : ""}
         </div>
@@ -3393,7 +3883,7 @@
     }
 
     function renderHandles(item = null) {
-      const resizeHandles = ["markup", "cover", "blur"].includes(item?.type)
+      const resizeHandles = ["markup", "cover", "blur", "slide-intro"].includes(item?.type)
         ? ["nw","n","ne","e","se","s","sw","w"]
         : ["nw","ne","sw","se"];
       const resize = resizeHandles.map((handle) => `<span class="resize-handle" data-handle="${handle}" aria-hidden="true"></span>`).join("");
@@ -3873,6 +4363,7 @@
       root.addEventListener("click", onClick);
       root.addEventListener("change", onChange);
       root.addEventListener("input", onInput);
+      root.addEventListener("focusin", onFocusIn);
       root.addEventListener("focusout", onFocusOut);
       root.addEventListener("pointerdown", onPointerDown);
       root.addEventListener("dblclick", onDoubleClick);
@@ -3953,7 +4444,7 @@
           activateHotspotForEditing(binding.split(":")[1]);
         } else if (binding.startsWith("hotspot.body:")) {
           drawAttentionToHotspot(binding.split(":")[1], false);
-        } else if (binding.startsWith("annotation.text:")) {
+        } else if (binding.startsWith("annotation.text:") || binding.startsWith("annotation.introTitle:") || binding.startsWith("annotation.introBody:")) {
           activateAnnotationForEditing(binding.split(":")[1]);
         }
         return;
@@ -3992,8 +4483,14 @@
         "distribute-horizontal": () => arrangeSelected("horizontal"),
         "distribute-vertical": () => arrangeSelected("vertical"),
         "toggle-slide-pipe-list": () => toggleSlidePipeList(id, actionNode),
+        "toggle-slide-numbered-list": () => toggleSlideNumberedList(id, actionNode),
         "toggle-hotspot-pipe-list": () => toggleHotspotPipeList(id, actionNode),
+        "toggle-hotspot-numbered-list": () => toggleHotspotNumberedList(id, actionNode),
+        "toggle-intro-pipe-list": () => toggleIntroBodyList(id, actionNode, "pipe"),
+        "toggle-intro-numbered-list": () => toggleIntroBodyList(id, actionNode, "numbered"),
         "add-text": () => addText(actionNode.dataset.style),
+        "add-slide-intro": addSlideIntro,
+        "set-intro-align": () => setSlideIntroAlign(actionNode.dataset.value),
         "add-cover": addCoverAnnotation,
         "add-blur": addBlurAnnotation,
         "reset-builder": resetBuilder,
@@ -4102,15 +4599,30 @@
           && lastMixedBodySelection.lines.every((line) => line.isConnected)) {
         return lastMixedBodySelection.lines;
       }
-      return lines;
+      return [lines[0]];
     }
 
-    function updatePipeToggleState(editor, lines = selectedMixedBodyLines(editor, false)) {
-      const button = editor?.closest(".body-field, .hotspot-detail-panel")?.querySelector(".pipe-list-toggle");
-      if (!button || !lines.length) return;
-      const active = lines.every((line) => line.dataset.pipe === "true");
-      button.classList.toggle("is-active", active);
-      button.setAttribute("aria-pressed", String(active));
+    function lineListKind(line) {
+      if (line?.dataset.listKind) return line.dataset.listKind;
+      return line?.dataset.pipe === "true" ? "pipe" : "plain";
+    }
+
+    function setLineListKind(line, kind) {
+      if (!line) return;
+      line.dataset.listKind = kind;
+      line.dataset.pipe = String(kind === "pipe");
+      line.classList.toggle("is-pipe", kind === "pipe");
+      line.classList.toggle("is-numbered", kind === "numbered");
+    }
+
+    function updateBodyListToggleState(editor, lines = selectedMixedBodyLines(editor, false)) {
+      if (!editor || !lines.length) return;
+      const container = editor.closest(".body-field, .hotspot-detail-panel, .slide-intro-card__body-field");
+      container?.querySelectorAll(".body-list-toggle").forEach((button) => {
+        const active = lines.every((line) => lineListKind(line) === button.dataset.listKind);
+        button.classList.toggle("is-active", active);
+        button.setAttribute("aria-pressed", String(active));
+      });
     }
 
     function rememberMixedBodySelection() {
@@ -4124,27 +4636,25 @@
       const lines = selectedMixedBodyLines(editor, false);
       if (!lines.length) return;
       lastMixedBodySelection = { editor, lines };
-      updatePipeToggleState(editor, lines);
+      updateBodyListToggleState(editor, lines);
     }
 
-    function toggleMixedBodyPipeLines(editor, button) {
+    function toggleMixedBodyListLines(editor, button, kind) {
       if (!editor) return false;
       const lines = selectedMixedBodyLines(editor);
       if (!lines.length) return false;
-      const makePipe = !lines.every((line) => line.dataset.pipe === "true");
-      lines.forEach((line) => {
-        line.dataset.pipe = String(makePipe);
-        line.classList.toggle("is-pipe", makePipe);
-      });
+      const makeList = !lines.every((line) => lineListKind(line) === kind);
+      lines.forEach((line) => setLineListKind(line, makeList ? kind : "plain"));
       lastMixedBodySelection = { editor, lines };
-      updatePipeToggleState(editor, lines);
+      updateBodyListToggleState(editor, lines);
       editor.dispatchEvent(new Event("input", { bubbles: true }));
       editor.focus({ preventScroll: true });
       if (button) {
-        button.classList.toggle("is-active", makePipe);
-        button.setAttribute("aria-pressed", String(makePipe));
+        button.classList.toggle("is-active", makeList);
+        button.setAttribute("aria-pressed", String(makeList));
       }
-      commit(makePipe ? "Added pipe bullets to the selected lines." : "Changed the selected lines to paragraphs.", false);
+      const listLabel = kind === "numbered" ? "numbered list" : "pipe bullets";
+      commit(makeList ? `Added ${listLabel} to the selected lines.` : "Changed the selected lines to paragraphs.", false);
       return true;
     }
 
@@ -4152,7 +4662,14 @@
       const slide = currentSlide();
       if (!slide || slide.id !== id) return;
       const editor = button?.closest(".body-field")?.querySelector(".mixed-body-editor");
-      if (toggleMixedBodyPipeLines(editor, button)) slide.descriptionListStyle = "";
+      if (toggleMixedBodyListLines(editor, button, "pipe")) slide.descriptionListStyle = "";
+    }
+
+    function toggleSlideNumberedList(id, button) {
+      const slide = currentSlide();
+      if (!slide || slide.id !== id) return;
+      const editor = button?.closest(".body-field")?.querySelector(".mixed-body-editor");
+      if (toggleMixedBodyListLines(editor, button, "numbered")) slide.descriptionListStyle = "";
     }
 
     function toggleHotspotPipeList(id, button) {
@@ -4163,7 +4680,27 @@
       state.ui.selectedKind = "hotspot";
       state.ui.selectedId = id;
       const editor = button?.closest(".hotspot-detail-panel")?.querySelector(".mixed-body-editor");
-      if (toggleMixedBodyPipeLines(editor, button)) hotspot.bodyListStyle = "";
+      if (toggleMixedBodyListLines(editor, button, "pipe")) hotspot.bodyListStyle = "";
+    }
+
+    function toggleHotspotNumberedList(id, button) {
+      const hotspot = currentSlide().hotspots.find((item) => item.id === id);
+      if (!hotspot) return;
+      if (state.ui.activeHotspotId !== id) stopAudio();
+      state.ui.activeHotspotId = id;
+      state.ui.selectedKind = "hotspot";
+      state.ui.selectedId = id;
+      const editor = button?.closest(".hotspot-detail-panel")?.querySelector(".mixed-body-editor");
+      if (toggleMixedBodyListLines(editor, button, "numbered")) hotspot.bodyListStyle = "";
+    }
+
+    function toggleIntroBodyList(id, button, kind) {
+      const intro = slideIntroCard();
+      if (!intro || intro.id !== id) return;
+      state.ui.selectedKind = "annotation";
+      state.ui.selectedId = id;
+      const editor = button?.closest(".slide-intro-card__body-field")?.querySelector(".mixed-body-editor");
+      if (toggleMixedBodyListLines(editor, button, kind)) intro.introBodyListStyle = "";
     }
 
     function activateAnnotationForEditing(id) {
@@ -4253,7 +4790,8 @@
         }
       }
       if (target.id === "mainMediaUrl") {
-        currentSlide().media.url = target.value.trim() === mediaBase() ? "" : target.value.trim();
+        const value = normalizeMainMediaInput(target);
+        currentSlide().media.url = value === mediaBase() ? "" : value;
         currentSlide().media.type = currentSlide().kind === "video" ? "video" : detectMediaType(target.value);
         refreshMainMediaLayer();
         commit("Updated the slide media URL.", false);
@@ -4299,9 +4837,11 @@
         return;
       }
       if (target.id === "mainMediaUrl") {
-        const value = target.value.trim();
+        const value = normalizeMainMediaInput(target);
         currentSlide().media.url = value === mediaBase() ? "" : value;
         currentSlide().media.type = currentSlide().kind === "video" ? "video" : detectMediaType(value);
+        window.clearTimeout(mainMediaPreviewTimer);
+        mainMediaPreviewTimer = window.setTimeout(refreshMainMediaLayer, 180);
         scheduleSave();
         return;
       }
@@ -4395,12 +4935,18 @@
       if (!editable) return;
       const binding = editable.dataset.bind || "";
       const value = editable.classList.contains("mixed-body-editor")
-        ? Array.from(editable.querySelectorAll(":scope > .mixed-body-line"))
+        ? (() => {
+          let numberedIndex = 0;
+          return Array.from(editable.querySelectorAll(":scope > .mixed-body-line"))
           .map((line) => {
             const text = line.innerText.replace(/\r/g, "").replace(/\n+$/, "");
-            return line.dataset.pipe === "true" ? `| ${text}` : text;
+            const kind = lineListKind(line);
+            if (kind === "numbered") return `${++numberedIndex}. ${text}`;
+            numberedIndex = 0;
+            return kind === "pipe" ? `| ${text}` : text;
           })
-          .join("\n")
+          .join("\n");
+        })()
         : editable.innerText.replace(/\n+$/, "");
       if (binding === "tutorial.title") {
         const previousMediaBase = mediaBase();
@@ -4426,6 +4972,32 @@
         const item = currentSlide().annotations.find((annotation) => annotation.id === binding.split(":")[1]);
         if (item) item.text = value;
         scheduleSave();
+      } else if (binding.startsWith("annotation.introTitle:")) {
+        const item = currentSlide().annotations.find((annotation) => annotation.id === binding.split(":")[1]);
+        if (item?.type === "slide-intro") item.introTitle = value;
+        scheduleSave();
+      } else if (binding.startsWith("annotation.introBody:")) {
+        const item = currentSlide().annotations.find((annotation) => annotation.id === binding.split(":")[1]);
+        if (item?.type === "slide-intro") item.introBody = value;
+        scheduleSave();
+      }
+    }
+
+    function normalizeMainMediaInput(target) {
+      let value = target.value.trim();
+      const base = mediaBase();
+      const appended = value.slice(base.length);
+      if (value.startsWith(base) && /^https?:\/\//i.test(appended)) {
+        value = appended;
+        target.value = value;
+      }
+      return value;
+    }
+
+    function onFocusIn(event) {
+      const target = event.target;
+      if (target.id === "mainMediaUrl" && !currentSlide().media.url && target.value === mediaBase()) {
+        target.select();
       }
     }
 
@@ -4465,7 +5037,33 @@
     }
 
     function onPointerDown(event) {
-      if (MODE !== "builder" || event.button !== 0 || event.target.closest("button,[contenteditable=true],input,select,textarea")) return;
+      if (MODE !== "builder" || event.button !== 0) return;
+      const popupHandle = event.target.closest("[data-popup-drag-handle]");
+      if (popupHandle) {
+        const popup = popupHandle.closest(".slide-sidebar.is-demo-popup");
+        const body = popup?.closest(".tutorial-body.is-demo-centered-slide");
+        const hotspot = currentSlide().hotspots.find((item) => item.id === popupHandle.dataset.id);
+        if (!popup || !body || !hotspot) return;
+        const rect = body.getBoundingClientRect();
+        const popupRect = popup.getBoundingClientRect();
+        popupDrag = {
+          id: hotspot.id,
+          rect,
+          popup,
+          minX: clamp(popupRect.width / Math.max(rect.width, 1) * 50 + 1, 2, 48),
+          minY: clamp(popupRect.height / Math.max(rect.height, 1) * 50 + 1, 2, 48)
+        };
+        hotspot.popupX = clamp((popupRect.left + popupRect.width / 2 - rect.left) / Math.max(rect.width, 1) * 100, popupDrag.minX, 100 - popupDrag.minX);
+        hotspot.popupY = clamp((popupRect.top + popupRect.height / 2 - rect.top) / Math.max(rect.height, 1) * 100, popupDrag.minY, 100 - popupDrag.minY);
+        popup.classList.remove("demo-popup-left", "demo-popup-right", "demo-popup-top", "demo-popup-bottom");
+        popup.classList.add("is-custom-position");
+        popup.style.setProperty("--popup-x", `${hotspot.popupX}%`);
+        popup.style.setProperty("--popup-y", `${hotspot.popupY}%`);
+        popupHandle.setPointerCapture?.(event.pointerId);
+        event.preventDefault();
+        return;
+      }
+      if (event.target.closest("button,[contenteditable=true],input,select,textarea")) return;
       const objectElement = event.target.closest("[data-object]");
       if (!objectElement) return;
       if (event.shiftKey) return;
@@ -4507,6 +5105,17 @@
     }
 
     function onPointerMove(event) {
+      if (popupDrag) {
+        const hotspot = currentSlide().hotspots.find((item) => item.id === popupDrag.id);
+        if (!hotspot) return;
+        hotspot.popupX = clamp((event.clientX - popupDrag.rect.left) / Math.max(popupDrag.rect.width, 1) * 100, popupDrag.minX, 100 - popupDrag.minX);
+        hotspot.popupY = clamp((event.clientY - popupDrag.rect.top) / Math.max(popupDrag.rect.height, 1) * 100, popupDrag.minY, 100 - popupDrag.minY);
+        popupDrag.popup.style.setProperty("--popup-x", `${hotspot.popupX}%`);
+        popupDrag.popup.style.setProperty("--popup-y", `${hotspot.popupY}%`);
+        scheduleSave();
+        event.preventDefault();
+        return;
+      }
       if (!drag) return;
       const item = selectedObject();
       if (!item || item.id !== drag.id) return;
@@ -4539,7 +5148,7 @@
       if (drag.handle === "move") {
         item.x = clamp(drag.original.x + dx, 2, 98);
         item.y = clamp(drag.original.y + dy, 2, 98);
-      } else if (["markup", "cover", "blur"].includes(item.type)) {
+      } else if (["markup", "cover", "blur", "slide-intro"].includes(item.type)) {
         const changesWidth = drag.handle.includes("e") || drag.handle.includes("w");
         const changesHeight = drag.handle.includes("n") || drag.handle.includes("s");
         const directionX = drag.handle.includes("e") ? 1 : -1;
@@ -4584,6 +5193,11 @@
     }
 
     function onPointerUp() {
+      if (popupDrag) {
+        popupDrag = null;
+        commit("Updated hotspot text box position.");
+        return;
+      }
       if (!drag) return;
       const completedDrag = drag;
       drag = null;
@@ -4633,6 +5247,7 @@
       if (!line) {
         line = document.createElement("div");
         line.className = "mixed-body-line";
+        line.dataset.listKind = "plain";
         line.dataset.pipe = "false";
         editor.append(line);
       }
@@ -4650,18 +5265,18 @@
       }
 
       const text = line.innerText.replace(/\r/g, "").replace(/\n+$/, "");
-      if (line.dataset.pipe === "true" && !text) {
-        line.dataset.pipe = "false";
-        line.classList.remove("is-pipe");
+      const currentKind = lineListKind(line);
+      if (currentKind !== "plain" && !text) {
+        setLineListKind(line, "plain");
         placeCaretInMixedBodyLine(line);
         editor.dispatchEvent(new Event("input", { bubbles: true }));
-        updatePipeToggleState(editor, [line]);
+        updateBodyListToggleState(editor, [line]);
         return;
       }
 
       const nextLine = document.createElement("div");
-      nextLine.className = `mixed-body-line ${line.dataset.pipe === "true" ? "is-pipe" : ""}`;
-      nextLine.dataset.pipe = line.dataset.pipe === "true" ? "true" : "false";
+      nextLine.className = "mixed-body-line";
+      setLineListKind(nextLine, currentKind);
       line.removeAttribute("data-placeholder");
       line.textContent = text.slice(0, offset);
       nextLine.textContent = text.slice(offset);
@@ -4670,7 +5285,7 @@
       placeCaretInMixedBodyLine(nextLine);
       editor.dispatchEvent(new Event("input", { bubbles: true }));
       lastMixedBodySelection = { editor, lines: [nextLine] };
-      updatePipeToggleState(editor, [nextLine]);
+      updateBodyListToggleState(editor, [nextLine]);
     }
 
     function onKeyDown(event) {
@@ -4842,6 +5457,47 @@
       state.ui.selectedKind = "annotation";
       state.ui.selectedId = annotation.id;
       commit("Added text.");
+    }
+
+    function addSlideIntro() {
+      const slide = currentSlide();
+      let annotation = slideIntroCard(slide);
+      const created = !annotation;
+      stopAudio();
+      state.ui.activeHotspotId = null;
+      if (created) {
+        annotation = normalizeAnnotation({
+          id: uid("slide-intro"),
+          type: "slide-intro",
+          introTitle: "SLIDE INTRODUCTION",
+          introBody: "Add the introductory text for this slide.",
+          introAlign: "left",
+          x: 50, y: 38, w: 42, h: 20,
+          z: topZ() + 1
+        }, slide.annotations.length);
+        slide.annotations.push(annotation);
+      }
+      state.ui.selectedKind = "annotation";
+      state.ui.selectedId = annotation.id;
+      multiSelection = [selectionKey("annotation", annotation.id)];
+      if (created) {
+        commit("Added slide intro card.");
+      } else {
+        scheduleSave();
+        render();
+        showToast("Opened slide intro card for editing.");
+      }
+    }
+
+    function setSlideIntroAlign(value) {
+      const intro = slideIntroCard();
+      if (!intro) return;
+      intro.introAlign = value === "center" ? "center" : "left";
+      state.ui.activeHotspotId = null;
+      state.ui.selectedKind = "annotation";
+      state.ui.selectedId = intro.id;
+      multiSelection = [selectionKey("annotation", intro.id)];
+      commit(`Aligned intro card text ${intro.introAlign}.`);
     }
 
     function addCoverAnnotation() {
@@ -5082,9 +5738,13 @@
         [...slide.hotspots, ...slide.annotations].forEach((item) => {
           if (item.hotspotGroupId === deletedHotspotId) item.hotspotGroupId = "";
         });
-        state.ui.activeHotspotId = slide.hotspots[0]?.id || null;
+        state.ui.activeHotspotId = slideIntroCard(slide) ? null : slide.hotspots[0]?.id || null;
       } else {
+        const deletedAnnotation = slide.annotations.find((item) => item.id === state.ui.selectedId);
         slide.annotations = slide.annotations.filter((item) => item.id !== state.ui.selectedId);
+        if (deletedAnnotation?.type === "slide-intro") {
+          state.ui.activeHotspotId = slide.hotspots[0]?.id || null;
+        }
       }
       state.ui.selectedId = null;
       state.ui.selectedKind = null;
@@ -5131,7 +5791,7 @@
       stopAudio();
       state.tutorial.slides.splice(state.ui.slideIndex, 1);
       state.ui.slideIndex = clamp(state.ui.slideIndex - 1, 0, state.tutorial.slides.length - 1);
-      state.ui.activeHotspotId = currentSlide().hotspots[0]?.id || null;
+      state.ui.activeHotspotId = slideIntroCard(currentSlide()) ? null : currentSlide().hotspots[0]?.id || null;
       state.ui.selectedKind = null;
       state.ui.selectedId = null;
       commit("Deleted slide.");
@@ -5362,7 +6022,7 @@
       demoAudioEndDelayActive = false;
       state.ui.slideIndex = clamp(index, 0, state.tutorial.slides.length - 1);
       const slide = currentSlide();
-      state.ui.activeHotspotId = slide.hotspots[0]?.id || null;
+      state.ui.activeHotspotId = slideIntroCard(slide) ? null : slide.hotspots[0]?.id || null;
       state.ui.selectedKind = null;
       state.ui.selectedId = null;
       state.ui.contentsOpen = false;
@@ -5430,7 +6090,14 @@
 
     function readerNext() {
       if (IS_DEMO_PLAYER) {
-        if (state.ui.slideIndex < state.tutorial.slides.length - 1) {
+        const slide = currentSlide();
+        const index = slide.hotspots.findIndex((item) => item.id === state.ui.activeHotspotId);
+        if (slide.hotspots.length && index < slide.hotspots.length - 1) {
+          state.ui.activeHotspotId = slide.hotspots[Math.max(0, index + 1)].id;
+          render();
+          drawAttentionToHotspot(state.ui.activeHotspotId);
+          updateDemoPlaybackUi();
+        } else if (state.ui.slideIndex < state.tutorial.slides.length - 1) {
           setDemoSlide(state.ui.slideIndex + 1, { play: demoPlaying });
         }
         return;
@@ -5455,12 +6122,40 @@
 
     function readerBack() {
       if (IS_DEMO_PLAYER) {
-        if (state.ui.slideIndex > 0) setDemoSlide(state.ui.slideIndex - 1, { play: demoPlaying });
+        const slide = currentSlide();
+        const index = slide.hotspots.findIndex((item) => item.id === state.ui.activeHotspotId);
+        if (index === 0 && slideIntroCard(slide)) {
+          state.ui.activeHotspotId = null;
+          render();
+          updateDemoPlaybackUi();
+        } else if (index > 0) {
+          state.ui.activeHotspotId = slide.hotspots[index - 1].id;
+          render();
+          drawAttentionToHotspot(state.ui.activeHotspotId);
+          updateDemoPlaybackUi();
+        } else if (state.ui.slideIndex > 0) {
+          setDemoSlide(state.ui.slideIndex - 1, { play: demoPlaying });
+          const previous = currentSlide();
+          if (previous.hotspots.length) {
+            state.ui.activeHotspotId = previous.hotspots[previous.hotspots.length - 1].id;
+            render();
+            updateDemoPlaybackUi();
+          }
+        }
         return;
       }
       const slide = currentSlide();
       if (slide.hotspots.length) {
         const index = slide.hotspots.findIndex((item) => item.id === state.ui.activeHotspotId);
+        if (index === 0 && slideIntroCard(slide)) {
+          stopAudio();
+          state.ui.activeHotspotId = null;
+          state.ui.selectedKind = null;
+          state.ui.selectedId = null;
+          multiSelection = [];
+          render();
+          return;
+        }
         if (index > 0) {
           stopAudio();
           const previousHotspotId = slide.hotspots[index - 1].id;
@@ -5487,7 +6182,11 @@
       state.ui.slideIndex = clamp(index, 0, state.tutorial.slides.length - 1);
       const slide = currentSlide();
       const lastHotspot = slide.hotspots[slide.hotspots.length - 1];
-      state.ui.activeHotspotId = useLastHotspot ? lastHotspot?.id || null : slide.hotspots[0]?.id || null;
+      state.ui.activeHotspotId = useLastHotspot
+        ? lastHotspot?.id || null
+        : slideIntroCard(slide)
+          ? null
+          : slide.hotspots[0]?.id || null;
       state.ui.selectedKind = null;
       state.ui.selectedId = null;
       multiSelection = [];
@@ -5735,7 +6434,9 @@
       exportState.meta.pageType = "demo";
       exportState.ui = {
         slideIndex: 0,
-        activeHotspotId: exportState.tutorial.slides[0]?.hotspots[0]?.id || null,
+        activeHotspotId: exportState.tutorial.slides[0]?.annotations?.some((item) => item.type === "slide-intro")
+          ? null
+          : exportState.tutorial.slides[0]?.hotspots[0]?.id || null,
         selectedKind: null,
         selectedId: null,
         contentsOpen: false,

@@ -40,6 +40,12 @@ if errors.empty?
              demo.include?('id="demoSlideAudioUrl"') &&
              demo.include?('id="demoDefaultDuration"'),
              "Slide timing or Slide Audio controls are missing from Slides and main media.")
+  check.call(demo.include?('let mainMediaPreviewTimer = 0;') &&
+             demo.include?('mainMediaPreviewTimer = window.setTimeout(refreshMainMediaLayer, 180);') &&
+             demo.include?('root.addEventListener("focusin", onFocusIn);') &&
+             demo.include?('function normalizeMainMediaInput(target)') &&
+             demo.include?('target.value = value;'),
+             "Pasted main-media URLs do not visibly refresh or safely replace the prefilled media root.")
   check.call(!demo.include?('${annotationInputRow("audio", "Audio", icon("audio"))}'),
              "The demo builder still exposes the old audio-annotation input.")
 
@@ -62,9 +68,30 @@ if errors.empty?
              "The demo can start audio without the required Play click.")
   check.call(demo.include?('exportBody.dataset.demoPlayer = "true"') &&
              demo.include?('"name", "robots", "noindex, nofollow"') &&
-             demo.include?('renderSiteHeader() : ""') &&
-             demo.include?('!IS_DEMO_PLAYER ? renderSiteHeader()'),
-             "The exported hidden page is missing embed mode, noindex, or header suppression.")
+             demo.include?('const IS_DEMO_EMBED = IS_DEMO_PLAYER') &&
+             demo.include?('new URLSearchParams(location.search).get("embed") === "1"') &&
+             demo.include?('window.self !== window.top') &&
+             demo.include?('(!IS_DEMO_PLAYER || !IS_DEMO_EMBED) ? renderSiteHeader() : ""') &&
+             demo.include?('body[data-demo-embed="true"] .site-header { display: none !important; }'),
+             "The one-file export is missing standalone navigation, embed detection, noindex, or embed-only header suppression.")
+  check.call(demo.include?('is-demo-cover') &&
+             demo.include?('is-demo-centered-slide') &&
+             demo.include?('function renderDemoHotspotNav(slide)') &&
+             demo.include?('data-popup-drag-handle') &&
+             demo.include?('popupX: hasPopupX') &&
+             demo.include?('popupY: hasPopupX'),
+             "The centered cover/slides, hotspot arrows, or saved movable popup cards are incomplete.")
+  check.call(demo.include?('data-action="add-slide-intro"') &&
+             demo.include?('type: "slide-intro"') &&
+             demo.include?('function slideIntroCard(') &&
+             demo.include?('function isSlideIntroState(') &&
+             demo.include?('data-action="set-intro-align"') &&
+             demo.include?('introAlign: item?.introAlign === "center" ? "center" : "left"') &&
+             demo.include?('toggle-intro-pipe-list') &&
+             demo.include?('toggle-intro-numbered-list') &&
+             demo.include?('bodyHasNumberedLines') &&
+             demo.include?('slide.kind === "video" || coverSlide ? "" : renderSidebar(slide)'),
+             "The all-slide intro card, alignment, mixed lists, or cover subtitle removal is incomplete.")
   check.call(!demo.include?("applyExportSiteStyles") && !demo.include?("/styles/site-system.css"),
              "The demo export depends on the shared website stylesheet.")
   check.call(demo.include?("@media (max-width: 620px)") &&
@@ -118,6 +145,9 @@ if errors.empty?
   puts "  active Reporter Tools demo URLs: 0"
   puts "  playback: click-to-play + pause + restart + seek"
   puts "  timing: default + manual + slide audio"
+  puts "  export: one HTML + standalone navigation + automatic/?embed=1 mode"
+  puts "  layout: centered cover + centered slides + movable hotspot cards"
+  puts "  intro cards: cover onward + left/center + pipe/numbered lists"
   puts "  embed: responsive + noindex + iframe cleanup"
   exit 0
 end
