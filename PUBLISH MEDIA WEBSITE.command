@@ -1,13 +1,16 @@
 #!/bin/zsh
 
 set -u
+set -o pipefail
 
 REPOSITORY_FOLDER="$(cd "$(dirname "$0")" && pwd)"
 EXPECTED_REMOTE="https://github.com/stenohacker/mh_media.git"
 PRODUCTION_BRANCH="main"
 NETLIFY_SITE_ID="e184f053-520e-4647-8870-bc7f6589d3dc"
-NETLIFY_DASHBOARD="https://app.netlify.com/projects/iridescent-wisp-57bcb1/deploys"
+NETLIFY_SITE_API="https://api.netlify.com/api/v1/sites/$NETLIFY_SITE_ID"
 LIVE_WEBSITE="https://iridescent-wisp-57bcb1.netlify.app"
+PUBLISH_LOCK_DIRECTORY="$REPOSITORY_FOLDER/.git/mh-media-publish.lock"
+PUBLISH_LOG="$REPOSITORY_FOLDER/.git/MEDIA_PUBLISH_LAST_RUN.log"
 
 pause_before_closing() {
   echo
@@ -34,7 +37,45 @@ remove_tracked_repository_junk() {
   done < <(git ls-files -z)
 }
 
+cleanup_publish_lock() {
+  rm -f "$PUBLISH_LOCK_DIRECTORY/pid" 2>/dev/null || true
+  rmdir "$PUBLISH_LOCK_DIRECTORY" 2>/dev/null || true
+}
+
+acquire_publish_lock() {
+  local previous_pid=""
+
+  if mkdir "$PUBLISH_LOCK_DIRECTORY" 2>/dev/null; then
+    echo "$$" > "$PUBLISH_LOCK_DIRECTORY/pid"
+    return 0
+  fi
+
+  previous_pid="$(cat "$PUBLISH_LOCK_DIRECTORY/pid" 2>/dev/null || true)"
+  if [[ "$previous_pid" == <-> ]] && kill -0 "$previous_pid" 2>/dev/null; then
+    return 1
+  fi
+
+  rm -f "$PUBLISH_LOCK_DIRECTORY/pid" 2>/dev/null || true
+  rmdir "$PUBLISH_LOCK_DIRECTORY" 2>/dev/null || true
+  if mkdir "$PUBLISH_LOCK_DIRECTORY" 2>/dev/null; then
+    echo "$$" > "$PUBLISH_LOCK_DIRECTORY/pid"
+    return 0
+  fi
+  return 1
+}
+
+netlify_deploy_field() {
+  ruby -rjson -e 'data = JSON.parse(STDIN.read); print(data.dig("published_deploy", ARGV.fetch(0)).to_s)' "$1"
+}
+
 cd "$REPOSITORY_FOLDER" || exit 1
+
+exec > >(tee "$PUBLISH_LOG") 2>&1
+
+if ! acquire_publish_lock; then
+  stop_with_message "A media publication is already running. Use its open Terminal window; do not start a second copy."
+fi
+trap cleanup_publish_lock EXIT INT TERM
 
 if ! git rev-parse --is-inside-work-tree >/dev/null 2>&1; then
   stop_with_message "This folder is not the Magic Hashtags media repository. Nothing was pushed."
@@ -62,19 +103,24 @@ echo "MAGIC HASHTAGS MEDIA — PRODUCTION PUBLISH"
 echo "Live media site: $LIVE_WEBSITE"
 echo "GitHub: $EXPECTED_REMOTE"
 echo
-echo "Pending media changes:"
-git status --short
+echo "Website changes eligible for publication:"
+git status --short -- . \
+  ':(exclude)tutorial-builder-work' \
+  ':(exclude)tutorial-builder-work/**' \
+  ':(exclude)archive' \
+  ':(exclude)archive/**'
 
 echo
-echo "Running the protected Tutorial Builder and media wiring audits..."
-if ! ruby scripts/audit-tutorial-builder-v3.rb; then
-  stop_with_message "The media safety check failed. Nothing was committed or pushed."
-fi
-if ! ruby scripts/audit-tutorial-demo-builder-v1.rb; then
-  stop_with_message "The demo-builder safety check failed. Nothing was committed or pushed."
+echo "Builder drafts kept local and excluded from publication:"
+git status --short -- tutorial-builder-work || true
+
+echo
+echo "Checking the publishable website files..."
+if ! git diff --check -- . ':(exclude)tutorial-builder-work' ':(exclude)tutorial-builder-work/**'; then
+  stop_with_message "A publishable website file failed the Git safety check. Nothing was committed or pushed."
 fi
 
-LARGE_FILES="$(find . -path './.git' -prune -o -path './.netlify' -prune -o -path './archive' -prune -o -type f -size +95M -print)"
+LARGE_FILES="$(find . -path './.git' -prune -o -path './.netlify' -prune -o -path './archive' -prune -o -path './tutorial-builder-work' -prune -o -type f -size +95M -print)"
 if [[ -n "$LARGE_FILES" ]]; then
   echo
   echo "These files are too large for a normal GitHub push:"
@@ -82,22 +128,7 @@ if [[ -n "$LARGE_FILES" ]]; then
   stop_with_message "Move or reduce those files before publishing. Nothing was pushed."
 fi
 
-echo
-echo "This will publish ALL current media changes except .DS_Store and archive folders."
-echo "It will update GitHub main, which triggers the production media site."
-echo
-read "COMMIT_MESSAGE?Describe this publication, then press Return: "
-if [[ -z "${COMMIT_MESSAGE// }" ]]; then
-  COMMIT_MESSAGE="Publish Magic Hashtags media $(date '+%Y-%m-%d %H:%M')"
-fi
-
-echo
-read "CONFIRMATION?Type PUBLISH MEDIA exactly to continue: "
-if [[ "$CONFIRMATION" != "PUBLISH MEDIA" ]]; then
-  echo "Publication cancelled. Nothing was committed or pushed."
-  pause_before_closing
-  exit 0
-fi
+COMMIT_MESSAGE="Publish Magic Hashtags media $(date '+%Y-%m-%d %H:%M')"
 
 echo
 echo "Checking GitHub before publishing..."
@@ -113,9 +144,31 @@ if ! remove_tracked_repository_junk; then
   stop_with_message "Git could not remove repository-only junk. Nothing was pushed."
 fi
 
-if ! git add -A; then
+if ! git restore --staged -- tutorial-builder-work 2>/dev/null; then
+  stop_with_message "Git could not remove builder work from the publication list. Nothing was pushed."
+fi
+
+if ! git add -A -- . \
+  ':(exclude)tutorial-builder-work' \
+  ':(exclude)tutorial-builder-work/**'; then
   stop_with_message "Git could not stage the media changes. Nothing was committed or pushed."
 fi
+
+BUILDER_FILES_STAGED="$(git diff --cached --name-only -- tutorial-builder-work)"
+if [[ -n "$BUILDER_FILES_STAGED" ]]; then
+  echo
+  echo "$BUILDER_FILES_STAGED"
+  stop_with_message "Safety stop: tutorial-builder-work was found in the publication list. Nothing was committed or pushed."
+fi
+
+PUBLISH_PROBE_PATH="$(git diff --cached --name-only --diff-filter=AM | while IFS= read -r path; do
+  case "$path" in
+    images/*|tutorials/*|gifs/*|video/*|audio/*)
+      print -r -- "$path"
+      break
+      ;;
+  esac
+done)"
 
 if ! git diff --cached --quiet; then
   echo
@@ -132,8 +185,43 @@ if ! git push origin "$PRODUCTION_BRANCH"; then
   stop_with_message "GitHub rejected the push. The local commit is safe; ask Codex to inspect the branch."
 fi
 
+PUBLISHED_COMMIT="$(git rev-parse HEAD)"
 echo
-echo "GitHub accepted the media publication. Netlify should now update the public media site."
+echo "GitHub accepted commit $PUBLISHED_COMMIT."
+echo "Waiting for Netlify to publish that exact commit..."
+
+NETLIFY_READY="false"
+for attempt in {1..60}; do
+  DEPLOY_JSON="$(curl --silent --show-error --fail --header 'Cache-Control: no-cache' "$NETLIFY_SITE_API?check=$(date +%s)" 2>/dev/null || true)"
+  if [[ -n "$DEPLOY_JSON" ]]; then
+    DEPLOY_COMMIT="$(print -r -- "$DEPLOY_JSON" | netlify_deploy_field commit_ref 2>/dev/null || true)"
+    DEPLOY_STATE="$(print -r -- "$DEPLOY_JSON" | netlify_deploy_field state 2>/dev/null || true)"
+    if [[ "$DEPLOY_COMMIT" == "$PUBLISHED_COMMIT" && "$DEPLOY_STATE" == "ready" ]]; then
+      NETLIFY_READY="true"
+      break
+    fi
+    if [[ "$DEPLOY_COMMIT" == "$PUBLISHED_COMMIT" && "$DEPLOY_STATE" == "error" ]]; then
+      stop_with_message "Netlify received the GitHub commit but reported a failed production deploy. The last-run log records where publication stopped."
+    fi
+  fi
+  echo "Netlify is still publishing... ($attempt/60)"
+  sleep 5
+done
+
+if [[ "$NETLIFY_READY" != "true" ]]; then
+  stop_with_message "GitHub was updated, but Netlify did not confirm the matching production deploy within five minutes. The commit is safe; check the deploy dashboard."
+fi
+
+if [[ -n "$PUBLISH_PROBE_PATH" ]]; then
+  ENCODED_PROBE_PATH="$(ruby -ruri -e 'puts ARGV.fetch(0).split("/").map { |part| URI.encode_www_form_component(part).gsub("+", "%20") }.join("/")' "$PUBLISH_PROBE_PATH")"
+  if ! curl --silent --show-error --fail --head "$LIVE_WEBSITE/$ENCODED_PROBE_PATH" >/dev/null; then
+    stop_with_message "Netlify reports the deploy ready, but the published media verification URL did not load: $LIVE_WEBSITE/$ENCODED_PROBE_PATH"
+  fi
+  echo "Verified live media: $LIVE_WEBSITE/$ENCODED_PROBE_PATH"
+fi
+
+echo
+echo "SUCCESS: GitHub and Netlify both confirmed the media publication."
 echo "$LIVE_WEBSITE"
-open "$NETLIFY_DASHBOARD"
+echo "Last-run log: $PUBLISH_LOG"
 pause_before_closing
