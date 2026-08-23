@@ -1,13 +1,14 @@
 <!DOCTYPE html>
-<html lang="en"><head>
+<html lang="en">
+<head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <meta name="color-scheme" content="light">
   <title>Tutorial Demo Builder v1</title>
-  <link id="geist-mono-preload" rel="preload" href="../../website/fonts/geist-mono-latin.woff2" as="font" type="font/woff2" crossorigin="">
+  <link id="geist-mono-preload" rel="preload" href="../../website/fonts/geist-mono-latin.woff2" as="font" type="font/woff2" crossorigin>
   <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin="">
-  <link href="https://fonts.googleapis.com/css2?family=Shadows+Into+Light+Two&amp;display=swap" rel="stylesheet">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Shadows+Into+Light+Two&display=swap" rel="stylesheet">
   <style id="geist-mono-font-face">
     @font-face {
       font-family: "Geist Mono";
@@ -505,222 +506,106 @@
       top: 0;
       z-index: 90;
       display: grid;
-      grid-template-columns: minmax(0, 1fr) minmax(360px, 390px);
-      align-items: start;
-      gap: 10px;
-      padding: 6px;
+      grid-template-columns: minmax(0, 1fr) auto auto minmax(390px, auto);
+      grid-template-areas:
+        "edit hotspot shapes save"
+        "markups markups markups text";
+      align-items: stretch;
+      gap: 4px;
+      padding: 4px;
       border: 3px solid var(--black);
       background: var(--white);
       box-shadow: var(--shadow);
-      overflow: visible;
+      overflow-x: visible;
     }
     .builder-toolbar button {
-      min-height: 36px;
-      padding: 4px 7px;
+      min-height: 32px;
+      padding: 4px 6px;
       font-size: 12px;
     }
-    .toolbar-controls {
-      display: grid;
-      grid-template-columns: max-content 104px max-content 116px;
-      grid-template-areas:
-        "arrange opacity hotspot shapes"
-        "markups width text cards"
-        "effects effects effects effects";
-      align-items: center;
-      gap: 6px 10px;
-      min-width: 0;
+    .builder-toolbar button.icon-button {
+      width: 31px;
+      min-width: 31px;
+      height: 32px;
+      padding: 3px;
     }
-    .toolbar-cluster {
+    .builder-toolbar button.icon-button svg { width: 16px; height: 16px; }
+    .tool-group {
       display: flex;
+      flex: 0 0 auto;
       align-items: center;
-      gap: 4px;
-      min-width: 0;
-    }
-    .toolbar-arrange { grid-area: arrange; }
-    .toolbar-opacity-control { grid-area: opacity; }
-    .toolbar-hotspot { grid-area: hotspot; }
-    .toolbar-shapes { grid-area: shapes; }
-    .toolbar-markups { grid-area: markups; }
-    .toolbar-width-control { grid-area: width; }
-    .toolbar-text { grid-area: text; }
-    .toolbar-cards { grid-area: cards; }
-    .toolbar-effects { grid-area: effects; }
-    .toolbar-media-controls { grid-area: effects; }
-    .builder-toolbar button.toolbar-square,
-    .toolbar-icon-select {
-      width: 36px;
-      min-width: 36px;
-      height: 36px;
-      min-height: 36px;
-    }
-    .builder-toolbar button.toolbar-square {
-      display: inline-flex;
-      align-items: center;
-      justify-content: center;
-      padding: 4px;
-    }
-    .builder-toolbar button.toolbar-compact-word {
-      padding-inline: 2px;
-      font-size: 9px;
-      letter-spacing: 0;
-    }
-    .toolbar-icon-image {
-      display: block;
-      width: 24px;
-      height: 24px;
-      object-fit: contain;
-      pointer-events: none;
-    }
-    .builder-toolbar button.toolbar-word-button {
-      width: auto;
-      min-width: 0;
-      white-space: nowrap;
-    }
-    .builder-toolbar button.toolbar-group-button { min-width: 72px; }
-    .builder-toolbar button.toolbar-background-button { min-width: 78px; }
-    .builder-toolbar button.toolbar-blur-button { min-width: 54px; }
-    .builder-toolbar button.toolbar-card-button { min-width: 94px; }
-    .builder-toolbar button.toolbar-callout-button { min-width: 82px; }
-    .toolbar-icon-select {
-      position: relative;
-      display: inline-flex;
-      align-items: center;
-      justify-content: center;
-      border: 3px solid var(--black);
-      color: var(--black);
-      background: var(--white);
-      box-shadow: var(--shadow-small);
-    }
-    .toolbar-icon-select:hover {
-      background: var(--yellow);
-      transform: translate(2px, 2px);
-      box-shadow: 2px 2px 0 var(--black);
-    }
-    .toolbar-icon-select:focus-within {
-      outline: 3px solid var(--black);
-      outline-offset: 3px;
-    }
-    .toolbar-icon-select select,
-    .toolbar-color-control input[type="color"] {
-      position: absolute;
-      inset: 0;
-      width: 100%;
-      min-width: 0;
-      height: 100%;
-      min-height: 0;
-      margin: 0;
-      border: 0;
-      padding: 0;
-      opacity: 0;
-      box-shadow: none;
-      cursor: pointer;
-    }
-    .toolbar-slider-control {
-      display: grid;
-      align-items: center;
-      min-width: 0;
-    }
-    .toolbar-slider-control input[type="range"] { width: 100%; }
-    .toolbar-shapes select {
-      width: 116px;
-      min-width: 116px;
-      height: 36px;
-      min-height: 36px;
-      padding: 4px 24px 4px 8px;
-      font-size: 12px;
-      text-transform: uppercase;
-    }
-    .toolbar-effects {
-      flex-wrap: nowrap;
-      justify-self: start;
-    }
-    .stage-media-controls.toolbar-media-controls {
-      position: static;
-      z-index: auto;
-      justify-self: end;
-      max-width: none;
-      height: 36px;
-      flex-wrap: nowrap;
       gap: 3px;
-      border: 0;
-      padding: 0;
-      background: transparent;
-      box-shadow: none;
+      padding-right: 4px;
+      border-right: 3px solid var(--black);
     }
-    .stage-media-controls.toolbar-media-controls::before {
-      padding-inline: 1px;
-      font-size: 9px;
-    }
-    .stage-media-controls.toolbar-media-controls button {
-      height: 28px;
-      min-height: 28px;
-      padding: 2px 4px;
-      box-shadow: var(--shadow-small);
-      font-size: 8px;
-    }
-    .stage-media-controls.toolbar-media-controls button.icon-button {
-      width: 28px;
-      min-width: 28px;
-      padding: 2px;
-    }
+    .tool-group:nth-child(1) { grid-area: edit; }
+    .tool-group:nth-child(2) { grid-area: hotspot; }
+    .tool-group:nth-child(3) { grid-area: shapes; }
+    .tool-group:nth-child(4) { grid-area: markups; }
+    .tool-group:nth-child(5) { grid-area: text; }
+    .tool-group:nth-child(6) { grid-area: save; }
+    .tool-group:last-child { margin-left: 0; padding-right: 0; border-right: 0; }
+    .tool-group:last-child button { padding: 4px 6px; font-size: 12px; }
+    .tool-stack { display: grid; gap: 3px; min-width: 0; }
     .draft-save-group {
-      display: flex;
-      flex-direction: column;
-      gap: 3px;
-      min-width: 0;
+      display: grid;
+      grid-template-columns: minmax(145px, 175px) minmax(250px, 1fr);
+      align-items: stretch;
+      gap: 6px;
     }
     .draft-save-summary {
-      display: flex;
-      align-items: center;
-      gap: 5px;
+      display: grid;
+      align-content: center;
       min-width: 0;
-      min-height: 13px;
-      padding: 0 2px;
-      border: 0;
-      background: transparent;
-      line-height: 1;
+      max-width: none;
+      padding: 3px 6px;
+      border: 2px solid var(--black);
+      background: #f4f4f4;
+      line-height: 1.2;
     }
     .draft-file-name {
-      min-width: 0;
       overflow: hidden;
-      font-size: 8px;
+      font-size: 11px;
       font-weight: 700;
       text-overflow: ellipsis;
       white-space: nowrap;
     }
     .draft-save-status {
-      flex: 0 0 auto;
-      font-size: 8px;
+      font-size: 10px;
       font-weight: 600;
-      white-space: nowrap;
     }
     .draft-save-status[data-state="saving"] { color: #7a5900; }
     .draft-save-status[data-state="saved"] { color: #17695f; }
     .draft-save-status[data-state="error"] { color: #a40000; }
     .draft-save-actions {
-      display: flex;
-      align-items: center;
-      gap: 4px;
-      min-width: 0;
-      flex-wrap: nowrap;
+      display: grid;
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      gap: 3px;
     }
-    .builder-toolbar .draft-save-actions button {
-      width: auto;
-      min-width: 0;
-      height: 28px;
-      min-height: 28px;
-      padding: 2px 5px;
-      font-size: 9px;
-      letter-spacing: 0;
-      line-height: 1;
-      white-space: nowrap;
-      box-shadow: 2px 2px 0 var(--black);
+    .text-style-buttons {
+      display: grid;
+      grid-template-columns: repeat(3, 32px);
+      gap: 3px;
+    }
+    .tool-group:nth-child(5) .tool-stack {
+      grid-template-columns: auto auto auto;
+      grid-template-areas:
+        "text-label text-label text-label"
+        "text-styles intro-button intro-align";
+      align-items: center;
+    }
+    .tool-group:nth-child(5) .tool-label { grid-area: text-label; }
+    .tool-group:nth-child(5) .tool-stack > .text-style-buttons:nth-of-type(1) { grid-area: text-styles; }
+    .tool-group:nth-child(5) .tool-stack > button { grid-area: intro-button; }
+    .tool-group:nth-child(5) .tool-stack > .text-style-buttons:nth-of-type(2) {
+      grid-area: intro-align;
+      grid-template-columns: repeat(2, 32px);
     }
     .builder-toolbar button.text-style-button {
-      width: 36px;
-      min-width: 36px;
-      height: 36px;
-      min-height: 36px;
+      width: 32px;
+      min-width: 32px;
+      height: 32px;
+      min-height: 32px;
       padding: 0;
       font-family: var(--font-interface);
       font-size: 16px;
@@ -738,6 +623,17 @@
       font-family: var(--hand);
       font-size: 19px;
     }
+    .edit-object-buttons { display: flex; gap: 1px; }
+    .builder-toolbar button.hotspot-group-button {
+      min-width: 68px;
+      white-space: nowrap;
+    }
+    .tool-label {
+      font-size: 10px;
+      font-weight: 600;
+      letter-spacing: .05em;
+      text-transform: uppercase;
+    }
     .site-store-teaser {
       animation: siteStoreTeaser 1s cubic-bezier(.16, 1, .3, 1) both;
     }
@@ -746,20 +642,71 @@
       30% { transform: translateY(-.35rem) rotate(-2deg); }
       60% { transform: translateY(.12rem) rotate(1deg); }
     }
-    .toolbar-opacity,
+    .tool-group select {
+      width: 108px;
+      min-width: 108px;
+      height: 32px;
+      min-height: 32px;
+      padding: 3px 6px;
+      box-shadow: 2px 2px 0 var(--black);
+      font-size: 12px;
+    }
+    .markup-pickers {
+      display: flex;
+      align-items: center;
+      gap: 4px;
+    }
+    .markup-tool-stack {
+      grid-template-columns: auto minmax(78px, 1fr) auto;
+      grid-template-areas:
+        "heading pickers effects"
+        "width-label width-control effects";
+      align-items: end;
+      column-gap: 4px;
+    }
+    .markup-tool-stack > .tool-label:first-child { grid-area: heading; align-self: start; }
+    .markup-tool-stack > .markup-pickers { grid-area: pickers; }
+    .markup-tool-stack > label[for="markupWidth"] { grid-area: width-label; }
+    .markup-tool-stack > #markupWidth { grid-area: width-control; align-self: center; }
+    .markup-tool-stack > .markup-effect-tools { grid-area: effects; }
+    .tool-group select.markup-style-select {
+      width: 62px;
+      min-width: 62px;
+    }
+    .toolbar-opacity { width: 82px; height: 24px; min-height: 24px; box-shadow: none; padding: 0; border: 0; }
+    .markup-effect-tools {
+      display: flex;
+      align-items: end;
+      gap: 3px;
+    }
+    .markup-effect-tools button {
+      min-width: 48px;
+    }
+    .markup-effect-tools label {
+      display: block;
+      gap: 2px;
+      font-size: 12px;
+      letter-spacing: .04em;
+      line-height: 1.1;
+    }
+    .markup-effect-tools label input { display: block; margin-top: 2px; }
+    .markup-color-picker {
+      width: 36px;
+      min-width: 36px;
+      height: 29px;
+      min-height: 29px;
+      border: 3px solid var(--black);
+      padding: 2px;
+      box-shadow: none;
+      cursor: pointer;
+    }
     .markup-blur-slider {
+      width: 76px;
       height: 24px;
       min-height: 24px;
       border: 0;
       padding: 0;
       box-shadow: none;
-    }
-    .toolbar-blur-strength { width: 118px; }
-    .toolbar-blur-strength output {
-      width: 40px;
-      font-size: 10px;
-      font-weight: 700;
-      white-space: nowrap;
     }
 
     .tutorial-shell {
@@ -795,16 +742,11 @@
     }
     body[data-mode="player"] .tutorial-body.is-slide-media-pending {
       opacity: 0;
-      transform: scale(.985);
       pointer-events: none;
     }
     body[data-mode="player"] .tutorial-body.is-slide-media-ready {
       opacity: 1;
-      transform: scale(1);
-      transform-origin: center;
-      transition:
-        opacity 350ms cubic-bezier(.22, 1, .36, 1),
-        transform 420ms cubic-bezier(.22, 1, .36, 1);
+      transition: opacity 160ms ease-out;
     }
     .tutorial-body.is-video {
       position: relative;
@@ -994,7 +936,7 @@
       background: var(--hotspot-color, var(--pink));
       box-shadow: none;
       cursor: pointer;
-      transition: none;
+      transition: box-shadow 140ms ease, transform 140ms ease, filter 140ms ease;
     }
     .hotspot-row:hover,
     .hotspot-row:focus-within {
@@ -1003,6 +945,14 @@
     .hotspot-row.is-active {
       outline: 0;
       box-shadow: 4px 4px 0 var(--black);
+    }
+    .hotspot-entry.is-attention .hotspot-row {
+      position: relative;
+      z-index: 2;
+      animation: hotspot-row-attention 720ms cubic-bezier(.2, .9, .3, 1);
+    }
+    .hotspot-entry.is-attention .hotspot-detail {
+      animation: hotspot-detail-attention 720ms ease-out;
     }
     .hotspot-row__title {
       min-width: 0;
@@ -1307,7 +1257,6 @@
       max-height: 78%;
     }
     .annotation-slide-intro .object-frame {
-      position: relative;
       height: auto;
       min-height: var(--h);
       display: grid;
@@ -1319,7 +1268,7 @@
     }
     .slide-intro-card__title {
       min-height: 48px;
-      padding: 16px 14px 11px;
+      padding: 11px 14px;
       color: var(--white);
       background: var(--black);
       font-size: clamp(15px, 1.6vw, 20px);
@@ -1362,7 +1311,6 @@
       max-height: 86%;
     }
     .annotation-callout .object-frame {
-      position: relative;
       height: 100%;
       min-height: 0;
       display: grid;
@@ -1374,7 +1322,7 @@
     }
     .standalone-callout-card__title {
       min-height: 42px;
-      padding: 14px 12px 9px;
+      padding: 9px 12px;
       border-bottom: 3px solid var(--black);
       background: var(--pink);
       color: var(--black);
@@ -1414,33 +1362,6 @@
     .standalone-callout-card__body:focus {
       box-shadow: inset 0 0 0 3px var(--yellow);
     }
-    .card-top-drag-handle {
-      position: absolute;
-      left: 0;
-      right: 0;
-      top: 0;
-      z-index: 12;
-      height: 13px;
-      color: var(--black);
-      cursor: grab;
-      touch-action: none;
-      user-select: none;
-    }
-    .annotation-slide-intro .card-top-drag-handle {
-      color: var(--yellow);
-    }
-    .card-top-drag-handle::after {
-      content: "";
-      position: absolute;
-      left: 50%;
-      top: 3px;
-      width: 34px;
-      transform: translateX(-50%);
-      border-top: 2px solid currentColor;
-      box-shadow: 0 4px 0 currentColor;
-      opacity: .9;
-    }
-    .card-top-drag-handle:active { cursor: grabbing; }
     .annotation-text[data-text-style="italic"] .object-frame,
     .annotation-text[data-text-style="bold"] .object-frame {
       font-family: var(--sans);
@@ -1468,8 +1389,6 @@
       background: transparent;
       box-shadow: none;
     }
-    body[data-mode="builder"] .hotspot-object:not(.is-locked) { cursor: grab; }
-    body[data-mode="builder"] .hotspot-object:not(.is-locked):active { cursor: grabbing; }
     .hotspot-object .object-frame img {
       position: relative;
       z-index: 1;
@@ -1564,6 +1483,12 @@
         outline-offset: 4px;
         filter: drop-shadow(5px 5px 0 var(--black));
       }
+      .hotspot-entry.is-attention .hotspot-row,
+      .hotspot-entry.is-attention .hotspot-detail {
+        animation: none;
+        outline: 5px solid var(--black);
+        outline-offset: 3px;
+      }
     }
     @keyframes hotspot-active-pop {
       0% { transform: translateY(0); }
@@ -1576,6 +1501,16 @@
       56% { transform: translateY(-5px) scale(.94); }
       78% { transform: translateY(-11px) scale(1.1); }
       100% { transform: translateY(-7px) scale(1); }
+    }
+    @keyframes hotspot-row-attention {
+      0% { transform: translateX(0); box-shadow: 4px 4px 0 var(--black); filter: brightness(1); }
+      35% { transform: translateX(7px); box-shadow: 8px 8px 0 var(--black); filter: brightness(1.12); }
+      65% { transform: translateX(-2px); box-shadow: 3px 3px 0 var(--black); filter: brightness(1); }
+      100% { transform: translateX(0); box-shadow: 4px 4px 0 var(--black); filter: brightness(1); }
+    }
+    @keyframes hotspot-detail-attention {
+      0%, 100% { background: var(--white); }
+      40% { background: #fff7bd; }
     }
 
     .annotation-trigger .object-frame {
@@ -1954,7 +1889,7 @@
     .demo-playback-controls {
       width: var(--shell);
       display: grid;
-      grid-template-columns: auto minmax(0, 1fr) auto auto;
+      grid-template-columns: auto auto minmax(0, 1fr) auto;
       align-items: center;
       gap: 8px;
       margin: 12px auto 0;
@@ -1965,23 +1900,6 @@
     }
     .demo-playback-controls button {
       min-width: 7rem;
-    }
-    .demo-playback-toggle {
-      display: inline-flex;
-      align-items: center;
-      justify-content: center;
-      gap: 7px;
-    }
-    .demo-playback-toggle svg,
-    .demo-rewind-button svg {
-      width: 18px;
-      height: 18px;
-      flex: 0 0 auto;
-    }
-    .demo-playback-controls .demo-rewind-button {
-      width: 2.75rem;
-      min-width: 2.75rem;
-      padding-inline: 8px;
     }
     .demo-playback-progress {
       width: 100%;
@@ -1996,6 +1914,26 @@
       font-weight: 600;
       text-align: right;
     }
+    .demo-start-screen {
+      position: fixed;
+      inset: 0;
+      z-index: 420;
+      display: grid;
+      place-items: center;
+      padding: 18px;
+      background: rgba(0, 0, 0, .34);
+    }
+    .demo-start-card {
+      width: min(25rem, calc(100vw - 36px));
+      display: grid;
+      gap: 14px;
+      border: 4px solid var(--black);
+      padding: clamp(16px, 4vw, 28px);
+      background: var(--yellow);
+      box-shadow: 10px 10px 0 var(--black);
+      text-align: center;
+    }
+
     /* Centered video/demo presentation. The cover keeps the yellow title, while
        every later image slide gives the media the full visual emphasis. */
     .tutorial-body.is-demo-cover {
@@ -2178,6 +2116,15 @@
       min-height: 0;
       max-height: none;
     }
+    .demo-start-card h2,
+    .demo-start-card p { margin: 0; }
+    .demo-start-card button {
+      min-height: 4rem;
+      border-width: 4px;
+      background: var(--white);
+      font-size: 1.1rem;
+    }
+
     .annotation-rows {
       display: grid;
       grid-template-columns: repeat(2, minmax(0, 1fr));
@@ -2536,66 +2483,69 @@
       .metadata-grid .span-3 { grid-column: 1 / -1; }
       .contents-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); }
     }
-    @media (max-width: 1320px) {
-      .builder-toolbar { grid-template-columns: minmax(0, 1fr); }
-      .draft-save-group {
-        flex-direction: row;
-        align-items: center;
-        justify-content: space-between;
-      }
-      .draft-save-summary {
-        flex: 1 1 auto;
-        justify-content: flex-end;
-      }
-    }
-    @media (max-width: 920px) {
-      .toolbar-controls {
-        grid-template-columns: max-content minmax(0, 1fr);
-        grid-template-areas:
-          "arrange arrange"
-          "opacity hotspot"
-          "markups width"
-          "text cards"
-          "effects effects"
-          "media media"
-          "shapes shapes";
-      }
-      .toolbar-media-controls { grid-area: media; justify-self: start; }
-    }
     @media (max-width: 620px) {
       :root { --shell: calc(100vw - 24px); }
       .builder-app { padding-top: 6px; }
       .builder-toolbar {
         position: relative;
         top: auto;
+        display: grid;
         grid-template-columns: minmax(0, 1fr);
         gap: 8px;
       }
-      .toolbar-controls {
+      .builder-toolbar > .tool-group {
+        grid-column: 1 !important;
+        grid-row: auto !important;
+      }
+      .tool-group {
+        width: 100%;
+        min-width: 0;
+        flex-wrap: wrap;
+        border-right: 0;
+        border-bottom: 3px solid var(--black);
+        padding: 0 0 8px;
+      }
+      .tool-group:last-child {
+        margin-left: 0;
+        border-bottom: 0;
+        display: grid;
+        grid-template-columns: 1fr;
+        gap: 6px;
+      }
+      .draft-save-group { grid-template-columns: minmax(0, 1fr); }
+      .draft-save-summary { max-width: none; }
+      .tool-stack { width: 100%; min-width: 0; }
+      .edit-object-buttons { flex-wrap: wrap; }
+      .tool-group select {
+        width: 100%;
+        min-width: 0;
+      }
+      .markup-tool-stack {
         grid-template-columns: minmax(0, 1fr);
         grid-template-areas:
-          "arrange"
-          "opacity"
-          "hotspot"
-          "shapes"
-          "markups"
-          "width"
-          "text"
-          "cards"
-          "effects"
-          "media";
+          "heading"
+          "pickers"
+          "width-label"
+          "width-control"
+          "effects";
       }
-      .toolbar-cluster { flex-wrap: wrap; }
-      .toolbar-arrange { display: grid; grid-template-columns: repeat(5, 36px); }
-      .toolbar-opacity-control,
-      .toolbar-width-control { width: 100%; }
-      .toolbar-shapes select { width: 100%; }
-      .toolbar-effects { align-items: center; }
-      .toolbar-media-controls { max-width: 100%; overflow-x: auto; }
-      .toolbar-blur-strength { width: min(150px, 100%); }
-      .draft-save-group { align-items: stretch; flex-direction: column; }
-      .draft-save-actions { flex-wrap: wrap; }
-      .draft-save-summary { max-width: none; justify-content: flex-start; }
+      .tool-group:nth-child(5) .tool-stack {
+        grid-template-columns: minmax(0, 1fr);
+        grid-template-areas:
+          "text-label"
+          "text-styles"
+          "intro-button"
+          "intro-align";
+      }
+      .markup-pickers,
+      .markup-effect-tools {
+        min-width: 0;
+        flex-wrap: wrap;
+      }
+      .markup-tool-stack > #markupWidth,
+      .toolbar-opacity {
+        width: 100%;
+      }
 	      .tutorial-shell { border-width: 3px; }
 	      .tutorial-link-callout { align-items: stretch; flex-direction: column; }
 	      .tutorial-link-callout__button { width: 100%; text-align: center; }
@@ -2621,9 +2571,10 @@
       .demo-timing-grid { grid-template-columns: 1fr; }
       .demo-timing-note { grid-column: 1; }
       .demo-playback-controls {
-        grid-template-columns: auto minmax(0, 1fr) auto;
+        grid-template-columns: 1fr 1fr;
       }
       .demo-playback-controls button { min-width: 0; }
+      .demo-playback-progress,
       .demo-playback-status { grid-column: 1 / -1; }
       .demo-playback-status { text-align: center; }
       .metadata-grid .span-2, .metadata-grid .span-3, .metadata-public-url { grid-column: 1; }
@@ -2636,6 +2587,14 @@
       .modal-body { padding: 12px; }
     }
     @media (max-width: 760px) {
+      .demo-start-screen { padding: 12px; overflow: hidden; }
+      .demo-start-card {
+        width: calc(100vw - 36px);
+        max-width: 25rem;
+        padding: 16px;
+      }
+      .demo-start-card h2,
+      .demo-start-card p { overflow-wrap: anywhere; }
       .tutorial-body.is-demo-cover { padding: 8px; }
       .tutorial-body.is-demo-cover .stage-wrap,
       .tutorial-body.is-demo-cover .slide-sidebar { width: 100%; }
@@ -2671,7 +2630,7 @@
       body[data-demo-player="true"] .demo-playback-controls {
         left: 12px;
         width: calc(100vw - 24px);
-        grid-template-columns: auto minmax(0, 1fr) auto;
+        grid-template-columns: minmax(0, 1fr) minmax(0, 1fr);
         gap: 5px;
         padding: 6px;
         transform: none;
@@ -2682,11 +2641,8 @@
         padding-inline: 4px;
         font-size: 11px;
       }
-      body[data-demo-player="true"] .demo-playback-controls .demo-rewind-button {
-        width: 2.75rem;
-        padding-inline: 8px;
-      }
       body[data-demo-player="true"] .demo-playback-progress { min-width: 0; }
+      body[data-demo-player="true"] .demo-playback-progress,
       body[data-demo-player="true"] .demo-playback-status { grid-column: 1 / -1; }
       body[data-demo-player="true"] .demo-playback-status { text-align: center; }
     }
@@ -2726,7 +2682,7 @@
     "demoBuilderVersion": 1,
     "demoDefaultDuration": 5,
     "visualRefinementVersion": 1,
-    "updatedAt": 1787470639329,
+    "updatedAt": 1787432181015,
     "coverAutoFitVersion": 1,
     "fixedVideoFrameVersion": 1
   },
@@ -2793,10 +2749,6 @@
             "introBody": "You type a name and a firm name.\nSidekick does the rest.\nExporting options for CATalyst Fill-in-Fields and Eclipse Form Fields.",
             "introBodyListStyle": "",
             "introAlign": "left",
-            "calloutTitle": "",
-            "calloutBody": "",
-            "calloutBodyListStyle": "",
-            "calloutAlign": "left",
             "textStyle": "regular",
             "textColor": "#000000",
             "fillColor": "#ffffff",
@@ -2804,9 +2756,9 @@
             "markup": "",
             "strokeWidth": 5,
             "markupPoints": null,
-            "x": 86.77644686541424,
-            "y": 18.63763247826067,
-            "w": 39.18039326659966,
+            "x": 40.23744759607971,
+            "y": 83.04671433912881,
+            "w": 74.61942485382987,
             "h": 4,
             "z": 2,
             "opacity": 1,
@@ -2857,9 +2809,6 @@
             "rotation": 0,
             "popupX": 23.422043615107913,
             "popupY": 40.79011332087416,
-            "popupW": null,
-            "popupH": null,
-            "textAlign": "left",
             "markerStyle": "number-box"
           }
         ],
@@ -2875,10 +2824,6 @@
             "introBody": "",
             "introBodyListStyle": "",
             "introAlign": "left",
-            "calloutTitle": "",
-            "calloutBody": "",
-            "calloutBodyListStyle": "",
-            "calloutAlign": "left",
             "textStyle": "regular",
             "textColor": "#000000",
             "fillColor": "#ffffff",
@@ -2921,10 +2866,6 @@
             "introBody": "",
             "introBodyListStyle": "",
             "introAlign": "left",
-            "calloutTitle": "",
-            "calloutBody": "",
-            "calloutBodyListStyle": "",
-            "calloutAlign": "left",
             "textStyle": "regular",
             "textColor": "#000000",
             "fillColor": "#ffffff",
@@ -3065,7 +3006,6 @@
     const DEMO_DEFAULT_DURATION = 5;
     const DEMO_MIN_DURATION = 1;
     const DEMO_MAX_DURATION = 300;
-    const DEMO_AUTOSTART_DELAY_MS = 600;
     const DEMO_AUDIO_END_DELAY_MS = 500;
     const VISUAL_REFINEMENT_VERSION = 1;
     const COVER_AUTO_FIT_VERSION = 1;
@@ -3192,11 +3132,6 @@
     committedSnapshot = historySnapshot();
     render();
     bindGlobalEvents();
-    if (IS_DEMO_PLAYER) {
-      window.setTimeout(() => {
-        if (!demoStarted && document.visibilityState !== "hidden") restartDemoPlayback();
-      }, DEMO_AUTOSTART_DELAY_MS);
-    }
     if (MODE === "builder") {
       loadShapes();
       restoreMediaSiteDirectory();
@@ -4181,13 +4116,6 @@
       return `<svg viewBox="0 0 24 24" aria-hidden="true" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="square" stroke-linejoin="miter">${paths[name] || ""}</svg>`;
     }
 
-    function toolbarIcon(filename) {
-      const encodedFilename = encodeURIComponent(String(filename || ""));
-      const localSrc = `../images/tutorial-annotations/builder-toolbar/${encodedFilename}`;
-      const hostedSrc = `${PUBLIC_ANNOTATION_ASSET_ROOT}builder-toolbar/${encodedFilename}`;
-      return `<img class="toolbar-icon-image" src="${escapeHtml(localSrc)}" data-toolbar-fallback="${escapeHtml(hostedSrc)}" alt="" aria-hidden="true" onerror="this.onerror=null;this.src=this.dataset.toolbarFallback">`;
-    }
-
     function isPipeBodyLine(line) {
       return /^\s*\|(?:\s|$)/.test(line);
     }
@@ -4442,6 +4370,7 @@
           ${MODE === "builder" ? renderBuilderLower(slide) + renderMetadata() : ""}
           ${renderContentsModal()}
           ${renderVideoModal()}
+          ${IS_DEMO_PLAYER ? renderDemoStartScreen() : ""}
         </div>
       `;
       syncRuntimeMedia();
@@ -4449,6 +4378,7 @@
 
     function renderToolbar(slide, selected) {
       const hotspot = state.ui.selectedKind === "hotspot" ? selected : null;
+      const selectedHotspotSlot = hotspot ? hotspotSlotIndex(hotspot.id, slide) : -1;
       const selectedMarkup = state.ui.selectedKind === "annotation" && selected?.type === "markup" ? selected : null;
       const selectedCover = state.ui.selectedKind === "annotation" && selected?.type === "cover" ? selected : null;
       const selectedBlur = state.ui.selectedKind === "annotation" && selected?.type === "blur" ? selected : null;
@@ -4463,6 +4393,7 @@
       const canAlign = arrangement.entries.length >= 2;
       const canDistribute = arrangement.entries.length >= 3;
       const arrangementTarget = arrangement.usesAllHotspots ? "all hotspots" : "selected items";
+      const allLocked = selection.length > 0 && selection.every(({ item }) => item.locked);
       const grouping = hotspotGroupingSelection(selection);
       const groupedWithCurrent = grouping.valid
         && grouping.annotations.every(({ item }) => item.hotspotGroupId === grouping.hotspot.id);
@@ -4474,98 +4405,107 @@
       const groupLabel = groupedWithCurrent ? "UNGROUP" : "GROUP";
       return `
         <section class="builder-toolbar" data-builder-only aria-label="Editing toolbar">
-          <div class="toolbar-controls">
-            <div class="toolbar-cluster toolbar-arrange" role="group" aria-label="Arrange selected items${multiSelection.length > 1 ? `, ${multiSelection.length} selected` : ""}">
-              <button class="toolbar-square" type="button" data-action="front" title="Bring to front" aria-label="Bring selected object to front" ${selected ? "" : "disabled"}>${toolbarIcon("a1-move-front.png")}</button>
-              <button class="toolbar-square" type="button" data-action="back" title="Send backward" aria-label="Send selected object backward" ${selected ? "" : "disabled"}>${toolbarIcon("a2-move-back.png")}</button>
-              <button class="toolbar-word-button toolbar-group-button ${groupedWithCurrent ? "is-active" : ""}" type="button" data-action="group-hotspot" title="${escapeHtml(groupTitle)}" aria-label="${escapeHtml(groupTitle)}" aria-pressed="${groupedWithCurrent}" ${grouping.valid ? "" : "disabled"}>${groupLabel}</button>
-              <button class="toolbar-square" type="button" data-action="align-left" title="Align ${arrangementTarget} left" aria-label="Align ${arrangementTarget} left" ${canAlign ? "" : "disabled"}>${toolbarIcon("a4-left-align.png")}</button>
-              <button class="toolbar-square" type="button" data-action="align-center" title="Align ${arrangementTarget} to horizontal center" aria-label="Align ${arrangementTarget} to horizontal center" ${canAlign ? "" : "disabled"}>${toolbarIcon("a5-align center-align.png")}</button>
-              <button class="toolbar-square" type="button" data-action="align-right" title="Align ${arrangementTarget} right" aria-label="Align ${arrangementTarget} right" ${canAlign ? "" : "disabled"}>${toolbarIcon("a6-right-align.png")}</button>
-              <button class="toolbar-square" type="button" data-action="align-top" title="Align ${arrangementTarget} to top" aria-label="Align ${arrangementTarget} to top" ${canAlign ? "" : "disabled"}>${toolbarIcon("a7-top-align.png")}</button>
-              <button class="toolbar-square" type="button" data-action="align-middle" title="Align ${arrangementTarget} to vertical middle" aria-label="Align ${arrangementTarget} to vertical middle" ${canAlign ? "" : "disabled"}>${toolbarIcon("a8-middle-align.png")}</button>
-              <button class="toolbar-square" type="button" data-action="distribute-horizontal" title="Distribute ${arrangementTarget} horizontally" aria-label="Distribute ${arrangementTarget} horizontally" ${canDistribute ? "" : "disabled"}>${toolbarIcon("a9-distribute-horizontal.png")}</button>
-              <button class="toolbar-square" type="button" data-action="distribute-vertical" title="Distribute ${arrangementTarget} vertically" aria-label="Distribute ${arrangementTarget} vertically" ${canDistribute ? "" : "disabled"}>${toolbarIcon("a10-distribute-vertically.png")}</button>
+          <div class="tool-group">
+            <div class="tool-stack">
+              <span class="tool-label">Edit selected${multiSelection.length > 1 ? ` · ${multiSelection.length}` : ""}</span>
+              <div class="edit-object-buttons">
+                <button class="icon-button" type="button" data-action="front" title="Bring to front" aria-label="Bring selected object to front" ${selected ? "" : "disabled"}>${icon("front")}</button>
+                <button class="icon-button" type="button" data-action="back" title="Send backward" aria-label="Send selected object backward" ${selected ? "" : "disabled"}>${icon("back")}</button>
+                <button class="icon-button ${allLocked ? "is-active" : ""}" type="button" data-action="lock" title="${allLocked ? "Unlock selected items" : "Lock selected items and keep them visible for the whole slide"}" aria-label="${allLocked ? "Unlock selected items" : "Lock selected items and keep them visible for the whole slide"}" ${selection.length ? "" : "disabled"}>${icon(allLocked ? "unlock" : "lock")}</button>
+                <button class="hotspot-group-button ${groupedWithCurrent ? "is-active" : ""}" type="button" data-action="group-hotspot" title="${escapeHtml(groupTitle)}" aria-label="${escapeHtml(groupTitle)}" aria-pressed="${groupedWithCurrent}" ${grouping.valid ? "" : "disabled"}>${groupLabel}</button>
+                <button class="icon-button" type="button" data-action="align-left" title="Align ${arrangementTarget} left" aria-label="Align ${arrangementTarget} left" ${canAlign ? "" : "disabled"}>${icon("alignLeft")}</button>
+                <button class="icon-button" type="button" data-action="align-center" title="Align ${arrangementTarget} to horizontal center" aria-label="Align ${arrangementTarget} to horizontal center" ${canAlign ? "" : "disabled"}>${icon("alignCenter")}</button>
+                <button class="icon-button" type="button" data-action="align-top" title="Align ${arrangementTarget} to top" aria-label="Align ${arrangementTarget} to top" ${canAlign ? "" : "disabled"}>${icon("alignTop")}</button>
+                <button class="icon-button" type="button" data-action="align-middle" title="Align ${arrangementTarget} to vertical middle" aria-label="Align ${arrangementTarget} to vertical middle" ${canAlign ? "" : "disabled"}>${icon("alignMiddle")}</button>
+                <button class="icon-button" type="button" data-action="align-bottom" title="Align ${arrangementTarget} to bottom" aria-label="Align ${arrangementTarget} to bottom" ${canAlign ? "" : "disabled"}>${icon("alignBottom")}</button>
+                <button class="icon-button" type="button" data-action="distribute-horizontal" title="Distribute ${arrangementTarget} horizontally" aria-label="Distribute ${arrangementTarget} horizontally" ${canDistribute ? "" : "disabled"}>${icon("distributeHorizontal")}</button>
+                <button class="icon-button" type="button" data-action="distribute-vertical" title="Distribute ${arrangementTarget} vertically" aria-label="Distribute ${arrangementTarget} vertically" ${canDistribute ? "" : "disabled"}>${icon("distributeVertical")}</button>
+              </div>
             </div>
-
-            <div class="toolbar-slider-control toolbar-opacity-control">
-              <input class="toolbar-opacity" id="selectedOpacity" type="range" min="10" max="100" value="${Math.round((selected?.opacity || 1) * 100)}" ${selected ? "" : "disabled"} aria-label="Selected object opacity" title="Selected object opacity">
+            <div class="tool-stack">
+              <span class="tool-label">Opacity</span>
+              <input class="toolbar-opacity" id="selectedOpacity" type="range" min="10" max="100" value="${Math.round((selected?.opacity || 1) * 100)}" ${selected ? "" : "disabled"} aria-label="Selected object opacity">
             </div>
-
-            <div class="toolbar-cluster toolbar-hotspot" role="group" aria-label="Hotspot controls">
-              <button class="toolbar-square" type="button" data-action="add-hotspot" title="Add hotspot" aria-label="Add hotspot" ${slide.kind === "video" ? "disabled" : ""}>${toolbarIcon("a11-hotspot.png")}</button>
-              <button class="toolbar-square" type="button" data-action="delete-selected" title="${hotspot ? "Delete hotspot" : "Delete selected object"}" aria-label="${hotspot ? "Delete selected hotspot" : "Delete selected object"}" ${selected ? "" : "disabled"}>${toolbarIcon("a12-delete-hotspot.png")}</button>
-              <button class="toolbar-square ${hotspot?.textAlign !== "center" ? "is-active" : ""}" type="button" data-action="set-hotspot-align" data-value="left" title="Align hotspot text left" aria-label="Align hotspot text left" ${hotspot ? "" : "disabled"}>${toolbarIcon("a13-hotspot-left-align.png")}</button>
-              <button class="toolbar-square ${hotspot?.textAlign === "center" ? "is-active" : ""}" type="button" data-action="set-hotspot-align" data-value="center" title="Center hotspot text" aria-label="Center hotspot text" ${hotspot ? "" : "disabled"}>${toolbarIcon("a14-hotspot-center-align.png")}</button>
+          </div>
+          <div class="tool-group">
+            <div class="tool-stack">
+              <span class="tool-label">Hotspot</span>
+              <div>
+                <button class="icon-button" type="button" data-action="add-hotspot" title="Add hotspot" aria-label="Add hotspot" ${slide.kind === "video" ? "disabled" : ""}>${icon("target")}</button>
+                <button class="icon-button" type="button" data-action="hotspot-up" title="Move title and body up; keep numbered marker fixed" aria-label="Move selected hotspot title and body up; keep its numbered marker fixed" ${selectedHotspotSlot > 0 ? "" : "disabled"}>${icon("up")}</button>
+                <button class="icon-button" type="button" data-action="hotspot-down" title="Move title and body down; keep numbered marker fixed" aria-label="Move selected hotspot title and body down; keep its numbered marker fixed" ${selectedHotspotSlot >= 0 && selectedHotspotSlot < slide.hotspots.length - 1 ? "" : "disabled"}>${icon("down")}</button>
+                <button class="icon-button" type="button" data-action="delete-selected" title="${hotspot ? "Delete hotspot" : "Delete selected object"}" aria-label="${hotspot ? "Delete selected hotspot" : "Delete selected object"}" ${selected ? "" : "disabled"}>${icon("trash")}</button>
+              </div>
+              <div class="text-style-buttons" role="group" aria-label="Hotspot text alignment">
+                <button type="button" data-action="set-hotspot-align" data-value="left" class="${hotspot?.textAlign !== "center" ? "is-active" : ""}" ${hotspot ? "" : "disabled"}>Left</button>
+                <button type="button" data-action="set-hotspot-align" data-value="center" class="${hotspot?.textAlign === "center" ? "is-active" : ""}" ${hotspot ? "" : "disabled"}>Center</button>
+              </div>
             </div>
-
-            <div class="toolbar-shapes">
-              <select id="shapeSelect" aria-label="Select an annotation shape" title="Select an annotation shape">
+          </div>
+          <div class="tool-group">
+            <div class="tool-stack">
+              <label class="tool-label" for="shapeSelect">Shapes</label>
+              <select id="shapeSelect">
                 <option value="">Select</option>
                 ${shapes.map((shape) => `<option value="${escapeHtml(shape.url)}">${escapeHtml(shape.name)}</option>`).join("")}
               </select>
             </div>
-
-            <div class="toolbar-cluster toolbar-markups" role="group" aria-label="Add line and shape markup">
-              ${MARKUP_SHAPES.map((shape, index) => `
-                <label class="toolbar-icon-select" title="Add ${shape.label.toLowerCase()} markup">
-                  ${toolbarIcon(["b1-line.png", "b2-circle.png", "b3-squre.png", "b4-arrow.png"][index])}
-                  <select data-markup-shape="${shape.key}" aria-label="Choose ${shape.label.toLowerCase()} markup style">
+          </div>
+          <div class="tool-group">
+            <div class="tool-stack markup-tool-stack">
+              <span class="tool-label">Markups</span>
+              <div class="markup-pickers">
+                ${MARKUP_SHAPES.map((shape) => `
+                  <select class="markup-style-select" data-markup-shape="${shape.key}" aria-label="${shape.label} markup">
                     <option value="">${shape.label}</option>
                     ${MARKUP_STYLES.map((style) => `<option value="${style.key}">${style.label}</option>`).join("")}
                   </select>
+                `).join("")}
+              </div>
+              <label class="tool-label" for="markupWidth">Width</label>
+              <input class="toolbar-opacity" id="markupWidth" type="range" min="1" max="10" value="${selectedMarkup?.strokeWidth || 5}" ${selectedMarkup ? "" : "disabled"} aria-label="Selected markup width">
+              <div class="markup-effect-tools">
+                <button type="button" data-action="add-cover" title="Add a solid cover rectangle">Cover</button>
+                <label for="coverColor">Color
+                  <input class="markup-color-picker" id="coverColor" type="color" value="${escapeHtml(coverColor)}" aria-label="Cover annotation color">
                 </label>
-              `).join("")}
+                <button type="button" data-action="apply-background" title="Fill the entire slide background">Background</button>
+                <label for="backgroundColor">Color
+                  <input class="markup-color-picker" id="backgroundColor" type="color" value="${escapeHtml(backgroundColor)}" aria-label="Slide background color">
+                </label>
+                <button type="button" data-action="add-blur" title="Add a blur rectangle">Blur</button>
+                <label for="blurStrength">Strength · <span id="blurStrengthValue">${blurStrength}px</span>
+                  <input class="markup-blur-slider" id="blurStrength" type="range" min="1" max="30" step="1" value="${blurStrength}" aria-label="Blur annotation strength">
+                </label>
+              </div>
             </div>
-
-            <div class="toolbar-slider-control toolbar-width-control">
-              <input class="toolbar-opacity" id="markupWidth" type="range" min="1" max="10" value="${selectedMarkup?.strokeWidth || 5}" ${selectedMarkup ? "" : "disabled"} aria-label="Selected line thickness" title="Selected line thickness">
-            </div>
-
-            <div class="toolbar-cluster toolbar-text" role="group" aria-label="Add text annotation">
-              <button class="text-style-button text-style-button--regular" type="button" data-action="add-text" data-style="regular" title="Add regular text" aria-label="Add regular text">${toolbarIcon("b11-regular-text.png")}</button>
-              <button class="text-style-button text-style-button--italic" type="button" data-action="add-text" data-style="italic" title="Add italic text" aria-label="Add italic text">${toolbarIcon("b12-italics.png")}</button>
-              <button class="text-style-button text-style-button--hand" type="button" data-action="add-text" data-style="hand" title="Add handwritten text" aria-label="Add handwritten text">${toolbarIcon("b13-handwriting.png")}</button>
-            </div>
-
-            <div class="toolbar-cluster toolbar-cards" role="group" aria-label="Intro and callout controls">
-              <button class="toolbar-word-button toolbar-card-button" type="button" data-action="add-slide-intro" title="${introCard ? "Open this slide's intro card for editing" : "Add an intro card shown before hotspot 1"}">Intro Card</button>
-              <button class="toolbar-word-button toolbar-callout-button" type="button" data-action="add-callout" title="Add an unnumbered standalone callout">Callout</button>
-              <button class="toolbar-square ${selectedTextBox && selectedTextBoxAlign !== "center" ? "is-active" : ""}" type="button" data-action="set-text-box-align" data-value="left" title="Align intro or callout text left" aria-label="Align intro or callout text left" ${selectedTextBox ? "" : "disabled"}>${toolbarIcon("b17-card-callout-left.png")}</button>
-              <button class="toolbar-square ${selectedTextBoxAlign === "center" ? "is-active" : ""}" type="button" data-action="set-text-box-align" data-value="center" title="Center intro or callout text" aria-label="Center intro or callout text" ${selectedTextBox ? "" : "disabled"}>${toolbarIcon("b18-card-callout-center.png")}</button>
-            </div>
-
-            <div class="toolbar-cluster toolbar-effects" role="group" aria-label="Cover, background, and blur controls">
-              <button class="toolbar-square toolbar-compact-word" type="button" data-action="add-cover" title="Add a solid cover rectangle">Cover</button>
-              <label class="toolbar-icon-select toolbar-color-control" title="Cover color">
-                ${toolbarIcon("c2-cover-colr.png")}
-                <input id="coverColor" type="color" value="${escapeHtml(coverColor)}" aria-label="Cover annotation color">
-              </label>
-              <button class="toolbar-word-button toolbar-background-button" type="button" data-action="apply-background" title="Fill the entire slide background">Bkgrnd</button>
-              <label class="toolbar-icon-select toolbar-color-control" title="Background color">
-                ${toolbarIcon("c4-background-color.png")}
-                <input id="backgroundColor" type="color" value="${escapeHtml(backgroundColor)}" aria-label="Slide background color">
-              </label>
-              <button class="toolbar-word-button toolbar-blur-button" type="button" data-action="add-blur" title="Add a blur rectangle">Blur</button>
-              <label class="toolbar-cluster toolbar-blur-strength" for="blurStrength" title="Blur strength">
-                <input class="markup-blur-slider" id="blurStrength" type="range" min="1" max="30" step="1" value="${blurStrength}" aria-label="Blur annotation strength">
-                <output id="blurStrengthValue" for="blurStrength">${blurStrength}px</output>
-              </label>
-            </div>
-
-            ${renderMainMediaControls(slide, "toolbar-media-controls")}
           </div>
-
-          <div class="draft-save-group">
+          <div class="tool-group">
+            <div class="tool-stack">
+              <span class="tool-label">Text</span>
+              <div class="text-style-buttons" role="group" aria-label="Add text annotation">
+                <button class="text-style-button text-style-button--regular" type="button" data-action="add-text" data-style="regular" title="Add regular text" aria-label="Add regular text">Tt</button>
+                <button class="text-style-button text-style-button--italic" type="button" data-action="add-text" data-style="italic" title="Add italic text" aria-label="Add italic text">Tt</button>
+                <button class="text-style-button text-style-button--hand" type="button" data-action="add-text" data-style="hand" title="Add handwritten text" aria-label="Add handwritten text">Tt</button>
+              </div>
+              <div class="text-style-buttons" role="group" aria-label="Text box annotations and alignment">
+                <button type="button" data-action="add-slide-intro" title="${introCard ? "Open this slide's intro card for editing" : "Add an intro card shown before hotspot 1"}">${introCard ? "Intro" : "+ Intro"}</button>
+                <button type="button" data-action="add-callout" title="Add an unnumbered standalone callout">+ Callout</button>
+                <button type="button" data-action="set-text-box-align" data-value="left" class="${selectedTextBox && selectedTextBoxAlign !== "center" ? "is-active" : ""}" ${selectedTextBox ? "" : "disabled"}>Left</button>
+                <button type="button" data-action="set-text-box-align" data-value="center" class="${selectedTextBoxAlign === "center" ? "is-active" : ""}" ${selectedTextBox ? "" : "disabled"}>Center</button>
+              </div>
+            </div>
+          </div>
+          <div class="tool-group draft-save-group">
+            <div class="draft-save-summary">
+              <span class="draft-file-name" title="${escapeHtml(DRAFT_FILENAME)}">${escapeHtml(DRAFT_FILENAME)}</span>
+              <span class="draft-save-status" data-draft-save-status data-state="${draftSavePhase}" role="status" title="${escapeHtml(draftStorageError || `Autosaves this draft in the current browser for ${DRAFT_FILENAME}`)}">${escapeHtml(draftSaveStatusText())}</span>
+            </div>
             <div class="draft-save-actions">
               <button type="button" data-action="save-editable-copy">Save Editable Copy</button>
               <button type="button" data-action="export-html">Export Demo Player</button>
               <button type="button" data-action="export-png">PNG Slides</button>
               <button type="button" data-action="reset-builder">Reset Builder</button>
-            </div>
-            <div class="draft-save-summary">
-              <span class="draft-file-name" title="${escapeHtml(DRAFT_FILENAME)}">${escapeHtml(DRAFT_FILENAME)}</span>
-              <span class="draft-save-status" data-draft-save-status data-state="${draftSavePhase}" role="status" title="${escapeHtml(draftStorageError || `Autosaves this draft in the current browser for ${DRAFT_FILENAME}`)}">${escapeHtml(draftSaveStatusText())}</span>
             </div>
           </div>
         </section>
@@ -4655,6 +4595,7 @@
         <div class="stage-wrap">
           <div class="stage" data-stage data-media-fit="${escapeHtml(slide.media.fit)}" style="--stage-matte:${escapeHtml(slide.media.matte)};--media-aspect:${naturalAspect}">
             ${renderMainMedia(slide)}
+            ${MODE === "builder" ? renderMainMediaControls(slide) : ""}
             ${slide.annotations.slice().sort((a,b) => a.z - b.z).filter(isVisibleForActiveHotspot).map(renderAnnotation).join("")}
             ${slide.hotspots.map((hotspot, index) => isHotspotVisibleForActiveState(hotspot, slide) ? renderHotspot(hotspot, index) : "").join("")}
           </div>
@@ -4662,9 +4603,9 @@
       `;
     }
 
-    function renderMainMediaControls(slide, className = "") {
+    function renderMainMediaControls(slide) {
       return `
-        <div class="stage-media-controls ${escapeHtml(className)}" data-builder-only aria-label="Main image controls">
+        <div class="stage-media-controls" data-builder-only aria-label="Main image controls">
           <button type="button" data-action="media-fit" data-value="match" class="${slide.media.fit === "match" ? "is-active" : ""}">Match</button>
           <button type="button" data-action="media-fit" data-value="contain" class="${slide.media.fit === "contain" ? "is-active" : ""}">Contain</button>
           <button type="button" data-action="media-fit" data-value="cover" class="${slide.media.fit === "cover" ? "is-active" : ""}">Cover</button>
@@ -4748,7 +4689,6 @@
         content = `<div class="object-frame annotation-asset-frame">${renderAnnotationAssetImage(annotation.src, annotation.label || "Annotation", "lazy")}</div>`;
       } else if (annotation.type === "slide-intro") {
         content = `<div class="object-frame slide-intro-card">
-          ${MODE === "builder" ? '<span class="card-top-drag-handle" data-handle="move" title="Drag this intro card" aria-label="Drag this intro card"></span>' : ""}
           <div class="slide-intro-card__title" ${MODE === "builder" ? `contenteditable="true" role="textbox" aria-label="Slide intro title" data-bind="annotation.introTitle:${annotation.id}"` : ""}>${escapeHtml(annotation.introTitle)}</div>
           <div class="slide-intro-card__body-field">
             ${renderBodyFormatBar("toggle-intro-pipe-list", "toggle-intro-numbered-list", annotation.id, bodyHasPipeLines(annotation.introBody), bodyHasNumberedLines(annotation.introBody))}
@@ -4762,7 +4702,6 @@
         </div>`;
       } else if (annotation.type === "callout") {
         content = `<div class="object-frame standalone-callout-card">
-          ${MODE === "builder" ? '<span class="card-top-drag-handle" data-handle="move" title="Drag this callout" aria-label="Drag this callout"></span>' : ""}
           <div class="standalone-callout-card__title" ${MODE === "builder" ? `contenteditable="true" role="textbox" aria-label="Callout title" data-bind="annotation.calloutTitle:${annotation.id}"` : ""}>${escapeHtml(annotation.calloutTitle)}</div>
           <div class="standalone-callout-card__body-field">
             ${renderBodyFormatBar("toggle-callout-pipe-list", "toggle-callout-numbered-list", annotation.id, bodyHasPipeLines(annotation.calloutBody), bodyHasNumberedLines(annotation.calloutBody))}
@@ -4886,14 +4825,26 @@
 
     function renderDemoPlaybackControls() {
       const playLabel = demoStarted && demoPlaying ? "Pause" : demoFinished ? "Replay" : "Play";
-      const playIcon = demoStarted && demoPlaying ? "pause" : "play";
       return `
         <section class="demo-playback-controls" data-demo-playback aria-label="Demo playback controls">
-          <button class="demo-playback-toggle" type="button" data-action="demo-toggle" aria-label="${playLabel} demo" aria-pressed="${demoStarted && demoPlaying}">${icon(playIcon)}<span>${playLabel}</span></button>
+          <button type="button" data-action="demo-toggle">${playLabel}</button>
+          <button type="button" data-action="demo-restart">Restart</button>
           <input class="demo-playback-progress" data-demo-seek type="range" min="0" max="100" step="0.1" value="${demoOverallProgress()}" aria-label="Demo timeline" aria-valuetext="${escapeHtml(demoProgressText())}">
-          <button class="icon-button demo-rewind-button" type="button" data-action="demo-restart" title="Rewind to the beginning" aria-label="Rewind demo to the beginning">${icon("rewind")}</button>
           <span class="demo-playback-status" data-demo-status aria-live="polite">${escapeHtml(demoProgressText())}</span>
         </section>
+      `;
+    }
+
+    function renderDemoStartScreen() {
+      if (demoStarted) return "";
+      return `
+        <div class="demo-start-screen" role="dialog" aria-modal="true" aria-labelledby="demoStartTitle">
+          <div class="demo-start-card">
+            <h2 id="demoStartTitle">${escapeHtml(state.tutorial.title || "Demo")}</h2>
+            <p>Click Play to begin this narrated demo.</p>
+            <button type="button" data-action="demo-toggle">Play Demo</button>
+          </div>
+        </div>
       `;
     }
 
@@ -4941,8 +4892,8 @@
             <div class="slide-control-grid">
               <button class="icon-button" type="button" data-action="add-image-slide" title="New image slide" aria-label="New image slide">${icon("plusImage")}</button>
               <button class="icon-button" type="button" data-action="add-video-slide" title="New video slide" aria-label="New video slide">${icon("plusVideo")}</button>
-              <button type="button" data-action="move-slide-left" title="Move slide up in the slide order" aria-label="Move slide up in the slide order" ${state.ui.slideIndex <= 1 ? "disabled" : ""}>Slide ↑</button>
-              <button type="button" data-action="move-slide-right" title="Move slide down in the slide order" aria-label="Move slide down in the slide order" ${state.ui.slideIndex === 0 || state.ui.slideIndex >= state.tutorial.slides.length - 1 ? "disabled" : ""}>Slide ↓</button>
+              <button class="icon-button" type="button" data-action="move-slide-left" title="Move slide backward" aria-label="Move slide backward" ${state.ui.slideIndex <= 1 ? "disabled" : ""}>${icon("left")}</button>
+              <button class="icon-button" type="button" data-action="move-slide-right" title="Move slide forward" aria-label="Move slide forward" ${state.ui.slideIndex === 0 || state.ui.slideIndex >= state.tutorial.slides.length - 1 ? "disabled" : ""}>${icon("right")}</button>
               <button class="icon-button" type="button" data-action="duplicate-slide" title="Duplicate slide" aria-label="Duplicate slide" ${state.ui.slideIndex === 0 ? "disabled" : ""}>${icon("duplicate")}</button>
               <div class="slide-status">Slide ${state.ui.slideIndex + 1} of ${state.tutorial.slides.length} · ${escapeHtml(slide.kind)}</div>
             </div>
@@ -5514,7 +5465,6 @@
         "activate-hotspot": () => selectHotspotFromAction(event, actionNode, id),
         "align-left": () => arrangeSelected("left"),
         "align-center": () => arrangeSelected("center"),
-        "align-right": () => arrangeSelected("right"),
         "align-top": () => arrangeSelected("top"),
         "align-middle": () => arrangeSelected("middle"),
         "align-bottom": () => arrangeSelected("bottom"),
@@ -6562,19 +6512,20 @@
     function drawAttentionToHotspot(id, scrollRow = true) {
       if (!id) return;
       window.clearTimeout(hotspotAttentionTimer);
-      root.querySelectorAll(".hotspot-object.is-attention").forEach((element) => {
+      root.querySelectorAll(".hotspot-object.is-attention, .hotspot-entry.is-attention").forEach((element) => {
         element.classList.remove("is-attention");
       });
       const escapedId = CSS.escape(id);
       const marker = root.querySelector(`.hotspot-object[data-id="${escapedId}"]`);
       const entry = root.querySelector(`.hotspot-entry[data-id="${escapedId}"]`);
-      if (marker) {
-        void marker.offsetWidth;
-        marker.classList.add("is-attention");
-      }
+      const targets = [marker, entry].filter(Boolean);
+      targets.forEach((element) => {
+        void element.offsetWidth;
+        element.classList.add("is-attention");
+      });
       if (scrollRow) entry?.querySelector(".hotspot-row")?.scrollIntoView({ block: "nearest" });
       hotspotAttentionTimer = window.setTimeout(() => {
-        root.querySelectorAll(".hotspot-object.is-attention").forEach((element) => {
+        root.querySelectorAll(".hotspot-object.is-attention, .hotspot-entry.is-attention").forEach((element) => {
           element.classList.remove("is-attention");
         });
       }, 850);
@@ -6885,11 +6836,6 @@
         entries.forEach(({ item }) => {
           item.x = clamp(center, STAGE_OBJECT_MIN_POSITION, STAGE_OBJECT_MAX_POSITION);
         });
-      } else if (mode === "right") {
-        const right = Math.max(...entries.map(({ item }) => item.x + item.w / 2));
-        entries.forEach(({ item }) => {
-          item.x = clamp(right - item.w / 2, STAGE_OBJECT_MIN_POSITION, STAGE_OBJECT_MAX_POSITION);
-        });
       } else if (mode === "top") {
         const top = Math.min(...entries.map(({ item }) => item.y - item.h / 2));
         entries.forEach(({ item }) => {
@@ -7116,12 +7062,7 @@
         seek.setAttribute("aria-valuetext", text);
       }
       if (status) status.textContent = text;
-      if (toggle) {
-        const playLabel = demoStarted && demoPlaying ? "Pause" : demoFinished ? "Replay" : "Play";
-        toggle.innerHTML = `${icon(demoStarted && demoPlaying ? "pause" : "play")}<span>${playLabel}</span>`;
-        toggle.setAttribute("aria-label", `${playLabel} demo`);
-        toggle.setAttribute("aria-pressed", String(demoStarted && demoPlaying));
-      }
+      if (toggle) toggle.textContent = demoStarted && demoPlaying ? "Pause" : demoFinished ? "Replay" : "Play";
     }
 
     function clearDemoTimers() {
@@ -7270,7 +7211,6 @@
     }
 
     function stopDemoSlidePlayback() {
-      demoPlaybackRequest += 1;
       if (demoPlaying && demoDeadline) demoRemainingMs = Math.max(0, demoDeadline - performance.now());
       clearDemoTimers();
       if (demoAudio) demoAudio.pause();
@@ -7343,14 +7283,11 @@
     }
 
     function previewDemoSeek(value) {
-      const preview = clamp(Number(value), 0, 100);
       if (demoSeekPreview === null) {
         demoSeekResumeAfter = demoPlaying;
-        demoSeekPreview = preview;
         pauseDemoPlayback();
-      } else {
-        demoSeekPreview = preview;
       }
+      demoSeekPreview = clamp(Number(value), 0, 100);
       const count = Math.max(1, state.tutorial.slides.length);
       const target = Math.min(count - 1, Math.floor((demoSeekPreview / 100) * count));
       const status = root.querySelector("[data-demo-status]");
@@ -7762,7 +7699,7 @@
       setMeta(documentElement.querySelector("head"), "name", "robots", "noindex, nofollow");
       const html = `<!DOCTYPE html>\n${documentElement.outerHTML}`;
       download(`${slugify(state.meta.tutorialSlug || state.tutorial.title) || "tool"}-demo.html`, html, "text/html");
-	      showToast("Exported the autoplay demo HTML for embedding.");
+	      showToast("Exported the click-to-play demo HTML for embedding.");
     }
 
     async function exportPng() {
@@ -7805,6 +7742,5 @@
     }
   })();
   </script>
-
-
-</body></html>
+</body>
+</html>
