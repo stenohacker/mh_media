@@ -3086,10 +3086,6 @@
       { key: "solid", label: "Solid" },
       { key: "dotted", label: "Dotted" }
     ];
-    const CLOSED_MARKUP_STYLES = [
-      { key: "solid", label: "Solid" },
-      { key: "fill", label: "Fill" }
-    ];
     const FALLBACK_SHAPES = [
       ["3d line", "https://iridescent-wisp-57bcb1.netlify.app/images/tutorial-annotations/3d-line.png"],
       ["3D squiggle line", "https://iridescent-wisp-57bcb1.netlify.app/images/tutorial-annotations/3D-squiggle-line.png"],
@@ -3500,7 +3496,6 @@
           : (["regular", "italic", "hand"].includes(item?.textStyle) ? item.textStyle : "regular"),
         textColor: String(item?.textColor || "#000000"),
         fillColor: /^#[0-9a-f]{6}$/i.test(String(item?.fillColor || "")) ? String(item.fillColor) : "#ffffff",
-        markupColor: /^#[0-9a-f]{6}$/i.test(String(item?.markupColor || "")) ? String(item.markupColor) : "#000000",
         blurStrength: clamp(item?.blurStrength ?? 12, 1, 30),
         markup: type === "markup" ? markup : "",
         strokeWidth: clamp(item?.strokeWidth ?? 5, 1, 10),
@@ -3529,10 +3524,7 @@
         circle: "circle-solid"
       };
       if (legacy[candidate]) return legacy[candidate];
-      const valid = MARKUP_SHAPES.some((shape) => {
-        const styles = ["circle", "square"].includes(shape.key) ? CLOSED_MARKUP_STYLES : MARKUP_STYLES;
-        return styles.some((style) => candidate === `${shape.key}-${style.key}`);
-      }) || ["circle-dotted", "square-dotted"].includes(candidate);
+      const valid = MARKUP_SHAPES.some((shape) => candidate === `${shape.key}-solid` || candidate === `${shape.key}-dotted`);
       return valid ? candidate : "line-solid";
     }
 
@@ -3557,8 +3549,7 @@
 
     function markupLabel(kind) {
       const [shape, style] = normalizeMarkupKind(kind).split("-");
-      const styleLabel = style === "dotted" ? "Dotted" : style === "fill" ? "Filled" : "Solid";
-      return `${styleLabel} ${shape}`;
+      return `${style === "dotted" ? "Dotted" : "Solid"} ${shape}`;
     }
 
     function createSlide(kind) {
@@ -4320,7 +4311,7 @@
     }
 
     function objectStyle(item) {
-      return `--x:${item.x}%;--y:${item.y}%;--w:${item.w}%;--h:${item.h}%;--z:${item.z};--opacity:${item.opacity};--rotation:${item.rotation || 0}deg;--flip-x:${item.flipX ? -1 : 1};--markup-width:${item.strokeWidth || 5};--markup-color:${item.markupColor || "#000000"};--cover-color:${item.fillColor || "#ffffff"};--blur-strength:${item.blurStrength || 12}px`;
+      return `--x:${item.x}%;--y:${item.y}%;--w:${item.w}%;--h:${item.h}%;--z:${item.z};--opacity:${item.opacity};--rotation:${item.rotation || 0}deg;--flip-x:${item.flipX ? -1 : 1};--markup-width:${item.strokeWidth || 5};--cover-color:${item.fillColor || "#ffffff"};--blur-strength:${item.blurStrength || 12}px`;
     }
 
 	    function renderSiteHeader() {
@@ -4462,14 +4453,10 @@
       const selectedMarkup = state.ui.selectedKind === "annotation" && selected?.type === "markup" ? selected : null;
       const selectedCover = state.ui.selectedKind === "annotation" && selected?.type === "cover" ? selected : null;
       const selectedBlur = state.ui.selectedKind === "annotation" && selected?.type === "blur" ? selected : null;
-      const selectedText = state.ui.selectedKind === "annotation" && selected?.type === "text" ? selected : null;
       const selectedTextBox = state.ui.selectedKind === "annotation" && ["slide-intro", "callout"].includes(selected?.type) ? selected : null;
       const selectedTextBoxAlign = selectedTextBox?.type === "callout" ? selectedTextBox.calloutAlign : selectedTextBox?.introAlign;
       const introCard = slideIntroCard(slide);
       const coverColor = selectedCover?.fillColor || "#ffffff";
-      const circleColor = selectedMarkup?.markup.startsWith("circle-") ? selectedMarkup.markupColor : "#000000";
-      const squareColor = selectedMarkup?.markup.startsWith("square-") ? selectedMarkup.markupColor : "#000000";
-      const textColor = selectedText?.textColor || "#000000";
       const backgroundColor = /^#[0-9a-f]{6}$/i.test(slide.media.matte) ? slide.media.matte : "#ffffff";
       const blurStrength = selectedBlur?.blurStrength || 12;
       const selection = selectedObjects();
@@ -4526,15 +4513,9 @@
                   ${toolbarIcon(["b1-line.png", "b2-circle.png", "b3-squre.png", "b4-arrow.png"][index])}
                   <select data-markup-shape="${shape.key}" aria-label="Choose ${shape.label.toLowerCase()} markup style">
                     <option value="">${shape.label}</option>
-                    ${(["circle", "square"].includes(shape.key) ? CLOSED_MARKUP_STYLES : MARKUP_STYLES).map((style) => `<option value="${style.key}">${style.label}</option>`).join("")}
+                    ${MARKUP_STYLES.map((style) => `<option value="${style.key}">${style.label}</option>`).join("")}
                   </select>
                 </label>
-                ${["circle", "square"].includes(shape.key) ? `
-                  <label class="toolbar-icon-select toolbar-color-control" title="${shape.label} color">
-                    ${toolbarIcon("c2-cover-colr.png")}
-                    <input id="${shape.key}MarkupColor" type="color" value="${escapeHtml(shape.key === "circle" ? circleColor : squareColor)}" aria-label="${shape.label} markup color">
-                  </label>
-                ` : ""}
               `).join("")}
             </div>
 
@@ -4546,10 +4527,6 @@
               <button class="text-style-button text-style-button--regular" type="button" data-action="add-text" data-style="regular" title="Add regular text" aria-label="Add regular text">${toolbarIcon("b11-regular-text.png")}</button>
               <button class="text-style-button text-style-button--italic" type="button" data-action="add-text" data-style="italic" title="Add italic text" aria-label="Add italic text">${toolbarIcon("b12-italics.png")}</button>
               <button class="text-style-button text-style-button--hand" type="button" data-action="add-text" data-style="hand" title="Add handwritten text" aria-label="Add handwritten text">${toolbarIcon("b13-handwriting.png")}</button>
-              <label class="toolbar-icon-select toolbar-color-control" title="Text color">
-                ${toolbarIcon("c2-cover-colr.png")}
-                <input id="textAnnotationColor" type="color" value="${escapeHtml(textColor)}" aria-label="Text annotation color">
-              </label>
             </div>
 
             <div class="toolbar-cluster toolbar-cards" role="group" aria-label="Intro and callout controls">
@@ -4835,17 +4812,12 @@
     function markupSvg(annotation) {
       const kind = normalizeMarkupKind(annotation.markup);
       const dotted = kind.endsWith("-dotted");
-      const filled = kind.endsWith("-fill");
       const dash = dotted ? ' stroke-dasharray="8 7"' : "";
       if (kind.startsWith("square-")) {
-        return filled
-          ? `<svg viewBox="0 0 100 100" preserveAspectRatio="none" aria-hidden="true"><rect x="7" y="7" width="86" height="86" fill="var(--markup-color, #000000)" stroke="none"/></svg>`
-          : `<svg viewBox="0 0 100 100" preserveAspectRatio="none" aria-hidden="true"><rect x="7" y="7" width="86" height="86" fill="none" stroke="var(--markup-color, #000000)"${dash}/></svg>`;
+        return `<svg viewBox="0 0 100 100" preserveAspectRatio="none" aria-hidden="true"><rect x="7" y="7" width="86" height="86" fill="none" stroke="#000"${dash}/></svg>`;
       }
       if (kind.startsWith("circle-")) {
-        return filled
-          ? `<svg viewBox="0 0 100 100" preserveAspectRatio="none" aria-hidden="true"><ellipse cx="50" cy="50" rx="43" ry="43" fill="var(--markup-color, #000000)" stroke="none"/></svg>`
-          : `<svg viewBox="0 0 100 100" preserveAspectRatio="none" aria-hidden="true"><ellipse cx="50" cy="50" rx="43" ry="43" fill="none" stroke="var(--markup-color, #000000)"${dash}/></svg>`;
+        return `<svg viewBox="0 0 100 100" preserveAspectRatio="none" aria-hidden="true"><ellipse cx="50" cy="50" rx="43" ry="43" fill="none" stroke="#000"${dash}/></svg>`;
       }
       const path = markupPath(annotation);
       if (kind.startsWith("arrow-")) {
@@ -5872,21 +5844,6 @@
           commit("Updated markup width.");
         }
       }
-      if (target.id === "circleMarkupColor" || target.id === "squareMarkupColor") {
-        const selected = selectedObject();
-        const shape = target.id === "circleMarkupColor" ? "circle" : "square";
-        if (selected?.type === "markup" && selected.markup.startsWith(`${shape}-`)) {
-          selected.markupColor = target.value;
-          commit(`Updated ${shape} color.`);
-        }
-      }
-      if (target.id === "textAnnotationColor") {
-        const selected = selectedObject();
-        if (selected?.type === "text") {
-          selected.textColor = target.value;
-          commit("Updated text color.");
-        }
-      }
       if (target.id === "coverColor") {
         const selected = selectedObject();
         if (selected?.type === "cover") {
@@ -6017,25 +5974,6 @@
           selected.strokeWidth = clamp(Number(target.value), 1, 10);
           const element = root.querySelector(`[data-object][data-id="${CSS.escape(selected.id)}"]`);
           element?.style.setProperty("--markup-width", selected.strokeWidth);
-          scheduleSave();
-        }
-      }
-      if (target.id === "circleMarkupColor" || target.id === "squareMarkupColor") {
-        const selected = selectedObject();
-        const shape = target.id === "circleMarkupColor" ? "circle" : "square";
-        if (selected?.type === "markup" && selected.markup.startsWith(`${shape}-`)) {
-          selected.markupColor = target.value;
-          const element = root.querySelector(`[data-object][data-id="${CSS.escape(selected.id)}"]`);
-          element?.style.setProperty("--markup-color", selected.markupColor);
-          scheduleSave();
-        }
-      }
-      if (target.id === "textAnnotationColor") {
-        const selected = selectedObject();
-        if (selected?.type === "text") {
-          selected.textColor = target.value;
-          const element = root.querySelector(`[data-object][data-id="${CSS.escape(selected.id)}"] .object-frame`);
-          if (element) element.style.color = selected.textColor;
           scheduleSave();
         }
       }
@@ -6688,7 +6626,6 @@
         type: "text",
         text: "new note",
         textStyle: style,
-        textColor: document.getElementById("textAnnotationColor")?.value || "#000000",
         x: 50, y: 42, w: 24, h: 12,
         z: topZ() + 1
       }, slide.annotations.length);
@@ -6848,11 +6785,6 @@
         type: "markup",
         markup,
         label: markupLabel(markup),
-        markupColor: markup.startsWith("circle-")
-          ? document.getElementById("circleMarkupColor")?.value || "#000000"
-          : markup.startsWith("square-")
-            ? document.getElementById("squareMarkupColor")?.value || "#000000"
-            : "#000000",
         x: 50, y: 48,
         w: isPathMarkup(markup) ? 34 : 22,
         h: isPathMarkup(markup) ? 18 : 22,
@@ -6907,30 +6839,7 @@
     function moveSelectedZ(direction) {
       const item = selectedObject();
       if (!item) return;
-      const slide = currentSlide();
-      const layers = [
-        ...slide.annotations.map((entry, index) => ({ item: entry, domOrder: index })),
-        ...slide.hotspots.map((entry, index) => ({ item: entry, domOrder: slide.annotations.length + index }))
-      ].sort((a, b) => a.item.z - b.item.z || a.domOrder - b.domOrder);
-      const currentIndex = layers.findIndex((entry) => entry.item === item);
-      if (currentIndex < 0) return;
-      if (direction === "front") {
-        if (currentIndex === layers.length - 1) {
-          showToast("Object is already at the front.");
-          return;
-        }
-        const [selectedLayer] = layers.splice(currentIndex, 1);
-        layers.push(selectedLayer);
-      } else {
-        if (currentIndex === 0) {
-          showToast("Object is already at the back.");
-          return;
-        }
-        [layers[currentIndex - 1], layers[currentIndex]] = [layers[currentIndex], layers[currentIndex - 1]];
-      }
-      layers.forEach((entry, index) => {
-        entry.item.z = index + 1;
-      });
+      item.z = direction === "front" ? topZ() + 1 : Math.max(1, item.z - 1);
       commit(direction === "front" ? "Brought object to front." : "Sent object backward.");
     }
 
