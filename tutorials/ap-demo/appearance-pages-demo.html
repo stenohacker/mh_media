@@ -4,7 +4,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <meta name="color-scheme" content="light">
   <title>Tutorial Demo Builder v1</title>
-  <link id="geist-mono-preload" rel="preload" href="../../../website/fonts/geist-mono-latin.woff2" as="font" type="font/woff2" crossorigin="">
+  <link id="geist-mono-preload" rel="preload" href="../../website/fonts/geist-mono-latin.woff2" as="font" type="font/woff2" crossorigin="">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin="">
   <link href="https://fonts.googleapis.com/css2?family=Shadows+Into+Light+Two&amp;display=swap" rel="stylesheet">
@@ -12,7 +12,7 @@
     @font-face {
       font-family: "Geist Mono";
       src:
-        url("../../../website/fonts/geist-mono-latin.woff2") format("woff2"),
+        url("../../website/fonts/geist-mono-latin.woff2") format("woff2"),
         url("https://magichashtags.com/fonts/geist-mono-latin.woff2") format("woff2");
       font-style: normal;
       font-weight: 100 900;
@@ -31,7 +31,7 @@
       --soft-pink: #fbeaf9;
       --gray: #d7d7d7;
       --muted: #6d6d6d;
-      --font-interface: "Geist Mono", monospace;
+      --font-interface: "Geist Mono", ui-monospace, "SFMono-Regular", Menlo, Monaco, Consolas, monospace;
       --mono: var(--font-interface);
       --sans: var(--font-interface);
       --body: var(--font-interface);
@@ -68,7 +68,29 @@
     body[data-mode="player"] {
       padding: 0;
       background: #9ca3af;
+      font-family: var(--font-interface);
+      font-weight: 400;
     }
+    body[data-mode="player"] :where(button, input, textarea, select, option, code, pre, kbd, samp) {
+      font-family: var(--font-interface) !important;
+      font-synthesis: none;
+    }
+    body[data-mode="player"] .tutorial-title { font-weight: 500; }
+    body[data-mode="player"] :where(
+      .slide-sidebar__title,
+      .hotspot-row__title,
+      .slide-intro-card__title,
+      .standalone-callout-card__title,
+      .modal-header,
+      .contents-card-title,
+      .tutorial-link-callout h2
+    ) { font-weight: 600; }
+    body[data-mode="player"] :where(button, .tutorial-link-callout__button) { font-weight: 700; }
+    body[data-mode="player"] :where(
+      .site-nav__link,
+      button.site-nav__dropdown-trigger,
+      .site-header-contact
+    ) { font-weight: 600; }
 
     button, input, select, textarea {
       font-family: var(--font-interface);
@@ -505,7 +527,7 @@
       top: 0;
       z-index: 90;
       display: grid;
-      grid-template-columns: minmax(0, 1fr) minmax(360px, 390px);
+      grid-template-columns: minmax(0, 1fr) minmax(440px, 480px);
       align-items: start;
       gap: 10px;
       padding: 6px;
@@ -546,6 +568,18 @@
     .toolbar-cards { grid-area: cards; }
     .toolbar-effects { grid-area: effects; }
     .toolbar-media-controls { grid-area: effects; }
+    @media (min-width: 921px) {
+      .toolbar-controls {
+        grid-template-columns: max-content 104px 156px 116px;
+      }
+      .toolbar-text {
+        z-index: 1;
+        width: max-content;
+      }
+      .toolbar-cards {
+        transform: translateX(240px);
+      }
+    }
     .builder-toolbar button.toolbar-square,
     .toolbar-icon-select {
       width: 36px;
@@ -1295,7 +1329,9 @@
       align-content: center;
       justify-items: stretch;
       padding: 8px;
-      text-align: center;
+      font-size: var(--text-font-size, 16px);
+      line-height: var(--text-line-height, 1.2);
+      text-align: var(--text-align, center);
       white-space: pre-wrap;
       overflow-wrap: anywhere;
       overflow: auto;
@@ -1447,7 +1483,7 @@
       font-style: italic;
       font-synthesis: style;
     }
-    .annotation-text[data-text-style="hand"] .object-frame { font-family: var(--hand); font-size: 1.35em; }
+    .annotation-text[data-text-style="hand"] .object-frame { font-family: var(--hand); }
     .annotation-cover .object-frame {
       background: var(--cover-color, #ffffff);
     }
@@ -1954,7 +1990,7 @@
     .demo-playback-controls {
       width: var(--shell);
       display: grid;
-      grid-template-columns: auto minmax(0, 1fr) auto auto;
+      grid-template-columns: auto minmax(0, 1fr) auto;
       align-items: center;
       gap: 8px;
       margin: 12px auto 0;
@@ -1989,12 +2025,6 @@
       border: 3px solid var(--black);
       background: var(--white);
       accent-color: var(--pink);
-    }
-    .demo-playback-status {
-      min-width: 9rem;
-      font-size: 12px;
-      font-weight: 600;
-      text-align: right;
     }
     /* Centered video/demo presentation. The cover keeps the yellow title, while
        every later image slide gives the media the full visual emphasis. */
@@ -2624,8 +2654,6 @@
         grid-template-columns: auto minmax(0, 1fr) auto;
       }
       .demo-playback-controls button { min-width: 0; }
-      .demo-playback-status { grid-column: 1 / -1; }
-      .demo-playback-status { text-align: center; }
       .metadata-grid .span-2, .metadata-grid .span-3, .metadata-public-url { grid-column: 1; }
       .metadata-url-row { grid-template-columns: 1fr; }
       .contents-grid { grid-template-columns: 1fr; }
@@ -2687,8 +2715,6 @@
         padding-inline: 8px;
       }
       body[data-demo-player="true"] .demo-playback-progress { min-width: 0; }
-      body[data-demo-player="true"] .demo-playback-status { grid-column: 1 / -1; }
-      body[data-demo-player="true"] .demo-playback-status { text-align: center; }
     }
     @media (prefers-reduced-motion: reduce) {
       *, *::before, *::after { scroll-behavior: auto !important; transition: none !important; animation: none !important; }
@@ -2720,15 +2746,15 @@
     "relatedCalloutUrl": "",
     "socialTitle": "",
     "socialDescription": "Tutorial description.",
-    "socialImage": "https://iridescent-wisp-57bcb1.netlify.app/images/reporter-tools-modal-images/appearance-pages.png",
+    "socialImage": "",
     "socialImageAlt": "",
     "touched": {},
     "demoBuilderVersion": 1,
     "demoDefaultDuration": 5,
     "visualRefinementVersion": 1,
-    "updatedAt": 1787470639329,
     "coverAutoFitVersion": 1,
-    "fixedVideoFrameVersion": 1
+    "fixedVideoFrameVersion": 1,
+    "updatedAt": 1787628929116
   },
   "tutorial": {
     "title": "TUTORIAL TITLE",
@@ -2740,40 +2766,15 @@
         "description": "Tutorial description.",
         "descriptionListStyle": "",
         "media": {
-          "url": "https://iridescent-wisp-57bcb1.netlify.app/images/reporter-tools-modal-images/appearance-pages.png",
+          "url": "",
           "type": "image",
           "fit": "contain",
-          "matte": "#fbeaf9",
-          "x": 0,
+          "matte": "#f2f332",
+          "x": -8,
           "y": 0,
-          "scale": 1,
-          "naturalWidth": 3312,
-          "naturalHeight": 1865
-        },
-        "demo": {
-          "timing": "default",
-          "duration": 5,
-          "audioUrl": ""
-        },
-        "hotspots": [],
-        "annotations": []
-      },
-      {
-        "id": "slide-1",
-        "kind": "image",
-        "title": "SLIDE TITLE",
-        "description": "Slide description.",
-        "descriptionListStyle": "",
-        "media": {
-          "url": "https://iridescent-wisp-57bcb1.netlify.app/tutorials/ap-demo/appearance-pages.png",
-          "type": "image",
-          "fit": "contain",
-          "matte": "#ffffff",
-          "x": 0,
-          "y": 7,
-          "scale": 1.6500000000000006,
-          "naturalWidth": 3312,
-          "naturalHeight": 1865
+          "scale": 1.05,
+          "naturalWidth": 1580,
+          "naturalHeight": 913
         },
         "demo": {
           "timing": "default",
@@ -2783,14 +2784,14 @@
         "hotspots": [],
         "annotations": [
           {
-            "id": "slide-intro-0c0ea2c6-4909-4e08-accd-a68a16f1ff37",
-            "type": "slide-intro",
+            "id": "text-9e92863c-3517-4b1b-a22e-c7e374ed1171",
+            "type": "text",
             "label": "",
             "src": "",
             "url": "",
-            "text": "",
-            "introTitle": "APPEARANCE PAGES SIDEKICK",
-            "introBody": "You type a name and a firm name.\nSidekick does the rest.\nExporting options for CATalyst Fill-in-Fields and Eclipse Form Fields.",
+            "text": "new note\nnew note\nnew note",
+            "introTitle": "",
+            "introBody": "",
             "introBodyListStyle": "",
             "introAlign": "left",
             "calloutTitle": "",
@@ -2799,161 +2800,24 @@
             "calloutAlign": "left",
             "textStyle": "regular",
             "textColor": "#000000",
+            "textFontSize": 14,
+            "textLineHeight": 1.7,
+            "textAlign": "center",
             "fillColor": "#ffffff",
+            "markupColor": "#000000",
             "blurStrength": 12,
             "markup": "",
             "strokeWidth": 5,
             "markupPoints": null,
-            "x": 86.77644686541424,
-            "y": 18.63763247826067,
-            "w": 39.18039326659966,
-            "h": 4,
+            "x": 50,
+            "y": 42,
+            "w": 24,
+            "h": 12,
             "z": 2,
             "opacity": 1,
             "locked": false,
             "hotspotGroupId": "",
             "rotation": 0,
-            "flipX": false
-          }
-        ]
-      },
-      {
-        "id": "image-9cd73efd-2050-4b2a-b366-30b338f2fe37",
-        "kind": "image",
-        "title": "SLIDE TITLE",
-        "description": "Slide description.",
-        "descriptionListStyle": "",
-        "media": {
-          "url": "https://iridescent-wisp-57bcb1.netlify.app/tutorials/ap-demo/a17-sidekick-verifies-and-adds-info-if-found-but-u-are-provided-links-to-verify.png",
-          "type": "image",
-          "fit": "contain",
-          "matte": "#ffffff",
-          "x": 1,
-          "y": -2,
-          "scale": 1,
-          "naturalWidth": 2854,
-          "naturalHeight": 1558
-        },
-        "demo": {
-          "timing": "default",
-          "duration": 5,
-          "audioUrl": ""
-        },
-        "hotspots": [
-          {
-            "id": "hotspot-5cd164a4-b598-4a8e-a289-0552d85cb03e",
-            "title": "HOTSPOT 1",
-            "body": "",
-            "bodyListStyle": "",
-            "color": "#ff90e7",
-            "x": 48,
-            "y": 38,
-            "w": 8,
-            "h": 13.333,
-            "z": 20,
-            "opacity": 1,
-            "locked": false,
-            "hotspotGroupId": "",
-            "rotation": 0,
-            "popupX": 23.422043615107913,
-            "popupY": 40.79011332087416,
-            "popupW": null,
-            "popupH": null,
-            "textAlign": "left",
-            "markerStyle": "number-box"
-          }
-        ],
-        "annotations": [
-          {
-            "id": "markup-1b1cba47-2f82-4595-a239-c4817f0ce2d4",
-            "type": "markup",
-            "label": "Solid line",
-            "src": "",
-            "url": "",
-            "text": "",
-            "introTitle": "",
-            "introBody": "",
-            "introBodyListStyle": "",
-            "introAlign": "left",
-            "calloutTitle": "",
-            "calloutBody": "",
-            "calloutBodyListStyle": "",
-            "calloutAlign": "left",
-            "textStyle": "regular",
-            "textColor": "#000000",
-            "fillColor": "#ffffff",
-            "blurStrength": 12,
-            "markup": "line-solid",
-            "strokeWidth": 3,
-            "markupPoints": {
-              "start": {
-                "x": 8,
-                "y": 50
-              },
-              "curve": {
-                "x": 50,
-                "y": 50
-              },
-              "end": {
-                "x": 92,
-                "y": 50
-              }
-            },
-            "x": 66.16809915733094,
-            "y": 35.700972144326045,
-            "w": 36.947939597033134,
-            "h": 18,
-            "z": 21,
-            "opacity": 1,
-            "locked": false,
-            "hotspotGroupId": "",
-            "rotation": 0,
-            "flipX": false
-          },
-          {
-            "id": "markup-27127c81-75a5-4b7b-8d33-158dcfd8f7de",
-            "type": "markup",
-            "label": "Solid arrow",
-            "src": "",
-            "url": "",
-            "text": "",
-            "introTitle": "",
-            "introBody": "",
-            "introBodyListStyle": "",
-            "introAlign": "left",
-            "calloutTitle": "",
-            "calloutBody": "",
-            "calloutBodyListStyle": "",
-            "calloutAlign": "left",
-            "textStyle": "regular",
-            "textColor": "#000000",
-            "fillColor": "#ffffff",
-            "blurStrength": 12,
-            "markup": "arrow-solid",
-            "strokeWidth": 3,
-            "markupPoints": {
-              "start": {
-                "x": 8,
-                "y": 64
-              },
-              "curve": {
-                "x": 17.407576750715116,
-                "y": 2
-              },
-              "end": {
-                "x": 92,
-                "y": 50
-              }
-            },
-            "x": 53.8431452857932,
-            "y": 36.05680050299211,
-            "w": 50.4621069510539,
-            "h": 29.908767994017573,
-            "z": 22,
-            "opacity": 1,
-            "locked": false,
-            "hotspotGroupId": "",
-            "rotation": -8.150261824208542,
             "flipX": false
           }
         ]
@@ -2963,8 +2827,8 @@
   "ui": {
     "slideIndex": 0,
     "activeHotspotId": null,
-    "selectedKind": null,
-    "selectedId": null,
+    "selectedKind": "annotation",
+    "selectedId": "text-9e92863c-3517-4b1b-a22e-c7e374ed1171",
     "contentsOpen": false,
     "videoModalId": null
   }
@@ -3060,6 +2924,12 @@
     const MEDIA_ZOOM_STEP = .05;
     const MEDIA_MIN_SCALE = .5;
     const MEDIA_MAX_SCALE = 3;
+    const TEXT_FONT_SIZE_STEP = 2;
+    const TEXT_FONT_SIZE_MIN = 8;
+    const TEXT_FONT_SIZE_MAX = 72;
+    const TEXT_LINE_HEIGHT_STEP = .1;
+    const TEXT_LINE_HEIGHT_MIN = .8;
+    const TEXT_LINE_HEIGHT_MAX = 3;
     const STAGE_OBJECT_MIN_POSITION = -10;
     const STAGE_OBJECT_MAX_POSITION = 110;
     const DEMO_DEFAULT_DURATION = 5;
@@ -3083,12 +2953,13 @@
       { key: "arrow", label: "Arrow" }
     ];
     const MARKUP_STYLES = [
-      { key: "solid", label: "Solid" },
-      { key: "dotted", label: "Dotted" }
+      { key: "dotted", label: "Dotted" },
+      { key: "solid", label: "Solid" }
     ];
     const CLOSED_MARKUP_STYLES = [
+      { key: "dotted", label: "Dotted" },
       { key: "solid", label: "Solid" },
-      { key: "fill", label: "Fill" }
+      { key: "fill", label: "Filled" }
     ];
     const FALLBACK_SHAPES = [
       ["3d line", "https://iridescent-wisp-57bcb1.netlify.app/images/tutorial-annotations/3d-line.png"],
@@ -3120,6 +2991,7 @@
       ["bracket left", "https://iridescent-wisp-57bcb1.netlify.app/images/tutorial-annotations/bracket-left.png"],
       ["bracket up", "https://iridescent-wisp-57bcb1.netlify.app/images/tutorial-annotations/bracket-up.png"],
       ["bubble", "https://iridescent-wisp-57bcb1.netlify.app/images/tutorial-annotations/bubble%20%20.png"],
+      ["quote bubble white", "https://iridescent-wisp-57bcb1.netlify.app/images/tutorial-annotations/quote-bubble-white.png"],
       ["caution", "https://iridescent-wisp-57bcb1.netlify.app/images/tutorial-annotations/caution.png"],
       ["computer", "https://iridescent-wisp-57bcb1.netlify.app/images/tutorial-annotations/computer.png"],
       ["email", "https://iridescent-wisp-57bcb1.netlify.app/images/tutorial-annotations/email.png"],
@@ -3151,6 +3023,7 @@
     let draftStorageError = "";
     let state = loadState();
     let shapes = FALLBACK_SHAPES.map(([name, url]) => ({ name, url }));
+    let markupColorDefault = "#000000";
     let activeAudio = null;
     let audioPlaying = false;
     let toastTimer = 0;
@@ -3480,6 +3353,9 @@
       const type = ["shape", "image", "gif", "video", "audio", "link", "text", "slide-intro", "callout", "markup", "cover", "blur"].includes(item?.type)
         ? item.type : "image";
       const markup = normalizeMarkupKind(item?.markup);
+      const textStyle = item?.textStyle === "bold"
+        ? "italic"
+        : (["regular", "italic", "hand"].includes(item?.textStyle) ? item.textStyle : "regular");
       return {
         id: item?.id || uid(type),
         type,
@@ -3495,10 +3371,11 @@
         calloutBody: normalizeMixedBodyValue(String(item?.calloutBody || (type === "callout" ? "Add callout text." : "")), item?.calloutBodyListStyle),
         calloutBodyListStyle: "",
         calloutAlign: item?.calloutAlign === "center" ? "center" : "left",
-        textStyle: item?.textStyle === "bold"
-          ? "italic"
-          : (["regular", "italic", "hand"].includes(item?.textStyle) ? item.textStyle : "regular"),
+        textStyle,
         textColor: String(item?.textColor || "#000000"),
+        textFontSize: clamp(item?.textFontSize ?? (textStyle === "hand" ? 22 : 16), TEXT_FONT_SIZE_MIN, TEXT_FONT_SIZE_MAX),
+        textLineHeight: clamp(item?.textLineHeight ?? 1.2, TEXT_LINE_HEIGHT_MIN, TEXT_LINE_HEIGHT_MAX),
+        textAlign: item?.textAlign === "left" ? "left" : "center",
         fillColor: /^#[0-9a-f]{6}$/i.test(String(item?.fillColor || "")) ? String(item.fillColor) : "#ffffff",
         markupColor: /^#[0-9a-f]{6}$/i.test(String(item?.markupColor || "")) ? String(item.markupColor) : "#000000",
         blurStrength: clamp(item?.blurStrength ?? 12, 1, 30),
@@ -4192,7 +4069,7 @@
 
     function toolbarIcon(filename) {
       const encodedFilename = encodeURIComponent(String(filename || ""));
-      const localSrc = `../../images/tutorial-annotations/builder-toolbar/${encodedFilename}`;
+      const localSrc = `../images/tutorial-annotations/builder-toolbar/${encodedFilename}`;
       const hostedSrc = `${PUBLIC_ANNOTATION_ASSET_ROOT}builder-toolbar/${encodedFilename}`;
       return `<img class="toolbar-icon-image" src="${escapeHtml(localSrc)}" data-toolbar-fallback="${escapeHtml(hostedSrc)}" alt="" aria-hidden="true" onerror="this.onerror=null;this.src=this.dataset.toolbarFallback">`;
     }
@@ -4320,7 +4197,7 @@
     }
 
     function objectStyle(item) {
-      return `--x:${item.x}%;--y:${item.y}%;--w:${item.w}%;--h:${item.h}%;--z:${item.z};--opacity:${item.opacity};--rotation:${item.rotation || 0}deg;--flip-x:${item.flipX ? -1 : 1};--markup-width:${item.strokeWidth || 5};--markup-color:${item.markupColor || "#000000"};--cover-color:${item.fillColor || "#ffffff"};--blur-strength:${item.blurStrength || 12}px`;
+      return `--x:${item.x}%;--y:${item.y}%;--w:${item.w}%;--h:${item.h}%;--z:${item.z};--opacity:${item.opacity};--rotation:${item.rotation || 0}deg;--flip-x:${item.flipX ? -1 : 1};--markup-width:${item.strokeWidth || 5};--markup-color:${item.markupColor || "#000000"};--cover-color:${item.fillColor || "#ffffff"};--blur-strength:${item.blurStrength || 12}px;--text-font-size:${item.textFontSize || 16}px;--text-line-height:${item.textLineHeight || 1.2};--text-align:${item.textAlign || "center"}`;
     }
 
 	    function renderSiteHeader() {
@@ -4467,8 +4344,7 @@
       const selectedTextBoxAlign = selectedTextBox?.type === "callout" ? selectedTextBox.calloutAlign : selectedTextBox?.introAlign;
       const introCard = slideIntroCard(slide);
       const coverColor = selectedCover?.fillColor || "#ffffff";
-      const circleColor = selectedMarkup?.markup.startsWith("circle-") ? selectedMarkup.markupColor : "#000000";
-      const squareColor = selectedMarkup?.markup.startsWith("square-") ? selectedMarkup.markupColor : "#000000";
+      const markupColor = selectedMarkup?.markupColor || markupColorDefault;
       const textColor = selectedText?.textColor || "#000000";
       const backgroundColor = /^#[0-9a-f]{6}$/i.test(slide.media.matte) ? slide.media.matte : "#ffffff";
       const blurStrength = selectedBlur?.blurStrength || 12;
@@ -4529,13 +4405,11 @@
                     ${(["circle", "square"].includes(shape.key) ? CLOSED_MARKUP_STYLES : MARKUP_STYLES).map((style) => `<option value="${style.key}">${style.label}</option>`).join("")}
                   </select>
                 </label>
-                ${["circle", "square"].includes(shape.key) ? `
-                  <label class="toolbar-icon-select toolbar-color-control" title="${shape.label} color">
-                    ${toolbarIcon("c2-cover-colr.png")}
-                    <input id="${shape.key}MarkupColor" type="color" value="${escapeHtml(shape.key === "circle" ? circleColor : squareColor)}" aria-label="${shape.label} markup color">
-                  </label>
-                ` : ""}
               `).join("")}
+              <label class="toolbar-icon-select toolbar-color-control" title="Selected markup color">
+                ${toolbarIcon("Eyedropper.png")}
+                <input id="markupColor" type="color" value="${escapeHtml(markupColor)}" aria-label="Selected markup color">
+              </label>
             </div>
 
             <div class="toolbar-slider-control toolbar-width-control">
@@ -4547,9 +4421,15 @@
               <button class="text-style-button text-style-button--italic" type="button" data-action="add-text" data-style="italic" title="Add italic text" aria-label="Add italic text">${toolbarIcon("b12-italics.png")}</button>
               <button class="text-style-button text-style-button--hand" type="button" data-action="add-text" data-style="hand" title="Add handwritten text" aria-label="Add handwritten text">${toolbarIcon("b13-handwriting.png")}</button>
               <label class="toolbar-icon-select toolbar-color-control" title="Text color">
-                ${toolbarIcon("c2-cover-colr.png")}
+                ${toolbarIcon("Eyedropper.png")}
                 <input id="textAnnotationColor" type="color" value="${escapeHtml(textColor)}" aria-label="Text annotation color">
               </label>
+              <button class="toolbar-square ${selectedText?.textAlign === "left" ? "is-active" : ""}" type="button" data-action="set-annotation-text-align" data-value="left" title="Align selected text left" aria-label="Align selected text left" ${selectedText ? "" : "disabled"}>${toolbarIcon("b17-card-callout-left.png")}</button>
+              <button class="toolbar-square ${selectedText?.textAlign === "center" ? "is-active" : ""}" type="button" data-action="set-annotation-text-align" data-value="center" title="Center selected text" aria-label="Center selected text" ${selectedText ? "" : "disabled"}>${toolbarIcon("b18-card-callout-center.png")}</button>
+              <button class="toolbar-square" type="button" data-action="adjust-annotation-text-size" data-delta="${TEXT_FONT_SIZE_STEP}" title="Make selected text larger" aria-label="Make selected text larger" ${selectedText ? "" : "disabled"}>${toolbarIcon("b19-text-size-up.svg")}</button>
+              <button class="toolbar-square" type="button" data-action="adjust-annotation-text-size" data-delta="-${TEXT_FONT_SIZE_STEP}" title="Make selected text smaller" aria-label="Make selected text smaller" ${selectedText ? "" : "disabled"}>${toolbarIcon("b20-text-size-down.svg")}</button>
+              <button class="toolbar-square" type="button" data-action="adjust-annotation-line-height" data-delta="${TEXT_LINE_HEIGHT_STEP}" title="Increase selected text line height" aria-label="Increase selected text line height" ${selectedText ? "" : "disabled"}>${toolbarIcon("b21-line-height-up.svg")}</button>
+              <button class="toolbar-square" type="button" data-action="adjust-annotation-line-height" data-delta="-${TEXT_LINE_HEIGHT_STEP}" title="Decrease selected text line height" aria-label="Decrease selected text line height" ${selectedText ? "" : "disabled"}>${toolbarIcon("b22-line-height-down.svg")}</button>
             </div>
 
             <div class="toolbar-cluster toolbar-cards" role="group" aria-label="Intro and callout controls">
@@ -4562,12 +4442,12 @@
             <div class="toolbar-cluster toolbar-effects" role="group" aria-label="Cover, background, and blur controls">
               <button class="toolbar-square toolbar-compact-word" type="button" data-action="add-cover" title="Add a solid cover rectangle">Cover</button>
               <label class="toolbar-icon-select toolbar-color-control" title="Cover color">
-                ${toolbarIcon("c2-cover-colr.png")}
+                ${toolbarIcon("Eyedropper.png")}
                 <input id="coverColor" type="color" value="${escapeHtml(coverColor)}" aria-label="Cover annotation color">
               </label>
               <button class="toolbar-word-button toolbar-background-button" type="button" data-action="apply-background" title="Fill the entire slide background">Bkgrnd</button>
               <label class="toolbar-icon-select toolbar-color-control" title="Background color">
-                ${toolbarIcon("c4-background-color.png")}
+                ${toolbarIcon("Eyedropper.png")}
                 <input id="backgroundColor" type="color" value="${escapeHtml(backgroundColor)}" aria-label="Slide background color">
               </label>
               <button class="toolbar-word-button toolbar-blur-button" type="button" data-action="add-blur" title="Add a blur rectangle">Blur</button>
@@ -4850,9 +4730,9 @@
       const path = markupPath(annotation);
       if (kind.startsWith("arrow-")) {
         const markerId = `arrowhead-${String(annotation.id).replace(/[^a-zA-Z0-9_-]/g, "") || "annotation"}`;
-        return `<svg viewBox="0 0 100 100" preserveAspectRatio="none" aria-hidden="true"><defs><marker id="${markerId}" viewBox="0 0 10 10" refX="8.5" refY="5" markerWidth="4" markerHeight="4" orient="auto" markerUnits="strokeWidth"><path d="M0 0 10 5 0 10Z" fill="#000"/></marker></defs><path data-markup-primary="true" d="${path}" fill="none" stroke="#000" stroke-linecap="round"${dash} marker-end="url(#${markerId})"/></svg>`;
+        return `<svg viewBox="0 0 100 100" preserveAspectRatio="none" aria-hidden="true"><defs><marker id="${markerId}" viewBox="0 0 10 10" refX="8.5" refY="5" markerWidth="4" markerHeight="4" orient="auto" markerUnits="strokeWidth"><path d="M0 0 10 5 0 10Z" fill="var(--markup-color, #000000)"/></marker></defs><path data-markup-primary="true" d="${path}" fill="none" stroke="var(--markup-color, #000000)" stroke-linecap="round"${dash} marker-end="url(#${markerId})"/></svg>`;
       }
-      return `<svg viewBox="0 0 100 100" preserveAspectRatio="none" aria-hidden="true"><path data-markup-primary="true" d="${path}" fill="none" stroke="#000" stroke-linecap="round"${dash}/></svg>`;
+      return `<svg viewBox="0 0 100 100" preserveAspectRatio="none" aria-hidden="true"><path data-markup-primary="true" d="${path}" fill="none" stroke="var(--markup-color, #000000)" stroke-linecap="round"${dash}/></svg>`;
     }
 
     function markupPath(annotation) {
@@ -4921,7 +4801,6 @@
           <button class="demo-playback-toggle" type="button" data-action="demo-toggle" aria-label="${playLabel} demo" aria-pressed="${demoStarted && demoPlaying}">${icon(playIcon)}<span>${playLabel}</span></button>
           <input class="demo-playback-progress" data-demo-seek type="range" min="0" max="100" step="0.1" value="${demoOverallProgress()}" aria-label="Demo timeline" aria-valuetext="${escapeHtml(demoProgressText())}">
           <button class="icon-button demo-rewind-button" type="button" data-action="demo-restart" title="Rewind to the beginning" aria-label="Rewind demo to the beginning">${icon("rewind")}</button>
-          <span class="demo-playback-status" data-demo-status aria-live="polite">${escapeHtml(demoProgressText())}</span>
         </section>
       `;
     }
@@ -5417,7 +5296,11 @@
           return { name, url };
         }).filter(Boolean);
         if (rows.length) {
-          shapes = rows;
+          const quoteBubble = FALLBACK_SHAPES.find(([name]) => name === "quote bubble white");
+          const mergedRows = rows.some(({ name }) => name.toLowerCase() === "quote bubble white") || !quoteBubble
+            ? rows
+            : [...rows, { name: quoteBubble[0], url: quoteBubble[1] }];
+          shapes = mergedRows;
           render();
         }
       } catch (_) {
@@ -5559,6 +5442,9 @@
         "toggle-callout-pipe-list": () => toggleCalloutBodyList(id, actionNode, "pipe"),
         "toggle-callout-numbered-list": () => toggleCalloutBodyList(id, actionNode, "numbered"),
         "add-text": () => addText(actionNode.dataset.style),
+        "set-annotation-text-align": () => setSelectedAnnotationTextAlign(actionNode.dataset.value),
+        "adjust-annotation-text-size": () => adjustSelectedAnnotationTextSize(actionNode.dataset.delta),
+        "adjust-annotation-line-height": () => adjustSelectedAnnotationLineHeight(actionNode.dataset.delta),
         "add-slide-intro": addSlideIntro,
         "add-callout": addCallout,
         "set-text-box-align": () => setSelectedTextBoxAlign(actionNode.dataset.value),
@@ -5652,6 +5538,33 @@
       activateHotspot(hotspotId);
     }
 
+    function mixedBodyCaret(editor) {
+      if (!editor) return null;
+      const selection = window.getSelection();
+      if (!selection?.rangeCount || !selection.isCollapsed) return null;
+      const anchorNode = selection.anchorNode;
+      const anchorElement = anchorNode?.nodeType === 1 ? anchorNode : anchorNode?.parentElement;
+      if (!anchorElement || !editor.contains(anchorElement)) return null;
+      let line = anchorElement.closest?.(".mixed-body-line");
+      if ((!line || line.parentElement !== editor) && anchorElement === editor) {
+        const lineIndex = clamp(selection.anchorOffset, 0, Math.max(0, editor.children.length - 1));
+        line = editor.children[lineIndex]?.closest?.(".mixed-body-line") || editor.querySelector(".mixed-body-line:first-child");
+      }
+      if (!line || line.parentElement !== editor) return null;
+      let offset = 0;
+      if (anchorNode && line.contains(anchorNode)) {
+        try {
+          const beforeCaret = document.createRange();
+          beforeCaret.selectNodeContents(line);
+          beforeCaret.setEnd(anchorNode, selection.anchorOffset);
+          offset = beforeCaret.toString().length;
+        } catch (_) {
+          offset = 0;
+        }
+      }
+      return { line, offset };
+    }
+
     function selectedMixedBodyLines(editor, useRememberedSelection = true) {
       const lines = Array.from(editor?.querySelectorAll(":scope > .mixed-body-line") || []);
       if (!editor || !lines.length) return [];
@@ -5661,10 +5574,8 @@
         ? selection.anchorNode
         : selection?.anchorNode?.parentElement;
       if (range && anchorElement && editor.contains(anchorElement)) {
-        if (selection.isCollapsed) {
-          const line = anchorElement.closest?.(".mixed-body-line");
-          if (line?.parentElement === editor) return [line];
-        }
+        const caret = mixedBodyCaret(editor);
+        if (caret) return [caret.line];
         const selected = lines.filter((line) => {
           try { return range.intersectsNode(line); }
           catch (_) { return false; }
@@ -5712,7 +5623,13 @@
       if (!editor) return;
       const lines = selectedMixedBodyLines(editor, false);
       if (!lines.length) return;
-      lastMixedBodySelection = { editor, lines };
+      const caret = mixedBodyCaret(editor);
+      lastMixedBodySelection = {
+        editor,
+        lines,
+        focusLine: caret?.line || lines[0],
+        caretOffset: caret?.offset || 0
+      };
       updateBodyListToggleState(editor, lines);
     }
 
@@ -5720,12 +5637,18 @@
       if (!editor) return false;
       const lines = selectedMixedBodyLines(editor);
       if (!lines.length) return false;
+      const remembered = lastMixedBodySelection?.editor === editor ? lastMixedBodySelection : null;
+      const focusLine = remembered?.focusLine && lines.includes(remembered.focusLine)
+        ? remembered.focusLine
+        : lines[0];
+      const caretOffset = focusLine === remembered?.focusLine ? remembered.caretOffset || 0 : 0;
       const makeList = !lines.every((line) => lineListKind(line) === kind);
       lines.forEach((line) => setLineListKind(line, makeList ? kind : "plain"));
-      lastMixedBodySelection = { editor, lines };
       updateBodyListToggleState(editor, lines);
       editor.dispatchEvent(new Event("input", { bubbles: true }));
       editor.focus({ preventScroll: true });
+      placeCaretInMixedBodyLine(focusLine, caretOffset);
+      lastMixedBodySelection = { editor, lines, focusLine, caretOffset };
       if (button) {
         button.classList.toggle("is-active", makeList);
         button.setAttribute("aria-pressed", String(makeList));
@@ -5872,12 +5795,12 @@
           commit("Updated markup width.");
         }
       }
-      if (target.id === "circleMarkupColor" || target.id === "squareMarkupColor") {
+      if (target.id === "markupColor") {
+        markupColorDefault = target.value;
         const selected = selectedObject();
-        const shape = target.id === "circleMarkupColor" ? "circle" : "square";
-        if (selected?.type === "markup" && selected.markup.startsWith(`${shape}-`)) {
+        if (selected?.type === "markup") {
           selected.markupColor = target.value;
-          commit(`Updated ${shape} color.`);
+          commit("Updated markup color.");
         }
       }
       if (target.id === "textAnnotationColor") {
@@ -6020,10 +5943,10 @@
           scheduleSave();
         }
       }
-      if (target.id === "circleMarkupColor" || target.id === "squareMarkupColor") {
+      if (target.id === "markupColor") {
+        markupColorDefault = target.value;
         const selected = selectedObject();
-        const shape = target.id === "circleMarkupColor" ? "circle" : "square";
-        if (selected?.type === "markup" && selected.markup.startsWith(`${shape}-`)) {
+        if (selected?.type === "markup") {
           selected.markupColor = target.value;
           const element = root.querySelector(`[data-object][data-id="${CSS.escape(selected.id)}"]`);
           element?.style.setProperty("--markup-color", selected.markupColor);
@@ -6209,6 +6132,11 @@
 
     function onPointerDown(event) {
       if (MODE !== "builder" || event.button !== 0) return;
+      if (event.target.closest(".body-list-toggle")) {
+        rememberMixedBodySelection();
+        event.preventDefault();
+        return;
+      }
       syncLiveEditableBeforeRender();
       const popupResizeHandle = event.target.closest("[data-popup-resize-handle]");
       if (popupResizeHandle) {
@@ -6772,6 +6700,43 @@
       commit(`Aligned callout text ${annotation.calloutAlign}.`);
     }
 
+    function selectedTextAnnotation() {
+      const annotation = state.ui.selectedKind === "annotation" ? selectedObject() : null;
+      return annotation?.type === "text" ? annotation : null;
+    }
+
+    function setSelectedAnnotationTextAlign(value) {
+      const annotation = selectedTextAnnotation();
+      if (!annotation) return;
+      annotation.textAlign = value === "left" ? "left" : "center";
+      multiSelection = [selectionKey("annotation", annotation.id)];
+      commit(`Aligned text ${annotation.textAlign}.`);
+    }
+
+    function adjustSelectedAnnotationTextSize(delta) {
+      const annotation = selectedTextAnnotation();
+      if (!annotation) return;
+      annotation.textFontSize = clamp(
+        annotation.textFontSize + Number(delta),
+        TEXT_FONT_SIZE_MIN,
+        TEXT_FONT_SIZE_MAX
+      );
+      multiSelection = [selectionKey("annotation", annotation.id)];
+      commit(`Set text size to ${annotation.textFontSize}px.`);
+    }
+
+    function adjustSelectedAnnotationLineHeight(delta) {
+      const annotation = selectedTextAnnotation();
+      if (!annotation) return;
+      annotation.textLineHeight = clamp(
+        Math.round((annotation.textLineHeight + Number(delta)) * 10) / 10,
+        TEXT_LINE_HEIGHT_MIN,
+        TEXT_LINE_HEIGHT_MAX
+      );
+      multiSelection = [selectionKey("annotation", annotation.id)];
+      commit(`Set text line height to ${annotation.textLineHeight}.`);
+    }
+
     function setHotspotTextAlign(value) {
       const hotspot = state.ui.selectedKind === "hotspot" ? selectedObject() : activeHotspot();
       if (!hotspot) {
@@ -6848,11 +6813,7 @@
         type: "markup",
         markup,
         label: markupLabel(markup),
-        markupColor: markup.startsWith("circle-")
-          ? document.getElementById("circleMarkupColor")?.value || "#000000"
-          : markup.startsWith("square-")
-            ? document.getElementById("squareMarkupColor")?.value || "#000000"
-            : "#000000",
+        markupColor: document.getElementById("markupColor")?.value || markupColorDefault,
         x: 50, y: 48,
         w: isPathMarkup(markup) ? 34 : 22,
         h: isPathMarkup(markup) ? 18 : 22,
@@ -7199,21 +7160,12 @@
     }
 
     function demoProgressText() {
-      const count = Math.max(1, state.tutorial.slides.length);
-      if (demoFinished) return `Finished · ${count} slides`;
-      const slide = currentSlide();
-      const audioTimed = slide?.demo?.timing === "audio" && demoAudio && Number.isFinite(demoAudio.duration) && demoAudio.duration > 0;
-      const totalSeconds = audioTimed ? demoAudio.duration : demoTotalMs / 1000;
-      const currentSeconds = audioTimed
-        ? demoAudio.currentTime
-        : totalSeconds * demoSlideProgress();
-      return `Slide ${state.ui.slideIndex + 1} of ${count} · ${formatDemoTime(currentSeconds)} / ${formatDemoTime(totalSeconds)}`;
+      return `${Math.round(Number(demoOverallProgress()))}% complete`;
     }
 
     function updateDemoPlaybackUi() {
       if (!IS_DEMO_PLAYER || demoSeekPreview !== null) return;
       const seek = root.querySelector("[data-demo-seek]");
-      const status = root.querySelector("[data-demo-status]");
       const toggle = root.querySelector('[data-action="demo-toggle"]');
       const value = String(demoOverallProgress());
       const text = demoProgressText();
@@ -7221,7 +7173,6 @@
         seek.value = value;
         seek.setAttribute("aria-valuetext", text);
       }
-      if (status) status.textContent = text;
       if (toggle) {
         const playLabel = demoStarted && demoPlaying ? "Pause" : demoFinished ? "Replay" : "Play";
         toggle.innerHTML = `${icon(demoStarted && demoPlaying ? "pause" : "play")}<span>${playLabel}</span>`;
@@ -7457,10 +7408,6 @@
       } else {
         demoSeekPreview = preview;
       }
-      const count = Math.max(1, state.tutorial.slides.length);
-      const target = Math.min(count - 1, Math.floor((demoSeekPreview / 100) * count));
-      const status = root.querySelector("[data-demo-status]");
-      if (status) status.textContent = `Go to slide ${target + 1} of ${count}`;
     }
 
     function commitDemoSeek(value) {
@@ -7825,7 +7772,8 @@
     }
 
     function applyExportFont(documentElement) {
-      const fontUrl = "https://magichashtags.com/fonts/geist-mono-latin.woff2";
+      const fontUrl = "/fonts/geist-mono-latin.woff2";
+      const absoluteFontUrl = "https://magichashtags.com/fonts/geist-mono-latin.woff2";
       const preload = documentElement.querySelector("#geist-mono-preload");
       const fontFace = documentElement.querySelector("#geist-mono-font-face");
       if (preload) preload.setAttribute("href", fontUrl);
@@ -7833,7 +7781,9 @@
         fontFace.textContent = `
     @font-face {
       font-family: "Geist Mono";
-      src: url("${fontUrl}") format("woff2");
+      src:
+        url("${fontUrl}") format("woff2"),
+        url("${absoluteFontUrl}") format("woff2");
       font-style: normal;
       font-weight: 100 900;
       font-display: swap;
