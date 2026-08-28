@@ -1,0 +1,95 @@
+{
+  "version": 1,
+  "projects": [
+    {
+      "id": "project-20260827152056-9ee2d5ea",
+      "name": "Appearance-Pages-Tutorial",
+      "createdAt": "2026-08-27T15:20:56.306Z",
+      "updatedAt": "2026-08-28T04:47:10.513Z",
+      "state": {
+        "meta": {
+          "version": 1,
+          "omitCoverOnExport": false,
+          "shareUrl": "",
+          "navigationName": "",
+          "cardName": "",
+          "filename": "",
+          "mediaTutorialSlug": "",
+          "category": "",
+          "summary": "",
+          "popupDescription": "",
+          "socialImageUrl": "",
+          "socialImageAlt": "",
+          "assetFolders": [
+            "ap-demo/backups"
+          ],
+          "assetCatalog": {
+          },
+          "order": 10,
+          "publishStatus": "draft",
+          "publicUrl": "",
+          "updatedAt": 1787892430511
+        },
+        "tutorial": {
+          "title": "TUTORIAL TITLE",
+          "slides": [
+            {
+              "id": "cover-slide",
+              "kind": "cover",
+              "title": "TUTORIAL SUBTITLE",
+              "notes": "Tutorial description.",
+              "hotspotsEnabled": false,
+              "media": {
+                "url": "",
+                "type": "image",
+                "fit": "contain",
+                "aspect": "16:9",
+                "matte": "#fbeaf9",
+                "xOffset": 0,
+                "yOffset": 0,
+                "scale": 1
+              },
+              "hotspots": [
+
+              ],
+              "annotations": [
+
+              ]
+            },
+            {
+              "id": "slide-1",
+              "kind": "slide",
+              "title": "SLIDE TITLE",
+              "notes": "Slide description.",
+              "hotspotsEnabled": true,
+              "media": {
+                "url": "",
+                "type": "image",
+                "fit": "contain",
+                "aspect": "16:9",
+                "matte": "#ffffff",
+                "xOffset": 0,
+                "yOffset": 0,
+                "scale": 1
+              },
+              "hotspots": [
+
+              ],
+              "annotations": [
+
+              ]
+            }
+          ]
+        },
+        "ui": {
+          "slideIndex": 0,
+          "selectedKind": null,
+          "selectedId": null,
+          "activeHotspotId": null,
+          "contentsOpen": false,
+          "videoModal": null
+        }
+      }
+    }
+  ]
+}
