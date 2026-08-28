@@ -5734,8 +5734,10 @@
             <label class="numbered-toolbar-input" title="Paste a URL, then click the link button"><input id="annotation-link-input" value="${escapeHtml(toolbarAnnotationDraft.mode === "link" ? toolbarAnnotationDraft.value : "https://")}" aria-label="Link annotation URL" placeholder="PASTE URL, THEN CLICK LINK BUTTON"></label>
             <input class="numbered-toolbar-title-input" id="toolbarTutorialTitle" value="${escapeHtml(state.tutorial.title)}" aria-label="Tutorial title" placeholder="TUTORIAL TITLE">
           </div>
-          <div class="numbered-toolbar-row numbered-toolbar-slide-row" role="group" aria-label="Current slide actions">
+          <div class="numbered-toolbar-row numbered-toolbar-slide-row" role="group" aria-label="Replace media and current slide actions">
             <div class="numbered-toolbar-slide-actions">
+              <button class="numbered-toolbar-export-button" type="button" data-action="replace-slide-image" title="Replace this slide's main image or video with an image or GIF without deleting the slide">Replace Image</button>
+              <button class="numbered-toolbar-export-button" type="button" data-action="replace-slide-video" title="Replace this slide's main image or video with a video without deleting the slide">Replace Video</button>
               <button class="numbered-toolbar-export-button" type="button" data-action="move-slide-left" ${state.ui.slideIndex > 1 ? "" : "disabled"} title="Move this slide earlier">Slide Earlier</button>
               <button class="numbered-toolbar-export-button" type="button" data-action="move-slide-right" ${state.ui.slideIndex > 0 && state.ui.slideIndex < state.tutorial.slides.length - 1 ? "" : "disabled"} title="Move this slide later">Slide Later</button>
               <button class="numbered-toolbar-export-button" type="button" data-action="duplicate-slide" ${state.ui.slideIndex > 0 ? "" : "disabled"} title="Duplicate this slide with all annotations">Duplicate Slide</button>
@@ -6710,6 +6712,8 @@
         "jump-slide": () => jumpSlide(Number(actionNode.dataset.index)),
         "add-image-slide": () => addSlide("image"),
         "add-video-slide": () => addSlide("video"),
+        "replace-slide-image": () => replaceSlideMedia("image"),
+        "replace-slide-video": () => replaceSlideMedia("video"),
         "move-slide-left": () => moveSlide(-1),
         "move-slide-right": () => moveSlide(1),
         "duplicate-slide": duplicateSlide,
@@ -8549,6 +8553,11 @@
       await selectExistingMediaFile(kind);
     }
 
+    async function replaceSlideMedia(kind) {
+      stopAudio();
+      await selectExistingMediaFile(kind);
+    }
+
     function duplicateSlide() {
       if (state.ui.slideIndex === 0) return;
       stopAudio();
@@ -8587,11 +8596,15 @@
       if (!window.confirm(`Delete slide ${slideNumber}: ${slideTitle}?\n\nLater slide numbers will move up.`)) return;
       stopAudio();
       state.tutorial.slides.splice(state.ui.slideIndex, 1);
-      state.ui.slideIndex = clamp(state.ui.slideIndex - 1, 0, state.tutorial.slides.length - 1);
+      // Keep the user among the editable slides whenever a later slide moves into
+      // the deleted slide's position. Only move backward when the last slide was
+      // deleted. This avoids unexpectedly landing on the locked cover slide.
+      state.ui.slideIndex = clamp(state.ui.slideIndex, 0, state.tutorial.slides.length - 1);
       state.ui.activeHotspotId = slideIntroCard(currentSlide()) ? null : currentSlide().hotspots[0]?.id || null;
       state.ui.selectedKind = null;
       state.ui.selectedId = null;
-      commit("Deleted slide.");
+      multiSelection = [];
+      commit(state.ui.slideIndex === 0 ? "Deleted the only editable slide." : "Deleted slide. The next slide moved into its place.");
     }
 
     function moveSlide(direction) {
@@ -8601,7 +8614,9 @@
       const [slide] = state.tutorial.slides.splice(index, 1);
       state.tutorial.slides.splice(target, 0, slide);
       state.ui.slideIndex = target;
-      commit("Reordered slide.");
+      commit(direction < 0
+        ? "Moved this slide earlier. The neighboring slide moved later."
+        : "Moved this slide later. The neighboring slide moved earlier.");
     }
 
     function setMediaFit(value) {
