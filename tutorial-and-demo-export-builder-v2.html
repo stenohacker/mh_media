@@ -1874,6 +1874,60 @@
       font-weight: 900;
       text-align: center;
     }
+    .annotation-clip-frame > .clip-frame-viewport,
+    .contents-preview-clip-frame > .clip-frame-viewport {
+      position: relative;
+      width: 100%;
+      height: 100%;
+      overflow: hidden;
+      border-radius: var(--clip-frame-radius, 0%);
+      background: transparent;
+    }
+    .clip-frame-scene {
+      position: absolute;
+      left: var(--clip-frame-scene-left, 0%);
+      top: var(--clip-frame-scene-top, 0%);
+      width: var(--clip-frame-scene-width, 100%);
+      height: var(--clip-frame-scene-height, 100%);
+      min-width: 0;
+      min-height: 0;
+    }
+    body[data-mode="builder"] .annotation-clip-frame.is-selected > .clip-frame-viewport {
+      outline: 3px dashed var(--pink);
+      outline-offset: -3px;
+    }
+    .clip-frame-controls {
+      position: absolute;
+      left: 50%;
+      bottom: calc(100% + 9px);
+      z-index: 21;
+      display: flex;
+      align-items: center;
+      gap: 3px;
+      transform: translateX(-50%);
+      border: 3px solid var(--black);
+      padding: 3px;
+      background: rgba(255, 255, 255, .97);
+      box-shadow: 3px 3px 0 var(--black);
+      white-space: nowrap;
+      pointer-events: auto;
+    }
+    .clip-frame-controls button {
+      width: auto;
+      min-width: 48px;
+      height: 27px;
+      min-height: 27px;
+      border: 2px solid var(--black);
+      padding: 2px 5px;
+      background: var(--white);
+      box-shadow: none;
+      font-family: var(--mono);
+      font-size: 9px;
+      font-weight: 800;
+    }
+    .clip-frame-controls button[aria-pressed="true"] {
+      background: var(--green);
+    }
     body[data-mode="builder"] .stage-object.is-crop-editing::after {
       content: "DRAG SIDES TO CROP";
       position: absolute;
@@ -3098,6 +3152,10 @@
       transform-origin: center;
     }
     .contents-preview-magnifier {
+      overflow: visible;
+      border-radius: 0;
+    }
+    .contents-preview-clip-frame {
       overflow: visible;
       border-radius: 0;
     }
@@ -4744,7 +4802,7 @@
     }
 
     function normalizeAnnotation(item, index) {
-      const type = ["shape", "image", "gif", "video", "audio", "link", "text", "slide-intro", "callout", "markup", "cover", "blur", "magnifier"].includes(item?.type)
+      const type = ["shape", "image", "gif", "video", "audio", "link", "text", "slide-intro", "callout", "markup", "cover", "blur", "magnifier", "clip-frame"].includes(item?.type)
         ? item.type : "image";
       const markup = normalizeMarkupKind(item?.markup);
       const textStyle = item?.textStyle === "bold"
@@ -4781,8 +4839,8 @@
           : null,
         x: clamp(item?.x ?? 50, STAGE_OBJECT_MIN_POSITION, STAGE_OBJECT_MAX_POSITION),
         y: clamp(item?.y ?? 48, STAGE_OBJECT_MIN_POSITION, STAGE_OBJECT_MAX_POSITION),
-        w: clamp(item?.w ?? (type === "audio" ? 30 : type === "slide-intro" ? 38 : type === "callout" ? 34 : type === "magnifier" ? 22 : 18), 5, type === "cover" ? 100 : 90),
-        h: clamp(item?.h ?? (type === "audio" ? 30 : ["cover", "blur"].includes(type) ? 30 : type === "slide-intro" ? 18 : type === "callout" ? 22 : type === "magnifier" ? 36.6667 : 16), 4, 90),
+        w: clamp(item?.w ?? (type === "audio" ? 30 : type === "slide-intro" ? 38 : type === "callout" ? 34 : type === "magnifier" ? 22 : type === "clip-frame" ? 26 : 18), 5, type === "cover" ? 100 : 90),
+        h: clamp(item?.h ?? (type === "audio" ? 30 : ["cover", "blur"].includes(type) ? 30 : type === "slide-intro" ? 18 : type === "callout" ? 22 : type === "magnifier" ? 36.6667 : type === "clip-frame" ? 43.3333 : 16), 4, 90),
         z: Number.isFinite(item?.z) ? item.z : index + 50,
         opacity: clamp(item?.opacity ?? 1, .1, 1),
         locked: Boolean(item?.locked),
@@ -4798,6 +4856,10 @@
         magnification: type === "magnifier" ? clamp(item?.magnification ?? 2, 1.25, 4) : 2,
         magnifierShape: type === "magnifier" && ["square", "rounded", "circle"].includes(item?.magnifierShape)
           ? item.magnifierShape
+          : "rounded",
+        clipFrameId: type !== "clip-frame" ? String(item?.clipFrameId || "") : "",
+        clipFrameShape: type === "clip-frame" && ["straight", "rounded"].includes(item?.clipFrameShape)
+          ? item.clipFrameShape
           : "rounded"
       };
     }
@@ -4959,6 +5021,30 @@
         grouped: sameExistingGroup,
         groupId: sameExistingGroup ? groupIds[0] : ""
       };
+    }
+
+    function clipFrameMembers(frameOrId, slide = currentSlide()) {
+      const frameId = typeof frameOrId === "string" ? frameOrId : frameOrId?.id;
+      if (!frameId || !slide) return [];
+      return slide.annotations.filter((annotation) => annotation.clipFrameId === frameId);
+    }
+
+    function clipFrameForMember(annotation, slide = currentSlide()) {
+      if (!annotation?.clipFrameId || !slide) return null;
+      return slide.annotations.find((item) => item.id === annotation.clipFrameId && item.type === "clip-frame") || null;
+    }
+
+    function clipFrameSceneStyle(frame) {
+      const width = Math.max(Number(frame?.w) || 1, 1);
+      const height = Math.max(Number(frame?.h) || 1, 1);
+      const left = (Number(frame?.x) || 0) - width / 2;
+      const top = (Number(frame?.y) || 0) - height / 2;
+      return `--clip-frame-scene-left:${-left * 100 / width}%;--clip-frame-scene-top:${-top * 100 / height}%;--clip-frame-scene-width:${10000 / width}%;--clip-frame-scene-height:${10000 / height}%`;
+    }
+
+    function topLevelAnnotations(slide) {
+      const frameIds = new Set(slide.annotations.filter((item) => item.type === "clip-frame").map((item) => item.id));
+      return slide.annotations.filter((item) => !item.clipFrameId || !frameIds.has(item.clipFrameId));
     }
 
     function arrangementEntries(selection = selectedObjects()) {
@@ -5853,11 +5939,12 @@
       const width = Math.max(1, Number(item.w) || 1);
       const height = Math.max(1, Number(item.h) || 1);
       const magnifierRadius = item.magnifierShape === "circle" ? 50 : item.magnifierShape === "rounded" ? 12 : 0;
+      const clipFrameRadius = item.type === "clip-frame" && item.clipFrameShape === "rounded" ? 12 : 0;
       const magnifierSceneWidth = 10000 / width;
       const magnifierSceneHeight = 10000 / height;
       const magnifierSceneLeft = -((Number(item.x) || 0) - width / 2) * 100 / width;
       const magnifierSceneTop = -((Number(item.y) || 0) - height / 2) * 100 / height;
-      return `--x:${item.x}%;--y:${item.y}%;--w:${item.w}%;--h:${item.h}%;--z:${item.z};--opacity:${item.opacity};--rotation:${item.rotation || 0}deg;--flip-x:${item.flipX ? -1 : 1};--markup-width:${item.strokeWidth || 5};--markup-color:${item.markupColor || "#000000"};--cover-color:${item.fillColor || "#ffffff"};--blur-strength:${item.blurStrength || 12}px;--text-font-size:${item.textFontSize || 16}px;--text-letter-spacing:${item.textLetterSpacing || 0}px;--text-line-height:${item.textLineHeight || 1.2};--text-align:${item.textAlign || "center"};--crop-x:${item.cropX ?? 50}%;--crop-y:${item.cropY ?? 50}%;--crop-scale:${item.cropScale || 1};--corner-radius:${item.cornerRadius || 0}%;--magnifier-scale:${item.magnification || 2};--magnifier-radius:${magnifierRadius}%;--magnifier-scene-width:${magnifierSceneWidth}%;--magnifier-scene-height:${magnifierSceneHeight}%;--magnifier-scene-left:${magnifierSceneLeft}%;--magnifier-scene-top:${magnifierSceneTop}%;--magnifier-origin-x:${item.x}%;--magnifier-origin-y:${item.y}%`;
+      return `--x:${item.x}%;--y:${item.y}%;--w:${item.w}%;--h:${item.h}%;--z:${item.z};--opacity:${item.opacity};--rotation:${item.rotation || 0}deg;--flip-x:${item.flipX ? -1 : 1};--markup-width:${item.strokeWidth || 5};--markup-color:${item.markupColor || "#000000"};--cover-color:${item.fillColor || "#ffffff"};--blur-strength:${item.blurStrength || 12}px;--text-font-size:${item.textFontSize || 16}px;--text-letter-spacing:${item.textLetterSpacing || 0}px;--text-line-height:${item.textLineHeight || 1.2};--text-align:${item.textAlign || "center"};--crop-x:${item.cropX ?? 50}%;--crop-y:${item.cropY ?? 50}%;--crop-scale:${item.cropScale || 1};--corner-radius:${item.cornerRadius || 0}%;--magnifier-scale:${item.magnification || 2};--magnifier-radius:${magnifierRadius}%;--clip-frame-radius:${clipFrameRadius}%;--magnifier-scene-width:${magnifierSceneWidth}%;--magnifier-scene-height:${magnifierSceneHeight}%;--magnifier-scene-left:${magnifierSceneLeft}%;--magnifier-scene-top:${magnifierSceneTop}%;--magnifier-origin-x:${item.x}%;--magnifier-origin-y:${item.y}%`;
     }
 
 	    function renderSiteHeader() {
@@ -6183,6 +6270,17 @@
       const insertedImageCornerRadius = selectedInsertedImage?.cornerRadius || 0;
       const introCard = slideIntroCard(slide);
       const selection = selectedObjects();
+      const clipSelectionOnlyAnnotations = selection.length > 0 && selection.every(({ kind }) => kind === "annotation");
+      const clipSelectionFrames = selection.filter(({ kind, item }) => kind === "annotation" && item.type === "clip-frame");
+      const clipSelectionMembers = selection.filter(({ kind, item }) => kind === "annotation" && !["clip-frame", "slide-intro", "magnifier"].includes(item.type));
+      const canClipSelection = clipSelectionOnlyAnnotations
+        && clipSelectionFrames.length <= 1
+        && clipSelectionMembers.length > 0;
+      const clipButtonLabel = clipSelectionFrames.length === 0
+        && clipSelectionMembers.length === 1
+        && clipSelectionMembers[0].item.clipFrameId
+        ? "FRAME"
+        : "CLIP";
       const arrangement = arrangementEntries(selection);
       const canAlign = arrangement.entries.length >= 2;
       const canDistribute = arrangement.entries.length >= 3;
@@ -6247,6 +6345,7 @@
             ${button("2-19-center-text-card-and-callout.png", `data-action="${selectedText ? "set-annotation-text-align" : "set-text-box-align"}" data-value="center" title="Center selected text" aria-label="Center selected text" aria-pressed="${selectedTextAlignTarget ? selectedTextAlign === "center" : false}"`, !selectedTextAlignTarget)}
             ${button("2-21-add-audio-plays-in-same-tab.png", 'data-action="select-annotation-media" data-type="audio" title="Add uploaded audio annotation" aria-label="Add uploaded audio annotation"')}
             <button class="numbered-toolbar-button numbered-toolbar-magnifier-button" type="button" data-action="add-magnifier" title="Add a movable magnifier annotation" aria-label="Add magnifier annotation">MAG</button>
+            <button class="numbered-toolbar-button numbered-toolbar-magnifier-button" type="button" data-action="clip-selected" title="Clip selected items inside a movable frame" aria-label="Clip selected items inside a movable frame" ${canClipSelection ? "" : "disabled"}>${clipButtonLabel}</button>
             ${button("2-22-video-pop-up-modal-opens-in-same-tab.png", 'data-action="select-annotation-media" data-type="video" title="Add uploaded video annotation" aria-label="Add uploaded video annotation"')}
             <label class="numbered-toolbar-input" title="Video popup title"><input id="annotation-video-label" value="${escapeHtml(toolbarAnnotationDraft.videoTitle || "")}" aria-label="Video popup title" placeholder="VIDEO POPUP TITLE"></label>
           </div>
@@ -6368,7 +6467,7 @@
         <div class="stage-wrap">
           <div class="stage" data-stage data-media-fit="${escapeHtml(slide.media.fit)}" style="--stage-matte:${escapeHtml(slide.media.matte)};--media-aspect:${naturalAspect}">
             ${renderMainMedia(slide)}
-            ${slide.annotations.slice().sort((a,b) => a.z - b.z).filter(isVisibleForActiveHotspot).map(renderAnnotation).join("")}
+            ${topLevelAnnotations(slide).slice().sort((a,b) => a.z - b.z).filter(isVisibleForActiveHotspot).map(renderAnnotation).join("")}
             ${slide.hotspots.map((hotspot, index) => isHotspotVisibleForActiveState(hotspot, slide) ? renderHotspot(hotspot, index) : "").join("")}
             ${renderSlideNarrationControl(slide)}
           </div>
@@ -6498,7 +6597,8 @@
       const grouped = Boolean(annotation.hotspotGroupId);
       const cropEnabled = annotation.type === "image" && annotation.cropEnabled;
       const cropEditing = annotation.type === "image" && imageCropEditId === annotation.id;
-      const classes = `stage-object annotation-${annotation.type} ${["video","link"].includes(annotation.type) ? "annotation-trigger" : ""} ${audioIsPlaying ? "is-playing" : ""} ${selected ? "is-selected" : ""} ${annotation.locked ? "is-locked" : ""} ${grouped ? "is-grouped" : ""} ${cropEnabled ? "is-crop-enabled" : ""} ${cropEditing ? "is-crop-editing" : ""}`;
+      const clippedMember = Boolean(clipFrameForMember(annotation));
+      const classes = `stage-object annotation-${annotation.type} ${["video","link"].includes(annotation.type) ? "annotation-trigger" : ""} ${audioIsPlaying ? "is-playing" : ""} ${selected ? "is-selected" : ""} ${annotation.locked ? "is-locked" : ""} ${grouped ? "is-grouped" : ""} ${cropEnabled ? "is-crop-enabled" : ""} ${cropEditing ? "is-crop-editing" : ""} ${clippedMember ? "is-clipped-member" : ""}`;
       let content = "";
       if (["shape","image","gif"].includes(annotation.type)) {
         content = `<div class="object-frame annotation-asset-frame">${renderAnnotationAssetImage(annotation.src, annotation.label || "Annotation", "eager")}</div>`;
@@ -6552,6 +6652,21 @@
             <option value="circle" ${annotation.magnifierShape === "circle" ? "selected" : ""}>Circle</option>
           </select>
         </div>` : ""}`;
+      } else if (annotation.type === "clip-frame") {
+        const members = clipFrameMembers(annotation)
+          .slice()
+          .sort((a, b) => a.z - b.z)
+          .filter(isVisibleForActiveHotspot)
+          .map(renderAnnotation)
+          .join("");
+        content = `<div class="object-frame clip-frame-viewport" role="group" aria-label="Clipped frame contents">
+          <div class="clip-frame-scene" style="${clipFrameSceneStyle(annotation)}">${members}</div>
+        </div>
+        ${primary && MODE === "builder" ? `<div class="clip-frame-controls" data-builder-only aria-label="Clip frame controls">
+          <button type="button" data-action="set-clip-frame-shape" data-value="straight" aria-pressed="${annotation.clipFrameShape === "straight"}">Straight</button>
+          <button type="button" data-action="set-clip-frame-shape" data-value="rounded" aria-pressed="${annotation.clipFrameShape === "rounded"}">Rounded</button>
+          <button type="button" data-action="release-clip-frame" title="Remove the frame but keep its contents">Release</button>
+        </div>` : ""}`;
       } else if (annotation.type === "video") {
         content = `<div class="object-frame annotation-asset-frame">${renderAnnotationAssetImage(VIDEO_ANNOTATION_IMAGE, annotation.label || "Play video")}</div>`;
       } else if (annotation.type === "link") {
@@ -6571,7 +6686,7 @@
         </div>`;
       }
       return `
-        <div class="${classes}" data-object data-kind="annotation" data-id="${annotation.id}" data-text-style="${annotation.textStyle}" ${annotation.type === "magnifier" ? `data-magnifier-lens data-magnifier-z="${annotation.z}"` : ""} ${annotation.type === "slide-intro" ? `data-intro-align="${escapeHtml(annotation.introAlign)}"` : ""} ${annotation.type === "callout" ? `data-callout-align="${escapeHtml(annotation.calloutAlign)}"` : ""} ${annotation.type === "markup" ? `data-markup-kind="${escapeHtml(annotation.markup)}"` : ""} ${annotation.type === "video" ? `role="button" tabindex="0" aria-label="Open ${escapeHtml(annotation.label || "video")}"` : ""} ${MODE === "builder" && annotation.type === "video" ? 'title="Click once to select; click the selected video again to preview"' : ""} style="${objectStyle(annotation)}">
+        <div class="${classes}" data-object data-kind="annotation" data-id="${annotation.id}" data-text-style="${annotation.textStyle}" ${annotation.type === "magnifier" ? `data-magnifier-lens data-magnifier-z="${annotation.z}"` : ""} ${annotation.type === "clip-frame" ? "data-clip-frame" : ""} ${annotation.type === "slide-intro" ? `data-intro-align="${escapeHtml(annotation.introAlign)}"` : ""} ${annotation.type === "callout" ? `data-callout-align="${escapeHtml(annotation.calloutAlign)}"` : ""} ${annotation.type === "markup" ? `data-markup-kind="${escapeHtml(annotation.markup)}"` : ""} ${annotation.type === "video" ? `role="button" tabindex="0" aria-label="Open ${escapeHtml(annotation.label || "video")}"` : ""} ${MODE === "builder" && annotation.type === "video" ? 'title="Click once to select; click the selected video again to preview"' : ""} style="${objectStyle(annotation)}">
           ${content}
           ${primary && !annotation.locked ? renderHandles(annotation) : ""}
         </div>
@@ -6607,7 +6722,7 @@
     }
 
     function renderHandles(item = null) {
-      const resizeHandles = ["markup", "cover", "blur", "slide-intro", "callout"].includes(item?.type) || (item?.type === "image" && imageCropEditId === item.id) || (item?.type === "magnifier" && item?.magnifierShape !== "circle")
+      const resizeHandles = ["markup", "cover", "blur", "slide-intro", "callout", "clip-frame"].includes(item?.type) || (item?.type === "image" && imageCropEditId === item.id) || (item?.type === "magnifier" && item?.magnifierShape !== "circle")
         ? ["nw","n","ne","e","se","s","sw","w"]
         : ["nw","ne","sw","se"];
       const resize = resizeHandles.map((handle) => `<span class="resize-handle" data-handle="${handle}" aria-hidden="true"></span>`).join("");
@@ -6780,7 +6895,7 @@
       return `<span class="contents-preview-media" style="${style}"><img src="${escapeHtml(mediaUrl)}" alt="" loading="eager" decoding="async"></span>`;
     }
 
-    function renderContentsPreviewAnnotation(annotation) {
+    function renderContentsPreviewAnnotation(annotation, slide = currentSlide()) {
       const type = annotation.type;
       const baseStyle = objectStyle(annotation);
       const open = (extraClass = "") => `<span class="contents-preview-object ${extraClass}" style="${baseStyle}">`;
@@ -6788,6 +6903,14 @@
         const src = resolveAnnotationAssetSrc(annotation.src);
         const cropClass = type === "image" && annotation.cropEnabled ? " is-crop-enabled" : "";
         return `${open(`contents-preview-${type}${cropClass}`)}<img src="${escapeHtml(src)}" alt="" loading="eager" decoding="async"></span>`;
+      }
+      if (type === "clip-frame") {
+        const members = clipFrameMembers(annotation, slide)
+          .slice()
+          .sort((a, b) => a.z - b.z)
+          .map((member) => renderContentsPreviewAnnotation(member, slide))
+          .join("");
+        return `<span class="contents-preview-object contents-preview-clip-frame" style="${baseStyle}"><span class="clip-frame-viewport"><span class="clip-frame-scene" style="${clipFrameSceneStyle(annotation)}">${members}</span></span></span>`;
       }
       if (type === "magnifier") {
         return `<span class="contents-preview-object contents-preview-magnifier" data-magnifier-lens data-magnifier-z="${annotation.z}" style="${baseStyle}"><span class="magnifier-viewport"><span class="magnifier-scene-host" data-magnifier-scene-host aria-hidden="true"></span></span></span>`;
@@ -6823,10 +6946,10 @@
 
     function renderContentsSlidePreview(slide) {
       const previewColor = /^#[0-9a-f]{6}$/i.test(String(slide.media?.matte || "")) ? slide.media.matte : "#ffffff";
-      const annotations = slide.annotations
+      const annotations = topLevelAnnotations(slide)
         .slice()
         .sort((a, b) => a.z - b.z)
-        .map(renderContentsPreviewAnnotation)
+        .map((annotation) => renderContentsPreviewAnnotation(annotation, slide))
         .join("");
       const hotspots = slide.hotspots.map(renderContentsPreviewHotspot).join("");
       return `<span class="contents-preview-stage" style="--contents-preview-color:${escapeHtml(previewColor)}">${renderContentsPreviewMedia(slide)}${annotations}${hotspots}</span>`;
@@ -7423,6 +7546,9 @@
         "add-blur": addBlurAnnotation,
         "add-magnifier": addMagnifierAnnotation,
         "adjust-magnifier": () => adjustSelectedMagnifier(actionNode.dataset.delta),
+        "clip-selected": createOrSelectClipFrame,
+        "set-clip-frame-shape": () => setSelectedClipFrameShape(actionNode.dataset.value),
+        "release-clip-frame": releaseSelectedClipFrame,
         "connect-media-directory": connectMediaDirectory,
         "select-existing-media-file": selectExistingMediaFile,
         "select-annotation-media": () => selectExistingAnnotationMedia(actionNode.dataset.type),
@@ -8306,6 +8432,13 @@
         ? slide.hotspots.find((entry) => entry.id === id)
         : slide.annotations.find((entry) => entry.id === id);
       const groupedEntries = kind === "annotation" ? objectGroupEntriesForItem(item, slide) : [];
+      const clipFrameDragEntries = kind === "annotation" && item?.type === "clip-frame"
+        ? [
+            { key: selectionKey("annotation", item.id), kind: "annotation", id: item.id, item },
+            ...clipFrameMembers(item, slide).map((member) => ({ key: selectionKey("annotation", member.id), kind: "annotation", id: member.id, item: member }))
+          ]
+        : [];
+      const dragGroupEntries = clipFrameDragEntries.length > 1 ? clipFrameDragEntries : groupedEntries;
       multiSelection = groupedEntries.length > 1
         ? groupedEntries.map(({ key }) => key)
         : [selectionKey(kind, id)];
@@ -8334,8 +8467,8 @@
           event.clientX - (objectElement.getBoundingClientRect().left + objectElement.getBoundingClientRect().width / 2)
         ),
         original: { x: item.x, y: item.y, w: item.w, h: item.h, rotation: item.rotation || 0, cropX: item.cropX ?? 50, cropY: item.cropY ?? 50 },
-        groupOriginals: groupedEntries.length > 1
-          ? groupedEntries
+        groupOriginals: dragGroupEntries.length > 1
+          ? dragGroupEntries
             .filter(({ item: groupItem }) => !groupItem.locked)
             .map(({ item: groupItem }) => ({ item: groupItem, x: groupItem.x, y: groupItem.y }))
           : []
@@ -8420,6 +8553,7 @@
           const groupElement = root.querySelector(`[data-object][data-id="${CSS.escape(original.item.id)}"]`);
           if (groupElement) groupElement.style.cssText = objectStyle(original.item);
         });
+        if (item.type === "clip-frame") applyLiveClipFrameScene(item);
         scheduleSave();
         return;
       }
@@ -8435,7 +8569,7 @@
         item.h = item.w * 5 / 3;
         item.x = clamp(drag.original.x + (item.w - drag.original.w) / 2 * directionX, STAGE_OBJECT_MIN_POSITION, STAGE_OBJECT_MAX_POSITION);
         item.y = clamp(drag.original.y + (item.h - drag.original.h) / 2 * directionY, STAGE_OBJECT_MIN_POSITION, STAGE_OBJECT_MAX_POSITION);
-      } else if (["markup", "cover", "blur", "slide-intro", "callout", "magnifier"].includes(item.type) || (item.type === "image" && imageCropEditId === item.id)) {
+      } else if (["markup", "cover", "blur", "slide-intro", "callout", "magnifier", "clip-frame"].includes(item.type) || (item.type === "image" && imageCropEditId === item.id)) {
         const changesWidth = drag.handle.includes("e") || drag.handle.includes("w");
         const changesHeight = drag.handle.includes("n") || drag.handle.includes("s");
         const directionX = drag.handle.includes("e") ? 1 : -1;
@@ -8464,7 +8598,14 @@
       const slotIndex = drag.kind === "hotspot" ? hotspotSlotIndex(item.id) : -1;
       const slotColor = slotIndex >= 0 ? hotspotStyle(slotIndex).color : "";
       if (element) element.style.cssText = objectStyle(item) + (slotColor ? `;--hotspot-color:${slotColor}` : "");
+      if (item.type === "clip-frame") applyLiveClipFrameScene(item);
       scheduleSave();
+    }
+
+    function applyLiveClipFrameScene(frame) {
+      const frameElement = root.querySelector(`[data-clip-frame][data-id="${CSS.escape(frame.id)}"]`);
+      const scene = frameElement?.querySelector(":scope > .clip-frame-viewport > .clip-frame-scene");
+      if (scene) scene.style.cssText = clipFrameSceneStyle(frame);
     }
 
     function applyLiveMarkupShape(item, element) {
@@ -9026,6 +9167,89 @@
       commit(`Set magnifier shape to ${value}.`);
     }
 
+    function createOrSelectClipFrame() {
+      const slide = currentSlide();
+      const selection = selectedObjects();
+      if (!selection.length || selection.some(({ kind }) => kind !== "annotation")) {
+        showToast("Select one or more images, shapes, or other annotations first.");
+        return;
+      }
+      const selectedFrames = selection.filter(({ item }) => item.type === "clip-frame");
+      const members = selection.filter(({ item }) => !["clip-frame", "slide-intro", "magnifier"].includes(item.type));
+      if (selectedFrames.length > 1 || !members.length) {
+        showToast("Select the items to clip, or one clip frame plus the items to add.");
+        return;
+      }
+      let frame = selectedFrames[0]?.item || null;
+      if (!frame) {
+        const existingFrameIds = [...new Set(members.map(({ item }) => item.clipFrameId).filter(Boolean))];
+        if (existingFrameIds.length === 1) {
+          frame = slide.annotations.find((item) => item.id === existingFrameIds[0] && item.type === "clip-frame") || null;
+        }
+      }
+      if (frame) {
+        const added = members.filter(({ item }) => item.clipFrameId !== frame.id);
+        added.forEach(({ item }) => { item.clipFrameId = frame.id; });
+        state.ui.selectedKind = "annotation";
+        state.ui.selectedId = frame.id;
+        multiSelection = [selectionKey("annotation", frame.id)];
+        if (added.length) {
+          commit(`Added ${added.length} ${added.length === 1 ? "item" : "items"} to the clip frame.`);
+        } else {
+          render();
+          showToast("Selected the clip frame. Its contents remain independently movable.");
+        }
+        return;
+      }
+      const padding = 4;
+      const left = clamp(Math.min(...members.map(({ item }) => item.x - item.w / 2)) - padding, 0, 95);
+      const right = clamp(Math.max(...members.map(({ item }) => item.x + item.w / 2)) + padding, left + 5, 100);
+      const top = clamp(Math.min(...members.map(({ item }) => item.y - item.h / 2)) - padding, 0, 96);
+      const bottom = clamp(Math.max(...members.map(({ item }) => item.y + item.h / 2)) + padding, top + 4, 100);
+      frame = normalizeAnnotation({
+        id: uid("clip-frame"),
+        type: "clip-frame",
+        label: "Clipped frame",
+        clipFrameShape: "rounded",
+        x: (left + right) / 2,
+        y: (top + bottom) / 2,
+        w: right - left,
+        h: bottom - top,
+        z: topZ() + 1
+      }, slide.annotations.length);
+      members.forEach(({ item }) => { item.clipFrameId = frame.id; });
+      slide.annotations.push(frame);
+      state.ui.selectedKind = "annotation";
+      state.ui.selectedId = frame.id;
+      multiSelection = [selectionKey("annotation", frame.id)];
+      commit(`Clipped ${members.length} ${members.length === 1 ? "item" : "items"} inside a movable rounded frame.`);
+    }
+
+    function selectedClipFrame() {
+      const annotation = selectedObject();
+      return state.ui.selectedKind === "annotation" && annotation?.type === "clip-frame" ? annotation : null;
+    }
+
+    function setSelectedClipFrameShape(value) {
+      const frame = selectedClipFrame();
+      if (!frame || !["straight", "rounded"].includes(value)) return;
+      frame.clipFrameShape = value;
+      commit(`Set clip frame edges to ${value}.`);
+    }
+
+    function releaseSelectedClipFrame() {
+      const slide = currentSlide();
+      const frame = selectedClipFrame();
+      if (!frame) return;
+      const members = clipFrameMembers(frame, slide);
+      members.forEach((item) => { item.clipFrameId = ""; });
+      slide.annotations = slide.annotations.filter((item) => item.id !== frame.id);
+      state.ui.selectedKind = members[0] ? "annotation" : null;
+      state.ui.selectedId = members[0]?.id || null;
+      multiSelection = members.map((item) => selectionKey("annotation", item.id));
+      commit(`Released ${members.length} ${members.length === 1 ? "item" : "items"} from the clip frame.`);
+    }
+
     function addImageAnnotation(type, src, label) {
       const slide = currentSlide();
       const annotation = normalizeAnnotation({
@@ -9342,6 +9566,7 @@
     function deleteSelected() {
       const slide = currentSlide();
       if (!state.ui.selectedId) return;
+      let message = "Deleted selected object.";
       stopAudio();
       if (state.ui.selectedKind === "hotspot") {
         const deletedHotspotId = state.ui.selectedId;
@@ -9353,6 +9578,11 @@
         state.ui.activeHotspotId = slideIntroCard(slide) ? null : slide.hotspots[0]?.id || null;
       } else {
         const deletedAnnotation = slide.annotations.find((item) => item.id === state.ui.selectedId);
+        if (deletedAnnotation?.type === "clip-frame") {
+          const released = clipFrameMembers(deletedAnnotation, slide);
+          released.forEach((item) => { item.clipFrameId = ""; });
+          message = `Deleted the clip frame and kept ${released.length} ${released.length === 1 ? "item" : "items"}.`;
+        }
         slide.annotations = slide.annotations.filter((item) => item.id !== state.ui.selectedId);
         if (deletedAnnotation?.objectGroupId) {
           const remainingGroup = slide.annotations.filter((item) => item.objectGroupId === deletedAnnotation.objectGroupId);
@@ -9364,7 +9594,7 @@
       }
       state.ui.selectedId = null;
       state.ui.selectedKind = null;
-      commit("Deleted selected object.");
+      commit(message);
     }
 
     async function addSlide(kind) {
@@ -9396,6 +9626,7 @@
           .filter(Boolean)
           .map((groupId) => [groupId, uid("object-group")])
       );
+      const annotationIdMap = new Map(duplicate.annotations.map((item) => [item.id, uid(item.type)]));
       duplicate.hotspots = duplicate.hotspots.map((item) => ({
         ...item,
         id: hotspotIdMap.get(item.id),
@@ -9403,9 +9634,10 @@
       }));
       duplicate.annotations = duplicate.annotations.map((item) => ({
         ...item,
-        id: uid(item.type),
+        id: annotationIdMap.get(item.id),
         hotspotGroupId: hotspotIdMap.get(item.hotspotGroupId) || "",
-        objectGroupId: objectGroupIdMap.get(item.objectGroupId) || ""
+        objectGroupId: objectGroupIdMap.get(item.objectGroupId) || "",
+        clipFrameId: annotationIdMap.get(item.clipFrameId) || ""
       }));
       state.tutorial.slides.splice(state.ui.slideIndex + 1, 0, duplicate);
       state.ui.slideIndex += 1;
