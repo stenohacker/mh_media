@@ -1004,28 +1004,6 @@
       opacity: 1;
       cursor: default;
     }
-    .builder-toolbar.numbered-builder-toolbar button.numbered-toolbar-magnifier-button {
-      display: grid;
-      place-items: center;
-      border: 2px solid var(--black);
-      background: var(--yellow);
-      color: var(--black);
-      font-family: var(--mono);
-      font-size: 8px;
-      font-weight: 900;
-      letter-spacing: -.04em;
-    }
-    .builder-toolbar.numbered-builder-toolbar button.numbered-toolbar-text-size-button {
-      display: grid;
-      place-items: center;
-      border: 2px solid var(--black);
-      background: var(--white);
-      color: var(--black);
-      font-family: var(--mono);
-      font-size: 11px;
-      font-weight: 900;
-      letter-spacing: -.06em;
-    }
     .numbered-toolbar-blank:not(:has(.numbered-toolbar-art)) {
       border: 2px solid var(--black) !important;
       background: var(--white) !important;
@@ -1183,59 +1161,12 @@
     .numbered-toolbar-duration input::-webkit-inner-spin-button,
     .numbered-toolbar-duration input::-webkit-outer-spin-button { margin: 0; appearance: none; }
     .numbered-toolbar-duration input { appearance: textfield; }
-    .numbered-toolbar-corners {
-      flex: 0 0 auto;
-      height: 27px;
-    }
-    .numbered-toolbar-corners select {
-      width: 68px;
-      height: 27px;
-      min-height: 27px;
-      border: 2px solid var(--black);
-      padding: 2px 16px 2px 4px;
-      background: var(--white);
-      box-shadow: 2px 2px 0 var(--black);
-      font-size: 7px;
-      font-weight: 800;
-      text-transform: uppercase;
-    }
     .numbered-toolbar-top-actions {
       display: flex;
       align-items: center;
       gap: 4px;
       margin-left: auto;
       padding-left: 10px;
-    }
-    .numbered-toolbar-more-button[aria-expanded="true"] {
-      background: var(--yellow) !important;
-    }
-    .builder-more-popover {
-      position: fixed;
-      z-index: 2200;
-      top: 145px;
-      right: max(18px, calc((100vw - var(--shell)) / 2 + 8px));
-      width: min(210px, calc(100vw - 32px));
-      display: grid;
-      gap: 6px;
-      padding: 8px;
-      border: 3px solid var(--black);
-      background: var(--white);
-      box-shadow: 5px 5px 0 var(--black);
-    }
-    .builder-more-popover::before {
-      content: "Draft options";
-      padding: 2px 3px 5px;
-      border-bottom: 2px solid var(--black);
-      font-size: 9px;
-      font-weight: 800;
-      text-transform: uppercase;
-    }
-    .builder-more-popover button {
-      width: 100%;
-      min-height: 30px;
-      padding: 5px 8px;
-      text-align: left;
-      font-size: 9px;
     }
     .numbered-toolbar-slide-actions {
       display: flex;
@@ -1256,7 +1187,7 @@
       box-shadow: none;
       font-size: 8px;
       font-weight: 700;
-      text-transform: none;
+      text-transform: uppercase;
     }
     .builder-toolbar.numbered-builder-toolbar .numbered-toolbar-export-button {
       width: auto;
@@ -1272,9 +1203,6 @@
       line-height: 1;
       letter-spacing: 0;
       white-space: nowrap;
-    }
-    .builder-toolbar.numbered-builder-toolbar .numbered-toolbar-export-button.is-active {
-      background: var(--yellow);
     }
     .builder-bottom-media {
       width: var(--shell);
@@ -1779,122 +1707,6 @@
     .object-frame img { display: block; width: 100%; height: 100%; object-fit: contain; pointer-events: none; }
     .annotation-asset-frame {
       position: relative;
-    }
-    .annotation-image .annotation-asset-frame {
-      overflow: hidden;
-      border-radius: var(--corner-radius, 0%);
-    }
-    .annotation-image.is-crop-enabled .annotation-asset-frame > img {
-      width: 100%;
-      height: 100%;
-      max-width: none;
-      max-height: none;
-      object-fit: cover;
-      object-position: var(--crop-x, 50%) var(--crop-y, 50%);
-      transform: scale(var(--crop-scale, 1));
-      transform-origin: center;
-    }
-    .annotation-magnifier > .magnifier-viewport,
-    .contents-preview-magnifier > .magnifier-viewport {
-      position: relative;
-      width: 100%;
-      height: 100%;
-      overflow: hidden;
-      isolation: isolate;
-      border: 3px solid var(--black);
-      border-radius: var(--magnifier-radius, 0%);
-      background: var(--stage-matte, var(--white));
-      box-shadow: 4px 4px 0 rgba(0, 0, 0, .5);
-      pointer-events: none;
-    }
-    .magnifier-scene-host {
-      position: absolute;
-      inset: 0;
-      overflow: hidden;
-      border-radius: inherit;
-      pointer-events: none;
-    }
-    .magnifier-scene {
-      position: absolute !important;
-      inset: auto !important;
-      left: var(--magnifier-scene-left, 0%) !important;
-      top: var(--magnifier-scene-top, 0%) !important;
-      width: var(--magnifier-scene-width, 100%) !important;
-      height: var(--magnifier-scene-height, 100%) !important;
-      min-width: 0 !important;
-      min-height: 0 !important;
-      margin: 0 !important;
-      border: 0 !important;
-      outline: 0 !important;
-      box-shadow: none !important;
-      overflow: hidden !important;
-      transform: scale(var(--magnifier-scale, 2)) !important;
-      transform-origin: var(--magnifier-origin-x, 50%) var(--magnifier-origin-y, 50%) !important;
-      pointer-events: none !important;
-    }
-    .magnifier-scene,
-    .magnifier-scene * {
-      pointer-events: none !important;
-      user-select: none !important;
-    }
-    .magnifier-controls {
-      position: absolute;
-      left: 50%;
-      bottom: calc(100% + 9px);
-      z-index: 20;
-      display: flex;
-      align-items: center;
-      gap: 3px;
-      transform: translateX(-50%);
-      border: 3px solid var(--black);
-      padding: 3px;
-      background: rgba(255, 255, 255, .97);
-      box-shadow: 3px 3px 0 var(--black);
-      white-space: nowrap;
-      pointer-events: auto;
-    }
-    .magnifier-controls button,
-    .magnifier-controls select {
-      width: auto;
-      min-width: 27px;
-      height: 27px;
-      min-height: 27px;
-      border: 2px solid var(--black);
-      padding: 2px 5px;
-      background: var(--white);
-      box-shadow: none;
-      font-family: var(--mono);
-      font-size: 9px;
-      font-weight: 800;
-    }
-    .magnifier-controls output {
-      min-width: 34px;
-      font-family: var(--mono);
-      font-size: 9px;
-      font-weight: 900;
-      text-align: center;
-    }
-    body[data-mode="builder"] .stage-object.is-crop-editing::after {
-      content: "DRAG SIDES TO CROP";
-      position: absolute;
-      inset: -5px;
-      z-index: 7;
-      display: grid;
-      place-items: start center;
-      border: 3px dashed var(--pink);
-      padding-top: 4px;
-      color: var(--black);
-      background: transparent;
-      font-family: var(--mono);
-      font-size: 10px;
-      font-weight: 900;
-      pointer-events: none;
-    }
-    body[data-mode="builder"] .stage-object.is-crop-editing .resize-handle {
-      width: 15px;
-      height: 15px;
-      border-color: var(--black);
-      background: var(--yellow);
     }
     .annotation-asset-frame > img {
       position: relative;
@@ -2981,13 +2793,8 @@
       grid-template-columns: repeat(3, minmax(0, 1fr));
       gap: 18px;
     }
-    .contents-card-shell {
-      position: relative;
-      min-width: 0;
-    }
     .contents-card {
       position: relative;
-      width: 100%;
       min-height: 0;
       display: grid;
       grid-template-rows: auto minmax(48px, auto);
@@ -3015,7 +2822,6 @@
       display: grid;
       place-items: center;
       overflow: hidden;
-      isolation: isolate;
       border-bottom: 3px solid var(--black);
       background: var(--contents-preview-color, var(--white));
     }
@@ -3031,147 +2837,6 @@
       font-size: 13px;
       font-weight: 800;
       letter-spacing: .08em;
-    }
-    .contents-preview-stage {
-      position: absolute;
-      inset: 0;
-      display: block;
-      overflow: hidden;
-      background: var(--contents-preview-color, var(--white));
-      color: var(--black);
-      text-align: left;
-      pointer-events: none;
-    }
-    .contents-preview-media {
-      position: absolute;
-      inset: 0;
-      z-index: 0;
-      display: block;
-      overflow: hidden;
-    }
-    .contents-preview-media img {
-      width: 100%;
-      height: 100%;
-      max-width: none;
-      max-height: none;
-      object-fit: var(--media-fit, contain);
-      transform: translate(var(--media-x, 0%), var(--media-y, 0%)) scale(var(--media-scale, 1));
-      transform-origin: center;
-    }
-    .contents-preview-video-label {
-      position: absolute;
-      inset: 0;
-      z-index: 0;
-      display: grid;
-      place-items: center;
-      color: var(--white);
-      background: var(--black);
-      font-size: 10px;
-      font-weight: 800;
-      letter-spacing: .08em;
-    }
-    .contents-preview-object {
-      position: absolute;
-      left: var(--x);
-      top: var(--y);
-      z-index: var(--z);
-      width: var(--w);
-      height: var(--h);
-      display: block;
-      opacity: var(--opacity, 1);
-      transform: translate(-50%, -50%) rotate(var(--rotation, 0deg));
-      transform-origin: center;
-      overflow: hidden;
-      border-radius: var(--corner-radius, 0%);
-    }
-    .contents-preview-object > img {
-      width: 100%;
-      height: 100%;
-      display: block;
-      object-fit: contain;
-    }
-    .contents-preview-shape > img { transform: scaleX(var(--flip-x, 1)); }
-    .contents-preview-image.is-crop-enabled > img {
-      object-fit: cover;
-      object-position: var(--crop-x, 50%) var(--crop-y, 50%);
-      transform: scale(var(--crop-scale, 1));
-      transform-origin: center;
-    }
-    .contents-preview-magnifier {
-      overflow: visible;
-      border-radius: 0;
-    }
-    .contents-preview-magnifier > .magnifier-viewport {
-      border-width: 1px;
-      box-shadow: 1px 1px 0 rgba(0, 0, 0, .45);
-    }
-    .contents-preview-cover { background: var(--cover-color, var(--white)); }
-    .contents-preview-blur {
-      background: rgba(255, 255, 255, .18);
-      backdrop-filter: blur(var(--blur-strength, 12px));
-      -webkit-backdrop-filter: blur(var(--blur-strength, 12px));
-    }
-    .contents-preview-text {
-      display: grid;
-      align-content: center;
-      padding: 1px;
-      color: var(--preview-text-color, var(--black));
-      font-family: var(--body);
-      font-size: var(--preview-text-size, 6px);
-      font-style: var(--preview-text-style, normal);
-      font-weight: 700;
-      letter-spacing: calc(var(--text-letter-spacing, 0px) * .28);
-      line-height: var(--text-line-height, 1.2);
-      text-align: var(--text-align, center);
-      white-space: pre-wrap;
-      overflow-wrap: anywhere;
-    }
-    .contents-preview-markup svg {
-      width: 100%;
-      height: 100%;
-      display: block;
-      overflow: visible;
-    }
-    .contents-preview-card {
-      display: grid;
-      grid-template-rows: auto minmax(0, 1fr);
-      border: 1px solid var(--black);
-      background: var(--white);
-      box-shadow: 1px 1px 0 var(--black);
-      font-family: var(--body);
-    }
-    .contents-preview-card-title {
-      padding: 2px 3px;
-      color: var(--white);
-      background: var(--black);
-      font-size: 5px;
-      font-weight: 800;
-      line-height: 1.1;
-      overflow: hidden;
-    }
-    .contents-preview-card-body {
-      padding: 2px 3px;
-      font-size: 4px;
-      line-height: 1.15;
-      overflow: hidden;
-    }
-    .contents-preview-hotspot { overflow: visible; }
-    .contents-preview-hotspot img {
-      width: 100%;
-      height: 100%;
-      display: block;
-      object-fit: contain;
-    }
-    .contents-preview-hotspot-number {
-      position: absolute;
-      inset: 0;
-      display: grid;
-      place-items: center;
-      color: var(--black);
-      font-family: var(--mono);
-      font-size: clamp(5px, .7vw, 9px);
-      font-weight: 900;
-      line-height: 1;
     }
     .contents-card-copy {
       display: flex;
@@ -3209,142 +2874,10 @@
       line-height: 1.25;
       overflow-wrap: anywhere;
     }
-    .contents-slide-actions {
-      position: absolute;
-      z-index: 5;
-      top: 8px;
-      right: 8px;
-    }
-    .contents-slide-actions summary {
-      width: 34px;
-      height: 34px;
-      display: grid;
-      place-items: center;
-      border: 3px solid var(--black);
-      background: rgba(255,255,255,.94);
-      box-shadow: 2px 2px 0 var(--black);
-      cursor: pointer;
-      font-size: 20px;
-      font-weight: 900;
-      line-height: 1;
-      list-style: none;
-    }
-    .contents-slide-actions summary::-webkit-details-marker { display: none; }
-    .contents-slide-actions[open] summary { background: var(--yellow); }
-    .contents-slide-actions-menu {
-      position: absolute;
-      top: 39px;
-      right: 0;
-      width: 145px;
-      display: grid;
-      gap: 5px;
-      padding: 7px;
-      border: 3px solid var(--black);
-      background: var(--white);
-      box-shadow: 4px 4px 0 var(--black);
-    }
-    .contents-slide-actions-menu button {
-      min-height: 30px;
-      padding: 5px 7px;
-      text-align: left;
-      font-size: 9px;
-    }
-    .contents-slide-actions-menu button[data-action="contents-delete-slide"] {
-      background: #ffe4ea;
-    }
-
-    .slide-narration-control {
-      position: absolute;
-      z-index: 1000;
-      top: 10px;
-      right: 10px;
-      pointer-events: auto;
-    }
-    .slide-narration-badge {
-      width: 36px;
-      min-width: 36px;
-      height: 36px;
-      min-height: 36px;
-      display: grid;
-      place-items: center;
-      border: 3px solid var(--black);
-      padding: 6px;
-      background: rgba(255,255,255,.82);
-      box-shadow: 2px 2px 0 rgba(0,0,0,.78);
-      opacity: .72;
-    }
-    .slide-narration-badge:hover,
-    .slide-narration-badge:focus-visible,
-    .slide-narration-badge[aria-expanded="true"] { opacity: 1; }
-    .slide-narration-badge.has-audio { background: rgba(242,243,50,.9); }
-    .slide-narration-badge svg { width: 100%; height: 100%; }
-    .slide-narration-badge-dot {
-      position: absolute;
-      top: -4px;
-      right: -4px;
-      width: 12px;
-      height: 12px;
-      border: 2px solid var(--black);
-      border-radius: 50%;
-      background: var(--pink);
-    }
-    .slide-narration-popover {
-      position: absolute;
-      top: 43px;
-      right: 0;
-      width: min(265px, calc(100vw - 54px));
-      display: grid;
-      gap: 7px;
-      padding: 9px;
-      border: 3px solid var(--black);
-      background: rgba(255,255,255,.97);
-      box-shadow: 5px 5px 0 var(--black);
-      text-transform: none;
-    }
-    .slide-narration-popover strong {
-      font-size: 10px;
-      text-transform: uppercase;
-    }
-    .slide-narration-filename {
-      overflow: hidden;
-      font-size: 10px;
-      font-weight: 650;
-      text-overflow: ellipsis;
-      white-space: nowrap;
-    }
-    .slide-narration-actions {
-      display: flex;
-      flex-wrap: wrap;
-      gap: 5px;
-    }
-    .slide-narration-actions button {
-      min-height: 29px;
-      padding: 4px 7px;
-      font-size: 8px;
-    }
-    .slide-narration-actions button[data-action="remove-slide-audio"] { background: #ffe4ea; }
 
     .modal-panel.video-modal-panel {
       --video-modal-max-width: 980px;
       width: min(calc(var(--video-modal-max-width) + 48px), calc(100vw - 30px));
-    }
-    .demo-preview-modal-panel {
-      width: min(1180px, calc(100vw - 24px));
-      height: min(860px, calc(100vh - 24px));
-      max-height: none;
-    }
-    .demo-preview-modal-panel .modal-body {
-      display: grid;
-      min-height: 0;
-      padding: 8px;
-      background: #d9d9df;
-    }
-    .demo-preview-frame {
-      width: 100%;
-      height: 100%;
-      min-height: 0;
-      border: 3px solid var(--black);
-      background: var(--white);
     }
     .video-modal-panel .modal-body {
       display: grid;
@@ -3835,38 +3368,33 @@
     const MEDIA_LIBRARY_PICKER_ID = "magic-hashtags-media-library";
     const SHAPES_CSV_URL = "https://iridescent-wisp-57bcb1.netlify.app/shapes.csv";
     const CANONICAL_SITE = "https://magichashtags.com";
-    const OFFLINE_SITE_ROOT = "file:///Users/tamchap/Dev/website/";
-    const IS_EXPORTED_PLAYER = document.body.dataset.mode === "player";
-    const USING_OFFLINE_BUILDER = ["file:", "about:", "blob:"].includes(location.protocol)
-      || location.origin === "null"
-      || /^(?:localhost|127\.0\.0\.1)$/.test(location.hostname);
-    const SITE_NAV_ROOT = new URL(
-      IS_EXPORTED_PLAYER
-        ? `${CANONICAL_SITE}/`
-        : USING_OFFLINE_BUILDER
-        ? OFFLINE_SITE_ROOT
-        : (location.origin === MEDIA_SITE_ORIGIN ? `${CANONICAL_SITE}/` : `${location.origin}/`)
-    );
-    const sitePageUrl = (path = "") => new URL(String(path).replace(/^\/+/, ""), SITE_NAV_ROOT).href;
-    const isInternalSiteUrl = (url) => String(url).startsWith(SITE_NAV_ROOT.href);
-    const SITE_LEARN_HOME = { href: sitePageUrl("learn/learn-index.html"), label: "learn", hover: "#f1f332" };
-    const SITE_LEARN_SECTIONS = Object.freeze({
-      "chatgpt-tips": { href: sitePageUrl("learn/chatgpt-tips/index.html"), label: "ChatGPT Tips" },
-      "chatgpt": { href: sitePageUrl("learn/chatgpt-tips/index.html"), label: "ChatGPT Tips" },
-      "reporter-tools": { href: sitePageUrl("learn/sidekicks/index.html"), label: "Reporter Tools" },
-      "sidekicks": { href: sitePageUrl("learn/sidekicks/index.html"), label: "Reporter Tools" },
-      "appearance": { href: sitePageUrl("learn/sidekicks/index.html"), label: "Reporter Tools" },
-      "dictionary": { href: sitePageUrl("learn/sidekicks/index.html"), label: "Reporter Tools" },
-      "exhibits": { href: sitePageUrl("learn/sidekicks/index.html"), label: "Reporter Tools" },
-      "practice": { href: sitePageUrl("learn/sidekicks/index.html"), label: "Reporter Tools" },
-      "proofreader": { href: sitePageUrl("learn/sidekicks/index.html"), label: "Reporter Tools" },
-      "spotcheck": { href: sitePageUrl("learn/sidekicks/index.html"), label: "Reporter Tools" },
-      "steno-tips": { href: sitePageUrl("learn/steno-tips/index.html"), label: "Steno Tips & Briefs" },
-      "steno": { href: sitePageUrl("learn/steno-tips/index.html"), label: "Steno Tips & Briefs" },
-      "tech-tips": { href: sitePageUrl("learn/tech-tips/index.html"), label: "Tech Tips" },
-      "tech": { href: sitePageUrl("learn/tech-tips/index.html"), label: "Tech Tips" }
-    });
-    const PUBLIC_SECTION_FOLDERS = Object.freeze({ "reporter-tools": "sidekicks" });
+	    const OFFLINE_SITE_ROOT = "file:///Users/tamchap/Dev/website/";
+	    const USING_OFFLINE_BUILDER = location.protocol === "file:" || /^(?:localhost|127\.0\.0\.1)$/.test(location.hostname);
+	    const SITE_NAV_ROOT = new URL(
+	      USING_OFFLINE_BUILDER
+	        ? OFFLINE_SITE_ROOT
+	        : (location.origin === MEDIA_SITE_ORIGIN ? `${CANONICAL_SITE}/` : `${location.origin}/`)
+	    );
+	    const sitePageUrl = (path = "") => new URL(String(path).replace(/^\/+/, ""), SITE_NAV_ROOT).href;
+	    const isInternalSiteUrl = (url) => String(url).startsWith(SITE_NAV_ROOT.href);
+	    const SITE_LEARN_HOME = { href: sitePageUrl("learn/learn-index.html"), label: "learn", hover: "#f1f332" };
+	    const SITE_LEARN_SECTIONS = Object.freeze({
+	      "chatgpt-tips": { href: sitePageUrl("learn/chatgpt-tips/index.html"), label: "ChatGPT Tips" },
+	      "chatgpt": { href: sitePageUrl("learn/chatgpt-tips/index.html"), label: "ChatGPT Tips" },
+	      "reporter-tools": { href: sitePageUrl("learn/sidekicks/index.html"), label: "Reporter Tools" },
+	      "sidekicks": { href: sitePageUrl("learn/sidekicks/index.html"), label: "Reporter Tools" },
+	      "appearance": { href: sitePageUrl("learn/sidekicks/index.html"), label: "Reporter Tools" },
+	      "dictionary": { href: sitePageUrl("learn/sidekicks/index.html"), label: "Reporter Tools" },
+	      "exhibits": { href: sitePageUrl("learn/sidekicks/index.html"), label: "Reporter Tools" },
+	      "practice": { href: sitePageUrl("learn/sidekicks/index.html"), label: "Reporter Tools" },
+	      "proofreader": { href: sitePageUrl("learn/sidekicks/index.html"), label: "Reporter Tools" },
+	      "spotcheck": { href: sitePageUrl("learn/sidekicks/index.html"), label: "Reporter Tools" },
+	      "steno-tips": { href: sitePageUrl("learn/steno-tips/index.html"), label: "Steno Tips & Briefs" },
+	      "steno": { href: sitePageUrl("learn/steno-tips/index.html"), label: "Steno Tips & Briefs" },
+	      "tech-tips": { href: sitePageUrl("learn/tech-tips/index.html"), label: "Tech Tips" },
+	      "tech": { href: sitePageUrl("learn/tech-tips/index.html"), label: "Tech Tips" }
+	    });
+	    const PUBLIC_SECTION_FOLDERS = Object.freeze({ "reporter-tools": "sidekicks" });
     const SITE_PRIMARY_LINKS = [
       { href: sitePageUrl("customizer.html"), label: "customizer" },
       { href: sitePageUrl("purchase.html"), label: "store", action: "show-store-coming-soon" }
@@ -3929,8 +3457,6 @@
     const MEDIA_ZOOM_STEP = .05;
     const MEDIA_MIN_SCALE = .5;
     const MEDIA_MAX_SCALE = 3;
-    const OVERLAY_CROP_MIN_SCALE = 1;
-    const OVERLAY_CROP_MAX_SCALE = 5;
     const TEXT_FONT_SIZE_STEP = 2;
     const TEXT_FONT_SIZE_MIN = 8;
     const TEXT_FONT_SIZE_MAX = 72;
@@ -4134,12 +3660,6 @@
     let slideNarrationPreviewAudio = null;
     let slideNarrationPreviewSlideId = "";
     let slideNarrationPreviewPlaying = false;
-    let slideNarrationPanelSlideId = "";
-    let draftMoreOpen = false;
-    let demoPreviewHtml = "";
-    let demoPreviewOpen = false;
-    let demoPreviewMode = "demo";
-    let imageCropEditId = "";
 
     initializeApp();
 
@@ -4238,17 +3758,6 @@
     function detectMediaType(url) {
       const value = String(url || "");
       return Object.entries(MEDIA_TYPES).find(([, pattern]) => pattern.test(value))?.[0] || "image";
-    }
-
-    function mediaDisplayFilename(value) {
-      const original = String(value || "").trim();
-      if (!original) return "";
-      try {
-        const url = new URL(original, location.href);
-        return decodeURIComponent(url.pathname.split("/").filter(Boolean).pop() || original);
-      } catch (_) {
-        return decodeURIComponent(original.split(/[?#]/)[0].split("/").pop() || original);
-      }
     }
 
     function builtInAnnotationFilename(value) {
@@ -4355,7 +3864,7 @@
     function renderProjectLoading(message = "Opening your tutorial drafts…") {
       root.innerHTML = `
         <main class="project-home" aria-live="polite">
-          <h1>Tutorial Drafts</h1>
+          <h1>Tutorial + Demo Export Builder</h1>
           <p class="project-home__intro">${escapeHtml(message)}</p>
         </main>
       `;
@@ -4364,8 +3873,8 @@
     function renderProjectChooser() {
       root.innerHTML = `
         <main class="project-home">
-          <h1>Tutorial Drafts</h1>
-          <p class="project-home__intro">Open one named draft at a time. Each draft autosaves to this Mac and can export as either a Reporter Tools modal demo or a standalone tutorial.</p>
+          <h1>Tutorial + Demo Export Builder</h1>
+          <p class="project-home__intro">Open one named draft at a time, then export either a Reporter Tools modal demo or a full-page tutorial. This separate builder uses the same saved drafts on this Mac.</p>
           <div class="project-home__actions">
             <button type="button" data-action="new-project">New Draft</button>
           </div>
@@ -4609,7 +4118,7 @@
       delete state.meta.status;
       delete state.meta.touched.status;
       state.tutorial ||= { title: "TUTORIAL TITLE", slides: [] };
-      state.tutorial.title ||= "TUTORIAL TITLE";
+      state.tutorial.title = String(state.tutorial.title || "TUTORIAL TITLE").toUpperCase();
       state.tutorial.slides = Array.isArray(state.tutorial.slides) ? state.tutorial.slides : [];
       if (!state.tutorial.slides.length || state.tutorial.slides[0].kind !== "cover") {
         state.tutorial.slides.unshift(createSlide("cover"));
@@ -4734,7 +4243,7 @@
     }
 
     function normalizeAnnotation(item, index) {
-      const type = ["shape", "image", "gif", "video", "audio", "link", "text", "slide-intro", "callout", "markup", "cover", "blur", "magnifier"].includes(item?.type)
+      const type = ["shape", "image", "gif", "video", "audio", "link", "text", "slide-intro", "callout", "markup", "cover", "blur"].includes(item?.type)
         ? item.type : "image";
       const markup = normalizeMarkupKind(item?.markup);
       const textStyle = item?.textStyle === "bold"
@@ -4771,24 +4280,15 @@
           : null,
         x: clamp(item?.x ?? 50, STAGE_OBJECT_MIN_POSITION, STAGE_OBJECT_MAX_POSITION),
         y: clamp(item?.y ?? 48, STAGE_OBJECT_MIN_POSITION, STAGE_OBJECT_MAX_POSITION),
-        w: clamp(item?.w ?? (type === "audio" ? 30 : type === "slide-intro" ? 38 : type === "callout" ? 34 : type === "magnifier" ? 22 : 18), 5, type === "cover" ? 100 : 90),
-        h: clamp(item?.h ?? (type === "audio" ? 30 : ["cover", "blur"].includes(type) ? 30 : type === "slide-intro" ? 18 : type === "callout" ? 22 : type === "magnifier" ? 36.6667 : 16), 4, 90),
+        w: clamp(item?.w ?? (type === "audio" ? 30 : type === "slide-intro" ? 38 : type === "callout" ? 34 : 18), 5, type === "cover" ? 100 : 90),
+        h: clamp(item?.h ?? (type === "audio" ? 30 : ["cover", "blur"].includes(type) ? 30 : type === "slide-intro" ? 18 : type === "callout" ? 22 : 16), 4, 90),
         z: Number.isFinite(item?.z) ? item.z : index + 50,
         opacity: clamp(item?.opacity ?? 1, .1, 1),
         locked: Boolean(item?.locked),
         hotspotGroupId: String(item?.hotspotGroupId || ""),
         objectGroupId: String(item?.objectGroupId || ""),
         rotation: clamp(item?.rotation, -180, 180),
-        flipX: type === "shape" && Boolean(item?.flipX),
-        cropEnabled: type === "image" && Boolean(item?.cropEnabled),
-        cropX: type === "image" ? clamp(item?.cropX ?? 50, 0, 100) : 50,
-        cropY: type === "image" ? clamp(item?.cropY ?? 50, 0, 100) : 50,
-        cropScale: type === "image" ? clamp(item?.cropScale ?? 1, OVERLAY_CROP_MIN_SCALE, OVERLAY_CROP_MAX_SCALE) : 1,
-        cornerRadius: type === "image" ? clamp(item?.cornerRadius ?? 0, 0, 50) : 0,
-        magnification: type === "magnifier" ? clamp(item?.magnification ?? 2, 1.25, 4) : 2,
-        magnifierShape: type === "magnifier" && ["square", "rounded", "circle"].includes(item?.magnifierShape)
-          ? item.magnifierShape
-          : "rounded"
+        flipX: type === "shape" && Boolean(item?.flipX)
       };
     }
 
@@ -4856,6 +4356,12 @@
 
     function slideIntroCard(slide = currentSlide()) {
       return slide?.annotations.find((item) => item.type === "slide-intro") || null;
+    }
+
+    function slideContentsTitle(slide, index) {
+      if (slide?.kind === "cover") return state.tutorial.title || "Tutorial";
+      const introTitle = String(slideIntroCard(slide)?.introTitle || "").trim();
+      return introTitle || String(slide?.title || "").trim() || `Slide ${index}`;
     }
 
     function isSlideIntroState(slide = currentSlide()) {
@@ -5653,18 +5159,6 @@
       toastTimer = setTimeout(() => node.remove(), 2600);
     }
 
-    function toggleDraftMore() {
-      draftMoreOpen = !draftMoreOpen;
-      render();
-      if (draftMoreOpen) setTimeout(() => root.querySelector(".builder-more-popover button")?.focus(), 0);
-    }
-
-    function runDraftMoreAction(action) {
-      draftMoreOpen = false;
-      render();
-      return action();
-    }
-
     function icon(name) {
       const paths = {
         front: '<path d="M7 7h10v10H7z"/><path d="M4 4h10M4 4v10"/>',
@@ -5840,14 +5334,7 @@
     }
 
     function objectStyle(item) {
-      const width = Math.max(1, Number(item.w) || 1);
-      const height = Math.max(1, Number(item.h) || 1);
-      const magnifierRadius = item.magnifierShape === "circle" ? 50 : item.magnifierShape === "rounded" ? 12 : 0;
-      const magnifierSceneWidth = 10000 / width;
-      const magnifierSceneHeight = 10000 / height;
-      const magnifierSceneLeft = -((Number(item.x) || 0) - width / 2) * 100 / width;
-      const magnifierSceneTop = -((Number(item.y) || 0) - height / 2) * 100 / height;
-      return `--x:${item.x}%;--y:${item.y}%;--w:${item.w}%;--h:${item.h}%;--z:${item.z};--opacity:${item.opacity};--rotation:${item.rotation || 0}deg;--flip-x:${item.flipX ? -1 : 1};--markup-width:${item.strokeWidth || 5};--markup-color:${item.markupColor || "#000000"};--cover-color:${item.fillColor || "#ffffff"};--blur-strength:${item.blurStrength || 12}px;--text-font-size:${item.textFontSize || 16}px;--text-letter-spacing:${item.textLetterSpacing || 0}px;--text-line-height:${item.textLineHeight || 1.2};--text-align:${item.textAlign || "center"};--crop-x:${item.cropX ?? 50}%;--crop-y:${item.cropY ?? 50}%;--crop-scale:${item.cropScale || 1};--corner-radius:${item.cornerRadius || 0}%;--magnifier-scale:${item.magnification || 2};--magnifier-radius:${magnifierRadius}%;--magnifier-scene-width:${magnifierSceneWidth}%;--magnifier-scene-height:${magnifierSceneHeight}%;--magnifier-scene-left:${magnifierSceneLeft}%;--magnifier-scene-top:${magnifierSceneTop}%;--magnifier-origin-x:${item.x}%;--magnifier-origin-y:${item.y}%`;
+      return `--x:${item.x}%;--y:${item.y}%;--w:${item.w}%;--h:${item.h}%;--z:${item.z};--opacity:${item.opacity};--rotation:${item.rotation || 0}deg;--flip-x:${item.flipX ? -1 : 1};--markup-width:${item.strokeWidth || 5};--markup-color:${item.markupColor || "#000000"};--cover-color:${item.fillColor || "#ffffff"};--blur-strength:${item.blurStrength || 12}px;--text-font-size:${item.textFontSize || 16}px;--text-letter-spacing:${item.textLetterSpacing || 0}px;--text-line-height:${item.textLineHeight || 1.2};--text-align:${item.textAlign || "center"}`;
     }
 
 	    function renderSiteHeader() {
@@ -5967,7 +5454,6 @@
 	        <div class="builder-app ${coverSlide ? "has-demo-cover" : ""} ${centeredSlide ? "has-demo-centered-slide" : ""}">
 	          ${MODE === "player" && (!IS_DEMO_PLAYER || !IS_DEMO_EMBED) ? renderSiteHeader() : ""}
 	          ${MODE === "builder" ? renderToolbar(slide, selected) : ""}
-	          ${MODE === "builder" ? renderDraftMorePopover() : ""}
 	          <main class="tutorial-shell ${coverSlide ? "is-demo-cover" : ""} ${centeredSlide ? "is-demo-centered-slide" : ""}" aria-label="Interactive demo">
             ${coverSlide ? `<div class="tutorial-title" ${MODE === "builder" ? 'contenteditable="true" role="textbox" aria-label="Demo title" data-bind="tutorial.title"' : ""} data-placeholder="DEMO TITLE">${escapeHtml(state.tutorial.title)}</div>` : ""}
             <div class="tutorial-body ${slide.kind === "video" ? "is-video" : ""} ${coverSlide ? "is-demo-cover" : ""} ${centeredSlide ? "is-demo-centered-slide" : ""}">
@@ -5981,21 +5467,9 @@
           ${MODE === "builder" ? renderMetadata() + renderMediaDropZone() : ""}
           ${renderContentsModal()}
           ${renderVideoModal()}
-          ${renderDemoPreviewModal()}
         </div>
       `;
       syncRuntimeMedia();
-    }
-
-    function renderDraftMorePopover() {
-      if (!draftMoreOpen) return "";
-      return `
-        <div class="builder-more-popover" role="menu" aria-label="Draft options">
-          <button type="button" role="menuitem" data-action="save-editable-copy">Save Editable Backup</button>
-          <button type="button" role="menuitem" data-action="rename-project" ${currentProject ? "" : "disabled"}>Rename Draft</button>
-          <button type="button" role="menuitem" data-action="reset-builder">Reset Draft</button>
-        </div>
-      `;
     }
 
     function renderLegacyToolbar(slide, selected) {
@@ -6164,13 +5638,6 @@
       const selectedBlur = state.ui.selectedKind === "annotation" && selected?.type === "blur" ? selected : null;
       const selectedText = state.ui.selectedKind === "annotation" && selected?.type === "text" ? selected : null;
       const selectedTextBox = state.ui.selectedKind === "annotation" && ["slide-intro", "callout"].includes(selected?.type) ? selected : null;
-      const selectedTextAlignTarget = selectedText || selectedTextBox;
-      const selectedTextAlign = selectedText
-        ? selectedText.textAlign
-        : selectedTextBox?.type === "callout" ? selectedTextBox.calloutAlign : selectedTextBox?.introAlign;
-      const selectedInsertedImage = state.ui.selectedKind === "annotation" && selected?.type === "image" ? selected : null;
-      const insertedImageCropEditing = selectedInsertedImage && imageCropEditId === selectedInsertedImage.id;
-      const insertedImageCornerRadius = selectedInsertedImage?.cornerRadius || 0;
       const introCard = slideIntroCard(slide);
       const selection = selectedObjects();
       const arrangement = arrangementEntries(selection);
@@ -6184,7 +5651,9 @@
       const textColor = selectedText?.textColor || "#000000";
       const backgroundColor = /^#[0-9a-f]{6}$/i.test(slide.media.matte) ? slide.media.matte : "#ffffff";
       const blurStrength = selectedBlur?.blurStrength || 12;
+      const previewingSlideNarration = slideNarrationPreviewPlaying && slideNarrationPreviewSlideId === slide.id;
       const button = (filename, attributes, disabled = false) => `<button class="numbered-toolbar-button" type="button" ${attributes} ${disabled ? "disabled" : ""}>${numberedToolbarArt(filename)}</button>`;
+      const blankButton = (filename = "") => `<button class="numbered-toolbar-button numbered-toolbar-blank" type="button" disabled aria-hidden="true" tabindex="-1">${filename ? numberedToolbarArt(filename) : ""}</button>`;
       return `
         <section class="builder-toolbar numbered-builder-toolbar" data-builder-only aria-label="Editing toolbar">
           <div class="numbered-toolbar-row" role="group" aria-label="Selection, hotspot, shapes, and draft controls">
@@ -6210,12 +5679,12 @@
               <span class="draft-save-status" data-draft-save-status data-state="${draftSavePhase}" role="status">${escapeHtml(draftSaveStatusText())}</span>
             </div>
             <div class="numbered-toolbar-top-actions" aria-label="Builder file and export actions">
-              <button class="numbered-toolbar-export-button" type="button" data-action="preview-demo">Preview Demo</button>
-              <button class="numbered-toolbar-export-button" type="button" data-action="preview-tutorial">Preview Tutorial</button>
+              <button class="numbered-toolbar-export-button" type="button" data-action="save-editable-copy">Save Editable</button>
               <button class="numbered-toolbar-export-button" type="button" data-action="export-html">Export Modal Demo</button>
               <button class="numbered-toolbar-export-button" type="button" data-action="export-tutorial-html">Export Full-Page Tutorial</button>
               <button class="numbered-toolbar-export-button" type="button" data-action="export-png">PNG Slides</button>
-              <button class="numbered-toolbar-export-button numbered-toolbar-more-button" type="button" data-action="toggle-builder-more" aria-haspopup="menu" aria-expanded="${draftMoreOpen}">More ▾</button>
+              <button class="numbered-toolbar-export-button" type="button" data-action="reset-builder">Reset</button>
+              ${button("1-26-rename-draft.png", 'data-action="rename-project" title="Rename this draft" aria-label="Rename this draft"', !currentProject)}
             </div>
           </div>
 
@@ -6227,17 +5696,16 @@
             ${button("2-9-italics-text.png", 'data-action="add-text" data-style="italic" title="Add italic text" aria-label="Add italic text"')}
             ${button("2-10-handwriting-text.png", 'data-action="add-text" data-style="hand" title="Add handwriting text" aria-label="Add handwriting text"')}
             <label class="numbered-toolbar-control" title="Text color">${numberedToolbarArt("2-11-text-color-picker.png")}<input id="textAnnotationColor" type="color" list="magic-hashtags-color-palette" value="${escapeHtml(textColor)}" aria-label="Text color"></label>
-            <button class="numbered-toolbar-button numbered-toolbar-text-size-button" type="button" data-action="adjust-annotation-text-size" data-delta="-${TEXT_FONT_SIZE_STEP}" title="Make selected inserted text smaller" aria-label="Make selected inserted text smaller" ${selectedText ? "" : "disabled"}>A−</button>
-            <button class="numbered-toolbar-button numbered-toolbar-text-size-button" type="button" data-action="adjust-annotation-text-size" data-delta="${TEXT_FONT_SIZE_STEP}" title="Make selected inserted text larger" aria-label="Make selected inserted text larger" ${selectedText ? "" : "disabled"}>A+</button>
             <label class="numbered-toolbar-slider" title="Selected text character spacing"><input id="textCharacterSpacing" type="range" min="-2" max="12" step="0.5" value="${selectedText?.textLetterSpacing ?? 0}" ${selectedText ? "" : "disabled"} aria-label="Selected text character spacing"></label>
             <label class="numbered-toolbar-slider" title="Selected text line height"><input id="textLineHeight" type="range" min="0.8" max="3" step="0.1" value="${selectedText?.textLineHeight ?? 1.2}" ${selectedText ? "" : "disabled"} aria-label="Selected text line height"></label>
             ${button("2-16-add-intro-card-disappears-upon-first-hotspot-if-any.png", `data-action="add-slide-intro" title="${introCard ? "Select this slide's intro card" : "Add an intro card"}" aria-label="${introCard ? "Select this slide's intro card" : "Add an intro card"}"`)}
             ${button("2-17-add-callout.png", 'data-action="add-callout" title="Add callout" aria-label="Add callout"')}
-            ${button("2-18-left-justify-text-card-and-callout.png", `data-action="${selectedText ? "set-annotation-text-align" : "set-text-box-align"}" data-value="left" title="Align selected text left" aria-label="Align selected text left" aria-pressed="${selectedTextAlignTarget ? selectedTextAlign !== "center" : false}"`, !selectedTextAlignTarget)}
-            ${button("2-19-center-text-card-and-callout.png", `data-action="${selectedText ? "set-annotation-text-align" : "set-text-box-align"}" data-value="center" title="Center selected text" aria-label="Center selected text" aria-pressed="${selectedTextAlignTarget ? selectedTextAlign === "center" : false}"`, !selectedTextAlignTarget)}
+            ${button("2-18-left-justify-text-card-and-callout.png", 'data-action="set-text-box-align" data-value="left" title="Align selected card or callout text left" aria-label="Align selected card or callout text left"', !selectedTextBox)}
+            ${button("2-19-center-text-card-and-callout.png", 'data-action="set-text-box-align" data-value="center" title="Center selected card or callout text" aria-label="Center selected card or callout text"', !selectedTextBox)}
+            ${blankButton("2-20-open-button.png")}
             ${button("2-21-add-audio-plays-in-same-tab.png", 'data-action="select-annotation-media" data-type="audio" title="Add uploaded audio annotation" aria-label="Add uploaded audio annotation"')}
-            <button class="numbered-toolbar-button numbered-toolbar-magnifier-button" type="button" data-action="add-magnifier" title="Add a movable magnifier annotation" aria-label="Add magnifier annotation">MAG</button>
             ${button("2-22-video-pop-up-modal-opens-in-same-tab.png", 'data-action="select-annotation-media" data-type="video" title="Add uploaded video annotation" aria-label="Add uploaded video annotation"')}
+            ${blankButton()}
             <label class="numbered-toolbar-input" title="Video popup title"><input id="annotation-video-label" value="${escapeHtml(toolbarAnnotationDraft.videoTitle || "")}" aria-label="Video popup title" placeholder="VIDEO POPUP TITLE"></label>
           </div>
 
@@ -6250,8 +5718,7 @@
             <label class="numbered-toolbar-slider numbered-toolbar-slider--wide" title="Blur strength"><input id="blurStrength" type="range" min="1" max="30" step="1" value="${blurStrength}" aria-label="Blur strength"></label>
             ${button("3-8-add-image-slide.png", 'data-action="add-image-slide" title="Add image slide and choose image" aria-label="Add image slide and choose image"')}
             ${button("3-9-video-slide.png", 'data-action="add-video-slide" title="Add video slide and choose video" aria-label="Add video slide and choose video"')}
-            <button class="numbered-toolbar-export-button" type="button" data-action="replace-slide-image" title="Replace this slide's main image or video with an image or GIF without deleting the slide">Replace Image</button>
-            <button class="numbered-toolbar-export-button" type="button" data-action="replace-slide-video" title="Replace this slide's main image or video with a video without deleting the slide">Replace Video</button>
+            ${button("2-21-add-audio-plays-in-same-tab.png", `data-action="select-slide-audio" title="Choose uploaded slide narration audio${slide.demo.audioUrl ? ": audio selected" : ""}" aria-label="Choose uploaded slide narration audio" aria-pressed="${Boolean(slide.demo.audioUrl)}"`)}
             <label class="numbered-toolbar-duration" title="Manual slide duration override; blank uses audio length or 5 seconds"><input id="demoManualDuration" type="number" min="1" max="300" step="0.5" value="${slide.demo.manualDuration ?? ""}" aria-label="Manual slide duration override in seconds" placeholder="5"></label>
             ${button("3-12-zoom-in-main-media.png", 'data-action="media-zoom-in" title="Zoom main media in" aria-label="Zoom main media in"')}
             ${button("3-13-zoom-out-main-media.png", 'data-action="media-zoom-out" title="Zoom main media out" aria-label="Zoom main media out"')}
@@ -6259,14 +5726,23 @@
             ${button("3-15-move-right-main-media.png", 'data-action="media-right" title="Move main media right" aria-label="Move main media right"')}
             ${button("3-16-move-up-main-media.png", 'data-action="media-up" title="Move main media up" aria-label="Move main media up"')}
             ${button("3-17-move-down-main-media.png", 'data-action="media-down" title="Move main media down" aria-label="Move main media down"')}
+            <button class="numbered-toolbar-button" type="button" data-action="toggle-slide-audio-preview" title="${previewingSlideNarration ? "Pause" : "Replay"} this slide's narration" aria-label="${previewingSlideNarration ? "Pause" : "Replay"} slide narration" aria-pressed="${previewingSlideNarration}" ${slide.demo.audioUrl ? "" : "disabled"}>${numberedToolbarArt("3-18-open-button.png")}<span class="numbered-toolbar-overlay-icon">${icon(previewingSlideNarration ? "pause" : "rewind")}</span></button>
+            ${blankButton("3-19-open-button.png")}
             ${button("3-20-gif-in-same-tab.png", 'data-action="select-annotation-media" data-type="gif" title="Add uploaded GIF annotation" aria-label="Add uploaded GIF annotation"')}
             ${button("3-21-add-image.png", 'data-action="select-annotation-media" data-type="image" title="Add uploaded image annotation" aria-label="Add uploaded image annotation"')}
-            <button class="numbered-toolbar-export-button ${insertedImageCropEditing ? "is-active" : ""}" type="button" data-action="toggle-inserted-image-crop" title="${insertedImageCropEditing ? "Finish cropping the selected inserted image" : "Crop the selected inserted image"}" aria-pressed="${Boolean(insertedImageCropEditing)}" ${selectedInsertedImage ? "" : "disabled"}>${insertedImageCropEditing ? "Done Crop" : "Crop Image"}</button>
-            <label class="numbered-toolbar-corners" title="Curve the selected inserted image corners"><select id="insertedImageCornerPreset" aria-label="Selected inserted image corner style" ${selectedInsertedImage ? "" : "disabled"}><option value="0" ${insertedImageCornerRadius === 0 ? "selected" : ""}>Square</option><option value="3" ${insertedImageCornerRadius === 3 ? "selected" : ""}>Soft</option><option value="10" ${insertedImageCornerRadius === 10 ? "selected" : ""}>Rounded</option><option value="50" ${insertedImageCornerRadius === 50 ? "selected" : ""}>Circle</option></select></label>
-            <button class="numbered-toolbar-export-button" type="button" data-action="reset-inserted-image" title="Remove cropping and curved corners from the selected inserted image" ${selectedInsertedImage ? "" : "disabled"}>Reset Image</button>
             ${button("3-22-add-link-opens-new-tab.png", 'data-action="activate-annotation-url" data-type="link" title="Place the link annotation using the URL in the box" aria-label="Place link annotation"')}
             <label class="numbered-toolbar-input" title="Paste a URL, then click the link button"><input id="annotation-link-input" value="${escapeHtml(toolbarAnnotationDraft.mode === "link" ? toolbarAnnotationDraft.value : "https://")}" aria-label="Link annotation URL" placeholder="PASTE URL, THEN CLICK LINK BUTTON"></label>
             <input class="numbered-toolbar-title-input" id="toolbarTutorialTitle" value="${escapeHtml(state.tutorial.title)}" aria-label="Tutorial title" placeholder="TUTORIAL TITLE">
+          </div>
+          <div class="numbered-toolbar-row numbered-toolbar-slide-row" role="group" aria-label="Replace media and current slide actions">
+            <div class="numbered-toolbar-slide-actions">
+              <button class="numbered-toolbar-export-button" type="button" data-action="replace-slide-image" title="Replace this slide's main image or video with an image or GIF without deleting the slide">Replace Image</button>
+              <button class="numbered-toolbar-export-button" type="button" data-action="replace-slide-video" title="Replace this slide's main image or video with a video without deleting the slide">Replace Video</button>
+              <button class="numbered-toolbar-export-button" type="button" data-action="move-slide-left" ${state.ui.slideIndex > 1 ? "" : "disabled"} title="Move this slide earlier">Slide Earlier</button>
+              <button class="numbered-toolbar-export-button" type="button" data-action="move-slide-right" ${state.ui.slideIndex > 0 && state.ui.slideIndex < state.tutorial.slides.length - 1 ? "" : "disabled"} title="Move this slide later">Slide Later</button>
+              <button class="numbered-toolbar-export-button" type="button" data-action="duplicate-slide" ${state.ui.slideIndex > 0 ? "" : "disabled"} title="Duplicate this slide with all annotations">Duplicate Slide</button>
+              <button class="numbered-toolbar-export-button" type="button" data-action="delete-slide" ${state.ui.slideIndex > 0 ? "" : "disabled"} title="Delete this slide">Delete Slide</button>
+            </div>
           </div>
           <datalist id="magic-hashtags-color-palette">
             ${SITE_COLOR_PRESETS.map(([value, label]) => `<option value="${value}" label="${escapeHtml(label)}"></option>`).join("")}
@@ -6360,38 +5836,7 @@
             ${renderMainMedia(slide)}
             ${slide.annotations.slice().sort((a,b) => a.z - b.z).filter(isVisibleForActiveHotspot).map(renderAnnotation).join("")}
             ${slide.hotspots.map((hotspot, index) => isHotspotVisibleForActiveState(hotspot, slide) ? renderHotspot(hotspot, index) : "").join("")}
-            ${renderSlideNarrationControl(slide)}
           </div>
-        </div>
-      `;
-    }
-
-    function renderSlideNarrationControl(slide) {
-      if (MODE !== "builder") return "";
-      const audioUrl = String(slide.demo?.audioUrl || "").trim();
-      const hasAudio = Boolean(audioUrl);
-      const isOpen = slideNarrationPanelSlideId === slide.id;
-      const isPlaying = slideNarrationPreviewPlaying && slideNarrationPreviewSlideId === slide.id;
-      const filename = mediaDisplayFilename(audioUrl);
-      return `
-        <div class="slide-narration-control" data-builder-only>
-          <button type="button" class="slide-narration-badge ${hasAudio ? "has-audio" : ""}" data-action="toggle-slide-audio-panel" aria-label="${hasAudio ? "Open slide narration controls" : "Add slide narration audio"}" aria-expanded="${isOpen}" title="${hasAudio ? `Narration attached: ${escapeHtml(filename)}` : "No slide narration attached"}">
-            ${icon("audio")}
-            ${hasAudio ? '<span class="slide-narration-badge-dot" aria-hidden="true"></span>' : ""}
-          </button>
-          ${isOpen ? `
-            <div class="slide-narration-popover" role="dialog" aria-label="Slide narration controls">
-              <strong>Slide narration</strong>
-              ${hasAudio
-                ? `<span class="slide-narration-filename" title="${escapeHtml(filename)}">${escapeHtml(filename)}</span>`
-                : '<span class="slide-narration-filename">No narration attached</span>'}
-              <div class="slide-narration-actions">
-                ${hasAudio ? `<button type="button" data-action="toggle-slide-audio-preview">${isPlaying ? "Pause" : "Play / Replay"}</button>` : ""}
-                <button type="button" data-action="select-slide-audio">${hasAudio ? "Replace" : "Add Audio"}</button>
-                ${hasAudio ? '<button type="button" data-action="remove-slide-audio">Remove</button>' : ""}
-              </div>
-            </div>
-          ` : ""}
         </div>
       `;
     }
@@ -6486,12 +5931,10 @@
       const primary = state.ui.selectedKind === "annotation" && state.ui.selectedId === annotation.id;
       const audioIsPlaying = annotation.type === "audio" && activeAudio === annotation.id && audioPlaying;
       const grouped = Boolean(annotation.hotspotGroupId);
-      const cropEnabled = annotation.type === "image" && annotation.cropEnabled;
-      const cropEditing = annotation.type === "image" && imageCropEditId === annotation.id;
-      const classes = `stage-object annotation-${annotation.type} ${["video","link"].includes(annotation.type) ? "annotation-trigger" : ""} ${audioIsPlaying ? "is-playing" : ""} ${selected ? "is-selected" : ""} ${annotation.locked ? "is-locked" : ""} ${grouped ? "is-grouped" : ""} ${cropEnabled ? "is-crop-enabled" : ""} ${cropEditing ? "is-crop-editing" : ""}`;
+      const classes = `stage-object annotation-${annotation.type} ${["video","link"].includes(annotation.type) ? "annotation-trigger" : ""} ${audioIsPlaying ? "is-playing" : ""} ${selected ? "is-selected" : ""} ${annotation.locked ? "is-locked" : ""} ${grouped ? "is-grouped" : ""}`;
       let content = "";
       if (["shape","image","gif"].includes(annotation.type)) {
-        content = `<div class="object-frame annotation-asset-frame">${renderAnnotationAssetImage(annotation.src, annotation.label || "Annotation", "eager")}</div>`;
+        content = `<div class="object-frame annotation-asset-frame">${renderAnnotationAssetImage(annotation.src, annotation.label || "Annotation", "lazy")}</div>`;
       } else if (annotation.type === "slide-intro") {
         content = `<div class="object-frame slide-intro-card">
           ${MODE === "builder" ? '<span class="card-top-drag-handle" data-handle="move" title="Drag this intro card" aria-label="Drag this intro card"></span>' : ""}
@@ -6528,20 +5971,6 @@
         content = `<div class="object-frame" ${MODE === "builder" ? `contenteditable="true" role="textbox" aria-label="Annotation text" data-bind="annotation.text:${annotation.id}"` : ""} style="color:${escapeHtml(annotation.textColor)}">${escapeHtml(annotation.text)}</div>`;
       } else if (annotation.type === "markup") {
         content = `<div class="object-frame markup-frame">${markupSvg(annotation)}</div>`;
-      } else if (annotation.type === "magnifier") {
-        content = `<div class="object-frame magnifier-viewport" role="img" aria-label="Magnified area">
-          <span class="magnifier-scene-host" data-magnifier-scene-host aria-hidden="true"></span>
-        </div>
-        ${primary && MODE === "builder" ? `<div class="magnifier-controls" data-builder-only aria-label="Magnifier controls">
-          <button type="button" data-action="adjust-magnifier" data-delta="-0.25" title="Reduce magnification" aria-label="Reduce magnification">−</button>
-          <output aria-label="Current magnification">${Number(annotation.magnification || 2).toFixed(2).replace(/0+$/, "").replace(/\.$/, "")}×</output>
-          <button type="button" data-action="adjust-magnifier" data-delta="0.25" title="Increase magnification" aria-label="Increase magnification">+</button>
-          <select data-magnifier-shape aria-label="Magnifier edge shape" title="Magnifier edge shape">
-            <option value="square" ${annotation.magnifierShape === "square" ? "selected" : ""}>Square</option>
-            <option value="rounded" ${annotation.magnifierShape === "rounded" ? "selected" : ""}>Rounded</option>
-            <option value="circle" ${annotation.magnifierShape === "circle" ? "selected" : ""}>Circle</option>
-          </select>
-        </div>` : ""}`;
       } else if (annotation.type === "video") {
         content = `<div class="object-frame annotation-asset-frame">${renderAnnotationAssetImage(VIDEO_ANNOTATION_IMAGE, annotation.label || "Play video")}</div>`;
       } else if (annotation.type === "link") {
@@ -6561,7 +5990,7 @@
         </div>`;
       }
       return `
-        <div class="${classes}" data-object data-kind="annotation" data-id="${annotation.id}" data-text-style="${annotation.textStyle}" ${annotation.type === "magnifier" ? `data-magnifier-lens data-magnifier-z="${annotation.z}"` : ""} ${annotation.type === "slide-intro" ? `data-intro-align="${escapeHtml(annotation.introAlign)}"` : ""} ${annotation.type === "callout" ? `data-callout-align="${escapeHtml(annotation.calloutAlign)}"` : ""} ${annotation.type === "markup" ? `data-markup-kind="${escapeHtml(annotation.markup)}"` : ""} ${annotation.type === "video" ? `role="button" tabindex="0" aria-label="Open ${escapeHtml(annotation.label || "video")}"` : ""} ${MODE === "builder" && annotation.type === "video" ? 'title="Click once to select; click the selected video again to preview"' : ""} style="${objectStyle(annotation)}">
+        <div class="${classes}" data-object data-kind="annotation" data-id="${annotation.id}" data-text-style="${annotation.textStyle}" ${annotation.type === "slide-intro" ? `data-intro-align="${escapeHtml(annotation.introAlign)}"` : ""} ${annotation.type === "callout" ? `data-callout-align="${escapeHtml(annotation.calloutAlign)}"` : ""} ${annotation.type === "markup" ? `data-markup-kind="${escapeHtml(annotation.markup)}"` : ""} ${annotation.type === "video" ? `role="button" tabindex="0" aria-label="Open ${escapeHtml(annotation.label || "video")}"` : ""} ${MODE === "builder" && annotation.type === "video" ? 'title="Click once to select; click the selected video again to preview"' : ""} style="${objectStyle(annotation)}">
           ${content}
           ${primary && !annotation.locked ? renderHandles(annotation) : ""}
         </div>
@@ -6597,7 +6026,7 @@
     }
 
     function renderHandles(item = null) {
-      const resizeHandles = ["markup", "cover", "blur", "slide-intro", "callout"].includes(item?.type) || (item?.type === "image" && imageCropEditId === item.id) || (item?.type === "magnifier" && item?.magnifierShape !== "circle")
+      const resizeHandles = ["markup", "cover", "blur", "slide-intro", "callout"].includes(item?.type)
         ? ["nw","n","ne","e","se","s","sw","w"]
         : ["nw","ne","sw","se"];
       const resize = resizeHandles.map((handle) => `<span class="resize-handle" data-handle="${handle}" aria-hidden="true"></span>`).join("");
@@ -6754,73 +6183,9 @@
 	      return `<label>${escapeHtml(label)}<select data-meta="${key}">${options.map(([optionValue, optionLabel]) => `<option value="${escapeHtml(optionValue)}" ${optionValue === value ? "selected" : ""}>${escapeHtml(optionLabel)}</option>`).join("")}</select></label>`;
 	    }
 
-    function metaCheckbox(key, label, checked) {
+	    function metaCheckbox(key, label, checked) {
 	      return `<label class="metadata-checkbox"><input data-meta="${key}" type="checkbox" ${checked ? "checked" : ""}><span>${escapeHtml(label)}</span></label>`;
 	    }
-
-    function renderContentsPreviewMedia(slide) {
-      const media = slide.media || {};
-      const mediaUrl = String(media.url || "").trim();
-      if (slide.kind === "video" || media.type === "video") {
-        return `<span class="contents-preview-video-label">VIDEO SLIDE</span>`;
-      }
-      if (!mediaUrl || media.type === "audio") return "";
-      const fit = media.fit === "cover" ? "cover" : "contain";
-      const style = `--media-fit:${fit};--media-x:${Number(media.x) || 0}%;--media-y:${Number(media.y) || 0}%;--media-scale:${Number(media.scale) || 1}`;
-      return `<span class="contents-preview-media" style="${style}"><img src="${escapeHtml(mediaUrl)}" alt="" loading="eager" decoding="async"></span>`;
-    }
-
-    function renderContentsPreviewAnnotation(annotation) {
-      const type = annotation.type;
-      const baseStyle = objectStyle(annotation);
-      const open = (extraClass = "") => `<span class="contents-preview-object ${extraClass}" style="${baseStyle}">`;
-      if (["shape", "image", "gif"].includes(type)) {
-        const src = resolveAnnotationAssetSrc(annotation.src);
-        const cropClass = type === "image" && annotation.cropEnabled ? " is-crop-enabled" : "";
-        return `${open(`contents-preview-${type}${cropClass}`)}<img src="${escapeHtml(src)}" alt="" loading="eager" decoding="async"></span>`;
-      }
-      if (type === "magnifier") {
-        return `<span class="contents-preview-object contents-preview-magnifier" data-magnifier-lens data-magnifier-z="${annotation.z}" style="${baseStyle}"><span class="magnifier-viewport"><span class="magnifier-scene-host" data-magnifier-scene-host aria-hidden="true"></span></span></span>`;
-      }
-      if (type === "cover") return `${open("contents-preview-cover")}</span>`;
-      if (type === "blur") return `${open("contents-preview-blur")}</span>`;
-      if (type === "markup") return `${open("contents-preview-markup")}${markupSvg(annotation)}</span>`;
-      if (type === "text") {
-        const size = Math.max(4, (Number(annotation.textFontSize) || 16) * .32);
-        const textStyle = annotation.textStyle === "italic" ? "italic" : "normal";
-        const style = `${baseStyle};--preview-text-color:${annotation.textColor || "#000000"};--preview-text-size:${size}px;--preview-text-style:${textStyle}`;
-        return `<span class="contents-preview-object contents-preview-text" style="${escapeHtml(style)}">${escapeHtml(annotation.text)}</span>`;
-      }
-      if (type === "slide-intro" || type === "callout") {
-        const title = type === "slide-intro" ? annotation.introTitle : annotation.calloutTitle;
-        const body = type === "slide-intro" ? annotation.introBody : annotation.calloutBody;
-        return `${open("contents-preview-card")}<span class="contents-preview-card-title">${escapeHtml(title || "")}</span><span class="contents-preview-card-body">${escapeHtml(body || "")}</span></span>`;
-      }
-      const iconSrc = type === "video"
-        ? VIDEO_ANNOTATION_IMAGE
-        : type === "link"
-          ? LINK_ANNOTATION_IMAGE
-          : type === "audio" ? AUDIO_PLAY_IMAGE : "";
-      return iconSrc
-        ? `${open(`contents-preview-${type}`)}<img src="${escapeHtml(resolveAnnotationAssetSrc(iconSrc))}" alt="" loading="eager" decoding="async"></span>`
-        : "";
-    }
-
-    function renderContentsPreviewHotspot(hotspot, index) {
-      const style = hotspotStyle(index);
-      return `<span class="contents-preview-object contents-preview-hotspot" style="${objectStyle(hotspot)}"><img src="${escapeHtml(style.image)}" alt="" loading="eager" decoding="async"><span class="contents-preview-hotspot-number">${index + 1}</span></span>`;
-    }
-
-    function renderContentsSlidePreview(slide) {
-      const previewColor = /^#[0-9a-f]{6}$/i.test(String(slide.media?.matte || "")) ? slide.media.matte : "#ffffff";
-      const annotations = slide.annotations
-        .slice()
-        .sort((a, b) => a.z - b.z)
-        .map(renderContentsPreviewAnnotation)
-        .join("");
-      const hotspots = slide.hotspots.map(renderContentsPreviewHotspot).join("");
-      return `<span class="contents-preview-stage" style="--contents-preview-color:${escapeHtml(previewColor)}">${renderContentsPreviewMedia(slide)}${annotations}${hotspots}</span>`;
-    }
 
     function renderContentsModal() {
       return `
@@ -6833,33 +6198,25 @@
             <div class="modal-body">
               <div class="contents-grid">
                 ${state.tutorial.slides.map((slide, index) => {
+                  const mediaUrl = String(slide.media?.url || "").trim();
                   const previewColor = /^#[0-9a-f]{6}$/i.test(String(slide.media?.matte || "")) ? slide.media.matte : "#ffffff";
-                  const title = slide.kind === "cover" ? state.tutorial.title : slide.title;
+                  const title = slideContentsTitle(slide, index);
                   return `
-                    <div class="contents-card-shell">
-                      <button type="button" class="contents-card ${index === state.ui.slideIndex ? "is-active" : ""}" data-action="jump-slide" data-index="${index}">
-                        <span class="contents-card-preview ${slide.kind === "video" ? "is-video" : ""}" style="--contents-preview-color:${escapeHtml(previewColor)}">
-                          ${renderContentsSlidePreview(slide)}
-                        </span>
-                        <span class="contents-card-copy">
-                          ${slide.kind === "cover"
-                            ? `<span class="contents-cover-label">Cover</span>`
-                            : `<span class="contents-number" style="${contentsNumberStyle(index)}">${index}</span>`}
-                          <span class="contents-card-title">${escapeHtml(title || (slide.kind === "cover" ? "Tutorial" : `Slide ${index}`))}</span>
-                        </span>
-                      </button>
-                      ${MODE === "builder" && index > 0 ? `
-                        <details class="contents-slide-actions">
-                          <summary aria-label="Manage slide ${index}" title="Manage slide ${index}">⋯</summary>
-                          <div class="contents-slide-actions-menu" role="menu" aria-label="Slide ${index} actions">
-                            <button type="button" role="menuitem" data-action="contents-duplicate-slide" data-index="${index}">Duplicate Slide</button>
-                            <button type="button" role="menuitem" data-action="contents-move-slide" data-index="${index}" data-direction="-1" ${index > 1 ? "" : "disabled"}>Move Earlier</button>
-                            <button type="button" role="menuitem" data-action="contents-move-slide" data-index="${index}" data-direction="1" ${index < state.tutorial.slides.length - 1 ? "" : "disabled"}>Move Later</button>
-                            <button type="button" role="menuitem" data-action="contents-delete-slide" data-index="${index}">Delete Slide</button>
-                          </div>
-                        </details>
-                      ` : ""}
-                    </div>
+                    <button type="button" class="contents-card ${index === state.ui.slideIndex ? "is-active" : ""}" data-action="jump-slide" data-index="${index}">
+                      <span class="contents-card-preview ${slide.kind === "video" ? "is-video" : ""}" style="--contents-preview-color:${escapeHtml(previewColor)}">
+                        ${slide.kind === "video"
+                          ? "VIDEO SLIDE"
+                          : mediaUrl
+                            ? `<img src="${escapeHtml(mediaUrl)}" alt="" loading="lazy">`
+                            : ""}
+                      </span>
+                      <span class="contents-card-copy">
+                        ${slide.kind === "cover"
+                          ? `<span class="contents-cover-label">Cover</span>`
+                          : `<span class="contents-number" style="${contentsNumberStyle(index)}">${index}</span>`}
+                        <span class="contents-card-title">${escapeHtml(title)}</span>
+                      </span>
+                    </button>
                   `;
                 }).join("")}
               </div>
@@ -6894,25 +6251,6 @@
                   </div>
                 ` : ""}
               </div>
-            </div>
-          </section>
-        </div>
-      `;
-    }
-
-    function renderDemoPreviewModal() {
-      if (MODE !== "builder" || !demoPreviewOpen || !demoPreviewHtml) return "";
-      const tutorialPreview = demoPreviewMode === "tutorial";
-      const previewLabel = tutorialPreview ? "Tutorial Preview" : "Demo Preview";
-      return `
-        <div class="modal" id="demoPreviewModal">
-          <section class="modal-panel demo-preview-modal-panel" role="dialog" aria-modal="true" aria-labelledby="demoPreviewTitle">
-            <header class="modal-header">
-              <span id="demoPreviewTitle">${previewLabel}</span>
-              <button class="icon-button" type="button" data-action="close-demo-preview" aria-label="Close ${tutorialPreview ? "tutorial" : "demo"} preview">${icon("close")}</button>
-            </header>
-            <div class="modal-body">
-              <iframe class="demo-preview-frame" title="Current ${tutorialPreview ? "manual tutorial" : "autoplay demo"} preview" srcdoc="${escapeHtml(demoPreviewHtml)}"></iframe>
             </div>
           </section>
         </div>
@@ -6967,55 +6305,28 @@
       });
     }
 
-    function playerSlideVisualUrls(slide) {
-      if (!slide) return [];
-      const urls = [];
-      const add = (value) => {
-        const url = String(value || "").trim();
-        if (url && !urls.includes(url)) urls.push(url);
-      };
-      if (slide.media?.type !== "audio" && slide.kind !== "video" && slide.media?.type !== "video") add(slide.media?.url);
-      slide.annotations.forEach((annotation) => {
-        if (["shape", "image", "gif"].includes(annotation.type)) add(resolveAnnotationAssetSrc(annotation.src));
-        else if (annotation.type === "video") add(resolveAnnotationAssetSrc(VIDEO_ANNOTATION_IMAGE));
-        else if (annotation.type === "link") add(resolveAnnotationAssetSrc(LINK_ANNOTATION_IMAGE));
-        else if (annotation.type === "audio") {
-          add(resolveAnnotationAssetSrc(AUDIO_PLAY_IMAGE));
-          add(resolveAnnotationAssetSrc(AUDIO_PAUSE_IMAGE));
-        }
-      });
-      slide.hotspots.forEach((_, index) => add(hotspotStyle(index).image));
-      return urls;
-    }
-
     function preloadNextPlayerMedia() {
       if (MODE !== "player") return;
       const nextSlide = state.tutorial.slides[state.ui.slideIndex + 1];
-      if (!nextSlide) {
+      const url = String(nextSlide?.media?.url || "").trim();
+      if (!url) {
         playerPreloadedMedia = null;
         return;
       }
       const isVideo = nextSlide.kind === "video" || nextSlide.media.type === "video";
-      const preloaders = [];
       if (isVideo) {
-        const videoUrl = String(nextSlide.media?.url || "").trim();
         const video = document.createElement("video");
         video.preload = "auto";
         video.muted = true;
-        if (videoUrl) {
-          video.src = videoUrl;
-          video.load();
-          preloaders.push(video);
-        }
-      }
-      playerSlideVisualUrls(nextSlide).forEach((url) => {
+        video.src = url;
+        video.load();
+        playerPreloadedMedia = video;
+      } else if (nextSlide.media.type !== "audio") {
         const image = new Image();
         image.decoding = "async";
-        image.loading = "eager";
         image.src = url;
-        preloaders.push(image);
-      });
-      playerPreloadedMedia = preloaders;
+        playerPreloadedMedia = image;
+      }
     }
 
     function preparePlayerSlideVisuals(slide = currentSlide()) {
@@ -7030,44 +6341,13 @@
       }
       body.classList.add("is-slide-media-pending");
       body.classList.remove("is-slide-media-ready");
-      const media = Array.from(body.querySelectorAll("[data-main-media-image], [data-main-video], .stage .annotation-asset-frame > img, .stage .hotspot-object .object-frame > img"));
-      return Promise.all(media.map(waitForPlayerMedia)).then(() => {
+      const media = body.querySelector("[data-main-media-image], [data-main-video]");
+      return waitForPlayerMedia(media).then(() => {
         if (!body.isConnected || currentSlide()?.id !== slideId) return;
         body.classList.remove("is-slide-media-pending");
         body.classList.add("is-slide-media-ready");
         playerVisualReadySlideId = slideId;
         preloadNextPlayerMedia();
-      });
-    }
-
-    function syncMagnifierScenes() {
-      root.querySelectorAll("[data-magnifier-lens]").forEach((lens) => {
-        const host = lens.querySelector("[data-magnifier-scene-host]");
-        const source = lens.closest("[data-stage], .contents-preview-stage");
-        if (!host || !source) return;
-        const lensZ = Number(lens.dataset.magnifierZ) || Number(lens.style.getPropertyValue("--z")) || 0;
-        const clone = source.cloneNode(true);
-        clone.querySelectorAll("[data-magnifier-lens], [data-builder-only], .main-video-controls, .resize-handle, .markup-point-handle, .rotate-handle, .flip-handle, .move-handle, .magnifier-controls").forEach((node) => node.remove());
-        clone.querySelectorAll(".stage-object, .contents-preview-object").forEach((node) => {
-          const objectZ = Number(node.style.getPropertyValue("--z")) || 0;
-          if (objectZ >= lensZ) node.remove();
-        });
-        clone.querySelectorAll(".is-selected, .is-locked, .is-grouped, .is-attention").forEach((node) => {
-          node.classList.remove("is-selected", "is-locked", "is-grouped", "is-attention");
-        });
-        clone.querySelectorAll("[contenteditable], [tabindex], [data-action]").forEach((node) => {
-          node.removeAttribute("contenteditable");
-          node.removeAttribute("tabindex");
-          node.removeAttribute("data-action");
-        });
-        clone.querySelectorAll("video, audio").forEach((media) => {
-          media.muted = true;
-          media.removeAttribute("controls");
-        });
-        clone.removeAttribute("data-stage");
-        clone.removeAttribute("aria-label");
-        clone.className = source.matches("[data-stage]") ? "stage magnifier-scene" : "contents-preview-stage magnifier-scene";
-        host.replaceChildren(clone);
       });
     }
 
@@ -7080,7 +6360,6 @@
       }
       playerVisualReadyPromise = preparePlayerSlideVisuals();
       syncMainVideo();
-      syncMagnifierScenes();
       if (!state.ui.videoModalId) return;
       const annotation = state.tutorial.slides.flatMap((slide) => slide.annotations).find((item) => item.id === state.ui.videoModalId);
       const youtube = youtubeVideoInfo(annotation?.url);
@@ -7367,7 +6646,7 @@
       const actions = {
         "new-project": () => openProjectNameDialog("new"),
         "open-project": () => openProject(id),
-        "rename-project": () => runDraftMoreAction(() => openProjectNameDialog("rename")),
+        "rename-project": () => openProjectNameDialog("rename"),
         "duplicate-project": () => openProjectNameDialog("duplicate"),
         "cancel-project-name": closeProjectNameDialog,
         "confirm-project-name": confirmProjectNameDialog,
@@ -7411,23 +6690,15 @@
         "add-cover": addCoverAnnotation,
         "apply-background": applySlideBackground,
         "add-blur": addBlurAnnotation,
-        "add-magnifier": addMagnifierAnnotation,
-        "adjust-magnifier": () => adjustSelectedMagnifier(actionNode.dataset.delta),
         "connect-media-directory": connectMediaDirectory,
         "select-existing-media-file": selectExistingMediaFile,
         "select-annotation-media": () => selectExistingAnnotationMedia(actionNode.dataset.type),
         "select-slide-audio": selectExistingSlideAudio,
         "toggle-slide-audio-preview": toggleSlideNarrationPreview,
-        "toggle-slide-audio-panel": toggleSlideNarrationPanel,
-        "remove-slide-audio": removeSlideNarrationAudio,
         "activate-annotation-url": () => activateToolbarAnnotationUrl(actionNode.dataset.type),
         "copy-new-media-file": chooseNewMediaFile,
-        "toggle-builder-more": toggleDraftMore,
-        "save-editable-copy": () => runDraftMoreAction(saveEditableCopy),
-        "reset-builder": () => runDraftMoreAction(resetBuilder),
-        "preview-demo": () => previewExport("demo"),
-        "preview-tutorial": () => previewExport("tutorial"),
-        "close-demo-preview": closeDemoPreview,
+        "save-editable-copy": saveEditableCopy,
+        "reset-builder": resetBuilder,
         "export-html": () => exportHtml("demo"),
         "export-tutorial-html": () => exportHtml("tutorial"),
         "export-png": exportPng,
@@ -7439,17 +6710,10 @@
         "open-contents": () => openContents(actionNode),
         "close-contents": closeContents,
         "jump-slide": () => jumpSlide(Number(actionNode.dataset.index)),
-        "contents-duplicate-slide": () => manageContentsSlide(Number(actionNode.dataset.index), "duplicate"),
-        "contents-move-slide": () => manageContentsSlide(Number(actionNode.dataset.index), "move", Number(actionNode.dataset.direction)),
-        "contents-delete-slide": () => manageContentsSlide(Number(actionNode.dataset.index), "delete"),
         "add-image-slide": () => addSlide("image"),
         "add-video-slide": () => addSlide("video"),
         "replace-slide-image": () => replaceSlideMedia("image"),
         "replace-slide-video": () => replaceSlideMedia("video"),
-        "toggle-inserted-image-crop": toggleInsertedImageCrop,
-        "inserted-image-crop-out": () => zoomInsertedImageCrop(-.1),
-        "inserted-image-crop-in": () => zoomInsertedImageCrop(.1),
-        "reset-inserted-image": resetInsertedImageEdit,
         "move-slide-left": () => moveSlide(-1),
         "move-slide-right": () => moveSlide(1),
         "duplicate-slide": duplicateSlide,
@@ -7723,6 +6987,7 @@
     function onChange(event) {
       const target = event.target;
       if (target.id === "toolbarTutorialTitle") {
+        target.value = target.value.toUpperCase();
         state.tutorial.title = target.value;
         commit("Updated tutorial title.");
         return;
@@ -7775,14 +7040,6 @@
           : null;
         syncDemoAudioTiming();
         commit(value ? "Updated this slide's manual timing override." : "Cleared this slide's manual timing override.");
-        return;
-      }
-      if (target.id === "insertedImageCornerPreset") {
-        setInsertedImageCornerRadius(target.value);
-        return;
-      }
-      if (target.matches("[data-magnifier-shape]")) {
-        setSelectedMagnifierShape(target.value);
         return;
       }
       if (target.id === "demoSlideAudioUrl") {
@@ -7889,6 +7146,7 @@
     function onInput(event) {
       const target = event.target;
       if (target.id === "toolbarTutorialTitle") {
+        target.value = target.value.toUpperCase();
         state.tutorial.title = target.value;
         scheduleSave();
         return;
@@ -8099,7 +7357,7 @@
         : editable.innerText.replace(/\n+$/, "");
       if (binding === "tutorial.title") {
         const previousMediaBase = mediaBase();
-        state.tutorial.title = value;
+        state.tutorial.title = value.toUpperCase();
         applySmartDefaults();
         syncMediaUrlSeeds(previousMediaBase);
         scheduleSave();
@@ -8126,7 +7384,10 @@
         scheduleSave();
       } else if (binding.startsWith("annotation.introTitle:")) {
         const item = currentSlide().annotations.find((annotation) => annotation.id === binding.split(":")[1]);
-        if (item?.type === "slide-intro") item.introTitle = value;
+        if (item?.type === "slide-intro") {
+          item.introTitle = value;
+          if (value.trim()) currentSlide().title = value.trim();
+        }
         scheduleSave();
       } else if (binding.startsWith("annotation.introBody:")) {
         const item = currentSlide().annotations.find((annotation) => annotation.id === binding.split(":")[1]);
@@ -8186,7 +7447,6 @@
 
     function selectObject(kind, id, additive = false) {
       if (MODE !== "builder") return;
-      if (kind !== "annotation" || id !== imageCropEditId) imageCropEditId = "";
       syncObjectSelection();
       const key = selectionKey(kind, id);
       const clickedEntry = selectionEntry(key);
@@ -8313,8 +7573,7 @@
         id, kind,
         wasSelected,
         moved: false,
-        handle: event.target.closest("[data-handle]")?.dataset.handle
-          || (kind === "annotation" && item.type === "image" && imageCropEditId === id ? "crop-pan" : "move"),
+        handle: event.target.closest("[data-handle]")?.dataset.handle || "move",
         startX: event.clientX,
         startY: event.clientY,
         rect,
@@ -8323,7 +7582,7 @@
           event.clientY - (objectElement.getBoundingClientRect().top + objectElement.getBoundingClientRect().height / 2),
           event.clientX - (objectElement.getBoundingClientRect().left + objectElement.getBoundingClientRect().width / 2)
         ),
-        original: { x: item.x, y: item.y, w: item.w, h: item.h, rotation: item.rotation || 0, cropX: item.cropX ?? 50, cropY: item.cropY ?? 50 },
+        original: { x: item.x, y: item.y, w: item.w, h: item.h, rotation: item.rotation || 0 },
         groupOriginals: groupedEntries.length > 1
           ? groupedEntries
             .filter(({ item: groupItem }) => !groupItem.locked)
@@ -8369,17 +7628,6 @@
       const dx = (event.clientX - drag.startX) / drag.rect.width * 100;
       const dy = (event.clientY - drag.startY) / drag.rect.height * 100;
       if (Math.abs(dx) > .2 || Math.abs(dy) > .2) drag.moved = true;
-      if (drag.handle === "crop-pan" && item.type === "image" && item.cropEnabled) {
-        const cropDx = (event.clientX - drag.startX) / Math.max(drag.objectRect.width, 1) * 100;
-        const cropDy = (event.clientY - drag.startY) / Math.max(drag.objectRect.height, 1) * 100;
-        item.cropX = clamp(drag.original.cropX - cropDx, 0, 100);
-        item.cropY = clamp(drag.original.cropY - cropDy, 0, 100);
-        const element = root.querySelector(`[data-object][data-id="${CSS.escape(item.id)}"]`);
-        if (element) element.style.cssText = objectStyle(item);
-        scheduleSave();
-        event.preventDefault();
-        return;
-      }
       if (drag.handle === "rotate" && (item.type === "shape" || (item.type === "markup" && isPathMarkup(item.markup)))) {
         const centerX = drag.objectRect.left + drag.objectRect.width / 2;
         const centerY = drag.objectRect.top + drag.objectRect.height / 2;
@@ -8416,16 +7664,7 @@
       if (drag.handle === "move") {
         item.x = clamp(drag.original.x + dx, STAGE_OBJECT_MIN_POSITION, STAGE_OBJECT_MAX_POSITION);
         item.y = clamp(drag.original.y + dy, STAGE_OBJECT_MIN_POSITION, STAGE_OBJECT_MAX_POSITION);
-      } else if (item.type === "magnifier" && item.magnifierShape === "circle") {
-        const directionX = drag.handle.includes("e") ? 1 : -1;
-        const directionY = drag.handle.includes("s") ? 1 : -1;
-        const widthFromX = drag.original.w + dx * directionX;
-        const widthFromY = (drag.original.h + dy * directionY) * 3 / 5;
-        item.w = clamp(Math.abs(dx) >= Math.abs(dy) * 3 / 5 ? widthFromX : widthFromY, 5, 54);
-        item.h = item.w * 5 / 3;
-        item.x = clamp(drag.original.x + (item.w - drag.original.w) / 2 * directionX, STAGE_OBJECT_MIN_POSITION, STAGE_OBJECT_MAX_POSITION);
-        item.y = clamp(drag.original.y + (item.h - drag.original.h) / 2 * directionY, STAGE_OBJECT_MIN_POSITION, STAGE_OBJECT_MAX_POSITION);
-      } else if (["markup", "cover", "blur", "slide-intro", "callout", "magnifier"].includes(item.type) || (item.type === "image" && imageCropEditId === item.id)) {
+      } else if (["markup", "cover", "blur", "slide-intro", "callout"].includes(item.type)) {
         const changesWidth = drag.handle.includes("e") || drag.handle.includes("w");
         const changesHeight = drag.handle.includes("n") || drag.handle.includes("s");
         const directionX = drag.handle.includes("e") ? 1 : -1;
@@ -8486,7 +7725,7 @@
         openVideo(annotation.id);
         return;
       }
-      commit(completedDrag.handle === "crop-pan" ? "Repositioned the inserted image crop." : "Updated object position or size.");
+      commit("Updated object position or size.");
     }
 
     function onDoubleClick(event) {
@@ -8640,13 +7879,7 @@
       }
       if (event.key === "Escape") {
         if (projectDialogMode) closeProjectNameDialog();
-        else if (demoPreviewOpen) closeDemoPreview();
         else if (state.ui.videoModalId) closeVideo();
-        else if (slideNarrationPanelSlideId || draftMoreOpen) {
-          slideNarrationPanelSlideId = "";
-          draftMoreOpen = false;
-          render();
-        }
         else if (state.ui.contentsOpen) closeContents();
         else if (IS_DEMO_EMBED) {
           event.preventDefault();
@@ -8655,8 +7888,8 @@
         else closeSiteNavigation();
         return;
       }
-      if (event.key === "Tab" && (demoPreviewOpen || state.ui.videoModalId || state.ui.contentsOpen)) {
-        const modal = document.querySelector(demoPreviewOpen ? "#demoPreviewModal" : state.ui.videoModalId ? "#videoModal" : "#contentsModal");
+      if (event.key === "Tab" && (state.ui.videoModalId || state.ui.contentsOpen)) {
+        const modal = document.querySelector(state.ui.videoModalId ? "#videoModal" : "#contentsModal");
         const focusable = Array.from(modal?.querySelectorAll('button:not([disabled]), [href], [tabindex]:not([tabindex="-1"])') || [])
           .filter((node) => !node.hidden);
         if (focusable.length) {
@@ -8814,7 +8047,7 @@
         annotation = normalizeAnnotation({
           id: uid("slide-intro"),
           type: "slide-intro",
-          introTitle: "SLIDE INTRODUCTION",
+          introTitle: String(slide.title || "SLIDE INTRODUCTION").trim() || "SLIDE INTRODUCTION",
           introBody: "Add the introductory text for this slide.",
           introAlign: "left",
           x: 50, y: 38, w: 42, h: 20,
@@ -8965,55 +8198,6 @@
       state.ui.selectedKind = "annotation";
       state.ui.selectedId = annotation.id;
       commit("Added blur area.");
-    }
-
-    function selectedMagnifier() {
-      if (state.ui.selectedKind !== "annotation") return null;
-      const annotation = currentSlide().annotations.find((item) => item.id === state.ui.selectedId);
-      return annotation?.type === "magnifier" ? annotation : null;
-    }
-
-    function addMagnifierAnnotation() {
-      const slide = currentSlide();
-      const annotation = normalizeAnnotation({
-        id: uid("magnifier"),
-        type: "magnifier",
-        label: "Magnified area",
-        magnification: 2,
-        magnifierShape: "rounded",
-        x: 50,
-        y: 48,
-        w: 22,
-        h: 36.6667,
-        z: topZ() + 1
-      }, slide.annotations.length);
-      slide.annotations.push(assignNewAnnotationToActiveHotspot(annotation));
-      state.ui.selectedKind = "annotation";
-      state.ui.selectedId = annotation.id;
-      multiSelection = [selectionKey("annotation", annotation.id)];
-      commit("Added a magnifier annotation. Move and resize it over the area to enlarge.");
-    }
-
-    function adjustSelectedMagnifier(delta) {
-      const magnifier = selectedMagnifier();
-      if (!magnifier) return;
-      magnifier.magnification = clamp(
-        Math.round((magnifier.magnification + Number(delta)) * 100) / 100,
-        1.25,
-        4
-      );
-      commit(`Set magnification to ${magnifier.magnification}×.`);
-    }
-
-    function setSelectedMagnifierShape(value) {
-      const magnifier = selectedMagnifier();
-      if (!magnifier || !["square", "rounded", "circle"].includes(value)) return;
-      magnifier.magnifierShape = value;
-      if (value === "circle") {
-        magnifier.w = clamp(magnifier.w, 5, 54);
-        magnifier.h = magnifier.w * 5 / 3;
-      }
-      commit(`Set magnifier shape to ${value}.`);
     }
 
     function addImageAnnotation(type, src, label) {
@@ -9433,55 +8617,6 @@
       commit(direction < 0
         ? "Moved this slide earlier. The neighboring slide moved later."
         : "Moved this slide later. The neighboring slide moved earlier.");
-    }
-
-    function selectedInsertedImage() {
-      if (state.ui.selectedKind !== "annotation") return null;
-      const annotation = currentSlide().annotations.find((item) => item.id === state.ui.selectedId);
-      return annotation?.type === "image" ? annotation : null;
-    }
-
-    function toggleInsertedImageCrop() {
-      const image = selectedInsertedImage();
-      if (!image) {
-        showToast("Select an inserted image first.");
-        return;
-      }
-      if (imageCropEditId === image.id) {
-        imageCropEditId = "";
-        commit("Finished cropping the inserted image.");
-        return;
-      }
-      image.cropEnabled = true;
-      image.cropScale = clamp(image.cropScale || 1, OVERLAY_CROP_MIN_SCALE, OVERLAY_CROP_MAX_SCALE);
-      imageCropEditId = image.id;
-      commit("Crop mode: drag the side or corner handles inward. Drag the image itself to reposition it, then click Done Crop.");
-    }
-
-    function zoomInsertedImageCrop(amount) {
-      const image = selectedInsertedImage();
-      if (!image?.cropEnabled) return;
-      image.cropScale = clamp((image.cropScale || 1) + amount, OVERLAY_CROP_MIN_SCALE, OVERLAY_CROP_MAX_SCALE);
-      imageCropEditId = image.id;
-      commit(amount > 0 ? "Cropped closer into the inserted image." : "Showed more of the inserted image.");
-    }
-
-    function setInsertedImageCornerRadius(value) {
-      const image = selectedInsertedImage();
-      if (!image) return;
-      image.cornerRadius = clamp(Number(value) || 0, 0, 50);
-      const label = image.cornerRadius === 0
-        ? "square"
-        : image.cornerRadius === 3 ? "soft" : image.cornerRadius === 10 ? "rounded" : "circular";
-      commit(`Set inserted image corners to ${label}.`);
-    }
-
-    function resetInsertedImageEdit() {
-      const image = selectedInsertedImage();
-      if (!image) return;
-      Object.assign(image, { cropEnabled: false, cropX: 50, cropY: 50, cropScale: 1, cornerRadius: 0 });
-      if (imageCropEditId === image.id) imageCropEditId = "";
-      commit("Reset the inserted image crop and corners.");
     }
 
     function setMediaFit(value) {
@@ -9927,23 +9062,6 @@
       drawAttentionToHotspot(state.ui.activeHotspotId);
     }
 
-    function manageContentsSlide(index, operation, direction = 0) {
-      if (MODE !== "builder" || index <= 0 || index >= state.tutorial.slides.length) return;
-      stopAudio();
-      stopSlideNarrationPreview();
-      slideNarrationPanelSlideId = "";
-      state.ui.slideIndex = index;
-      const slide = currentSlide();
-      state.ui.activeHotspotId = slideIntroCard(slide) ? null : slide.hotspots[0]?.id || null;
-      state.ui.selectedKind = null;
-      state.ui.selectedId = null;
-      multiSelection = [];
-      state.ui.contentsOpen = true;
-      if (operation === "duplicate") duplicateSlide();
-      else if (operation === "move") moveSlide(direction < 0 ? -1 : 1);
-      else if (operation === "delete") deleteSlide();
-    }
-
     function openContents(trigger) {
       if (IS_DEMO_PLAYER) pauseDemoPlayback();
       state.ui.contentsOpen = true;
@@ -10028,26 +9146,6 @@
       slideNarrationPreviewAudio = null;
       slideNarrationPreviewSlideId = "";
       slideNarrationPreviewPlaying = false;
-    }
-
-    function toggleSlideNarrationPanel() {
-      const slide = currentSlide();
-      slideNarrationPanelSlideId = slideNarrationPanelSlideId === slide.id ? "" : slide.id;
-      render();
-      if (slideNarrationPanelSlideId) {
-        setTimeout(() => root.querySelector(".slide-narration-popover button")?.focus(), 0);
-      }
-    }
-
-    function removeSlideNarrationAudio() {
-      const slide = currentSlide();
-      if (!String(slide.demo?.audioUrl || "").trim()) return;
-      if (!window.confirm("Remove the narration audio from this slide?\n\nThe audio file itself will not be deleted.")) return;
-      stopSlideNarrationPreview();
-      slide.demo.audioUrl = "";
-      syncDemoAudioTiming(slide);
-      slideNarrationPanelSlideId = "";
-      commit("Removed narration audio from this slide.");
     }
 
     async function toggleSlideNarrationPreview() {
@@ -10306,7 +9404,7 @@
       ]);
     }
 
-    async function buildExportHtml(mode = "demo") {
+    async function exportHtml(mode = "demo") {
       const exportMode = mode === "tutorial" ? "tutorial" : "demo";
       const isDemoExport = exportMode === "demo";
       if (IS_PROJECT_APP) await saveProjectToDiskNow();
@@ -10326,7 +9424,6 @@
       const documentElement = document.documentElement.cloneNode(true);
       const exportBody = documentElement.querySelector("body");
       exportBody.dataset.mode = "player";
-      exportBody.dataset.exportKind = exportMode;
       if (isDemoExport) exportBody.dataset.demoPlayer = "true";
       else exportBody.removeAttribute("data-demo-player");
       exportBody.removeAttribute("data-demo-embed");
@@ -10339,37 +9436,8 @@
       setMeta(documentElement.querySelector("head"), "name", "robots", isDemoExport ? "noindex, nofollow" : "index, follow");
       const html = `<!DOCTYPE html>\n${documentElement.outerHTML}`;
       const stem = slugify(state.meta.tutorialSlug || state.tutorial.title) || "tutorial";
-      return { html, stem, isDemoExport };
-    }
-
-    async function previewExport(mode = "demo") {
-      const previewMode = mode === "tutorial" ? "tutorial" : "demo";
-      showToast(`Preparing the current ${previewMode} preview…`);
-      try {
-        const { html } = await buildExportHtml(previewMode);
-        demoPreviewHtml = html;
-        demoPreviewMode = previewMode;
-        demoPreviewOpen = true;
-        render();
-        setTimeout(() => root.querySelector('[data-action="close-demo-preview"]')?.focus(), 0);
-        showToast(`Previewing the current ${previewMode}. No file was exported.`);
-      } catch (error) {
-        showToast(`The ${previewMode} preview could not be prepared.`);
-      }
-    }
-
-    function closeDemoPreview() {
-      demoPreviewOpen = false;
-      demoPreviewHtml = "";
-      render();
-      const previewAction = demoPreviewMode === "tutorial" ? "preview-tutorial" : "preview-demo";
-      setTimeout(() => root.querySelector(`[data-action="${previewAction}"]`)?.focus(), 0);
-    }
-
-    async function exportHtml(mode = "demo") {
-      const { html, stem, isDemoExport } = await buildExportHtml(mode);
       download(`${stem}${isDemoExport ? "-demo" : ""}.html`, html, "text/html");
-	    showToast(isDemoExport
+	      showToast(isDemoExport
         ? "Exported the compact autoplay demo HTML for the Reporter Tools modal."
         : "Exported the full-page standalone tutorial HTML with website navigation.");
     }
