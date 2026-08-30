@@ -6266,6 +6266,7 @@
         ? selectedText.textAlign
         : selectedTextBox?.type === "callout" ? selectedTextBox.calloutAlign : selectedTextBox?.introAlign;
       const selectedInsertedImage = state.ui.selectedKind === "annotation" && selected?.type === "image" ? selected : null;
+      const selectedMagnifierAnnotation = state.ui.selectedKind === "annotation" && selected?.type === "magnifier" ? selected : null;
       const insertedImageCropEditing = selectedInsertedImage && imageCropEditId === selectedInsertedImage.id;
       const insertedImageCornerRadius = selectedInsertedImage?.cornerRadius || 0;
       const introCard = slideIntroCard(slide);
@@ -6345,6 +6346,7 @@
             ${button("2-19-center-text-card-and-callout.png", `data-action="${selectedText ? "set-annotation-text-align" : "set-text-box-align"}" data-value="center" title="Center selected text" aria-label="Center selected text" aria-pressed="${selectedTextAlignTarget ? selectedTextAlign === "center" : false}"`, !selectedTextAlignTarget)}
             ${button("2-21-add-audio-plays-in-same-tab.png", 'data-action="select-annotation-media" data-type="audio" title="Add uploaded audio annotation" aria-label="Add uploaded audio annotation"')}
             <button class="numbered-toolbar-button numbered-toolbar-magnifier-button" type="button" data-action="add-magnifier" title="Add a movable magnifier annotation" aria-label="Add magnifier annotation">MAG</button>
+            <label class="numbered-toolbar-corners" title="Shape of the selected magnifier"><select id="toolbarMagnifierShape" data-magnifier-shape aria-label="Selected magnifier shape" ${selectedMagnifierAnnotation ? "" : "disabled"}>${selectedMagnifierAnnotation ? `<option value="square" ${selectedMagnifierAnnotation.magnifierShape === "square" ? "selected" : ""}>MAG Square</option><option value="rounded" ${selectedMagnifierAnnotation.magnifierShape === "rounded" ? "selected" : ""}>MAG Rounded</option><option value="circle" ${selectedMagnifierAnnotation.magnifierShape === "circle" ? "selected" : ""}>MAG Circle</option>` : '<option value="">MAG Shape</option>'}</select></label>
             <button class="numbered-toolbar-button numbered-toolbar-magnifier-button" type="button" data-action="clip-selected" title="Clip selected items inside a movable frame" aria-label="Clip selected items inside a movable frame" ${canClipSelection ? "" : "disabled"}>${clipButtonLabel}</button>
             ${button("2-22-video-pop-up-modal-opens-in-same-tab.png", 'data-action="select-annotation-media" data-type="video" title="Add uploaded video annotation" aria-label="Add uploaded video annotation"')}
             <label class="numbered-toolbar-input" title="Video popup title"><input id="annotation-video-label" value="${escapeHtml(toolbarAnnotationDraft.videoTitle || "")}" aria-label="Video popup title" placeholder="VIDEO POPUP TITLE"></label>
@@ -6646,11 +6648,6 @@
           <button type="button" data-action="adjust-magnifier" data-delta="-0.25" title="Reduce magnification" aria-label="Reduce magnification">−</button>
           <output aria-label="Current magnification">${Number(annotation.magnification || 2).toFixed(2).replace(/0+$/, "").replace(/\.$/, "")}×</output>
           <button type="button" data-action="adjust-magnifier" data-delta="0.25" title="Increase magnification" aria-label="Increase magnification">+</button>
-          <select data-magnifier-shape aria-label="Magnifier edge shape" title="Magnifier edge shape">
-            <option value="square" ${annotation.magnifierShape === "square" ? "selected" : ""}>Square</option>
-            <option value="rounded" ${annotation.magnifierShape === "rounded" ? "selected" : ""}>Rounded</option>
-            <option value="circle" ${annotation.magnifierShape === "circle" ? "selected" : ""}>Circle</option>
-          </select>
         </div>` : ""}`;
       } else if (annotation.type === "clip-frame") {
         const members = clipFrameMembers(annotation)
