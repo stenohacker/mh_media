@@ -3293,7 +3293,7 @@
       position: absolute;
       top: 39px;
       right: 0;
-      width: 145px;
+      width: 190px;
       display: grid;
       gap: 5px;
       padding: 7px;
@@ -3309,6 +3309,21 @@
     }
     .contents-slide-actions-menu button[data-action="contents-delete-slide"] {
       background: #ffe4ea;
+    }
+    .contents-slide-name-field {
+      display: grid;
+      gap: 4px;
+      font-size: 8px;
+      font-weight: 800;
+      text-transform: uppercase;
+    }
+    .contents-slide-name-field input {
+      width: 100%;
+      min-width: 0;
+      min-height: 32px;
+      padding: 5px 7px;
+      font-size: 10px;
+      text-transform: none;
     }
 
     .slide-narration-control {
@@ -4683,6 +4698,10 @@
         state.tutorial.slides.unshift(createSlide("cover"));
       }
       state.tutorial.slides = state.tutorial.slides.map((slide, index) => normalizeSlide(slide, index));
+      state.tutorial.slides.forEach((slide) => {
+        const intro = slideIntroCard(slide);
+        if (intro) syncSlideTitleFromIntro(slide, intro, intro.introTitle);
+      });
       state.ui ||= {};
       state.ui.slideIndex = clamp(state.ui.slideIndex, 0, state.tutorial.slides.length - 1);
       state.ui.contentsOpen = Boolean(state.ui.contentsOpen);
@@ -4928,6 +4947,22 @@
 
     function slideIntroCard(slide = currentSlide()) {
       return slide?.annotations.find((item) => item.type === "slide-intro") || null;
+    }
+
+    function defaultSlideTitle(slide) {
+      return slide?.kind === "cover" ? "TUTORIAL SUBTITLE" : slide?.kind === "video" ? "VIDEO PAGE" : "SLIDE TITLE";
+    }
+
+    function syncSlideTitleFromIntro(slide, intro, value) {
+      if (!slide || !intro || slide.kind === "cover") return;
+      const previousIntroTitle = String(intro.introTitle || "").trim();
+      const currentTitle = String(slide.title || "").trim();
+      const shouldMirror = !currentTitle
+        || currentTitle === defaultSlideTitle(slide)
+        || currentTitle === "SLIDE INTRODUCTION"
+        || currentTitle === previousIntroTitle;
+      intro.introTitle = String(value || "");
+      if (shouldMirror) slide.title = intro.introTitle.trim() || defaultSlideTitle(slide);
     }
 
     function isSlideIntroState(slide = currentSlide()) {
@@ -6982,6 +7017,8 @@
                         <details class="contents-slide-actions">
                           <summary aria-label="Manage slide ${index}" title="Manage slide ${index}">⋯</summary>
                           <div class="contents-slide-actions-menu" role="menu" aria-label="Slide ${index} actions">
+                            <label class="contents-slide-name-field">Slide Name<input data-contents-slide-name data-index="${index}" value="${escapeHtml(slide.title)}" aria-label="Slide ${index} name"></label>
+                            <button type="button" role="menuitem" data-action="contents-save-slide-name" data-index="${index}">Save Name</button>
                             <button type="button" role="menuitem" data-action="contents-duplicate-slide" data-index="${index}">Duplicate Slide</button>
                             <button type="button" role="menuitem" data-action="contents-move-slide" data-index="${index}" data-direction="-1" ${index > 1 ? "" : "disabled"}>Move Earlier</button>
                             <button type="button" role="menuitem" data-action="contents-move-slide" data-index="${index}" data-direction="1" ${index < state.tutorial.slides.length - 1 ? "" : "disabled"}>Move Later</button>
@@ -7572,6 +7609,7 @@
         "open-contents": () => openContents(actionNode),
         "close-contents": closeContents,
         "jump-slide": () => jumpSlide(Number(actionNode.dataset.index)),
+        "contents-save-slide-name": () => saveContentsSlideName(Number(actionNode.dataset.index)),
         "contents-duplicate-slide": () => manageContentsSlide(Number(actionNode.dataset.index), "duplicate"),
         "contents-move-slide": () => manageContentsSlide(Number(actionNode.dataset.index), "move", Number(actionNode.dataset.direction)),
         "contents-delete-slide": () => manageContentsSlide(Number(actionNode.dataset.index), "delete"),
@@ -8259,7 +8297,7 @@
         scheduleSave();
       } else if (binding.startsWith("annotation.introTitle:")) {
         const item = currentSlide().annotations.find((annotation) => annotation.id === binding.split(":")[1]);
-        if (item?.type === "slide-intro") item.introTitle = value;
+        if (item?.type === "slide-intro") syncSlideTitleFromIntro(currentSlide(), item, value);
         scheduleSave();
       } else if (binding.startsWith("annotation.introBody:")) {
         const item = currentSlide().annotations.find((annotation) => annotation.id === binding.split(":")[1]);
@@ -8969,6 +9007,7 @@
           z: topZ() + 1
         }, slide.annotations.length);
         slide.annotations.push(annotation);
+        syncSlideTitleFromIntro(slide, annotation, annotation.introTitle);
       }
       state.ui.selectedKind = "annotation";
       state.ui.selectedId = annotation.id;
@@ -10164,6 +10203,16 @@
       state.ui.videoModalId = null;
       render();
       drawAttentionToHotspot(state.ui.activeHotspotId);
+    }
+
+    function saveContentsSlideName(index) {
+      if (MODE !== "builder" || index <= 0 || index >= state.tutorial.slides.length) return;
+      const slide = state.tutorial.slides[index];
+      const introTitle = String(slideIntroCard(slide)?.introTitle || "").trim();
+      const nextTitle = String(root.querySelector(`[data-contents-slide-name][data-index="${index}"]`)?.value || "");
+      slide.title = nextTitle.trim() || introTitle || defaultSlideTitle(slide);
+      state.ui.contentsOpen = true;
+      commit(nextTitle.trim() ? `Renamed slide ${index}.` : `Reset slide ${index} name from its intro card.`);
     }
 
     function manageContentsSlide(index, operation, direction = 0) {
