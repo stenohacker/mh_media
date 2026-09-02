@@ -1,29 +1,21 @@
 <!DOCTYPE html>
-<html lang="en"><head>
+<html lang="en">
+<head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <meta name="color-scheme" content="light">
-  <title>Tutorial Demo Builder v1</title>
-  <link id="hanken-grotesk-preload" rel="preload" href="../../../website/fonts/hanken-grotesk-latin.woff2" as="font" type="font/woff2" crossorigin="">
+  <title>Tutorial Video Page Builder v1</title>
+  <link id="geist-mono-preload" rel="preload" href="../../website/fonts/geist-mono-latin.woff2" as="font" type="font/woff2" crossorigin>
   <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin="">
-  <link href="https://fonts.googleapis.com/css2?family=Shadows+Into+Light+Two&amp;display=swap" rel="stylesheet">
-  <style id="hanken-grotesk-font-face">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Shadows+Into+Light+Two&display=swap" rel="stylesheet">
+  <style id="geist-mono-font-face">
     @font-face {
-      font-family: "Hanken Grotesk";
+      font-family: "Geist Mono";
       src:
-        url("../../../website/fonts/hanken-grotesk-latin.woff2") format("woff2"),
-        url("https://magichashtags.com/fonts/hanken-grotesk-latin.woff2") format("woff2");
+        url("../../website/fonts/geist-mono-latin.woff2") format("woff2"),
+        url("https://magichashtags.com/fonts/geist-mono-latin.woff2") format("woff2");
       font-style: normal;
-      font-weight: 100 900;
-      font-display: swap;
-    }
-    @font-face {
-      font-family: "Hanken Grotesk";
-      src:
-        url("../../../website/fonts/hanken-grotesk-latin-italic.woff2") format("woff2"),
-        url("https://magichashtags.com/fonts/hanken-grotesk-latin-italic.woff2") format("woff2");
-      font-style: italic;
       font-weight: 100 900;
       font-display: swap;
     }
@@ -40,7 +32,7 @@
       --soft-pink: #fbeaf9;
       --gray: #d7d7d7;
       --muted: #6d6d6d;
-      --font-interface: "Hanken Grotesk", ui-sans-serif, -apple-system, BlinkMacSystemFont, "Segoe UI", Arial, sans-serif;
+      --font-interface: "Geist Mono", ui-monospace, "SFMono-Regular", Menlo, Monaco, Consolas, monospace;
       --mono: var(--font-interface);
       --sans: var(--font-interface);
       --body: var(--font-interface);
@@ -838,16 +830,11 @@
     }
     body[data-mode="player"] .tutorial-body.is-slide-media-pending {
       opacity: 0;
-      transform: scale(.985);
       pointer-events: none;
     }
     body[data-mode="player"] .tutorial-body.is-slide-media-ready {
       opacity: 1;
-      transform: scale(1);
-      transform-origin: center;
-      transition:
-        opacity 350ms cubic-bezier(.22, 1, .36, 1),
-        transform 420ms cubic-bezier(.22, 1, .36, 1);
+      transition: opacity 160ms ease-out;
     }
     .tutorial-body.is-video {
       position: relative;
@@ -1999,7 +1986,7 @@
     .demo-playback-controls {
       width: var(--shell);
       display: grid;
-      grid-template-columns: auto minmax(0, 1fr) auto;
+      grid-template-columns: auto auto minmax(0, 1fr);
       align-items: center;
       gap: 8px;
       margin: 12px auto 0;
@@ -2011,23 +1998,6 @@
     .demo-playback-controls button {
       min-width: 7rem;
     }
-    .demo-playback-toggle {
-      display: inline-flex;
-      align-items: center;
-      justify-content: center;
-      gap: 7px;
-    }
-    .demo-playback-toggle svg,
-    .demo-rewind-button svg {
-      width: 18px;
-      height: 18px;
-      flex: 0 0 auto;
-    }
-    .demo-playback-controls .demo-rewind-button {
-      width: 2.75rem;
-      min-width: 2.75rem;
-      padding-inline: 8px;
-    }
     .demo-playback-progress {
       width: 100%;
       height: 1rem;
@@ -2035,6 +2005,26 @@
       background: var(--white);
       accent-color: var(--pink);
     }
+    .demo-start-screen {
+      position: fixed;
+      inset: 0;
+      z-index: 420;
+      display: grid;
+      place-items: center;
+      padding: 18px;
+      background: rgba(0, 0, 0, .34);
+    }
+    .demo-start-card {
+      width: min(25rem, calc(100vw - 36px));
+      display: grid;
+      gap: 14px;
+      border: 4px solid var(--black);
+      padding: clamp(16px, 4vw, 28px);
+      background: var(--yellow);
+      box-shadow: 10px 10px 0 var(--black);
+      text-align: center;
+    }
+
     /* Centered video/demo presentation. The cover keeps the yellow title, while
        every later image slide gives the media the full visual emphasis. */
     .tutorial-body.is-demo-cover {
@@ -2217,6 +2207,15 @@
       min-height: 0;
       max-height: none;
     }
+    .demo-start-card h2,
+    .demo-start-card p { margin: 0; }
+    .demo-start-card button {
+      min-height: 4rem;
+      border-width: 4px;
+      background: var(--white);
+      font-size: 1.1rem;
+    }
+
     .annotation-rows {
       display: grid;
       grid-template-columns: repeat(2, minmax(0, 1fr));
@@ -2660,9 +2659,10 @@
       .demo-timing-grid { grid-template-columns: 1fr; }
       .demo-timing-note { grid-column: 1; }
       .demo-playback-controls {
-        grid-template-columns: auto minmax(0, 1fr) auto;
+        grid-template-columns: 1fr 1fr;
       }
       .demo-playback-controls button { min-width: 0; }
+      .demo-playback-progress { grid-column: 1 / -1; }
       .metadata-grid .span-2, .metadata-grid .span-3, .metadata-public-url { grid-column: 1; }
       .metadata-url-row { grid-template-columns: 1fr; }
       .contents-grid { grid-template-columns: 1fr; }
@@ -2673,6 +2673,14 @@
       .modal-body { padding: 12px; }
     }
     @media (max-width: 760px) {
+      .demo-start-screen { padding: 12px; overflow: hidden; }
+      .demo-start-card {
+        width: calc(100vw - 36px);
+        max-width: 25rem;
+        padding: 16px;
+      }
+      .demo-start-card h2,
+      .demo-start-card p { overflow-wrap: anywhere; }
       .tutorial-body.is-demo-cover { padding: 8px; }
       .tutorial-body.is-demo-cover .stage-wrap,
       .tutorial-body.is-demo-cover .slide-sidebar { width: 100%; }
@@ -2708,7 +2716,7 @@
       body[data-demo-player="true"] .demo-playback-controls {
         left: 12px;
         width: calc(100vw - 24px);
-        grid-template-columns: auto minmax(0, 1fr) auto;
+        grid-template-columns: minmax(0, 1fr) minmax(0, 1fr);
         gap: 5px;
         padding: 6px;
         transform: none;
@@ -2719,11 +2727,8 @@
         padding-inline: 4px;
         font-size: 11px;
       }
-      body[data-demo-player="true"] .demo-playback-controls .demo-rewind-button {
-        width: 2.75rem;
-        padding-inline: 8px;
-      }
       body[data-demo-player="true"] .demo-playback-progress { min-width: 0; }
+      body[data-demo-player="true"] .demo-playback-progress { grid-column: 1 / -1; }
     }
     @media (prefers-reduced-motion: reduce) {
       *, *::before, *::after { scroll-behavior: auto !important; transition: none !important; animation: none !important; }
@@ -2733,37 +2738,32 @@
 <body data-mode="builder">
   <div id="app"></div>
 
-  <script id="project-state" type="application/json">{
-  "meta": {
-    "version": 3,
-    "pageType": "tutorial",
-    "section": "",
-    "group": "",
-    "tutorialSlug": "",
+  <script id="project-state" type="application/json">
+{
+	  "meta": {
+	    "version": 3,
+	    "pageType": "tutorial",
+	    "section": "",
+	    "group": "",
+	    "tutorialSlug": "",
     "mediaFolder": "",
     "cardTitle": "",
-    "summary": "Tutorial description.",
-    "modalDescription": "Tutorial description.",
+    "summary": "",
+    "modalDescription": "",
     "order": 10,
-    "publicUrl": "https://magichashtags.com/learn/",
-    "primaryActionLabel": "Open Tool",
-    "primaryActionUrl": "",
-    "relatedCalloutEnabled": false,
-    "relatedCalloutTitle": "",
-    "relatedCalloutText": "",
-    "relatedCalloutLabel": "",
-    "relatedCalloutUrl": "",
+	    "publicUrl": "",
+	    "primaryActionLabel": "Open Tool",
+	    "primaryActionUrl": "",
+	    "relatedCalloutEnabled": false,
+	    "relatedCalloutTitle": "",
+	    "relatedCalloutText": "",
+	    "relatedCalloutLabel": "",
+	    "relatedCalloutUrl": "",
     "socialTitle": "",
-    "socialDescription": "Tutorial description.",
+    "socialDescription": "",
     "socialImage": "",
     "socialImageAlt": "",
-    "touched": {},
-    "demoBuilderVersion": 1,
-    "demoDefaultDuration": 5,
-    "visualRefinementVersion": 1,
-    "coverAutoFitVersion": 1,
-    "fixedVideoFrameVersion": 1,
-    "updatedAt": 1787628929116
+    "touched": {}
   },
   "tutorial": {
     "title": "TUTORIAL TITLE",
@@ -2773,75 +2773,47 @@
         "kind": "cover",
         "title": "TUTORIAL SUBTITLE",
         "description": "Tutorial description.",
-        "descriptionListStyle": "",
         "media": {
           "url": "",
           "type": "image",
           "fit": "contain",
-          "matte": "#f2f332",
-          "x": -8,
+          "matte": "#fbeaf9",
+          "x": 0,
           "y": 0,
-          "scale": 1.05,
-          "naturalWidth": 1580,
-          "naturalHeight": 913
-        },
-        "demo": {
-          "timing": "default",
-          "duration": 5,
-          "audioUrl": ""
+          "scale": 1
         },
         "hotspots": [],
-        "annotations": [
-          {
-            "id": "text-9e92863c-3517-4b1b-a22e-c7e374ed1171",
-            "type": "text",
-            "label": "",
-            "src": "",
-            "url": "",
-            "text": "new note\nnew note\nnew note",
-            "introTitle": "",
-            "introBody": "",
-            "introBodyListStyle": "",
-            "introAlign": "left",
-            "calloutTitle": "",
-            "calloutBody": "",
-            "calloutBodyListStyle": "",
-            "calloutAlign": "left",
-            "textStyle": "regular",
-            "textColor": "#000000",
-            "textFontSize": 14,
-            "textLineHeight": 1.7,
-            "textAlign": "center",
-            "fillColor": "#ffffff",
-            "markupColor": "#000000",
-            "blurStrength": 12,
-            "markup": "",
-            "strokeWidth": 5,
-            "markupPoints": null,
-            "x": 50,
-            "y": 42,
-            "w": 24,
-            "h": 12,
-            "z": 2,
-            "opacity": 1,
-            "locked": false,
-            "hotspotGroupId": "",
-            "rotation": 0,
-            "flipX": false
-          }
-        ]
+        "annotations": []
+      },
+      {
+        "id": "slide-1",
+        "kind": "image",
+        "title": "SLIDE TITLE",
+        "description": "Slide description.",
+        "media": {
+          "url": "",
+          "type": "image",
+          "fit": "contain",
+          "matte": "#ffffff",
+          "x": 0,
+          "y": 0,
+          "scale": 1
+        },
+        "hotspots": [],
+        "annotations": []
       }
     ]
   },
   "ui": {
-    "slideIndex": 0,
+    "slideIndex": 1,
     "activeHotspotId": null,
-    "selectedKind": "annotation",
-    "selectedId": "text-9e92863c-3517-4b1b-a22e-c7e374ed1171",
+    "selectedKind": null,
+    "selectedId": null,
     "contentsOpen": false,
     "videoModalId": null
   }
-}</script>
+}
+  </script>
 
   <script>
   (() => {
@@ -2898,7 +2870,9 @@
     const SITE_HEADER_LOGO_URL = "https://iridescent-wisp-57bcb1.netlify.app/images/mhnavlogo.png";
     const MODE = document.body.dataset.mode === "player" ? "player" : "builder";
     const IS_DEMO_PLAYER = MODE === "player" && document.body.dataset.demoPlayer === "true";
-    const IS_DEMO_EMBED = IS_DEMO_PLAYER && (new URLSearchParams(location.search).get("embed") === "1" || window.self !== window.top);
+    // This builder exports a normal website page. It never switches into the
+    // stripped-down modal/iframe presentation used by the demo builder.
+    const IS_DEMO_EMBED = false;
     document.body.dataset.demoEmbed = String(IS_DEMO_EMBED);
     const PUBLIC_ANNOTATION_ASSET_ROOT = "https://iridescent-wisp-57bcb1.netlify.app/images/tutorial-annotations/";
     // Builder and player deliberately use the same hosted artwork. A local-file
@@ -2910,10 +2884,11 @@
     const LINK_ANNOTATION_IMAGE = annotationAssetUrl("link-interactive.png");
     const storagePageUrl = new URL(location.href);
     storagePageUrl.hash = "";
-    const LEGACY_STORAGE_KEY = `tutorial-builder-v3::${storagePageUrl.href}`;
     storagePageUrl.search = "";
-    const STORAGE_KEY = `tutorial-demo-builder-v1::${storagePageUrl.href}`;
-    const DRAFT_FILENAME = decodeURIComponent(storagePageUrl.pathname.split("/").pop() || "tutorial-demo-builder-v1.html");
+    const PREVIOUS_STORAGE_KEY = `tutorial-video-page-builder-v1::${storagePageUrl.href}`;
+    const STORAGE_KEY = `tutorial-video-page-builder-v2::${storagePageUrl.href}`;
+    const OBSOLETE_STORAGE_KEYS = [PREVIOUS_STORAGE_KEY];
+    const DRAFT_FILENAME = decodeURIComponent(storagePageUrl.pathname.split("/").pop() || "tutorial-video-page-builder-v1.html");
     // Numbered hotspot slots own their artwork and color. Tutorial step text may
     // move between slots, but this fixed sequence never moves with that text.
     const HOTSPOT_STYLES = [
@@ -2944,7 +2919,6 @@
     const DEMO_DEFAULT_DURATION = 5;
     const DEMO_MIN_DURATION = 1;
     const DEMO_MAX_DURATION = 300;
-    const DEMO_AUTOSTART_DELAY_MS = 600;
     const DEMO_AUDIO_END_DELAY_MS = 500;
     const VISUAL_REFINEMENT_VERSION = 1;
     const COVER_AUTO_FIT_VERSION = 1;
@@ -3025,7 +2999,17 @@
       ["triple arrow", "https://iridescent-wisp-57bcb1.netlify.app/images/tutorial-annotations/tripple%20arrow.png"],
       ["troubleshooting", "https://iridescent-wisp-57bcb1.netlify.app/images/tutorial-annotations/troubleshooting.png"],
       ["upload", "https://iridescent-wisp-57bcb1.netlify.app/images/tutorial-annotations/upload.png"],
-      ["write note hand", "https://iridescent-wisp-57bcb1.netlify.app/images/tutorial-annotations/writenotehand.png"]
+      ["write note hand", "https://iridescent-wisp-57bcb1.netlify.app/images/tutorial-annotations/writenotehand.png"],
+      ["white rectangle", "https://iridescent-wisp-57bcb1.netlify.app/images/tutorial-annotations/white-rectangle.png"],
+      ["arrows white", "https://iridescent-wisp-57bcb1.netlify.app/images/tutorial-annotations/arrows-white.png"],
+      ["arrows pink", "https://iridescent-wisp-57bcb1.netlify.app/images/tutorial-annotations/arrows-pink.png"],
+      ["arrows purple", "https://iridescent-wisp-57bcb1.netlify.app/images/tutorial-annotations/arrows-purple.png"],
+      ["arrows oryellow", "https://iridescent-wisp-57bcb1.netlify.app/images/tutorial-annotations/arrows-orangeyellow.png"],
+      ["arrows teal", "https://iridescent-wisp-57bcb1.netlify.app/images/tutorial-annotations/arrows-teal.png"],
+      ["arrows mint", "https://iridescent-wisp-57bcb1.netlify.app/images/tutorial-annotations/arrows-mint.png"],
+      ["arrows yellow", "https://iridescent-wisp-57bcb1.netlify.app/images/tutorial-annotations/arrows-yellow.png"],
+      ["lg rectangle", "https://iridescent-wisp-57bcb1.netlify.app/images/tutorial-annotations/lg-rectangle.png"],
+      ["sm rectangle", "https://iridescent-wisp-57bcb1.netlify.app/images/tutorial-annotations/sm-rectangle.png"]
     ];
 
     const root = document.getElementById("app");
@@ -3078,11 +3062,6 @@
     committedSnapshot = historySnapshot();
     render();
     bindGlobalEvents();
-    if (IS_DEMO_PLAYER) {
-      window.setTimeout(() => {
-        if (!demoStarted && document.visibilityState !== "hidden") restartDemoPlayback();
-      }, DEMO_AUTOSTART_DELAY_MS);
-    }
     if (MODE === "builder") {
       loadShapes();
       restoreMediaSiteDirectory();
@@ -3213,8 +3192,7 @@
       const embedded = readJson(document.getElementById("project-state")?.textContent, {});
       if (MODE === "player") return embedded;
       try {
-        const saved = localStorage.getItem(STORAGE_KEY)
-          ?? localStorage.getItem(LEGACY_STORAGE_KEY);
+        const saved = localStorage.getItem(STORAGE_KEY);
         return readJson(saved, embedded);
       } catch (error) {
         draftStorageError = `Browser autosave is unavailable: ${error?.message || "storage access failed"}`;
@@ -3966,8 +3944,8 @@
 
     function editableCopyFilename() {
       const stem = DRAFT_FILENAME.replace(/\.html?$/i, "");
-      const fallbackStem = slugify(state.meta.tutorialSlug || state.tutorial.title) || stem || "tutorial-demo";
-      return `${fallbackStem}-editable-demo-builder.html`;
+      const fallbackStem = slugify(state.meta.tutorialSlug || state.tutorial.title) || stem || "tutorial-video-page";
+      return `${fallbackStem}-editable-video-page-builder.html`;
     }
 
     function historySnapshot() {
@@ -4326,8 +4304,8 @@
 	        <div class="builder-app ${coverSlide ? "has-demo-cover" : ""} ${centeredSlide ? "has-demo-centered-slide" : ""}">
 	          ${MODE === "player" && (!IS_DEMO_PLAYER || !IS_DEMO_EMBED) ? renderSiteHeader() : ""}
 	          ${MODE === "builder" ? renderToolbar(slide, selected) : ""}
-	          <main class="tutorial-shell ${coverSlide ? "is-demo-cover" : ""} ${centeredSlide ? "is-demo-centered-slide" : ""}" aria-label="Interactive demo">
-            ${coverSlide ? `<div class="tutorial-title" ${MODE === "builder" ? 'contenteditable="true" role="textbox" aria-label="Demo title" data-bind="tutorial.title"' : ""} data-placeholder="DEMO TITLE">${escapeHtml(state.tutorial.title)}</div>` : ""}
+	          <main class="tutorial-shell ${coverSlide ? "is-demo-cover" : ""} ${centeredSlide ? "is-demo-centered-slide" : ""}" aria-label="Interactive video">
+            ${coverSlide ? `<div class="tutorial-title" ${MODE === "builder" ? 'contenteditable="true" role="textbox" aria-label="Video title" data-bind="tutorial.title"' : ""} data-placeholder="VIDEO TITLE">${escapeHtml(state.tutorial.title)}</div>` : ""}
             <div class="tutorial-body ${slide.kind === "video" ? "is-video" : ""} ${coverSlide ? "is-demo-cover" : ""} ${centeredSlide ? "is-demo-centered-slide" : ""}">
               ${slide.kind === "video" || coverSlide ? "" : renderSidebar(slide)}
               ${renderStage(slide)}
@@ -4338,6 +4316,7 @@
           ${MODE === "builder" ? renderBuilderLower(slide) + renderMetadata() : ""}
           ${renderContentsModal()}
           ${renderVideoModal()}
+          ${IS_DEMO_PLAYER ? renderDemoStartScreen() : ""}
         </div>
       `;
       syncRuntimeMedia();
@@ -4472,7 +4451,7 @@
           <div class="draft-save-group">
             <div class="draft-save-actions">
               <button type="button" data-action="save-editable-copy">Save Editable Copy</button>
-              <button type="button" data-action="export-html">Export Demo Player</button>
+              <button type="button" data-action="export-html">Export Standalone Video Page</button>
               <button type="button" data-action="export-png">PNG Slides</button>
               <button type="button" data-action="reset-builder">Reset Builder</button>
             </div>
@@ -4804,13 +4783,25 @@
 
     function renderDemoPlaybackControls() {
       const playLabel = demoStarted && demoPlaying ? "Pause" : demoFinished ? "Replay" : "Play";
-      const playIcon = demoStarted && demoPlaying ? "pause" : "play";
       return `
-        <section class="demo-playback-controls" data-demo-playback aria-label="Demo playback controls">
-          <button class="demo-playback-toggle" type="button" data-action="demo-toggle" aria-label="${playLabel} demo" aria-pressed="${demoStarted && demoPlaying}">${icon(playIcon)}<span>${playLabel}</span></button>
-          <input class="demo-playback-progress" data-demo-seek type="range" min="0" max="100" step="0.1" value="${demoOverallProgress()}" aria-label="Demo timeline" aria-valuetext="${escapeHtml(demoProgressText())}">
-          <button class="icon-button demo-rewind-button" type="button" data-action="demo-restart" title="Rewind to the beginning" aria-label="Rewind demo to the beginning">${icon("rewind")}</button>
+        <section class="demo-playback-controls" data-demo-playback aria-label="Video playback controls">
+          <button type="button" data-action="demo-toggle">${playLabel}</button>
+          <button type="button" data-action="demo-restart">Restart</button>
+          <input class="demo-playback-progress" data-demo-seek type="range" min="0" max="100" step="0.1" value="${demoOverallProgress()}" aria-label="Video timeline" aria-valuetext="${escapeHtml(demoProgressText())}">
         </section>
+      `;
+    }
+
+    function renderDemoStartScreen() {
+      if (demoStarted) return "";
+      return `
+        <div class="demo-start-screen" role="dialog" aria-modal="true" aria-labelledby="demoStartTitle">
+          <div class="demo-start-card">
+            <h2 id="demoStartTitle">${escapeHtml(state.tutorial.title || "Demo")}</h2>
+            <p>Click Play to begin this video.</p>
+            <button type="button" data-action="demo-toggle">Play Video</button>
+          </div>
+        </div>
       `;
     }
 
@@ -5305,11 +5296,11 @@
           return { name, url };
         }).filter(Boolean);
         if (rows.length) {
-          const quoteBubble = FALLBACK_SHAPES.find(([name]) => name === "quote bubble white");
-          const mergedRows = rows.some(({ name }) => name.toLowerCase() === "quote bubble white") || !quoteBubble
-            ? rows
-            : [...rows, { name: quoteBubble[0], url: quoteBubble[1] }];
-          shapes = mergedRows;
+          const hostedNames = new Set(rows.map(({ name }) => name.toLowerCase()));
+          const missingFallbackRows = FALLBACK_SHAPES
+            .filter(([name]) => !hostedNames.has(name.toLowerCase()))
+            .map(([name, url]) => ({ name, url: normalizeShapeAssetUrl(name, url) }));
+          shapes = [...rows, ...missingFallbackRows];
           render();
         }
       } catch (_) {
@@ -7182,12 +7173,7 @@
         seek.value = value;
         seek.setAttribute("aria-valuetext", text);
       }
-      if (toggle) {
-        const playLabel = demoStarted && demoPlaying ? "Pause" : demoFinished ? "Replay" : "Play";
-        toggle.innerHTML = `${icon(demoStarted && demoPlaying ? "pause" : "play")}<span>${playLabel}</span>`;
-        toggle.setAttribute("aria-label", `${playLabel} demo`);
-        toggle.setAttribute("aria-pressed", String(demoStarted && demoPlaying));
-      }
+      if (toggle) toggle.textContent = demoStarted && demoPlaying ? "Pause" : demoFinished ? "Replay" : "Play";
     }
 
     function clearDemoTimers() {
@@ -7336,7 +7322,6 @@
     }
 
     function stopDemoSlidePlayback() {
-      demoPlaybackRequest += 1;
       if (demoPlaying && demoDeadline) demoRemainingMs = Math.max(0, demoDeadline - performance.now());
       clearDemoTimers();
       if (demoAudio) demoAudio.pause();
@@ -7409,14 +7394,11 @@
     }
 
     function previewDemoSeek(value) {
-      const preview = clamp(Number(value), 0, 100);
       if (demoSeekPreview === null) {
         demoSeekResumeAfter = demoPlaying;
-        demoSeekPreview = preview;
         pauseDemoPlayback();
-      } else {
-        demoSeekPreview = preview;
       }
+      demoSeekPreview = clamp(Number(value), 0, 100);
     }
 
     function commitDemoSeek(value) {
@@ -7707,7 +7689,7 @@
       if (!confirm("Reset this v3 builder? This clears only this duplicated builder's saved draft.")) return;
       try {
         localStorage.removeItem(STORAGE_KEY);
-        if (LEGACY_STORAGE_KEY !== STORAGE_KEY) localStorage.removeItem(LEGACY_STORAGE_KEY);
+        OBSOLETE_STORAGE_KEYS.forEach((key) => localStorage.removeItem(key));
       } catch (error) {
         draftStorageError = `Could not reset this browser draft: ${error?.message || "storage access failed"}`;
         draftSavePhase = "error";
@@ -7732,8 +7714,8 @@
       const html = `<!DOCTYPE html>\n${documentElement.outerHTML}`;
       download(editableCopyFilename(), html, "text/html");
       showToast(saved
-        ? "Saved an editable demo-builder copy with the latest draft embedded."
-        : "Saved an editable demo-builder copy because browser autosave is unavailable.");
+        ? "Saved an editable video-page builder copy with the latest draft embedded."
+        : "Saved an editable video-page builder copy because browser autosave is unavailable.");
     }
 
     function metadataForExport(exportState) {
@@ -7781,30 +7763,19 @@
     }
 
     function applyExportFont(documentElement) {
-      const fontUrl = "/fonts/hanken-grotesk-latin.woff2";
-      const absoluteFontUrl = "https://magichashtags.com/fonts/hanken-grotesk-latin.woff2";
-      const italicFontUrl = "/fonts/hanken-grotesk-latin-italic.woff2";
-      const absoluteItalicFontUrl = "https://magichashtags.com/fonts/hanken-grotesk-latin-italic.woff2";
-      const preload = documentElement.querySelector("#hanken-grotesk-preload");
-      const fontFace = documentElement.querySelector("#hanken-grotesk-font-face");
+      const fontUrl = "/fonts/geist-mono-latin.woff2";
+      const absoluteFontUrl = "https://magichashtags.com/fonts/geist-mono-latin.woff2";
+      const preload = documentElement.querySelector("#geist-mono-preload");
+      const fontFace = documentElement.querySelector("#geist-mono-font-face");
       if (preload) preload.setAttribute("href", fontUrl);
       if (fontFace) {
         fontFace.textContent = `
     @font-face {
-      font-family: "Hanken Grotesk";
+      font-family: "Geist Mono";
       src:
         url("${fontUrl}") format("woff2"),
         url("${absoluteFontUrl}") format("woff2");
       font-style: normal;
-      font-weight: 100 900;
-      font-display: swap;
-    }
-    @font-face {
-      font-family: "Hanken Grotesk";
-      src:
-        url("${italicFontUrl}") format("woff2"),
-        url("${absoluteItalicFontUrl}") format("woff2");
-      font-style: italic;
       font-weight: 100 900;
       font-display: swap;
     }
@@ -7815,7 +7786,7 @@
     async function exportHtml() {
       await document.fonts.ready;
       const exportState = clone(state);
-      exportState.meta.pageType = "demo";
+      exportState.meta.pageType = "video";
       exportState.ui = {
         slideIndex: 0,
         activeHotspotId: exportState.tutorial.slides[0]?.annotations?.some((item) => item.type === "slide-intro")
@@ -7835,10 +7806,10 @@
       documentElement.querySelectorAll(".toast").forEach((node) => node.remove());
       applyExportFont(documentElement);
       applyHeadMetadata(documentElement, exportState);
-      setMeta(documentElement.querySelector("head"), "name", "robots", "noindex, nofollow");
+      documentElement.querySelector('meta[name="robots"]')?.remove();
       const html = `<!DOCTYPE html>\n${documentElement.outerHTML}`;
-      download(`${slugify(state.meta.tutorialSlug || state.tutorial.title) || "tool"}-demo.html`, html, "text/html");
-	      showToast("Exported the autoplay demo HTML for embedding.");
+      download(`${slugify(state.meta.tutorialSlug || state.tutorial.title) || "tool"}-video.html`, html, "text/html");
+	      showToast("Exported the standalone video page HTML.");
     }
 
     async function exportPng() {
@@ -7881,6 +7852,5 @@
     }
   })();
   </script>
-
-
-</body></html>
+</body>
+</html>

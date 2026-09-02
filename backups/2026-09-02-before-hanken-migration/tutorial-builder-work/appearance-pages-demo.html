@@ -1,29 +1,21 @@
 <!DOCTYPE html>
-<html lang="en"><head>
+<html lang="en">
+<head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <meta name="color-scheme" content="light">
   <title>Tutorial Demo Builder v1</title>
-  <link id="hanken-grotesk-preload" rel="preload" href="../../../website/fonts/hanken-grotesk-latin.woff2" as="font" type="font/woff2" crossorigin="">
+  <link id="geist-mono-preload" rel="preload" href="../../website/fonts/geist-mono-latin.woff2" as="font" type="font/woff2" crossorigin>
   <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin="">
-  <link href="https://fonts.googleapis.com/css2?family=Shadows+Into+Light+Two&amp;display=swap" rel="stylesheet">
-  <style id="hanken-grotesk-font-face">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Shadows+Into+Light+Two&display=swap" rel="stylesheet">
+  <style id="geist-mono-font-face">
     @font-face {
-      font-family: "Hanken Grotesk";
+      font-family: "Geist Mono";
       src:
-        url("../../../website/fonts/hanken-grotesk-latin.woff2") format("woff2"),
-        url("https://magichashtags.com/fonts/hanken-grotesk-latin.woff2") format("woff2");
+        url("../../website/fonts/geist-mono-latin.woff2") format("woff2"),
+        url("https://magichashtags.com/fonts/geist-mono-latin.woff2") format("woff2");
       font-style: normal;
-      font-weight: 100 900;
-      font-display: swap;
-    }
-    @font-face {
-      font-family: "Hanken Grotesk";
-      src:
-        url("../../../website/fonts/hanken-grotesk-latin-italic.woff2") format("woff2"),
-        url("https://magichashtags.com/fonts/hanken-grotesk-latin-italic.woff2") format("woff2");
-      font-style: italic;
       font-weight: 100 900;
       font-display: swap;
     }
@@ -40,7 +32,7 @@
       --soft-pink: #fbeaf9;
       --gray: #d7d7d7;
       --muted: #6d6d6d;
-      --font-interface: "Hanken Grotesk", ui-sans-serif, -apple-system, BlinkMacSystemFont, "Segoe UI", Arial, sans-serif;
+      --font-interface: "Geist Mono", ui-monospace, "SFMono-Regular", Menlo, Monaco, Consolas, monospace;
       --mono: var(--font-interface);
       --sans: var(--font-interface);
       --body: var(--font-interface);
@@ -2733,37 +2725,32 @@
 <body data-mode="builder">
   <div id="app"></div>
 
-  <script id="project-state" type="application/json">{
-  "meta": {
-    "version": 3,
-    "pageType": "tutorial",
-    "section": "",
-    "group": "",
-    "tutorialSlug": "",
+  <script id="project-state" type="application/json">
+{
+	  "meta": {
+	    "version": 3,
+	    "pageType": "tutorial",
+	    "section": "",
+	    "group": "",
+	    "tutorialSlug": "",
     "mediaFolder": "",
     "cardTitle": "",
-    "summary": "Tutorial description.",
-    "modalDescription": "Tutorial description.",
+    "summary": "",
+    "modalDescription": "",
     "order": 10,
-    "publicUrl": "https://magichashtags.com/learn/",
-    "primaryActionLabel": "Open Tool",
-    "primaryActionUrl": "",
-    "relatedCalloutEnabled": false,
-    "relatedCalloutTitle": "",
-    "relatedCalloutText": "",
-    "relatedCalloutLabel": "",
-    "relatedCalloutUrl": "",
+	    "publicUrl": "",
+	    "primaryActionLabel": "Open Tool",
+	    "primaryActionUrl": "",
+	    "relatedCalloutEnabled": false,
+	    "relatedCalloutTitle": "",
+	    "relatedCalloutText": "",
+	    "relatedCalloutLabel": "",
+	    "relatedCalloutUrl": "",
     "socialTitle": "",
-    "socialDescription": "Tutorial description.",
+    "socialDescription": "",
     "socialImage": "",
     "socialImageAlt": "",
-    "touched": {},
-    "demoBuilderVersion": 1,
-    "demoDefaultDuration": 5,
-    "visualRefinementVersion": 1,
-    "coverAutoFitVersion": 1,
-    "fixedVideoFrameVersion": 1,
-    "updatedAt": 1787628929116
+    "touched": {}
   },
   "tutorial": {
     "title": "TUTORIAL TITLE",
@@ -2773,75 +2760,47 @@
         "kind": "cover",
         "title": "TUTORIAL SUBTITLE",
         "description": "Tutorial description.",
-        "descriptionListStyle": "",
         "media": {
           "url": "",
           "type": "image",
           "fit": "contain",
-          "matte": "#f2f332",
-          "x": -8,
+          "matte": "#fbeaf9",
+          "x": 0,
           "y": 0,
-          "scale": 1.05,
-          "naturalWidth": 1580,
-          "naturalHeight": 913
-        },
-        "demo": {
-          "timing": "default",
-          "duration": 5,
-          "audioUrl": ""
+          "scale": 1
         },
         "hotspots": [],
-        "annotations": [
-          {
-            "id": "text-9e92863c-3517-4b1b-a22e-c7e374ed1171",
-            "type": "text",
-            "label": "",
-            "src": "",
-            "url": "",
-            "text": "new note\nnew note\nnew note",
-            "introTitle": "",
-            "introBody": "",
-            "introBodyListStyle": "",
-            "introAlign": "left",
-            "calloutTitle": "",
-            "calloutBody": "",
-            "calloutBodyListStyle": "",
-            "calloutAlign": "left",
-            "textStyle": "regular",
-            "textColor": "#000000",
-            "textFontSize": 14,
-            "textLineHeight": 1.7,
-            "textAlign": "center",
-            "fillColor": "#ffffff",
-            "markupColor": "#000000",
-            "blurStrength": 12,
-            "markup": "",
-            "strokeWidth": 5,
-            "markupPoints": null,
-            "x": 50,
-            "y": 42,
-            "w": 24,
-            "h": 12,
-            "z": 2,
-            "opacity": 1,
-            "locked": false,
-            "hotspotGroupId": "",
-            "rotation": 0,
-            "flipX": false
-          }
-        ]
+        "annotations": []
+      },
+      {
+        "id": "slide-1",
+        "kind": "image",
+        "title": "SLIDE TITLE",
+        "description": "Slide description.",
+        "media": {
+          "url": "",
+          "type": "image",
+          "fit": "contain",
+          "matte": "#ffffff",
+          "x": 0,
+          "y": 0,
+          "scale": 1
+        },
+        "hotspots": [],
+        "annotations": []
       }
     ]
   },
   "ui": {
-    "slideIndex": 0,
+    "slideIndex": 1,
     "activeHotspotId": null,
-    "selectedKind": "annotation",
-    "selectedId": "text-9e92863c-3517-4b1b-a22e-c7e374ed1171",
+    "selectedKind": null,
+    "selectedId": null,
     "contentsOpen": false,
     "videoModalId": null
   }
-}</script>
+}
+  </script>
 
   <script>
   (() => {
@@ -2912,7 +2871,9 @@
     storagePageUrl.hash = "";
     const LEGACY_STORAGE_KEY = `tutorial-builder-v3::${storagePageUrl.href}`;
     storagePageUrl.search = "";
-    const STORAGE_KEY = `tutorial-demo-builder-v1::${storagePageUrl.href}`;
+    const PREVIOUS_STORAGE_KEY = `tutorial-demo-builder-v1::${storagePageUrl.href}`;
+    const STORAGE_KEY = `tutorial-demo-builder-v2::${storagePageUrl.href}`;
+    const OBSOLETE_STORAGE_KEYS = [PREVIOUS_STORAGE_KEY, LEGACY_STORAGE_KEY];
     const DRAFT_FILENAME = decodeURIComponent(storagePageUrl.pathname.split("/").pop() || "tutorial-demo-builder-v1.html");
     // Numbered hotspot slots own their artwork and color. Tutorial step text may
     // move between slots, but this fixed sequence never moves with that text.
@@ -3213,8 +3174,7 @@
       const embedded = readJson(document.getElementById("project-state")?.textContent, {});
       if (MODE === "player") return embedded;
       try {
-        const saved = localStorage.getItem(STORAGE_KEY)
-          ?? localStorage.getItem(LEGACY_STORAGE_KEY);
+        const saved = localStorage.getItem(STORAGE_KEY);
         return readJson(saved, embedded);
       } catch (error) {
         draftStorageError = `Browser autosave is unavailable: ${error?.message || "storage access failed"}`;
@@ -7707,7 +7667,7 @@
       if (!confirm("Reset this v3 builder? This clears only this duplicated builder's saved draft.")) return;
       try {
         localStorage.removeItem(STORAGE_KEY);
-        if (LEGACY_STORAGE_KEY !== STORAGE_KEY) localStorage.removeItem(LEGACY_STORAGE_KEY);
+        OBSOLETE_STORAGE_KEYS.forEach((key) => localStorage.removeItem(key));
       } catch (error) {
         draftStorageError = `Could not reset this browser draft: ${error?.message || "storage access failed"}`;
         draftSavePhase = "error";
@@ -7781,30 +7741,19 @@
     }
 
     function applyExportFont(documentElement) {
-      const fontUrl = "/fonts/hanken-grotesk-latin.woff2";
-      const absoluteFontUrl = "https://magichashtags.com/fonts/hanken-grotesk-latin.woff2";
-      const italicFontUrl = "/fonts/hanken-grotesk-latin-italic.woff2";
-      const absoluteItalicFontUrl = "https://magichashtags.com/fonts/hanken-grotesk-latin-italic.woff2";
-      const preload = documentElement.querySelector("#hanken-grotesk-preload");
-      const fontFace = documentElement.querySelector("#hanken-grotesk-font-face");
+      const fontUrl = "/fonts/geist-mono-latin.woff2";
+      const absoluteFontUrl = "https://magichashtags.com/fonts/geist-mono-latin.woff2";
+      const preload = documentElement.querySelector("#geist-mono-preload");
+      const fontFace = documentElement.querySelector("#geist-mono-font-face");
       if (preload) preload.setAttribute("href", fontUrl);
       if (fontFace) {
         fontFace.textContent = `
     @font-face {
-      font-family: "Hanken Grotesk";
+      font-family: "Geist Mono";
       src:
         url("${fontUrl}") format("woff2"),
         url("${absoluteFontUrl}") format("woff2");
       font-style: normal;
-      font-weight: 100 900;
-      font-display: swap;
-    }
-    @font-face {
-      font-family: "Hanken Grotesk";
-      src:
-        url("${italicFontUrl}") format("woff2"),
-        url("${absoluteItalicFontUrl}") format("woff2");
-      font-style: italic;
       font-weight: 100 900;
       font-display: swap;
     }
@@ -7881,6 +7830,5 @@
     }
   })();
   </script>
-
-
-</body></html>
+</body>
+</html>
