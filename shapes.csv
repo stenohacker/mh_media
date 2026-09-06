@@ -44,6 +44,7 @@ BUBBLES,QUOTE-BUBBLE-WHITE,https://iridescent-wisp-57bcb1.netlify.app/images/tut
 BUILT-IN CONTROLS,PAUSE-AUDIO-ANNOTATION,https://iridescent-wisp-57bcb1.netlify.app/images/tutorial-annotations/pause-audio-annotation.gif
 BUILT-IN CONTROLS,PLAY-AUDIO-ANNOTATION,https://iridescent-wisp-57bcb1.netlify.app/images/tutorial-annotations/play-audio-annotation.png
 BUILT-IN CONTROLS,PLAY-VIDEO-ANNOTATION,https://iridescent-wisp-57bcb1.netlify.app/images/tutorial-annotations/play-video-annotation.png
+FOOTERS,AP-DRD,https://iridescent-wisp-57bcb1.netlify.app/images/tutorial-annotations/footers/AP-DrD.png
 FOOTERS,AP-FOOTER-FINAL-FINAL,https://iridescent-wisp-57bcb1.netlify.app/images/tutorial-annotations/footers/ap-footer-final-final.png
 FOOTERS,AP-FOOTER-V77,https://iridescent-wisp-57bcb1.netlify.app/images/tutorial-annotations/footers/ap-footer-v77.png
 FOOTERS,AP-QUICK-GUIDE-STARTUP,https://iridescent-wisp-57bcb1.netlify.app/images/tutorial-annotations/footers/ap-quick-guide-startup.png
@@ -51,11 +52,14 @@ FOOTERS,AP-QUICK-GUIDE-V77,https://iridescent-wisp-57bcb1.netlify.app/images/tut
 FOOTERS,APPEARANCE PAGES FOOTER,https://iridescent-wisp-57bcb1.netlify.app/images/tutorial-annotations/footers/appearance%20pages%20footer.png
 FOOTERS,APPEARANCE PAGES FOOTER FINAL,https://iridescent-wisp-57bcb1.netlify.app/images/tutorial-annotations/footers/appearance%20pages%20footer%20final.png
 FOOTERS,APPEARANCE-PAGES-FOOTER,https://iridescent-wisp-57bcb1.netlify.app/images/tutorial-annotations/footers/appearance-pages-footer.png
+FOOTERS,DICT-DRD,https://iridescent-wisp-57bcb1.netlify.app/images/tutorial-annotations/footers/Dict-DrD.png
 FOOTERS,FINAL-AP-FOOTER,https://iridescent-wisp-57bcb1.netlify.app/images/tutorial-annotations/footers/final-ap-footer.png
 FOOTERS,FINAL-APP-FOOTER-FINAL,https://iridescent-wisp-57bcb1.netlify.app/images/tutorial-annotations/footers/final-app-footer-final.png
+FOOTERS,PR-DRD,https://iridescent-wisp-57bcb1.netlify.app/images/tutorial-annotations/footers/PR-DrD.png
 FOOTERS,STARTUP_GUIDE_APPS,https://iridescent-wisp-57bcb1.netlify.app/images/tutorial-annotations/footers/startup_guide_apps.png
 FOOTERS,STYLESHEET,https://iridescent-wisp-57bcb1.netlify.app/images/tutorial-annotations/footers/stylesheet.png
 FOOTERS,STYLESHEET FINAL,https://iridescent-wisp-57bcb1.netlify.app/images/tutorial-annotations/footers/stylesheet%20final.png
+FOOTERS,TR-DRD,https://iridescent-wisp-57bcb1.netlify.app/images/tutorial-annotations/footers/TR-DrD.png
 HOTSPOTS,H-CORAL,https://iridescent-wisp-57bcb1.netlify.app/images/tutorial-annotations/h-coral.png
 HOTSPOTS,H-GREEN,https://iridescent-wisp-57bcb1.netlify.app/images/tutorial-annotations/h-green.png
 HOTSPOTS,H-LIGHT-PINK,https://iridescent-wisp-57bcb1.netlify.app/images/tutorial-annotations/h-light-pink.png
