@@ -37,6 +37,65 @@ remove_tracked_repository_junk() {
   done < <(git ls-files -z)
 }
 
+refresh_shapes_catalog() {
+  local catalog_path="$REPOSITORY_FOLDER/shapes.csv"
+  local temporary_catalog="$REPOSITORY_FOLDER/.git/shapes.csv.publishing"
+
+  if ! ruby -rcsv -ruri -e '
+    repository, output_path, live_website = ARGV
+    annotation_root = File.join(repository, "images/tutorial-annotations")
+    extensions = %w[.gif .jpeg .jpg .png .svg .webp]
+    fixed_root_files = %w[
+      link-interactive.png
+      pause-audio-annotation.gif
+      play-audio-annotation.png
+      play-video-annotation.png
+    ]
+
+    entries = Dir.glob(File.join(annotation_root, "**", "*"), File::FNM_DOTMATCH).each_with_object([]) do |absolute_path, catalog_entries|
+      next unless File.file?(absolute_path)
+
+      relative_path = absolute_path.delete_prefix("#{annotation_root}/")
+      path_parts = relative_path.split("/")
+      filename = path_parts.last
+      next if filename.start_with?(".")
+      next unless extensions.include?(File.extname(filename).downcase)
+      next if path_parts.first == "builder-toolbar"
+      group = if path_parts.length == 1 && fixed_root_files.include?(filename)
+        "BUILT-IN CONTROLS"
+      elsif path_parts.length == 1 && filename.match?(/\Ah-[^.]+\.(?:gif|jpe?g|png|svg|webp)\z/i)
+        "HOTSPOTS"
+      elsif path_parts.length > 1
+        path_parts[0...-1].join(" / ")
+      else
+        "OTHER"
+      end
+      name = File.basename(filename, File.extname(filename)).upcase
+      encoded_path = ["images", "tutorial-annotations", *path_parts]
+        .map { |part| URI.encode_www_form_component(part).gsub("+", "%20") }
+        .join("/")
+      catalog_entries << [group.upcase, name, "#{live_website}/#{encoded_path}"]
+    end
+
+    entries.sort_by! { |group, name, url| [group.downcase, name.downcase, url.downcase] }
+    CSV.open(output_path, "wb", row_sep: "\n") do |csv|
+      csv << %w[group name url]
+      entries.each { |entry| csv << entry }
+    end
+  ' "$REPOSITORY_FOLDER" "$temporary_catalog" "$LIVE_WEBSITE"; then
+    rm -f "$temporary_catalog"
+    return 1
+  fi
+
+  if cmp -s "$temporary_catalog" "$catalog_path"; then
+    rm -f "$temporary_catalog"
+    echo "Shapes catalog is already current."
+  else
+    mv "$temporary_catalog" "$catalog_path"
+    echo "Updated shapes.csv from the published annotation folders."
+  fi
+}
+
 cleanup_publish_lock() {
   rm -f "$PUBLISH_LOCK_DIRECTORY/pid" 2>/dev/null || true
   rmdir "$PUBLISH_LOCK_DIRECTORY" 2>/dev/null || true
@@ -102,6 +161,13 @@ fi
 echo "MAGIC HASHTAGS MEDIA — PRODUCTION PUBLISH"
 echo "Live media site: $LIVE_WEBSITE"
 echo "GitHub: $EXPECTED_REMOTE"
+
+echo
+echo "Updating the Shapes catalog..."
+if ! refresh_shapes_catalog; then
+  stop_with_message "The Shapes catalog could not be updated. Nothing was committed or pushed."
+fi
+
 echo
 echo "Website changes eligible for publication:"
 git status --short -- . \

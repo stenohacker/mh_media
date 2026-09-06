@@ -1,71 +1,180 @@
-name,url
-3d line,https://iridescent-wisp-57bcb1.netlify.app/images/tutorial-annotations/3d-line.png
-3D squiggle line,https://iridescent-wisp-57bcb1.netlify.app/images/tutorial-annotations/3D-squiggle-line.png
-arrow angled up right,https://iridescent-wisp-57bcb1.netlify.app/images/tutorial-annotations/arrow-anged-up-right.png
-arrow angled up 90 right,https://iridescent-wisp-57bcb1.netlify.app/images/tutorial-annotations/arrow-angled-up-90-right.png
-arrow bottom right,https://iridescent-wisp-57bcb1.netlify.app/images/tutorial-annotations/arrow-bottom%20right.png
-arrow down 90 right,https://iridescent-wisp-57bcb1.netlify.app/images/tutorial-annotations/arrow-down-90-right.png
-arrow down left,https://iridescent-wisp-57bcb1.netlify.app/images/tutorial-annotations/arrow-down-left.png
-arrow down,https://iridescent-wisp-57bcb1.netlify.app/images/tutorial-annotations/arrow-down.png
-arrow fat down,https://iridescent-wisp-57bcb1.netlify.app/images/tutorial-annotations/arrow-fat-down.png
-arrow right flat,https://iridescent-wisp-57bcb1.netlify.app/images/tutorial-annotations/arrow-right-flat.png
-arrow top left,https://iridescent-wisp-57bcb1.netlify.app/images/tutorial-annotations/arrow-top-left.png
-arrow top right,https://iridescent-wisp-57bcb1.netlify.app/images/tutorial-annotations/arrow-top-right.png
-arrow up 90 back up,https://iridescent-wisp-57bcb1.netlify.app/images/tutorial-annotations/arrow-up-90-back-up.png
-arrow up 90 right,https://iridescent-wisp-57bcb1.netlify.app/images/tutorial-annotations/arrow-up-90-right.png
-asterisk,https://iridescent-wisp-57bcb1.netlify.app/images/tutorial-annotations/asterisk.png
-audio annotation,https://iridescent-wisp-57bcb1.netlify.app/images/tutorial-annotations/play-audio-annotation.png
-bracket arrow back up,https://iridescent-wisp-57bcb1.netlify.app/images/tutorial-annotations/bracket-arrow-back-upish.png
-bracket arrow down,https://iridescent-wisp-57bcb1.netlify.app/images/tutorial-annotations/bracket-arrow-down.png
-bracket arrow left back,https://iridescent-wisp-57bcb1.netlify.app/images/tutorial-annotations/bracket-arrow-left%20back.png
-bracket arrow left front,https://iridescent-wisp-57bcb1.netlify.app/images/tutorial-annotations/bracket-arrow-left-front.png
-bracket arrow left,https://iridescent-wisp-57bcb1.netlify.app/images/tutorial-annotations/bracket-arrow-left.png
-bracket arrow up,https://iridescent-wisp-57bcb1.netlify.app/images/tutorial-annotations/bracket-arrow-up.png
-bracket back,https://iridescent-wisp-57bcb1.netlify.app/images/tutorial-annotations/bracket-back.png
-bracket down,https://iridescent-wisp-57bcb1.netlify.app/images/tutorial-annotations/bracket-down.png
-bracket front right,https://iridescent-wisp-57bcb1.netlify.app/images/tutorial-annotations/bracket-front-right.png
-bracket left horizontal,https://iridescent-wisp-57bcb1.netlify.app/images/tutorial-annotations/bracket-left-horizontal.png
-bracket left,https://iridescent-wisp-57bcb1.netlify.app/images/tutorial-annotations/bracket-left.png
-bracket up,https://iridescent-wisp-57bcb1.netlify.app/images/tutorial-annotations/bracket-up.png
-bubble,https://iridescent-wisp-57bcb1.netlify.app/images/tutorial-annotations/bubble%20%20.png
-quote bubble white,https://iridescent-wisp-57bcb1.netlify.app/images/tutorial-annotations/quote-bubble-white.png
-caution,https://iridescent-wisp-57bcb1.netlify.app/images/tutorial-annotations/caution.png
-computer,https://iridescent-wisp-57bcb1.netlify.app/images/tutorial-annotations/computer.png
-email,https://iridescent-wisp-57bcb1.netlify.app/images/tutorial-annotations/email.png
-fat x,https://iridescent-wisp-57bcb1.netlify.app/images/tutorial-annotations/fat-x.png
-free workshop,https://iridescent-wisp-57bcb1.netlify.app/images/tutorial-annotations/free%20workshop.png
-hashtag,https://iridescent-wisp-57bcb1.netlify.app/images/tutorial-annotations/hashtag.png
-home,https://iridescent-wisp-57bcb1.netlify.app/images/tutorial-annotations/home.png
-paint,https://iridescent-wisp-57bcb1.netlify.app/images/tutorial-annotations/paint.png
-paperclip,https://iridescent-wisp-57bcb1.netlify.app/images/tutorial-annotations/paperclip.png
-pen and paper,https://iridescent-wisp-57bcb1.netlify.app/images/tutorial-annotations/penandpaper.png
-pin,https://iridescent-wisp-57bcb1.netlify.app/images/tutorial-annotations/pin.png
-play video annotation,https://iridescent-wisp-57bcb1.netlify.app/images/tutorial-annotations/play-video-annotation.png
-plus,https://iridescent-wisp-57bcb1.netlify.app/images/tutorial-annotations/plus.png
-pointer,https://iridescent-wisp-57bcb1.netlify.app/images/tutorial-annotations/pointer.png
-pointer lines,https://iridescent-wisp-57bcb1.netlify.app/images/tutorial-annotations/pointer-lines.gif
-pointer lines pink,https://iridescent-wisp-57bcb1.netlify.app/images/tutorial-annotations/pointer-lines-pink.gif
-pointer no lines,https://iridescent-wisp-57bcb1.netlify.app/images/tutorial-annotations/pointer-no-lines.png
-search,https://iridescent-wisp-57bcb1.netlify.app/images/tutorial-annotations/search.png
-sparkle left,https://iridescent-wisp-57bcb1.netlify.app/images/tutorial-annotations/sparkle-left.png
-sparkle left animated,https://iridescent-wisp-57bcb1.netlify.app/images/tutorial-annotations/sparkle-left-animated.gif
-sparkle right,https://iridescent-wisp-57bcb1.netlify.app/images/tutorial-annotations/sparkle-right.png
-sparkle right animated,https://iridescent-wisp-57bcb1.netlify.app/images/tutorial-annotations/sparkle-right-animated.gif
-steno keys,https://iridescent-wisp-57bcb1.netlify.app/images/tutorial-annotations/stenokeys.png
-tech support,https://iridescent-wisp-57bcb1.netlify.app/images/tutorial-annotations/tech%20support.png
-text box chat,https://iridescent-wisp-57bcb1.netlify.app/images/tutorial-annotations/textboxchat.png
-thumbs up,https://iridescent-wisp-57bcb1.netlify.app/images/tutorial-annotations/thumbsup.png
-triple arrow,https://iridescent-wisp-57bcb1.netlify.app/images/tutorial-annotations/tripple%20arrow.png
-troubleshooting,https://iridescent-wisp-57bcb1.netlify.app/images/tutorial-annotations/troubleshooting.png
-upload,https://iridescent-wisp-57bcb1.netlify.app/images/tutorial-annotations/upload.png
-write note hand,https://iridescent-wisp-57bcb1.netlify.app/images/tutorial-annotations/writenotehand.png
-white rectangle,https://iridescent-wisp-57bcb1.netlify.app/images/tutorial-annotations/white-rectangle.png
-arrows white,https://iridescent-wisp-57bcb1.netlify.app/images/tutorial-annotations/arrows-white.png
-arrows pink,https://iridescent-wisp-57bcb1.netlify.app/images/tutorial-annotations/arrows-pink.png
-arrows purple,https://iridescent-wisp-57bcb1.netlify.app/images/tutorial-annotations/arrows-purple.png
-arrows oryellow,https://iridescent-wisp-57bcb1.netlify.app/images/tutorial-annotations/arrows-orangeyellow.png
-arrows teal,https://iridescent-wisp-57bcb1.netlify.app/images/tutorial-annotations/arrows-teal.png
-arrows mint,https://iridescent-wisp-57bcb1.netlify.app/images/tutorial-annotations/arrows-mint.png
-arrows yellow,https://iridescent-wisp-57bcb1.netlify.app/images/tutorial-annotations/arrows-yellow.png
-lg rectangle,https://iridescent-wisp-57bcb1.netlify.app/images/tutorial-annotations/lg-rectangle.png
-sm rectangle,https://iridescent-wisp-57bcb1.netlify.app/images/tutorial-annotations/sm-rectangle.png
+group,name,url
+ARROWS,C-CURVE-YELLOW,https://iridescent-wisp-57bcb1.netlify.app/images/tutorial-annotations/arrows/c-curve-yellow.png
+ARROWS,DOWN-STRIPE,https://iridescent-wisp-57bcb1.netlify.app/images/tutorial-annotations/arrows/down-stripe.png
+ARROWS,LEFT-BACK-STRIPE,https://iridescent-wisp-57bcb1.netlify.app/images/tutorial-annotations/arrows/left-back-stripe.png
+ARROWS,LEFT-STRIPE,https://iridescent-wisp-57bcb1.netlify.app/images/tutorial-annotations/arrows/left-stripe.png
+ARROWS,MINT,https://iridescent-wisp-57bcb1.netlify.app/images/tutorial-annotations/arrows/mint.png
+ARROWS,ORANGEYELLOW,https://iridescent-wisp-57bcb1.netlify.app/images/tutorial-annotations/arrows/orangeyellow.png
+ARROWS,PINK,https://iridescent-wisp-57bcb1.netlify.app/images/tutorial-annotations/arrows/pink.png
+ARROWS,PURPLE,https://iridescent-wisp-57bcb1.netlify.app/images/tutorial-annotations/arrows/purple.png
+ARROWS,PURPLE-STICKER,https://iridescent-wisp-57bcb1.netlify.app/images/tutorial-annotations/arrows/purple-sticker.png
+ARROWS,RIGHT-BACK-STRIPE,https://iridescent-wisp-57bcb1.netlify.app/images/tutorial-annotations/arrows/right-back-stripe.png
+ARROWS,RIGHT-STRIPE,https://iridescent-wisp-57bcb1.netlify.app/images/tutorial-annotations/arrows/right-stripe.png
+ARROWS,STAR-SQUIG-STICKER,https://iridescent-wisp-57bcb1.netlify.app/images/tutorial-annotations/arrows/star-squig-sticker.png
+ARROWS,TEAL,https://iridescent-wisp-57bcb1.netlify.app/images/tutorial-annotations/arrows/teal.png
+ARROWS,THREE-ORANGE-YELLOW-STICKER,https://iridescent-wisp-57bcb1.netlify.app/images/tutorial-annotations/arrows/three-orange-yellow-sticker.png
+ARROWS,THREE-PINK-STICKER,https://iridescent-wisp-57bcb1.netlify.app/images/tutorial-annotations/arrows/three-pink-sticker.png
+ARROWS,THREE-PURPLE-STICKER,https://iridescent-wisp-57bcb1.netlify.app/images/tutorial-annotations/arrows/three-purple-sticker.png
+ARROWS,THREE-TEAL-STICKER,https://iridescent-wisp-57bcb1.netlify.app/images/tutorial-annotations/arrows/three-teal-sticker.png
+ARROWS,THREE-YELLOW-STICKER,https://iridescent-wisp-57bcb1.netlify.app/images/tutorial-annotations/arrows/three-yellow-sticker.png
+ARROWS,TRIPPLE UP-LEFT,https://iridescent-wisp-57bcb1.netlify.app/images/tutorial-annotations/arrows/tripple%20up-left.png
+ARROWS,TRIPPLE UP-RIGHT,https://iridescent-wisp-57bcb1.netlify.app/images/tutorial-annotations/arrows/tripple%20up-right.png
+ARROWS,UP-STRIPE,https://iridescent-wisp-57bcb1.netlify.app/images/tutorial-annotations/arrows/up-stripe.png
+ARROWS,WHITE,https://iridescent-wisp-57bcb1.netlify.app/images/tutorial-annotations/arrows/white.png
+ARROWS,YELLOW,https://iridescent-wisp-57bcb1.netlify.app/images/tutorial-annotations/arrows/yellow.png
+ARROWS,YELLOW-BENT-STICKER,https://iridescent-wisp-57bcb1.netlify.app/images/tutorial-annotations/arrows/yellow-bent-sticker.png
+BUBBLES,BUBBLE-CENTER-BUBBLE,https://iridescent-wisp-57bcb1.netlify.app/images/tutorial-annotations/bubbles/bubble-center-bubble.png
+BUBBLES,BUBBLE-LCIRCLE,https://iridescent-wisp-57bcb1.netlify.app/images/tutorial-annotations/bubbles/bubble-Lcircle.png
+BUBBLES,BUBBLE-LEFT-SHORT-WIDE,https://iridescent-wisp-57bcb1.netlify.app/images/tutorial-annotations/bubbles/bubble-left-short-wide.png
+BUBBLES,BUBBLE-RCIRCLE,https://iridescent-wisp-57bcb1.netlify.app/images/tutorial-annotations/bubbles/bubble-Rcircle.png
+BUBBLES,BUBBLE-RECTANGLE,https://iridescent-wisp-57bcb1.netlify.app/images/tutorial-annotations/bubbles/bubble-rectangle.png
+BUBBLES,BUBBLE-RSHORT-RECT,https://iridescent-wisp-57bcb1.netlify.app/images/tutorial-annotations/bubbles/bubble-Rshort-rect.png
+BUBBLES,BUBBLE-SIDEKICK,https://iridescent-wisp-57bcb1.netlify.app/images/tutorial-annotations/bubbles/bubble-sidekick.png
+BUBBLES,BUBBLE-TALL-LEFT,https://iridescent-wisp-57bcb1.netlify.app/images/tutorial-annotations/bubbles/bubble-tall-left.png
+BUBBLES,BUBBLE-TALL-RIGHT,https://iridescent-wisp-57bcb1.netlify.app/images/tutorial-annotations/bubbles/bubble-tall-right.png
+BUBBLES,BUBBLE-THOUGHT,https://iridescent-wisp-57bcb1.netlify.app/images/tutorial-annotations/bubbles/bubble-thought.png
+BUBBLES,BUBBLE-WHITE-WHITE-SHADOW,https://iridescent-wisp-57bcb1.netlify.app/images/tutorial-annotations/bubbles/bubble-white-white-shadow.png
+BUBBLES,BUBBLE-YELLOW,https://iridescent-wisp-57bcb1.netlify.app/images/tutorial-annotations/bubbles/bubble-yellow.png
+BUBBLES,BUBBLE-YOU,https://iridescent-wisp-57bcb1.netlify.app/images/tutorial-annotations/bubbles/bubble-you.png
+BUBBLES,OVAL-BUBBLE-WHITE-LEFT,https://iridescent-wisp-57bcb1.netlify.app/images/tutorial-annotations/bubbles/oval-bubble-white-left.png
+BUBBLES,OVAL-BUBBLE-WHITE-RIGHT,https://iridescent-wisp-57bcb1.netlify.app/images/tutorial-annotations/bubbles/oval-bubble-white-right.png
+BUBBLES,QUOTE-BUBBLE-WHITE,https://iridescent-wisp-57bcb1.netlify.app/images/tutorial-annotations/bubbles/quote-bubble-white.png
+BUILT-IN CONTROLS,PAUSE-AUDIO-ANNOTATION,https://iridescent-wisp-57bcb1.netlify.app/images/tutorial-annotations/pause-audio-annotation.gif
+BUILT-IN CONTROLS,PLAY-AUDIO-ANNOTATION,https://iridescent-wisp-57bcb1.netlify.app/images/tutorial-annotations/play-audio-annotation.png
+BUILT-IN CONTROLS,PLAY-VIDEO-ANNOTATION,https://iridescent-wisp-57bcb1.netlify.app/images/tutorial-annotations/play-video-annotation.png
+FOOTERS,AP-FOOTER-FINAL-FINAL,https://iridescent-wisp-57bcb1.netlify.app/images/tutorial-annotations/footers/ap-footer-final-final.png
+FOOTERS,AP-FOOTER-V77,https://iridescent-wisp-57bcb1.netlify.app/images/tutorial-annotations/footers/ap-footer-v77.png
+FOOTERS,AP-QUICK-GUIDE-STARTUP,https://iridescent-wisp-57bcb1.netlify.app/images/tutorial-annotations/footers/ap-quick-guide-startup.png
+FOOTERS,AP-QUICK-GUIDE-V77,https://iridescent-wisp-57bcb1.netlify.app/images/tutorial-annotations/footers/ap-quick-guide-v77.png
+FOOTERS,APPEARANCE PAGES FOOTER,https://iridescent-wisp-57bcb1.netlify.app/images/tutorial-annotations/footers/appearance%20pages%20footer.png
+FOOTERS,APPEARANCE PAGES FOOTER FINAL,https://iridescent-wisp-57bcb1.netlify.app/images/tutorial-annotations/footers/appearance%20pages%20footer%20final.png
+FOOTERS,APPEARANCE-PAGES-FOOTER,https://iridescent-wisp-57bcb1.netlify.app/images/tutorial-annotations/footers/appearance-pages-footer.png
+FOOTERS,FINAL-AP-FOOTER,https://iridescent-wisp-57bcb1.netlify.app/images/tutorial-annotations/footers/final-ap-footer.png
+FOOTERS,FINAL-APP-FOOTER-FINAL,https://iridescent-wisp-57bcb1.netlify.app/images/tutorial-annotations/footers/final-app-footer-final.png
+FOOTERS,STARTUP_GUIDE_APPS,https://iridescent-wisp-57bcb1.netlify.app/images/tutorial-annotations/footers/startup_guide_apps.png
+FOOTERS,STYLESHEET,https://iridescent-wisp-57bcb1.netlify.app/images/tutorial-annotations/footers/stylesheet.png
+FOOTERS,STYLESHEET FINAL,https://iridescent-wisp-57bcb1.netlify.app/images/tutorial-annotations/footers/stylesheet%20final.png
+HOTSPOTS,H-CORAL,https://iridescent-wisp-57bcb1.netlify.app/images/tutorial-annotations/h-coral.png
+HOTSPOTS,H-GREEN,https://iridescent-wisp-57bcb1.netlify.app/images/tutorial-annotations/h-green.png
+HOTSPOTS,H-LIGHT-PINK,https://iridescent-wisp-57bcb1.netlify.app/images/tutorial-annotations/h-light-pink.png
+HOTSPOTS,H-MAUVE,https://iridescent-wisp-57bcb1.netlify.app/images/tutorial-annotations/h-mauve.png
+HOTSPOTS,H-MINT,https://iridescent-wisp-57bcb1.netlify.app/images/tutorial-annotations/h-mint.png
+HOTSPOTS,H-ORANGE,https://iridescent-wisp-57bcb1.netlify.app/images/tutorial-annotations/h-orange.png
+HOTSPOTS,H-PINK,https://iridescent-wisp-57bcb1.netlify.app/images/tutorial-annotations/h-pink.png
+HOTSPOTS,H-PURPLE,https://iridescent-wisp-57bcb1.netlify.app/images/tutorial-annotations/h-purple.png
+HOTSPOTS,H-YELLOW,https://iridescent-wisp-57bcb1.netlify.app/images/tutorial-annotations/h-yellow.png
+NUMBERS-EXTRA,HS1,https://iridescent-wisp-57bcb1.netlify.app/images/tutorial-annotations/numbers-extra/hs1.png
+NUMBERS-EXTRA,HS2,https://iridescent-wisp-57bcb1.netlify.app/images/tutorial-annotations/numbers-extra/hs2.png
+NUMBERS-EXTRA,HS3,https://iridescent-wisp-57bcb1.netlify.app/images/tutorial-annotations/numbers-extra/hs3.png
+NUMBERS-EXTRA,HS4,https://iridescent-wisp-57bcb1.netlify.app/images/tutorial-annotations/numbers-extra/hs4.png
+NUMBERS-EXTRA,HS5,https://iridescent-wisp-57bcb1.netlify.app/images/tutorial-annotations/numbers-extra/hs5.png
+NUMBERS-EXTRA,HS6,https://iridescent-wisp-57bcb1.netlify.app/images/tutorial-annotations/numbers-extra/hs6.png
+NUMBERS-EXTRA,HS7,https://iridescent-wisp-57bcb1.netlify.app/images/tutorial-annotations/numbers-extra/hs7.png
+NUMBERS-EXTRA,HS8,https://iridescent-wisp-57bcb1.netlify.app/images/tutorial-annotations/numbers-extra/hs8.png
+NUMBERS-EXTRA,HS9,https://iridescent-wisp-57bcb1.netlify.app/images/tutorial-annotations/numbers-extra/hs9.png
+OBJECTS,ASTERISK,https://iridescent-wisp-57bcb1.netlify.app/images/tutorial-annotations/objects/asterisk.png
+OBJECTS,AVATAR-SIDEKICK,https://iridescent-wisp-57bcb1.netlify.app/images/tutorial-annotations/objects/avatar-sidekick.png
+OBJECTS,AVATAR-USER,https://iridescent-wisp-57bcb1.netlify.app/images/tutorial-annotations/objects/avatar-user.png
+OBJECTS,BROWSER-WHITE,https://iridescent-wisp-57bcb1.netlify.app/images/tutorial-annotations/objects/browser-white.png
+OBJECTS,CAUTION,https://iridescent-wisp-57bcb1.netlify.app/images/tutorial-annotations/objects/caution.png
+OBJECTS,CAUTION COPY,https://iridescent-wisp-57bcb1.netlify.app/images/tutorial-annotations/objects/caution%20copy.png
+OBJECTS,CAUTION-SQUARE,https://iridescent-wisp-57bcb1.netlify.app/images/tutorial-annotations/objects/caution-square.png
+OBJECTS,CHAT-GPT-BUTTON,https://iridescent-wisp-57bcb1.netlify.app/images/tutorial-annotations/objects/chat-gpt-button.png
+OBJECTS,COG-WHITE,https://iridescent-wisp-57bcb1.netlify.app/images/tutorial-annotations/objects/cog-white.png
+OBJECTS,COG-YELLOW,https://iridescent-wisp-57bcb1.netlify.app/images/tutorial-annotations/objects/cog-yellow.png
+OBJECTS,COMPUTER-WHITE,https://iridescent-wisp-57bcb1.netlify.app/images/tutorial-annotations/objects/computer-white.png
+OBJECTS,COMPUTER-WHITE-STICKER,https://iridescent-wisp-57bcb1.netlify.app/images/tutorial-annotations/objects/computer-white-sticker.png
+OBJECTS,COMPUTER-YELLOW,https://iridescent-wisp-57bcb1.netlify.app/images/tutorial-annotations/objects/computer-yellow.png
+OBJECTS,COMPUTER-YELLOW-STICKER,https://iridescent-wisp-57bcb1.netlify.app/images/tutorial-annotations/objects/computer-yellow-sticker.png
+OBJECTS,EMAIL,https://iridescent-wisp-57bcb1.netlify.app/images/tutorial-annotations/objects/email.png
+OBJECTS,FAT-X-GREEN,https://iridescent-wisp-57bcb1.netlify.app/images/tutorial-annotations/objects/fat-x-green.png
+OBJECTS,FOLDER-YELLOW,https://iridescent-wisp-57bcb1.netlify.app/images/tutorial-annotations/objects/folder-yellow.png
+OBJECTS,FREE-WORKSHOP-PURPLE,https://iridescent-wisp-57bcb1.netlify.app/images/tutorial-annotations/objects/free-workshop-purple.png
+OBJECTS,HAND-MINT,https://iridescent-wisp-57bcb1.netlify.app/images/tutorial-annotations/objects/hand-mint.png
+OBJECTS,HAND-YELLOW,https://iridescent-wisp-57bcb1.netlify.app/images/tutorial-annotations/objects/hand-yellow.png
+OBJECTS,HASHTAG-GREEN,https://iridescent-wisp-57bcb1.netlify.app/images/tutorial-annotations/objects/hashtag-green.png
+OBJECTS,HASHTAG-PINK,https://iridescent-wisp-57bcb1.netlify.app/images/tutorial-annotations/objects/hashtag-pink.png
+OBJECTS,HASHTAG-WHITE,https://iridescent-wisp-57bcb1.netlify.app/images/tutorial-annotations/objects/hashtag-white.png
+OBJECTS,HOME,https://iridescent-wisp-57bcb1.netlify.app/images/tutorial-annotations/objects/home.png
+OBJECTS,LIGHTBULB,https://iridescent-wisp-57bcb1.netlify.app/images/tutorial-annotations/objects/lightbulb.png
+OBJECTS,MAGNIFIYING-GLASS-GREEN,https://iridescent-wisp-57bcb1.netlify.app/images/tutorial-annotations/objects/magnifiying-glass-green.png
+OBJECTS,MEGAPHONE-STICKER,https://iridescent-wisp-57bcb1.netlify.app/images/tutorial-annotations/objects/megaphone-sticker.png
+OBJECTS,NOTE-HAND-MINT,https://iridescent-wisp-57bcb1.netlify.app/images/tutorial-annotations/objects/note-hand-mint.png
+OBJECTS,NOTE-HAND-YELLOW,https://iridescent-wisp-57bcb1.netlify.app/images/tutorial-annotations/objects/note-hand-yellow.png
+OBJECTS,OK-MINT,https://iridescent-wisp-57bcb1.netlify.app/images/tutorial-annotations/objects/ok-mint.png
+OBJECTS,PAINTBRUSH,https://iridescent-wisp-57bcb1.netlify.app/images/tutorial-annotations/objects/paintbrush.png
+OBJECTS,PAPER-WHITE-PEN-YELLOWPEN,https://iridescent-wisp-57bcb1.netlify.app/images/tutorial-annotations/objects/paper-white-pen-yellowpen.png
+OBJECTS,PAPERCLIP-MAUVE,https://iridescent-wisp-57bcb1.netlify.app/images/tutorial-annotations/objects/paperclip-mauve.png
+OBJECTS,PAPERCLIP-YELLOW,https://iridescent-wisp-57bcb1.netlify.app/images/tutorial-annotations/objects/paperclip-yellow.png
+OBJECTS,PEN-AND-PAPER-WHITE,https://iridescent-wisp-57bcb1.netlify.app/images/tutorial-annotations/objects/pen-and-paper-white.png
+OBJECTS,PIN-ORANGE-YELLOW,https://iridescent-wisp-57bcb1.netlify.app/images/tutorial-annotations/objects/pin-orange-yellow.png
+OBJECTS,PIN-YELLOW,https://iridescent-wisp-57bcb1.netlify.app/images/tutorial-annotations/objects/pin-yellow.png
+OBJECTS,PLUS,https://iridescent-wisp-57bcb1.netlify.app/images/tutorial-annotations/objects/plus.png
+OBJECTS,POINTER,https://iridescent-wisp-57bcb1.netlify.app/images/tutorial-annotations/objects/pointer.png
+OBJECTS,POINTER-LINES,https://iridescent-wisp-57bcb1.netlify.app/images/tutorial-annotations/objects/pointer-lines.gif
+OBJECTS,POINTER-LINES-PINK,https://iridescent-wisp-57bcb1.netlify.app/images/tutorial-annotations/objects/pointer-lines-pink.gif
+OBJECTS,POINTER-MOUSE,https://iridescent-wisp-57bcb1.netlify.app/images/tutorial-annotations/objects/pointer-mouse.png
+OBJECTS,SEARCH,https://iridescent-wisp-57bcb1.netlify.app/images/tutorial-annotations/objects/search.png
+OBJECTS,SEARCH-BAR,https://iridescent-wisp-57bcb1.netlify.app/images/tutorial-annotations/objects/search-bar.png
+OBJECTS,SPARKLE,https://iridescent-wisp-57bcb1.netlify.app/images/tutorial-annotations/objects/sparkle.png
+OBJECTS,SPARKLE-LEFT,https://iridescent-wisp-57bcb1.netlify.app/images/tutorial-annotations/objects/sparkle-left.png
+OBJECTS,SPARKLE-LEFT-ANIMATED,https://iridescent-wisp-57bcb1.netlify.app/images/tutorial-annotations/objects/sparkle-left-animated.gif
+OBJECTS,SPARKLE-RIGHT,https://iridescent-wisp-57bcb1.netlify.app/images/tutorial-annotations/objects/sparkle-right.png
+OBJECTS,SPARKLE-RIGHT-ANIMATED,https://iridescent-wisp-57bcb1.netlify.app/images/tutorial-annotations/objects/sparkle-right-animated.gif
+OBJECTS,STAR-PURPLE,https://iridescent-wisp-57bcb1.netlify.app/images/tutorial-annotations/objects/star-purple.png
+OBJECTS,STENO-LOGO,https://iridescent-wisp-57bcb1.netlify.app/images/tutorial-annotations/objects/steno-logo.png
+OBJECTS,STENOKEYS,https://iridescent-wisp-57bcb1.netlify.app/images/tutorial-annotations/objects/stenokeys.png
+OBJECTS,STENOKEYS-WHITE-STICKER,https://iridescent-wisp-57bcb1.netlify.app/images/tutorial-annotations/objects/stenokeys-white-sticker.png
+OBJECTS,TECH-SUPPORT,https://iridescent-wisp-57bcb1.netlify.app/images/tutorial-annotations/objects/tech-support.png
+OBJECTS,THUMBSUP-PINK,https://iridescent-wisp-57bcb1.netlify.app/images/tutorial-annotations/objects/thumbsup-pink.png
+OBJECTS,UPLOAD-TEAL,https://iridescent-wisp-57bcb1.netlify.app/images/tutorial-annotations/objects/upload-teal.png
+OBJECTS,UPLOAD-YELLOW,https://iridescent-wisp-57bcb1.netlify.app/images/tutorial-annotations/objects/upload-yellow.png
+OBJECTS,WAND-MINT,https://iridescent-wisp-57bcb1.netlify.app/images/tutorial-annotations/objects/wand-mint.png
+OBJECTS,WANT-BLACK,https://iridescent-wisp-57bcb1.netlify.app/images/tutorial-annotations/objects/want-black.png
+OBJECTS,WARNING-RECTANGLE,https://iridescent-wisp-57bcb1.netlify.app/images/tutorial-annotations/objects/warning-rectangle.png
+OBJECTS,X,https://iridescent-wisp-57bcb1.netlify.app/images/tutorial-annotations/objects/x.png
+OTHER,LEFT,https://iridescent-wisp-57bcb1.netlify.app/images/tutorial-annotations/left.png
+OTHER,LOGO,https://iridescent-wisp-57bcb1.netlify.app/images/tutorial-annotations/logo.png
+OTHER,RIGHT,https://iridescent-wisp-57bcb1.netlify.app/images/tutorial-annotations/right.png
+SHAPES,RECTANGLE-DOODLE-LONGER,https://iridescent-wisp-57bcb1.netlify.app/images/tutorial-annotations/shapes/rectangle-doodle-longer.png
+SHAPES,RECTANGLE-DOODLE-SMALL,https://iridescent-wisp-57bcb1.netlify.app/images/tutorial-annotations/shapes/rectangle-doodle-small.png
+SHAPES,RECTANGLE-DOODLE-TALLER,https://iridescent-wisp-57bcb1.netlify.app/images/tutorial-annotations/shapes/rectangle-doodle-taller.png
+SHAPES-TEXT,3D-LINE,https://iridescent-wisp-57bcb1.netlify.app/images/tutorial-annotations/shapes-text/3d-line.png
+SHAPES-TEXT,3D-SQUIGGLE-LINE,https://iridescent-wisp-57bcb1.netlify.app/images/tutorial-annotations/shapes-text/3D-squiggle-line.png
+SHAPES-TEXT,BLACK-TAPE,https://iridescent-wisp-57bcb1.netlify.app/images/tutorial-annotations/shapes-text/black-tape.png
+SHAPES-TEXT,BOX-YELLOW,https://iridescent-wisp-57bcb1.netlify.app/images/tutorial-annotations/shapes-text/box-yellow.png
+SHAPES-TEXT,CHATBOX-CG-SHORT,https://iridescent-wisp-57bcb1.netlify.app/images/tutorial-annotations/shapes-text/chatbox-cg-short.png
+SHAPES-TEXT,CHATBOX-CG-TALL,https://iridescent-wisp-57bcb1.netlify.app/images/tutorial-annotations/shapes-text/chatbox-cg-tall.png
+SHAPES-TEXT,FLAG-YELLOW,https://iridescent-wisp-57bcb1.netlify.app/images/tutorial-annotations/shapes-text/flag-yellow.png
+SHAPES-TEXT,INDEXCARD,https://iridescent-wisp-57bcb1.netlify.app/images/tutorial-annotations/shapes-text/indexcard.png
+SHAPES-TEXT,LG-RECTANGLE,https://iridescent-wisp-57bcb1.netlify.app/images/tutorial-annotations/shapes-text/lg-rectangle.png
+SHAPES-TEXT,LG-RECTANGLE-TRANSP,https://iridescent-wisp-57bcb1.netlify.app/images/tutorial-annotations/shapes-text/lg-rectangle-transp.png
+SHAPES-TEXT,LINE-BUBBLES-YELLOW,https://iridescent-wisp-57bcb1.netlify.app/images/tutorial-annotations/shapes-text/line-bubbles-yellow.png
+SHAPES-TEXT,PAPER-SMALL,https://iridescent-wisp-57bcb1.netlify.app/images/tutorial-annotations/shapes-text/paper-small.png
+SHAPES-TEXT,PINK-TAPE,https://iridescent-wisp-57bcb1.netlify.app/images/tutorial-annotations/shapes-text/pink-tape.png
+SHAPES-TEXT,SM-RECTANGLE-TRANS,https://iridescent-wisp-57bcb1.netlify.app/images/tutorial-annotations/shapes-text/sm-rectangle-trans.png
+SHAPES-TEXT,STICKY-YELLOW,https://iridescent-wisp-57bcb1.netlify.app/images/tutorial-annotations/shapes-text/sticky-yellow.png
+SHAPES-TEXT,TAPE-LONGER-BLACK,https://iridescent-wisp-57bcb1.netlify.app/images/tutorial-annotations/shapes-text/tape-longer-black.png
+SHAPES-TEXT,TAPE-LONGER-GREEN,https://iridescent-wisp-57bcb1.netlify.app/images/tutorial-annotations/shapes-text/tape-longer-green.png
+SHAPES-TEXT,TAPE-LONGER-PINK,https://iridescent-wisp-57bcb1.netlify.app/images/tutorial-annotations/shapes-text/tape-longer-pink.png
+SHAPES-TEXT,TAPE-LONGER-WHITE,https://iridescent-wisp-57bcb1.netlify.app/images/tutorial-annotations/shapes-text/tape-longer-white.png
+SHAPES-TEXT,TAPE-WHITE,https://iridescent-wisp-57bcb1.netlify.app/images/tutorial-annotations/shapes-text/tape-white.png
+SHAPES-TEXT,TEXTBOXCHAT,https://iridescent-wisp-57bcb1.netlify.app/images/tutorial-annotations/shapes-text/textboxchat.png
+SHAPES-TEXT,WHITE-RECTANGLE,https://iridescent-wisp-57bcb1.netlify.app/images/tutorial-annotations/shapes-text/white-rectangle.png
+SLIDE-BACKGROUNDS,BLACK-FRAME-LARGE-SLIDE,https://iridescent-wisp-57bcb1.netlify.app/images/tutorial-annotations/slide-backgrounds/black-frame-large-slide.png
+SLIDE-BACKGROUNDS,BLACK-FRAME-REGULAR-SLIDE,https://iridescent-wisp-57bcb1.netlify.app/images/tutorial-annotations/slide-backgrounds/black-frame-regular-slide.png
+SLIDE-BACKGROUNDS,SCREEN-BACKGROUND-LARGESCREEN,https://iridescent-wisp-57bcb1.netlify.app/images/tutorial-annotations/slide-backgrounds/screen-background-largescreen.png
+SLIDE-BACKGROUNDS,SLIDE-BACKGROUND,https://iridescent-wisp-57bcb1.netlify.app/images/tutorial-annotations/slide-backgrounds/slide-background.png
+SLIDE-BACKGROUNDS,SLIDE-BACKGROUND-ADDRESS-BAR,https://iridescent-wisp-57bcb1.netlify.app/images/tutorial-annotations/slide-backgrounds/slide-background-address-bar.png
+SLIDE-BACKGROUNDS,SLIDE-BACKGROUND-BLANK-TEXT-BAR-ADDRES-BAR,https://iridescent-wisp-57bcb1.netlify.app/images/tutorial-annotations/slide-backgrounds/slide-background-blank-text-bar-addres-bar.png
+SLIDE-BACKGROUNDS,SLIDE-BACKGROUND-BLANK-TEXT-BAR-APS-ADDRES-BAR,https://iridescent-wisp-57bcb1.netlify.app/images/tutorial-annotations/slide-backgrounds/slide-background-blank-text-bar-aps-addres-bar.png
+SLIDE-BACKGROUNDS,SLIDE-BACKGROUND-LARGE-YELLOW,https://iridescent-wisp-57bcb1.netlify.app/images/tutorial-annotations/slide-backgrounds/slide-background-large-yellow.png
+SLIDE-BACKGROUNDS,SLIDE-BACKGROUND-LARGE-YELLOW-GRAY,https://iridescent-wisp-57bcb1.netlify.app/images/tutorial-annotations/slide-backgrounds/slide-background-large-yellow-gray.png
+SLIDE-BACKGROUNDS,SLIDE-BACKGROUND-PURPLE-GRAIDENT,https://iridescent-wisp-57bcb1.netlify.app/images/tutorial-annotations/slide-backgrounds/slide-background-purple-graident.png
+SLIDE-BACKGROUNDS,SLIDE-BACKGROUND-THICKER-PURPLE-GRADIENT,https://iridescent-wisp-57bcb1.netlify.app/images/tutorial-annotations/slide-backgrounds/slide-background-thicker-purple-gradient.png
+SLIDE-BACKGROUNDS,SLIDE-BACKGROUND-WIDE-CHATGPT,https://iridescent-wisp-57bcb1.netlify.app/images/tutorial-annotations/slide-backgrounds/slide-background-wide-ChatGPT.png
+SLIDE-BACKGROUNDS,SLIDE-BKGRD-COMPUTER,https://iridescent-wisp-57bcb1.netlify.app/images/tutorial-annotations/slide-backgrounds/slide-bkgrd-computer.png
+SLIDE-BACKGROUNDS,SLIDE-BKGRND-GRADIANT,https://iridescent-wisp-57bcb1.netlify.app/images/tutorial-annotations/slide-backgrounds/slide-bkgrnd-gradiant.png
+SLIDE-BACKGROUNDS,SLIDEBACKGROUND-PURPLE-WIDE,https://iridescent-wisp-57bcb1.netlify.app/images/tutorial-annotations/slide-backgrounds/slidebackground-purple-wide.png
+SLIDE-BACKGROUNDS,SLIDEBKGRNDBLOB,https://iridescent-wisp-57bcb1.netlify.app/images/tutorial-annotations/slide-backgrounds/slidebkgrndblob.png
+SLIDE-BACKGROUNDS,WEBSITE-HEADER,https://iridescent-wisp-57bcb1.netlify.app/images/tutorial-annotations/slide-backgrounds/website-header.png
