@@ -56,6 +56,7 @@ FOOTERS,CGPT-LOGO,https://iridescent-wisp-57bcb1.netlify.app/images/tutorial-ann
 FOOTERS,DICT-DRD,https://iridescent-wisp-57bcb1.netlify.app/images/tutorial-annotations/footers/Dict-DrD.png
 FOOTERS,FINAL-AP-FOOTER,https://iridescent-wisp-57bcb1.netlify.app/images/tutorial-annotations/footers/final-ap-footer.png
 FOOTERS,FINAL-APP-FOOTER-FINAL,https://iridescent-wisp-57bcb1.netlify.app/images/tutorial-annotations/footers/final-app-footer-final.png
+FOOTERS,GPTLOGO,https://iridescent-wisp-57bcb1.netlify.app/images/tutorial-annotations/footers/GPTlogo.png
 FOOTERS,PR-DRD-,https://iridescent-wisp-57bcb1.netlify.app/images/tutorial-annotations/footers/PR-DrD-.png
 FOOTERS,STARTUP_GUIDE_APPS,https://iridescent-wisp-57bcb1.netlify.app/images/tutorial-annotations/footers/startup_guide_apps.png
 FOOTERS,STYLESHEET,https://iridescent-wisp-57bcb1.netlify.app/images/tutorial-annotations/footers/stylesheet.png
@@ -144,6 +145,7 @@ OBJECTS,X,https://iridescent-wisp-57bcb1.netlify.app/images/tutorial-annotations
 OTHER,LEFT,https://iridescent-wisp-57bcb1.netlify.app/images/tutorial-annotations/left.png
 OTHER,LOGO,https://iridescent-wisp-57bcb1.netlify.app/images/tutorial-annotations/logo.png
 OTHER,RIGHT,https://iridescent-wisp-57bcb1.netlify.app/images/tutorial-annotations/right.png
+OTHER,TEXTBOXCGTFINAL,https://iridescent-wisp-57bcb1.netlify.app/images/tutorial-annotations/textboxcgtfinal.png
 SHAPES,RECTANGLE-DOODLE-LONGER,https://iridescent-wisp-57bcb1.netlify.app/images/tutorial-annotations/shapes/rectangle-doodle-longer.png
 SHAPES,RECTANGLE-DOODLE-SMALL,https://iridescent-wisp-57bcb1.netlify.app/images/tutorial-annotations/shapes/rectangle-doodle-small.png
 SHAPES,RECTANGLE-DOODLE-TALLER,https://iridescent-wisp-57bcb1.netlify.app/images/tutorial-annotations/shapes/rectangle-doodle-taller.png
