@@ -1,0 +1,438 @@
+[
+  {
+    "name": "image normalization/save roundtrip",
+    "status": "PASS"
+  },
+  {
+    "name": "gif normalization/save roundtrip",
+    "status": "PASS"
+  },
+  {
+    "name": "shape normalization/save roundtrip",
+    "status": "PASS"
+  },
+  {
+    "name": "text normalization/save roundtrip",
+    "status": "PASS"
+  },
+  {
+    "name": "slide-intro normalization/save roundtrip",
+    "status": "PASS"
+  },
+  {
+    "name": "callout normalization/save roundtrip",
+    "status": "PASS"
+  },
+  {
+    "name": "markup normalization/save roundtrip",
+    "status": "PASS"
+  },
+  {
+    "name": "cover normalization/save roundtrip",
+    "status": "PASS"
+  },
+  {
+    "name": "blur normalization/save roundtrip",
+    "status": "PASS"
+  },
+  {
+    "name": "magnifier normalization/save roundtrip",
+    "status": "PASS"
+  },
+  {
+    "name": "clip-frame normalization/save roundtrip",
+    "status": "PASS"
+  },
+  {
+    "name": "link normalization/save roundtrip",
+    "status": "PASS"
+  },
+  {
+    "name": "video normalization/save roundtrip",
+    "status": "PASS"
+  },
+  {
+    "name": "audio normalization/save roundtrip",
+    "status": "PASS"
+  },
+  {
+    "name": "toolbar renders 3 rows and all 68 artwork files",
+    "status": "PASS"
+  },
+  {
+    "name": "image toolbar applicability",
+    "status": "PASS"
+  },
+  {
+    "name": "gif toolbar applicability",
+    "status": "PASS"
+  },
+  {
+    "name": "shape toolbar applicability",
+    "status": "PASS"
+  },
+  {
+    "name": "text toolbar applicability",
+    "status": "PASS"
+  },
+  {
+    "name": "slide-intro toolbar applicability",
+    "status": "PASS"
+  },
+  {
+    "name": "callout toolbar applicability",
+    "status": "PASS"
+  },
+  {
+    "name": "markup toolbar applicability",
+    "status": "PASS"
+  },
+  {
+    "name": "cover toolbar applicability",
+    "status": "PASS"
+  },
+  {
+    "name": "blur toolbar applicability",
+    "status": "PASS"
+  },
+  {
+    "name": "magnifier toolbar applicability",
+    "status": "PASS"
+  },
+  {
+    "name": "clip-frame toolbar applicability",
+    "status": "PASS"
+  },
+  {
+    "name": "link toolbar applicability",
+    "status": "PASS"
+  },
+  {
+    "name": "video toolbar applicability",
+    "status": "PASS"
+  },
+  {
+    "name": "audio toolbar applicability",
+    "status": "PASS"
+  },
+  {
+    "name": "image annotation and contents renderer",
+    "status": "PASS"
+  },
+  {
+    "name": "gif annotation and contents renderer",
+    "status": "PASS"
+  },
+  {
+    "name": "shape annotation and contents renderer",
+    "status": "PASS"
+  },
+  {
+    "name": "text annotation and contents renderer",
+    "status": "PASS"
+  },
+  {
+    "name": "slide-intro annotation and contents renderer",
+    "status": "PASS"
+  },
+  {
+    "name": "callout annotation and contents renderer",
+    "status": "PASS"
+  },
+  {
+    "name": "markup annotation and contents renderer",
+    "status": "PASS"
+  },
+  {
+    "name": "cover annotation and contents renderer",
+    "status": "PASS"
+  },
+  {
+    "name": "blur annotation and contents renderer",
+    "status": "PASS"
+  },
+  {
+    "name": "magnifier annotation and contents renderer",
+    "status": "PASS"
+  },
+  {
+    "name": "clip-frame annotation and contents renderer",
+    "status": "PASS"
+  },
+  {
+    "name": "link annotation and contents renderer",
+    "status": "PASS"
+  },
+  {
+    "name": "video annotation and contents renderer",
+    "status": "PASS"
+  },
+  {
+    "name": "audio annotation and contents renderer",
+    "status": "PASS"
+  },
+  {
+    "name": "Command-b selected-word toggle",
+    "status": "PASS"
+  },
+  {
+    "name": "Command-i selected-word toggle",
+    "status": "PASS"
+  },
+  {
+    "name": "Command-u selected-word toggle",
+    "status": "PASS"
+  },
+  {
+    "name": "hotspot formatting moves with title and body",
+    "status": "PASS"
+  },
+  {
+    "name": "sanitizer retains safe B/I/U and rejects scripts/events",
+    "status": "PASS"
+  },
+  {
+    "name": "only selected word receives bold, retains adjacent text",
+    "status": "PASS"
+  },
+  {
+    "name": "toggle off removes nested style without losing neighbours",
+    "status": "PASS"
+  },
+  {
+    "name": "highlight and underline independent colors/thickness/offset survive reload",
+    "status": "PASS"
+  },
+  {
+    "name": "main filled shape color uses fill, not stroke",
+    "status": "PASS"
+  },
+  {
+    "name": "line-solid outer outline render",
+    "status": "PASS"
+  },
+  {
+    "name": "line-dotted outer outline render",
+    "status": "PASS"
+  },
+  {
+    "name": "arrow-solid outer outline render",
+    "status": "PASS"
+  },
+  {
+    "name": "arrow-dotted outer outline render",
+    "status": "PASS"
+  },
+  {
+    "name": "circle-solid outer outline render",
+    "status": "PASS"
+  },
+  {
+    "name": "circle-dotted outer outline render",
+    "status": "PASS"
+  },
+  {
+    "name": "circle-fill outer outline render",
+    "status": "PASS"
+  },
+  {
+    "name": "circle-fill-solid outer outline render",
+    "status": "PASS"
+  },
+  {
+    "name": "circle-fill-dashed outer outline render",
+    "status": "PASS"
+  },
+  {
+    "name": "square-solid outer outline render",
+    "status": "PASS"
+  },
+  {
+    "name": "square-dotted outer outline render",
+    "status": "PASS"
+  },
+  {
+    "name": "square-fill outer outline render",
+    "status": "PASS"
+  },
+  {
+    "name": "square-fill-solid outer outline render",
+    "status": "PASS"
+  },
+  {
+    "name": "square-fill-dashed outer outline render",
+    "status": "PASS"
+  },
+  {
+    "name": "persistent title command creates one synchronized annotation",
+    "status": "PASS"
+  },
+  {
+    "name": "magnifier outline can turn off and back on",
+    "status": "PASS"
+  },
+  {
+    "name": "custom main color leaves raster image appearance unchanged",
+    "status": "PASS"
+  },
+  {
+    "name": "cross-span partial formatting preserves outside ranges",
+    "status": "PASS"
+  },
+  {
+    "name": "legacy plain fills preserve their previous visible color",
+    "status": "PASS"
+  },
+  {
+    "name": "main color sets shared new text/shape defaults",
+    "status": "PASS"
+  },
+  {
+    "name": "reset crop preserves corners and removes crop state",
+    "status": "PASS"
+  },
+  {
+    "name": "word highlight excludes trailing selected whitespace",
+    "status": "PASS"
+  },
+  {
+    "name": "regular family remains after inline emphasis and save/reload",
+    "status": "PASS"
+  },
+  {
+    "name": "hand family remains after inline emphasis and save/reload",
+    "status": "PASS"
+  },
+  {
+    "name": "impact-label family remains after inline emphasis and save/reload",
+    "status": "PASS"
+  },
+  {
+    "name": "impact-label-reversed family remains after inline emphasis and save/reload",
+    "status": "PASS"
+  },
+  {
+    "name": "font data contains all five faces and true italic",
+    "status": "PASS"
+  },
+  {
+    "name": "demo HTML export construction (font readiness/layout mocked)",
+    "status": "PASS"
+  },
+  {
+    "name": "demo exported image renderer (DOM only)",
+    "status": "PASS"
+  },
+  {
+    "name": "demo exported gif renderer (DOM only)",
+    "status": "PASS"
+  },
+  {
+    "name": "demo exported shape renderer (DOM only)",
+    "status": "PASS"
+  },
+  {
+    "name": "demo exported text renderer (DOM only)",
+    "status": "PASS"
+  },
+  {
+    "name": "demo exported slide-intro renderer (DOM only)",
+    "status": "PASS"
+  },
+  {
+    "name": "demo exported callout renderer (DOM only)",
+    "status": "PASS"
+  },
+  {
+    "name": "demo exported markup renderer (DOM only)",
+    "status": "PASS"
+  },
+  {
+    "name": "demo exported cover renderer (DOM only)",
+    "status": "PASS"
+  },
+  {
+    "name": "demo exported blur renderer (DOM only)",
+    "status": "PASS"
+  },
+  {
+    "name": "demo exported magnifier renderer (DOM only)",
+    "status": "PASS"
+  },
+  {
+    "name": "demo exported clip-frame renderer (DOM only)",
+    "status": "PASS"
+  },
+  {
+    "name": "demo exported link renderer (DOM only)",
+    "status": "PASS"
+  },
+  {
+    "name": "demo exported video renderer (DOM only)",
+    "status": "PASS"
+  },
+  {
+    "name": "demo exported audio renderer (DOM only)",
+    "status": "PASS"
+  },
+  {
+    "name": "tutorial HTML export construction (font readiness/layout mocked)",
+    "status": "PASS"
+  },
+  {
+    "name": "tutorial exported image renderer (DOM only)",
+    "status": "PASS"
+  },
+  {
+    "name": "tutorial exported gif renderer (DOM only)",
+    "status": "PASS"
+  },
+  {
+    "name": "tutorial exported shape renderer (DOM only)",
+    "status": "PASS"
+  },
+  {
+    "name": "tutorial exported text renderer (DOM only)",
+    "status": "PASS"
+  },
+  {
+    "name": "tutorial exported slide-intro renderer (DOM only)",
+    "status": "PASS"
+  },
+  {
+    "name": "tutorial exported callout renderer (DOM only)",
+    "status": "PASS"
+  },
+  {
+    "name": "tutorial exported markup renderer (DOM only)",
+    "status": "PASS"
+  },
+  {
+    "name": "tutorial exported cover renderer (DOM only)",
+    "status": "PASS"
+  },
+  {
+    "name": "tutorial exported blur renderer (DOM only)",
+    "status": "PASS"
+  },
+  {
+    "name": "tutorial exported magnifier renderer (DOM only)",
+    "status": "PASS"
+  },
+  {
+    "name": "tutorial exported clip-frame renderer (DOM only)",
+    "status": "PASS"
+  },
+  {
+    "name": "tutorial exported link renderer (DOM only)",
+    "status": "PASS"
+  },
+  {
+    "name": "tutorial exported video renderer (DOM only)",
+    "status": "PASS"
+  },
+  {
+    "name": "tutorial exported audio renderer (DOM only)",
+    "status": "PASS"
+  }
+]

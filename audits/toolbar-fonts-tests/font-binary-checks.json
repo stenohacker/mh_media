@@ -1,0 +1,32 @@
+[
+  {
+    "font": "hanken-grotesk-latin.woff2",
+    "bytes": 34664,
+    "sha256": "1f21c6eaa0000f3329cfcfac966b43d5bebf5aa610303e33294ac31bc6f4bb59",
+    "matchesEmbedded": true
+  },
+  {
+    "font": "hanken-grotesk-latin-italic.woff2",
+    "bytes": 35684,
+    "sha256": "99721f51a4d5925d9d08021fb5575ef017fa18a40578ca897485808ce68bc19a",
+    "matchesEmbedded": true
+  },
+  {
+    "font": "Impact_Label.ttf",
+    "bytes": 139168,
+    "sha256": "3b133458aa296e170d51aa1724c55ff52513456d4b3bf93cc119f19fe7c06cc0",
+    "matchesEmbedded": true
+  },
+  {
+    "font": "Impact_Label_Reversed.ttf",
+    "bytes": 130584,
+    "sha256": "a902e1c04839e714693b2c678f72b46da781fb86a9a64e23fe2f16f977ba6ae3",
+    "matchesEmbedded": true
+  },
+  {
+    "font": "Shadows_Into_Light_Two.ttf",
+    "bytes": 35440,
+    "sha256": "cc53d86f786f4f5433851d0e60c7c76f1ca2054b2de50cf76c3ef900100162e9",
+    "matchesEmbedded": true
+  }
+]

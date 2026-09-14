@@ -1,0 +1,42 @@
+[
+  {
+    "name": "Delete middle hotspot closes list gap and renumbers; remaining coordinates unchanged",
+    "result": "PASS"
+  },
+  {
+    "name": "Deleting hotspot preserves custom title and detaches associated annotation",
+    "result": "PASS"
+  },
+  {
+    "name": "Delete only targets primary selected object, even with multiple selected",
+    "result": "PASS"
+  },
+  {
+    "name": "Deleting clipping frame releases and preserves members",
+    "result": "PASS"
+  },
+  {
+    "name": "Hotspot down swaps title/body; marker identity and geometry remain in numbered slots",
+    "result": "PASS"
+  },
+  {
+    "name": "Single-object center uses slide center",
+    "result": "PASS"
+  },
+  {
+    "name": "Multi-object center uses selection bounds, not slide center",
+    "result": "PASS"
+  },
+  {
+    "name": "Locked selections are excluded from alignment",
+    "result": "PASS"
+  },
+  {
+    "name": "Lock retains earlier associated annotation as later hotspot activates",
+    "result": "PASS"
+  },
+  {
+    "name": "Confirmed plain-filled-square color mismatch",
+    "result": "PASS"
+  }
+]

@@ -142,6 +142,8 @@ OBJECTS,WAND-MINT,https://iridescent-wisp-57bcb1.netlify.app/images/tutorial-ann
 OBJECTS,WANT-BLACK,https://iridescent-wisp-57bcb1.netlify.app/images/tutorial-annotations/objects/want-black.png
 OBJECTS,WARNING-RECTANGLE,https://iridescent-wisp-57bcb1.netlify.app/images/tutorial-annotations/objects/warning-rectangle.png
 OBJECTS,X,https://iridescent-wisp-57bcb1.netlify.app/images/tutorial-annotations/objects/x.png
+OTHER,GROUP 40635 — DIE CUT — DIE CUT,https://iridescent-wisp-57bcb1.netlify.app/images/tutorial-annotations/Group%2040635%20%E2%80%94%20Die%20Cut%20%E2%80%94%20Die%20Cut.png
+OTHER,GROUP 40635 — DIE CUT — DIE CUT-1,https://iridescent-wisp-57bcb1.netlify.app/images/tutorial-annotations/Group%2040635%20%E2%80%94%20Die%20Cut%20%E2%80%94%20Die%20Cut-1.png
 OTHER,LEFT,https://iridescent-wisp-57bcb1.netlify.app/images/tutorial-annotations/left.png
 OTHER,LOGO,https://iridescent-wisp-57bcb1.netlify.app/images/tutorial-annotations/logo.png
 OTHER,RIGHT,https://iridescent-wisp-57bcb1.netlify.app/images/tutorial-annotations/right.png
@@ -174,8 +176,10 @@ SHAPES-TEXT,TAPE-LONGER-WHITE,https://iridescent-wisp-57bcb1.netlify.app/images/
 SHAPES-TEXT,TAPE-WHITE,https://iridescent-wisp-57bcb1.netlify.app/images/tutorial-annotations/shapes-text/tape-white.png
 SHAPES-TEXT,TEXTBOXCHAT,https://iridescent-wisp-57bcb1.netlify.app/images/tutorial-annotations/shapes-text/textboxchat.png
 SHAPES-TEXT,WHITE-RECTANGLE,https://iridescent-wisp-57bcb1.netlify.app/images/tutorial-annotations/shapes-text/white-rectangle.png
+SLIDE-BACKGROUNDS,0913BACKGROUND,https://iridescent-wisp-57bcb1.netlify.app/images/tutorial-annotations/slide-backgrounds/0913background.png
 SLIDE-BACKGROUNDS,BLACK-FRAME-LARGE-SLIDE,https://iridescent-wisp-57bcb1.netlify.app/images/tutorial-annotations/slide-backgrounds/black-frame-large-slide.png
 SLIDE-BACKGROUNDS,BLACK-FRAME-REGULAR-SLIDE,https://iridescent-wisp-57bcb1.netlify.app/images/tutorial-annotations/slide-backgrounds/black-frame-regular-slide.png
+SLIDE-BACKGROUNDS,FINAL-SLIDE-DEFAULT-BACKGROUND,https://iridescent-wisp-57bcb1.netlify.app/images/tutorial-annotations/slide-backgrounds/final-slide-default-background.png
 SLIDE-BACKGROUNDS,NEWDEFAULT,https://iridescent-wisp-57bcb1.netlify.app/images/tutorial-annotations/slide-backgrounds/newdefault.png
 SLIDE-BACKGROUNDS,PURPLE,https://iridescent-wisp-57bcb1.netlify.app/images/tutorial-annotations/slide-backgrounds/purple.png
 SLIDE-BACKGROUNDS,SCREEN-BACKGROUND-LARGESCREEN,https://iridescent-wisp-57bcb1.netlify.app/images/tutorial-annotations/slide-backgrounds/screen-background-largescreen.png
