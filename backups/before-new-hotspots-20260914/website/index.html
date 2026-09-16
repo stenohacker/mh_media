@@ -1,0 +1,2269 @@
+
+<!DOCTYPE html>
+
+<html lang="en">
+<head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<meta content="light" name="color-scheme"/>
+<title>Reporter Sidekick | Tamara Chapman</title>
+<!-- Local interface font; the shared stylesheet defines the font face and design tokens. -->
+<link as="font" crossorigin="" href="/fonts/hanken-grotesk-latin.woff2" rel="preload" type="font/woff2"/>
+<!-- Tailwind CDN (required because this page uses Tailwind utility classes) -->
+<script>
+      // Configure Tailwind before loading the CDN script.
+      window.tailwind = window.tailwind || {};
+      window.tailwind.config = {
+        theme: {
+          extend: {
+            fontFamily: {
+              sans: ["Hanken Grotesk", "ui-sans-serif", "-apple-system", "BlinkMacSystemFont", "Segoe UI", "Arial", "sans-serif"],
+              mono: ["Hanken Grotesk", "ui-sans-serif", "-apple-system", "BlinkMacSystemFont", "Segoe UI", "Arial", "sans-serif"],
+            },
+          },
+        },
+      };
+    </script>
+<script src="https://cdn.tailwindcss.com"></script>
+<style>
+      .site-header-logo {
+        display: block !important;
+        width: clamp(10rem, 28vw, 18rem) !important;
+        height: auto !important;
+        max-height: 4.6rem !important;
+        object-fit: contain !important;
+      }
+
+      header nav {
+        min-width: 0;
+      }
+      @media (max-width: 1024px) {
+        header .site-header-contact {
+          height: 2.75rem !important;
+          min-height: 2.75rem !important;
+          padding-left: 0.85rem !important;
+          padding-right: 0.85rem !important;
+          font-size: 0.82rem !important;
+          letter-spacing: 0.04em !important;
+        }
+      }
+
+      @media (max-width: 640px) {
+        header .max-w-7xl {
+          padding: 0.7rem 1rem !important;
+        }
+
+        header nav {
+          flex-direction: column !important;
+          align-items: center !important;
+          justify-content: center !important;
+          gap: 0.55rem !important;
+        }
+
+        header nav > div:first-child {
+          width: 100% !important;
+          justify-content: center !important;
+        }
+
+        .site-header-logo {
+          width: clamp(12rem, 72vw, 17rem) !important;
+          max-height: 4.2rem !important;
+        }
+
+        header .site-header-contact {
+          height: 2.35rem !important;
+          min-height: 2.35rem !important;
+          padding-left: 0.55rem !important;
+          padding-right: 0.55rem !important;
+          font-size: 0.72rem !important;
+          letter-spacing: 0.03em !important;
+        }
+      }
+
+      .site-menu-toggle {
+        display: none;
+        width: 2.45rem;
+        height: 2.45rem;
+        align-items: center;
+        justify-content: center;
+        flex-direction: column;
+        gap: 0.28rem;
+        border: 0;
+        background: transparent;
+        color: #fff;
+        padding: 0;
+        margin-left: auto;
+      }
+
+      .site-menu-toggle span {
+        display: block;
+        width: 1.15rem;
+        height: 2px;
+        background: currentColor;
+      }
+
+      .site-mobile-panel {
+        display: none;
+      }
+
+      @media (max-width: 1024px) {
+        .nav-dropdown-menu {
+          min-width: 17.5rem !important;
+        }
+
+        .nav-dropdown-menu .relative.border-4 {
+          padding: 0.55rem !important;
+        }
+
+        .nav-dropdown-menu a {
+          padding: 0.62rem 0.8rem !important;
+          font-size: 0.74rem !important;
+          letter-spacing: 0.045em !important;
+          box-shadow: 3px 3px 0 0 #000 !important;
+        }
+      }
+
+      @media (max-width: 1180px) {
+        header nav {
+          position: relative;
+          flex-direction: row !important;
+          flex-wrap: nowrap !important;
+          align-items: center !important;
+          justify-content: space-between !important;
+        }
+
+        header nav > div:first-child {
+          width: auto !important;
+          flex: 1 1 auto !important;
+          justify-content: flex-start !important;
+        }
+
+        header .site-desktop-nav,
+        header .site-header-contact {
+          display: none !important;
+        }
+
+        .site-menu-toggle {
+          display: inline-flex !important;
+        }
+
+        .site-mobile-panel:not([hidden]) {
+          display: grid;
+          gap: 0.45rem;
+          position: absolute;
+          top: calc(100% + 0.7rem);
+          right: 0;
+          width: min(19rem, calc(100vw - 2rem));
+          border: 4px solid #000;
+          background: #fff;
+          box-shadow: 8px 8px 0 0 #000;
+          padding: 0.55rem;
+          z-index: 70;
+          max-height: calc(100vh - 7rem);
+          overflow-y: auto;
+        }
+
+        .site-mobile-panel a,
+        .site-mobile-panel button {
+          display: block;
+          width: 100%;
+          border: 2px solid #000;
+          background: #fff;
+          color: #000;
+          box-shadow: 3px 3px 0 0 #000;
+          padding: 0.72rem 0.8rem;
+          font-size: 0.78rem;
+          font-weight: 700;
+          letter-spacing: 0.045em;
+          line-height: 1.1;
+          text-align: left;
+          text-transform: uppercase;
+        }
+
+        .site-mobile-panel a:hover,
+        .site-mobile-panel button:hover,
+        .site-mobile-panel a:focus-visible,
+        .site-mobile-panel button:focus-visible {
+          background: #f1f332;
+        }
+
+        .site-mobile-tool-links {
+          display: grid;
+          gap: 0.4rem;
+          padding: 0.15rem 0 0.25rem 0.55rem;
+        }
+
+        .site-mobile-tool-links[hidden] {
+          display: none;
+        }
+
+        .site-mobile-tool-links a {
+          min-height: 2.8rem;
+          font-size: 0.72rem;
+          box-shadow: 3px 3px 0 var(--quick-color, #24a094);
+        }
+      }
+
+      html {
+        scroll-behavior: smooth;
+      }
+
+      body {
+        font-family: "Hanken Grotesk", ui-sans-serif, -apple-system, BlinkMacSystemFont, "Segoe UI", Arial, sans-serif;
+        font-weight: 400;
+        font-size: 1.04rem;
+        font-feature-settings: "cv05" 1, "cv10" 1, "cv11" 1;
+      }
+
+      body,
+      button,
+      input,
+      textarea,
+      select,
+      .font-mono,
+      .font-sans {
+        font-family: "Hanken Grotesk", ui-sans-serif, -apple-system, BlinkMacSystemFont, "Segoe UI", Arial, sans-serif !important;
+        font-feature-settings: "cv05" 1, "cv10" 1, "cv11" 1;
+      }
+
+      #about h2,
+      footer h3,
+      [data-contact-modal] h2 {
+        font-weight: 700 !important;
+        letter-spacing: 0.04em !important;
+      }
+
+      #about h3,
+      #about h4,
+      [data-contact-modal] label {
+        font-weight: 600 !important;
+      }
+
+      #about p,
+      footer p,
+      footer li,
+      [data-contact-modal] p,
+      [data-contact-modal] textarea,
+      [data-contact-modal] input {
+        font-weight: 400;
+      }
+
+
+      /* Header dropdown (instructions) */
+      .nav-dropdown-menu {
+        display: none;
+        position: absolute;
+        top: calc(100% + 16px);
+        left: 50%;
+        transform: translateX(-50%);
+        width: max-content;
+        min-width: 320px;
+        max-width: calc(100vw - 2rem);
+        z-index: 50;
+      }
+
+      .nav-dropdown:hover .nav-dropdown-menu,
+      .nav-dropdown[data-open="true"] .nav-dropdown-menu {
+        display: block;
+        animation: navDropdownReveal 180ms cubic-bezier(0.16, 1, 0.3, 1) both;
+      }
+
+      .nav-dropdown-menu::before {
+        content: "";
+        position: absolute;
+        left: 0;
+        right: 0;
+        top: -16px;
+        height: 16px;
+      }
+
+      .nav-dropdown-menu a {
+        white-space: nowrap;
+      }
+
+      @keyframes navDropdownReveal {
+        from {
+          opacity: 0;
+          transform: translate(-50%, -0.7rem);
+        }
+        to {
+          opacity: 1;
+          transform: translate(-50%, 0);
+        }
+      }
+
+      .tool-links-dropdown .nav-dropdown-menu {
+        right: 0;
+        left: auto;
+        transform: none;
+        width: min(48rem, calc(100vw - 4rem));
+      }
+
+      .tool-links-dropdown:hover .nav-dropdown-menu,
+      .tool-links-dropdown[data-open="true"] .nav-dropdown-menu {
+        animation-name: toolLinksDropdownReveal;
+      }
+
+      @keyframes toolLinksDropdownReveal {
+        from {
+          opacity: 0;
+          transform: translateY(-0.7rem);
+        }
+        to {
+          opacity: 1;
+          transform: translateY(0);
+        }
+      }
+
+      .tool-links-menu-grid {
+        display: grid;
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+        gap: 0.75rem;
+      }
+
+      .nav-dropdown--disabled {
+        visibility: hidden;
+        pointer-events: none;
+      }
+
+      .neo-offset-shadow {
+        position: absolute;
+        inset: 0;
+        transform: translate(4px, 4px);
+        background: #000;
+      }
+
+      .dropdown-link-teal:hover {
+        background: #24a094 !important;
+        color: #000 !important;
+      }
+
+      /* Contact modal visibility helpers */
+      [data-contact-modal][data-open="false"],
+      [data-contact-overlay][data-open="false"] {
+        display: none;
+      }
+
+      /* =========================
+         Contact form TOPIC dropdown
+         - Custom dropdown to allow:
+           1) left pink stripe in options list
+           2) no pink hover highlight (use subtle hover like Customizer Q1)
+         ========================= */
+      .cselect-native {
+        position: absolute !important;
+        width: 1px !important;
+        height: 1px !important;
+        padding: 0 !important;
+        margin: -1px !important;
+        overflow: hidden !important;
+        clip: rect(0, 0, 0, 0) !important;
+        border: 0 !important;
+      }
+
+      .cselect {
+        position: relative;
+        width: 100%;
+        z-index: 1; /* sit above neo-offset-shadow */
+      }
+
+      .cselect__btn {
+        width: 100%;
+        height: 3rem; /* matches h-12 */
+        border: 4px solid #000;
+        border-radius: 0;
+        background: #fff;
+        color: #000;
+        padding: 0 2.75rem 0 1rem;
+        font: inherit;
+        cursor: pointer;
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        gap: 0.75rem;
+      }
+
+      .cselect__value {
+        font-family: "Hanken Grotesk", ui-sans-serif, -apple-system, BlinkMacSystemFont, "Segoe UI", Arial, sans-serif;
+        text-transform: uppercase;
+        letter-spacing: 0.06em;
+        font-weight: 600;
+        font-size: 1rem;
+        white-space: nowrap;
+        overflow: hidden;
+        text-overflow: ellipsis;
+      }
+
+      .cselect__caret {
+        width: 18px;
+        height: 18px;
+        flex: 0 0 auto;
+        opacity: 0.9;
+      }
+
+      .cselect__menu {
+        position: absolute;
+        top: calc(100% + 6px);
+        left: 0;
+        right: 0;
+        z-index: 9999;
+        background: #f3f4f6;
+        border: 4px solid #000;
+        box-shadow: 8px 8px 0px 0px #000;
+        max-height: 320px;
+        overflow: auto;
+        padding: 0;
+        display: none;
+      }
+
+      .cselect[data-open="true"] .cselect__menu {
+        display: block;
+      }
+
+      .cselect__opt {
+        position: relative;
+        display: grid;
+        grid-template-columns: 22px 1fr;
+        align-items: center;
+        gap: 8px;
+        padding: 6px 12px 6px 22px; /* room for stripe */
+        cursor: pointer;
+        user-select: none;
+        font-size: 0.95rem;
+        color: #111;
+      }
+
+      /* Pink stripe on left (like Customizer Q1) */
+      .cselect--stripe .cselect__opt::before {
+        content: "";
+        position: absolute;
+        left: 0;
+        top: 0;
+        bottom: 0;
+        width: 10px;
+        background: #ff90e7;
+      }
+
+      /* No pink hover highlight — keep it subtle */
+      .cselect__opt:hover {
+        background: rgba(255, 255, 255, 0.65);
+      }
+
+      .cselect__check {
+        width: 22px;
+        text-align: center;
+        opacity: 0;
+        font-weight: 700;
+      }
+      .cselect__opt[aria-selected="true"] .cselect__check {
+        opacity: 1;
+      }
+
+      .cselect__opt[data-placeholder="true"] {
+        color: rgba(0, 0, 0, 0.55);
+      }
+
+      .home-page {
+        --site-shell-max: 86rem;
+        --home-content-max: 66.25rem;
+        background: #fff;
+      }
+
+      .home-page main .max-w-6xl,
+      .home-page main .max-w-7xl {
+        max-width: var(--home-content-max) !important;
+      }
+
+      .home-page .tool-spotlight {
+        padding: clamp(2.75rem, 5vw, 4.75rem) 1.5rem;
+        background: #fff;
+        border-top: 4px solid #000;
+      }
+
+      .home-page .tool-spotlight__shell {
+        width: min(100%, var(--home-content-max));
+        margin: 0 auto;
+      }
+
+      .home-page .tool-spotlight__header {
+        display: flex;
+        align-items: center;
+        gap: clamp(0.8rem, 2vw, 1.25rem);
+        min-height: 5.25rem;
+        margin-bottom: 1rem;
+        border: 4px solid #000;
+        padding: 0.75rem 1rem;
+        background: #000;
+        color: #fff;
+        box-shadow: none;
+      }
+
+      .home-page .tool-spotlight__eyebrow,
+      .home-page .homepage-intro__eyebrow {
+        width: fit-content;
+        margin: 0 0 0.65rem;
+        padding: 0.35rem 0.6rem;
+        background: #000;
+        color: #fff;
+        font-size: 0.75rem;
+        font-weight: 800;
+        line-height: 1.2;
+        letter-spacing: 0.08em;
+        text-transform: uppercase;
+      }
+
+      .home-page .tool-spotlight__header .tool-spotlight__eyebrow {
+        flex: 0 0 auto;
+        margin: 0;
+        background: #fff;
+        color: #000;
+      }
+
+      .home-page .tool-spotlight__heading {
+        margin: 0;
+        font-size: clamp(1.6rem, 3vw, 2.25rem);
+        font-weight: 800;
+        line-height: 1;
+        letter-spacing: 0.05em;
+        text-transform: uppercase;
+      }
+
+      .home-page .tool-spotlight__card {
+        display: grid;
+        grid-template-columns: minmax(0, 1fr) minmax(0, 1fr);
+        align-items: stretch;
+        height: 23.5rem;
+        min-height: 23.5rem;
+        max-height: 23.5rem;
+        border: 4px solid #000;
+        background: #000;
+        color: #fff;
+        box-shadow: none;
+        overflow: hidden;
+        perspective: 1200px;
+      }
+
+      .home-page .tool-spotlight__media {
+        display: grid;
+        place-items: center;
+        min-width: 0;
+        min-height: 0;
+        height: 100%;
+        aspect-ratio: auto;
+        padding: 0;
+        background: #f1f332;
+        border-right: 4px solid #000;
+        overflow: hidden;
+      }
+
+      .home-page .tool-spotlight__media img {
+        display: block;
+        width: 100%;
+        height: 100%;
+        max-height: none;
+        border: 0;
+        padding: 0;
+        background: #f1f332;
+        object-fit: var(--spotlight-image-fit, contain);
+        object-position: center bottom;
+        box-shadow: none;
+        transform: translate(var(--spotlight-image-x, 0), var(--spotlight-image-y, 0)) scale(var(--spotlight-image-scale, 1));
+        transform-origin: center bottom;
+      }
+
+      .home-page .tool-spotlight__media img[hidden] {
+        display: none;
+      }
+
+      .home-page .tool-spotlight__placeholder {
+        display: grid;
+        width: 100%;
+        height: 100%;
+        min-height: 0;
+        place-content: center;
+        gap: 0.9rem;
+        border: 0;
+        padding: clamp(1.25rem, 3vw, 2.25rem);
+        background: #fff;
+        box-shadow: none;
+        color: #000;
+        text-align: center;
+      }
+
+      .home-page .tool-spotlight__placeholder[hidden] {
+        display: none;
+      }
+
+      .home-page .tool-spotlight__placeholder span {
+        width: fit-content;
+        margin: 0 auto;
+        padding: 0.35rem 0.55rem;
+        background: #000;
+        color: #fff;
+        font-size: 0.7rem;
+        font-weight: 800;
+        letter-spacing: 0.08em;
+        text-transform: uppercase;
+      }
+
+      .home-page .tool-spotlight__placeholder strong {
+        font-size: clamp(1.35rem, 3vw, 2rem);
+        line-height: 1.1;
+        text-transform: uppercase;
+      }
+
+      .home-page .tool-spotlight__copy {
+        display: flex;
+        flex-direction: column;
+        justify-content: flex-start;
+        align-items: flex-start;
+        gap: 0.9rem;
+        height: 100%;
+        padding: clamp(1.25rem, 3vw, 2rem);
+        min-width: 0;
+        min-height: 0;
+        overflow: hidden;
+        background: #000;
+        color: #fff;
+      }
+
+      .home-page .tool-spotlight__title {
+        margin: 0;
+        max-width: 16ch;
+        color: #fff;
+        font-size: clamp(1.75rem, 3vw, 2.65rem);
+        font-weight: 800;
+        line-height: 1.04;
+        letter-spacing: 0.025em;
+        text-transform: uppercase;
+      }
+
+      .home-page .tool-spotlight__description {
+        margin: 0;
+        max-width: 38rem;
+        color: #fff;
+        font-size: clamp(0.95rem, 1.4vw, 1.08rem);
+        font-weight: 600;
+        line-height: 1.55;
+      }
+
+      .home-page .tool-spotlight__badges {
+        display: flex;
+        flex-wrap: nowrap;
+        align-items: center;
+        gap: 0.5rem;
+        max-width: 100%;
+      }
+
+      .home-page .tool-spotlight__badges[hidden] {
+        display: none;
+      }
+
+      .home-page .tool-spotlight__badge {
+        display: inline-flex;
+        align-items: center;
+        justify-content: center;
+        border: 2px solid var(--badge-color);
+        padding: 0.3rem 0.48rem;
+        background: #000;
+        color: var(--badge-color);
+        font-size: 0.66rem;
+        font-weight: 800;
+        line-height: 1;
+        letter-spacing: 0.08em;
+        text-transform: uppercase;
+        white-space: nowrap;
+      }
+
+      .home-page .tool-spotlight__card.is-flipping-forward .tool-spotlight__media,
+      .home-page .tool-spotlight__card.is-flipping-forward .tool-spotlight__copy {
+        animation: spotlightFlipForward 280ms ease-out both;
+      }
+
+      .home-page .tool-spotlight__card.is-flipping-backward .tool-spotlight__media,
+      .home-page .tool-spotlight__card.is-flipping-backward .tool-spotlight__copy {
+        animation: spotlightFlipBackward 280ms ease-out both;
+      }
+
+      .home-page .tool-spotlight__card.is-flipping-forward .tool-spotlight__copy,
+      .home-page .tool-spotlight__card.is-flipping-backward .tool-spotlight__copy {
+        animation-delay: 25ms;
+      }
+
+      @keyframes spotlightFlipForward {
+        0% { opacity: 0; transform: translateX(0.65rem); }
+        100% { opacity: 1; transform: translateX(0); }
+      }
+
+      @keyframes spotlightFlipBackward {
+        0% { opacity: 0; transform: translateX(-0.65rem); }
+        100% { opacity: 1; transform: translateX(0); }
+      }
+
+      .home-page .homepage-intro {
+        padding: 8.5rem 1.5rem clamp(2.75rem, 5vw, 4.5rem);
+        background: #fff;
+      }
+
+      .home-page .homepage-intro__shell {
+        width: min(100%, var(--home-content-max));
+        margin: 0 auto;
+      }
+
+      .home-page .homepage-intro__box {
+        display: grid;
+        grid-template-columns: minmax(0, 1fr) minmax(13rem, 15.25rem);
+        align-items: center;
+        gap: clamp(2rem, 5vw, 4.5rem);
+        border: 4px solid #000;
+        padding: clamp(1.5rem, 3.5vw, 2.5rem) clamp(1.5rem, 4.5vw, 3rem);
+        background: #fff;
+        box-shadow: none;
+      }
+
+      .home-page .homepage-intro__box h1 {
+        width: fit-content;
+        margin: 0 0 clamp(1.4rem, 3vw, 2rem);
+        border-bottom: 4px solid #000;
+        padding-bottom: 0.4rem;
+        color: #000;
+        font-size: clamp(1.65rem, 3vw, 2.15rem);
+        font-weight: 800;
+        letter-spacing: 0.045em;
+        line-height: 1.15;
+        text-transform: uppercase;
+      }
+
+      .home-page .homepage-intro__box h1 span {
+        display: block;
+      }
+
+      .home-page .homepage-intro__copy > p {
+        margin: 0;
+        font-size: clamp(0.91rem, 1.35vw, 1.02rem);
+        line-height: 1.55;
+      }
+
+      .home-page .homepage-intro__learn {
+        margin-top: 0.15rem !important;
+      }
+
+      .home-page .homepage-intro__learn a {
+        color: inherit;
+        font-weight: 800;
+        text-decoration-thickness: 2px;
+        text-underline-offset: 0.15em;
+      }
+
+      .home-page .homepage-intro__portrait {
+        display: grid;
+        place-items: end center;
+        width: 100%;
+        aspect-ratio: 5140 / 6003;
+      }
+
+      .home-page .homepage-intro__portrait img {
+        display: block;
+        width: 100%;
+        height: 100%;
+        object-fit: contain;
+        object-position: center;
+      }
+
+      .home-page .homepage-note-toggle {
+        display: inline-flex;
+        align-items: center;
+        justify-content: center;
+        gap: 0.7rem;
+        min-height: 3.2rem;
+        margin-top: clamp(1.25rem, 3vw, 1.75rem);
+        border: 3px solid #000;
+        padding: 0.58rem 0.7rem 0.58rem 0.8rem;
+        background: #f1f332;
+        color: #000;
+        box-shadow: 5px 5px 0 #000;
+        font: inherit;
+        font-size: clamp(0.78rem, 1.25vw, 0.92rem);
+        font-weight: 800;
+        letter-spacing: 0.055em;
+        line-height: 1;
+        text-transform: uppercase;
+        cursor: pointer;
+        transition: background-color 160ms ease, box-shadow 160ms ease, transform 160ms ease;
+      }
+
+      .home-page .homepage-note-toggle:hover,
+      .home-page .homepage-note-toggle:focus-visible {
+        background: #ff90e7;
+        box-shadow: 2px 2px 0 #000;
+        transform: translate(3px, 3px);
+      }
+
+      .home-page .homepage-note-toggle:focus-visible {
+        outline: 3px solid #000;
+        outline-offset: 3px;
+      }
+
+      .home-page .homepage-note-toggle__icon,
+      .home-page .homepage-note-toggle__arrow {
+        display: grid;
+        place-items: center;
+        flex: 0 0 auto;
+      }
+
+      .home-page .homepage-note-toggle__icon {
+        width: 1.75rem;
+        height: 1.75rem;
+        border: 2px solid #000;
+        background: #fff;
+        font-size: 1rem;
+        line-height: 1;
+      }
+
+      .home-page .homepage-note-toggle__arrow {
+        width: 1.7rem;
+        height: 1.7rem;
+        border-left: 2px solid #000;
+        font-size: 1.15rem;
+        transition: transform 320ms cubic-bezier(0.2, 0.8, 0.2, 1);
+      }
+
+      .home-page .homepage-note-toggle[aria-expanded="true"] .homepage-note-toggle__arrow {
+        transform: rotate(90deg);
+      }
+
+      .home-page .homepage-note {
+        margin: clamp(1.6rem, 4vw, 2.5rem) clamp(0rem, 2vw, 1rem) 0;
+        color: #000;
+        perspective: 1200px;
+      }
+
+      .home-page .homepage-note[hidden] {
+        display: none;
+      }
+
+      .home-page .homepage-note.is-opening .homepage-note__paper {
+        animation: homepageNoteCornerUnfold 620ms cubic-bezier(0.16, 1, 0.3, 1) both;
+      }
+
+      .home-page .homepage-note.is-opening {
+        transition: height 620ms cubic-bezier(0.16, 1, 0.3, 1);
+      }
+
+      .home-page .homepage-note.is-closing .homepage-note__paper {
+        animation: homepageNoteCornerFold 560ms cubic-bezier(0.65, 0, 0.35, 1) both;
+      }
+
+      .home-page .homepage-note.is-closing {
+        margin-top: 0;
+        overflow: hidden;
+        transition:
+          height 320ms cubic-bezier(0.65, 0, 0.35, 1) 240ms,
+          margin-top 320ms cubic-bezier(0.65, 0, 0.35, 1) 240ms;
+      }
+
+      .home-page .homepage-note__paper {
+        position: relative;
+        border: 4px solid #000;
+        padding: clamp(2.45rem, 4.5vw, 3.2rem) clamp(1.35rem, 5vw, 4rem) clamp(1.15rem, 2.5vw, 1.65rem);
+        overflow: visible;
+        background:
+          linear-gradient(90deg, transparent 0 3rem, rgba(255, 144, 231, 0.32) 3rem calc(3rem + 2px), transparent calc(3rem + 2px)),
+          repeating-linear-gradient(0deg, #fffdf2 0, #fffdf2 2rem, rgba(36, 160, 148, 0.12) 2rem calc(2rem + 1px));
+        box-shadow: 12px 12px 0 #000;
+        transform: rotate(-0.35deg);
+        transform-origin: top center;
+      }
+
+      .home-page .homepage-note__tape {
+        position: absolute;
+        top: -1.15rem;
+        left: 50%;
+        width: clamp(7.5rem, 22vw, 11rem);
+        height: 2.25rem;
+        border: 3px solid #000;
+        background: rgba(241, 243, 50, 0.92);
+        transform: translateX(-50%) rotate(1.5deg);
+        box-shadow: 3px 3px 0 rgba(0, 0, 0, 0.22);
+      }
+
+      .home-page .homepage-note__close {
+        position: absolute;
+        z-index: 2;
+        top: 0.8rem;
+        right: 0.8rem;
+        display: inline-flex;
+        align-items: center;
+        gap: 0.45rem;
+        min-height: 2.45rem;
+        border: 3px solid #000;
+        padding: 0.35rem 0.55rem;
+        background: #fff;
+        color: #000;
+        box-shadow: 3px 3px 0 #000;
+        font: inherit;
+        font-size: 0.76rem;
+        font-weight: 800;
+        letter-spacing: 0.055em;
+        line-height: 1;
+        text-transform: uppercase;
+        cursor: pointer;
+        transition: background-color 150ms ease, box-shadow 150ms ease, transform 150ms ease;
+      }
+
+      .home-page .homepage-note__close-mark {
+        font-size: 1.2rem;
+        line-height: 0.75;
+      }
+
+      .home-page .homepage-note__close:hover,
+      .home-page .homepage-note__close:focus-visible,
+      .home-page .homepage-note__fold:hover,
+      .home-page .homepage-note__fold:focus-visible {
+        background: #ff90e7;
+        box-shadow: 1px 1px 0 #000;
+        transform: translate(2px, 2px);
+      }
+
+      .home-page .homepage-note__close:focus-visible,
+      .home-page .homepage-note__fold:focus-visible {
+        outline: 3px solid #000;
+        outline-offset: 3px;
+      }
+
+      .home-page .homepage-note__meta {
+        display: flex;
+        flex-wrap: wrap;
+        align-items: center;
+        gap: 0.65rem;
+        margin-bottom: clamp(0.65rem, 1.5vw, 0.9rem);
+      }
+
+      .home-page .homepage-note__stamp {
+        display: inline-block;
+        border: 3px solid #000;
+        padding: 0.38rem 0.55rem;
+        background: #24a094;
+        font-size: clamp(0.7rem, 1.2vw, 0.82rem);
+        font-weight: 800;
+        letter-spacing: 0.1em;
+        line-height: 1;
+        text-transform: uppercase;
+        transform: rotate(-1.75deg);
+      }
+
+      .home-page .homepage-note h2 {
+        width: fit-content;
+        margin: 0 0 clamp(0.8rem, 1.8vw, 1.05rem);
+        background: linear-gradient(transparent 58%, #f1f332 58% 94%, transparent 94%);
+        font-size: clamp(1.55rem, 4vw, 2.55rem);
+        font-weight: 800;
+        letter-spacing: 0.015em;
+        line-height: 1.08;
+      }
+
+      .home-page .homepage-note p {
+        margin: 0 0 0.8rem;
+        max-width: 54rem;
+        font-size: clamp(0.92rem, 1.45vw, 1.08rem);
+        line-height: 1.7;
+      }
+
+      .home-page .homepage-note__lead {
+        font-weight: 650;
+      }
+
+      .home-page .homepage-note__promise {
+        margin: clamp(0.75rem, 1.8vw, 1rem) 0;
+        border-left: 8px solid #ff90e7;
+        padding: 0.75rem 0.9rem;
+        background: rgba(255, 255, 255, 0.72);
+      }
+
+      .home-page .homepage-note__promise p {
+        margin: 0;
+      }
+
+      .home-page .homepage-note__signature {
+        margin: clamp(0.7rem, 1.6vw, 0.9rem) 0 0.65rem !important;
+        font-family: "Bradley Hand", "Segoe Print", "Comic Sans MS", cursive;
+        font-size: clamp(1.7rem, 4vw, 2.5rem) !important;
+        font-weight: 700;
+        line-height: 1 !important;
+        transform: rotate(-2deg);
+      }
+
+      .home-page .homepage-note__fold {
+        display: inline-flex;
+        align-items: center;
+        justify-content: center;
+        min-height: 2.8rem;
+        border: 3px solid #000;
+        padding: 0.55rem 0.75rem;
+        background: #f1f332;
+        color: #000;
+        box-shadow: 3px 3px 0 #000;
+        font: inherit;
+        font-size: 0.78rem;
+        font-weight: 800;
+        letter-spacing: 0.06em;
+        text-transform: uppercase;
+        cursor: pointer;
+        transition: background-color 150ms ease, box-shadow 150ms ease, transform 150ms ease;
+      }
+
+      @keyframes homepageNoteCornerUnfold {
+        0% {
+          opacity: 0;
+          clip-path: polygon(18% 0, 82% 0, 100% 18%, 100% 82%, 82% 100%, 18% 100%, 0 82%, 0 18%);
+          transform: translateY(-0.8rem) scale(0.94) rotate(-0.35deg);
+        }
+        52% {
+          opacity: 1;
+          clip-path: polygon(6% 0, 94% 0, 100% 6%, 100% 94%, 94% 100%, 6% 100%, 0 94%, 0 6%);
+          transform: translateY(0.15rem) scale(1.008) rotate(-0.35deg);
+        }
+        100% {
+          opacity: 1;
+          clip-path: polygon(0 0, 100% 0, 100% 100%, 100% 100%, 100% 100%, 0 100%, 0 100%, 0 0);
+          transform: translateY(0) scale(1) rotate(-0.35deg);
+        }
+      }
+
+      @keyframes homepageNoteCornerFold {
+        0% {
+          opacity: 1;
+          clip-path: polygon(0 0, 100% 0, 100% 100%, 100% 100%, 100% 100%, 0 100%, 0 100%, 0 0);
+          transform: translateY(0) scale(1) rotate(-0.35deg);
+        }
+        42% {
+          opacity: 1;
+          clip-path: polygon(7% 0, 93% 0, 100% 7%, 100% 93%, 93% 100%, 7% 100%, 0 93%, 0 7%);
+          transform: translateY(-0.1rem) scale(0.99) rotate(-0.35deg);
+        }
+        74% {
+          opacity: 0.88;
+          clip-path: polygon(15% 0, 85% 0, 100% 15%, 100% 85%, 85% 100%, 15% 100%, 0 85%, 0 15%);
+          transform: translateY(-0.45rem) scale(0.96) rotate(-0.35deg);
+        }
+        100% {
+          opacity: 0;
+          clip-path: polygon(24% 0, 76% 0, 100% 24%, 100% 76%, 76% 100%, 24% 100%, 0 76%, 0 24%);
+          transform: translateY(-0.8rem) scale(0.9) rotate(-0.35deg);
+        }
+      }
+
+      .home-page .tool-spotlight__action {
+        display: inline-flex;
+        align-items: center;
+        justify-content: center;
+        min-height: 3rem;
+        border: 3px solid #fff;
+        padding: 0.68rem 1.05rem;
+        background: #fff;
+        color: #000;
+        box-shadow: none;
+        font-weight: 800;
+        letter-spacing: 0.06em;
+        text-decoration: none;
+        text-transform: uppercase;
+        transition: background-color 160ms ease;
+      }
+
+      .home-page .tool-spotlight__actions {
+        display: flex;
+        flex-wrap: wrap;
+        align-items: center;
+        gap: 0.75rem;
+        margin-top: auto;
+      }
+
+      .home-page .tool-spotlight__action:hover,
+      .home-page .tool-spotlight__action:focus-visible {
+        background: var(--spotlight-color, #24a094);
+        box-shadow: none;
+        transform: none;
+      }
+
+      .home-page .tool-spotlight__action[aria-disabled="true"] {
+        background: #fff;
+        cursor: not-allowed;
+        opacity: 0.55;
+      }
+
+      .home-page .tool-spotlight__action:focus-visible,
+      .home-page .tool-spotlight__arrow:focus-visible,
+      .home-page .tool-spotlight__dot:focus-visible {
+        outline: 3px solid #fff;
+        outline-offset: 3px;
+      }
+
+      .home-page .tool-spotlight__controls {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        gap: 1rem;
+        min-height: 4.75rem;
+        margin-top: 0;
+        border: 4px solid #000;
+        border-top: 0;
+        padding: 0.75rem 1rem;
+        background: #000;
+        box-shadow: none;
+      }
+
+      .home-page .tool-spotlight__arrow {
+        width: 2.85rem;
+        height: 2.85rem;
+        border: 3px solid #fff;
+        background: #fff;
+        color: #000;
+        font-size: 1.25rem;
+        font-weight: 800;
+        line-height: 1;
+        cursor: pointer;
+        transition: background-color 140ms ease, color 140ms ease, transform 140ms ease;
+      }
+
+      .home-page .tool-spotlight__arrow:hover {
+        background: var(--spotlight-color, #24a094);
+        color: #000;
+      }
+
+      .home-page .tool-spotlight__dots {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        gap: 0.7rem;
+        flex: 1;
+      }
+
+      .home-page .tool-spotlight__dot {
+        width: 0.95rem;
+        height: 0.95rem;
+        border: 2px solid #fff;
+        border-radius: 50%;
+        padding: 0;
+        background: #000;
+        cursor: pointer;
+      }
+
+      .home-page .tool-spotlight__dot[aria-current="true"] {
+        background: var(--spotlight-color, #24a094);
+      }
+
+      .tool-quick-link {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        gap: 1rem;
+        min-height: 3.5rem;
+        border: 3px solid #000;
+        padding: 0.85rem 1rem;
+        background: #fff;
+        color: #000;
+        box-shadow: 4px 4px 0 var(--quick-color, #24a094);
+        font-weight: 800;
+        line-height: 1.25;
+        text-decoration: none;
+        text-transform: uppercase;
+        transition: transform 160ms ease, box-shadow 160ms ease;
+      }
+
+      .tool-quick-link:hover,
+      .tool-quick-link:focus-visible {
+        transform: translate(3px, 3px);
+        box-shadow: 1px 1px 0 var(--quick-color, #24a094);
+      }
+
+      @media (max-width: 820px) {
+        .home-page .homepage-intro__box {
+          grid-template-columns: 1fr;
+        }
+
+        .home-page .homepage-intro__portrait {
+          width: min(100%, 15rem);
+          justify-self: start;
+        }
+
+        .home-page .tool-spotlight__card {
+          grid-template-columns: 1fr;
+          grid-template-rows: minmax(0, 1fr) 23rem;
+          height: 43rem;
+          min-height: 43rem;
+          max-height: 43rem;
+        }
+
+        .home-page .tool-spotlight__media {
+          height: 100%;
+          min-height: 0;
+          border-right: 0;
+          border-bottom: 4px solid #000;
+        }
+
+        .home-page .tool-spotlight__media img {
+          width: 100%;
+          max-height: none;
+        }
+
+        .home-page .tool-spotlight__copy {
+          height: 100%;
+          min-height: 0;
+          padding: clamp(1.5rem, 6vw, 2.5rem);
+        }
+
+        .tool-links-menu-grid {
+          grid-template-columns: 1fr;
+        }
+      }
+
+      @media (max-width: 520px) {
+        .home-page .homepage-intro,
+        .home-page .tool-spotlight {
+          padding-inline: 1rem;
+        }
+
+        .home-page .homepage-intro__box {
+          padding: 1.4rem 1.1rem 1.55rem;
+        }
+
+        .home-page .homepage-intro__box h1 {
+          font-size: clamp(1.45rem, 7vw, 1.8rem);
+        }
+
+        .home-page .homepage-intro__portrait {
+          width: min(80%, 13rem);
+        }
+
+        .home-page .homepage-note {
+          margin: 1.4rem 0 0;
+        }
+
+        .home-page .homepage-note.is-closing {
+          margin-top: 0;
+        }
+
+        .home-page .homepage-note-toggle {
+          width: 100%;
+        }
+
+        .home-page .homepage-note__paper {
+          padding: 4.5rem 1.1rem 1.5rem;
+          box-shadow: 7px 7px 0 #000;
+        }
+
+        .home-page .homepage-note__paper {
+          background:
+            linear-gradient(90deg, transparent 0 1.25rem, rgba(255, 144, 231, 0.3) 1.25rem calc(1.25rem + 2px), transparent calc(1.25rem + 2px)),
+            repeating-linear-gradient(0deg, #fffdf2 0, #fffdf2 2rem, rgba(36, 160, 148, 0.12) 2rem calc(2rem + 1px));
+        }
+
+        .home-page .homepage-note__close-label {
+          display: none;
+        }
+
+        .home-page .homepage-note__close {
+          width: 2.6rem;
+          justify-content: center;
+          padding-inline: 0;
+        }
+
+        .home-page .tool-spotlight__header {
+          min-height: 4.5rem;
+          gap: 0.6rem;
+          padding: 0.6rem 0.7rem;
+        }
+
+        .home-page .tool-spotlight__header .tool-spotlight__eyebrow {
+          padding: 0.3rem 0.45rem;
+          font-size: 0.62rem;
+        }
+
+        .home-page .tool-spotlight__heading {
+          font-size: 1.25rem;
+          letter-spacing: 0.035em;
+        }
+
+        .home-page .tool-spotlight__card {
+          grid-template-rows: 14.5rem minmax(0, 1fr);
+          height: 36.5rem;
+          min-height: 36.5rem;
+          max-height: 36.5rem;
+        }
+
+        .home-page .tool-spotlight__copy {
+          height: 100%;
+          min-height: 0;
+          padding: 1.25rem;
+        }
+
+        .home-page .tool-spotlight__title {
+          max-width: 100%;
+          font-size: clamp(1.5rem, 7vw, 1.9rem);
+          line-height: 1.05;
+        }
+
+        .home-page .tool-spotlight__description {
+          font-size: 0.92rem;
+          line-height: 1.45;
+        }
+
+        .home-page .tool-spotlight__actions {
+          width: 100%;
+          gap: 0.55rem;
+        }
+
+        .home-page .tool-spotlight__action {
+          width: 100%;
+          min-height: 2.7rem;
+          padding: 0.55rem 0.7rem;
+        }
+
+        .home-page .tool-spotlight__dots {
+          gap: 0.5rem;
+        }
+
+      }
+
+      .home-page .back-to-top {
+        position: fixed;
+        right: clamp(0.9rem, 2vw, 1.5rem);
+        bottom: clamp(0.9rem, 2vw, 1.5rem);
+        z-index: 45;
+        display: inline-flex;
+        align-items: center;
+        justify-content: center;
+        gap: 0.5rem;
+        min-height: 3.25rem;
+        border: 4px solid #000;
+        padding: 0.75rem 1rem;
+        background: #f1f332;
+        color: #000;
+        box-shadow: 6px 6px 0 #000;
+        font-family: "Hanken Grotesk", Arial, sans-serif;
+        font-size: 0.78rem;
+        font-weight: 800;
+        line-height: 1;
+        letter-spacing: 0.08em;
+        text-transform: uppercase;
+        cursor: pointer;
+        transition: background-color 150ms ease, box-shadow 150ms ease, transform 150ms ease;
+      }
+
+      .home-page .back-to-top:hover,
+      .home-page .back-to-top:focus-visible {
+        background: #ff90e7;
+        box-shadow: 8px 8px 0 #000;
+        outline: 0;
+        transform: translate(-2px, -2px);
+      }
+
+      .home-page .back-to-top__arrow {
+        font-size: 1.15em;
+        line-height: 1;
+      }
+
+      @media (max-width: 520px) {
+        .home-page .back-to-top {
+          right: 0.75rem;
+          bottom: 0.75rem;
+          min-height: 2.75rem;
+          padding: 0.6rem 0.75rem;
+          font-size: 0.7rem;
+          box-shadow: 4px 4px 0 #000;
+        }
+      }
+
+      @media (prefers-reduced-motion: reduce) {
+        .home-page .tool-spotlight__card.is-flipping-forward .tool-spotlight__media,
+        .home-page .tool-spotlight__card.is-flipping-forward .tool-spotlight__copy,
+        .home-page .tool-spotlight__card.is-flipping-backward .tool-spotlight__media,
+        .home-page .tool-spotlight__card.is-flipping-backward .tool-spotlight__copy,
+        .home-page .homepage-note.is-opening .homepage-note__paper,
+        .home-page .homepage-note.is-closing .homepage-note__paper {
+          animation: none;
+        }
+
+        .home-page .homepage-note-toggle,
+        .home-page .homepage-note-toggle__arrow,
+        .home-page .homepage-note,
+        .home-page .homepage-note__close,
+        .home-page .homepage-note__fold,
+        .home-page .back-to-top {
+          transition: none;
+        }
+      }
+
+    </style>
+<link href="/styles/site-system.css?v=20260914-palette-1" rel="stylesheet"/>
+</head>
+<body class="home-page">
+<div class="min-h-screen bg-white">
+<!-- Header (nav from old index, styled to match new) -->
+<header class="fixed top-0 left-0 right-0 z-50 bg-black border-b-4 border-white">
+<div class="max-w-7xl mx-auto px-6 py-4">
+<nav class="flex items-center justify-between gap-6">
+<div class="flex items-center min-w-0">
+<a aria-label="Home" class="relative inline-flex items-center justify-center bg-transparent outline-none ring-0 focus:outline-none focus-visible:outline-none focus:ring-0 focus-visible:ring-0 active:outline-none transition-transform duration-200 will-change-transform hover:-translate-y-[2px] hover:scale-[1.02]" href="./index.html">
+<span class="sr-only">Home</span>
+<img alt="Magic Hashtags — AI tools for court reporters" class="site-header-logo object-contain block" decoding="async" loading="eager" src="/images/logosmaller.png"/>
+</a>
+</div>
+<div class="site-desktop-nav hidden md:flex items-center space-x-4">
+<a class="text-white hover:bg-[#f1f332] hover:text-black border-2 border-transparent hover:border-[#f1f332] px-6 py-3 uppercase tracking-wider font-mono rounded-none transition-all duration-200" href="./learn/learn-index.html">
+                  learn
+                </a>
+<a class="text-white hover:bg-[#f1f332] hover:text-black border-2 border-transparent hover:border-[#f1f332] px-6 py-3 uppercase tracking-wider font-mono rounded-none transition-all duration-200" href="./reporter-tools.html">
+                reporter tools
+              </a>
+<a class="text-white hover:bg-[#f1f332] hover:text-black border-2 border-transparent hover:border-[#f1f332] px-6 py-3 uppercase tracking-wider font-mono rounded-none transition-all duration-200" href="./customizer.html">
+                customizer
+              </a>
+<a class="text-white hover:bg-[#f1f332] hover:text-black border-2 border-transparent hover:border-[#f1f332] px-6 py-3 uppercase tracking-wider font-mono rounded-none transition-all duration-200" href="./purchase.html">
+                store
+              </a>
+</div>
+<button class="site-header-contact inline-flex items-center gap-2 h-14 bg-white text-black hover:bg-[#ff90e7] border-2 border-white hover:border-[#ff90e7] px-6 py-0 font-mono uppercase tracking-wider font-bold leading-none rounded-none transition-all duration-200" data-open-contact="" type="button">
+              contact
+            </button>
+<button aria-expanded="false" aria-label="Open navigation" class="site-menu-toggle" data-mobile-nav-toggle="" type="button">
+<span></span>
+<span></span>
+<span></span>
+</button>
+<div class="site-mobile-panel" data-mobile-nav-panel="" hidden></div>
+</nav>
+</div>
+</header>
+<main>
+<section class="homepage-intro" id="top">
+<div class="homepage-intro__shell">
+<div class="homepage-intro__box">
+<div class="homepage-intro__copy">
+<p class="homepage-intro__eyebrow">Welcome to Magic Hashtags</p>
+<h1><span>AI Tools</span><span>Built by a Court Reporter</span></h1>
+<p>Hi, I’m Tamara!&nbsp;&nbsp;I am excited to finally share the suite of AI tools I created and use daily, made specifically for court reporters.</p>
+<p class="homepage-intro__learn">→ Check out the <a href="./learn/learn-index.html">Learn page</a> for other topics such as tech tips.</p>
+<button aria-controls="homeNote" aria-expanded="false" class="homepage-note-toggle" data-home-note-toggle type="button">
+<span aria-hidden="true" class="homepage-note-toggle__icon">✉</span>
+<span>A Quick Note From Tamara</span>
+<span aria-hidden="true" class="homepage-note-toggle__arrow" data-home-note-symbol>→</span>
+</button>
+</div>
+<div class="homepage-intro__portrait">
+<img alt="Tamara Chapman" src="/images/me.png"/>
+</div>
+</div>
+<div aria-hidden="true" class="homepage-note" id="homeNote" hidden>
+<article aria-labelledby="homeNoteTitle" class="homepage-note__paper">
+<span aria-hidden="true" class="homepage-note__tape"></span>
+<button aria-label="Close Tamara's note" class="homepage-note__close" data-home-note-close type="button">
+<span aria-hidden="true" class="homepage-note__close-mark">×</span>
+<span class="homepage-note__close-label">Close note</span>
+</button>
+<div class="homepage-note__meta">
+<span class="homepage-note__stamp">Reporter to reporter</span>
+</div>
+<h2 id="homeNoteTitle">Hi, fellow reporter.</h2>
+<p class="homepage-note__lead">I built these tools because I know how much invisible work happens before the first word is spoken and after the last page is proofed. I wanted AI that already understands our workflow—not another generic tool we have to teach from scratch.</p>
+<p>Whether you’re preparing a dictionary, untangling difficult testimony, punctuating, proofreading, or describing exhibits, each tool is designed to give you clear answers in the right format.</p>
+<div class="homepage-note__promise">
+<p><strong>What matters to me:</strong> the tools verify information when they can, flag uncertainty instead of guessing, and tell you when something deserves a human review.</p>
+</div>
+<p>You don’t need any AI experience. My hope is simple: less repetitive work, fewer frustrating detours, and more confidence in every transcript you deliver.</p>
+<p class="homepage-note__signature">— Tamara</p>
+<button class="homepage-note__fold" data-home-note-close type="button">Fold up this note ↑</button>
+</article>
+</div>
+</div>
+</section>
+<section class="tool-spotlight" id="featured-tools" aria-labelledby="featuredToolsTitle">
+<div class="tool-spotlight__shell" data-tool-spotlight>
+<div class="tool-spotlight__header">
+<p class="tool-spotlight__eyebrow">Reporter Tools</p>
+<h2 class="tool-spotlight__heading" id="featuredToolsTitle">Available Tools</h2>
+</div>
+<article class="tool-spotlight__card" aria-live="polite">
+<div class="tool-spotlight__media">
+<img alt="Exhibit Descriptions Sidekick" data-tool-spotlight-image src="/images/reporter-tools/exhibit-descriptions-sidekick-front.png"/>
+<div class="tool-spotlight__placeholder" data-tool-spotlight-placeholder hidden>
+<span>Preview coming soon</span>
+<strong data-tool-spotlight-placeholder-title>Exhibit Descriptions Sidekick</strong>
+</div>
+</div>
+<div class="tool-spotlight__copy">
+<h3 class="tool-spotlight__title" data-tool-spotlight-title>Exhibit Descriptions Sidekick</h3>
+<p class="tool-spotlight__description" data-tool-spotlight-description>Prepare exhibit descriptions and related preferences before using the AI Drive workflow.</p>
+<div class="tool-spotlight__badges" data-tool-spotlight-badges aria-label="AI Drive access details">
+<span class="tool-spotlight__badge" style="--badge-color:#24a094">AI Drive</span>
+<span class="tool-spotlight__badge" style="--badge-color:#91a8ed">Subscription</span>
+<span class="tool-spotlight__badge" style="--badge-color:#ff90e7">Paid</span>
+</div>
+<div class="tool-spotlight__actions">
+<a class="tool-spotlight__action" data-tool-spotlight-link href="./reporter-tools.html?preview=home-sync-12#tool=exhibits">See More</a>
+<a class="tool-spotlight__action" data-tool-spotlight-quick-link href="./customizer.html">Open Customizer</a>
+</div>
+</div>
+</article>
+<div class="tool-spotlight__controls" aria-label="Featured reporter tools">
+<button class="tool-spotlight__arrow" data-tool-spotlight-previous type="button" aria-label="Previous tool">←</button>
+<div class="tool-spotlight__dots" data-tool-spotlight-dots></div>
+<button class="tool-spotlight__arrow" data-tool-spotlight-next type="button" aria-label="Next tool">→</button>
+</div>
+</div>
+</section>
+<!-- About -->
+<section class="py-20 bg-black text-white relative overflow-hidden" id="about">
+<div class="absolute top-20 right-0 w-64 h-64 bg-[#98282a] rounded-full blur-[100px] opacity-20 pointer-events-none"></div>
+<div class="max-w-6xl mx-auto px-6 relative z-10">
+<div class="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
+<div>
+<h2 class="text-5xl md:text-6xl font-mono uppercase tracking-wider mb-8 border-b-4 border-[#ff90e7] pb-4 inline-block">ABOUT</h2>
+<div class="space-y-6">
+<p class="text-lg font-mono leading-relaxed">
+                    I'M A WORKING COURT REPORTER WHO BUILDS PRACTICAL AI TOOLS AROUND REAL REPORTING PROBLEMS. I HAVE BEEN REPORTING SINCE 1998, SO THE WORK ON THIS SITE IS ROOTED IN TRANSCRIPTS, EXHIBITS, DEADLINES, FORMAT RULES, AND THE KIND OF FRICTION WE DEAL WITH EVERY DAY.
+                  </p>
+<p class="text-lg font-mono leading-relaxed">
+                    THIS SITE IS PART PORTFOLIO AND PART TOOLKIT. MOST OF THE SIDEKICKS HERE ARE <span class="bg-[#24a094] text-black px-1 font-bold">FREE</span> BECAUSE I WANT PEOPLE TO SEE WHAT PRACTICAL, LOW-FRICTION AI CAN LOOK LIKE BEFORE THEY SPEND MONEY.
+                  </p>
+<p class="text-lg font-mono leading-relaxed">
+                    THE EXHIBITS WORKFLOW IS MY <span class="bg-[#f1f332] text-black px-1 font-bold">PAID</span> OFFER BECAUSE IT GOES DEEPER: MORE ADVANCED DOCUMENT HANDLING, REUSABLE PREFERENCES, AND A SECURE APP-BASED PROCESS DESIGNED FOR HEAVIER EXHIBIT WORK.
+                  </p>
+<p class="text-lg font-mono leading-relaxed">
+                    I ALSO OFFER GROUP TRAINING, ONE-ON-ONE AI SESSIONS, CONSULTING, AND CUSTOM TOOL BUILDING FOR PEOPLE WHO WANT HELP APPLYING AI WITHOUT HAVING TO BECOME "TECHY" FIRST.
+                  </p>
+</div>
+</div>
+<div class="lg:pl-12">
+<div class="border-4 border-white p-8 bg-black shadow-[20px_20px_0px_0px_#ffc900]">
+<h3 class="text-2xl font-mono uppercase tracking-wider mb-6 bg-white text-black p-4 border-2 border-transparent hover:bg-[#ffc900] transition-colors duration-300">
+                    WORK WITH ME
+                  </h3>
+<div class="space-y-6">
+<div class="border-l-4 border-[#ff90e7] pl-6 hover:translate-x-2 transition-transform duration-300">
+<h4 class="font-mono uppercase tracking-wide mb-2 text-[#91a8ed] font-bold">DAY JOB</h4>
+<p class="font-mono text-lg font-bold">WORKING COURT REPORTER</p>
+<p class="font-mono text-sm opacity-80">REAL-WORLD REPORTING EXPERIENCE INFORMING EVERY TOOL ON THIS SITE.</p>
+</div>
+<div class="border-l-4 border-[#24a094] pl-6 hover:translate-x-2 transition-transform duration-300">
+<h4 class="font-mono uppercase tracking-wide mb-2 text-[#91a8ed] font-bold">TRAINING</h4>
+<p class="font-mono text-lg font-bold">GROUP AND ONE-ON-ONE AI SESSIONS</p>
+<p class="font-mono text-sm opacity-80">PLAIN-ENGLISH TRAINING FOR PEOPLE WHO WANT RESULTS, NOT HYPE.</p>
+</div>
+<div class="border-l-4 border-[#ffc900] pl-6 hover:translate-x-2 transition-transform duration-300">
+<h4 class="font-mono uppercase tracking-wide mb-2 text-[#91a8ed] font-bold">CONSULTING</h4>
+<p class="font-mono text-lg font-bold">CUSTOM GPTS, TOOLS, AND WORKFLOWS</p>
+<p class="font-mono text-sm opacity-80">I CAN HELP DESIGN A PROCESS, BUILD A TOOL, OR FIGURE OUT WHERE AI ACTUALLY FITS.</p>
+</div>
+</div>
+<div class="mt-8 pt-6 border-t-4 border-white">
+<p class="font-mono text-sm leading-relaxed opacity-90 mb-5">IF YOU WANT TRAINING, CONSULTING, OR A CUSTOM BUILD, USE THE CONTACT BUTTON AND PICK THE TOPIC THAT FITS.</p>
+<div class="flex flex-wrap gap-4">
+<a class="inline-flex items-center gap-2 bg-white text-black hover:bg-[#f1f332] border-4 border-white hover:border-[#f1f332] px-6 py-3 font-mono uppercase tracking-wider font-bold transition-all duration-200" href="./consulting.html">
+                    Consulting
+                  </a>
+<button class="inline-flex items-center gap-2 bg-[#ff90e7] text-black hover:bg-white border-4 border-black px-6 py-3 font-mono uppercase tracking-wider font-bold transition-all duration-200" data-open-contact="" type="button">
+                    CONTACT
+                  </button>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+</section>
+<!-- Projects + Contact moved to projects.html -->
+</main>
+<!-- Footer -->
+<footer class="bg-black text-white py-12 border-t-8 border-[#91a8ed]">
+<div class="max-w-6xl mx-auto px-6">
+<div class="border-t-4 border-white pt-8">
+<div class="flex flex-col md:flex-row justify-between items-center">
+<p class="font-mono text-sm opacity-80">© 2025 MAGIC HASHTAGS. ALL RIGHTS RESERVED.</p>
+<p class="font-mono text-sm opacity-80 mt-4 md:mt-0 bg-[#ff7051] text-black px-2 py-1 font-bold transform -rotate-2">BUILT BY A WORKING COURT REPORTER</p>
+</div>
+</div>
+</div>
+</footer>
+</div>
+<button aria-label="Back to top" class="back-to-top" data-back-to-top hidden type="button">
+<span>Back to top</span>
+<span aria-hidden="true" class="back-to-top__arrow">↑</span>
+</button>
+<!-- Contact modal (Netlify form) -->
+<div aria-hidden="true" class="fixed inset-0 z-50 flex items-center justify-center p-4" data-contact-modal="" data-open="false">
+<div class="absolute inset-0 bg-black/80 backdrop-blur-sm" data-contact-overlay="" data-open="false"></div>
+<div aria-labelledby="contactModalTitle" aria-modal="true" class="relative w-full max-w-2xl border-4 border-black bg-white shadow-[20px_20px_0px_0px_black] z-50 overflow-hidden" role="dialog">
+<button aria-label="Close" class="absolute top-4 right-4 z-10 p-2 border-2 border-black transition-colors bg-white text-black hover:bg-[#f1f332]" data-close-contact="" type="button">
+          ✕
+        </button>
+<div class="p-8">
+<h2 class="text-4xl font-mono uppercase tracking-wider font-black mb-2" id="contactModalTitle">CONTACT US</h2>
+<p class="font-mono text-sm opacity-90 mb-8">Pick a topic and we'll get right back to you.</p>
+<form class="space-y-6" data-netlify="true" id="contact-form" method="POST" name="General Contact">
+<input name="form-name" type="hidden" value="General Contact"/>
+<input name="page" type="hidden" value="index.html"/>
+<input id="topicLabel" name="topicLabel" type="hidden"/>
+<div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+<div>
+<label class="block font-mono uppercase tracking-wide mb-2 font-bold">FIRST NAME *</label>
+<input class="border-4 border-black rounded-none font-mono focus:ring-0 focus:border-[#24a094] focus:bg-[#f0fffe] bg-white transition-colors h-12 w-full px-3" name="firstName" required=""/>
+</div>
+<div>
+<label class="block font-mono uppercase tracking-wide mb-2 font-bold">LAST NAME *</label>
+<input class="border-4 border-black rounded-none font-mono focus:ring-0 focus:border-[#24a094] focus:bg-[#f0fffe] bg-white transition-colors h-12 w-full px-3" name="lastName" required=""/>
+</div>
+</div>
+<div>
+<label class="block font-mono uppercase tracking-wide mb-2 font-bold">EMAIL *</label>
+<input class="border-4 border-black rounded-none font-mono focus:ring-0 focus:border-[#24a094] focus:bg-[#f0fffe] bg-white transition-colors h-12 w-full px-3" name="email" required="" type="email"/>
+</div>
+<div>
+<label class="block font-mono uppercase tracking-wide mb-2 font-bold">TOPIC *</label>
+<div class="relative" data-topic-wrap="">
+<div aria-hidden="true" class="neo-offset-shadow"></div>
+<select class="cselect-native" id="topicSelect" name="topic" required="">
+<option value="">Select one…</option>
+<option value="Reporting Work">Reporting Work</option>
+<option value="One-on-One Training">One-on-One Training</option>
+<option value="Consulting">Consulting</option>
+<option value="Exhibits Purchase">Exhibits Purchase</option>
+<option value="Sidekick Help">Sidekick Help</option>
+<option value="General">General Message</option>
+</select>
+<div class="cselect cselect--stripe" data-topic-cselect=""></div>
+</div>
+</div>
+<div>
+<label class="block font-mono uppercase tracking-wide mb-2 font-bold">MESSAGE *</label>
+<textarea class="border-4 border-black rounded-none font-mono focus:ring-0 focus:border-[#24a094] focus:bg-[#f0fffe] bg-white resize-none w-full px-3 py-2 disabled:opacity-50" disabled="" id="messageBox" name="message" placeholder="Select a topic first..." required="" rows="6"></textarea>
+</div>
+<button class="w-full bg-[#ff90e7] text-black hover:bg-black hover:text-[#ff90e7] border-4 border-black py-6 font-mono uppercase tracking-wider rounded-none shadow-[8px_8px_0px_0px_black] hover:shadow-[4px_4px_0px_0px_black] hover:translate-x-[4px] hover:translate-y-[4px] transition-all duration-200 text-lg font-bold" type="submit">
+              SEND MESSAGE
+            </button>
+</form>
+</div>
+</div>
+</div>
+<script>
+      // Mobile/tablet navigation: build from the existing desktop header links.
+      (() => {
+        const toggle = document.querySelector("[data-mobile-nav-toggle]");
+        const panel = document.querySelector("[data-mobile-nav-panel]");
+        const desktopNav = document.querySelector(".site-desktop-nav");
+        if (!toggle || !panel || !desktopNav) return;
+
+        const addLink = (source) => {
+          const href = source.getAttribute("href");
+          const label = (source.textContent || "").trim();
+          if (!href || !label) return;
+          const link = document.createElement("a");
+          link.href = href;
+          link.textContent = label;
+          panel.appendChild(link);
+        };
+
+        Array.from(desktopNav.children)
+          .filter((child) => child.matches("a"))
+          .forEach(addLink);
+
+        const mobileToolLinksToggle = document.createElement("button");
+        mobileToolLinksToggle.type = "button";
+        mobileToolLinksToggle.textContent = "Reporter Tools";
+        mobileToolLinksToggle.setAttribute("aria-expanded", "false");
+        mobileToolLinksToggle.setAttribute("data-mobile-tool-links-toggle", "");
+        panel.appendChild(mobileToolLinksToggle);
+
+        const mobileToolLinks = document.createElement("div");
+        mobileToolLinks.className = "site-mobile-tool-links";
+        mobileToolLinks.setAttribute("data-mobile-tool-links", "");
+        mobileToolLinks.hidden = true;
+        panel.appendChild(mobileToolLinks);
+
+        const contact = document.createElement("button");
+        contact.type = "button";
+        contact.textContent = "Contact";
+        contact.setAttribute("data-open-contact", "");
+        panel.appendChild(contact);
+
+        const close = () => {
+          panel.hidden = true;
+          toggle.setAttribute("aria-expanded", "false");
+          mobileToolLinks.hidden = true;
+          mobileToolLinksToggle.setAttribute("aria-expanded", "false");
+        };
+
+        toggle.addEventListener("click", (event) => {
+          event.preventDefault();
+          event.stopPropagation();
+          const isOpen = !panel.hidden;
+          panel.hidden = isOpen;
+          toggle.setAttribute("aria-expanded", isOpen ? "false" : "true");
+        });
+
+        panel.addEventListener("click", (event) => {
+          const toolLinksToggle = event.target.closest("[data-mobile-tool-links-toggle]");
+          if (toolLinksToggle) {
+            event.preventDefault();
+            const isOpen = !mobileToolLinks.hidden;
+            mobileToolLinks.hidden = isOpen;
+            mobileToolLinksToggle.setAttribute("aria-expanded", isOpen ? "false" : "true");
+            return;
+          }
+          if (event.target.closest("a, button")) close();
+        });
+
+        document.addEventListener("click", (event) => {
+          if (panel.hidden) return;
+          if (event.target.closest("[data-mobile-nav-panel], [data-mobile-nav-toggle]")) return;
+          close();
+        });
+
+        document.addEventListener("keydown", (event) => {
+          if (event.key === "Escape") close();
+        });
+      })();
+
+      // Instructions nav dropdown: click to toggle, click outside to close.
+      (() => {
+        const dropdowns = Array.from(document.querySelectorAll(".nav-dropdown"));
+        if (!dropdowns.length) return;
+
+        const closeAll = (except) => {
+          dropdowns.forEach((dd) => {
+            if (except && dd === except) return;
+            dd.dataset.open = "false";
+            const btn = dd.querySelector("button");
+            if (btn) btn.setAttribute("aria-expanded", "false");
+          });
+        };
+
+        dropdowns.forEach((dd) => {
+          if (!dd.dataset.open) dd.dataset.open = "false";
+          const btn = dd.querySelector("button");
+          const menu = dd.querySelector(".nav-dropdown-menu");
+          if (!btn || !menu) return;
+
+          btn.addEventListener("click", (e) => {
+            e.preventDefault();
+            e.stopPropagation();
+            const isOpen = dd.dataset.open === "true";
+            closeAll(dd);
+            dd.dataset.open = isOpen ? "false" : "true";
+            btn.setAttribute("aria-expanded", isOpen ? "false" : "true");
+          });
+
+          menu.addEventListener("click", (e) => e.stopPropagation());
+        });
+
+        document.addEventListener("click", () => closeAll());
+        document.addEventListener("keydown", (e) => {
+          if (e.key === "Escape") closeAll();
+        });
+      })();
+
+      // Contact modal open/close.
+      const contactModal = document.querySelector("[data-contact-modal]");
+      const contactOverlay = document.querySelector("[data-contact-overlay]");
+      let contactModalOrigin = null;
+
+      function setContactOpen(open) {
+        if (!contactModal || !contactOverlay) return;
+        contactModal.setAttribute("data-open", open ? "true" : "false");
+        contactOverlay.setAttribute("data-open", open ? "true" : "false");
+        contactModal.setAttribute("aria-hidden", open ? "false" : "true");
+        document.body.style.overflow = open ? "hidden" : "";
+      }
+
+      function openContactModal(origin = document.activeElement) {
+        contactModalOrigin = origin;
+        setContactOpen(true);
+        window.requestAnimationFrame(() => {
+          contactModal?.querySelector("[data-close-contact]")?.focus({ preventScroll: true });
+        });
+      }
+
+      function closeContactModal() {
+        if (!contactModal || contactModal.getAttribute("data-open") !== "true") return;
+        setContactOpen(false);
+        if (contactModalOrigin && typeof contactModalOrigin.focus === "function") {
+          contactModalOrigin.focus({ preventScroll: true });
+        }
+        contactModalOrigin = null;
+        if (window.location.hash.toLowerCase() === "#contact") {
+          window.history.replaceState(null, "", `${window.location.pathname}${window.location.search}`);
+        }
+      }
+
+      function openContactFromHash() {
+        if (window.location.hash.toLowerCase() === "#contact") openContactModal(null);
+      }
+
+      window.addEventListener("hashchange", openContactFromHash);
+      openContactFromHash();
+
+      document.addEventListener("click", (e) => {
+        const openBtn = e.target && e.target.closest ? e.target.closest("[data-open-contact]") : null;
+        if (openBtn) {
+          e.preventDefault();
+          openContactModal(openBtn);
+          return;
+        }
+
+        const closeBtn = e.target && e.target.closest ? e.target.closest("[data-close-contact]") : null;
+        if (closeBtn) {
+          closeContactModal();
+          return;
+        }
+
+        const overlayClick = e.target && e.target.matches ? e.target.matches("[data-contact-overlay]") : false;
+        if (overlayClick) closeContactModal();
+      });
+
+      document.addEventListener("keydown", (e) => {
+        const contactIsOpen = contactModal?.getAttribute("data-open") === "true";
+        if (contactIsOpen && e.key === "Tab") {
+          const focusable = [...contactModal.querySelectorAll("a[href], button:not([disabled]), input:not([disabled]), select:not([disabled]), textarea:not([disabled]), [tabindex]:not([tabindex='-1'])")]
+            .filter((element) => element.getAttribute("aria-hidden") !== "true");
+          const first = focusable[0];
+          const last = focusable[focusable.length - 1];
+          if (first && last && e.shiftKey && document.activeElement === first) {
+            e.preventDefault();
+            last.focus();
+          } else if (first && last && !e.shiftKey && document.activeElement === last) {
+            e.preventDefault();
+            first.focus();
+          } else if (first && !contactModal.contains(document.activeElement)) {
+            e.preventDefault();
+            first.focus();
+          }
+        }
+        if (contactIsOpen && e.key === "Escape") {
+          e.preventDefault();
+          closeContactModal();
+        }
+      });
+
+      // Enhance TOPIC dropdown to match Customizer Q1:
+      // - pink stripe on the left of each option
+      // - subtle hover highlight (no pink)
+      (() => {
+        const topicSelect = document.getElementById("topicSelect");
+        const topicWrap = document.querySelector("[data-topic-wrap]");
+        const topicRoot = topicWrap ? topicWrap.querySelector("[data-topic-cselect]") : null;
+        if (!topicSelect || !topicWrap || !topicRoot) return;
+
+        // Build UI
+        topicRoot.setAttribute("data-open", "false");
+        topicRoot.innerHTML = "";
+
+        const btn = document.createElement("button");
+        btn.type = "button";
+        btn.className = "cselect__btn";
+        btn.setAttribute("aria-haspopup", "listbox");
+        btn.setAttribute("aria-expanded", "false");
+
+        const value = document.createElement("span");
+        value.className = "cselect__value";
+        const caret = document.createElement("span");
+        caret.className = "cselect__caret";
+        caret.setAttribute("aria-hidden", "true");
+        caret.textContent = "▾";
+
+        btn.appendChild(value);
+        btn.appendChild(caret);
+
+        const menu = document.createElement("div");
+        menu.className = "cselect__menu";
+        menu.setAttribute("role", "listbox");
+
+        const optionEls = [];
+        const syncSelected = () => {
+          const idx = topicSelect.selectedIndex >= 0 ? topicSelect.selectedIndex : 0;
+          const opt = topicSelect.options && topicSelect.options[idx] ? topicSelect.options[idx] : null;
+          value.textContent = opt ? (opt.textContent || "") : "";
+
+          optionEls.forEach((el) => {
+            el.setAttribute("aria-selected", el.dataset.value === topicSelect.value ? "true" : "false");
+          });
+        };
+
+        Array.from(topicSelect.options || []).forEach((opt) => {
+          const row = document.createElement("div");
+          row.className = "cselect__opt";
+          row.setAttribute("role", "option");
+          row.dataset.value = opt.value;
+          if (!opt.value) row.dataset.placeholder = "true";
+          row.setAttribute("aria-selected", opt.selected ? "true" : "false");
+
+          const check = document.createElement("div");
+          check.className = "cselect__check";
+          check.textContent = "✓";
+
+          const text = document.createElement("div");
+          text.className = "cselect__text";
+          text.textContent = (opt.textContent || "").trim();
+
+          row.appendChild(check);
+          row.appendChild(text);
+
+          row.addEventListener("click", () => {
+            topicSelect.value = opt.value;
+            topicSelect.dispatchEvent(new Event("change", { bubbles: true }));
+            syncSelected();
+            setOpen(false);
+          });
+
+          optionEls.push(row);
+          menu.appendChild(row);
+        });
+
+        topicRoot.appendChild(btn);
+        topicRoot.appendChild(menu);
+
+        const setOpen = (open) => {
+          topicRoot.setAttribute("data-open", open ? "true" : "false");
+          btn.setAttribute("aria-expanded", open ? "true" : "false");
+        };
+
+        btn.addEventListener("click", (e) => {
+          e.preventDefault();
+          e.stopPropagation();
+          const isOpen = topicRoot.getAttribute("data-open") === "true";
+          setOpen(!isOpen);
+        });
+
+        topicRoot.addEventListener("click", (e) => e.stopPropagation());
+        document.addEventListener("click", () => setOpen(false));
+        document.addEventListener("keydown", (e) => {
+          if (e.key === "Escape") setOpen(false);
+        });
+
+        syncSelected();
+        topicSelect.addEventListener("change", syncSelected);
+      })();
+
+      // Contact form topic -> enable message, store label.
+      (() => {
+        const topicSelect = document.getElementById("topicSelect");
+        const messageBox = document.getElementById("messageBox");
+        const topicLabel = document.getElementById("topicLabel");
+        if (!topicSelect || !messageBox) return;
+
+        topicSelect.addEventListener("change", function () {
+          if (this.value) {
+            messageBox.disabled = false;
+            messageBox.placeholder = "Type your message here...";
+            if (topicLabel) topicLabel.value = this.options[this.selectedIndex].text;
+          } else {
+            messageBox.disabled = true;
+            messageBox.placeholder = "Select a topic first...";
+            if (topicLabel) topicLabel.value = "";
+          }
+        });
+      })();
+
+      // If arriving from another page with #contact, open the modal automatically.
+      if (window.location.hash === "#contact" || window.location.hash === "#contact-form") {
+        openContactModal();
+      }
+
+    </script>
+<script src="./site-lib/reporter-tools-showcase.js?v=20260902-demo-availability-1"></script>
+<script>
+  (() => {
+    const toggle = document.querySelector('[data-home-note-toggle]');
+    const note = document.getElementById('homeNote');
+    const paper = note?.querySelector('.homepage-note__paper');
+    const closeButtons = note?.querySelectorAll('[data-home-note-close]') || [];
+    const topCloseButton = note?.querySelector('.homepage-note__close');
+    const reducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)');
+    if (!toggle || !note) return;
+
+    let animationTimer = 0;
+    note.inert = true;
+
+    const clearNoteSizing = () => {
+      note.style.height = '';
+      note.style.overflow = '';
+    };
+
+    const scrollNoteIntoView = () => {
+      if (!paper) return;
+      const rect = paper.getBoundingClientRect();
+      const header = document.querySelector('header');
+      const headerStyle = header ? window.getComputedStyle(header) : null;
+      const headerBottom = header && ['fixed', 'sticky'].includes(headerStyle?.position)
+        ? Math.max(0, header.getBoundingClientRect().bottom)
+        : 0;
+      const topInset = Math.max(16, headerBottom + 16);
+      const bottomInset = 16;
+      const availableHeight = Math.max(1, window.innerHeight - topInset - bottomInset);
+      const viewportTop = rect.height <= availableHeight
+        ? topInset + (availableHeight - rect.height) / 2
+        : topInset;
+      const targetTop = Math.max(0, window.scrollY + rect.top - viewportTop);
+      window.scrollTo({
+        top: targetTop,
+        behavior: reducedMotion.matches ? 'auto' : 'smooth'
+      });
+    };
+
+    const scrollToPageTop = () => {
+      window.scrollTo({
+        top: 0,
+        behavior: reducedMotion.matches ? 'auto' : 'smooth'
+      });
+    };
+
+    const finishClosing = (returnFocus = true) => {
+      window.clearTimeout(animationTimer);
+      note.hidden = true;
+      note.classList.remove('is-closing', 'is-opening');
+      clearNoteSizing();
+      if (returnFocus) toggle.focus({ preventScroll: true });
+      scrollToPageTop();
+    };
+
+    const openNote = () => {
+      window.clearTimeout(animationTimer);
+      toggle.setAttribute('aria-expanded', 'true');
+      note.hidden = false;
+      note.inert = false;
+      note.setAttribute('aria-hidden', 'false');
+      note.classList.remove('is-closing', 'is-opening');
+      clearNoteSizing();
+
+      if (reducedMotion.matches) {
+        requestAnimationFrame(scrollNoteIntoView);
+        topCloseButton?.focus({ preventScroll: true });
+        return;
+      }
+
+      const openHeight = Math.ceil(note.scrollHeight);
+      note.style.height = '0px';
+      note.style.overflow = 'hidden';
+
+      requestAnimationFrame(() => {
+        note.classList.add('is-opening');
+        note.style.height = `${openHeight}px`;
+        requestAnimationFrame(scrollNoteIntoView);
+        animationTimer = window.setTimeout(() => {
+          note.classList.remove('is-opening');
+          clearNoteSizing();
+          scrollNoteIntoView();
+          topCloseButton?.focus({ preventScroll: true });
+        }, 660);
+      });
+    };
+
+    const closeNote = (returnFocus = true) => {
+      if (note.hidden) return;
+      window.clearTimeout(animationTimer);
+      toggle.setAttribute('aria-expanded', 'false');
+      note.inert = true;
+      note.setAttribute('aria-hidden', 'true');
+      note.classList.remove('is-opening');
+
+      if (reducedMotion.matches || !paper) {
+        finishClosing(returnFocus);
+        return;
+      }
+
+      note.style.height = `${Math.ceil(note.getBoundingClientRect().height)}px`;
+      note.style.overflow = 'hidden';
+      void note.offsetHeight;
+
+      requestAnimationFrame(() => {
+        note.classList.add('is-closing');
+        note.style.height = '0px';
+        animationTimer = window.setTimeout(() => finishClosing(returnFocus), 580);
+      });
+    };
+
+    toggle.addEventListener('click', () => {
+      const isOpen = toggle.getAttribute('aria-expanded') === 'true';
+      if (isOpen) closeNote(false);
+      else openNote();
+    });
+
+    closeButtons.forEach((button) => {
+      button.addEventListener('click', () => closeNote(true));
+    });
+
+    document.addEventListener('keydown', (event) => {
+      if (event.key === 'Escape' && toggle.getAttribute('aria-expanded') === 'true') {
+        closeNote(true);
+      }
+    });
+  })();
+
+  (() => {
+    const button = document.querySelector('[data-back-to-top]');
+    if (!button) return;
+
+    const reducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)');
+    const syncVisibility = () => {
+      const revealAt = Math.min(700, Math.max(360, window.innerHeight * 0.55));
+      button.hidden = window.scrollY < revealAt;
+    };
+
+    button.addEventListener('click', () => {
+      window.scrollTo({
+        top: 0,
+        behavior: reducedMotion.matches ? 'auto' : 'smooth'
+      });
+    });
+    window.addEventListener('scroll', syncVisibility, { passive: true });
+    window.addEventListener('resize', syncVisibility);
+    syncVisibility();
+  })();
+
+  (async () => {
+    const root = document.querySelector('[data-tool-spotlight]');
+    if (!root) return;
+    const reporterToolImage = (filename) => `/images/reporter-tools/${filename}`;
+    const catalog = await window.REPORTER_TOOLS_CATALOG_READY;
+    const tools = (window.REPORTER_TOOLS_SHOWCASE || []).map((tool) => ({
+      ...tool,
+      image: tool.imageUrl || reporterToolImage(tool.imageFilename)
+    }));
+    if (!tools.length) {
+      root.dataset.catalogFallback = 'true';
+      return;
+    }
+    const card = root.querySelector('.tool-spotlight__card');
+    const image = root.querySelector('[data-tool-spotlight-image]');
+    const placeholder = root.querySelector('[data-tool-spotlight-placeholder]');
+    const placeholderTitle = root.querySelector('[data-tool-spotlight-placeholder-title]');
+    const title = root.querySelector('[data-tool-spotlight-title]');
+    const description = root.querySelector('[data-tool-spotlight-description]');
+    const badges = root.querySelector('[data-tool-spotlight-badges]');
+    const link = root.querySelector('[data-tool-spotlight-link]');
+    const quickLink = root.querySelector('[data-tool-spotlight-quick-link]');
+    const dots = root.querySelector('[data-tool-spotlight-dots]');
+    const mobileQuickLinks = document.querySelector('[data-mobile-tool-links]');
+    const localPreviewToken = /^(?:localhost|127\.0\.0\.1)$/.test(location.hostname)
+      ? Date.now().toString(36)
+      : '';
+    const withFreshLocalPreview = (url) => {
+      if (!localPreviewToken) return url;
+      const target = new URL(url, location.href);
+      if (target.origin === location.origin) target.searchParams.set('preview', localPreviewToken);
+      return target.href;
+    };
+    let index = 0;
+
+    const quickItems = [
+      ...(catalog.quickLinks || []).map((item) => ({
+        title: item.title,
+        label: item.label,
+        url: item.url,
+        color: item.color
+      })),
+      ...tools.filter((tool) => !tool.quickLinkDisabled).map((tool) => ({
+        title: tool.title,
+        label: tool.quickLinkLabel,
+        url: tool.quickLinkUrl,
+        color: tool.color
+      }))
+    ].filter((item) => item.title && item.url);
+
+    const populateQuickLinks = (container, menuItems = false) => {
+      if (!container) return;
+      quickItems.forEach((item) => {
+        const quick = document.createElement('a');
+        quick.className = 'tool-quick-link';
+        quick.href = item.url;
+        quick.textContent = item.title;
+        quick.style.setProperty('--quick-color', item.color || '#24a094');
+        quick.setAttribute('aria-label', `${item.label || 'Open'}: ${item.title}`);
+        if (menuItems) quick.setAttribute('role', 'menuitem');
+        if (/^https?:/i.test(item.url)) {
+          quick.target = '_blank';
+          quick.rel = 'noopener noreferrer';
+        }
+        container.append(quick);
+      });
+    };
+
+    populateQuickLinks(mobileQuickLinks);
+
+    tools.forEach((tool, toolIndex) => {
+      const dot = document.createElement('button');
+      dot.type = 'button';
+      dot.className = 'tool-spotlight__dot';
+      dot.setAttribute('aria-label', `Show ${tool.title}`);
+      dot.addEventListener('click', () => show(toolIndex));
+      dots.append(dot);
+    });
+
+    function show(nextIndex, animate = true) {
+      const previousIndex = index;
+      index = (nextIndex + tools.length) % tools.length;
+      const tool = tools[index];
+      root.style.setProperty('--spotlight-color', tool.color);
+      root.style.setProperty('--spotlight-matte', tool.imageMatte || '#ffffff');
+      root.style.setProperty('--spotlight-image-x', `${tool.imageX || 0}%`);
+      root.style.setProperty('--spotlight-image-y', `${tool.imageY || 0}%`);
+      root.style.setProperty('--spotlight-image-scale', String(tool.imageScale || 1));
+      root.style.setProperty('--spotlight-image-fit', tool.imageFit || 'contain');
+      const usesPlaceholder = tool.imageFilename === 'reporter-tools-placeholder.png';
+      image.hidden = usesPlaceholder;
+      if (placeholder) placeholder.hidden = !usesPlaceholder;
+      if (placeholderTitle) placeholderTitle.textContent = tool.title;
+      if (!usesPlaceholder) {
+        image.src = tool.image;
+        image.alt = tool.imageAlt || tool.title;
+      }
+      title.textContent = tool.title;
+      description.textContent = tool.description;
+      if (badges) {
+        const badgeSpecs = Array.isArray(tool.badges) ? tool.badges : [];
+        badges.replaceChildren(...badgeSpecs.map((badgeSpec) => {
+          const badge = document.createElement('span');
+          badge.className = 'tool-spotlight__badge';
+          badge.textContent = badgeSpec.label;
+          badge.style.setProperty('--badge-color', badgeSpec.color);
+          return badge;
+        }));
+        badges.hidden = badgeSpecs.length === 0;
+        badges.setAttribute('aria-label', badgeSpecs.length ? `${tool.title} access details` : '');
+      }
+      link.href = withFreshLocalPreview(tool.demoUrl || `./reporter-tools.html#tool=${encodeURIComponent(tool.key)}`);
+      link.textContent = 'See More';
+      const quickTarget = tool.quickLinkUrl || tool.openToolUrl || tool.tutorialUrl;
+      quickLink.textContent = tool.quickLinkLabel || 'Open Tool';
+      if (tool.quickLinkDisabled) {
+        quickLink.removeAttribute('href');
+        quickLink.removeAttribute('target');
+        quickLink.removeAttribute('rel');
+        quickLink.setAttribute('aria-disabled', 'true');
+      } else if (/^https?:/i.test(quickTarget)) {
+        quickLink.href = quickTarget;
+        quickLink.removeAttribute('aria-disabled');
+        quickLink.target = '_blank';
+        quickLink.rel = 'noopener noreferrer';
+      } else {
+        quickLink.href = quickTarget;
+        quickLink.removeAttribute('aria-disabled');
+        quickLink.removeAttribute('target');
+        quickLink.removeAttribute('rel');
+      }
+      [...dots.children].forEach((dot, dotIndex) => dot.setAttribute('aria-current', dotIndex === index ? 'true' : 'false'));
+      if (animate && card && !window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
+        const forward = nextIndex > previousIndex || (previousIndex === tools.length - 1 && index === 0);
+        card.classList.remove('is-flipping-forward', 'is-flipping-backward');
+        void card.offsetWidth;
+        card.classList.add(forward ? 'is-flipping-forward' : 'is-flipping-backward');
+      }
+    }
+
+    root.querySelector('[data-tool-spotlight-previous]').addEventListener('click', () => show(index - 1));
+    root.querySelector('[data-tool-spotlight-next]').addEventListener('click', () => show(index + 1));
+    show(0, false);
+  })();
+</script>
+<script src="./site-lib/learn-navigation.js?v=20260902-hanken-1" defer></script>
+</body>
+</html>

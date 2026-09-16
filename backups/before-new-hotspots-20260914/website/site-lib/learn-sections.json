@@ -1,0 +1,45 @@
+{
+  "version": 1,
+  "sections": [
+    {
+      "id": "chatgpt-tips",
+      "order": 10,
+      "eyebrow": "ChatGPT",
+      "title": "ChatGPT Tips",
+      "description": "Practical prompt habits and court-reporter-friendly ways to get better results.",
+      "url": "/learn/chatgpt-tips/index.html",
+      "catalogUrl": "./chatgpt-tips/index-items.json",
+      "accent": "#24a094"
+    },
+    {
+      "id": "reporter-tools",
+      "order": 20,
+      "eyebrow": "Tools",
+      "title": "Reporter Tools",
+      "description": "ChatGPT and AI Drive Sidekicks, organized by platform with demos, tutorials, and direct access.",
+      "url": "/reporter-tools.html",
+      "catalogUrl": "./sidekicks/index-items.json",
+      "accent": "#ff90e7"
+    },
+    {
+      "id": "steno-tips",
+      "order": 30,
+      "eyebrow": "Steno",
+      "title": "Steno Tips & Briefs",
+      "description": "Steno knowledge, briefs, reporting habits, and practical lessons for working reporters.",
+      "url": "/learn/steno-tips/index.html",
+      "catalogUrl": "./steno-tips/index-items.json",
+      "accent": "#f1f332"
+    },
+    {
+      "id": "tech-tips",
+      "order": 40,
+      "eyebrow": "Tech",
+      "title": "Tech Tips",
+      "description": "Useful software, hardware, and workflow help outside the individual Sidekicks.",
+      "url": "/learn/tech-tips/index.html",
+      "catalogUrl": "./tech-tips/index-items.json",
+      "accent": "#91a8ed"
+    }
+  ]
+}

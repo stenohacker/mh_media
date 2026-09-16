@@ -71,6 +71,14 @@ HOTSPOTS,H-ORANGE,https://iridescent-wisp-57bcb1.netlify.app/images/tutorial-ann
 HOTSPOTS,H-PINK,https://iridescent-wisp-57bcb1.netlify.app/images/tutorial-annotations/h-pink.png
 HOTSPOTS,H-PURPLE,https://iridescent-wisp-57bcb1.netlify.app/images/tutorial-annotations/h-purple.png
 HOTSPOTS,H-YELLOW,https://iridescent-wisp-57bcb1.netlify.app/images/tutorial-annotations/h-yellow.png
+HOTSPOTS,LIGHT-PINK-FBEAF9,https://iridescent-wisp-57bcb1.netlify.app/images/tutorial-annotations/hotspots/light-pink-FBEAF9.png
+HOTSPOTS,MAUVE-B23386,https://iridescent-wisp-57bcb1.netlify.app/images/tutorial-annotations/hotspots/mauve-B23386.png
+HOTSPOTS,MINT-D3F3F0,https://iridescent-wisp-57bcb1.netlify.app/images/tutorial-annotations/hotspots/mint-D3F3F0.png
+HOTSPOTS,ORANGE-YELLOW-FFC900,https://iridescent-wisp-57bcb1.netlify.app/images/tutorial-annotations/hotspots/orange-yellow-FFC900.png
+HOTSPOTS,PINK-FF90E7,https://iridescent-wisp-57bcb1.netlify.app/images/tutorial-annotations/hotspots/pink-FF90E7.png
+HOTSPOTS,PURPLE-91A8ED,https://iridescent-wisp-57bcb1.netlify.app/images/tutorial-annotations/hotspots/purple-91A8ED.png
+HOTSPOTS,TEAL-26AB9D,https://iridescent-wisp-57bcb1.netlify.app/images/tutorial-annotations/hotspots/teal-26AB9D.png
+HOTSPOTS,YELLOW-F1F332,https://iridescent-wisp-57bcb1.netlify.app/images/tutorial-annotations/hotspots/yellow-F1F332.png
 NUMBERS-EXTRA,HS1,https://iridescent-wisp-57bcb1.netlify.app/images/tutorial-annotations/numbers-extra/hs1.png
 NUMBERS-EXTRA,HS2,https://iridescent-wisp-57bcb1.netlify.app/images/tutorial-annotations/numbers-extra/hs2.png
 NUMBERS-EXTRA,HS3,https://iridescent-wisp-57bcb1.netlify.app/images/tutorial-annotations/numbers-extra/hs3.png
@@ -80,6 +88,7 @@ NUMBERS-EXTRA,HS6,https://iridescent-wisp-57bcb1.netlify.app/images/tutorial-ann
 NUMBERS-EXTRA,HS7,https://iridescent-wisp-57bcb1.netlify.app/images/tutorial-annotations/numbers-extra/hs7.png
 NUMBERS-EXTRA,HS8,https://iridescent-wisp-57bcb1.netlify.app/images/tutorial-annotations/numbers-extra/hs8.png
 NUMBERS-EXTRA,HS9,https://iridescent-wisp-57bcb1.netlify.app/images/tutorial-annotations/numbers-extra/hs9.png
+OBJECTS,ADDRESS_BAR_PINK,https://iridescent-wisp-57bcb1.netlify.app/images/tutorial-annotations/objects/address_bar_pink.png
 OBJECTS,ASTERISK,https://iridescent-wisp-57bcb1.netlify.app/images/tutorial-annotations/objects/asterisk.png
 OBJECTS,AVATAR-SIDEKICK,https://iridescent-wisp-57bcb1.netlify.app/images/tutorial-annotations/objects/avatar-sidekick.png
 OBJECTS,AVATAR-USER,https://iridescent-wisp-57bcb1.netlify.app/images/tutorial-annotations/objects/avatar-user.png
@@ -145,6 +154,7 @@ OBJECTS,X,https://iridescent-wisp-57bcb1.netlify.app/images/tutorial-annotations
 OTHER,GROUP 40635 — DIE CUT — DIE CUT,https://iridescent-wisp-57bcb1.netlify.app/images/tutorial-annotations/Group%2040635%20%E2%80%94%20Die%20Cut%20%E2%80%94%20Die%20Cut.png
 OTHER,GROUP 40635 — DIE CUT — DIE CUT-1,https://iridescent-wisp-57bcb1.netlify.app/images/tutorial-annotations/Group%2040635%20%E2%80%94%20Die%20Cut%20%E2%80%94%20Die%20Cut-1.png
 OTHER,LEFT,https://iridescent-wisp-57bcb1.netlify.app/images/tutorial-annotations/left.png
+OTHER,LINK-ANNOTATION,https://iridescent-wisp-57bcb1.netlify.app/images/tutorial-annotations/link-annotation.png
 OTHER,LOGO,https://iridescent-wisp-57bcb1.netlify.app/images/tutorial-annotations/logo.png
 OTHER,RIGHT,https://iridescent-wisp-57bcb1.netlify.app/images/tutorial-annotations/right.png
 OTHER,TEXTBOXCGTFINAL,https://iridescent-wisp-57bcb1.netlify.app/images/tutorial-annotations/textboxcgtfinal.png

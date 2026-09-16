@@ -1,0 +1,230 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="color-scheme" content="light">
+  <meta name="description" content="Proofreader Sidekick preferences and installation setup.">
+  <title>Proofreader Sidekick Setup | Magic Hashtags</title>
+  <link rel="preload" href="/fonts/hanken-grotesk-latin.woff2" as="font" type="font/woff2" crossorigin>
+  <link rel="stylesheet" href="/styles/site-system.css?v=20260902-hanken-1">
+  <style>
+    :root {
+      --black: #000;
+      --white: #fff;
+      --yellow: #f1f332;
+      --pink: #ff90e7;
+      --green: #24a094;
+      --purple: #91a8ed;
+    }
+    * { box-sizing: border-box; }
+    body {
+      min-height: 100vh;
+      margin: 0;
+      background: #f4f4f0;
+      color: var(--black);
+      font-family: "Hanken Grotesk", ui-sans-serif, -apple-system, BlinkMacSystemFont, "Segoe UI", Arial, sans-serif;
+    }
+    .setup-header {
+      border-bottom: 4px solid var(--white);
+      background: var(--black);
+      color: var(--white);
+    }
+    .setup-header__inner {
+      width: min(100% - 2rem, var(--site-shell-max, 120rem));
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 1.5rem;
+      margin: 0 auto;
+      padding: .9rem 0;
+    }
+    .setup-logo img {
+      display: block;
+      width: min(18rem, 55vw);
+      height: auto;
+    }
+    .setup-nav {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: flex-end;
+      gap: .4rem;
+    }
+    .setup-nav a {
+      border: 3px solid transparent;
+      padding: .65rem .75rem;
+      color: var(--white);
+      font-size: .75rem;
+      font-weight: 800;
+      letter-spacing: .04em;
+      text-decoration: none;
+      text-transform: uppercase;
+    }
+    .setup-nav a:hover,
+    .setup-nav a:focus-visible {
+      border-color: var(--yellow);
+      background: var(--yellow);
+      color: var(--black);
+      outline: 0;
+    }
+    main {
+      width: min(100% - 2rem, var(--site-shell-max, 120rem));
+      margin: 0 auto;
+      padding: clamp(3rem, 7vw, 6rem) 0;
+    }
+    .setup-hero,
+    .setup-panel {
+      border: 5px solid var(--black);
+      background: var(--white);
+      box-shadow: 12px 12px 0 var(--black);
+    }
+    .setup-hero { padding: clamp(1.5rem, 5vw, 3.5rem); }
+    .setup-eyebrow {
+      display: inline-block;
+      margin: 0 0 1rem;
+      padding: .45rem .65rem;
+      background: var(--purple);
+      font-size: .75rem;
+      font-weight: 800;
+      letter-spacing: .06em;
+      text-transform: uppercase;
+    }
+    h1 {
+      max-width: 15ch;
+      margin: 0;
+      font-size: clamp(2.4rem, 8vw, 5.6rem);
+      font-weight: 900;
+      letter-spacing: .025em;
+      line-height: .95;
+      text-transform: uppercase;
+    }
+    .setup-lead {
+      max-width: 48rem;
+      margin: 1.5rem 0 0;
+      font-size: clamp(1rem, 2vw, 1.2rem);
+      font-weight: 650;
+      line-height: 1.6;
+    }
+    .setup-status {
+      margin: 2rem 0 0;
+      border: 4px solid var(--black);
+      padding: 1rem 1.15rem;
+      background: var(--yellow);
+      box-shadow: 7px 7px 0 var(--black);
+      font-weight: 800;
+      line-height: 1.45;
+      text-transform: uppercase;
+    }
+    .setup-panel {
+      margin-top: 2.5rem;
+      padding: clamp(1.25rem, 4vw, 2.25rem);
+      box-shadow: 10px 10px 0 var(--purple);
+    }
+    .setup-panel h2 {
+      margin: 0 0 1rem;
+      font-size: clamp(1.35rem, 3vw, 2rem);
+      text-transform: uppercase;
+    }
+    .setup-list {
+      display: grid;
+      gap: .8rem;
+      margin: 0;
+      padding: 0;
+      list-style: none;
+    }
+    .setup-list li {
+      border-left: 7px solid var(--pink);
+      padding: .7rem .9rem;
+      background: #f8f8f8;
+      font-weight: 650;
+      line-height: 1.45;
+    }
+    .setup-actions {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 1rem;
+      margin-top: 2rem;
+    }
+    .setup-button {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      min-height: 3.3rem;
+      border: 4px solid var(--black);
+      padding: .7rem 1rem;
+      background: var(--pink);
+      color: var(--black);
+      box-shadow: 6px 6px 0 var(--black);
+      font-weight: 850;
+      letter-spacing: .04em;
+      text-decoration: none;
+      text-transform: uppercase;
+    }
+    .setup-button--secondary { background: var(--white); }
+    .setup-button:hover,
+    .setup-button:focus-visible {
+      transform: translate(4px, 4px);
+      box-shadow: 2px 2px 0 var(--black);
+      outline: 0;
+    }
+    footer {
+      border-top: 6px solid var(--purple);
+      padding: 2rem 1rem;
+      background: var(--black);
+      color: var(--white);
+      text-align: center;
+      font-size: .75rem;
+      font-weight: 750;
+      letter-spacing: .04em;
+      text-transform: uppercase;
+    }
+    @media (max-width: 720px) {
+      .setup-header__inner { align-items: flex-start; flex-direction: column; }
+      .setup-nav { justify-content: flex-start; }
+      .setup-actions { flex-direction: column; }
+      .setup-button { width: 100%; }
+    }
+  </style>
+</head>
+<body>
+  <header class="setup-header">
+    <div class="setup-header__inner">
+      <a class="setup-logo" href="/" aria-label="Magic Hashtags home">
+        <img src="/images/logosmaller.png" alt="Magic Hashtags — AI tools for court reporters">
+      </a>
+      <nav class="setup-nav" aria-label="Primary navigation">
+        <a href="/learn/learn-index.html">Learn</a>
+        <a href="/reporter-tools.html">Reporter Tools</a>
+        <a href="/customizer.html">Customizer</a>
+        <a href="/purchase.html">Store</a>
+      </nav>
+    </div>
+  </header>
+
+  <main>
+    <section class="setup-hero">
+      <p class="setup-eyebrow">AI Drive setup</p>
+      <h1>Proofreader Sidekick</h1>
+      <p class="setup-lead">This will be the direct setup page for collecting proofreading preferences, explaining installation, and exporting the smaller Markdown setup file.</p>
+      <p class="setup-status">The preference form is being prepared. The tutorial is available now; the AI Drive invitation remains private.</p>
+      <div class="setup-actions">
+        <a class="setup-button" href="/learn/Proofreader/proofreader.html">Open Tutorial</a>
+        <a class="setup-button setup-button--secondary" href="/learn/sidekicks/index.html">Reporter Tools</a>
+      </div>
+    </section>
+
+    <section class="setup-panel" aria-labelledby="plannedFeatures">
+      <h2 id="plannedFeatures">What this page will handle</h2>
+      <ul class="setup-list">
+        <li>Collect the user’s proofreading and formatting preferences.</li>
+        <li>Show how to install and use the Proofreader Sidekick in AI Drive.</li>
+        <li>Export a concise Markdown setup file after the preferences are complete.</li>
+        <li>Keep the invitation-only AI Drive video out of public quick links.</li>
+      </ul>
+    </section>
+  </main>
+
+  <footer>© 2026 Magic Hashtags · Built by a working court reporter</footer>
+  <script src="./site-lib/learn-navigation.js?v=20260902-hanken-1" defer></script>
+</body>
+</html>

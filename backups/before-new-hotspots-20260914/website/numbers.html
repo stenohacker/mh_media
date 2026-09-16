@@ -1,0 +1,382 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="color-scheme" content="light" />
+  <title>Numbers | Magic Hashtags</title>
+
+
+<script>
+    window.tailwind = window.tailwind || {};
+    window.tailwind.config = {
+      theme: {
+        extend: {
+          fontFamily: {
+            sans: ["Hanken Grotesk", "Arial", "sans-serif"],
+            mono: ["Hanken Grotesk", "Arial", "sans-serif"],
+          },
+        },
+      },
+    };
+  </script>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <style>
+    html { scroll-behavior: smooth; }
+    body { font-family: var(--font-interface); }
+
+    .document-card {
+      box-shadow: none;
+      min-height: 380px;
+    }
+
+    .document-card:hover,
+    .document-card:focus-visible {
+      box-shadow: 10px 10px 0 #000;
+      outline: none;
+    }
+
+    .document-modal[data-open="false"],
+    .document-overlay[data-open="false"] {
+      display: none;
+    }
+
+    .document-modal {
+      position: fixed;
+      inset: 0;
+      z-index: 80;
+      display: grid;
+      place-items: center;
+      padding: 0.75rem;
+      perspective: 1200px;
+    }
+
+    .document-overlay {
+      position: fixed;
+      inset: 0;
+      z-index: 70;
+      background: rgba(0, 0, 0, 0.72);
+      animation: overlayReveal 760ms ease-out both;
+    }
+
+    .embed-shell {
+      --document-width: min(74vw, 1380px);
+      position: relative;
+      width: min(96vw, 1760px);
+      height: min(90vh, 940px);
+      background: linear-gradient(115deg, #ffe7f7 0%, #f8efff 48%, #eaf9fb 100%);
+      border: 4px solid #000;
+      box-shadow: 10px 10px 0 #000;
+      display: grid;
+      grid-template-rows: minmax(0, 1fr);
+      overflow: hidden;
+      transform-origin: center center;
+      animation: shellBloom 1200ms cubic-bezier(0.16, 1, 0.3, 1) both;
+    }
+
+    .document-close {
+      position: absolute;
+      top: 1rem;
+      right: 1rem;
+      z-index: 4;
+      background: #ff90e7;
+      color: #000;
+      border: 4px solid #000;
+      padding: 0.5rem 1rem;
+      font-family: var(--font-interface);
+      font-weight: 600;
+      text-transform: uppercase;
+      letter-spacing: 0.05em;
+      box-shadow: 4px 4px 0 #000;
+    }
+
+    .document-close:hover,
+    .document-close:focus-visible {
+      background: #f1f332;
+      outline: none;
+    }
+
+    .embed-stage {
+      position: relative;
+      min-height: 0;
+      display: flex;
+      align-items: stretch;
+      justify-content: center;
+      padding: clamp(1rem, 3vw, 3.75rem);
+      background: linear-gradient(115deg, #ffe7f7 0%, #f8efff 48%, #eaf9fb 100%);
+      overflow: hidden;
+    }
+
+    .embed-frame {
+      position: relative;
+      display: block;
+      width: var(--document-width);
+      height: 100%;
+      border: 0;
+      background: #fff;
+      opacity: 0;
+      transform: translateY(18px);
+      transform-origin: top center;
+      transition: opacity 900ms ease, transform 900ms cubic-bezier(0.16, 1, 0.3, 1);
+    }
+
+    .embed-loading {
+      position: absolute;
+      inset: 0;
+      display: grid;
+      place-items: center;
+      padding: clamp(0.75rem, 2vw, 2rem);
+      background: #fff;
+      opacity: 1;
+      transition: opacity 700ms ease, transform 700ms ease;
+      z-index: 2;
+    }
+
+    .embed-loading-gif {
+      display: block;
+      width: min(100%, 1680px);
+      max-height: calc(100% - 1rem);
+      object-fit: contain;
+      background: #fff;
+      animation: loadingPulse 1500ms ease-in-out infinite;
+    }
+
+    .embed-shell[data-revealed="true"] .embed-frame {
+      opacity: 1;
+      transform: translateY(0);
+    }
+
+    .embed-shell[data-revealed="true"] .embed-loading {
+      opacity: 0;
+      transform: translateY(-12px);
+      pointer-events: none;
+    }
+
+    .figma-slide-frame {
+      display: block;
+      max-width: 100%;
+    }
+
+    @keyframes overlayReveal {
+      from { opacity: 0; }
+      to { opacity: 1; }
+    }
+
+    @keyframes shellBloom {
+      0% {
+        opacity: 0;
+        transform: translateY(32px);
+        box-shadow: 0 0 0 0 #000;
+      }
+      55% {
+        opacity: 1;
+        transform: translateY(-6px);
+        box-shadow: 10px 10px 0 #000;
+      }
+      100% {
+        opacity: 1;
+        transform: translateY(0);
+        box-shadow: 10px 10px 0 #000;
+      }
+    }
+
+    @keyframes loadingPulse {
+      0%, 100% { transform: translateY(0); }
+      50% { transform: translateY(-6px); }
+    }
+
+    @media (prefers-reduced-motion: reduce) {
+      .document-overlay,
+      .embed-shell,
+      .embed-loading-gif {
+        animation: none;
+      }
+
+      .embed-frame,
+      .embed-loading {
+        transition: none;
+      }
+    }
+
+    @media (max-width: 720px) {
+      .document-modal {
+        padding: 0.5rem;
+      }
+
+      .embed-shell {
+        --document-width: 100%;
+        width: calc(100vw - 1rem);
+        height: calc(100vh - 1rem);
+        box-shadow: 7px 7px 0 #000;
+      }
+
+      .document-close {
+        top: 0.75rem;
+        right: 0.75rem;
+        padding: 0.45rem 0.75rem;
+      }
+
+      .embed-stage {
+        padding: 0.75rem;
+      }
+    }
+  </style>
+  <link rel="preload" href="/fonts/hanken-grotesk-latin.woff2" as="font" type="font/woff2" crossorigin>
+  <link rel="stylesheet" href="/styles/site-system.css?v=20260914-palette-1">
+</head>
+<body class="bg-white text-black">
+  <div class="min-h-screen bg-white">
+    <header class="fixed top-0 left-0 right-0 z-50 bg-black border-b-4 border-white">
+      <div class="max-w-7xl mx-auto px-6 py-4">
+        <nav class="flex items-center justify-between gap-6">
+          <a aria-label='Home' class='relative inline-flex items-center justify-center h-14 bg-transparent transition-transform duration-200 hover:-translate-y-[2px] hover:scale-[1.02]' href='/'>
+            <span class="sr-only">Home</span>
+            <img alt="Magic Hashtags — AI tools for court reporters" class="h-14 w-auto block" decoding="async" loading="eager" src="/images/logosmaller.png" />
+          </a>
+        </nav>
+      </div>
+    </header>
+
+    <main>
+      <section class="pt-36 pb-20 bg-white min-h-screen flex flex-col justify-center relative">
+        <div class="max-w-7xl mx-auto px-6 w-full">
+          <h1 class="w-full text-3xl md:text-5xl font-sans font-black uppercase tracking-wider leading-tight mb-8 text-center border-8 border-black p-5 md:p-6 bg-white shadow-[10px_10px_0px_0px_#24a094]">
+            Numbers
+          </h1>
+
+          <div class="text-center mb-12">
+            <div class="inline-block border-4 border-black bg-[#f1f332] text-black shadow-[10px_10px_0px_0px_#000] px-5 py-4">
+              <p class="font-sans text-base md:text-lg uppercase tracking-wider font-bold">CLICK A DOCUMENT TO OPEN</p>
+            </div>
+          </div>
+
+          <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 items-stretch">
+            <button class="document-card w-full border-4 border-black bg-white hover:bg-black hover:text-white transition-colors duration-300 group hover:-translate-y-2 cursor-pointer h-full flex flex-col justify-between text-left" data-document-title="Numbers" data-document-url="https://learn.stenohacks.com/numbers" data-open-document type="button">
+              <div class="p-6 h-full flex flex-col">
+                <h2 class="text-lg font-sans font-black uppercase tracking-wider mb-6 bg-black text-white group-hover:bg-[#ff90e7] group-hover:text-black p-3 transition-colors duration-300 border-[3px] border-transparent group-hover:border-black">
+                  Numbers
+                </h2>
+                <ul class="space-y-3 mb-6 flex-1">
+                  <li class="font-sans font-bold text-sm tracking-wide border-l-4 border-black group-hover:border-white pl-4 transition-colors duration-300">DOCUMENT</li>
+                  <li class="font-sans font-bold text-sm tracking-wide border-l-4 border-black group-hover:border-white pl-4 transition-colors duration-300">LEARN.STENOHACKS.COM</li>
+                  <li class="font-sans font-bold text-sm tracking-wide border-l-4 border-black group-hover:border-white pl-4 transition-colors duration-300">EMBEDDED VIEW</li>
+                </ul>
+                <span class="w-full mt-auto inline-flex justify-center bg-[#ff90e7] text-black border-4 border-black font-sans uppercase tracking-wider rounded-none transition-all duration-300 font-bold shadow-[4px_4px_0px_0px_black] group-hover:bg-white group-hover:shadow-[4px_4px_0px_0px_white] py-2">
+                  OPEN DOCUMENT
+                </span>
+              </div>
+            </button>
+
+            <button class="document-card w-full border-4 border-black bg-white hover:bg-black hover:text-white transition-colors duration-300 group hover:-translate-y-2 cursor-pointer h-full flex flex-col justify-between text-left" data-document-title="Numbers Practice" data-document-url="https://learn.stenohacks.com/TouyyRIsLAMczd" data-open-document type="button">
+              <div class="p-6 h-full flex flex-col">
+                <h2 class="text-lg font-sans font-black uppercase tracking-wider mb-6 bg-black text-white group-hover:bg-[#ff90e7] group-hover:text-black p-3 transition-colors duration-300 border-[3px] border-transparent group-hover:border-black">
+                  Numbers Practice
+                </h2>
+                <ul class="space-y-3 mb-6 flex-1">
+                  <li class="font-sans font-bold text-sm tracking-wide border-l-4 border-black group-hover:border-white pl-4 transition-colors duration-300">DOCUMENT</li>
+                  <li class="font-sans font-bold text-sm tracking-wide border-l-4 border-black group-hover:border-white pl-4 transition-colors duration-300">CRAFT PUBLISHED PAGE</li>
+                  <li class="font-sans font-bold text-sm tracking-wide border-l-4 border-black group-hover:border-white pl-4 transition-colors duration-300">EMBEDDED VIEW</li>
+                </ul>
+                <span class="w-full mt-auto inline-flex justify-center bg-[#ff90e7] text-black border-4 border-black font-sans uppercase tracking-wider rounded-none transition-all duration-300 font-bold shadow-[4px_4px_0px_0px_black] group-hover:bg-white group-hover:shadow-[4px_4px_0px_0px_white] py-2">
+                  OPEN DOCUMENT
+                </span>
+              </div>
+            </button>
+
+            <button class="document-card w-full border-4 border-black bg-white hover:bg-black hover:text-white transition-colors duration-300 group hover:-translate-y-2 cursor-pointer h-full flex flex-col justify-between text-left" data-document-title="Figma Slides" data-document-url="https://embed.figma.com/slides/3XPxZEIk7TLHIjdEQBP4Gz/Untitled?node-id=1-919&embed-host=share" data-open-document type="button">
+              <div class="p-6 h-full flex flex-col">
+                <h2 class="text-lg font-sans font-black uppercase tracking-wider mb-6 bg-black text-white group-hover:bg-[#ff90e7] group-hover:text-black p-3 transition-colors duration-300 border-[3px] border-transparent group-hover:border-black">
+                  Figma Slides
+                </h2>
+                <ul class="space-y-3 mb-6 flex-1">
+                  <li class="font-sans font-bold text-sm tracking-wide border-l-4 border-black group-hover:border-white pl-4 transition-colors duration-300">DOCUMENT</li>
+                  <li class="font-sans font-bold text-sm tracking-wide border-l-4 border-black group-hover:border-white pl-4 transition-colors duration-300">FIGMA SLIDES</li>
+                  <li class="font-sans font-bold text-sm tracking-wide border-l-4 border-black group-hover:border-white pl-4 transition-colors duration-300">EMBEDDED VIEW</li>
+                </ul>
+                <span class="w-full mt-auto inline-flex justify-center bg-[#ff90e7] text-black border-4 border-black font-sans uppercase tracking-wider rounded-none transition-all duration-300 font-bold shadow-[4px_4px_0px_0px_black] group-hover:bg-white group-hover:shadow-[4px_4px_0px_0px_white] py-2">
+                  OPEN DOCUMENT
+                </span>
+              </div>
+            </button>
+          </div>
+
+          <div class="mt-16 flex justify-center overflow-x-auto pb-4">
+<iframe style="border: 3px solid #000;" width="800" height="450" src="https://embed.figma.com/proto/dUv5kUYaU8C2ihFpQHEVR6/Untitled?node-id=1-36&p=f&viewport=-3086%2C157%2C0.49&scaling=contain&content-scaling=fixed&starting-point-node-id=1%3A36&page-id=0%3A1&embed-host=share" allowfullscreen></iframe>          </div>
+        </div>
+      </section>
+    </main>
+  </div>
+
+  <div class="document-overlay" data-document-overlay data-open="false"></div>
+  <section aria-hidden="true" aria-label="Numbers document" class="document-modal" data-document-modal data-open="false" role="dialog">
+    <div class="embed-shell" data-document-shell data-revealed="false">
+      <button class="document-close" data-close-document type="button">Close</button>
+      <div class="embed-stage">
+        <iframe class="embed-frame" data-document-frame title="Numbers" src="about:blank" allow="fullscreen; clipboard-read; clipboard-write" allowfullscreen></iframe>
+        <div class="embed-loading" data-document-loading aria-hidden="true">
+          <img class="embed-loading-gif" src="https://i.imgur.com/ney5NZ3.gif" alt="" />
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <script>
+    (() => {
+      const modal = document.querySelector("[data-document-modal]");
+      const overlay = document.querySelector("[data-document-overlay]");
+      const shell = document.querySelector("[data-document-shell]");
+      const frame = document.querySelector("[data-document-frame]");
+      const modalTitle = document.querySelector("[data-document-modal-title]");
+      const openButtons = document.querySelectorAll("[data-open-document]");
+      let revealTimer = null;
+
+      function clearRevealTimer() {
+        if (revealTimer) window.clearTimeout(revealTimer);
+        revealTimer = null;
+      }
+
+      function revealFrame() {
+        if (!shell || modal.getAttribute("data-open") !== "true") return;
+        shell.setAttribute("data-revealed", "true");
+      }
+
+      function setOpen(open, url, title) {
+        if (!modal || !overlay || !frame || !shell) return;
+        clearRevealTimer();
+        modal.setAttribute("data-open", open ? "true" : "false");
+        overlay.setAttribute("data-open", open ? "true" : "false");
+        modal.setAttribute("aria-hidden", open ? "false" : "true");
+        shell.setAttribute("data-revealed", "false");
+        document.body.style.overflow = open ? "hidden" : "";
+        if (modalTitle && title) modalTitle.textContent = title;
+        if (title) frame.setAttribute("title", title);
+        frame.setAttribute("src", open ? url : "about:blank");
+        if (open) revealTimer = window.setTimeout(revealFrame, 1500);
+      }
+
+      frame.addEventListener("load", () => {
+        if (modal && modal.getAttribute("data-open") === "true") {
+          clearRevealTimer();
+          revealTimer = window.setTimeout(revealFrame, 800);
+        }
+      });
+
+      openButtons.forEach((button) => {
+        button.addEventListener("click", () => {
+          setOpen(true, button.dataset.documentUrl, button.dataset.documentTitle || "Numbers");
+        });
+      });
+
+      document.addEventListener("click", (event) => {
+        const closeButton = event.target && event.target.closest ? event.target.closest("[data-close-document]") : null;
+        if (closeButton) setOpen(false);
+        if (event.target && event.target.matches && event.target.matches("[data-document-overlay]")) setOpen(false);
+      });
+
+      document.addEventListener("keydown", (event) => {
+        if (event.key === "Escape") setOpen(false);
+      });
+    })();
+  </script>
+</body>
+</html>

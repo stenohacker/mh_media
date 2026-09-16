@@ -1,0 +1,38 @@
+{
+  "version": 1,
+  "section": "chatgpt-tips",
+  "eyebrow": "Learn",
+  "title": "ChatGPT Tips",
+  "intro": "Practical ChatGPT lessons, prompt habits, and workflow ideas for stronger results.",
+  "accent": "#24A094",
+  "comingSoonImage": "/images/learn/coming-soon.gif",
+  "items": [
+    {
+      "id": "beginner-to-expert-tips",
+      "order": 10,
+      "title": "Beginner to Expert Tips",
+      "bullets": [
+        "Practical ChatGPT guidance",
+        "Stronger prompt habits",
+        "Court-reporter-friendly examples"
+      ],
+      "description": "Practical tips for getting stronger results from ChatGPT without turning it into a technical course.",
+      "media": {
+        "type": "image",
+        "url": "",
+        "alt": "Beginner to Expert ChatGPT tips preview",
+        "fit": "contain",
+        "matte": "#ffffff",
+        "x": 0,
+        "y": 0,
+        "scale": 1
+      },
+      "tutorialUrl": "/learn/ChatGPT/chatgpt.html",
+      "goToTool": false,
+      "toolUrl": "",
+      "access": "n/a",
+      "comingSoon": false,
+      "accent": "#24A094"
+    }
+  ]
+}

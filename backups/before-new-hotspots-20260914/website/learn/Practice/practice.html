@@ -1,0 +1,628 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="color-scheme" content="light" />
+    <title>Practice Sidekick - Magic Hashtags</title>
+
+    <!-- Fonts -->
+
+
+<!-- Tailwind CDN (this page uses Tailwind utility classes) -->
+    <script>
+      window.tailwind = window.tailwind || {};
+      window.tailwind.config = {
+        theme: {
+          extend: {
+            fontFamily: {
+              sans: ["Hanken Grotesk", "Arial", "sans-serif"],
+              mono: ["Hanken Grotesk", "Arial", "sans-serif"],
+            },
+          },
+        },
+      };
+    </script>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <style>
+      
+      :where(body, button, input, textarea, select, option, .font-mono, .font-sans) {
+        font-family: var(--font-interface) !important;
+        }
+
+      body,
+      button,
+      input,
+      textarea,
+      select,
+      .font-mono,
+      .font-sans {
+        font-family: var(--font-interface) !important;
+      }
+
+      body {
+        font-weight: 400;
+        font-size: 1.04rem;
+      }
+
+      .font-bold {
+        font-weight: 600 !important;
+      }
+
+      .font-black {
+        font-weight: 600 !important;
+      }
+
+      .site-header-logo {
+        display: block !important;
+        width: clamp(10rem, 28vw, 18rem) !important;
+        height: auto !important;
+        max-height: 4.6rem !important;
+        object-fit: contain !important;
+      }
+
+      header nav {
+        min-width: 0;
+      }
+      @media (max-width: 1024px) {
+        header .site-header-contact {
+          height: 2.75rem !important;
+          min-height: 2.75rem !important;
+          padding-left: 0.85rem !important;
+          padding-right: 0.85rem !important;
+          font-size: 0.82rem !important;
+          letter-spacing: 0.04em !important;
+        }
+      }
+
+      @media (max-width: 640px) {
+        header .max-w-7xl {
+          padding: 0.7rem 1rem !important;
+        }
+
+        header nav {
+          flex-direction: column !important;
+          align-items: center !important;
+          justify-content: center !important;
+          gap: 0.55rem !important;
+        }
+
+        header nav > div:first-child {
+          width: 100% !important;
+          justify-content: center !important;
+        }
+
+        .site-header-logo {
+          width: clamp(12rem, 72vw, 17rem) !important;
+          max-height: 4.2rem !important;
+        }
+
+        header .site-header-contact {
+          height: 2.35rem !important;
+          min-height: 2.35rem !important;
+          padding-left: 0.55rem !important;
+          padding-right: 0.55rem !important;
+          font-size: 0.72rem !important;
+          letter-spacing: 0.03em !important;
+        }
+      }
+
+      .site-menu-toggle {
+        display: none;
+        width: 2.45rem;
+        height: 2.45rem;
+        align-items: center;
+        justify-content: center;
+        flex-direction: column;
+        gap: 0.28rem;
+        border: 0;
+        background: transparent;
+        color: #fff;
+        padding: 0;
+        margin-left: auto;
+      }
+
+      .site-menu-toggle span {
+        display: block;
+        width: 1.15rem;
+        height: 2px;
+        background: currentColor;
+      }
+
+      .site-mobile-panel {
+        display: none;
+      }
+
+      @media (max-width: 1024px) {
+        .nav-dropdown-menu {
+          min-width: 17.5rem !important;
+        }
+
+        .nav-dropdown-menu .relative.border-4 {
+          padding: 0.55rem !important;
+        }
+
+        .nav-dropdown-menu a {
+          padding: 0.62rem 0.8rem !important;
+          font-size: 0.74rem !important;
+          letter-spacing: 0.045em !important;
+          box-shadow: 4px 4px 0 #000 !important;
+        }
+      }
+
+      @media (max-width: 900px) {
+        header nav {
+          position: relative;
+          flex-direction: row !important;
+          flex-wrap: nowrap !important;
+          align-items: center !important;
+          justify-content: space-between !important;
+        }
+
+        header nav > div:first-child {
+          width: auto !important;
+          flex: 1 1 auto !important;
+          justify-content: flex-start !important;
+        }
+
+        header .site-desktop-nav,
+        header .site-header-contact {
+          display: none !important;
+        }
+
+        .site-menu-toggle {
+          display: inline-flex !important;
+        }
+
+        .site-mobile-panel:not([hidden]) {
+          display: grid;
+          gap: 0.45rem;
+          position: absolute;
+          top: calc(100% + 0.7rem);
+          right: 0;
+          width: min(19rem, calc(100vw - 2rem));
+          border: 4px solid #000;
+          background: #fff;
+          box-shadow: 7px 7px 0 #000;
+          padding: 0.55rem;
+          z-index: 70;
+        }
+
+        .site-mobile-panel a,
+        .site-mobile-panel button {
+          display: block;
+          width: 100%;
+          border: 3px solid #000;
+          background: #fff;
+          color: #000;
+          box-shadow: 4px 4px 0 #000;
+          padding: 0.72rem 0.8rem;
+          font-size: 0.78rem;
+          font-weight: 600;
+          letter-spacing: 0.045em;
+          line-height: 1.1;
+          text-align: left;
+          text-transform: uppercase;
+        }
+
+        .site-mobile-panel a:hover,
+        .site-mobile-panel button:hover,
+        .site-mobile-panel a:focus-visible,
+        .site-mobile-panel button:focus-visible {
+          background: #f1f332;
+        }
+      }
+
+
+      html {
+        scroll-behavior: smooth;
+      }
+
+      
+      /* Header dropdown (instructions) */
+      .nav-dropdown-menu {
+        display: none;
+        position: absolute;
+        top: calc(100% + 16px);
+        left: 50%;
+        transform: translateX(-50%);
+        width: max-content;
+        min-width: 320px;
+        max-width: calc(100vw - 2rem);
+        z-index: 50;
+      }
+
+      .nav-dropdown:hover .nav-dropdown-menu,
+      .nav-dropdown:focus-within .nav-dropdown-menu,
+      .nav-dropdown[data-open="true"] .nav-dropdown-menu {
+        display: block;
+      }
+
+      .nav-dropdown-menu::before {
+        content: "";
+        position: absolute;
+        left: 0;
+        right: 0;
+        top: -16px;
+        height: 16px;
+      }
+
+      .nav-dropdown-menu a {
+        white-space: nowrap;
+      }
+
+      .nav-dropdown--disabled {
+        visibility: hidden;
+        pointer-events: none;
+      }
+
+      .neo-offset-shadow {
+        position: absolute;
+        inset: 0;
+        transform: translate(4px, 4px);
+        background: #000;
+      }
+
+      .dropdown-link-teal:hover {
+        background: #24a094 !important;
+        color: #000 !important;
+      }
+
+      /* Contact modal visibility helpers */
+      [data-contact-modal][data-open="false"],
+      [data-contact-overlay][data-open="false"] {
+        display: none;
+      }
+    </style>
+    <link rel="preload" href="/fonts/hanken-grotesk-latin.woff2" as="font" type="font/woff2" crossorigin>
+  <link rel="stylesheet" href="/styles/site-system.css?v=20260914-palette-1">
+</head>
+
+  <body>
+    <div class="min-h-screen bg-white">
+      <header class="fixed top-0 left-0 right-0 z-50 bg-black border-b-4 border-white">
+<div class="max-w-7xl mx-auto px-6 py-4">
+<nav class="flex items-center justify-between gap-6">
+<div class="flex items-center min-w-0">
+<a aria-label="Home" class="relative inline-flex items-center justify-center bg-transparent outline-none ring-0 focus:outline-none focus-visible:outline-none focus:ring-0 focus-visible:ring-0 active:outline-none transition-transform duration-200 will-change-transform hover:-translate-y-[2px] hover:scale-[1.02]" href="../../index.html">
+<span class="sr-only">Home</span>
+<img alt="Magic Hashtags — AI tools for court reporters" class="site-header-logo object-contain block" decoding="async" loading="eager" src="/images/logosmaller.png"/>
+</a>
+</div>
+<div class="site-desktop-nav hidden md:flex items-center space-x-4">
+<div class="relative nav-dropdown">
+<button aria-expanded="false" aria-haspopup="true" class="text-white hover:bg-[#f1f332] hover:text-black border-[3px] border-transparent hover:border-[#f1f332] px-6 py-3 uppercase tracking-wider font-mono rounded-none transition-all duration-200" type="button">
+                  learn
+                </button>
+<div class="nav-dropdown-menu">
+<div aria-hidden="true" class="neo-offset-shadow"></div>
+<div class="relative border-4 border-black bg-white p-3">
+<div class="space-y-2">
+<a class="block px-4 py-3 font-mono text-sm uppercase tracking-wider font-bold border-[3px] border-black bg-white shadow-[4px_4px_0px_0px_black] hover:bg-[#ff90e7] hover:text-black hover:translate-x-[4px] hover:translate-y-[4px] transition-all" href="../sidekicks/index.html">
+                        Sidekick Tutorials
+                      </a>
+<a class="block px-4 py-3 font-mono text-sm uppercase tracking-wider font-bold border-[3px] border-black bg-white shadow-[4px_4px_0px_0px_black] hover:bg-[#f1f332] hover:text-black hover:translate-x-[4px] hover:translate-y-[4px] transition-all" href="../chatgpt-tips/index.html">
+                        ChatGPT Tips
+                      </a>
+<a class="block px-4 py-3 font-mono text-sm uppercase tracking-wider font-bold border-[3px] border-black bg-white shadow-[4px_4px_0px_0px_black] hover:bg-[#ffc900] hover:text-black hover:translate-x-[4px] hover:translate-y-[4px] transition-all" href="../tech-tips/index.html">
+                        Other Tech Tips
+                      </a>
+<a class="block px-4 py-3 font-mono text-sm uppercase tracking-wider font-bold border-[3px] border-black bg-white shadow-[4px_4px_0px_0px_black] hover:bg-[#91a8ed] hover:text-black hover:translate-x-[4px] hover:translate-y-[4px] transition-all" href="../steno-tips/index.html">
+                        Steno Tips
+                      </a>
+</div>
+</div>
+</div>
+</div>
+<a class="text-white hover:bg-[#f1f332] hover:text-black border-[3px] border-transparent hover:border-[#f1f332] px-6 py-3 uppercase tracking-wider font-mono rounded-none transition-all duration-200" href="../../reporter-tools.html">
+                reporter tools
+              </a>
+<a class="text-white hover:bg-[#f1f332] hover:text-black border-[3px] border-transparent hover:border-[#f1f332] px-6 py-3 uppercase tracking-wider font-mono rounded-none transition-all duration-200" href="../../customizer.html">
+                customizer
+              </a>
+<a class="text-white hover:bg-[#f1f332] hover:text-black border-[3px] border-transparent hover:border-[#f1f332] px-6 py-3 uppercase tracking-wider font-mono rounded-none transition-all duration-200" href="../../purchase.html">
+                store
+              </a>
+</div>
+<button class="site-header-contact inline-flex items-center gap-2 h-14 bg-white text-black hover:bg-[#ff90e7] border-[3px] border-white hover:border-[#ff90e7] px-6 py-0 font-mono uppercase tracking-wider font-bold leading-none rounded-none transition-all duration-200" data-open-contact="" type="button">
+              contact
+            </button>
+<button aria-expanded="false" aria-label="Open navigation" class="site-menu-toggle" data-mobile-nav-toggle="" type="button">
+<span></span>
+<span></span>
+<span></span>
+</button>
+<div class="site-mobile-panel" data-mobile-nav-panel="" hidden></div>
+</nav>
+</div>
+</header>
+
+      <main class="pt-32 pb-20 bg-white min-h-screen">
+        <div class="max-w-6xl mx-auto px-6">
+          <h1 class="text-4xl md:text-6xl font-sans font-black uppercase tracking-wider mb-12 text-center border-8 border-black p-8 bg-white shadow-[20px_20px_0px_0px_#ffc900]">
+            Practice Sidekick
+          </h1>
+
+          <div class="border-4 border-black bg-white shadow-[10px_10px_0px_0px_black] p-8">
+            <img
+              src="https://i.imgur.com/BPCfNms.png"
+              alt="Top Banner"
+              class="w-full border-4 border-black mb-8"
+              loading="lazy"
+            />
+
+            <img
+              src="https://i.imgur.com/aEnREqV.png"
+              alt="Instructions Header"
+              class="w-full max-w-sm mx-auto mb-10"
+              loading="lazy"
+            />
+
+            <h2 class="text-2xl md:text-3xl font-mono uppercase tracking-wider font-black mb-6 bg-black text-white p-4 border-[3px] border-black">
+              Getting Started
+            </h2>
+
+            <p class="font-sans text-base leading-relaxed">
+              Instructions content will go here...
+            </p>
+          </div>
+        </div>
+      </main>
+
+      <!-- Contact modal (Netlify form) -->
+      <div class="fixed inset-0 z-50 flex items-center justify-center p-4" data-contact-modal data-open="false" aria-hidden="true">
+        <div class="absolute inset-0 bg-black/80 backdrop-blur-sm" data-contact-overlay data-open="false"></div>
+
+        <div class="relative w-full max-w-2xl border-4 border-black bg-white shadow-[20px_20px_0px_0px_black] z-50 overflow-hidden">
+          <button
+            type="button"
+            class="absolute top-4 right-4 z-10 p-2 border-[3px] border-black transition-colors bg-white text-black hover:bg-[#f1f332]"
+            data-close-contact
+            aria-label="Close"
+          >
+            ✕
+          </button>
+
+          <div class="p-8">
+            <h2 class="text-4xl font-mono uppercase tracking-wider font-black mb-2">CONTACT US</h2>
+            <p class="font-mono text-sm opacity-90 mb-8">Pick a topic and we'll get right back to you.</p>
+
+            <form id="contact-form" class="space-y-6" method="POST" data-netlify="true" name="General Contact">
+              <input type="hidden" name="form-name" value="General Contact" />
+              <input type="hidden" name="page" value="practice.html" />
+              <input type="hidden" name="topicLabel" id="topicLabel" />
+
+              <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+                <div>
+                  <label class="block font-mono uppercase tracking-wide mb-2 font-bold">FIRST NAME *</label>
+                  <input
+                    class="border-4 border-black rounded-none font-mono focus:ring-0 focus:border-[#24a094] focus:bg-[#f0fffe] bg-white transition-colors h-12 w-full px-3"
+                    name="firstName"
+                    required
+                  />
+                </div>
+                <div>
+                  <label class="block font-mono uppercase tracking-wide mb-2 font-bold">LAST NAME *</label>
+                  <input
+                    class="border-4 border-black rounded-none font-mono focus:ring-0 focus:border-[#24a094] focus:bg-[#f0fffe] bg-white transition-colors h-12 w-full px-3"
+                    name="lastName"
+                    required
+                  />
+                </div>
+              </div>
+
+              <div>
+                <label class="block font-mono uppercase tracking-wide mb-2 font-bold">EMAIL *</label>
+                <input
+                  type="email"
+                  class="border-4 border-black rounded-none font-mono focus:ring-0 focus:border-[#24a094] focus:bg-[#f0fffe] bg-white transition-colors h-12 w-full px-3"
+                  name="email"
+                  required
+                />
+              </div>
+
+              <div>
+                <label class="block font-mono uppercase tracking-wide mb-2 font-bold">TOPIC *</label>
+                <div class="relative">
+                  <div class="neo-offset-shadow" aria-hidden="true"></div>
+                  <select
+                    id="topicSelect"
+                    name="topic"
+                    required
+                    class="relative w-full border-4 border-black rounded-none font-mono bg-[#ff90e7] text-black h-12 px-3 cursor-pointer"
+                  >
+                    <option value="">Select one…</option>
+                    <option value="Reporting Work">Reporting Work</option>
+                    <option value="One-on-One Training">One-on-One Training</option>
+                    <option value="Consulting">Consulting</option>
+                    <option value="Exhibits Purchase">Exhibits Purchase</option>
+                    <option value="Sidekick Help">Sidekick Help</option>
+                    <option value="General Message">General Message</option>
+                  </select>
+                </div>
+              </div>
+
+              <div>
+                <label class="block font-mono uppercase tracking-wide mb-2 font-bold">MESSAGE *</label>
+                <textarea
+                  id="messageBox"
+                  name="message"
+                  rows="6"
+                  disabled
+                  class="border-4 border-black rounded-none font-mono focus:ring-0 focus:border-[#24a094] focus:bg-[#f0fffe] bg-white resize-none w-full px-3 py-2 disabled:opacity-50"
+                  placeholder="Select a topic first..."
+                  required
+                ></textarea>
+              </div>
+
+              <button
+                type="submit"
+                class="w-full bg-[#ff90e7] text-black hover:bg-black hover:text-[#ff90e7] border-4 border-black py-6 font-mono uppercase tracking-wider rounded-none shadow-[8px_8px_0px_0px_black] hover:shadow-[4px_4px_0px_0px_black] hover:translate-x-[4px] hover:translate-y-[4px] transition-all duration-200 text-lg font-bold"
+              >
+                SEND MESSAGE
+              </button>
+            </form>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <script>
+
+      // Mobile/tablet navigation: build from the existing desktop header links.
+      (() => {
+        const toggle = document.querySelector("[data-mobile-nav-toggle]");
+        const panel = document.querySelector("[data-mobile-nav-panel]");
+        const desktopNav = document.querySelector(".site-desktop-nav");
+        if (!toggle || !panel || !desktopNav) return;
+
+        const addLink = (source) => {
+          const href = source.getAttribute("href");
+          const label = (source.textContent || "").trim();
+          if (!href || !label) return;
+          const link = document.createElement("a");
+          link.href = href;
+          link.textContent = label;
+          panel.appendChild(link);
+        };
+
+        desktopNav.querySelectorAll("a").forEach(addLink);
+
+        const contact = document.createElement("button");
+        contact.type = "button";
+        contact.textContent = "Contact";
+        contact.setAttribute("data-open-contact", "");
+        panel.appendChild(contact);
+
+        const close = () => {
+          panel.hidden = true;
+          toggle.setAttribute("aria-expanded", "false");
+        };
+
+        toggle.addEventListener("click", (event) => {
+          event.preventDefault();
+          event.stopPropagation();
+          const isOpen = !panel.hidden;
+          panel.hidden = isOpen;
+          toggle.setAttribute("aria-expanded", isOpen ? "false" : "true");
+        });
+
+        panel.addEventListener("click", (event) => {
+          if (event.target.closest("a, button")) close();
+        });
+
+        document.addEventListener("click", (event) => {
+          if (panel.hidden) return;
+          if (event.target.closest("[data-mobile-nav-panel], [data-mobile-nav-toggle]")) return;
+          close();
+        });
+
+        document.addEventListener("keydown", (event) => {
+          if (event.key === "Escape") close();
+        });
+      })();
+
+
+      // Instructions nav dropdown: click to toggle, click outside to close.
+      (() => {
+        const dropdowns = Array.from(document.querySelectorAll(".nav-dropdown"));
+        if (!dropdowns.length) return;
+
+        const closeAll = (except) => {
+          dropdowns.forEach((dd) => {
+            if (except && dd === except) return;
+            dd.dataset.open = "false";
+            const btn = dd.querySelector("button");
+            if (btn) btn.setAttribute("aria-expanded", "false");
+          });
+        };
+
+        dropdowns.forEach((dd) => {
+          if (!dd.dataset.open) dd.dataset.open = "false";
+          const btn = dd.querySelector("button");
+          const menu = dd.querySelector(".nav-dropdown-menu");
+          if (!btn || !menu) return;
+
+          btn.addEventListener("click", (e) => {
+            e.preventDefault();
+            e.stopPropagation();
+            const isOpen = dd.dataset.open === "true";
+            closeAll(dd);
+            dd.dataset.open = isOpen ? "false" : "true";
+            btn.setAttribute("aria-expanded", isOpen ? "false" : "true");
+          });
+
+          menu.addEventListener("click", (e) => e.stopPropagation());
+        });
+
+        document.addEventListener("click", () => closeAll());
+        document.addEventListener("keydown", (e) => {
+          if (e.key === "Escape") closeAll();
+        });
+      })();
+
+      // Contact modal open/close.
+      const contactModal = document.querySelector("[data-contact-modal]");
+      const contactOverlay = document.querySelector("[data-contact-overlay]");
+
+      function setContactOpen(open) {
+        if (!contactModal || !contactOverlay) return;
+        contactModal.setAttribute("data-open", open ? "true" : "false");
+        contactOverlay.setAttribute("data-open", open ? "true" : "false");
+        contactModal.setAttribute("aria-hidden", open ? "false" : "true");
+        document.body.style.overflow = open ? "hidden" : "";
+      }
+
+      function openContactModal() {
+        setContactOpen(true);
+      }
+
+      function closeContactModal() {
+        setContactOpen(false);
+      }
+
+      document.addEventListener("click", (e) => {
+        const openBtn = e.target && e.target.closest ? e.target.closest("[data-open-contact]") : null;
+        if (openBtn) {
+          e.preventDefault();
+          openContactModal();
+          return;
+        }
+
+        const closeBtn = e.target && e.target.closest ? e.target.closest("[data-close-contact]") : null;
+        if (closeBtn) {
+          closeContactModal();
+          return;
+        }
+
+        const overlayClick = e.target && e.target.matches ? e.target.matches("[data-contact-overlay]") : false;
+        if (overlayClick) closeContactModal();
+      });
+
+      document.addEventListener("keydown", (e) => {
+        if (e.key === "Escape") closeContactModal();
+      });
+
+      // Contact form topic -> enable message, store label.
+      (() => {
+        const topicSelect = document.getElementById("topicSelect");
+        const messageBox = document.getElementById("messageBox");
+        const topicLabel = document.getElementById("topicLabel");
+        if (!topicSelect || !messageBox) return;
+
+        topicSelect.addEventListener("change", function () {
+          if (this.value) {
+            messageBox.disabled = false;
+            messageBox.placeholder = "Type your message here...";
+            if (topicLabel) topicLabel.value = this.options[this.selectedIndex].text;
+          } else {
+            messageBox.disabled = true;
+            messageBox.placeholder = "Select a topic first...";
+            if (topicLabel) topicLabel.value = "";
+          }
+        });
+      })();
+    </script>
+  <script src="../../site-lib/learn-navigation.js?v=20260902-hanken-1" defer></script>
+</body>
+</html>

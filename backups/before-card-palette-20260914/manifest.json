@@ -1,0 +1,260 @@
+[
+  {
+    "path": "/Users/tamchap/Dev/mh_media/tutorial-demo-builder-v2.html",
+    "reason": "Replace cream palette and migrate saved colors; expose selected card controls above overlaps",
+    "before": "491f787eb1bf6f423319faada3c70a34f5e5d0eabbb76767fff3278ffaf332ac",
+    "after": "d32990e048ac902399f344f0b103cd6584de375fd9eeeda96991a566b7b7d02a"
+  },
+  {
+    "path": "/Users/tamchap/Dev/mh_media/exports/2026-09-14/appearance-pages-demo.html",
+    "reason": "Synchronize player palette migration and runtime; project-state byte-identical",
+    "before": "08f596e16d2332261c0f1e6019bbdd1e2e8c95c1044e51c80c8d26e5f94cdc85",
+    "after": "e26746c50b4cd2675c5b38f8180a94091c2f8aed080327bdfc01b85267127f77"
+  },
+  {
+    "path": "/Users/tamchap/Dev/mh_media/exports/2026-09-14/appearance-pages-slides.html",
+    "reason": "Synchronize player palette migration and runtime; project-state byte-identical",
+    "before": "efebd1d2df13a214067471c76b89ec46e883ded2a5dad789b3a97ac58912fc84",
+    "after": "12a46c68c3cfb384cff957d3efa62010a989bcf250c55e87d4dbe23c4ee95d19"
+  },
+  {
+    "path": "/Users/tamchap/Dev/mh_media/exports/2026-09-14/tutorial-title-28-slides-fixed.html",
+    "reason": "Synchronize player palette migration and runtime; project-state byte-identical",
+    "before": "88dbf78816a10359c0269233d9116161ef8dc0ed387de292caabadc2015ba806",
+    "after": "346c08f508a08110f182f680141b521dd2ae89d7253d4ef44f4cbef548e7e295"
+  },
+  {
+    "path": "/Users/tamchap/Dev/mh_media/exports/2026-09-14/tutorial-title-slides-fixed.html",
+    "reason": "Synchronize player palette migration and runtime; project-state byte-identical",
+    "before": "2841130288bcfad0f9533379c5358b38e0e34769d983a047800666b442a38e47",
+    "after": "baf72a8dd722e23f7701895abfd6e189037ac54f6f4488e6b2a9a704bfef93cc"
+  },
+  {
+    "path": "/Users/tamchap/Dev/website/learn/Appearance/appearance-pages-demo.html",
+    "reason": "Synchronize player palette migration and runtime; project-state byte-identical",
+    "before": "2b8d4d27a9a1faff02b794ad95e464cc104830b5c4e312cf9736bbcd811b0066",
+    "after": "79db4e28f069304203f936fb69bef2f87d30c202e8dd3c830011837b6f467137"
+  },
+  {
+    "path": "/Users/tamchap/Dev/mh_media/tutorials/ap-demo/appearance-pages-demo.html",
+    "reason": "Retire cream color from older authoring/standalone palettes",
+    "before": "c3f203814a460cda586bd3a8f8cab730bbc1f0370d568e7694e26bd7ebe2dd47",
+    "after": "3890410dcbd6461d2dbfc53c58caa3b491dd8f98a6d4c7d6b8e928e17fb64060"
+  },
+  {
+    "path": "/Users/tamchap/Dev/mh_media/tutorial-builder-work/tutorial-demo-builder-v1.html",
+    "reason": "Retire cream color from older authoring/standalone palettes",
+    "before": "d4e630f4dcbb3a9a1adfc41a479f75cf402a850059b935a605766be6eb7c42c9",
+    "after": "23bc83c67cd621f5741b3fe0e9282a46bea9937583aa16174d32b634f23ce002"
+  },
+  {
+    "path": "/Users/tamchap/Dev/mh_media/tutorial-builder-work/tutorial-builder-centered-v1.html",
+    "reason": "Retire cream color from older authoring/standalone palettes",
+    "before": "d0762e814bbf0c54e5bef2e776c6dc59da8c0663b3091b2d3d6f15b7af280e0a",
+    "after": "16b5893ae0a2afaa483a34c3aa6253e1d42b670ea67ed32bda5aaaa181c4d61e"
+  },
+  {
+    "path": "/Users/tamchap/Dev/mh_media/tutorial-builder-work/tutorial-video-page-builder-v1.html",
+    "reason": "Retire cream color from older authoring/standalone palettes",
+    "before": "bd1979dab8e91304c75efc25f8ac058063e554e6072e0d8af9ce682745f26865",
+    "after": "f56b2bca65f115445b14858be7dfea53c7dac2fefc1d440d6ef49c18c1f9b20c"
+  },
+  {
+    "path": "/Users/tamchap/Dev/mh_media/tutorial-builder-work/tutorial-builder-v3.html",
+    "reason": "Retire cream color from older authoring/standalone palettes",
+    "before": "66a82ac70e189f7a71425c47ed3b933af5061b994b24f8f4906f14c091c4c161",
+    "after": "5240cacead464c316a0c7a2981bf7c65f240ced94b250cddc55a43262cf83fdb"
+  },
+  {
+    "path": "/Users/tamchap/Dev/mh_media/tutorial-builder-work/appearance-pages-demo.html",
+    "reason": "Retire cream color from older authoring/standalone palettes",
+    "before": "dfce263b1fa6f9a0529d02d2672e764e57b083b21675f03cae9b3c2941af514a",
+    "after": "770c7d26623da3ecfaecfeb4ec079001a760876b7cf4fd4a30141fc1f3c19e46"
+  },
+  {
+    "path": "/Users/tamchap/Dev/website/customizer.html",
+    "reason": "Retire shared cream palette / refresh shared stylesheet cache",
+    "before": "9cec1876af27fb4fc97154a4a20f4718c4845602c991dc281f9697aea00a42d9",
+    "after": "379ba0eaacd34f337ca32ddd064bbc5328abc6ac4f2d6769b3ce07a13e4eb198"
+  },
+  {
+    "path": "/Users/tamchap/Dev/website/index.html",
+    "reason": "Retire shared cream palette / refresh shared stylesheet cache",
+    "before": "b797892a7eba8fff10ba3435d93bbf6e48b10adf9385fea702aa2079fe3a2343",
+    "after": "c79f8c042bd8090d04ea1b457b736961ebb7a24652d64df7880e6bcfda8f2eee"
+  },
+  {
+    "path": "/Users/tamchap/Dev/website/construction.html",
+    "reason": "Retire shared cream palette / refresh shared stylesheet cache",
+    "before": "9898b86bd4ad18008ce95ec9ed1ae659980a5155a06a740e754b30eefde862b2",
+    "after": "6b5aeeb677b6b065ba0691c959dc8454eaf9e7bb907a5adac120caee29414cd3"
+  },
+  {
+    "path": "/Users/tamchap/Dev/website/purchase.html",
+    "reason": "Retire shared cream palette / refresh shared stylesheet cache",
+    "before": "239db780706263d15f8c5de1159a3a9c86bc0500868e8e5016a99860a3bf9f4a",
+    "after": "d687afa303a7e63ccfb30ba37436a7c530b00be76e6d5cd096fde4cc88965475"
+  },
+  {
+    "path": "/Users/tamchap/Dev/website/reporter-tools.html",
+    "reason": "Retire shared cream palette / refresh shared stylesheet cache",
+    "before": "28cc95daabcf50a565be317f9ae2249d5515667fd1b76ac0b4f4d2b116f771dc",
+    "after": "854066faf0d44ad01026b29906844c3aee79207421525d80ce4ff381e43b8f42"
+  },
+  {
+    "path": "/Users/tamchap/Dev/website/numbers.html",
+    "reason": "Retire shared cream palette / refresh shared stylesheet cache",
+    "before": "1e22828ef9d9d438ff2feac30a81462b3afae1520e0745f414ec9368c547d7ec",
+    "after": "886d15d00ad0ed297ce6df7a0ced3e656a8d513ce8ef2fa22fcf91c4aabcfb32"
+  },
+  {
+    "path": "/Users/tamchap/Dev/website/coming_soon.html",
+    "reason": "Retire shared cream palette / refresh shared stylesheet cache",
+    "before": "4f497928265bd9165dfb68287fe742086065dd1eccc06b70495d8f8a362307b4",
+    "after": "b1ca52ec18c2d0517661fa8ebf3792153f14f265723b12a2193494eabc3246a0"
+  },
+  {
+    "path": "/Users/tamchap/Dev/website/consulting.html",
+    "reason": "Retire shared cream palette / refresh shared stylesheet cache",
+    "before": "4f35800b1b224cf8dabdac92eace3cf3259d233c55eb1b95f469415a3b8fbf84",
+    "after": "ad570f8a086a026f70ede30f67c98c49b0540c5bc159a3ab3181c360e5745ed3"
+  },
+  {
+    "path": "/Users/tamchap/Dev/website/stylesheet.html",
+    "reason": "Retire shared cream palette / refresh shared stylesheet cache",
+    "before": "d280349aed5da162c63187d2db0c4400554502eead32e8e0c960011fd157f3ce",
+    "after": "6efc7d6647108f11afcadb4b0eb27589504d98edd8ed06aa5cd8319b30c79279"
+  },
+  {
+    "path": "/Users/tamchap/Dev/website/proofreader-setup.html",
+    "reason": "Retire shared cream palette / refresh shared stylesheet cache",
+    "before": "e8079eee4b282156160deace547382c5fa98671cee0a0a8534b25c77991cea76",
+    "after": "6a31956588640a718e8a07bbc76346fe929b19639b52fdb291215da78cd16961"
+  },
+  {
+    "path": "/Users/tamchap/Dev/website/learn/learn-index-builder.html",
+    "reason": "Retire shared cream palette / refresh shared stylesheet cache",
+    "before": "a79d13b4e1bc736abd2eb5e8c6542ca8d0943bdb55f92fbfad864790e959f8fe",
+    "after": "5e14d16d6387d30bdcecdf99738dda6bc03b21d0b1ee990f9c046e4b0fc7d187"
+  },
+  {
+    "path": "/Users/tamchap/Dev/website/learn/learn-index.html",
+    "reason": "Retire shared cream palette / refresh shared stylesheet cache",
+    "before": "4a93094fab6478525bd763ee7805b50a3003fe98116182e816ce471fbbcea725",
+    "after": "dc9bef1cab741df064d4ac23283d7ddc9f6f1bfcca1f6cc5e5c376f1b32e8c8a"
+  },
+  {
+    "path": "/Users/tamchap/Dev/website/learn/SpotCheck/spotcheck.html",
+    "reason": "Retire shared cream palette / refresh shared stylesheet cache",
+    "before": "169d4e75f45f546d44c198f47195ce1aaa5954f5e032b12df316ce3462288532",
+    "after": "5a1bb13001ce75c7b20ddd93823d3264c03ed0b3bf83dc62858c53d631c19eef"
+  },
+  {
+    "path": "/Users/tamchap/Dev/website/learn/Appearance/appearance.html",
+    "reason": "Retire shared cream palette / refresh shared stylesheet cache",
+    "before": "9b267929af33a3c1815847373479dd9d90c4324d68b2ba0c6eb3c7c1406fead7",
+    "after": "2743183d4e8f80a589b87a01b4fd2d6f6be4e63393c3de308ae84685b26c6502"
+  },
+  {
+    "path": "/Users/tamchap/Dev/website/learn/Appearance/appearance-pages-demo.html",
+    "reason": "Retire shared cream palette / refresh shared stylesheet cache",
+    "before": "79db4e28f069304203f936fb69bef2f87d30c202e8dd3c830011837b6f467137",
+    "after": "7c764204886fdeaf41f0271926a2f0e97f04b1e3c4123625664f5601236babb3"
+  },
+  {
+    "path": "/Users/tamchap/Dev/website/learn/tech-tips/index.html",
+    "reason": "Retire shared cream palette / refresh shared stylesheet cache",
+    "before": "3674b358102b08a42598ba572acaadaae206952cfecdbe9309267a2e9f65a47c",
+    "after": "07ad1cd804e56d1ed3724da562536f9310f2e7846db31825f3f7c38fad23cc71"
+  },
+  {
+    "path": "/Users/tamchap/Dev/website/learn/steno-tips/index.html",
+    "reason": "Retire shared cream palette / refresh shared stylesheet cache",
+    "before": "7a34e4748733526518a9611eb25c4b25e69928f0ed09c79d70cc7c8cc3de8c8a",
+    "after": "6a71844e097d13f594780ac75f9c36567bae86f713dc23e88652492baecce1ca"
+  },
+  {
+    "path": "/Users/tamchap/Dev/website/learn/sidekicks/index.html",
+    "reason": "Retire shared cream palette / refresh shared stylesheet cache",
+    "before": "ca92027282bf32b4d4fffd44ce6c4ba17ac9ece6dfb9233741efcf45bc143d94",
+    "after": "af2ea0e108b7fc792f6c4025886c62ecb640db11a32c77b2685276b68b1b0d79"
+  },
+  {
+    "path": "/Users/tamchap/Dev/website/learn/sidekicks/proofreader-sidekick.html",
+    "reason": "Retire shared cream palette / refresh shared stylesheet cache",
+    "before": "cdf9b3b9094e6eec63e62ff01f1f847cef2f4d8ed7c3848b349eae96c2794fc5",
+    "after": "1096dec075de1c127345aeb5f741a4948e09a0c7036a479323547a2527374070"
+  },
+  {
+    "path": "/Users/tamchap/Dev/website/learn/sidekicks/exhibit-descriptions.html",
+    "reason": "Retire shared cream palette / refresh shared stylesheet cache",
+    "before": "ed3a739fa7cb123ed425d8d6aefae77c1a156de2a6a3ab123ed7136c4529579a",
+    "after": "2464fb061385bb0263210bfb3d1f1508ee90988432258b1ee7d27420a02e80b9"
+  },
+  {
+    "path": "/Users/tamchap/Dev/website/learn/sidekicks/transcript-sidekick.html",
+    "reason": "Retire shared cream palette / refresh shared stylesheet cache",
+    "before": "1e7bf5fa4d86666c39efd5281b353bc8d6b695056758cab8d627ca5e8f4b7ade",
+    "after": "15ef2c78403e14d76681c6178a879e752ec608948f1c083237ef0db1d2dce37b"
+  },
+  {
+    "path": "/Users/tamchap/Dev/website/learn/sidekicks/dictionary-builder.html",
+    "reason": "Retire shared cream palette / refresh shared stylesheet cache",
+    "before": "8fecfd9974970d0a1fb270a684a8ba19501fa1beb99be6f0bc5f1b3b89812ba6",
+    "after": "eec551a1321cd818039b5327f6a7030c7650e7c9331e69b2a87352ac99c00990"
+  },
+  {
+    "path": "/Users/tamchap/Dev/website/learn/sidekicks/practice-dictation.html",
+    "reason": "Retire shared cream palette / refresh shared stylesheet cache",
+    "before": "3f66df7ec6960afa819b68d5c7ab728e3bb8ce747e4df50db6f2da87f4586974",
+    "after": "be02e6d8e09e6bc58da5a2bbfcae33447fc242b611f12b532b6036ec69d71743"
+  },
+  {
+    "path": "/Users/tamchap/Dev/website/learn/sidekicks/appearance-pages.html",
+    "reason": "Retire shared cream palette / refresh shared stylesheet cache",
+    "before": "f21c37ff2d91ee55b81cb5e8567cba782c276ae2e7a3c89e337b5f7b855078da",
+    "after": "389dedaccd746dd845d25e3461c0304c3408de52a8b86c4b90081bd23694ba85"
+  },
+  {
+    "path": "/Users/tamchap/Dev/website/learn/Exhibits/exhibits.html",
+    "reason": "Retire shared cream palette / refresh shared stylesheet cache",
+    "before": "53800e08832a0b58d5ee734ce2ccd2b0d7ac529b26aa1591d19e2869ce75e677",
+    "after": "6b60aaebe2ef8efd90b4bf15382c02646d1d1d78944533384a630a56368050df"
+  },
+  {
+    "path": "/Users/tamchap/Dev/website/learn/Dictionary/dictionary.html",
+    "reason": "Retire shared cream palette / refresh shared stylesheet cache",
+    "before": "b3b61230e2e21efae9499f111f2b72f41ecc760a1878355951fcf242d60ca9e0",
+    "after": "2e246a64bd0cfab29ccb3b82989bc0af63c76d12c5d47de5ae261ab45cf12975"
+  },
+  {
+    "path": "/Users/tamchap/Dev/website/learn/chatgpt-tips/index.html",
+    "reason": "Retire shared cream palette / refresh shared stylesheet cache",
+    "before": "10bede1be7d426605c9827e562c1769d3b37977a0a3ff23320210327defe8418",
+    "after": "b969843babc361e18e8c3a559dd08e23cf193865aef9854a767968cc839333fd"
+  },
+  {
+    "path": "/Users/tamchap/Dev/website/learn/Proofreader/proofreader.html",
+    "reason": "Retire shared cream palette / refresh shared stylesheet cache",
+    "before": "b560b9780d8cbb6159db7086a7c1e9cfdd33c5aa1bf159c503887721183e10ac",
+    "after": "221f5465850dfd383599debc45225dc4aca5abf7734546a36a6df01f425c8ef9"
+  },
+  {
+    "path": "/Users/tamchap/Dev/website/learn/ChatGPT/chatgpt.html",
+    "reason": "Retire shared cream palette / refresh shared stylesheet cache",
+    "before": "d5627aa65e32c9b3cd5262ccdf544366f9246b7607befb7f41486ff00aa397d8",
+    "after": "bc9bec8b9809f47a9863338b2b4daf77312e0c64c9f1adc2c13568d433d8520f"
+  },
+  {
+    "path": "/Users/tamchap/Dev/website/learn/Practice/practice.html",
+    "reason": "Retire shared cream palette / refresh shared stylesheet cache",
+    "before": "2adbc6c65c2c798c09228580054f954a2c01a98967fbb1ebfac97dac6315a5da",
+    "after": "cf539f35f6fd972e20b2065909a7c8aa0ac716e7e16deb2c5ced0a9ad76deab7"
+  },
+  {
+    "path": "/Users/tamchap/Dev/website/styles/site-system.css",
+    "reason": "Retire shared cream palette / refresh shared stylesheet cache",
+    "before": "f5fc81602f54eba8033af76a58765d534f01074f4581bbcda1e4118b67456a2b",
+    "after": "b3925fb7776e840f622624261901deb47fa1fcd1f43c067c1724cda82b53c1ad"
+  }
+]

@@ -1,0 +1,881 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="color-scheme" content="light" />
+    <title>Purchase | Magic Hashtags</title>
+
+
+<script>
+      window.tailwind = window.tailwind || {};
+      window.tailwind.config = {
+        theme: {
+          extend: {
+            fontFamily: {
+              sans: ["Hanken Grotesk", "Arial", "sans-serif"],
+              mono: ["Hanken Grotesk", "Arial", "sans-serif"],
+            },
+          },
+        },
+      };
+    </script>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <style>
+      
+      :where(body, button, input, textarea, select, option, .font-mono, .font-sans) {
+        font-family: var(--font-interface) !important;
+        }
+
+      body,
+      button,
+      input,
+      textarea,
+      select,
+      .font-mono,
+      .font-sans {
+        font-family: var(--font-interface) !important;
+      }
+
+      body {
+        font-weight: 400;
+        font-size: 1.04rem;
+      }
+
+      .font-bold {
+        font-weight: 600 !important;
+      }
+
+      .font-black {
+        font-weight: 600 !important;
+      }
+
+      .site-header-logo {
+        display: block !important;
+        width: clamp(10rem, 28vw, 18rem) !important;
+        height: auto !important;
+        max-height: 4.6rem !important;
+        object-fit: contain !important;
+      }
+
+      header nav {
+        min-width: 0;
+      }
+      @media (max-width: 1024px) {
+        header .site-header-contact {
+          height: 2.75rem !important;
+          min-height: 2.75rem !important;
+          padding-left: 0.85rem !important;
+          padding-right: 0.85rem !important;
+          font-size: 0.82rem !important;
+          letter-spacing: 0.04em !important;
+        }
+      }
+
+      @media (max-width: 640px) {
+        header .max-w-7xl {
+          padding: 0.7rem 1rem !important;
+        }
+
+        header nav {
+          flex-direction: column !important;
+          align-items: center !important;
+          justify-content: center !important;
+          gap: 0.55rem !important;
+        }
+
+        header nav > div:first-child {
+          width: 100% !important;
+          justify-content: center !important;
+        }
+
+        .site-header-logo {
+          width: clamp(12rem, 72vw, 17rem) !important;
+          max-height: 4.2rem !important;
+        }
+
+        header .site-header-contact {
+          height: 2.35rem !important;
+          min-height: 2.35rem !important;
+          padding-left: 0.55rem !important;
+          padding-right: 0.55rem !important;
+          font-size: 0.72rem !important;
+          letter-spacing: 0.03em !important;
+        }
+      }
+
+      .nav-dropdown-menu {
+        display: none;
+      }
+
+      .nav-dropdown:hover .nav-dropdown-menu,
+      .nav-dropdown:focus-within .nav-dropdown-menu {
+        display: block;
+      }
+
+      .nav-dropdown[data-open="true"] .nav-dropdown-menu {
+        display: block;
+      }
+
+      .nav-dropdown-menu {
+        position: absolute;
+        top: calc(100% + 16px);
+        left: 50%;
+        transform: translateX(-50%);
+        width: max-content;
+        min-width: 320px;
+        max-width: calc(100vw - 2rem);
+        z-index: 50;
+      }
+
+      .nav-dropdown-menu::before {
+        content: "";
+        position: absolute;
+        left: 0;
+        right: 0;
+        top: -16px;
+        height: 16px;
+      }
+
+      .nav-dropdown-menu a {
+        white-space: nowrap;
+      }
+
+      .neo-offset-shadow {
+        position: absolute;
+        inset: 0;
+        transform: translate(4px, 4px);
+        background: #000;
+      }
+
+      .site-menu-toggle {
+        display: none;
+        width: 2.45rem;
+        height: 2.45rem;
+        align-items: center;
+        justify-content: center;
+        flex-direction: column;
+        gap: 0.28rem;
+        border: 0;
+        background: transparent;
+        color: #fff;
+        padding: 0;
+        margin-left: auto;
+      }
+
+      .site-menu-toggle span {
+        display: block;
+        width: 1.15rem;
+        height: 2px;
+        background: currentColor;
+      }
+
+      .site-mobile-panel {
+        display: none;
+      }
+
+      @media (max-width: 1024px) {
+        .nav-dropdown-menu {
+          min-width: 17.5rem !important;
+        }
+
+        .nav-dropdown-menu .relative.border-4 {
+          padding: 0.55rem !important;
+        }
+
+        .nav-dropdown-menu a {
+          padding: 0.62rem 0.8rem !important;
+          font-size: 0.74rem !important;
+          letter-spacing: 0.045em !important;
+          box-shadow: 4px 4px 0 #000 !important;
+        }
+      }
+
+      @media (max-width: 900px) {
+        header nav {
+          position: relative;
+          flex-direction: row !important;
+          flex-wrap: nowrap !important;
+          align-items: center !important;
+          justify-content: space-between !important;
+        }
+
+        header nav > div:first-child {
+          width: auto !important;
+          flex: 1 1 auto !important;
+          justify-content: flex-start !important;
+        }
+
+        header .site-desktop-nav,
+        header .site-header-contact {
+          display: none !important;
+        }
+
+        .site-menu-toggle {
+          display: inline-flex !important;
+        }
+
+        .site-mobile-panel:not([hidden]) {
+          display: grid;
+          gap: 0.45rem;
+          position: absolute;
+          top: calc(100% + 0.7rem);
+          right: 0;
+          width: min(19rem, calc(100vw - 2rem));
+          border: 4px solid #000;
+          background: #fff;
+          box-shadow: 7px 7px 0 #000;
+          padding: 0.55rem;
+          z-index: 70;
+        }
+
+        .site-mobile-panel a,
+        .site-mobile-panel button {
+          display: block;
+          width: 100%;
+          border: 3px solid #000;
+          background: #fff;
+          color: #000;
+          box-shadow: 4px 4px 0 #000;
+          padding: 0.72rem 0.8rem;
+          font-size: 0.78rem;
+          font-weight: 600;
+          letter-spacing: 0.045em;
+          line-height: 1.1;
+          text-align: left;
+          text-transform: uppercase;
+        }
+
+        .site-mobile-panel a:hover,
+        .site-mobile-panel button:hover,
+        .site-mobile-panel a:focus-visible,
+        .site-mobile-panel button:focus-visible {
+          background: #f1f332;
+        }
+      }
+
+
+      :root {
+        --purchase-ink: #000;
+        --purchase-teal: #24a094;
+        --purchase-pink: #ff90e7;
+        --purchase-yellow: #f1f332;
+        --purchase-blue: #91a8ed;
+      }
+
+      html,
+      body {
+        min-height: 100%;
+        margin: 0;
+        background:
+          radial-gradient(circle at top right, rgba(36, 160, 148, 0.16), transparent 26rem),
+          linear-gradient(180deg, #ffffff 0%, #f8f8f8 100%);
+        color: var(--purchase-ink);
+        font-family: var(--font-interface);
+      }
+
+      .purchase-shell {
+        width: min(100%, var(--site-shell-max, 120rem));
+        border: 4px solid var(--purchase-ink);
+        background: #fff;
+        box-shadow: 10px 10px 0 #000;
+      }
+
+      .purchase-grid {
+        display: grid;
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+        gap: 1.5rem;
+      }
+
+      .purchase-flip-card {
+        min-height: 43rem;
+      }
+
+      .purchase-flip-card__inner {
+        position: relative;
+        min-height: 43rem;
+        height: 100%;
+      }
+
+      .purchase-flip-card__face {
+        position: relative;
+        display: flex;
+        flex-direction: column;
+        overflow: hidden;
+        min-height: 43rem;
+      }
+
+      .purchase-flip-card__face--back {
+        display: none;
+      }
+
+      .purchase-media {
+        position: relative;
+        aspect-ratio: 21 / 9;
+        border-bottom: 4px solid var(--purchase-ink);
+        background:
+          linear-gradient(135deg, rgba(255, 144, 231, 0.42), rgba(36, 160, 148, 0.52)),
+          repeating-linear-gradient(
+            -45deg,
+            rgba(0, 0, 0, 0.08) 0,
+            rgba(0, 0, 0, 0.08) 12px,
+            rgba(255, 255, 255, 0.18) 12px,
+            rgba(255, 255, 255, 0.18) 24px
+          );
+      }
+
+      .purchase-media::after {
+        content: "DROP IN A GIF OR DEMO STILL";
+        position: absolute;
+        left: 1rem;
+        right: 1rem;
+        bottom: 1rem;
+        padding: 0.75rem 1rem;
+        border: 3px solid var(--purchase-ink);
+        background: rgba(255, 255, 255, 0.92);
+        font-size: 0.8rem;
+        font-weight: 600;
+        letter-spacing: 0.05em;
+        text-transform: uppercase;
+      }
+
+      .purchase-chip {
+        display: inline-flex;
+        align-items: center;
+        gap: 0.4rem;
+        border: 3px solid var(--purchase-ink);
+        background: var(--purchase-yellow);
+        padding: 0.45rem 0.8rem;
+        font-size: 0.72rem;
+        font-weight: 600;
+        letter-spacing: 0.05em;
+        text-transform: uppercase;
+      }
+
+      .purchase-payment-frame {
+        position: relative;
+        border: 4px solid var(--purchase-ink);
+        background: #f3f4f6;
+        box-shadow: 10px 10px 0 #000;
+        padding: 1.25rem;
+        overflow-x: auto;
+      }
+
+      .purchase-payment-frame::before {
+        content: "";
+        position: absolute;
+        inset: 0 auto 0 0;
+        width: 14px;
+        background: var(--purchase-pink);
+        border-right: 4px solid var(--purchase-ink);
+      }
+
+      .purchase-payment-frame > * {
+        position: relative;
+        z-index: 1;
+      }
+
+      .purchase-checkout-link {
+        display: flex;
+        width: calc(100% - 1rem);
+        min-height: 3.5rem;
+        margin-left: 1rem;
+        align-items: center;
+        justify-content: center;
+        border: 4px solid var(--purchase-ink);
+        background: var(--purchase-yellow);
+        color: var(--purchase-ink);
+        box-shadow: 4px 4px 0 0 var(--purchase-ink);
+        padding: 0.8rem 1.25rem;
+        font-size: 0.92rem;
+        font-weight: 600;
+        letter-spacing: 0.05em;
+        line-height: 1.2;
+        text-align: center;
+        text-decoration: none;
+        text-transform: uppercase;
+        transition: transform 180ms ease, box-shadow 180ms ease, background 180ms ease;
+      }
+
+      .purchase-checkout-link:hover,
+      .purchase-checkout-link:focus-visible {
+        background: #fff;
+        box-shadow: 2px 2px 0 var(--purchase-ink);
+        transform: translate(2px, 2px);
+      }
+
+      .purchase-checkout-note {
+        margin: 1rem 0 0 1rem;
+        font-size: 0.76rem;
+        font-weight: 600;
+        letter-spacing: 0.05em;
+        line-height: 1.5;
+        text-align: center;
+        text-transform: uppercase;
+      }
+
+      .purchase-modal[data-open="false"] {
+        display: none;
+      }
+
+      .purchase-modal {
+        position: fixed;
+        inset: 0;
+        z-index: 80;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        padding: 1.5rem;
+      }
+
+      .purchase-modal__overlay {
+        position: absolute;
+        inset: 0;
+        background: rgba(0, 0, 0, 0.78);
+      }
+
+      .purchase-modal__dialog {
+        position: relative;
+        z-index: 1;
+        width: min(100%, 48rem);
+        max-height: min(92vh, 58rem);
+        overflow-y: auto;
+        overflow-x: hidden;
+      }
+
+      .purchase-modal__panel[data-active="false"] {
+        display: none;
+      }
+
+      .purchase-modal__panel[data-active="true"] {
+        display: block;
+      }
+
+      .purchase-modal__panel .purchase-flip-card__face--back {
+        display: flex;
+        min-height: auto;
+      }
+
+      .purchase-modal__panel .purchase-media {
+        flex: 0 0 auto;
+      }
+
+      .purchase-modal__close {
+        position: absolute;
+        top: 1rem;
+        right: 1rem;
+        z-index: 2;
+        width: 3rem;
+        height: 3rem;
+        border: 4px solid var(--purchase-ink);
+        background: #fff;
+        font-size: 1.25rem;
+        font-weight: 600;
+        line-height: 1;
+        box-shadow: 7px 7px 0 #000;
+      }
+
+      .purchase-modal__close:hover {
+        background: var(--purchase-yellow);
+      }
+
+      @media (max-width: 1024px) {
+        .purchase-grid {
+          grid-template-columns: 1fr;
+        }
+
+        .purchase-shell {
+          box-shadow: 10px 10px 0 #000;
+        }
+      }
+
+      @media (max-width: 767px) {
+        .purchase-flip-card,
+        .purchase-flip-card__inner {
+          min-height: 46rem;
+        }
+
+        .purchase-modal {
+          padding: 0.75rem;
+        }
+
+        .purchase-modal__dialog {
+          width: 100%;
+          max-height: 94vh;
+        }
+
+        .purchase-checkout-link {
+          width: 100%;
+          margin-left: 0;
+        }
+
+        .purchase-checkout-note {
+          margin-left: 0;
+        }
+      }
+    </style>
+    <link rel="preload" href="/fonts/hanken-grotesk-latin.woff2" as="font" type="font/woff2" crossorigin>
+  <link rel="stylesheet" href="/styles/site-system.css?v=20260902-hanken-1">
+</head>
+
+  <body>
+    <div class="min-h-screen bg-transparent">
+      <header class="fixed top-0 left-0 right-0 z-50 bg-black border-b-4 border-white">
+<div class="max-w-7xl mx-auto px-6 py-4">
+<nav class="flex items-center justify-between gap-6">
+<div class="flex items-center min-w-0">
+<a aria-label="Home" class="relative inline-flex items-center justify-center bg-transparent outline-none ring-0 focus:outline-none focus-visible:outline-none focus:ring-0 focus-visible:ring-0 active:outline-none transition-transform duration-200 will-change-transform hover:-translate-y-[2px] hover:scale-[1.02]" href="./index.html">
+<span class="sr-only">Home</span>
+<img alt="Magic Hashtags — AI tools for court reporters" class="site-header-logo object-contain block" decoding="async" loading="eager" src="/images/logosmaller.png"/>
+</a>
+</div>
+<div class="site-desktop-nav hidden md:flex items-center space-x-4">
+<div class="relative nav-dropdown">
+<button aria-expanded="false" aria-haspopup="true" class="text-white hover:bg-[#f1f332] hover:text-black border-[3px] border-transparent hover:border-[#f1f332] px-6 py-3 uppercase tracking-wider font-mono rounded-none transition-all duration-200" type="button">
+                  learn
+                </button>
+<div class="nav-dropdown-menu">
+<div aria-hidden="true" class="neo-offset-shadow"></div>
+<div class="relative border-4 border-black bg-white p-3">
+<div class="space-y-2">
+<a class="block px-4 py-3 font-mono text-sm uppercase tracking-wider font-bold border-[3px] border-black bg-white shadow-[4px_4px_0px_0px_black] hover:bg-[#ff90e7] hover:text-black hover:translate-x-[4px] hover:translate-y-[4px] transition-all" href="./learn/sidekicks/index.html">
+                        Sidekick Tutorials
+                      </a>
+<a class="block px-4 py-3 font-mono text-sm uppercase tracking-wider font-bold border-[3px] border-black bg-white shadow-[4px_4px_0px_0px_black] hover:bg-[#f1f332] hover:text-black hover:translate-x-[4px] hover:translate-y-[4px] transition-all" href="./learn/chatgpt-tips/index.html">
+                        ChatGPT Tips
+                      </a>
+<a class="block px-4 py-3 font-mono text-sm uppercase tracking-wider font-bold border-[3px] border-black bg-white shadow-[4px_4px_0px_0px_black] hover:bg-[#ffc900] hover:text-black hover:translate-x-[4px] hover:translate-y-[4px] transition-all" href="./learn/tech-tips/index.html">
+                        Other Tech Tips
+                      </a>
+<a class="block px-4 py-3 font-mono text-sm uppercase tracking-wider font-bold border-[3px] border-black bg-white shadow-[4px_4px_0px_0px_black] hover:bg-[#91a8ed] hover:text-black hover:translate-x-[4px] hover:translate-y-[4px] transition-all" href="./learn/steno-tips/index.html">
+                        Steno Tips
+                      </a>
+</div>
+</div>
+</div>
+</div>
+<a class="text-white hover:bg-[#f1f332] hover:text-black border-[3px] border-transparent hover:border-[#f1f332] px-6 py-3 uppercase tracking-wider font-mono rounded-none transition-all duration-200" href="./reporter-tools.html">
+                reporter tools
+              </a>
+<a class="text-white hover:bg-[#f1f332] hover:text-black border-[3px] border-transparent hover:border-[#f1f332] px-6 py-3 uppercase tracking-wider font-mono rounded-none transition-all duration-200" href="./customizer.html">
+                customizer
+              </a>
+<a class="text-white hover:bg-[#f1f332] hover:text-black border-[3px] border-transparent hover:border-[#f1f332] px-6 py-3 uppercase tracking-wider font-mono rounded-none transition-all duration-200" href="./purchase.html">
+                store
+              </a>
+</div>
+<button class="site-header-contact inline-flex items-center gap-2 h-14 bg-white text-black hover:bg-[#ff90e7] border-[3px] border-white hover:border-[#ff90e7] px-6 py-0 font-mono uppercase tracking-wider font-bold leading-none rounded-none transition-all duration-200" data-open-contact="" type="button">
+              contact
+            </button>
+<button aria-expanded="false" aria-label="Open navigation" class="site-menu-toggle" data-mobile-nav-toggle="" type="button">
+<span></span>
+<span></span>
+<span></span>
+</button>
+<div class="site-mobile-panel" data-mobile-nav-panel="" hidden></div>
+</nav>
+</div>
+</header>
+
+      <main class="pt-32 pb-20 min-h-screen">
+        <section class="px-6">
+          <div class="max-w-7xl mx-auto">
+            <div class="purchase-shell mx-auto">
+              <div class="p-8 md:p-10">
+                <div class="mb-8 md:mb-10">
+                  <div class="mb-4 flex flex-wrap items-center gap-3">
+                    <span class="inline-block px-4 py-2 font-sans font-bold text-sm uppercase tracking-wider border-[3px] border-black bg-[#ff90e7] text-black">
+                      Purchase Access
+                    </span>
+                    <span class="inline-block px-4 py-2 font-sans font-bold text-sm uppercase tracking-wider border-[3px] border-black bg-[#f1f332] text-black">
+                      Secure Stripe Checkout
+                    </span>
+                  </div>
+                  <h1 class="text-4xl md:text-5xl font-sans font-black uppercase tracking-wider text-[#24a094] mb-4">
+                    Choose Your Sidekick
+                  </h1>
+                  <p class="max-w-3xl font-sans text-base md:text-lg leading-relaxed font-medium">
+                    Choose the Sidekick that fits your workflow, review the details, and continue to secure payment with Stripe.
+                  </p>
+                </div>
+
+                <div class="purchase-grid">
+                  <article class="purchase-flip-card">
+                    <div class="purchase-flip-card__inner">
+                      <div class="purchase-flip-card__face border-4 border-black bg-white shadow-[12px_12px_0px_0px_#ff90e7]">
+                        <div class="purchase-media"></div>
+                        <div class="p-6 flex-1 flex flex-col">
+                          <div class="mb-4 flex items-center justify-between gap-3">
+                            <span class="purchase-chip">Sidekick</span>
+                            <span class="font-mono text-xs uppercase tracking-[0.18em] font-bold">Exhibits</span>
+                          </div>
+                          <h2 class="text-2xl font-sans font-black uppercase tracking-wider mb-4">Exhibit Descriptions Sidekick</h2>
+                          <p class="font-sans text-base leading-relaxed font-medium mb-6">
+                            Create clear, consistent exhibit descriptions with a focused workflow built for busy court reporters.
+                          </p>
+                          <div class="space-y-3 mb-8 flex-1">
+                            <p class="font-sans font-bold text-sm tracking-wide border-l-4 border-black pl-4">PURCHASE SECURELY WITH STRIPE</p>
+                            <p class="font-sans font-bold text-sm tracking-wide border-l-4 border-black pl-4">DESIGNED FOR EXHIBIT DESCRIPTION WORKFLOWS</p>
+                            <p class="font-sans font-bold text-sm tracking-wide border-l-4 border-black pl-4">DETAILS AND PRICING SHOWN AT CHECKOUT</p>
+                          </div>
+                          <button
+                            type="button"
+                            class="w-full mt-auto bg-[#ff90e7] text-black hover:bg-white hover:text-black border-4 border-black font-sans uppercase tracking-wider rounded-none transition-all duration-300 font-bold shadow-[4px_4px_0px_0px_black]"
+                            data-purchase-open="access"
+                          >
+                            Purchase Access
+                          </button>
+                        </div>
+                      </div>
+                    </div>
+                  </article>
+
+                  <article class="purchase-flip-card">
+                    <div class="purchase-flip-card__inner">
+                      <div class="purchase-flip-card__face border-4 border-black bg-white shadow-[12px_12px_0px_0px_#91a8ed]">
+                        <div class="purchase-media"></div>
+                        <div class="p-6 flex-1 flex flex-col">
+                          <div class="mb-4 flex items-center justify-between gap-3">
+                            <span class="purchase-chip">Sidekick</span>
+                            <span class="font-mono text-xs uppercase tracking-[0.18em] font-bold">Proofreading</span>
+                          </div>
+                          <h2 class="text-2xl font-sans font-black uppercase tracking-wider mb-4">Proofreader Sidekick</h2>
+                          <p class="font-sans text-base leading-relaxed font-medium mb-6">
+                            Add a dependable proofreading companion to your workflow and catch the details that are easiest to miss.
+                          </p>
+                          <div class="space-y-3 mb-8 flex-1">
+                            <p class="font-sans font-bold text-sm tracking-wide border-l-4 border-black pl-4">PURCHASE SECURELY WITH STRIPE</p>
+                            <p class="font-sans font-bold text-sm tracking-wide border-l-4 border-black pl-4">BUILT FOR PROOFREADING WORKFLOWS</p>
+                            <p class="font-sans font-bold text-sm tracking-wide border-l-4 border-black pl-4">DETAILS AND PRICING SHOWN AT CHECKOUT</p>
+                          </div>
+                          <button
+                            type="button"
+                            class="w-full mt-auto bg-[#91a8ed] text-black hover:bg-white hover:text-black border-4 border-black font-sans uppercase tracking-wider rounded-none transition-all duration-300 font-bold shadow-[4px_4px_0px_0px_black]"
+                            data-purchase-open="second"
+                          >
+                            Purchase Access
+                          </button>
+                        </div>
+                      </div>
+                    </div>
+                  </article>
+                </div>
+
+                <div class="purchase-modal" data-open="false" data-purchase-modal>
+                  <div class="purchase-modal__overlay" data-purchase-overlay></div>
+                  <div class="purchase-modal__dialog">
+                    <button type="button" class="purchase-modal__close" data-purchase-close aria-label="Close purchase panel">✕</button>
+
+                    <div class="purchase-modal__panel" data-purchase-panel="access" data-active="false">
+                      <div class="purchase-flip-card__face purchase-flip-card__face--back border-4 border-black bg-white shadow-[12px_12px_0px_0px_#24a094]">
+                        <div class="purchase-media"></div>
+                        <div class="p-6 flex-1 flex flex-col">
+                          <div class="mb-4 flex items-center justify-between gap-3">
+                            <span class="purchase-chip">Secure Checkout</span>
+                            <span class="font-mono text-xs uppercase tracking-[0.18em] font-bold">Exhibits</span>
+                          </div>
+                          <h2 class="text-2xl font-sans font-black uppercase tracking-wider mb-3">Exhibit Descriptions Sidekick</h2>
+                          <p class="font-sans text-base leading-relaxed font-medium mb-6">
+                            You’ll complete your secure payment through Stripe. This purchase page stays open so you can return to it easily.
+                          </p>
+                          <div class="purchase-payment-frame mb-6">
+                            <p class="ml-4 mb-4 font-sans text-sm font-bold uppercase tracking-[0.18em]">Ready for secure payment?</p>
+                            <a
+                              class="purchase-checkout-link"
+                              href="https://buy.stripe.com/7sYcN50EPeWz1u71KJdUY03"
+                              target="_blank"
+                              rel="noopener"
+                            >
+                              Continue To Stripe
+                            </a>
+                            <p class="purchase-checkout-note">Secure checkout opens in a new tab</p>
+                          </div>
+                          <button
+                            type="button"
+                            class="w-full mt-auto bg-white text-black hover:bg-[#f1f332] border-4 border-black font-sans uppercase tracking-wider rounded-none transition-all duration-300 font-bold shadow-[4px_4px_0px_0px_black]"
+                            data-purchase-close
+                          >
+                            Back To Details
+                          </button>
+                        </div>
+                      </div>
+                    </div>
+
+                    <div class="purchase-modal__panel" data-purchase-panel="second" data-active="false">
+                      <div class="purchase-flip-card__face purchase-flip-card__face--back border-4 border-black bg-white shadow-[12px_12px_0px_0px_#ffc900]">
+                        <div class="purchase-media"></div>
+                        <div class="p-6 flex-1 flex flex-col">
+                          <div class="mb-4 flex items-center justify-between gap-3">
+                            <span class="purchase-chip">Secure Checkout</span>
+                            <span class="font-mono text-xs uppercase tracking-[0.18em] font-bold">Proofreading</span>
+                          </div>
+                          <h2 class="text-2xl font-sans font-black uppercase tracking-wider mb-3">Proofreader Sidekick</h2>
+                          <p class="font-sans text-base leading-relaxed font-medium mb-6">
+                            You’ll complete your secure payment through Stripe. This purchase page stays open so you can return to it easily.
+                          </p>
+                          <div class="purchase-payment-frame mb-6">
+                            <p class="ml-4 mb-4 font-sans text-sm font-bold uppercase tracking-[0.18em]">Ready for secure payment?</p>
+                            <a
+                              class="purchase-checkout-link"
+                              href="https://buy.stripe.com/5kQ00j87haGja0D3SRdUY02"
+                              target="_blank"
+                              rel="noopener"
+                            >
+                              Continue To Stripe
+                            </a>
+                            <p class="purchase-checkout-note">Secure checkout opens in a new tab</p>
+                          </div>
+                          <button
+                            type="button"
+                            class="w-full mt-auto bg-white text-black hover:bg-[#f1f332] border-4 border-black font-sans uppercase tracking-wider rounded-none transition-all duration-300 font-bold shadow-[4px_4px_0px_0px_black]"
+                            data-purchase-close
+                          >
+                            Back To Details
+                          </button>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </section>
+      </main>
+    </div>
+
+    <script>
+      (() => {
+        const dropdowns = Array.from(document.querySelectorAll(".nav-dropdown"));
+        if (!dropdowns.length) return;
+
+        const closeAll = (except) => {
+          dropdowns.forEach((dd) => {
+            if (except && dd === except) return;
+            dd.dataset.open = "false";
+            const btn = dd.querySelector("button");
+            if (btn) btn.setAttribute("aria-expanded", "false");
+          });
+        };
+
+        dropdowns.forEach((dd) => {
+          if (!dd.dataset.open) dd.dataset.open = "false";
+          const btn = dd.querySelector("button");
+          const menu = dd.querySelector(".nav-dropdown-menu");
+          if (!btn || !menu) return;
+
+          btn.addEventListener("click", (e) => {
+            e.preventDefault();
+            e.stopPropagation();
+            const isOpen = dd.dataset.open === "true";
+            closeAll(dd);
+            dd.dataset.open = isOpen ? "false" : "true";
+            btn.setAttribute("aria-expanded", isOpen ? "false" : "true");
+          });
+
+          menu.addEventListener("click", (e) => e.stopPropagation());
+        });
+
+        document.addEventListener("click", () => closeAll());
+        document.addEventListener("keydown", (e) => {
+          if (e.key === "Escape") closeAll();
+        });
+      })();
+
+      const purchaseModal = document.querySelector("[data-purchase-modal]");
+      const purchasePanels = Array.from(document.querySelectorAll("[data-purchase-panel]"));
+
+      function setPurchaseModalOpen(open, panelName) {
+        if (!purchaseModal) return;
+
+        purchaseModal.setAttribute("data-open", open ? "true" : "false");
+        document.body.style.overflow = open ? "hidden" : "";
+
+        purchasePanels.forEach((panel) => {
+          const isActive = open && panel.getAttribute("data-purchase-panel") === panelName;
+          panel.setAttribute("data-active", isActive ? "true" : "false");
+        });
+      }
+
+      document.addEventListener("click", (e) => {
+        const openBtn = e.target && e.target.closest ? e.target.closest("[data-purchase-open]") : null;
+        if (openBtn) {
+          setPurchaseModalOpen(true, openBtn.getAttribute("data-purchase-open"));
+          return;
+        }
+
+        const closeBtn = e.target && e.target.closest ? e.target.closest("[data-purchase-close]") : null;
+        if (closeBtn) {
+          setPurchaseModalOpen(false);
+          return;
+        }
+
+        const overlay = e.target && e.target.closest ? e.target.closest("[data-purchase-overlay]") : null;
+        if (overlay) {
+          setPurchaseModalOpen(false);
+        }
+      });
+
+      document.addEventListener("keydown", (e) => {
+        if (e.key === "Escape") setPurchaseModalOpen(false);
+      });
+    </script>
+  <script>
+
+      // Mobile/tablet navigation: build from the existing desktop header links.
+      (() => {
+        const toggle = document.querySelector("[data-mobile-nav-toggle]");
+        const panel = document.querySelector("[data-mobile-nav-panel]");
+        const desktopNav = document.querySelector(".site-desktop-nav");
+        if (!toggle || !panel || !desktopNav) return;
+
+        const addLink = (source) => {
+          const href = source.getAttribute("href");
+          const label = (source.textContent || "").trim();
+          if (!href || !label) return;
+          const link = document.createElement("a");
+          link.href = href;
+          link.textContent = label;
+          panel.appendChild(link);
+        };
+
+        desktopNav.querySelectorAll("a").forEach(addLink);
+
+        const contact = document.createElement("button");
+        contact.type = "button";
+        contact.textContent = "Contact";
+        contact.setAttribute("data-open-contact", "");
+        panel.appendChild(contact);
+
+        const close = () => {
+          panel.hidden = true;
+          toggle.setAttribute("aria-expanded", "false");
+        };
+
+        toggle.addEventListener("click", (event) => {
+          event.preventDefault();
+          event.stopPropagation();
+          const isOpen = !panel.hidden;
+          panel.hidden = isOpen;
+          toggle.setAttribute("aria-expanded", isOpen ? "false" : "true");
+        });
+
+        panel.addEventListener("click", (event) => {
+          if (event.target.closest("a, button")) close();
+        });
+
+        document.addEventListener("click", (event) => {
+          if (panel.hidden) return;
+          if (event.target.closest("[data-mobile-nav-panel], [data-mobile-nav-toggle]")) return;
+          close();
+        });
+
+        document.addEventListener("keydown", (event) => {
+          if (event.key === "Escape") close();
+        });
+      })();
+
+</script>
+<script src="./site-lib/learn-navigation.js?v=20260902-hanken-1" defer></script>
+</body>
+</html>

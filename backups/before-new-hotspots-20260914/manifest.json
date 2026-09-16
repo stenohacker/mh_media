@@ -1,0 +1,302 @@
+[
+  {
+    "path": "/Users/tamchap/Dev/mh_media/tutorial-demo-builder-v2.html",
+    "reason": "All eight supplied hotspot images; exact new teal palette and matching card headers",
+    "before": "38f879ce7ad5d8ff907d5d047b6dc89d4fdde7537a179aa45662fc1fde3f8c94",
+    "after": "f3d3d5454f08c4629bb1f07f35535b9bd1c8bce5768f48ee024063bc63fd9623"
+  },
+  {
+    "path": "/Users/tamchap/Dev/website/styles/site-system.css",
+    "reason": "Align existing website teal styles with supplied teal-26AB9D.png",
+    "before": "b3925fb7776e840f622624261901deb47fa1fcd1f43c067c1724cda82b53c1ad",
+    "after": "88f663bd2c53298fc1f81d043852b466d3578a46e57b64a8583ad2e2f65c1814"
+  },
+  {
+    "path": "/Users/tamchap/Dev/mh_media/tutorial-builder-work/tutorial-demo-builder-v1.html",
+    "reason": "All eight supplied hotspot images; exact new teal palette and matching card headers",
+    "before": "23bc83c67cd621f5741b3fe0e9282a46bea9937583aa16174d32b634f23ce002",
+    "after": "07e691d94698b21b0bef84d590efa87af5fe13770c043de71f1e72b69e3010cd"
+  },
+  {
+    "path": "/Users/tamchap/Dev/mh_media/tutorial-builder-work/tutorial-builder-centered-v1.html",
+    "reason": "All eight supplied hotspot images; exact new teal palette and matching card headers",
+    "before": "16b5893ae0a2afaa483a34c3aa6253e1d42b670ea67ed32bda5aaaa181c4d61e",
+    "after": "349c343dde8e9749757d758ee3b3669a188e15b65ae6d72ce2e632f60c2310d3"
+  },
+  {
+    "path": "/Users/tamchap/Dev/mh_media/tutorial-builder-work/tutorial-video-page-builder-v1.html",
+    "reason": "All eight supplied hotspot images; exact new teal palette and matching card headers",
+    "before": "f56b2bca65f115445b14858be7dfea53c7dac2fefc1d440d6ef49c18c1f9b20c",
+    "after": "2ef84a3304899cdd1895b70cc535fd596fe4fce01b392d0e1d5ca11e4f7d522d"
+  },
+  {
+    "path": "/Users/tamchap/Dev/mh_media/tutorial-builder-work/appearance-pages-demo.html",
+    "reason": "All eight supplied hotspot images; exact new teal palette and matching card headers",
+    "before": "770c7d26623da3ecfaecfeb4ec079001a760876b7cf4fd4a30141fc1f3c19e46",
+    "after": "dc4a8ef937bcd579e1d07e64b19f2df72c26550165f634bf6e7c592f9c6e4c5f"
+  },
+  {
+    "path": "/Users/tamchap/Dev/mh_media/tutorials/ap-demo/appearance-pages-demo.html",
+    "reason": "All eight supplied hotspot images; exact new teal palette and matching card headers",
+    "before": "3890410dcbd6461d2dbfc53c58caa3b491dd8f98a6d4c7d6b8e928e17fb64060",
+    "after": "8b10b040f6466b42c6371683f050521ceccf54dacfc63e6d6304dfbdbc65285e"
+  },
+  {
+    "path": "/Users/tamchap/Dev/mh_media/exports/2026-09-14/appearance-pages-demo.html",
+    "reason": "Eight new embedded hotspots; saved tutorial data preserved",
+    "before": "ad6d11089e3b596f3112bfd7d85ee9f9c3202376736e406439438e84bdd8f2e3",
+    "after": "93f4c50f51bae9266b557a5753a2a756e6e82f621231d26292fa567cb2c7ad41"
+  },
+  {
+    "path": "/Users/tamchap/Dev/mh_media/exports/2026-09-14/appearance-pages-slides.html",
+    "reason": "Eight new embedded hotspots; saved tutorial data preserved",
+    "before": "0ad49f4d4e4fa41da167b808607c325b6e8e1f660378bcde4991ed1d61f73543",
+    "after": "61dd93dc3b9e7bce99033a7ea755358f682255b86a60c7d188f9bf1ade79dc63"
+  },
+  {
+    "path": "/Users/tamchap/Dev/mh_media/exports/2026-09-14/tutorial-title-slides-fixed.html",
+    "reason": "Eight new embedded hotspots; saved tutorial data preserved",
+    "before": "babe31759845c00a8f8c3cce12188d4f2c18c8276e1901df1fd49d5a6154166b",
+    "after": "9b4d700377b6a230abf779aae90fad5caaa76cc948b13e648078658f5eff4e37"
+  },
+  {
+    "path": "/Users/tamchap/Dev/mh_media/exports/2026-09-14/tutorial-title-28-slides-fixed.html",
+    "reason": "Eight new embedded hotspots; saved tutorial data preserved",
+    "before": "9d1506f70e47508cb0a1e89c460d5b8da222772a65364783470efdbf5ccead14",
+    "after": "0eabc877e34810aa2cc6b5b613cdd8fedf230fb4e5590e2f8a17453794f04c29"
+  },
+  {
+    "path": "/Users/tamchap/Dev/website/learn/Appearance/appearance-pages-demo.html",
+    "reason": "Eight new embedded hotspots; saved tutorial data preserved",
+    "before": "66afc3afc07600102fd64c7bc63f3b5f8dc594c576dddcf5f1a2211d79fd8c2a",
+    "after": "2b74805d7b8807f5fda7c48881394561993e78b7ebaea3e1872fa5ef1a30cde8"
+  },
+  {
+    "path": "/Users/tamchap/Dev/website/customizer.html",
+    "reason": "Align existing website teal styles with supplied teal-26AB9D.png",
+    "before": "379ba0eaacd34f337ca32ddd064bbc5328abc6ac4f2d6769b3ce07a13e4eb198",
+    "after": "f31130b96222cbf870d21816c34905b89c07000c4f7ebd4e1109d259d2769280"
+  },
+  {
+    "path": "/Users/tamchap/Dev/website/index.html",
+    "reason": "Align existing website teal styles with supplied teal-26AB9D.png",
+    "before": "c79f8c042bd8090d04ea1b457b736961ebb7a24652d64df7880e6bcfda8f2eee",
+    "after": "4252107b86ab30ca5ae446d3ef619805e1cfbec1ae7638c0a2247042e310a47a"
+  },
+  {
+    "path": "/Users/tamchap/Dev/website/construction.html",
+    "reason": "Align existing website teal styles with supplied teal-26AB9D.png",
+    "before": "6b5aeeb677b6b065ba0691c959dc8454eaf9e7bb907a5adac120caee29414cd3",
+    "after": "e97260f80fc571aa3238dcc615afd7e17fefec310690626825c0fe125133fa19"
+  },
+  {
+    "path": "/Users/tamchap/Dev/website/purchase.html",
+    "reason": "Align existing website teal styles with supplied teal-26AB9D.png",
+    "before": "d687afa303a7e63ccfb30ba37436a7c530b00be76e6d5cd096fde4cc88965475",
+    "after": "b2ab189babaf6fe1969e63f605a6f725626cb122422db8a62088a0b8af20ae0d"
+  },
+  {
+    "path": "/Users/tamchap/Dev/website/reporter-tools.html",
+    "reason": "Align existing website teal styles with supplied teal-26AB9D.png",
+    "before": "854066faf0d44ad01026b29906844c3aee79207421525d80ce4ff381e43b8f42",
+    "after": "9685d2cc35ab5d3ec6ef7527f4346b7723434bd829509fd2d6515c4a352cc242"
+  },
+  {
+    "path": "/Users/tamchap/Dev/website/numbers.html",
+    "reason": "Align existing website teal styles with supplied teal-26AB9D.png",
+    "before": "886d15d00ad0ed297ce6df7a0ced3e656a8d513ce8ef2fa22fcf91c4aabcfb32",
+    "after": "a000d4a3e0178e45d9d2aaaf7bddc3e07bcab376467b08ac93652d2e5124c705"
+  },
+  {
+    "path": "/Users/tamchap/Dev/website/coming_soon.html",
+    "reason": "Align existing website teal styles with supplied teal-26AB9D.png",
+    "before": "b1ca52ec18c2d0517661fa8ebf3792153f14f265723b12a2193494eabc3246a0",
+    "after": "8a1d24fe86b752ce3ff0fae448a3c6d61ded3bf55e977a4bc35fb12cf3ba1a95"
+  },
+  {
+    "path": "/Users/tamchap/Dev/website/consulting.html",
+    "reason": "Align existing website teal styles with supplied teal-26AB9D.png",
+    "before": "ad570f8a086a026f70ede30f67c98c49b0540c5bc159a3ab3181c360e5745ed3",
+    "after": "ae3ecf918b824004e50b97c7455ac383e87cd5f7ef869a85b61df3d9e586ee84"
+  },
+  {
+    "path": "/Users/tamchap/Dev/website/stylesheet.html",
+    "reason": "Align existing website teal styles with supplied teal-26AB9D.png",
+    "before": "6efc7d6647108f11afcadb4b0eb27589504d98edd8ed06aa5cd8319b30c79279",
+    "after": "10f8802ef0aa76a290f69543cbc09aa90b6d1c7858b1fedfd9bb517a873bc738"
+  },
+  {
+    "path": "/Users/tamchap/Dev/website/proofreader-setup.html",
+    "reason": "Align existing website teal styles with supplied teal-26AB9D.png",
+    "before": "6a31956588640a718e8a07bbc76346fe929b19639b52fdb291215da78cd16961",
+    "after": "dc24de605c34b8405b525f21451aa23804b1c9246c9900a4fe48f85ac78e6e17"
+  },
+  {
+    "path": "/Users/tamchap/Dev/website/learn/learn-index-builder.html",
+    "reason": "Align existing website teal styles with supplied teal-26AB9D.png",
+    "before": "5e14d16d6387d30bdcecdf99738dda6bc03b21d0b1ee990f9c046e4b0fc7d187",
+    "after": "05556f25818eefc952163f09075e84161fd7e4b2152619fcdee3cfd12af8edac"
+  },
+  {
+    "path": "/Users/tamchap/Dev/website/learn/learn-index.html",
+    "reason": "Align existing website teal styles with supplied teal-26AB9D.png",
+    "before": "dc9bef1cab741df064d4ac23283d7ddc9f6f1bfcca1f6cc5e5c376f1b32e8c8a",
+    "after": "bdaf581ec2c280310c78bf504c165a7c071f4686ec703d3941011a54fbf5c363"
+  },
+  {
+    "path": "/Users/tamchap/Dev/website/learn/SpotCheck/spotcheck.html",
+    "reason": "Align existing website teal styles with supplied teal-26AB9D.png",
+    "before": "5a1bb13001ce75c7b20ddd93823d3264c03ed0b3bf83dc62858c53d631c19eef",
+    "after": "fd87a3e1bfc9bc3260f27c469ba3938f992ebbc9c89634b9c9ff67b91243bb73"
+  },
+  {
+    "path": "/Users/tamchap/Dev/website/learn/Appearance/appearance.html",
+    "reason": "Align existing website teal styles with supplied teal-26AB9D.png",
+    "before": "2743183d4e8f80a589b87a01b4fd2d6f6be4e63393c3de308ae84685b26c6502",
+    "after": "1e992f941643d916ac4002477e6461034f545de95aec2ba83ab3114ac973b844"
+  },
+  {
+    "path": "/Users/tamchap/Dev/website/learn/tech-tips/index.html",
+    "reason": "Align existing website teal styles with supplied teal-26AB9D.png",
+    "before": "07ad1cd804e56d1ed3724da562536f9310f2e7846db31825f3f7c38fad23cc71",
+    "after": "9139c2d9b182d12cbd5a48564498cc7efb544e23c44220ec8e189e5706aec71c"
+  },
+  {
+    "path": "/Users/tamchap/Dev/website/learn/steno-tips/index.html",
+    "reason": "Align existing website teal styles with supplied teal-26AB9D.png",
+    "before": "6a71844e097d13f594780ac75f9c36567bae86f713dc23e88652492baecce1ca",
+    "after": "c077085e2312025481b1b9c73857dfa252e7f68fa6b63e61b03a6c8f070e25e5"
+  },
+  {
+    "path": "/Users/tamchap/Dev/website/learn/sidekicks/index.html",
+    "reason": "Align existing website teal styles with supplied teal-26AB9D.png",
+    "before": "af2ea0e108b7fc792f6c4025886c62ecb640db11a32c77b2685276b68b1b0d79",
+    "after": "9e06ee18ec86937e81dba8ff791f08d4fb4775e748c61c0adcde858d92c2338d"
+  },
+  {
+    "path": "/Users/tamchap/Dev/website/learn/sidekicks/proofreader-sidekick.html",
+    "reason": "Align existing website teal styles with supplied teal-26AB9D.png",
+    "before": "1096dec075de1c127345aeb5f741a4948e09a0c7036a479323547a2527374070",
+    "after": "3d63c5e51cdaade5965f8a50471ab61e28a0db9558152d7f9b25fe61a8f856ad"
+  },
+  {
+    "path": "/Users/tamchap/Dev/website/learn/sidekicks/exhibit-descriptions.html",
+    "reason": "Align existing website teal styles with supplied teal-26AB9D.png",
+    "before": "2464fb061385bb0263210bfb3d1f1508ee90988432258b1ee7d27420a02e80b9",
+    "after": "5f6284c0ad50b232069960ba2e30e3894e5ddef585847686281d3c36f64ca1fb"
+  },
+  {
+    "path": "/Users/tamchap/Dev/website/learn/sidekicks/transcript-sidekick.html",
+    "reason": "Align existing website teal styles with supplied teal-26AB9D.png",
+    "before": "15ef2c78403e14d76681c6178a879e752ec608948f1c083237ef0db1d2dce37b",
+    "after": "14496ce7b6b3e8475d5ab9176e00e67496fe60bfc4feae62abb27210f1f5098f"
+  },
+  {
+    "path": "/Users/tamchap/Dev/website/learn/sidekicks/dictionary-builder.html",
+    "reason": "Align existing website teal styles with supplied teal-26AB9D.png",
+    "before": "eec551a1321cd818039b5327f6a7030c7650e7c9331e69b2a87352ac99c00990",
+    "after": "8cf736ac04269dae2dab679c0088b689da9b83edf137756a456ee6b59a05905f"
+  },
+  {
+    "path": "/Users/tamchap/Dev/website/learn/sidekicks/practice-dictation.html",
+    "reason": "Align existing website teal styles with supplied teal-26AB9D.png",
+    "before": "be02e6d8e09e6bc58da5a2bbfcae33447fc242b611f12b532b6036ec69d71743",
+    "after": "485e9c6060b77fb39ea3f2949ec090eefc30d8c13148418a54de24f858c04b02"
+  },
+  {
+    "path": "/Users/tamchap/Dev/website/learn/sidekicks/appearance-pages.html",
+    "reason": "Align existing website teal styles with supplied teal-26AB9D.png",
+    "before": "389dedaccd746dd845d25e3461c0304c3408de52a8b86c4b90081bd23694ba85",
+    "after": "3324100d50b873ffa62e64a83c2dfbc6359d1e563228f49ceb56703e1662cf24"
+  },
+  {
+    "path": "/Users/tamchap/Dev/website/learn/Exhibits/exhibits.html",
+    "reason": "Align existing website teal styles with supplied teal-26AB9D.png",
+    "before": "6b60aaebe2ef8efd90b4bf15382c02646d1d1d78944533384a630a56368050df",
+    "after": "63b97194f86406ca33d1800001176afba0dddaa51e41ab25694cf72b853d6231"
+  },
+  {
+    "path": "/Users/tamchap/Dev/website/learn/Dictionary/dictionary.html",
+    "reason": "Align existing website teal styles with supplied teal-26AB9D.png",
+    "before": "2e246a64bd0cfab29ccb3b82989bc0af63c76d12c5d47de5ae261ab45cf12975",
+    "after": "14b524f2f94dd349a31ef63b28933d347883b4044501912b834c3e3b87051c6c"
+  },
+  {
+    "path": "/Users/tamchap/Dev/website/learn/chatgpt-tips/index.html",
+    "reason": "Align existing website teal styles with supplied teal-26AB9D.png",
+    "before": "b969843babc361e18e8c3a559dd08e23cf193865aef9854a767968cc839333fd",
+    "after": "5ff4f88daa3f55eb0a0c275410271f06c8a436f511ff80f9ac46d5a2714d3387"
+  },
+  {
+    "path": "/Users/tamchap/Dev/website/learn/Proofreader/proofreader.html",
+    "reason": "Align existing website teal styles with supplied teal-26AB9D.png",
+    "before": "221f5465850dfd383599debc45225dc4aca5abf7734546a36a6df01f425c8ef9",
+    "after": "ac6a62ac0d9a5a329ad9e70058a4ddb851a5cd1c36e9fded06a72a7b478e7858"
+  },
+  {
+    "path": "/Users/tamchap/Dev/website/learn/ChatGPT/chatgpt.html",
+    "reason": "Align existing website teal styles with supplied teal-26AB9D.png",
+    "before": "bc9bec8b9809f47a9863338b2b4daf77312e0c64c9f1adc2c13568d433d8520f",
+    "after": "967289de8170e457de9d5f28bcb41ba0b372ba0ba9e211fa8ae694dafe98670b"
+  },
+  {
+    "path": "/Users/tamchap/Dev/website/learn/Practice/practice.html",
+    "reason": "Align existing website teal styles with supplied teal-26AB9D.png",
+    "before": "cf539f35f6fd972e20b2065909a7c8aa0ac716e7e16deb2c5ced0a9ad76deab7",
+    "after": "f4baa09ac4f79506202f906b450721ade31ca328d20a9ef3ac6300db927ff023"
+  },
+  {
+    "path": "/Users/tamchap/Dev/website/learn/sidekicks/index-items.json",
+    "reason": "Align existing website teal styles with supplied teal-26AB9D.png",
+    "before": "36994e577ec49354121fd13a5a2de6aaad75335437ae047650387b5a48f425e3",
+    "after": "091e1bf6841c32ed3f57f77401efc4ae63bea21a16dd3834be7a1eb6acf67d03"
+  },
+  {
+    "path": "/Users/tamchap/Dev/website/learn/chatgpt-tips/index-items.json",
+    "reason": "Align existing website teal styles with supplied teal-26AB9D.png",
+    "before": "09c7428c175d2d7576a4224eb7e1276474e97b40ac35c77c1642ee2856b1fb9c",
+    "after": "489669e2f2091d3ac65c076c31e23c3793ca6d4b38e3c209d2498bc27890b70a"
+  },
+  {
+    "path": "/Users/tamchap/Dev/website/site-lib/learn-navigation.js",
+    "reason": "Align existing website teal styles with supplied teal-26AB9D.png",
+    "before": "9ace0d2da0cadb9f4cf430f448726f8aab13db579ba507fec7012f70922e8e7e",
+    "after": "b85734f0abef5f15cc9ca938c04701374b1d9f4f02cb3aea28fec47a6655ab63"
+  },
+  {
+    "path": "/Users/tamchap/Dev/website/site-lib/learn-index.js",
+    "reason": "Align existing website teal styles with supplied teal-26AB9D.png",
+    "before": "abebe077d0ec0c2d76315d718b92f14b730988b2d9b00023ff1a9688132fec30",
+    "after": "d4ff6bf70d95ffb284825387173248b0dbe802b0470d19a467fd3be1ce30abbb"
+  },
+  {
+    "path": "/Users/tamchap/Dev/website/site-lib/learn-sections.json",
+    "reason": "Align existing website teal styles with supplied teal-26AB9D.png",
+    "before": "60e65e5cf660bc4352b8c02bcb7571370b650348e7782b74fe1340290c934813",
+    "after": "9d4882675df801f3daee2cdc933a95c8bd2339cb5237056eb855121d34e0393e"
+  },
+  {
+    "path": "/Users/tamchap/Dev/website/site-lib/learn-index-builder.js",
+    "reason": "Align existing website teal styles with supplied teal-26AB9D.png",
+    "before": "8afeebcb3f9adc977fcf21ae604409da407b02617fe03d581de4c6ef89b1b3a8",
+    "after": "add096251491855a885a036c231fad4e03eec9a4fb8cba357d32d7a998b7b571"
+  },
+  {
+    "path": "/Users/tamchap/Dev/website/site-lib/reporter-tools-showcase.js",
+    "reason": "Align existing website teal styles with supplied teal-26AB9D.png",
+    "before": "0cc6f7abf77a09ab7a00034a0330f45a1344ba425f536427d723df3a00d168d2",
+    "after": "38e6b3d8be734ccb4856f714418c215d3ecc872d5fc66164b7035c8f8c0b4b86"
+  },
+  {
+    "path": "/Users/tamchap/Dev/website/site-lib/reporter-tools.json",
+    "reason": "Align existing website teal styles with supplied teal-26AB9D.png",
+    "before": "39fde5c99d248bb6ffbb8589bf2d03acc4367688a613158eb9f309dbecfc9ade",
+    "after": "e4182fbf5594d0d2b11aca555598cf759af3381c2d8e7c065f941ed6ba0ca43b"
+  },
+  {
+    "path": "/Users/tamchap/Dev/website/site-lib/learn-index.css",
+    "reason": "Align existing website teal styles with supplied teal-26AB9D.png",
+    "before": "2f1311323c0cd20eb036d7bc2f54753a9195b811b83c5fb86f595c8128e6a4ef",
+    "after": "ad0bd7f04c0f800159b51d971125c8ed65cafc28fa644b1d7d4df28046bb42df"
+  }
+]

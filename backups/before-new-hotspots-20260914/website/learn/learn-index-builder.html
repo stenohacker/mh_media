@@ -1,0 +1,59 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="robots" content="noindex,nofollow">
+  <title>Learn Index Builder | Magic Hashtags</title>
+  <link rel="preload" href="/fonts/hanken-grotesk-latin.woff2" as="font" type="font/woff2" crossorigin>
+  <link rel="stylesheet" href="/styles/site-system.css?v=20260914-palette-1">
+  <link rel="stylesheet" href="../site-lib/learn-index.css?v=20260729-desktop-shell-4">
+  <link rel="stylesheet" href="../site-lib/learn-index-builder.css?v=20260729-3">
+</head>
+<body>
+  <header class="index-builder-header">
+    <div class="index-builder-header__inner">
+      <h1>Learn Index Builder · Unlisted</h1>
+      <label>
+        <span class="builder-file-input">Learn section</span>
+        <select id="builderSection" aria-label="Learn section"></select>
+      </label>
+      <button type="button" id="loadSection">Load Section</button>
+      <button type="button" id="connectCatalog">Connect Catalog</button>
+      <button type="button" id="addBlank">Add Blank</button>
+      <button type="button" id="importTutorial">Import Tutorial HTML</button>
+      <button type="button" id="saveCatalog">Save Catalog</button>
+      <button type="button" id="downloadCatalog">Download JSON</button>
+      <p class="builder-status" id="builderStatus" role="status"></p>
+    </div>
+  </header>
+
+  <main class="index-builder-layout">
+    <aside class="builder-panel" aria-label="Catalog items">
+      <h2>Catalog Items</h2>
+      <div class="builder-catalog-meta" id="catalogMeta"></div>
+      <div class="builder-item-list" id="builderItemList"></div>
+    </aside>
+
+    <section class="builder-panel" aria-label="Item editor">
+      <h2>Item Editor</h2>
+      <div class="builder-editor" id="builderEditor"></div>
+    </section>
+
+    <aside class="builder-panel builder-panel--preview" aria-label="Live preview">
+      <h2>Live Preview</h2>
+      <div class="builder-preview-shell" id="builderPreview"></div>
+      <div class="builder-preview-actions">
+        <button class="builder-button" type="button" id="previewModal">Preview Modal</button>
+      </div>
+      <p class="builder-preview-note" id="builderPreviewNote">The preview uses the same card and modal renderer as the published Learn section.</p>
+    </aside>
+  </main>
+
+  <input class="builder-file-input" id="tutorialFileInput" type="file" accept=".html,text/html">
+  <input class="builder-file-input" id="catalogFileInput" type="file" accept=".json,application/json">
+
+  <script src="../site-lib/learn-index.js"></script>
+  <script src="../site-lib/learn-index-builder.js?v=20260802-tutorial-split-4"></script>
+</body>
+</html>

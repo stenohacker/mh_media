@@ -1,0 +1,32 @@
+[
+  {
+    "path": "/Users/tamchap/Dev/mh_media/tutorial-demo-builder-v2.html",
+    "before": "d32990e048ac902399f344f0b103cd6584de375fd9eeeda96991a566b7b7d02a",
+    "after": "38f879ce7ad5d8ff907d5d047b6dc89d4fdde7537a179aa45662fc1fde3f8c94"
+  },
+  {
+    "path": "/Users/tamchap/Dev/mh_media/exports/2026-09-14/appearance-pages-demo.html",
+    "before": "e26746c50b4cd2675c5b38f8180a94091c2f8aed080327bdfc01b85267127f77",
+    "after": "ad6d11089e3b596f3112bfd7d85ee9f9c3202376736e406439438e84bdd8f2e3"
+  },
+  {
+    "path": "/Users/tamchap/Dev/mh_media/exports/2026-09-14/appearance-pages-slides.html",
+    "before": "12a46c68c3cfb384cff957d3efa62010a989bcf250c55e87d4dbe23c4ee95d19",
+    "after": "0ad49f4d4e4fa41da167b808607c325b6e8e1f660378bcde4991ed1d61f73543"
+  },
+  {
+    "path": "/Users/tamchap/Dev/mh_media/exports/2026-09-14/tutorial-title-slides-fixed.html",
+    "before": "baf72a8dd722e23f7701895abfd6e189037ac54f6f4488e6b2a9a704bfef93cc",
+    "after": "babe31759845c00a8f8c3cce12188d4f2c18c8276e1901df1fd49d5a6154166b"
+  },
+  {
+    "path": "/Users/tamchap/Dev/mh_media/exports/2026-09-14/tutorial-title-28-slides-fixed.html",
+    "before": "346c08f508a08110f182f680141b521dd2ae89d7253d4ef44f4cbef548e7e295",
+    "after": "9d1506f70e47508cb0a1e89c460d5b8da222772a65364783470efdbf5ccead14"
+  },
+  {
+    "path": "/Users/tamchap/Dev/website/learn/Appearance/appearance-pages-demo.html",
+    "before": "7c764204886fdeaf41f0271926a2f0e97f04b1e3c4123625664f5601236babb3",
+    "after": "66afc3afc07600102fd64c7bc63f3b5f8dc594c576dddcf5f1a2211d79fd8c2a"
+  }
+]

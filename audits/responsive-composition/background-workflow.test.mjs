@@ -1,0 +1,53 @@
+import fs from 'node:fs';
+import assert from 'node:assert/strict';
+import vm from 'node:vm';
+import { Window } from '/private/tmp/mh-toolbar-audit/dom-tests/node_modules/happy-dom/lib/index.js';
+const root='/Users/tamchap/Dev/mh_media';
+const html=fs.readFileSync(root+'/tutorial-demo-builder-v2.html','utf8');
+const runtime=[...html.matchAll(/<script\b([^>]*)>([\s\S]*?)<\/script>/gi)].find(m=>m[2].includes('function deleteSelected()'))[2];
+new vm.Script(runtime);
+const code=runtime.replace('    initializeApp();','').replace('  })();',`window.audit={normalizeState,normalizeSlide,normalizeAnnotation,createSlide,renderStage,renderToolbar,slideSceneAspect,slideSceneHeight,scrollPageHeightUnits,playerCompositionBounds,linkMediaToSlide,applyDefaultBackgroundToSlide,buildExportHtml,get state(){return state},set state(v){state=v},quiet(){commit=()=>{};stopAudio=()=>{};showToast=()=>{};waitForExportFonts=async()=>{};}};})();`);
+const win=new Window({url:'http://127.0.0.1:8765/background-unit.html',settings:{disableJavaScriptEvaluation:true,disableCSSFileLoading:true,disableJavaScriptFileLoading:true}});
+win.document.write(html);win.eval(code);const a=win.audit;a.quiet();a.normalizeState();
+a.state.tutorial.slides=[a.createSlide('image'),a.createSlide('scroll')];a.state.ui.slideIndex=0;
+for(const [i,slide] of a.state.tutorial.slides.entries()){
+ a.state.ui.slideIndex=i;
+ assert.equal(a.slideSceneAspect(slide),6806/3522);
+ assert(slide.media.url.endsWith('/0913background.png'));
+ assert.equal(slide.media.fit,'contain');
+ const object=a.normalizeAnnotation({id:'test-video-'+i,type:'video',url:'http://127.0.0.1:8765/video/test.mp4',label:'Video size check',x:50,y:50,w:22,h:24},0,slide);
+ slide.annotations.push(object);
+ const geometry=JSON.stringify(slide.annotations);
+ a.linkMediaToSlide(slide.id,{name:'custom.png',type:'image/png'},['images','custom.png'],'Replaced');
+ assert.equal(JSON.stringify(slide.annotations),geometry);
+ assert.equal(slide.kind,i?'scroll':'image');
+ a.applyDefaultBackgroundToSlide(slide);
+ assert.equal(JSON.stringify(slide.annotations),geometry);
+ assert.equal(slide.kind,i?'scroll':'image');
+ assert.equal(a.normalizeSlide(JSON.parse(JSON.stringify(slide)),i).backgroundLayout,'background-v1');
+ const markup=a.renderStage(slide);
+ assert(!markup.includes('Choose a tall image'));
+ assert(markup.includes('has-background-canvas'));
+ if(i) assert(markup.indexOf('data-main-media-image')<markup.indexOf('data-scroll-slide'));
+ const toolbar=a.renderToolbar(slide,null);
+ assert(toolbar.includes('Replace background…'));
+ assert(!toolbar.includes('background setup pending'));
+ assert(!toolbar.includes('Replace scrolling image'));
+}
+const legacy=a.normalizeSlide({kind:'image',media:{url:'https://example.test/old.png',fit:'cover'},annotations:[{id:'old',type:'image',x:20,y:30,w:25,h:20}]},0);
+assert.equal(a.slideSceneAspect(legacy),5/3);
+assert.equal(legacy.annotations[0].x,20);
+assert.equal(legacy.annotations[0].y,30);
+const scroll=a.state.tutorial.slides[1];scroll.annotations.push(a.normalizeAnnotation({type:'image',id:'below-fold',x:50,y:250,w:25,h:20},1,{...scroll,annotations:[{x:50,y:250,h:20}]}));
+assert(a.scrollPageHeightUnits(scroll)>=270);
+assert.equal(a.normalizeSlide(JSON.parse(JSON.stringify(scroll)),1).annotations.at(-1).y,250);
+a.state.ui.slideIndex=0;a.state.tutorial.title='Background verification';
+for(const mode of ['tutorial','demo']){
+ const result=await a.buildExportHtml(mode);
+ assert(result.html.includes('background-v1'));
+ assert(result.html.includes('--scene-height'));
+ assert(result.html.includes('data-mode="player"'));
+ if(process.argv.includes('--write-browser-fixtures')) fs.writeFileSync(root+'/audits/responsive-composition/background-check-'+mode+'.html',result.html);
+}
+console.log('PASS default background on regular/scroll; canvas proportions; replace without moving content; fixed scrolling background; legacy geometry; below-fold reload; both real export serializers.');
+await win.happyDOM.close();

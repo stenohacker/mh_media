@@ -1,0 +1,1953 @@
+
+<!DOCTYPE html>
+
+<html lang="en">
+<head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<meta content="light" name="color-scheme"/>
+<title>Consulting | Reporter Sidekick</title>
+<!-- Self-hosted interface font and shared design system -->
+
+
+<!-- Tailwind CDN (required because this page uses Tailwind utility classes) -->
+<script>
+      // Configure Tailwind before loading the CDN script.
+      window.tailwind = window.tailwind || {};
+      window.tailwind.config = {
+        theme: {
+          extend: {
+            fontFamily: {
+              sans: ["Hanken Grotesk", "Arial", "sans-serif"],
+              mono: ["Hanken Grotesk", "Arial", "sans-serif"],
+            },
+          },
+        },
+      };
+    </script>
+<script src="https://cdn.tailwindcss.com"></script>
+<style>
+      
+      :where(body, button, input, textarea, select, option, .font-mono, .font-sans) {
+        font-family: var(--font-interface) !important;
+        }
+
+      body,
+      button,
+      input,
+      textarea,
+      select,
+      .font-mono,
+      .font-sans {
+        font-family: var(--font-interface) !important;
+      }
+
+      body {
+        font-weight: 400;
+        font-size: 1.04rem;
+      }
+
+      .font-bold {
+        font-weight: 600 !important;
+      }
+
+      .font-black {
+        font-weight: 600 !important;
+      }
+
+      .site-header-logo {
+        display: block !important;
+        width: clamp(10rem, 28vw, 18rem) !important;
+        height: auto !important;
+        max-height: 4.6rem !important;
+        object-fit: contain !important;
+      }
+
+      header nav {
+        min-width: 0;
+      }
+      @media (max-width: 1024px) {
+        header .site-header-contact {
+          height: 2.75rem !important;
+          min-height: 2.75rem !important;
+          padding-left: 0.85rem !important;
+          padding-right: 0.85rem !important;
+          font-size: 0.82rem !important;
+          letter-spacing: 0.04em !important;
+        }
+      }
+
+      @media (max-width: 640px) {
+        header .max-w-7xl {
+          padding: 0.7rem 1rem !important;
+        }
+
+        header nav {
+          flex-direction: column !important;
+          align-items: center !important;
+          justify-content: center !important;
+          gap: 0.55rem !important;
+        }
+
+        header nav > div:first-child {
+          width: 100% !important;
+          justify-content: center !important;
+        }
+
+        .site-header-logo {
+          width: clamp(12rem, 72vw, 17rem) !important;
+          max-height: 4.2rem !important;
+        }
+
+        header .site-header-contact {
+          height: 2.35rem !important;
+          min-height: 2.35rem !important;
+          padding-left: 0.55rem !important;
+          padding-right: 0.55rem !important;
+          font-size: 0.72rem !important;
+          letter-spacing: 0.03em !important;
+        }
+      }
+
+      .site-menu-toggle {
+        display: none;
+        width: 2.45rem;
+        height: 2.45rem;
+        align-items: center;
+        justify-content: center;
+        flex-direction: column;
+        gap: 0.28rem;
+        border: 0;
+        background: transparent;
+        color: #fff;
+        padding: 0;
+        margin-left: auto;
+      }
+
+      .site-menu-toggle span {
+        display: block;
+        width: 1.15rem;
+        height: 2px;
+        background: currentColor;
+      }
+
+      .site-mobile-panel {
+        display: none;
+      }
+
+      @media (max-width: 1024px) {
+        .nav-dropdown-menu {
+          min-width: 17.5rem !important;
+        }
+
+        .nav-dropdown-menu .relative.border-4 {
+          padding: 0.55rem !important;
+        }
+
+        .nav-dropdown-menu a {
+          padding: 0.62rem 0.8rem !important;
+          font-size: 0.74rem !important;
+          letter-spacing: 0.045em !important;
+          box-shadow: 4px 4px 0 #000 !important;
+        }
+      }
+
+      @media (max-width: 900px) {
+        header nav {
+          position: relative;
+          flex-direction: row !important;
+          flex-wrap: nowrap !important;
+          align-items: center !important;
+          justify-content: space-between !important;
+        }
+
+        header nav > div:first-child {
+          width: auto !important;
+          flex: 1 1 auto !important;
+          justify-content: flex-start !important;
+        }
+
+        header .site-desktop-nav,
+        header .site-header-contact {
+          display: none !important;
+        }
+
+        .site-menu-toggle {
+          display: inline-flex !important;
+        }
+
+        .site-mobile-panel:not([hidden]) {
+          display: grid;
+          gap: 0.45rem;
+          position: absolute;
+          top: calc(100% + 0.7rem);
+          right: 0;
+          width: min(19rem, calc(100vw - 2rem));
+          border: 4px solid #000;
+          background: #fff;
+          box-shadow: 7px 7px 0 #000;
+          padding: 0.55rem;
+          z-index: 70;
+        }
+
+        .site-mobile-panel a,
+        .site-mobile-panel button {
+          display: block;
+          width: 100%;
+          border: 3px solid #000;
+          background: #fff;
+          color: #000;
+          box-shadow: 4px 4px 0 #000;
+          padding: 0.72rem 0.8rem;
+          font-size: 0.78rem;
+          font-weight: 600;
+          letter-spacing: 0.045em;
+          line-height: 1.1;
+          text-align: left;
+          text-transform: uppercase;
+        }
+
+        .site-mobile-panel a:hover,
+        .site-mobile-panel button:hover,
+        .site-mobile-panel a:focus-visible,
+        .site-mobile-panel button:focus-visible {
+          background: #f1f332;
+        }
+      }
+
+
+      html {
+        scroll-behavior: smooth;
+      }
+
+      .landing-stage {
+        min-height: calc(100vh - 88px);
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        padding: 9rem 1.5rem 6rem;
+        background: #fff;
+      }
+
+      .landing-frame-wrap {
+        position: relative;
+        width: min(100%, 920px);
+      }
+
+      .landing-frame-shadow {
+        position: absolute;
+        inset: auto -1.4rem -1.4rem 1.4rem;
+        border: 4px solid #000;
+        background: #000;
+        z-index: 0;
+      }
+
+      .landing-frame {
+        position: relative;
+        z-index: 1;
+        border: 4px solid #000;
+        background: #fff;
+        padding: clamp(2rem, 4vw, 3.25rem);
+      }
+
+      .landing-name {
+        font-family: var(--font-interface);
+        font-size: clamp(2rem, 5vw, 3.65rem);
+        font-weight: 600;
+        line-height: 1.05;
+        letter-spacing: 0.01em;
+        text-transform: uppercase;
+      }
+
+      .landing-role {
+        display: inline-block;
+        margin-top: 1.35rem;
+        padding: 0.9rem 1rem;
+        background: #000;
+        color: #fff;
+        font-family: var(--font-interface);
+        font-size: clamp(1rem, 2vw, 1.15rem);
+        font-weight: 600;
+        line-height: 1.15;
+        letter-spacing: 0.03em;
+        text-transform: uppercase;
+      }
+
+      .landing-copy {
+        margin-top: 1.35rem;
+        font-family: var(--font-interface);
+        font-size: clamp(1.05rem, 1.9vw, 1.28rem);
+        font-weight: 600;
+        line-height: 1.55;
+        letter-spacing: 0.01em;
+        text-transform: uppercase;
+      }
+
+      .landing-actions {
+        margin-top: 2rem;
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: center;
+        gap: 1rem;
+      }
+
+      .landing-btn {
+        display: inline-flex;
+        align-items: center;
+        justify-content: center;
+        min-width: 11rem;
+        min-height: 3.3rem;
+        border: 4px solid #000;
+        padding: 0 1.3rem;
+        font-family: var(--font-interface);
+        font-size: 0.95rem;
+        font-weight: 600;
+        letter-spacing: 0.05em;
+        text-transform: uppercase;
+        transition: transform 160ms ease, box-shadow 160ms ease, background-color 160ms ease, color 160ms ease;
+      }
+
+      .landing-btn:hover,
+      .landing-btn:focus-visible {
+        transform: translate(4px, 4px);
+      }
+
+      .landing-btn--dark {
+        background: #000;
+        color: #fff;
+        box-shadow: 7px 7px 0 #000;
+      }
+
+      .landing-btn--light {
+        background: #fff;
+        color: #000;
+        box-shadow: 7px 7px 0 #000;
+      }
+
+      @media (max-width: 767px) {
+        .landing-frame-shadow {
+          right: -0.9rem;
+          bottom: -0.9rem;
+          left: 0.9rem;
+        }
+
+        .landing-actions {
+          justify-content: flex-start;
+        }
+      }
+
+      .skills-stage {
+        background: #fff;
+      }
+
+      .skills-grid {
+        display: grid;
+        gap: 0.75rem;
+        align-items: stretch;
+        justify-content: center;
+      }
+
+      .skills-grid-stack {
+        display: flex;
+        flex-direction: column;
+        gap: 0.75rem;
+      }
+
+      .skills-grid--three {
+        grid-template-columns: repeat(1, minmax(0, 1fr));
+      }
+
+      .skills-grid--two {
+        grid-template-columns: repeat(1, minmax(0, 1fr));
+      }
+
+      .skills-header-image {
+        width: 100%;
+        height: auto;
+        display: block;
+      }
+
+      .skills-row-banner {
+        width: 100%;
+        max-width: 760px;
+        margin: 0 auto 4rem;
+        background: #000;
+        border: 3px solid #000;
+        padding: 0.6rem 0.8rem;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+      }
+
+      .skills-row-banner img {
+        display: block;
+        width: 100%;
+        max-width: 480px;
+        height: auto;
+      }
+
+      .skill-card {
+        display: flex;
+        flex-direction: column;
+        min-height: 15.5rem;
+        padding: 1rem 1rem 0.95rem;
+        border: 3px solid #2d2d2d;
+        background: #fff;
+        box-shadow: none;
+        gap: 0.9rem;
+      }
+
+      .skill-card[data-skill-card] {
+        cursor: pointer;
+        transition:
+          background-color 180ms ease,
+          color 180ms ease,
+          transform 180ms ease,
+          box-shadow 180ms ease,
+          border-color 180ms ease;
+      }
+
+      .skill-card[data-skill-card]:hover,
+      .skill-card[data-skill-card]:focus-visible {
+        transform: translateY(-4px);
+        box-shadow: 7px 7px 0 #000;
+        border-color: #000;
+      }
+
+      .skill-card[data-skill-card]:focus-visible {
+        outline: 0;
+      }
+
+      .skill-card-head {
+        display: flex;
+        align-items: flex-start;
+        justify-content: flex-start;
+        min-height: 4.2rem;
+        padding: 0.8rem 0.95rem;
+        border: 3px solid #000;
+        background: #000;
+      }
+
+      .skill-card-media {
+        flex: 1 1 auto;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        min-height: 4.9rem;
+        padding: 0 0.45rem;
+      }
+
+      .skill-card-media img {
+        display: block;
+        max-width: 100%;
+        max-height: 4.75rem;
+        width: auto;
+        height: auto;
+        object-fit: contain;
+      }
+
+      .skill-card-media--placeholder {
+        border: 3px dashed #000;
+        background:
+          linear-gradient(180deg, rgba(255, 255, 255, 0.98), rgba(245, 245, 245, 0.98)),
+          repeating-linear-gradient(
+            -45deg,
+            rgba(0, 0, 0, 0.05) 0,
+            rgba(0, 0, 0, 0.05) 10px,
+            rgba(255, 255, 255, 0.45) 10px,
+            rgba(255, 255, 255, 0.45) 20px
+          );
+      }
+
+      .skill-card-media-copy {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        gap: 0.2rem;
+        text-align: center;
+      }
+
+      .skill-card-media-eyebrow {
+        font-family: var(--font-interface);
+        font-size: 0.58rem;
+        font-weight: 600;
+        letter-spacing: 0.05em;
+        text-transform: uppercase;
+      }
+
+      .skill-card-media-text {
+        font-family: var(--font-interface);
+        font-size: 1.1rem;
+        font-weight: 600;
+        letter-spacing: 0.02em;
+        line-height: 1;
+        text-transform: uppercase;
+      }
+
+      .skill-card-media-subtitle {
+        font-family: var(--font-interface);
+        font-size: 0.54rem;
+        font-weight: 600;
+        letter-spacing: 0.05em;
+        text-transform: uppercase;
+      }
+
+      .skill-card-title {
+        color: #fff;
+        font-family: var(--font-interface);
+        font-size: 0.9rem;
+        font-weight: 600;
+        line-height: 1.12;
+        letter-spacing: 0.02em;
+        text-transform: uppercase;
+      }
+
+      .skill-card-cta {
+        width: 100%;
+        min-height: 1.7rem;
+        border: 3px solid #000;
+        background: var(--skill-cta-bg, #ef88d5);
+        color: #000;
+        font-family: var(--font-interface);
+        font-size: 0.72rem;
+        font-weight: 600;
+        letter-spacing: 0.02em;
+        text-transform: uppercase;
+        transition: background-color 180ms ease, color 180ms ease;
+      }
+
+      .skill-card[data-skill-card]:hover .skill-card-cta,
+      .skill-card[data-skill-card]:focus-visible .skill-card-cta {
+        background: var(--skill-cta-hover, var(--skill-cta-bg, #ff9be1));
+      }
+
+      .skill-card:not([data-skill-card]) .skill-card-cta {
+        cursor: default;
+      }
+
+      @media (min-width: 768px) {
+        .skills-grid--three {
+          grid-template-columns: repeat(2, minmax(0, 17.5rem));
+        }
+
+        .skills-grid--two {
+          grid-template-columns: repeat(2, minmax(0, 17.5rem));
+        }
+      }
+
+      @media (min-width: 900px) {
+        .skills-grid--three {
+          grid-template-columns: repeat(3, minmax(0, 17.5rem));
+        }
+      }
+
+      [data-skill-open],
+      [data-skill-close],
+      [data-modal-tag],
+      [data-modal-instructions] {
+        font-weight: 600 !important;
+        letter-spacing: 0.05em !important;
+      }
+
+      [data-modal-tag],
+      [data-modal-instructions] {
+        background: var(--action-bg, #ff90e7) !important;
+        color: #000 !important;
+        border-color: #000 !important;
+        transition:
+          background-color 180ms ease,
+          color 180ms ease,
+          transform 180ms ease;
+      }
+
+      [data-modal-tag]:hover,
+      [data-modal-tag]:focus-visible,
+      [data-modal-instructions]:hover,
+      [data-modal-instructions]:focus-visible {
+        background: var(--action-hover-bg, var(--action-bg, #ff90e7)) !important;
+        transform: translateY(-2px);
+      }
+
+      [data-modal-title] {
+        font-weight: 600 !important;
+        letter-spacing: 0.05em !important;
+        line-height: 1.05;
+      }
+
+      [data-modal-description],
+      [data-modal-problem],
+      [data-modal-details] {
+        font-weight: 400 !important;
+        line-height: 1.7;
+      }
+
+      [data-modal-skills] span {
+        font-weight: 600 !important;
+        letter-spacing: 0.05em !important;
+      }
+
+      #about h2,
+      footer h3,
+      [data-contact-modal] h2 {
+        font-weight: 600 !important;
+        letter-spacing: 0.05em !important;
+      }
+
+      #about h3,
+      #about h4,
+      [data-contact-modal] label {
+        font-weight: 600 !important;
+      }
+
+      #about p,
+      footer p,
+      footer li,
+      [data-contact-modal] p,
+      [data-contact-modal] textarea,
+      [data-contact-modal] input {
+        font-weight: 400;
+      }
+
+      
+      /* Header dropdown (instructions) */
+      .nav-dropdown-menu {
+        display: none;
+        position: absolute;
+        top: calc(100% + 16px);
+        left: 50%;
+        transform: translateX(-50%);
+        width: max-content;
+        min-width: 320px;
+        max-width: calc(100vw - 2rem);
+        z-index: 50;
+      }
+
+      .nav-dropdown:hover .nav-dropdown-menu,
+      .nav-dropdown:focus-within .nav-dropdown-menu,
+      .nav-dropdown[data-open="true"] .nav-dropdown-menu {
+        display: block;
+      }
+
+      .nav-dropdown-menu::before {
+        content: "";
+        position: absolute;
+        left: 0;
+        right: 0;
+        top: -16px;
+        height: 16px;
+      }
+
+      .nav-dropdown-menu a {
+        white-space: nowrap;
+      }
+
+      .nav-dropdown--disabled {
+        visibility: hidden;
+        pointer-events: none;
+      }
+
+      .neo-offset-shadow {
+        position: absolute;
+        inset: 0;
+        transform: translate(4px, 4px);
+        background: #000;
+      }
+
+      .dropdown-link-teal:hover {
+        background: #24a094 !important;
+        color: #000 !important;
+      }
+
+      /* Contact modal visibility helpers */
+      [data-contact-modal][data-open="false"],
+      [data-contact-overlay][data-open="false"] {
+        display: none;
+      }
+
+      /* =========================
+         Contact form TOPIC dropdown
+         - Custom dropdown to allow:
+           1) left pink stripe in options list
+           2) no pink hover highlight (use subtle hover like Customizer Q1)
+         ========================= */
+      .cselect-native {
+        position: absolute !important;
+        width: 1px !important;
+        height: 1px !important;
+        padding: 0 !important;
+        margin: -1px !important;
+        overflow: hidden !important;
+        clip: rect(0, 0, 0, 0) !important;
+        border: 0 !important;
+      }
+
+      .cselect {
+        position: relative;
+        width: 100%;
+        z-index: 1; /* sit above neo-offset-shadow */
+      }
+
+      .cselect__btn {
+        width: 100%;
+        height: 3rem; /* matches h-12 */
+        border: 4px solid #000;
+        border-radius: 0;
+        background: #fff;
+        color: #000;
+        padding: 0 2.75rem 0 1rem;
+        font: inherit;
+        cursor: pointer;
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        gap: 0.75rem;
+      }
+
+      .cselect__value {
+        font-family: var(--font-interface);
+        text-transform: uppercase;
+        letter-spacing: 0.05em;
+        font-weight: 600;
+        font-size: 0.9rem;
+        white-space: nowrap;
+        overflow: hidden;
+        text-overflow: ellipsis;
+      }
+
+      .cselect__caret {
+        width: 18px;
+        height: 18px;
+        flex: 0 0 auto;
+        opacity: 0.9;
+      }
+
+      .cselect__menu {
+        position: absolute;
+        top: calc(100% + 6px);
+        left: 0;
+        right: 0;
+        z-index: 9999;
+        background: #f3f4f6;
+        border: 4px solid #000;
+        box-shadow: 7px 7px 0 #000;
+        max-height: 320px;
+        overflow: auto;
+        padding: 0;
+        display: none;
+      }
+
+      .cselect[data-open="true"] .cselect__menu {
+        display: block;
+      }
+
+      .cselect__opt {
+        position: relative;
+        display: grid;
+        grid-template-columns: 22px 1fr;
+        align-items: center;
+        gap: 8px;
+        padding: 6px 12px 6px 22px; /* room for stripe */
+        cursor: pointer;
+        user-select: none;
+        font-size: 0.95rem;
+        color: #111;
+      }
+
+      /* Pink stripe on left (like Customizer Q1) */
+      .cselect--stripe .cselect__opt::before {
+        content: "";
+        position: absolute;
+        left: 0;
+        top: 0;
+        bottom: 0;
+        width: 10px;
+        background: #ff90e7;
+      }
+
+      /* No pink hover highlight — keep it subtle */
+      .cselect__opt:hover {
+        background: rgba(255, 255, 255, 0.65);
+      }
+
+      .cselect__check {
+        width: 22px;
+        text-align: center;
+        opacity: 0;
+        font-weight: 600;
+      }
+      .cselect__opt[aria-selected="true"] .cselect__check {
+        opacity: 1;
+      }
+
+      .cselect__opt[data-placeholder="true"] {
+        color: rgba(0, 0, 0, 0.55);
+      }
+
+      /* Custom scrollbar for skill modal */
+      /* Force modal sizing + scrolling without relying on Tailwind utilities. */
+      .skill-modal-card {
+        /* Make the skill modal 2x the "small" width.
+           - Tailwind's `max-w-sm` is 24rem.
+           - 2.25x (adds 25% of original) = 54rem.
+           - Use !important to win even if Tailwind injects styles later. */
+        width: min(calc(100vw - 3rem), 54rem) !important;
+        max-width: 54rem !important;
+
+        /* Grow with content up to a limit, then scroll internally. */
+        max-height: min(99vh, calc(100vh - 0.25rem)) !important;
+        overflow-y: auto !important;
+        overflow-x: hidden !important;
+        -webkit-overflow-scrolling: touch;
+        overscroll-behavior: contain;
+
+        /* Firefox scrollbar theming to match the WebKit rules below. */
+        scrollbar-width: thin;
+        scrollbar-color: #ff90e7 #fff;
+      }
+
+      /* Make the top media block shorter so text shows sooner. */
+      .skill-modal-media {
+        aspect-ratio: 21 / 9;
+        max-height: 23rem;
+      }
+
+      .skill-modal-media[data-mode="textbox"] {
+        background: #f3f4f6;
+        cursor: default;
+      }
+
+      .skill-modal-media[data-mode="textbox"] [data-modal-poster],
+      .skill-modal-media[data-mode="textbox"] [data-modal-video],
+      .skill-modal-media[data-mode="textbox"] [data-modal-iframe],
+      .skill-modal-media[data-mode="textbox"] [data-modal-play] {
+        display: none !important;
+      }
+
+      .skill-modal-media-textbox {
+        display: none;
+        width: calc(100% - 2.4rem);
+        min-height: calc(100% - 2.4rem);
+        margin: 1.2rem;
+        border: 4px solid #000;
+        background: #fff;
+        box-shadow: 10px 10px 0 #000;
+        padding: 1rem 1.15rem;
+        align-items: center;
+        justify-content: center;
+        text-align: center;
+      }
+
+      .skill-modal-media[data-mode="textbox"] .skill-modal-media-textbox {
+        display: flex;
+      }
+
+      .skill-modal-media-copy-large {
+        display: flex;
+        flex-direction: column;
+        gap: 0.45rem;
+        align-items: center;
+      }
+
+      .skill-modal-media-copy-large strong {
+        font-size: 0.92rem;
+        font-weight: 600;
+        letter-spacing: 0.05em;
+        text-transform: uppercase;
+      }
+
+      .skill-modal-media-copy-large span {
+        font-size: 0.9rem;
+        line-height: 1.5;
+        font-weight: 400;
+      }
+
+      [data-modal-extra-boxes] {
+        display: none;
+        grid-template-columns: 1fr;
+        gap: 0.8rem;
+        margin-bottom: 1rem;
+      }
+
+      .modal-extra-box {
+        border: 3px solid #000;
+        background: #fff;
+        box-shadow: 7px 7px 0 #000;
+        padding: 0.9rem 1rem;
+      }
+
+      .modal-extra-box-title {
+        display: block;
+        margin-bottom: 0.4rem;
+        font-size: 0.72rem;
+        font-weight: 600;
+        letter-spacing: 0.05em;
+        text-transform: uppercase;
+        color: #24a094;
+      }
+
+      .modal-extra-box-body {
+        font-size: 0.9rem;
+        line-height: 1.5;
+        font-weight: 400;
+        color: #000;
+      }
+
+      .skill-modal-card [data-modal-inner] > .p-8 {
+        padding: 1.2rem 1.35rem 1.35rem;
+      }
+
+      .skill-modal-card [data-modal-title] {
+        font-size: clamp(1.55rem, 2vw, 1.95rem);
+        line-height: 1.04;
+        margin-bottom: 0.7rem !important;
+      }
+
+      .skill-modal-card [data-modal-description],
+      .skill-modal-card [data-modal-problem],
+      .skill-modal-card [data-modal-details] {
+        font-size: 0.93rem;
+        line-height: 1.52;
+      }
+
+      .skill-modal-card [data-modal-description] {
+        margin-bottom: 1rem !important;
+      }
+
+      .skill-modal-card .space-y-5 {
+        gap: 0.8rem !important;
+        margin-bottom: 0.8rem !important;
+      }
+
+      .skill-modal-card [data-modal-tag],
+      .skill-modal-card [data-modal-instructions] {
+        padding: 0.55rem 0.9rem;
+        font-size: 0.74rem;
+      }
+
+      .skill-modal-card [data-modal-skills] {
+        display: none !important;
+      }
+
+      .skill-modal-card [data-skill-close] {
+        padding-top: 0.9rem;
+        padding-bottom: 0.9rem;
+      }
+
+      .skill-modal-card::-webkit-scrollbar {
+        width: 12px;
+      }
+      .skill-modal-card::-webkit-scrollbar-track {
+        background: #fff;
+        border-left: 3px solid #000;
+      }
+      .skill-modal-card::-webkit-scrollbar-thumb {
+        background: #ff90e7;
+        border: 3px solid #000;
+      }
+      .skill-modal-card::-webkit-scrollbar-thumb:hover {
+        background: #000;
+      }
+
+      /* Simple modal visibility helpers (keeps markup clean). */
+      [data-modal-overlay][data-open="false"],
+      [data-skill-modal][data-open="false"] {
+        display: none;
+      }
+    
+      /* =========================
+         Modal + card morph animations (non-annoying, Apple-ish)
+         - Keeps layout the same; only adds motion
+         ========================= */
+      @media (prefers-reduced-motion: reduce) {
+        [data-skill-card],
+        [data-skill-open],
+        [data-modal-card],
+        [data-modal-overlay] {
+          transition: none !important;
+          animation: none !important;
+        }
+      }
+
+      /* Modal presentation (no motion) */
+      [data-skill-modal] {
+        will-change: opacity;
+        z-index: 60;
+        align-items: flex-start;
+        padding-top: 0.75rem !important;
+        padding-bottom: 0.75rem !important;
+      }
+
+      [data-modal-overlay] {
+        opacity: 1;
+        background-color: rgba(0, 0, 0, 0.8);
+        transition: none;
+      }
+
+      [data-modal-card] {
+        opacity: 1;
+        transform: none;
+        box-shadow: 10px 10px 0 #000;
+        transition: none;
+        animation: none !important;
+        margin-top: 0;
+      }
+
+    </style>
+  <link rel="preload" href="/fonts/hanken-grotesk-latin.woff2" as="font" type="font/woff2" crossorigin>
+  <link rel="stylesheet" href="/styles/site-system.css?v=20260902-hanken-1">
+</head>
+<body>
+<div class="min-h-screen bg-white">
+<!-- Header (nav from old index, styled to match new) -->
+<header class="fixed top-0 left-0 right-0 z-50 bg-black border-b-4 border-white">
+<div class="max-w-7xl mx-auto px-6 py-4">
+<nav class="flex items-center justify-between gap-6">
+<div class="flex items-center min-w-0">
+<a aria-label="Home" class="relative inline-flex items-center justify-center bg-transparent outline-none ring-0 focus:outline-none focus-visible:outline-none focus:ring-0 focus-visible:ring-0 active:outline-none transition-transform duration-200 will-change-transform hover:-translate-y-[2px] hover:scale-[1.02]" href="./index.html">
+<span class="sr-only">Home</span>
+<img alt="Magic Hashtags — AI tools for court reporters" class="site-header-logo object-contain block" decoding="async" loading="eager" src="/images/logosmaller.png"/>
+</a>
+</div>
+<div class="site-desktop-nav hidden md:flex items-center space-x-4">
+<div class="relative nav-dropdown">
+<button aria-expanded="false" aria-haspopup="true" class="text-white hover:bg-[#f1f332] hover:text-black border-[3px] border-transparent hover:border-[#f1f332] px-6 py-3 uppercase tracking-wider font-mono rounded-none transition-all duration-200" type="button">
+                  learn
+                </button>
+<div class="nav-dropdown-menu">
+<div aria-hidden="true" class="neo-offset-shadow"></div>
+<div class="relative border-4 border-black bg-white p-3">
+<div class="space-y-2">
+<a class="block px-4 py-3 font-mono text-sm uppercase tracking-wider font-bold border-[3px] border-black bg-white shadow-[4px_4px_0px_0px_black] hover:bg-[#ff90e7] hover:text-black hover:translate-x-[4px] hover:translate-y-[4px] transition-all" href="./learn/sidekicks/index.html">
+                        Sidekick Tutorials
+                      </a>
+<a class="block px-4 py-3 font-mono text-sm uppercase tracking-wider font-bold border-[3px] border-black bg-white shadow-[4px_4px_0px_0px_black] hover:bg-[#f1f332] hover:text-black hover:translate-x-[4px] hover:translate-y-[4px] transition-all" href="./learn/chatgpt-tips/index.html">
+                        ChatGPT Tips
+                      </a>
+<a class="block px-4 py-3 font-mono text-sm uppercase tracking-wider font-bold border-[3px] border-black bg-white shadow-[4px_4px_0px_0px_black] hover:bg-[#ffc900] hover:text-black hover:translate-x-[4px] hover:translate-y-[4px] transition-all" href="./learn/tech-tips/index.html">
+                        Other Tech Tips
+                      </a>
+<a class="block px-4 py-3 font-mono text-sm uppercase tracking-wider font-bold border-[3px] border-black bg-white shadow-[4px_4px_0px_0px_black] hover:bg-[#91a8ed] hover:text-black hover:translate-x-[4px] hover:translate-y-[4px] transition-all" href="./learn/steno-tips/index.html">
+                        Steno Tips
+                      </a>
+</div>
+</div>
+</div>
+</div>
+<a class="text-white hover:bg-[#f1f332] hover:text-black border-[3px] border-transparent hover:border-[#f1f332] px-6 py-3 uppercase tracking-wider font-mono rounded-none transition-all duration-200" href="./reporter-tools.html">
+                reporter tools
+              </a>
+<a class="text-white hover:bg-[#f1f332] hover:text-black border-[3px] border-transparent hover:border-[#f1f332] px-6 py-3 uppercase tracking-wider font-mono rounded-none transition-all duration-200" href="./customizer.html">
+                customizer
+              </a>
+<a class="text-white hover:bg-[#f1f332] hover:text-black border-[3px] border-transparent hover:border-[#f1f332] px-6 py-3 uppercase tracking-wider font-mono rounded-none transition-all duration-200" href="./purchase.html">
+                store
+              </a>
+</div>
+<button class="site-header-contact inline-flex items-center gap-2 h-14 bg-white text-black hover:bg-[#ff90e7] border-[3px] border-white hover:border-[#ff90e7] px-6 py-0 font-mono uppercase tracking-wider font-bold leading-none rounded-none transition-all duration-200" data-open-contact="" type="button">
+              contact
+            </button>
+<button aria-expanded="false" aria-label="Open navigation" class="site-menu-toggle" data-mobile-nav-toggle="" type="button">
+<span></span>
+<span></span>
+<span></span>
+</button>
+<div class="site-mobile-panel" data-mobile-nav-panel="" hidden></div>
+</nav>
+</div>
+</header>
+<main class="pt-36 pb-24 bg-white min-h-screen">
+<section class="px-6">
+<div class="relative mx-auto mb-20 max-w-6xl">
+<div class="absolute inset-y-5 -right-6 left-6 border-4 border-[#24a094] bg-[#24a094]"></div>
+<div class="relative border-4 border-black bg-white px-6 py-10 md:px-10 md:py-14">
+<h1 class="text-center font-sans text-4xl font-black uppercase tracking-wide text-black md:text-6xl">Consulting</h1>
+</div>
+</div>
+
+<div class="mx-auto grid max-w-6xl gap-8 md:grid-cols-3">
+<div class="border-4 border-black bg-white p-6 shadow-[10px_10px_0px_0px_black]">
+<h2 class="mb-4 bg-black p-3 font-mono text-lg font-bold uppercase tracking-wide text-white">Workflow Review</h2>
+<p class="font-sans text-base font-medium leading-relaxed text-black">Clarify where AI fits, what should stay manual, and where your current process is wasting time.</p>
+</div>
+<div class="border-4 border-black bg-white p-6 shadow-[10px_10px_0px_0px_black]">
+<h2 class="mb-4 bg-black p-3 font-mono text-lg font-bold uppercase tracking-wide text-white">Custom GPTs + Tools</h2>
+<p class="font-sans text-base font-medium leading-relaxed text-black">Plan or build tools around your actual reporting, legal, or training workflow instead of generic AI demos.</p>
+</div>
+<div class="border-4 border-black bg-white p-6 shadow-[10px_10px_0px_0px_black]">
+<h2 class="mb-4 bg-black p-3 font-mono text-lg font-bold uppercase tracking-wide text-white">Training</h2>
+<p class="font-sans text-base font-medium leading-relaxed text-black">One-on-one training for people who want plain-English help using AI more effectively in real work.</p>
+</div>
+</div>
+
+<div class="mx-auto mt-10 max-w-6xl border-4 border-black bg-black p-8 text-white shadow-[12px_12px_0px_0px_#24a094]">
+<p class="mb-6 font-mono text-sm uppercase tracking-[0.18em] text-[#24a094]">Future Focus</p>
+<p class="mb-6 font-sans text-lg font-medium leading-relaxed">This is the direction the site is growing toward: practical consulting, training, and custom tool design rooted in real court-reporting and legal workflow problems.</p>
+<button class="inline-flex items-center justify-center border-4 border-white bg-white px-6 py-3 font-mono text-sm font-bold uppercase tracking-wider text-black transition-all duration-200 hover:bg-[#ff90e7] hover:border-[#ff90e7]" data-open-contact="" type="button">Request Services</button>
+</div>
+</section>
+</main>
+<!-- Footer -->
+<footer class="bg-black text-white py-12 border-t-8 border-[#91a8ed]">
+<div class="max-w-6xl mx-auto px-6">
+<div class="border-t-4 border-white pt-8">
+<div class="flex flex-col md:flex-row justify-between items-center">
+<p class="font-mono text-sm opacity-80">© 2025 MAGIC HASHTAGS. ALL RIGHTS RESERVED.</p>
+<p class="font-mono text-sm opacity-80 mt-4 md:mt-0 bg-[#ff7051] text-black px-2 py-1 font-bold transform -rotate-2">BUILT BY A WORKING COURT REPORTER</p>
+</div>
+</div>
+</div>
+</footer>
+</div>
+<!-- Contact modal (Netlify form) -->
+<div aria-hidden="true" class="fixed inset-0 z-50 flex items-center justify-center p-4" data-contact-modal="" data-open="false">
+<div class="absolute inset-0 bg-black/80 backdrop-blur-sm" data-contact-overlay="" data-open="false"></div>
+<div class="relative w-full max-w-2xl border-4 border-black bg-white shadow-[20px_20px_0px_0px_black] z-50 overflow-hidden">
+<button aria-label="Close" class="absolute top-4 right-4 z-10 p-2 border-[3px] border-black transition-colors bg-white text-black hover:bg-[#f1f332]" data-close-contact="" type="button">
+          ✕
+        </button>
+<div class="p-8">
+<h2 class="text-4xl font-mono uppercase tracking-wider font-black mb-2">CONTACT US</h2>
+<p class="font-mono text-sm opacity-90 mb-8">Pick a topic and we'll get right back to you.</p>
+<form class="space-y-6" data-netlify="true" id="contact-form" method="POST" name="General Contact">
+<input name="form-name" type="hidden" value="General Contact"/>
+<input name="page" type="hidden" value="index.html"/>
+<input id="topicLabel" name="topicLabel" type="hidden"/>
+<div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+<div>
+<label class="block font-mono uppercase tracking-wide mb-2 font-bold">FIRST NAME *</label>
+<input class="border-4 border-black rounded-none font-mono focus:ring-0 focus:border-[#24a094] focus:bg-[#f0fffe] bg-white transition-colors h-12 w-full px-3" name="firstName" required=""/>
+</div>
+<div>
+<label class="block font-mono uppercase tracking-wide mb-2 font-bold">LAST NAME *</label>
+<input class="border-4 border-black rounded-none font-mono focus:ring-0 focus:border-[#24a094] focus:bg-[#f0fffe] bg-white transition-colors h-12 w-full px-3" name="lastName" required=""/>
+</div>
+</div>
+<div>
+<label class="block font-mono uppercase tracking-wide mb-2 font-bold">EMAIL *</label>
+<input class="border-4 border-black rounded-none font-mono focus:ring-0 focus:border-[#24a094] focus:bg-[#f0fffe] bg-white transition-colors h-12 w-full px-3" name="email" required="" type="email"/>
+</div>
+<div>
+<label class="block font-mono uppercase tracking-wide mb-2 font-bold">TOPIC *</label>
+<div class="relative" data-topic-wrap="">
+<div aria-hidden="true" class="neo-offset-shadow"></div>
+<select class="cselect-native" id="topicSelect" name="topic" required="">
+<option value="">Select one…</option>
+<option value="Reporting Work">Reporting Work</option>
+<option value="One-on-One Training">One-on-One Training</option>
+<option value="Consulting">Consulting</option>
+<option value="Exhibits Purchase">Exhibits Purchase</option>
+<option value="Sidekick Help">Sidekick Help</option>
+<option value="General">General Message</option>
+</select>
+<div class="cselect cselect--stripe" data-topic-cselect=""></div>
+</div>
+</div>
+<div>
+<label class="block font-mono uppercase tracking-wide mb-2 font-bold">MESSAGE *</label>
+<textarea class="border-4 border-black rounded-none font-mono focus:ring-0 focus:border-[#24a094] focus:bg-[#f0fffe] bg-white resize-none w-full px-3 py-2 disabled:opacity-50" disabled="" id="messageBox" name="message" placeholder="Select a topic first..." required="" rows="6"></textarea>
+</div>
+<button class="w-full bg-[#ff90e7] text-black hover:bg-black hover:text-[#ff90e7] border-4 border-black py-6 font-mono uppercase tracking-wider rounded-none shadow-[8px_8px_0px_0px_black] hover:shadow-[4px_4px_0px_0px_black] hover:translate-x-[4px] hover:translate-y-[4px] transition-all duration-200 text-lg font-bold" type="submit">
+              SEND MESSAGE
+            </button>
+</form>
+</div>
+</div>
+</div>
+<!-- Icons (Lucide) -->
+<script src="https://unpkg.com/lucide@latest/dist/umd/lucide.min.js"></script>
+<script>
+
+      // Mobile/tablet navigation: build from the existing desktop header links.
+      (() => {
+        const toggle = document.querySelector("[data-mobile-nav-toggle]");
+        const panel = document.querySelector("[data-mobile-nav-panel]");
+        const desktopNav = document.querySelector(".site-desktop-nav");
+        if (!toggle || !panel || !desktopNav) return;
+
+        const addLink = (source) => {
+          const href = source.getAttribute("href");
+          const label = (source.textContent || "").trim();
+          if (!href || !label) return;
+          const link = document.createElement("a");
+          link.href = href;
+          link.textContent = label;
+          panel.appendChild(link);
+        };
+
+        desktopNav.querySelectorAll("a").forEach(addLink);
+
+        const contact = document.createElement("button");
+        contact.type = "button";
+        contact.textContent = "Contact";
+        contact.setAttribute("data-open-contact", "");
+        panel.appendChild(contact);
+
+        const close = () => {
+          panel.hidden = true;
+          toggle.setAttribute("aria-expanded", "false");
+        };
+
+        toggle.addEventListener("click", (event) => {
+          event.preventDefault();
+          event.stopPropagation();
+          const isOpen = !panel.hidden;
+          panel.hidden = isOpen;
+          toggle.setAttribute("aria-expanded", isOpen ? "false" : "true");
+        });
+
+        panel.addEventListener("click", (event) => {
+          if (event.target.closest("a, button")) close();
+        });
+
+        document.addEventListener("click", (event) => {
+          if (panel.hidden) return;
+          if (event.target.closest("[data-mobile-nav-panel], [data-mobile-nav-toggle]")) return;
+          close();
+        });
+
+        document.addEventListener("keydown", (event) => {
+          if (event.key === "Escape") close();
+        });
+      })();
+
+
+      // Instructions nav dropdown: click to toggle, click outside to close.
+      (() => {
+        const dropdowns = Array.from(document.querySelectorAll(".nav-dropdown"));
+        if (!dropdowns.length) return;
+
+        const closeAll = (except) => {
+          dropdowns.forEach((dd) => {
+            if (except && dd === except) return;
+            dd.dataset.open = "false";
+            const btn = dd.querySelector("button");
+            if (btn) btn.setAttribute("aria-expanded", "false");
+          });
+        };
+
+        dropdowns.forEach((dd) => {
+          if (!dd.dataset.open) dd.dataset.open = "false";
+          const btn = dd.querySelector("button");
+          const menu = dd.querySelector(".nav-dropdown-menu");
+          if (!btn || !menu) return;
+
+          btn.addEventListener("click", (e) => {
+            e.preventDefault();
+            e.stopPropagation();
+            const isOpen = dd.dataset.open === "true";
+            closeAll(dd);
+            dd.dataset.open = isOpen ? "false" : "true";
+            btn.setAttribute("aria-expanded", isOpen ? "false" : "true");
+          });
+
+          menu.addEventListener("click", (e) => e.stopPropagation());
+        });
+
+        document.addEventListener("click", () => closeAll());
+        document.addEventListener("keydown", (e) => {
+          if (e.key === "Escape") closeAll();
+        });
+      })();
+
+      // Smooth scroll buttons/links.
+      document.addEventListener("click", (e) => {
+        const t = e.target && e.target.closest ? e.target.closest("[data-scroll]") : null;
+        if (!t) return;
+        const id = t.getAttribute("data-scroll");
+        const el = document.getElementById(id);
+        if (el) el.scrollIntoView({ behavior: "smooth" });
+      });
+
+      // Contact modal open/close.
+      const contactModal = document.querySelector("[data-contact-modal]");
+      const contactOverlay = document.querySelector("[data-contact-overlay]");
+
+      function setContactOpen(open) {
+        if (!contactModal || !contactOverlay) return;
+        contactModal.setAttribute("data-open", open ? "true" : "false");
+        contactOverlay.setAttribute("data-open", open ? "true" : "false");
+        contactModal.setAttribute("aria-hidden", open ? "false" : "true");
+        document.body.style.overflow = open ? "hidden" : "";
+      }
+
+      function openContactModal() {
+        setContactOpen(true);
+      }
+
+      function closeContactModal() {
+        setContactOpen(false);
+      }
+
+      document.addEventListener("click", (e) => {
+        const openBtn = e.target && e.target.closest ? e.target.closest("[data-open-contact]") : null;
+        if (openBtn) {
+          e.preventDefault();
+          openContactModal();
+          return;
+        }
+
+        const closeBtn = e.target && e.target.closest ? e.target.closest("[data-close-contact]") : null;
+        if (closeBtn) {
+          closeContactModal();
+          return;
+        }
+
+        const overlayClick = e.target && e.target.matches ? e.target.matches("[data-contact-overlay]") : false;
+        if (overlayClick) closeContactModal();
+      });
+
+      document.addEventListener("keydown", (e) => {
+        if (e.key === "Escape") closeContactModal();
+      });
+
+      // Enhance TOPIC dropdown to match Customizer Q1:
+      // - pink stripe on the left of each option
+      // - subtle hover highlight (no pink)
+      (() => {
+        const topicSelect = document.getElementById("topicSelect");
+        const topicWrap = document.querySelector("[data-topic-wrap]");
+        const topicRoot = topicWrap ? topicWrap.querySelector("[data-topic-cselect]") : null;
+        if (!topicSelect || !topicWrap || !topicRoot) return;
+
+        // Build UI
+        topicRoot.setAttribute("data-open", "false");
+        topicRoot.innerHTML = "";
+
+        const btn = document.createElement("button");
+        btn.type = "button";
+        btn.className = "cselect__btn";
+        btn.setAttribute("aria-haspopup", "listbox");
+        btn.setAttribute("aria-expanded", "false");
+
+        const value = document.createElement("span");
+        value.className = "cselect__value";
+        const caret = document.createElement("span");
+        caret.className = "cselect__caret";
+        caret.setAttribute("aria-hidden", "true");
+        caret.textContent = "▾";
+
+        btn.appendChild(value);
+        btn.appendChild(caret);
+
+        const menu = document.createElement("div");
+        menu.className = "cselect__menu";
+        menu.setAttribute("role", "listbox");
+
+        const optionEls = [];
+        const syncSelected = () => {
+          const idx = topicSelect.selectedIndex >= 0 ? topicSelect.selectedIndex : 0;
+          const opt = topicSelect.options && topicSelect.options[idx] ? topicSelect.options[idx] : null;
+          value.textContent = opt ? (opt.textContent || "") : "";
+
+          optionEls.forEach((el) => {
+            el.setAttribute("aria-selected", el.dataset.value === topicSelect.value ? "true" : "false");
+          });
+        };
+
+        Array.from(topicSelect.options || []).forEach((opt) => {
+          const row = document.createElement("div");
+          row.className = "cselect__opt";
+          row.setAttribute("role", "option");
+          row.dataset.value = opt.value;
+          if (!opt.value) row.dataset.placeholder = "true";
+          row.setAttribute("aria-selected", opt.selected ? "true" : "false");
+
+          const check = document.createElement("div");
+          check.className = "cselect__check";
+          check.textContent = "✓";
+
+          const text = document.createElement("div");
+          text.className = "cselect__text";
+          text.textContent = (opt.textContent || "").trim();
+
+          row.appendChild(check);
+          row.appendChild(text);
+
+          row.addEventListener("click", () => {
+            topicSelect.value = opt.value;
+            topicSelect.dispatchEvent(new Event("change", { bubbles: true }));
+            syncSelected();
+            setOpen(false);
+          });
+
+          optionEls.push(row);
+          menu.appendChild(row);
+        });
+
+        topicRoot.appendChild(btn);
+        topicRoot.appendChild(menu);
+
+        const setOpen = (open) => {
+          topicRoot.setAttribute("data-open", open ? "true" : "false");
+          btn.setAttribute("aria-expanded", open ? "true" : "false");
+        };
+
+        btn.addEventListener("click", (e) => {
+          e.preventDefault();
+          e.stopPropagation();
+          const isOpen = topicRoot.getAttribute("data-open") === "true";
+          setOpen(!isOpen);
+        });
+
+        topicRoot.addEventListener("click", (e) => e.stopPropagation());
+        document.addEventListener("click", () => setOpen(false));
+        document.addEventListener("keydown", (e) => {
+          if (e.key === "Escape") setOpen(false);
+        });
+
+        syncSelected();
+        topicSelect.addEventListener("change", syncSelected);
+      })();
+
+      // "View project" buttons (placeholder links are "#").
+      document.addEventListener("click", (e) => {
+        const t = e.target && e.target.closest ? e.target.closest("[data-open-link]") : null;
+        if (!t) return;
+        const url = t.getAttribute("data-open-link");
+        if (url) window.open(url, "_blank");
+      });
+
+      // Contact form topic -> enable message, store label.
+      (() => {
+        const topicSelect = document.getElementById("topicSelect");
+        const messageBox = document.getElementById("messageBox");
+        const topicLabel = document.getElementById("topicLabel");
+        if (!topicSelect || !messageBox) return;
+
+        topicSelect.addEventListener("change", function () {
+          if (this.value) {
+            messageBox.disabled = false;
+            messageBox.placeholder = "Type your message here...";
+            if (topicLabel) topicLabel.value = this.options[this.selectedIndex].text;
+          } else {
+            messageBox.disabled = true;
+            messageBox.placeholder = "Select a topic first...";
+            if (topicLabel) topicLabel.value = "";
+          }
+        });
+      })();
+
+      // If arriving from another page with #contact, open the modal automatically.
+      if (window.location.hash === "#contact" || window.location.hash === "#contact-form") {
+        openContactModal();
+      }
+
+      // Skills modal behavior (simple vanilla JS, no React required).
+      const SKILLS = {
+        EXHIBITS: {
+          title: "SIDEKICK | EXHIBITS",
+          description:
+            "A customizable exhibit workflow inside my secure web app for producing real index-style descriptions, pulling rough quote matches, and building cleaner exhibit prep materials.",
+          problem:
+            "Exhibit work can turn into slow manual reading, inconsistent descriptions, and too much hunting for one quote, phrase, or term.",
+          details:
+            "This is not a generic summary tool. It is structured around court-reporting tasks, with reusable preferences, description rules, word-list extraction, phonetic or paraphrase lookup, and outputs designed to save time on large document sets.",
+          skills: ["INDEX DESCRIPTIONS", "PARAPHRASE FIND", "PHONETIC MATCH", "WORD LISTS", "CUSTOMIZED SETUP"],
+          tagLabel: "PURCHASE",
+          tagUrl: "./purchase.html",
+          instructionsUrl: "./learn/Exhibits/exhibits.html",
+          demoUrl: "./learn/Exhibits/exhibits.html",
+          videoUrl: "",
+        },
+        "APPEARANCE PAGES": {
+          title: "SIDEKICK | APPEARANCE PAGES",
+          description:
+            "Find and format attorney and firm information into clean appearance-page output without the copy-and-paste cleanup that usually eats time.",
+          problem:
+            "Appearance pages are repetitive, but small formatting errors still cost time and confidence when you are trying to turn in a clean job.",
+          details:
+            "This Sidekick looks up what can be verified, leaves unsupported fields blank instead of guessing, and returns mailing blocks plus CATalyst and Eclipse-ready output so you are starting from something usable instead of a messy first draft.",
+          skills: ["ATTORNEY LOOKUP", "MAIL BLOCKS", "CATALYST READY", "ECLIPSE READY", "STYLE CONTROL"],
+          tagLabel: "OPEN TOOL",
+          tagUrl: "https://chatgpt.com/g/g-699b5ec9505081918151642994b027be-sidekick-appearance-pages",
+          instructionsUrl: "./learn/Appearance/appearance.html",
+          demoUrl: "./learn/Appearance/appearance.html",
+          videoUrl: "",
+        },
+        PRACTICE: {
+          title: "SIDEKICK | DICTIONARY + PRACTICE + FEEDBACK",
+          description:
+            "Build dictionaries, generate practice, and get feedback in one combined GPT instead of splitting that work across separate tools.",
+          problem:
+            "It is hard to keep momentum when prep, practice creation, and feedback all live in different places and require different prompts.",
+          details:
+            "This version combines dictionary help, targeted practice building, and feedback so you can prep terms, create drills, and review recurring patterns from one place.",
+          skills: ["DICTIONARY HELP", "CUSTOM PRACTICE", "FEEDBACK MODE", "ERROR PATTERNS", "ONE GPT"],
+          tagLabel: "OPEN TOOL",
+          tagUrl: "https://chatgpt.com/g/g-69a74f59ed0081918b02cdac2fed5445-sidekick-dictionary-practice-feedback",
+          instructionsUrl: "./learn/Practice/practice.html",
+          demoUrl: "./learn/Practice/practice.html",
+          videoUrl: "",
+        },
+        "PRACTICE WRITING FEEDBACK": {
+          title: "SIDEKICK | PRACTICE + WRITING FEEDBACK",
+          description:
+            "Build targeted practice and get writing feedback in one GPT so you can stay in one workflow while you prep and review.",
+          problem:
+            "Practice and feedback usually get split across separate prompts or tools, which makes it harder to keep momentum and fix recurring issues.",
+          details:
+            "This card is set up as a duplicate of the dictionary and word-list workflow for now, with the new Practice + Writing Feedback tool linked in the modal.",
+          skills: ["TARGETED PRACTICE", "WRITING FEEDBACK", "ERROR PATTERNS", "ONE GPT", "WORKFLOW READY"],
+          tagLabel: "OPEN TOOL",
+          tagUrl: "https://chatgpt.com/g/g-69a52c28ee9c819189ec0adef558fe9e-sidekick-practice-writing-feedback",
+          instructionsUrl: "./learn/Practice/practice.html",
+          demoUrl: "./learn/Practice/practice.html",
+          videoUrl: "",
+        },
+        CONSULTING: {
+          title: "WORK WITH ME | ONE-ON-ONE CONSULTING",
+          description:
+            "Book a one-on-one session if you want direct help figuring out your workflow, setup, or where these tools fit into the way you actually work.",
+          problem:
+            "Sometimes the blocker is not the tool itself. It is deciding what to use, how to set it up, and how to make it fit your reporting work without adding more chaos.",
+          details:
+            "This card is set up as the service slot for direct help with setup, tool selection, and process cleanup. You can swap the final booking link in as soon as you send it.",
+          skills: ["ONE-ON-ONE HELP", "WORKFLOW ADVICE", "TOOL FIT", "SETUP HELP", "DIRECT ACCESS"],
+          tagLabel: "CONTACT",
+          tagUrl: "./index.html#contact",
+          instructionsUrl: "./purchase.html",
+          demoUrl: "",
+          videoUrl: "",
+          mediaMode: "textbox",
+          mediaTextboxTitle: "ADD CONSULTING INTRO",
+          mediaTextboxBody: "Use this top box for a short one-on-one consulting overview or intake note.",
+          extraBoxes: [
+            { title: "Box 1", body: "Add a short summary of the consulting offer here." },
+            { title: "Box 2", body: "Add pricing, format, or what is included here." },
+            { title: "Box 3", body: "Add availability, timeline, or next-step instructions here." },
+          ],
+        },
+        "REPORTING WORK": {
+          title: "WORK WITH ME | REPORTING WORK",
+          description:
+            "Use this slot for reporting services, overflow help, or project-based work when you want to feature your own services alongside the tools.",
+          problem:
+            "Some visitors want the work done for them, not another tool to learn or configure on their own.",
+          details:
+            "This is a placeholder service card so the layout is ready now. Once you send the final link and copy, this can point to the exact page, intake form, or booking flow you want.",
+          skills: ["SERVICE OFFER", "REPORTING SUPPORT", "LINK READY", "COPY READY", "WORK WITH ME"],
+          tagLabel: "CONTACT",
+          tagUrl: "./index.html#contact",
+          instructionsUrl: "./purchase.html",
+          demoUrl: "",
+          videoUrl: "",
+          mediaMode: "textbox",
+          mediaTextboxTitle: "ADD REPORTING WORK INTRO",
+          mediaTextboxBody: "Use this top box for a short summary of your reporting work or overflow services.",
+          extraBoxes: [
+            { title: "Box 1", body: "Add the type of reporting work you want to feature here." },
+            { title: "Box 2", body: "Add scope, turnaround, or job details here." },
+            { title: "Box 3", body: "Add contact, booking, or request details here." },
+          ],
+        },
+        PUNCTUATION: {
+          title: "SIDEKICK | TROUBLE SPOTS + PUNCTUATION",
+          description:
+            "Get fast help with hard-to-hear phrases, tricky punctuation, and reporter-style transcript decisions without rewriting what was actually said.",
+          problem:
+            "One bad phrase can send you into a replay-and-research loop right when you are already under deadline.",
+          details:
+            "You can bracket what you think you heard and let the tool reason through phonetics and context, or switch to punctuation mode when the wording is right but the structure is muddy. It is designed to preserve the record while helping you move faster.",
+          skills: ["PHONETIC HELP", "VERBATIM PUNCTUATION", "CONTEXT REASONING", "DEADLINE SUPPORT", "REPORTER FOCUSED"],
+          tagLabel: "OPEN TOOL",
+          tagUrl: "https://chatgpt.com/g/g-69a75924bbc88191b53a6ec92460d06f-sidekick-trouble-spot-punctuation-help",
+          instructionsUrl: "./learn/SpotCheck/spotcheck.html",
+          demoUrl: "./learn/SpotCheck/spotcheck.html",
+          videoUrl: "",
+        },
+        CHATGPT: {
+          title: "CHATGPT | HOW TO USE IT",
+          description:
+            "A practical mini-course for getting better results from ChatGPT without learning a bunch of technical jargon or prompt theory.",
+          problem:
+            "Most people think AI failed when the real problem was vague instructions, unclear goals, or no structure.",
+          details:
+            "This section teaches the habits that make ChatGPT more useful: start with the outcome, make it clarify before it builds, tell it not to guess, use Projects for ongoing work, and steer the second draft instead of quitting after the first one.",
+          skills: ["CLEAR OUTCOMES", "ASK FIRST", "DON'T GUESS", "USE PROJECTS", "PRACTICAL HABITS"],
+          tagLabel: "LEARN MORE",
+          tagUrl: "./learn/chatgpt-tips/index.html",
+          instructionsUrl: "./learn/chatgpt-tips/index.html",
+          demoUrl: "./learn/chatgpt-tips/index.html",
+          videoUrl: "",
+        },
+      };
+
+      const modalRoot = document.querySelector("[data-skill-modal]");
+      const overlay = document.querySelector("[data-modal-overlay]");
+      const card = document.querySelector("[data-modal-card]");
+      const media = document.querySelector("[data-modal-media]");
+      const poster = document.querySelector("[data-modal-poster]");
+      const mediaVideo = document.querySelector("[data-modal-video]");
+      const mediaIframe = document.querySelector("[data-modal-iframe]");
+      const mediaPlay = document.querySelector("[data-modal-play]");
+      const mediaTextbox = document.querySelector("[data-modal-media-textbox]");
+      const mediaTextboxTitle = document.querySelector("[data-modal-media-textbox-title]");
+      const mediaTextboxBody = document.querySelector("[data-modal-media-textbox-body]");
+      const tag = document.querySelector("[data-modal-tag]");
+      const instructionsBtn = document.querySelector("[data-modal-instructions]");
+      const title = document.querySelector("[data-modal-title]");
+      const desc = document.querySelector("[data-modal-description]");
+      const problem = document.querySelector("[data-modal-problem]");
+      const details = document.querySelector("[data-modal-details]");
+      const extraBoxesWrap = document.querySelector("[data-modal-extra-boxes]");
+      const skillsWrap = document.querySelector("[data-modal-skills]");
+      const BRAND_COLORS = ["#ff90e7", "#24a094", "#91a8ed", "#f1f332"];
+      const SKILL_COLOR_ORDER = ["EXHIBITS", "APPEARANCE PAGES", "PUNCTUATION", "PRACTICE", "CHATGPT", "CONSULTING", "REPORTING WORK"];
+
+function getSkillColor(key) {
+  const index = SKILL_COLOR_ORDER.indexOf(key);
+  return BRAND_COLORS[index >= 0 ? index % BRAND_COLORS.length : 0];
+}
+
+function setButtonTheme(el, color) {
+  if (!el) return;
+  el.style.setProperty("--action-bg", color);
+  el.style.setProperty("--action-hover-bg", color);
+}
+
+      function lockBodyScroll() {
+  const scrollBar = window.innerWidth - document.documentElement.clientWidth;
+  document.body.style.overflow = "hidden";
+  document.body.style.paddingRight = scrollBar > 0 ? `${scrollBar}px` : "";
+}
+
+function unlockBodyScroll() {
+  document.body.style.overflow = "";
+  document.body.style.paddingRight = "";
+}
+
+      function setModalOpen(open) {
+  if (!modalRoot || !overlay) return;
+
+  if (open) {
+    modalRoot.setAttribute("data-open", "true");
+    overlay.setAttribute("data-open", "true");
+    modalRoot.setAttribute("aria-hidden", "false");
+    lockBodyScroll();
+  } else {
+    modalRoot.classList.remove("is-open", "is-closing");
+    modalRoot.setAttribute("aria-hidden", "true");
+    unlockBodyScroll();
+    modalRoot.setAttribute("data-open", "false");
+    overlay.setAttribute("data-open", "false");
+  }
+}
+
+      function applyModalTheme() {
+        // All skill modals now use the same project-box style
+        if (!card) return;
+        card.style.backgroundColor = "#fff";
+        card.style.color = "#000";
+        card.style.borderColor = "#000";
+        card.style.boxShadow = "15px 15px 0px 0px #24a094";
+      }
+
+      function prefersReducedMotion() {
+  return window.matchMedia && window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+}
+
+function animateFromCard(originEl) {
+  if (!originEl || !card || prefersReducedMotion()) return;
+
+  try {
+    const from = originEl.getBoundingClientRect();
+
+    // Ensure modal card is measurable (modal already opened).
+    const to = card.getBoundingClientRect();
+
+    const dx = from.left - to.left;
+    const dy = from.top - to.top;
+
+    // Cancel any running animations on the modal card.
+    if (card.getAnimations) card.getAnimations().forEach((a) => a.cancel());
+
+    // Make it feel more "Apple-ish":
+    //  - slight lift/overshoot
+    //  - fast-out / slow-in easing
+    //  - optional fade of the origin card so it truly "becomes" the modal
+    card.style.transformOrigin = "top left";
+
+    // Fade/soften the origin card quickly (keeps it from looking like two copies).
+    if (originEl.animate) {
+      originEl.animate(
+        [
+          { opacity: 1, transform: "translateZ(0)" },
+          { opacity: 0.0, transform: "translateZ(0)" },
+        ],
+        { duration: 160, easing: "ease-out", fill: "both" }
+      );
+    }
+
+    // Shared-element morph with a tasteful overshoot.
+    card.animate(
+      [
+        { transform: `translate(${dx}px, ${dy}px)` },
+        { transform: "translate(-10px, -10px)", offset: 0.72 },
+        { transform: "translate(0px, 0px)" },
+      ],
+      {
+        duration: 520,
+        easing: "cubic-bezier(0.16, 1, 0.3, 1)",
+        fill: "both",
+      }
+    );
+
+    // Stagger in the inner content slightly after the container lands.
+    const inner = card.querySelector("[data-modal-inner]");
+    if (inner && inner.animate) {
+      if (inner.getAnimations) inner.getAnimations().forEach((a) => a.cancel());
+      inner.animate(
+        [
+          { opacity: 0, transform: "translateY(14px)" },
+          { opacity: 1, transform: "translateY(0px)" },
+        ],
+        {
+          duration: 360,
+          delay: 120,
+          easing: "cubic-bezier(0.2, 0.8, 0.2, 1)",
+          fill: "both",
+        }
+      );
+    }
+
+    // Restore origin card after the morph finishes (so grid isn't left transparent).
+    setTimeout(() => {
+      try {
+        originEl.style.opacity = "";
+        originEl.style.transform = "";
+      } catch (e) {}
+    }, 540);
+  } catch (e) {
+    // If anything fails, we still have the base fade/slide-in via CSS.
+  }
+}
+
+function openSkillModal(key, originEl) {
+  const data = SKILLS[key];
+  if (!data || !title || !desc || !problem || !details || !skillsWrap || !tag) return;
+  const accentColor = getSkillColor(key);
+  const instructionColor = BRAND_COLORS[(BRAND_COLORS.indexOf(accentColor) + 1) % BRAND_COLORS.length];
+  const usesTextboxMedia = data.mediaMode === "textbox";
+
+  title.textContent = data.title;
+  desc.textContent = data.description;
+  problem.textContent = data.problem || "";
+  details.textContent = data.details || "";
+  tag.textContent = data.tagLabel || `${data.title} DEVELOPMENT`;
+  const tagUrl = data.tagUrl || data.demoUrl || "#";
+  tag.setAttribute("href", tagUrl);
+  setButtonTheme(tag, accentColor);
+  if (instructionsBtn) {
+    instructionsBtn.setAttribute("href", data.instructionsUrl || "#");
+    setButtonTheme(instructionsBtn, instructionColor);
+  }
+  if (media) {
+    media.setAttribute("data-mode", usesTextboxMedia ? "textbox" : "default");
+    media.setAttribute("data-demo-url", usesTextboxMedia ? "" : (data.demoUrl || ""));
+    media.setAttribute("data-video-url", usesTextboxMedia ? "" : (data.videoUrl || ""));
+    media.setAttribute("aria-label", usesTextboxMedia ? "Service details" : "Open media");
+    media.setAttribute("tabindex", usesTextboxMedia ? "-1" : "0");
+  }
+  if (mediaTextboxTitle) mediaTextboxTitle.textContent = data.mediaTextboxTitle || "ADD SERVICE SUMMARY";
+  if (mediaTextboxBody) mediaTextboxBody.textContent = data.mediaTextboxBody || "Use this area as a text-only placeholder.";
+  // Reset media state each time modal opens.
+  if (poster) poster.classList.remove("hidden");
+  if (mediaPlay) mediaPlay.classList.remove("hidden");
+  if (mediaVideo) {
+    mediaVideo.pause?.();
+    mediaVideo.removeAttribute("src");
+    mediaVideo.load?.();
+    mediaVideo.classList.add("hidden");
+  }
+  if (mediaIframe) {
+    mediaIframe.setAttribute("src", "");
+    mediaIframe.classList.add("hidden");
+  }
+  if (extraBoxesWrap) {
+    extraBoxesWrap.innerHTML = "";
+    const extraBoxes = Array.isArray(data.extraBoxes) ? data.extraBoxes : [];
+    extraBoxesWrap.style.display = extraBoxes.length ? "grid" : "none";
+    extraBoxes.forEach((box) => {
+      const item = document.createElement("div");
+      item.className = "modal-extra-box";
+
+      const boxTitle = document.createElement("span");
+      boxTitle.className = "modal-extra-box-title";
+      boxTitle.textContent = box.title || "Box";
+
+      const boxBody = document.createElement("p");
+      boxBody.className = "modal-extra-box-body";
+      boxBody.textContent = box.body || "";
+
+      item.appendChild(boxTitle);
+      item.appendChild(boxBody);
+      extraBoxesWrap.appendChild(item);
+    });
+  }
+
+  skillsWrap.innerHTML = "";
+  data.skills.forEach((s) => {
+    const span = document.createElement("span");
+    span.className = "border-[3px] px-3 py-1 font-sans font-bold text-sm uppercase tracking-wider";
+    // All skill tags now use teal style like project boxes
+    span.style.borderColor = "#24a094";
+    span.style.backgroundColor = "#24a094";
+    span.style.color = "#fff";
+    span.textContent = s;
+    skillsWrap.appendChild(span);
+  });
+
+  applyModalTheme();
+
+  // Open modal with the modal card pop/settle animation.
+  setModalOpen(true);
+}
+
+      function closeSkillModal() {
+        setModalOpen(false);
+        // Stop any playing media when closing.
+        if (mediaVideo) {
+          mediaVideo.pause?.();
+          mediaVideo.removeAttribute("src");
+          mediaVideo.load?.();
+          mediaVideo.classList.add("hidden");
+        }
+        if (mediaIframe) {
+          mediaIframe.setAttribute("src", "");
+          mediaIframe.classList.add("hidden");
+        }
+        if (poster) poster.classList.remove("hidden");
+        if (mediaPlay) mediaPlay.classList.remove("hidden");
+      }
+
+      function isVideoFileUrl(url) {
+        return /\.(mp4|webm|ogg)(\?|#|$)/i.test(url);
+      }
+
+      function toYouTubeEmbedUrl(url) {
+        try {
+          const u = new URL(url);
+          const host = u.hostname.replace(/^www\./, "");
+          if (host === "youtu.be") {
+            const id = u.pathname.replace("/", "");
+            return id ? `https://www.youtube.com/embed/${id}?autoplay=1&rel=0` : null;
+          }
+          if (host === "youtube.com" || host === "m.youtube.com") {
+            const id = u.searchParams.get("v");
+            return id ? `https://www.youtube.com/embed/${id}?autoplay=1&rel=0` : null;
+          }
+          return null;
+        } catch {
+          return null;
+        }
+      }
+
+      function toVimeoEmbedUrl(url) {
+        try {
+          const u = new URL(url);
+          const host = u.hostname.replace(/^www\./, "");
+          if (host !== "vimeo.com" && host !== "player.vimeo.com") return null;
+          const parts = u.pathname.split("/").filter(Boolean);
+          const id = parts[0] === "video" ? parts[1] : parts[0];
+          return id ? `https://player.vimeo.com/video/${id}?autoplay=1` : null;
+        } catch {
+          return null;
+        }
+      }
+
+      function playMedia(url) {
+        if (!url || !media || !modalRoot || modalRoot.getAttribute("data-open") !== "true") return false;
+
+        const yt = toYouTubeEmbedUrl(url);
+        const vm = !yt ? toVimeoEmbedUrl(url) : null;
+
+        if (yt || vm) {
+          if (mediaIframe) {
+            mediaIframe.classList.remove("hidden");
+            mediaIframe.setAttribute("src", yt || vm);
+          }
+          if (poster) poster.classList.add("hidden");
+          if (mediaPlay) mediaPlay.classList.add("hidden");
+          if (mediaVideo) mediaVideo.classList.add("hidden");
+          return true;
+        }
+
+        if (isVideoFileUrl(url)) {
+          if (mediaVideo) {
+            mediaVideo.classList.remove("hidden");
+            mediaVideo.setAttribute("src", url);
+            mediaVideo.load?.();
+            mediaVideo.play?.().catch(() => {});
+          }
+          if (poster) poster.classList.add("hidden");
+          if (mediaPlay) mediaPlay.classList.add("hidden");
+          if (mediaIframe) mediaIframe.classList.add("hidden");
+          return true;
+        }
+
+        return false;
+      }
+
+      // Prevent clicks inside the player from retriggering the container click.
+      if (mediaVideo) mediaVideo.addEventListener("click", (e) => e.stopPropagation());
+      if (mediaIframe) mediaIframe.addEventListener("click", (e) => e.stopPropagation());
+
+      document.addEventListener("click", (e) => {
+        const openBtn = e.target && e.target.closest ? e.target.closest("[data-skill-open]") : null;
+        if (openBtn) {
+          e.stopPropagation();
+          const origin = openBtn.closest ? openBtn.closest("[data-skill-card]") : null;
+          openSkillModal(openBtn.getAttribute("data-skill-open"), origin);
+          return;
+        }
+
+        const cardBtn = e.target && e.target.closest ? e.target.closest("[data-skill-card]") : null;
+        if (cardBtn) {
+          openSkillModal(cardBtn.getAttribute("data-skill-card"), cardBtn);
+          return;
+        }
+
+        const mediaBtn = e.target && e.target.closest ? e.target.closest("[data-modal-media]") : null;
+        if (mediaBtn && modalRoot && modalRoot.getAttribute("data-open") === "true") {
+          const videoUrl = mediaBtn.getAttribute("data-video-url");
+          const demoUrl = mediaBtn.getAttribute("data-demo-url");
+          const played = videoUrl ? playMedia(videoUrl) : false;
+          if (!played && demoUrl) window.open(demoUrl, "_blank");
+          return;
+        }
+
+        const closeBtn = e.target && e.target.closest ? e.target.closest("[data-skill-close]") : null;
+        if (closeBtn) {
+          closeSkillModal();
+          return;
+        }
+
+        const overlayClick = e.target && e.target.matches ? e.target.matches("[data-modal-overlay]") : false;
+        if (overlayClick) closeSkillModal();
+      });
+
+      document.addEventListener("keydown", (e) => {
+        if (e.key === "Enter" || e.key === " ") {
+          const active = document.activeElement;
+          const isMedia =
+            active && active.getAttribute && active.getAttribute("data-modal-media") !== null;
+          if (isMedia && modalRoot && modalRoot.getAttribute("data-open") === "true") {
+            e.preventDefault();
+            const videoUrl = active.getAttribute("data-video-url");
+            const demoUrl = active.getAttribute("data-demo-url");
+            const played = videoUrl ? playMedia(videoUrl) : false;
+            if (!played && demoUrl) window.open(demoUrl, "_blank");
+            return;
+          }
+        }
+        if (e.key === "Escape") closeSkillModal();
+      });
+
+      // Render icons.
+      if (window.lucide && typeof window.lucide.createIcons === "function") {
+        window.lucide.createIcons();
+      }
+    </script>
+<script src="./site-lib/learn-navigation.js?v=20260902-hanken-1" defer></script>
+</body>
+</html>

@@ -1,0 +1,37 @@
+import fs from 'node:fs';
+import vm from 'node:vm';
+import assert from 'node:assert/strict';
+const root=new URL('../../', import.meta.url).pathname.replace(/\/$/, '');
+for(const name of ['tutorial-demo-builder-v2.html','exports/2026-09-14/appearance-pages-demo.html']) {
+ const html=fs.readFileSync(root+'/'+name,'utf8');
+ const script=[...html.matchAll(/<script\b([^>]*)>([\s\S]*?)<\/script>/gi)].find(m=>m[2].includes('function deleteSelected()'))[2];
+ new vm.Script(script);
+ const functions=['updateDemoToggleArt','updateDemoVideoControls','clearDemoTimers','stopDemoSlidePlayback','toggleDemoPlayback','toggleDemoMainVideo','startDemoVideoWithSound','shouldRenderDemoVideoGate'];
+ const source=functions.map(name=>script.match(new RegExp('    function '+name+'\\([^\\n]*\\) \\{[\\s\\S]*?(?=\\n    (?:async )?function )'))[0]).join('\n');
+ let iconWrites=0;
+ const button={dataset:{},attrs:{},setAttribute(k,v){this.attrs[k]=v},set innerHTML(v){iconWrites++}};
+ const timeline={setAttribute(){}};const time={};
+ const controls={querySelector(selector){return selector.includes('demo-toggle')?button:selector.includes('demo-seek')?timeline:time}};
+ const video={paused:false,muted:true,currentTime:18,duration:78,loop:true,pause(){this.paused=true},play(){this.paused=false;return Promise.resolve()}};
+ const c=vm.createContext({video,IS_DEMO_PLAYER:true,IS_DEMO_EMBED:false,demoStarted:true,demoFinished:false,demoPlaying:true,demoVideoGateDismissed:false,demoVideoSoundEnabled:false,demoPlaybackRequest:0,demoDeadline:0,demoRemainingMs:0,demoTimer:0,demoProgressTimer:0,demoAudio:null,state:{ui:{slideIndex:0}},window:{clearTimeout(){},clearInterval(){}},performance:{now:()=>0},demoToggleArt:x=>x?'pause-icon':'play-icon',demoVideoTargetIndex:()=>0,currentSlide:()=>({}),slideHasMainVideo:()=>true,formatVideoTime:x=>String(x),showToast(){},root:{querySelector:s=>s==='[data-main-video]'?video:s==='[data-demo-playback]'?controls:null,querySelectorAll:()=>[video]}});
+ vm.runInContext(source+'\nfunction updateDemoPlaybackUi(){updateDemoVideoControls(video,video.duration,video.currentTime)}\nfunction startDemoProgressTicker(){updateDemoPlaybackUi()}',c);
+ c.updateDemoPlaybackUi();
+ assert.equal(button.attrs['aria-label'],'WATCH VIDEO');
+ assert.equal(button.attrs['aria-pressed'],'false');
+ const firstWrites=iconWrites;
+ for(let i=0;i<20;i++)c.updateDemoPlaybackUi();
+ assert.equal(iconWrites,firstWrites,'Timeline updates must not replace the icon during a click');
+ c.toggleDemoPlayback();
+ assert.equal(video.currentTime,0,'First click retains restart-from-start behavior');
+ assert.equal(video.muted,false,'First click enables audio');
+ assert.equal(video.paused,false);
+ assert.equal(button.attrs['aria-label'],'Pause video');
+ video.currentTime=12.345;
+ c.toggleDemoPlayback();
+ assert.equal(video.paused,true);assert.equal(video.currentTime,12.345);assert.equal(c.demoPlaybackRequest,1,'Pause cancels pending playback');
+ assert.equal(button.attrs['aria-label'],'Play video');
+ c.toggleDemoPlayback();assert.equal(video.paused,false);assert.equal(video.currentTime,12.345);assert.equal(video.muted,false);
+ c.demoPlaying=false;
+ c.toggleDemoPlayback();assert.equal(video.paused,true,'Actual playing media must pause even if a prior event left the flag stale');
+ console.log('Passed audio-start, pause, resume, stable icon, cancellation and stale flag:',name);
+}

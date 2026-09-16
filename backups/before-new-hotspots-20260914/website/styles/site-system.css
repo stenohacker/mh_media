@@ -1,0 +1,483 @@
+/*
+ * Magic Hashtags shared foundation
+ *
+ * This file is deliberately low-specificity. It supplies the local font,
+ * reusable design tokens, accessibility defaults, and opt-in components.
+ * Each page keeps control of its own layout and typography hierarchy.
+ */
+
+@font-face {
+  font-family: "Hanken Grotesk";
+  src: url("/fonts/hanken-grotesk-latin.woff2") format("woff2");
+  font-style: normal;
+  font-weight: 100 900;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: "Hanken Grotesk";
+  src: url("/fonts/hanken-grotesk-latin-italic.woff2") format("woff2");
+  font-style: italic;
+  font-weight: 100 900;
+  font-display: swap;
+}
+
+:root {
+  --font-interface: "Hanken Grotesk", ui-sans-serif, -apple-system, BlinkMacSystemFont, "Segoe UI", Arial, sans-serif;
+  --site-shell-max: 120rem;
+
+  --color-ink: #000000;
+  --color-paper: #ffffff;
+  --color-yellow: #f1f332;
+  --color-teal: #24a094;
+  --color-pink: #ff90e7;
+  --color-off-white: #e1e2e7;
+  --color-soft-pink: #fbeaf9;
+  --color-purple: #91a8ed;
+  --color-orange: #ffc900;
+  --color-page-gray: #e1e2e7;
+
+  --border-width: 3px;
+  --border-heavy: 4px;
+  --border: var(--border-width) solid var(--color-ink);
+  --border-heavy-rule: var(--border-heavy) solid var(--color-ink);
+
+  --shadow-small: 4px 4px 0 var(--color-ink);
+  --shadow-medium: 7px 7px 0 var(--color-ink);
+  --shadow-large: 10px 10px 0 var(--color-ink);
+
+  --radius: 0;
+
+  --space-1: 4px;
+  --space-2: 8px;
+  --space-3: 12px;
+  --space-4: 16px;
+  --space-5: 24px;
+  --space-6: 32px;
+  --space-7: 48px;
+  --space-8: 64px;
+}
+
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+:where(html) {
+  font-family: var(--font-interface);
+  font-synthesis: none;
+}
+
+:where(body, button, input, textarea, select, option, code, pre, kbd, samp) {
+  font-family: inherit;
+}
+
+:where(img, svg, video) {
+  max-width: 100%;
+}
+
+:where(img) {
+  height: auto;
+  image-rendering: auto;
+}
+
+/* Match the index canvas to the gray used by the Reporter Tools stage. */
+.home-page,
+.home-page > .min-h-screen,
+.home-page .homepage-intro,
+.home-page .tool-spotlight {
+  background: var(--color-page-gray);
+}
+
+:where(button, input, textarea, select) {
+  border-radius: var(--radius);
+}
+
+:where(
+  button,
+  input,
+  textarea,
+  select,
+  a,
+  [tabindex],
+  [contenteditable="true"]
+):focus-visible {
+  outline: 3px solid var(--color-ink);
+  outline-offset: 3px;
+}
+
+/* Reusable page primitives. These only apply when a page opts in by class. */
+
+.site-container {
+  width: min(calc(100% - 32px), var(--site-shell-max)) !important;
+  max-width: none !important;
+  margin-inline: auto;
+}
+
+/*
+ * Legacy public pages use Tailwind's 6xl/7xl utilities as their outer shell.
+ * Give those shells the same desktop width as the shared site container while
+ * leaving deliberately narrow prose, dialogs, and media frames untouched.
+ */
+:where(.max-w-6xl, .max-w-7xl) {
+  max-width: var(--site-shell-max) !important;
+}
+
+.site-title {
+  margin-block: 0;
+  font-size: clamp(2rem, 4.5vw, 4.25rem);
+  font-weight: 700;
+  line-height: 1.02;
+  letter-spacing: 0.01em;
+  text-transform: uppercase;
+}
+
+.section-title {
+  margin-block: 0;
+  font-size: clamp(1.5rem, 2.8vw, 2.5rem);
+  font-weight: 700;
+  line-height: 1.1;
+  letter-spacing: 0.01em;
+}
+
+.neo-heading-bar,
+.neo-panel > h2:first-child,
+.neo-card > h2:first-child {
+  margin: 0;
+  padding: var(--space-3) var(--space-4);
+  color: var(--color-paper);
+  background: var(--color-ink);
+  font-size: clamp(1rem, 1.4vw, 1.25rem);
+  font-weight: 700;
+  line-height: 1.2;
+  letter-spacing: 0.02em;
+  text-transform: uppercase;
+}
+
+.neo-label,
+.site-label {
+  font-size: 0.75rem;
+  font-weight: 700;
+  line-height: 1.25;
+  letter-spacing: 0.05em;
+  text-transform: uppercase;
+}
+
+.compact-copy {
+  max-width: 75ch;
+  font-size: 0.875rem;
+  font-weight: 400;
+  line-height: 1.5;
+  letter-spacing: 0.005em;
+}
+
+.prose {
+  max-width: 75ch;
+}
+
+.neo-panel,
+.neo-card,
+.neo-image-frame {
+  border: var(--border);
+  border-radius: var(--radius);
+  background: var(--color-paper);
+}
+
+.neo-panel {
+  padding: var(--space-5);
+  box-shadow: var(--shadow-large);
+}
+
+.neo-card {
+  padding: var(--space-4);
+  box-shadow: var(--shadow-medium);
+}
+
+.neo-image-frame {
+  overflow: hidden;
+  box-shadow: var(--shadow-large);
+}
+
+.neo-image-frame > img,
+.ui-screenshot {
+  display: block;
+  width: 100%;
+  height: auto;
+  max-width: 100%;
+  object-fit: contain;
+  image-rendering: auto;
+}
+
+.neo-button {
+  display: inline-flex;
+  min-height: 40px;
+  align-items: center;
+  justify-content: center;
+  border: var(--border);
+  border-radius: var(--radius);
+  padding: var(--space-2) var(--space-4);
+  color: var(--color-paper);
+  background: var(--color-ink);
+  box-shadow: var(--shadow-small);
+  font-size: 0.875rem;
+  font-weight: 700;
+  line-height: 1.2;
+  letter-spacing: 0.025em;
+  text-align: center;
+  text-decoration: none;
+  text-transform: uppercase;
+  cursor: pointer;
+  transition: transform 120ms ease, box-shadow 120ms ease;
+}
+
+.neo-button--accent {
+  color: var(--color-ink);
+  background: var(--color-yellow);
+}
+
+.neo-button:hover {
+  transform: translate(2px, 2px);
+  box-shadow: 2px 2px 0 var(--color-ink);
+}
+
+.neo-button:active {
+  transform: translate(4px, 4px);
+  box-shadow: none;
+}
+
+.neo-input {
+  border: var(--border);
+  border-radius: var(--radius);
+  padding: var(--space-2) var(--space-3);
+  color: var(--color-ink);
+  background: var(--color-paper);
+  font-size: 0.875rem;
+  font-weight: 400;
+  line-height: 1.5;
+}
+
+@media (min-width: 768px) {
+  .site-container {
+    width: min(calc(100% - 64px), var(--site-shell-max)) !important;
+  }
+
+  .neo-panel {
+    padding: var(--space-6);
+  }
+}
+
+/*
+ * Shared site header.
+ *
+ * Several legacy pages still carry older inline header rules. These direct
+ * child selectors intentionally take ownership of the visible site navigation
+ * so the index and interior pages render the same controls.
+ */
+header .site-desktop-nav > a,
+header .site-desktop-nav > button,
+header .site-desktop-nav > .nav-dropdown > a,
+header .site-desktop-nav > .nav-dropdown > button,
+header .site-header-contact {
+  border-width: 3px !important;
+}
+
+header .reporter-tools-label {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.55ch;
+  white-space: nowrap;
+}
+
+/*
+ * Compact desktop navigation remains visible above the shared 900px mobile
+ * breakpoint. Keep the type readable here; only the two long labels wrap.
+ */
+@media (min-width: 901px) and (max-width: 1180px) {
+  header .max-w-7xl {
+    width: 100% !important;
+    padding: 12px 16px !important;
+  }
+
+  header nav {
+    min-height: 72px !important;
+    gap: 0.55rem !important;
+  }
+
+  header nav > div:first-child {
+    width: auto !important;
+    flex: 0 1 auto !important;
+    justify-content: flex-start !important;
+  }
+
+  header .site-header-logo {
+    width: clamp(13rem, 25vw, 16rem) !important;
+    max-height: 4.4rem !important;
+  }
+
+  header .site-desktop-nav {
+    display: flex !important;
+    flex: 1 1 auto;
+    min-width: 0;
+    align-items: center;
+    justify-content: space-between;
+    gap: 0.3rem !important;
+    margin-left: auto;
+  }
+
+  header .site-desktop-nav > * + * {
+    margin-left: 0 !important;
+  }
+
+  header .site-desktop-nav > a,
+  header .site-desktop-nav > button,
+  header .site-desktop-nav > .nav-dropdown > a,
+  header .site-desktop-nav > .nav-dropdown > button,
+  header .site-header-contact {
+    font-size: 0.95rem !important;
+    font-weight: 600 !important;
+    letter-spacing: 0.05em !important;
+    line-height: 1.15 !important;
+  }
+
+  header .site-desktop-nav > a,
+  header .site-desktop-nav > button,
+  header .site-desktop-nav > .nav-dropdown > a,
+  header .site-desktop-nav > .nav-dropdown > button {
+    min-height: 3rem !important;
+    padding: 0.6rem 0.42rem !important;
+    font-weight: 600 !important;
+    letter-spacing: 0.05em !important;
+  }
+
+  header .site-header-contact {
+    display: inline-flex !important;
+    min-height: 3.25rem !important;
+    height: 3.25rem !important;
+    padding-inline: 0.75rem !important;
+  }
+
+  header .site-menu-toggle {
+    display: none !important;
+  }
+
+  header .site-mobile-panel {
+    display: none !important;
+  }
+
+  header .reporter-tools-label {
+    display: grid;
+    justify-items: center;
+    gap: 0;
+    line-height: 1.05;
+  }
+
+  header .tool-links-dropdown > button {
+    max-width: 5.75rem;
+    line-height: 1.05 !important;
+    text-align: center;
+    white-space: normal;
+  }
+}
+
+/*
+ * Full desktop navigation matches the established Reporter Tools header:
+ * 16px outer padding, a 4.6rem logo frame, 1.04rem labels, and a 3.5rem
+ * contact button. Tool Links replaces the former Reporter Tools label while
+ * retaining the same visible type size and weight.
+ */
+@media (min-width: 1181px) {
+  header .max-w-7xl {
+    width: min(80rem, calc(100vw - 3rem)) !important;
+    max-width: none !important;
+    padding: 1rem 0 !important;
+  }
+
+  header nav {
+    min-height: 4.6rem !important;
+    gap: 1.5rem !important;
+  }
+
+  header nav > div:first-child {
+    width: auto !important;
+    flex: 0 0 auto !important;
+    justify-content: flex-start !important;
+  }
+
+  header .site-header-logo {
+    width: 18rem !important;
+    max-height: 4.6rem !important;
+  }
+
+  header .site-desktop-nav {
+    display: flex !important;
+    flex: 1 1 auto;
+    min-width: 0;
+    align-items: center;
+    justify-content: space-between;
+    gap: 1rem !important;
+    margin-left: auto;
+  }
+
+  header .site-desktop-nav > * + * {
+    margin-left: 0 !important;
+  }
+
+  header .site-desktop-nav a,
+  header .site-desktop-nav button,
+  header .site-header-contact {
+    font-size: 0.98rem !important;
+    font-weight: 600 !important;
+    letter-spacing: 0.05em !important;
+    line-height: 1.2 !important;
+  }
+
+  header .site-desktop-nav a,
+  header .site-desktop-nav button {
+    min-height: 3rem !important;
+    display: inline-flex !important;
+    align-items: center;
+    justify-content: center;
+    padding: 0.75rem 0.5rem !important;
+  }
+
+  header .site-header-contact {
+    display: inline-flex !important;
+    min-height: 3.5rem !important;
+    height: 3.5rem !important;
+    padding-inline: 1.5rem !important;
+  }
+
+  header .reporter-tools-label {
+    display: inline-flex;
+    gap: 0.55ch;
+    line-height: 1.25;
+  }
+
+  header .tool-links-dropdown > button {
+    max-width: none;
+    white-space: nowrap;
+  }
+}
+
+@media (max-width: 520px) {
+  :root {
+    --shadow-medium: 4px 4px 0 var(--color-ink);
+    --shadow-large: 7px 7px 0 var(--color-ink);
+  }
+
+  .neo-panel {
+    padding: 20px;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    scroll-behavior: auto !important;
+    transition-duration: 0.01ms !important;
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+  }
+}

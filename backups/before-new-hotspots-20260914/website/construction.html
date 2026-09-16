@@ -1,0 +1,390 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<meta content="0; url=./coming_soon.html" http-equiv="refresh"/>
+<link href="./coming_soon.html" rel="canonical"/>
+<script>location.replace('./coming_soon.html' + location.search + location.hash);</script>
+<meta content="light" name="color-scheme"/>
+<title>Coming Soon | Reporter Sidekick</title>
+
+
+<script>
+  window.tailwind = window.tailwind || {};
+  window.tailwind.config = {
+    theme: {
+      extend: {
+        fontFamily: {
+          sans: ["Hanken Grotesk", "Arial", "sans-serif"],
+          mono: ["Hanken Grotesk", "Arial", "sans-serif"],
+        },
+      },
+    },
+  };
+</script>
+<script src="https://cdn.tailwindcss.com"></script>
+<style>
+  
+      :where(body, button, input, textarea, select, option, .font-mono, .font-sans) {
+        font-family: var(--font-interface) !important;
+        }
+
+      body,
+  button,
+  input,
+  textarea,
+  select,
+  .font-mono,
+  .font-sans {
+    font-family: var(--font-interface) !important;
+  }
+
+  body {
+    font-weight: 400;
+    font-size: 1.04rem;
+  }
+
+  .font-bold {
+    font-weight: 600 !important;
+  }
+
+  .font-black {
+    font-weight: 600 !important;
+  }
+
+  .site-header-logo {
+    display: block !important;
+    width: clamp(10rem, 28vw, 18rem) !important;
+    height: auto !important;
+    max-height: 4.6rem !important;
+    object-fit: contain !important;
+  }
+
+  header nav {
+    min-width: 0;
+  }
+      @media (max-width: 1024px) {
+        header .site-header-contact {
+          height: 2.75rem !important;
+          min-height: 2.75rem !important;
+          padding-left: 0.85rem !important;
+          padding-right: 0.85rem !important;
+          font-size: 0.82rem !important;
+          letter-spacing: 0.04em !important;
+        }
+      }
+
+  @media (max-width: 640px) {
+        header .max-w-7xl {
+      padding: 0.7rem 1rem !important;
+    }
+
+    header nav {
+      flex-direction: column !important;
+      align-items: center !important;
+      justify-content: center !important;
+      gap: 0.55rem !important;
+    }
+
+    header nav > div:first-child {
+      width: 100% !important;
+      justify-content: center !important;
+    }
+
+    .site-header-logo {
+      width: clamp(12rem, 72vw, 17rem) !important;
+      max-height: 4.2rem !important;
+    }
+
+    header .site-header-contact {
+          height: 2.35rem !important;
+          min-height: 2.35rem !important;
+          padding-left: 0.55rem !important;
+          padding-right: 0.55rem !important;
+          font-size: 0.72rem !important;
+          letter-spacing: 0.03em !important;
+        }
+  }
+
+  .site-menu-toggle {
+    display: none;
+    width: 2.45rem;
+    height: 2.45rem;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+    gap: 0.28rem;
+    border: 0;
+    background: transparent;
+    color: #fff;
+    padding: 0;
+    margin-left: auto;
+  }
+
+  .site-menu-toggle span {
+    display: block;
+    width: 1.15rem;
+    height: 2px;
+    background: currentColor;
+  }
+
+  .site-mobile-panel {
+    display: none;
+  }
+
+  @media (max-width: 1024px) {
+    .nav-dropdown-menu {
+      min-width: 17.5rem !important;
+    }
+
+    .nav-dropdown-menu .relative.border-4 {
+      padding: 0.55rem !important;
+    }
+
+    .nav-dropdown-menu a {
+      padding: 0.62rem 0.8rem !important;
+      font-size: 0.74rem !important;
+      letter-spacing: 0.045em !important;
+      box-shadow: 4px 4px 0 #000 !important;
+    }
+  }
+
+  @media (max-width: 900px) {
+    header nav {
+      position: relative;
+      flex-direction: row !important;
+      flex-wrap: nowrap !important;
+      align-items: center !important;
+      justify-content: space-between !important;
+    }
+
+    header nav > div:first-child {
+      width: auto !important;
+      flex: 1 1 auto !important;
+      justify-content: flex-start !important;
+    }
+
+    header .site-desktop-nav,
+    header .site-header-contact {
+      display: none !important;
+    }
+
+    .site-menu-toggle {
+      display: inline-flex !important;
+    }
+
+    .site-mobile-panel:not([hidden]) {
+      display: grid;
+      gap: 0.45rem;
+      position: absolute;
+      top: calc(100% + 0.7rem);
+      right: 0;
+      width: min(19rem, calc(100vw - 2rem));
+      border: 4px solid #000;
+      background: #fff;
+      box-shadow: 7px 7px 0 #000;
+      padding: 0.55rem;
+      z-index: 70;
+    }
+
+    .site-mobile-panel a,
+    .site-mobile-panel button {
+      display: block;
+      width: 100%;
+      border: 3px solid #000;
+      background: #fff;
+      color: #000;
+      box-shadow: 4px 4px 0 #000;
+      padding: 0.72rem 0.8rem;
+      font-size: 0.78rem;
+      font-weight: 600;
+      letter-spacing: 0.045em;
+      line-height: 1.1;
+      text-align: left;
+      text-transform: uppercase;
+    }
+
+    .site-mobile-panel a:hover,
+    .site-mobile-panel button:hover,
+    .site-mobile-panel a:focus-visible,
+    .site-mobile-panel button:focus-visible {
+      background: #f1f332;
+    }
+  }
+
+  .nav-dropdown-menu {
+    display: none;
+    position: absolute;
+    top: calc(100% + 16px);
+    left: 50%;
+    transform: translateX(-50%);
+    width: max-content;
+    min-width: 320px;
+    max-width: calc(100vw - 2rem);
+    z-index: 50;
+  }
+
+  .nav-dropdown:hover .nav-dropdown-menu,
+  .nav-dropdown:focus-within .nav-dropdown-menu,
+  .nav-dropdown[data-open="true"] .nav-dropdown-menu {
+    display: block;
+  }
+
+  .nav-dropdown-menu::before {
+    content: "";
+    position: absolute;
+    left: 0;
+    right: 0;
+    top: -16px;
+    height: 16px;
+  }
+
+  .nav-dropdown-menu a {
+    white-space: nowrap;
+  }
+
+  .neo-offset-shadow {
+    position: absolute;
+    inset: 0;
+    transform: translate(4px, 4px);
+    background: #000;
+  }
+</style>
+  <link rel="preload" href="/fonts/hanken-grotesk-latin.woff2" as="font" type="font/woff2" crossorigin>
+  <link rel="stylesheet" href="/styles/site-system.css?v=20260914-palette-1">
+</head>
+<body class="bg-white text-black">
+<div class="min-h-screen bg-white">
+<header class="fixed top-0 left-0 right-0 z-50 bg-black border-b-4 border-white">
+<div class="max-w-7xl mx-auto px-6 py-4">
+<nav class="flex items-center justify-between gap-6">
+<div class="flex items-center min-w-0">
+<a aria-label="Home" class="relative inline-flex items-center justify-center bg-transparent outline-none ring-0 focus:outline-none focus-visible:outline-none focus:ring-0 focus-visible:ring-0 active:outline-none transition-transform duration-200 will-change-transform hover:-translate-y-[2px] hover:scale-[1.02]" href="./index.html">
+<span class="sr-only">Home</span>
+<img alt="Magic Hashtags — AI tools for court reporters" class="site-header-logo object-contain block" decoding="async" loading="eager" src="/images/logosmaller.png"/>
+</a>
+</div>
+<div class="site-desktop-nav hidden md:flex items-center space-x-4">
+<div class="relative nav-dropdown">
+<button aria-expanded="false" aria-haspopup="true" class="text-white hover:bg-[#f1f332] hover:text-black border-[3px] border-transparent hover:border-[#f1f332] px-6 py-3 uppercase tracking-wider font-mono rounded-none transition-all duration-200" type="button">
+                  learn
+                </button>
+<div class="nav-dropdown-menu">
+<div aria-hidden="true" class="neo-offset-shadow"></div>
+<div class="relative border-4 border-black bg-white p-3">
+<div class="space-y-2">
+<a class="block px-4 py-3 font-mono text-sm uppercase tracking-wider font-bold border-[3px] border-black bg-white shadow-[4px_4px_0px_0px_black] hover:bg-[#ff90e7] hover:text-black hover:translate-x-[4px] hover:translate-y-[4px] transition-all" href="./learn/sidekicks/index.html">
+                        Sidekick Tutorials
+                      </a>
+<a class="block px-4 py-3 font-mono text-sm uppercase tracking-wider font-bold border-[3px] border-black bg-white shadow-[4px_4px_0px_0px_black] hover:bg-[#f1f332] hover:text-black hover:translate-x-[4px] hover:translate-y-[4px] transition-all" href="./learn/chatgpt-tips/index.html">
+                        ChatGPT Tips
+                      </a>
+<a class="block px-4 py-3 font-mono text-sm uppercase tracking-wider font-bold border-[3px] border-black bg-white shadow-[4px_4px_0px_0px_black] hover:bg-[#ffc900] hover:text-black hover:translate-x-[4px] hover:translate-y-[4px] transition-all" href="./learn/tech-tips/index.html">
+                        Other Tech Tips
+                      </a>
+<a class="block px-4 py-3 font-mono text-sm uppercase tracking-wider font-bold border-[3px] border-black bg-white shadow-[4px_4px_0px_0px_black] hover:bg-[#91a8ed] hover:text-black hover:translate-x-[4px] hover:translate-y-[4px] transition-all" href="./learn/steno-tips/index.html">
+                        Steno Tips
+                      </a>
+</div>
+</div>
+</div>
+</div>
+<a class="text-white hover:bg-[#f1f332] hover:text-black border-[3px] border-transparent hover:border-[#f1f332] px-6 py-3 uppercase tracking-wider font-mono rounded-none transition-all duration-200" href="./reporter-tools.html">
+                reporter tools
+              </a>
+<a class="text-white hover:bg-[#f1f332] hover:text-black border-[3px] border-transparent hover:border-[#f1f332] px-6 py-3 uppercase tracking-wider font-mono rounded-none transition-all duration-200" href="./customizer.html">
+                customizer
+              </a>
+<a class="text-white hover:bg-[#f1f332] hover:text-black border-[3px] border-transparent hover:border-[#f1f332] px-6 py-3 uppercase tracking-wider font-mono rounded-none transition-all duration-200" href="./purchase.html">
+                store
+              </a>
+</div>
+<a class="site-header-contact inline-flex items-center gap-2 h-14 bg-white text-black hover:bg-[#ff90e7] border-[3px] border-white hover:border-[#ff90e7] px-6 py-0 font-mono uppercase tracking-wider font-bold leading-none rounded-none transition-all duration-200" href="./index.html#contact">contact</a>
+<button aria-expanded="false" aria-label="Open navigation" class="site-menu-toggle" data-mobile-nav-toggle="" type="button">
+<span></span>
+<span></span>
+<span></span>
+</button>
+<div class="site-mobile-panel" data-mobile-nav-panel="" hidden></div>
+</nav>
+</div>
+</header>
+<main class="pt-44 pb-20 bg-white min-h-screen">
+<section class="px-6">
+<div class="relative mx-auto mb-12 max-w-5xl">
+<div class="absolute inset-y-5 -right-6 left-6 border-4 border-[#ff90e7] bg-[#ff90e7]"></div>
+<div class="relative border-4 border-black bg-white px-6 py-10 md:px-10 md:py-14">
+<h1 class="text-center font-sans text-4xl font-black uppercase tracking-wide text-black md:text-6xl">Coming Soon</h1>
+</div>
+</div>
+<div class="mx-auto max-w-5xl border-4 border-black bg-white p-4 shadow-[12px_12px_0px_0px_black] md:p-6">
+<img alt="Coming soon" class="block w-full border-4 border-black" decoding="async" loading="eager" src="https://i.imgur.com/XnkadpF.png"/>
+</div>
+</section>
+</main>
+</div>
+<script>
+  // Mobile/tablet navigation: build from the existing desktop header links.
+  (() => {
+    const toggle = document.querySelector("[data-mobile-nav-toggle]");
+    const panel = document.querySelector("[data-mobile-nav-panel]");
+    const desktopNav = document.querySelector(".site-desktop-nav");
+    if (!toggle || !panel || !desktopNav) return;
+
+    const addLink = (source) => {
+      const href = source.getAttribute("href");
+      const label = (source.textContent || "").trim();
+      if (!href || !label) return;
+      const link = document.createElement("a");
+      link.href = href;
+      link.textContent = label;
+      panel.appendChild(link);
+    };
+
+    desktopNav.querySelectorAll("a").forEach(addLink);
+
+    const headerContact = document.querySelector(".site-header-contact");
+    if (headerContact) {
+      if (headerContact.tagName.toLowerCase() === "a") {
+        addLink(headerContact);
+      } else {
+        const contact = document.createElement("button");
+        contact.type = "button";
+        contact.textContent = "Contact";
+        contact.setAttribute("data-open-contact", "");
+        panel.appendChild(contact);
+      }
+    }
+
+    const close = () => {
+      panel.hidden = true;
+      toggle.setAttribute("aria-expanded", "false");
+    };
+
+    toggle.addEventListener("click", (event) => {
+      event.preventDefault();
+      event.stopPropagation();
+      const isOpen = !panel.hidden;
+      panel.hidden = isOpen;
+      toggle.setAttribute("aria-expanded", isOpen ? "false" : "true");
+    });
+
+    panel.addEventListener("click", (event) => {
+      if (event.target.closest("a, button")) close();
+    });
+
+    document.addEventListener("click", (event) => {
+      if (panel.hidden) return;
+      if (event.target.closest("[data-mobile-nav-panel], [data-mobile-nav-toggle]")) return;
+      close();
+    });
+
+    document.addEventListener("keydown", (event) => {
+      if (event.key === "Escape") close();
+    });
+  })();
+</script>
+<script src="./site-lib/learn-navigation.js?v=20260902-hanken-1" defer></script>
+</body>
+</html>

@@ -1,0 +1,58 @@
+[
+  {
+    "name": "pink",
+    "color": "#ff90e7",
+    "ink": "#000000",
+    "filename": "pink-FF90E7.png",
+    "sha256": "089559f5c9abe7315822d5de0c68b44b8b40a8fd712eb3e8649ced9241a3a821"
+  },
+  {
+    "name": "orange-yellow",
+    "color": "#ffc900",
+    "ink": "#000000",
+    "filename": "orange-yellow-FFC900.png",
+    "sha256": "9704b15152a68ee2557eb1fe5e209a1375dcfc917bf087ed7fe86f5d0cdd4837"
+  },
+  {
+    "name": "teal",
+    "color": "#26ab9d",
+    "ink": "#000000",
+    "filename": "teal-26AB9D.png",
+    "sha256": "ebb4a1c20a94c592a3ee9f6ef1be49fa28423e6b470e23ac91d9c9c505633710"
+  },
+  {
+    "name": "yellow",
+    "color": "#f1f332",
+    "ink": "#000000",
+    "filename": "yellow-F1F332.png",
+    "sha256": "2f50f251dd5cdec7ad3eaea688cdae9a9c09046305f7ccccd96e434b1330c142"
+  },
+  {
+    "name": "purple",
+    "color": "#91a8ed",
+    "ink": "#000000",
+    "filename": "purple-91A8ED.png",
+    "sha256": "a9a51e46f4e3509d5b6c102f2b7cb38d09811fa9ef5cfaf5eac9b17a5b4bf5da"
+  },
+  {
+    "name": "mauve",
+    "color": "#b23386",
+    "ink": "#ffffff",
+    "filename": "mauve-B23386.png",
+    "sha256": "0fbcda72257b3a253c83fff26174621b525d43aa780e1573ea56c8ae99b80912"
+  },
+  {
+    "name": "mint",
+    "color": "#d3f3f0",
+    "ink": "#000000",
+    "filename": "mint-D3F3F0.png",
+    "sha256": "b21ed052a68853e4f61403bb2ef1c525f647cba74d725306b9bbc44c7b241059"
+  },
+  {
+    "name": "light-pink",
+    "color": "#fbeaf9",
+    "ink": "#000000",
+    "filename": "light-pink-FBEAF9.png",
+    "sha256": "6ce54f7a25e30122cd60f61208631ca056589d737ade308ef216ff2c799a6f3f"
+  }
+]
