@@ -45,8 +45,11 @@ BUILT-IN CONTROLS,PAUSE-AUDIO-ANNOTATION,https://iridescent-wisp-57bcb1.netlify.
 BUILT-IN CONTROLS,PLAY-AUDIO-ANNOTATION,https://iridescent-wisp-57bcb1.netlify.app/images/tutorial-annotations/play-audio-annotation.png
 BUILT-IN CONTROLS,PLAY-VIDEO-ANNOTATION,https://iridescent-wisp-57bcb1.netlify.app/images/tutorial-annotations/play-video-annotation.png
 FOOTERS,AP-DRD,https://iridescent-wisp-57bcb1.netlify.app/images/tutorial-annotations/footers/AP-DrD.png
+FOOTERS,AP-FOOTER,https://iridescent-wisp-57bcb1.netlify.app/images/tutorial-annotations/footers/ap-footer.png
 FOOTERS,AP-FOOTER-FINAL-FINAL,https://iridescent-wisp-57bcb1.netlify.app/images/tutorial-annotations/footers/ap-footer-final-final.png
 FOOTERS,AP-FOOTER-V77,https://iridescent-wisp-57bcb1.netlify.app/images/tutorial-annotations/footers/ap-footer-v77.png
+FOOTERS,AP-GUIDE,https://iridescent-wisp-57bcb1.netlify.app/images/tutorial-annotations/footers/ap-guide.png
+FOOTERS,AP-QUICK-GUIDE,https://iridescent-wisp-57bcb1.netlify.app/images/tutorial-annotations/footers/ap-quick-guide.png
 FOOTERS,AP-QUICK-GUIDE-STARTUP,https://iridescent-wisp-57bcb1.netlify.app/images/tutorial-annotations/footers/ap-quick-guide-startup.png
 FOOTERS,AP-QUICK-GUIDE-V77,https://iridescent-wisp-57bcb1.netlify.app/images/tutorial-annotations/footers/ap-quick-guide-v77.png
 FOOTERS,APPEARANCE PAGES FOOTER,https://iridescent-wisp-57bcb1.netlify.app/images/tutorial-annotations/footers/appearance%20pages%20footer.png
@@ -58,6 +61,7 @@ FOOTERS,FINAL-AP-FOOTER,https://iridescent-wisp-57bcb1.netlify.app/images/tutori
 FOOTERS,FINAL-APP-FOOTER-FINAL,https://iridescent-wisp-57bcb1.netlify.app/images/tutorial-annotations/footers/final-app-footer-final.png
 FOOTERS,GPTLOGO,https://iridescent-wisp-57bcb1.netlify.app/images/tutorial-annotations/footers/GPTlogo.png
 FOOTERS,PR-DRD-,https://iridescent-wisp-57bcb1.netlify.app/images/tutorial-annotations/footers/PR-DrD-.png
+FOOTERS,QUICK-GUIDE,https://iridescent-wisp-57bcb1.netlify.app/images/tutorial-annotations/footers/quick-guide.png
 FOOTERS,STARTUP_GUIDE_APPS,https://iridescent-wisp-57bcb1.netlify.app/images/tutorial-annotations/footers/startup_guide_apps.png
 FOOTERS,STYLESHEET,https://iridescent-wisp-57bcb1.netlify.app/images/tutorial-annotations/footers/stylesheet.png
 FOOTERS,STYLESHEET FINAL,https://iridescent-wisp-57bcb1.netlify.app/images/tutorial-annotations/footers/stylesheet%20final.png
@@ -88,6 +92,14 @@ NUMBERS-EXTRA,HS6,https://iridescent-wisp-57bcb1.netlify.app/images/tutorial-ann
 NUMBERS-EXTRA,HS7,https://iridescent-wisp-57bcb1.netlify.app/images/tutorial-annotations/numbers-extra/hs7.png
 NUMBERS-EXTRA,HS8,https://iridescent-wisp-57bcb1.netlify.app/images/tutorial-annotations/numbers-extra/hs8.png
 NUMBERS-EXTRA,HS9,https://iridescent-wisp-57bcb1.netlify.app/images/tutorial-annotations/numbers-extra/hs9.png
+NUMBERS-EXTRA,N1,https://iridescent-wisp-57bcb1.netlify.app/images/tutorial-annotations/numbers-extra/n1.png
+NUMBERS-EXTRA,N2,https://iridescent-wisp-57bcb1.netlify.app/images/tutorial-annotations/numbers-extra/n2.png
+NUMBERS-EXTRA,N3,https://iridescent-wisp-57bcb1.netlify.app/images/tutorial-annotations/numbers-extra/n3.png
+NUMBERS-EXTRA,N3-1,https://iridescent-wisp-57bcb1.netlify.app/images/tutorial-annotations/numbers-extra/n3-1.png
+NUMBERS-EXTRA,N4,https://iridescent-wisp-57bcb1.netlify.app/images/tutorial-annotations/numbers-extra/n4.png
+NUMBERS-EXTRA,N5,https://iridescent-wisp-57bcb1.netlify.app/images/tutorial-annotations/numbers-extra/n5.png
+NUMBERS-EXTRA,N6,https://iridescent-wisp-57bcb1.netlify.app/images/tutorial-annotations/numbers-extra/n6.png
+NUMBERS-EXTRA,N7,https://iridescent-wisp-57bcb1.netlify.app/images/tutorial-annotations/numbers-extra/n7.png
 OBJECTS,ADDRESS-BAR-MOVING-BLOB,https://iridescent-wisp-57bcb1.netlify.app/images/tutorial-annotations/objects/address-bar-moving-blob.gif
 OBJECTS,ADDRESS-BAR-MOVING-BLOB2,https://iridescent-wisp-57bcb1.netlify.app/images/tutorial-annotations/objects/address-bar-moving-blob2.gif
 OBJECTS,ADDRESS-BAR-MOVING-BLOB3,https://iridescent-wisp-57bcb1.netlify.app/images/tutorial-annotations/objects/address-bar-moving-blob3.gif
@@ -157,8 +169,8 @@ OBJECTS,WAND-MINT,https://iridescent-wisp-57bcb1.netlify.app/images/tutorial-ann
 OBJECTS,WANT-BLACK,https://iridescent-wisp-57bcb1.netlify.app/images/tutorial-annotations/objects/want-black.png
 OBJECTS,WARNING-RECTANGLE,https://iridescent-wisp-57bcb1.netlify.app/images/tutorial-annotations/objects/warning-rectangle.png
 OBJECTS,X,https://iridescent-wisp-57bcb1.netlify.app/images/tutorial-annotations/objects/x.png
-OTHER,GROUP 40635 — DIE CUT — DIE CUT,https://iridescent-wisp-57bcb1.netlify.app/images/tutorial-annotations/Group%2040635%20%E2%80%94%20Die%20Cut%20%E2%80%94%20Die%20Cut.png
-OTHER,GROUP 40635 — DIE CUT — DIE CUT-1,https://iridescent-wisp-57bcb1.netlify.app/images/tutorial-annotations/Group%2040635%20%E2%80%94%20Die%20Cut%20%E2%80%94%20Die%20Cut-1.png
+OTHER,CLOUD-LEFT,https://iridescent-wisp-57bcb1.netlify.app/images/tutorial-annotations/cloud-left.png
+OTHER,CLOUD-RIGHT,https://iridescent-wisp-57bcb1.netlify.app/images/tutorial-annotations/cloud-right.png
 OTHER,LEFT,https://iridescent-wisp-57bcb1.netlify.app/images/tutorial-annotations/left.png
 OTHER,LINK-ANNOTATION,https://iridescent-wisp-57bcb1.netlify.app/images/tutorial-annotations/link-annotation.png
 OTHER,LOGO,https://iridescent-wisp-57bcb1.netlify.app/images/tutorial-annotations/logo.png
