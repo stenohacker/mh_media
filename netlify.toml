@@ -15,6 +15,13 @@
     Cross-Origin-Resource-Policy = "cross-origin"
 
 [[headers]]
+  for = "/tutorials/catalog.json"
+  [headers.values]
+    Access-Control-Allow-Origin = "*"
+    Cross-Origin-Resource-Policy = "cross-origin"
+    Content-Type = "application/json; charset=UTF-8"
+
+[[headers]]
   for = "/gifs/*"
   [headers.values]
     Access-Control-Allow-Origin = "*"

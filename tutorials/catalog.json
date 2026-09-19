@@ -1,0 +1,686 @@
+{
+  "version": 1,
+  "tutorials": [
+    {
+      "folder": "ap-demo",
+      "images": [
+        {
+          "name": "a01-go-to-website-click-reporter-tools.png",
+          "type": "image"
+        },
+        {
+          "name": "a02-click-appearance-pages.png",
+          "type": "image"
+        },
+        {
+          "name": "a03-click-open-tool.png",
+          "type": "image"
+        },
+        {
+          "name": "a04-with-modal-open-at-demo-tutorial-button.png",
+          "type": "image"
+        },
+        {
+          "name": "a05-this-is-what-you-see-Sidekick.png",
+          "type": "image"
+        },
+        {
+          "name": "a06-regular-ChatGPT.png",
+          "type": "image"
+        },
+        {
+          "name": "a07-this-is-what-you-see-Sidekick.png",
+          "type": "image"
+        },
+        {
+          "name": "a08-ap-footer-past-over-this-clearer.png",
+          "type": "image"
+        },
+        {
+          "name": "a09-empty-w-buttons-copy.png",
+          "type": "image"
+        },
+        {
+          "name": "a10-style-sheet.png",
+          "type": "image"
+        },
+        {
+          "name": "a11-empty-w-buttons.png",
+          "type": "image"
+        },
+        {
+          "name": "a12-TO-DO-help-demo.png",
+          "type": "image"
+        },
+        {
+          "name": "a13-name-firm-up-to-3-this-format.png",
+          "type": "image"
+        },
+        {
+          "name": "a14-results-with-attorney-missing.png",
+          "type": "image"
+        },
+        {
+          "name": "a15-table-with-citation-links.png",
+          "type": "image"
+        },
+        {
+          "name": "a15b-cg-with-footer.png",
+          "type": "image"
+        },
+        {
+          "name": "a15c-check.png",
+          "type": "image"
+        },
+        {
+          "name": "a16-you-cannot-rely-on-find-it-is.-preliminary-search-do-check.png",
+          "type": "image"
+        },
+        {
+          "name": "a17-sidekick-verifies-and-adds-info-if-found-but-u-are-provided-links-to-verify.png",
+          "type": "image"
+        },
+        {
+          "name": "a18-you-get-this-with-startup-and-with-every-msg.png",
+          "type": "image"
+        },
+        {
+          "name": "a19-sidekick-verifies-and-adds-info-if-found-but-u-are-provided-links-to-verify-copy.png",
+          "type": "image"
+        },
+        {
+          "name": "a20-Summers-email-couldn't-be-extracted-and-i-used-link-provided-tp-extract.png",
+          "type": "image"
+        },
+        {
+          "name": "a21-lets-say-you-know-your-style-say-hash-style-and-include-your-ID.png",
+          "type": "image"
+        },
+        {
+          "name": "a21a-type-style.png",
+          "type": "image"
+        },
+        {
+          "name": "a22-styled-results-dupe-mayhbe.png",
+          "type": "image"
+        },
+        {
+          "name": "ap-card-click-go-to-toool.png",
+          "type": "image"
+        },
+        {
+          "name": "ap-find-insert.png",
+          "type": "image"
+        },
+        {
+          "name": "app-pages-flow.png",
+          "type": "image"
+        },
+        {
+          "name": "appearance-pages.png",
+          "type": "image"
+        },
+        {
+          "name": "b17-add-copied-Summers-email.png",
+          "type": "image"
+        },
+        {
+          "name": "ba16-table-with-citation-links-copy.png",
+          "type": "image"
+        },
+        {
+          "name": "click-go-to-tool.png",
+          "type": "image"
+        },
+        {
+          "name": "click-reporter-tools.png",
+          "type": "image"
+        },
+        {
+          "name": "find-response-bliocks-missing-atty.png",
+          "type": "image"
+        },
+        {
+          "name": "first-response-table.png",
+          "type": "image"
+        },
+        {
+          "name": "reporter-tools-page.png",
+          "type": "image"
+        },
+        {
+          "name": "testmodalimg.png",
+          "type": "image"
+        },
+        {
+          "name": "website-toolbar.png",
+          "type": "image"
+        },
+        {
+          "name": "za21-add-gave-to-Sidekick-to-reproduce-the-filled-table.png",
+          "type": "image"
+        }
+      ]
+    },
+    {
+      "folder": "appearance-pages",
+      "images": [
+
+      ]
+    },
+    {
+      "folder": "appearance-pages-demo",
+      "images": [
+        {
+          "name": "10ap.png",
+          "type": "image"
+        },
+        {
+          "name": "11ap.png",
+          "type": "image"
+        },
+        {
+          "name": "12ap.png",
+          "type": "image"
+        },
+        {
+          "name": "13ap.png",
+          "type": "image"
+        },
+        {
+          "name": "14ap.png",
+          "type": "image"
+        },
+        {
+          "name": "15ap.png",
+          "type": "image"
+        },
+        {
+          "name": "16ap.png",
+          "type": "image"
+        },
+        {
+          "name": "17ap.png",
+          "type": "image"
+        },
+        {
+          "name": "18ap.png",
+          "type": "image"
+        },
+        {
+          "name": "1ap.png",
+          "type": "image"
+        },
+        {
+          "name": "2ap.png",
+          "type": "image"
+        },
+        {
+          "name": "3ap.png",
+          "type": "image"
+        },
+        {
+          "name": "4ap.png",
+          "type": "image"
+        },
+        {
+          "name": "5ap.png",
+          "type": "image"
+        },
+        {
+          "name": "6ap.png",
+          "type": "image"
+        },
+        {
+          "name": "7ap.png",
+          "type": "image"
+        },
+        {
+          "name": "8ap.png",
+          "type": "image"
+        },
+        {
+          "name": "9ap.png",
+          "type": "image"
+        },
+        {
+          "name": "ad1.png",
+          "type": "image"
+        },
+        {
+          "name": "ad10.png",
+          "type": "image"
+        },
+        {
+          "name": "ad11.png",
+          "type": "image"
+        },
+        {
+          "name": "ad12.png",
+          "type": "image"
+        },
+        {
+          "name": "ad13.png",
+          "type": "image"
+        },
+        {
+          "name": "ad14.png",
+          "type": "image"
+        },
+        {
+          "name": "ad15.png",
+          "type": "image"
+        },
+        {
+          "name": "ad16.png",
+          "type": "image"
+        },
+        {
+          "name": "ad17.png",
+          "type": "image"
+        },
+        {
+          "name": "ad18.png",
+          "type": "image"
+        },
+        {
+          "name": "ad19.png",
+          "type": "image"
+        },
+        {
+          "name": "ad3.png",
+          "type": "image"
+        },
+        {
+          "name": "ad4.png",
+          "type": "image"
+        },
+        {
+          "name": "ad5.png",
+          "type": "image"
+        },
+        {
+          "name": "ad6.png",
+          "type": "image"
+        },
+        {
+          "name": "ad7.png",
+          "type": "image"
+        },
+        {
+          "name": "ad8.png",
+          "type": "image"
+        },
+        {
+          "name": "ad9.png",
+          "type": "image"
+        },
+        {
+          "name": "first-response-table.png",
+          "type": "image"
+        },
+        {
+          "name": "slide-background-blank-text-bar-addres-bar.png",
+          "type": "image"
+        },
+        {
+          "name": "slide-background-blank-text-bar-aps-addres-bar.png",
+          "type": "image"
+        }
+      ]
+    },
+    {
+      "folder": "appearance-pages-guide",
+      "images": [
+        {
+          "name": "ap-dropdown-new-convo.png",
+          "type": "image"
+        },
+        {
+          "name": "ap-front-page.png",
+          "type": "image"
+        }
+      ]
+    },
+    {
+      "folder": "appearance-pages-sidekick",
+      "images": [
+        {
+          "name": "appearance-pages-2.png",
+          "type": "image"
+        },
+        {
+          "name": "appearance-pages.png",
+          "type": "image"
+        }
+      ]
+    },
+    {
+      "folder": "appearance-pages-tutorial",
+      "images": [
+        {
+          "name": "1-apps-cover.png",
+          "type": "image"
+        },
+        {
+          "name": "10-apps-style-4th.png",
+          "type": "image"
+        },
+        {
+          "name": "11-apps-merge.png",
+          "type": "image"
+        },
+        {
+          "name": "12-apps-pin-gpt.png",
+          "type": "image"
+        },
+        {
+          "name": "12a-pin-dropdown_.png",
+          "type": "image"
+        },
+        {
+          "name": "13-apps-pin-gpt.png",
+          "type": "image"
+        },
+        {
+          "name": "13a-apps-pin-gpt.png",
+          "type": "image"
+        },
+        {
+          "name": "2-apps-provide-names.png",
+          "type": "image"
+        },
+        {
+          "name": "3-apps-find-return.png",
+          "type": "image"
+        },
+        {
+          "name": "3b-apps-find-results-table.png",
+          "type": "image"
+        },
+        {
+          "name": "4-apps-check.png",
+          "type": "image"
+        },
+        {
+          "name": "4b-apps-table-check.png",
+          "type": "image"
+        },
+        {
+          "name": "5-apps-atty-bios.png",
+          "type": "image"
+        },
+        {
+          "name": "6-apps-style.png",
+          "type": "image"
+        },
+        {
+          "name": "6b-apps-style2.png",
+          "type": "image"
+        },
+        {
+          "name": "7-apps-find-4th-atty.png",
+          "type": "image"
+        },
+        {
+          "name": "8-apps-check-4th.png",
+          "type": "image"
+        },
+        {
+          "name": "9-apps-4th-bo.png",
+          "type": "image"
+        },
+        {
+          "name": "appearance-pages-footer.png",
+          "type": "image"
+        },
+        {
+          "name": "apps-style-sheet.png",
+          "type": "image"
+        },
+        {
+          "name": "cgvsk.png",
+          "type": "image"
+        },
+        {
+          "name": "quick-guide-v10.png",
+          "type": "image"
+        },
+        {
+          "name": "style sheet final.png",
+          "type": "image"
+        },
+        {
+          "name": "style sheet v10.png",
+          "type": "image"
+        },
+        {
+          "name": "style-sheet-final.png",
+          "type": "image"
+        },
+        {
+          "name": "style-sheet-v10.png",
+          "type": "image"
+        },
+        {
+          "name": "style-sheet-v11.png",
+          "type": "image"
+        }
+      ]
+    },
+    {
+      "folder": "briefs-and-tips",
+      "images": [
+
+      ]
+    },
+    {
+      "folder": "chatgpt-tips",
+      "images": [
+
+      ]
+    },
+    {
+      "folder": "dictionary-builder",
+      "images": [
+
+      ]
+    },
+    {
+      "folder": "exhibit-descriptions-tutorial",
+      "images": [
+        {
+          "name": "-27-hover-over-chats-and-get-a-preview.png",
+          "type": "image"
+        },
+        {
+          "name": "-28-rename-chat.png",
+          "type": "image"
+        },
+        {
+          "name": "-30-update-preferences.png",
+          "type": "image"
+        },
+        {
+          "name": "0-cover.png",
+          "type": "image"
+        },
+        {
+          "name": "10-not usingOCR.png",
+          "type": "image"
+        },
+        {
+          "name": "11-go-to-custom-agent-area.png",
+          "type": "image"
+        },
+        {
+          "name": "12-open-exhibit-descriptions-Sidekick.png",
+          "type": "image"
+        },
+        {
+          "name": "13-type-at-sign-and-select-folder-of-exhibits.png",
+          "type": "image"
+        },
+        {
+          "name": "14-type-the-magic-hashtag.png",
+          "type": "image"
+        },
+        {
+          "name": "15-Sidekick-processing-exhibits-NA.png",
+          "type": "image"
+        },
+        {
+          "name": "16-one-minute-31-table-first.png",
+          "type": "image"
+        },
+        {
+          "name": "17-not using-text-box-after-table.png",
+          "type": "image"
+        },
+        {
+          "name": "18-next-a-table-click-copy-button.png",
+          "type": "image"
+        },
+        {
+          "name": "19-I-copy-paste-into-CAT-software-indexing-dialog.png",
+          "type": "image"
+        },
+        {
+          "name": "19-save-whole-conversation.png",
+          "type": "image"
+        },
+        {
+          "name": "20-name-click text-make-sure-exhibit-folder-highlighted.png",
+          "type": "image"
+        },
+        {
+          "name": "21-to-see-your-files-and-descriptions-file-click.png",
+          "type": "image"
+        },
+        {
+          "name": "22-files-view-NA.png",
+          "type": "image"
+        },
+        {
+          "name": "23-open-files-check.png",
+          "type": "image"
+        },
+        {
+          "name": "24-better-to-use-original-chat-KUZ-in-middle.png",
+          "type": "image"
+        },
+        {
+          "name": "25-if-you-open-descriptions-then-check-have-to-toggle.png",
+          "type": "image"
+        },
+        {
+          "name": "26-if-you-saved-descriptions-and-you-want-them-back-in-the-middle-click-clock-icon.png",
+          "type": "image"
+        },
+        {
+          "name": "2a-sign-up.png",
+          "type": "image"
+        },
+        {
+          "name": "2b-put-exhibits-folder.png",
+          "type": "image"
+        },
+        {
+          "name": "3-log-in-this is what you see-NA.png",
+          "type": "image"
+        },
+        {
+          "name": "4-rename-files.png",
+          "type": "image"
+        },
+        {
+          "name": "5-click-plus-folder.png",
+          "type": "image"
+        },
+        {
+          "name": "6-select-folder-click-upload.png",
+          "type": "image"
+        },
+        {
+          "name": "7-navigate-to-folder-upload-dont-double-click-and-open.png",
+          "type": "image"
+        },
+        {
+          "name": "8-click-upload-that-you-want-to-upload-X-files.png",
+          "type": "image"
+        },
+        {
+          "name": "9-see-folder-of-exhibits.png",
+          "type": "image"
+        },
+        {
+          "name": "CleanShot0801CleanShot 1.png",
+          "type": "image"
+        }
+      ]
+    },
+    {
+      "folder": "practice",
+      "images": [
+
+      ]
+    },
+    {
+      "folder": "proofreader",
+      "images": [
+
+      ]
+    },
+    {
+      "folder": "steno-keys-email-sig",
+      "images": [
+        {
+          "name": "0714.gif",
+          "type": "gif"
+        },
+        {
+          "name": "gmail-sig1.png",
+          "type": "image"
+        },
+        {
+          "name": "gmail-sig2.png",
+          "type": "image"
+        },
+        {
+          "name": "gmail-sig3.png",
+          "type": "image"
+        },
+        {
+          "name": "gmail-sig4.png",
+          "type": "image"
+        },
+        {
+          "name": "gmail-sig5.png",
+          "type": "image"
+        },
+        {
+          "name": "gmail-sig6.png",
+          "type": "image"
+        },
+        {
+          "name": "GPT-cleans_text-1.png",
+          "type": "image"
+        },
+        {
+          "name": "GPT-cleans_text-2.png",
+          "type": "image"
+        },
+        {
+          "name": "GPT-cleans_text-3-.png",
+          "type": "image"
+        }
+      ]
+    },
+    {
+      "folder": "tech-tips",
+      "images": [
+
+      ]
+    }
+  ]
+}

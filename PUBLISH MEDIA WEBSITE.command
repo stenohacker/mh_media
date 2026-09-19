@@ -96,6 +96,10 @@ refresh_shapes_catalog() {
   fi
 }
 
+refresh_tutorials_catalog() {
+  ruby "$REPOSITORY_FOLDER/scripts/refresh-tutorials-catalog.rb" "$REPOSITORY_FOLDER"
+}
+
 cleanup_publish_lock() {
   rm -f "$PUBLISH_LOCK_DIRECTORY/pid" 2>/dev/null || true
   rmdir "$PUBLISH_LOCK_DIRECTORY" 2>/dev/null || true
@@ -166,6 +170,12 @@ echo
 echo "Updating the Shapes catalog..."
 if ! refresh_shapes_catalog; then
   stop_with_message "The Shapes catalog could not be updated. Nothing was committed or pushed."
+fi
+
+echo
+echo "Updating the Tutorials catalog..."
+if ! refresh_tutorials_catalog; then
+  stop_with_message "The Tutorials catalog could not be updated. Nothing was committed or pushed."
 fi
 
 echo
