@@ -333,6 +333,10 @@
       "folder": "appearance-pages-guide",
       "images": [
         {
+          "name": "ap-cover.png",
+          "type": "image"
+        },
+        {
           "name": "ap-dropdown-new-convo.png",
           "type": "image"
         },
