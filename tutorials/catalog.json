@@ -339,6 +339,10 @@
         {
           "name": "ap-front-page.png",
           "type": "image"
+        },
+        {
+          "name": "start-new-conversation.png",
+          "type": "image"
         }
       ]
     },
