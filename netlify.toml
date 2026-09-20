@@ -45,3 +45,9 @@
     Access-Control-Allow-Origin = "*"
     Cross-Origin-Resource-Policy = "cross-origin"
     Content-Type = "text/csv; charset=UTF-8"
+
+# Test pages are public by URL but intentionally absent from search results.
+[[headers]]
+  for = "/test-folder/*"
+  [headers.values]
+    X-Robots-Tag = "noindex, nofollow, noarchive"
