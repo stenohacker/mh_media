@@ -5619,145 +5619,6 @@
     .reader-nav button:disabled { opacity: .4; }
     .reader-nav button:hover:not(:disabled) { background: #fff; transform: none; box-shadow: none; }
     .reader-nav button:focus-visible { outline: 3px solid #000; outline-offset: 3px; }
-    .site-topic-link {
-      border-color: var(--yellow);
-      color: #000;
-      background: var(--yellow);
-    }
-    .site-topic-mobile-link { display: none; }
-    .tutorial-shell { position: relative; }
-    .tutorial-open-cover {
-      position: absolute;
-      inset: 0;
-      z-index: 230;
-      display: grid;
-      place-items: center;
-      background: rgb(255 255 255 / .08);
-    }
-    .tutorial-open-button {
-      display: inline-flex;
-      align-items: center;
-      justify-content: center;
-      gap: 10px;
-      min-height: 54px;
-      border: max(3px, .24vw) solid #000;
-      border-radius: 0;
-      padding: 10px clamp(20px, 3vw, 42px);
-      color: #000;
-      background: var(--yellow);
-      font: 700 clamp(15px, 1.4vw, 21px) var(--sans);
-      letter-spacing: .03em;
-      text-transform: uppercase;
-      box-shadow: none;
-    }
-    .tutorial-open-button > span { font-size: 1.35em; line-height: 1; }
-    .tutorial-viewer-close {
-      display: none;
-      position: absolute;
-      top: clamp(8px, 1.2vw, 18px);
-      right: clamp(8px, 1.2vw, 18px);
-      z-index: 320;
-      width: 44px;
-      min-width: 44px;
-      height: 44px;
-      min-height: 44px;
-      border: 3px solid #000;
-      border-radius: 0;
-      padding: 0;
-      color: #000;
-      background: #fff;
-      font: 700 31px/1 var(--sans);
-      box-shadow: none;
-    }
-    body[data-mode="player"][data-tutorial-viewer="open"] { overflow: hidden; }
-    body[data-mode="player"][data-tutorial-viewer="open"] .site-header { display: none !important; }
-    body[data-mode="player"][data-tutorial-viewer="open"] .builder-app {
-      position: fixed;
-      inset: 0;
-      z-index: 1000;
-      width: 100%;
-      height: 100dvh;
-      display: block;
-      padding: 0;
-      overflow: hidden;
-    }
-    body[data-mode="player"][data-tutorial-viewer="open"] .tutorial-shell {
-      width: auto;
-      height: calc(100dvh - 2 * clamp(8px, 1vw, 18px));
-      display: grid;
-      grid-template-rows: minmax(0, 1fr) auto;
-      margin: clamp(8px, 1vw, 18px);
-      border: max(3px, .24vw) solid #000;
-      overflow: hidden;
-    }
-    body[data-mode="player"][data-tutorial-viewer="open"] .tutorial-body,
-    body[data-mode="player"][data-tutorial-viewer="open"] .stage-wrap {
-      min-height: 0;
-      height: 100%;
-      overflow: hidden;
-    }
-    body[data-mode="player"][data-tutorial-viewer="open"] .tutorial-open-cover { display: none; }
-    body[data-mode="player"][data-tutorial-viewer="open"] .tutorial-viewer-close { display: grid; place-items: center; }
-    body[data-mode="player"][data-tutorial-viewer="open"] .tutorial-page-links { display: none; }
-    body[data-mode="player"][data-tutorial-viewer="open"] .nav-button--next.is-finish {
-      animation: tutorial-finish-attention 700ms ease-out 1;
-    }
-    @keyframes tutorial-finish-attention {
-      0%, 100% { background: var(--yellow); transform: none; }
-      45% { background: var(--pink); transform: scale(1.04); }
-    }
-    @media (prefers-reduced-motion: reduce) {
-      body[data-mode="player"][data-tutorial-viewer="open"] .nav-button--next.is-finish { animation: none; }
-    }
-    @media (max-width: 850px) {
-      .site-topic-mobile-link {
-        min-height: 42px;
-        display: flex;
-        align-items: center;
-        justify-content: center;
-        border-top: 3px solid #000;
-        padding: 7px 12px;
-        color: #000;
-        background: var(--yellow);
-        font: 700 13px/1.2 var(--sans);
-        letter-spacing: .04em;
-        text-decoration: none;
-        text-transform: uppercase;
-      }
-    }
-    @media (max-width: 620px) {
-      .tutorial-open-button { min-height: 48px; padding: 8px 18px; }
-      body[data-mode="player"][data-tutorial-viewer="open"] .tutorial-shell {
-        height: calc(100dvh - 12px);
-        margin: 6px;
-      }
-      body[data-mode="player"][data-tutorial-viewer="open"] .tutorial-viewer-close {
-        top: 6px;
-        right: 6px;
-        width: 38px;
-        min-width: 38px;
-        height: 38px;
-        min-height: 38px;
-        font-size: 27px;
-      }
-    }
-    @media (max-width: 620px) and (orientation: portrait) {
-      body[data-mode="player"][data-tutorial-viewer="open"] { overflow: auto; }
-      body[data-mode="player"][data-tutorial-viewer="open"] .builder-app {
-        position: relative;
-        inset: auto;
-        height: auto;
-        min-height: 0;
-        overflow: visible;
-        background: transparent;
-      }
-      body[data-mode="player"][data-tutorial-viewer="open"] .tutorial-shell {
-        height: auto;
-        grid-template-rows: auto auto;
-      }
-      body[data-mode="player"][data-tutorial-viewer="open"] .tutorial-body,
-      body[data-mode="player"][data-tutorial-viewer="open"] .stage-wrap { height: auto; }
-    }
     body[data-mode="player"] .tutorial-body .stage-wrap {
       position: relative; display: block; width: 100%; min-width: 0;
       margin: 0; padding: 0; overflow: hidden;
@@ -10324,7 +10185,6 @@
       || `${MEDIA_SITE_ORIGIN}/images/logo.png`;
     const MODE = document.body.dataset.mode === "player" ? "player" : "builder";
     const IS_DEMO_PLAYER = MODE === "player" && document.body.dataset.demoPlayer === "true";
-    const IS_TUTORIAL_PLAYER = MODE === "player" && !IS_DEMO_PLAYER;
     const IS_DEMO_EMBED = IS_DEMO_PLAYER && (new URLSearchParams(location.search).get("embed") === "1" || window.self !== window.top);
     document.body.dataset.demoEmbed = String(IS_DEMO_EMBED);
     const PUBLIC_ANNOTATION_ASSET_ROOT = "https://iridescent-wisp-57bcb1.netlify.app/images/tutorial-annotations/";
@@ -10817,9 +10677,6 @@
     let demoPlaying = false;
     let demoStarted = false;
     let demoFinished = false;
-    let tutorialViewerOpen = false;
-    let tutorialViewerStarted = false;
-    let tutorialViewerCompleted = false;
     let demoVideoSoundEnabled = false;
     let demoVideoGateDismissed = false;
     let demoDeadline = 0;
@@ -11404,8 +11261,6 @@
 	      state.meta.touched ||= {};
 	      state.meta.pageType = state.meta.pageType === "demo" ? "demo" : "tutorial";
 	      state.meta.group = String(state.meta.group || "");
-	      state.meta.topicLabel = String(state.meta.topicLabel || "TOPIC").trim() || "TOPIC";
-	      state.meta.topicUrl = String(state.meta.topicUrl || "");
 	      state.meta.primaryActionLabel = String(state.meta.primaryActionLabel || (state.meta.pageType === "demo" ? "Open Tutorial" : "Open Tool"));
 	      state.meta.primaryActionUrl = String(state.meta.primaryActionUrl || "");
 	      state.meta.relatedCalloutEnabled = Boolean(state.meta.relatedCalloutEnabled);
@@ -13376,9 +13231,6 @@
     }
 
 	    function renderSiteHeader() {
-	      const section = SITE_LEARN_SECTIONS[slugify(state.meta.section)];
-	      const topicHref = safeLinkUrl(state.meta.topicUrl) || section?.href || SITE_LEARN_HOME.href;
-	      const topicLabel = String(state.meta.topicLabel || "TOPIC").trim() || "TOPIC";
 	      const toolLinks = SITE_TOOL_LINKS.map((link) => `
                 <a href="${link.href}"${isInternalSiteUrl(link.href) ? "" : ' target="_blank" rel="noopener noreferrer"'}>${escapeHtml(link.label)}</a>
               `).join("");
@@ -13393,7 +13245,6 @@
                 </a>
 	              </div>
 	              <div class="site-nav__desktop">
-	                <a class="site-nav__link site-topic-link" href="${escapeHtml(topicHref)}">← ${escapeHtml(topicLabel)}</a>
 	                <a class="site-nav__link" href="${SITE_LEARN_HOME.href}">${escapeHtml(SITE_LEARN_HOME.label)}</a>
 	                <a class="site-nav__link" href="${sitePageUrl("reporter-tools.html")}">reporter tools</a>
 	                ${SITE_PRIMARY_LINKS.map((link) => `<a class="site-nav__link" href="${link.href}"${link.action ? ` data-action="${link.action}"` : ""}>${escapeHtml(link.label)}</a>`).join("")}
@@ -13408,10 +13259,9 @@
 	              ${SITE_PRIMARY_LINKS.map((link) => `<a href="${link.href}"${link.action ? ` data-action="${link.action}"` : ""}>${escapeHtml(link.label)}</a>`).join("")}
                 <a href="${sitePageUrl("index.html#contact")}" style="--hover-color:#ff90e7">contact</a>
               </div>
-	            </nav>
-	          </div>
-	          <a class="site-topic-mobile-link" href="${escapeHtml(topicHref)}">← Back to ${escapeHtml(topicLabel)}</a>
-	        </header>
+            </nav>
+          </div>
+        </header>
 	      `;
 	    }
 
@@ -13509,7 +13359,6 @@
 
     function render() {
       hideToolbarTooltip();
-      if (IS_TUTORIAL_PLAYER) document.body.dataset.tutorialViewer = tutorialViewerOpen ? "open" : "closed";
       requestAnimationFrame(syncSelectionControls);
       requestAnimationFrame(observeArrowGeometry);
       syncLiveEditableBeforeRender();
@@ -13524,7 +13373,6 @@
 	          ${MODE === "builder" ? renderToolbar(slide, selected) : ""}
 	          ${MODE === "builder" ? renderDraftMorePopover() : ""}
 	          <main class="tutorial-shell ${coverSlide ? "is-demo-cover" : ""} ${centeredSlide ? "is-demo-centered-slide" : ""}" aria-label="Interactive demo">
-            ${renderTutorialViewerControls()}
             ${coverSlide ? `<div class="tutorial-title" ${MODE === "builder" ? 'contenteditable="true" role="textbox" aria-label="Demo title" data-bind="tutorial.title"' : ""} data-placeholder="DEMO TITLE">${escapeHtml(state.tutorial.title).replace(/\r?\n/g, "<br>")}</div>` : ""}
             <div class="tutorial-body ${slide.kind === "video" ? "is-video" : ""} ${slide.kind === "scroll" ? "is-scroll" : ""} ${coverSlide ? "is-demo-cover" : ""} ${centeredSlide ? "is-demo-centered-slide" : ""}">
               ${slide.kind === "video" || coverSlide ? "" : renderSidebar(slide)}
@@ -13644,13 +13492,10 @@
           const bottomBorder = shellCss ? parseFloat(shellCss.borderBottomWidth) || 0 : 0;
           const bottomGap = app ? parseFloat(getComputedStyle(app).paddingBottom) || 12 : 12;
           const viewportHeight = document.documentElement.clientHeight || window.innerHeight;
-          const portraitPhoneTutorial = IS_TUTORIAL_PLAYER && tutorialViewerOpen
-            && matchMedia("(max-width: 620px) and (orientation: portrait)").matches;
-          const fitToViewer = IS_DEMO_PLAYER || (IS_TUTORIAL_PLAYER && tutorialViewerOpen && !portraitPhoneTutorial);
-          const availableHeight = fitToViewer ? stageWrap.clientHeight
+          const availableHeight = IS_DEMO_PLAYER ? stageWrap.clientHeight
             : Math.max(32, viewportHeight - (stageWrap.getBoundingClientRect().top + window.scrollY)
               - (nav?.getBoundingClientRect().height || 0) - bottomBorder - bottomGap);
-          if (!fitToViewer && shell) {
+          if (!IS_DEMO_PLAYER && shell) {
             // The tutorial export is a complete HTML page, not a letterboxed
             // presentation. It follows the page width and may scroll vertically
             // when a browser window is unusually short.
@@ -13671,12 +13516,11 @@
           const height = bounds.bottom - bounds.top;
           const gutter = 0;
           const widthScale = availableWidth / width;
-          const scale = Math.max(0.001, fitToViewer
+          const scale = Math.max(0.001, IS_DEMO_PLAYER
             ? Math.min(widthScale, availableHeight / height)
             : widthScale);
-          if (!fitToViewer) stageWrap.style.height = `${height * scale + gutter * 2}px`;
-          else stageWrap.style.removeProperty("height");
-          const fittedHeight = fitToViewer ? availableHeight : height * scale + gutter * 2;
+          if (!IS_DEMO_PLAYER) stageWrap.style.height = `${height * scale + gutter * 2}px`;
+          const fittedHeight = IS_DEMO_PLAYER ? availableHeight : height * scale + gutter * 2;
           stage.style.left = `${(availableWidth - width * scale) / 2 - bounds.left * scale}px`;
           stage.style.top = `${(fittedHeight - height * scale) / 2 - bounds.top * scale}px`;
           stage.style.transform = `scale(${scale})`;
@@ -14597,34 +14441,16 @@
     }
 
     function readerNextLabel() {
-      return tutorialViewerOpen && atEnd() ? "Finish" : "Next";
+      return "Next";
     }
 
     function renderReaderNav() {
-      const finishing = tutorialViewerOpen && atEnd();
       return `
         <nav class="reader-nav" aria-label="Tutorial navigation">
           <button class="nav-button nav-button--back" type="button" data-action="reader-back" aria-label="${readerBackLabel()}" title="${readerBackLabel()}" ${atBeginning() ? "disabled" : ""}>${playerControlArt("slidesBack")}</button>
           <button class="contents-button" type="button" data-action="open-contents" aria-haspopup="dialog" aria-label="Menu" title="Menu">${playerControlArt("slidesMenu")}</button>
-          <button class="nav-button nav-button--next ${finishing ? "is-finish" : ""}" type="button" data-action="reader-next" aria-label="${readerNextLabel()}" title="${readerNextLabel()}" ${atEnd() && !finishing ? "disabled" : ""}>${finishing ? "FINISH" : playerControlArt("slidesNext")}</button>
+          <button class="nav-button nav-button--next" type="button" data-action="reader-next" aria-label="${readerNextLabel()}" title="${readerNextLabel()}" ${atEnd() ? "disabled" : ""}>${playerControlArt("slidesNext")}</button>
         </nav>
-      `;
-    }
-
-    function renderTutorialViewerControls() {
-      if (!IS_TUTORIAL_PLAYER) return "";
-      const openLabel = tutorialViewerCompleted
-        ? "Replay Tutorial"
-        : tutorialViewerStarted
-          ? "Resume Tutorial"
-          : "Open Tutorial";
-      return `
-        <div class="tutorial-open-cover" ${tutorialViewerOpen ? "hidden" : ""}>
-          <button type="button" class="tutorial-open-button" data-action="open-tutorial-viewer" aria-label="${openLabel}">
-            <span aria-hidden="true">↗</span>${openLabel}
-          </button>
-        </div>
-        <button type="button" class="tutorial-viewer-close" data-action="close-tutorial-viewer" aria-label="Close tutorial" title="Close tutorial">×</button>
       `;
     }
 
@@ -15808,8 +15634,6 @@
         "demo-video-sound": toggleDemoVideoSound,
         "reader-back": readerBack,
         "reader-next": readerNext,
-        "open-tutorial-viewer": openTutorialViewer,
-        "close-tutorial-viewer": closeTutorialViewer,
         "open-contents": () => openContents(actionNode),
         "close-contents": closeContents,
         "jump-slide": () => jumpSlide(Number(actionNode.dataset.index)),
@@ -17439,11 +17263,6 @@
     }
 
     function onKeyDown(event) {
-      if (event.key === "Escape" && IS_TUTORIAL_PLAYER && tutorialViewerOpen && !state.ui.contentsOpen && !state.ui.videoModalId) {
-        event.preventDefault();
-        closeTutorialViewer();
-        return;
-      }
       if (MODE === "builder" && (event.metaKey || event.ctrlKey) && !event.altKey && !event.shiftKey && ["b","i","u"].includes(event.key.toLowerCase()) && (event.target.closest?.('[contenteditable="true"][data-bind]') || (!event.target.closest?.('input, textarea, select') && selectedWordEditor(true)))) {
         event.preventDefault(); toggleWordFormat(event.key.toLowerCase()); return;
       }
@@ -19814,41 +19633,6 @@
       setDemoSlide(index, { fraction, play: shouldResume });
     }
 
-    function resetTutorialToBeginning() {
-      stopAudio();
-      state.ui.slideIndex = 0;
-      const slide = currentSlide();
-      state.ui.activeHotspotId = slideIntroCard(slide) ? null : slide.hotspots[0]?.id || null;
-      state.ui.selectedKind = null;
-      state.ui.selectedId = null;
-      state.ui.contentsOpen = false;
-      state.ui.videoModalId = null;
-      multiSelection = [];
-    }
-
-    function openTutorialViewer() {
-      if (!IS_TUTORIAL_PLAYER) return;
-      if (tutorialViewerCompleted) {
-        resetTutorialToBeginning();
-        tutorialViewerCompleted = false;
-      }
-      tutorialViewerStarted = true;
-      tutorialViewerOpen = true;
-      render();
-      setTimeout(() => root.querySelector('[data-action="close-tutorial-viewer"]')?.focus(), 0);
-    }
-
-    function closeTutorialViewer({ completed = false } = {}) {
-      if (!IS_TUTORIAL_PLAYER) return;
-      tutorialViewerOpen = false;
-      if (completed) {
-        tutorialViewerCompleted = true;
-        resetTutorialToBeginning();
-      }
-      render();
-      setTimeout(() => root.querySelector('[data-action="open-tutorial-viewer"]')?.focus(), 0);
-    }
-
     function readerNext() {
       if (MODE === "builder") stopSlideNarrationPreview();
       if (IS_DEMO_PLAYER) {
@@ -19862,10 +19646,6 @@
         } else if (state.ui.slideIndex < state.tutorial.slides.length - 1) {
           setDemoSlide(state.ui.slideIndex + 1, { play: demoPlaying });
         }
-        return;
-      }
-      if (IS_TUTORIAL_PLAYER && tutorialViewerOpen && atEnd()) {
-        closeTutorialViewer({ completed: true });
         return;
       }
       const slide = currentSlide();
