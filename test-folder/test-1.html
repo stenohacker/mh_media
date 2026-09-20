@@ -4902,6 +4902,10 @@
       padding: calc(92px + .5rem) 0 calc(6.5rem + env(safe-area-inset-bottom));
     }
     body[data-mode="player"] [data-builder-only] { display: none !important; }
+    /* Published players use the site's border weights without box shadows. */
+    body[data-mode="player"] *,
+    body[data-mode="player"] *::before,
+    body[data-mode="player"] *::after { box-shadow: none !important; }
     body[data-mode="player"] .tutorial-page-links { margin-top: 1mm; }
     body[data-mode="player"] .tutorial-shell { margin-top: 0; }
     body[data-mode="player"] .reader-nav {
