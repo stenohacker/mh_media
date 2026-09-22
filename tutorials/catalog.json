@@ -345,6 +345,10 @@
           "type": "image"
         },
         {
+          "name": "scroll-1.png",
+          "type": "image"
+        },
+        {
           "name": "start-new-conversation.png",
           "type": "image"
         }

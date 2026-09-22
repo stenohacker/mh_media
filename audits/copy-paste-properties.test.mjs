@@ -2,7 +2,7 @@ import fs from 'node:fs';
 import assert from 'node:assert/strict';
 import vm from 'node:vm';
 
-const html = fs.readFileSync('/Users/tamchap/Dev/mh_media/tutorial-demo-builder-v2.html', 'utf8');
+const html = fs.readFileSync(process.argv[2] || '/Users/tamchap/Dev/mh_media/tutorial-demo-builder-v2.html', 'utf8');
 const runtime = [...html.matchAll(/<script\b([^>]*)>([\s\S]*?)<\/script>/gi)]
   .find((match) => match[2].includes('function deleteSelected()'))[2];
 
@@ -31,10 +31,12 @@ for (const kind of ['text', 'markup', 'slide-intro', 'callout', 'hotspot']) {
   assert.match(runtime, new RegExp(`(?:^|\\s|[,{])['\"]?${kind.replace('-', '\\-')}['\"]?\\s*:`), `${kind} property profile must exist`);
 }
 
-const shortcut = runtime.slice(runtime.indexOf('const formatPropertyShortcut'), runtime.indexOf('const objectGroupShortcut'));
+const shortcut = functionBody('onFormatPropertyKeyDown');
 assert.match(shortcut, /event\.shiftKey/);
-assert.match(shortcut, /\["c", "v"\]/);
-assert.match(shortcut, /formatPropertyKind\(state\.ui\.selectedKind, selectedObject\(\)\)/);
+assert.match(shortcut, /key === "c" \? "copy" : key === "v" \? "paste"/);
+assert.match(shortcut, /selectedObject\(\)/);
+assert.match(runtime, /addEventListener\("keydown", onFormatPropertyKeyDown, true\)/);
+assert.match(shortcut, /stopImmediatePropagation/);
 
 const copy = functionBody('copySelectedFormatProperties');
 assert.match(copy, /FORMAT_PROPERTY_KEYS\[kind\]/);
@@ -43,7 +45,7 @@ assert.match(copy, /Copied.*properties/);
 const paste = functionBody('pasteSelectedFormatProperties');
 assert.match(paste, /formatPropertyKind\(kind, item\) === formatPropertiesClipboard\.kind/);
 assert.match(paste, /target\[key\] = value/);
-assert.match(paste, /commit\(`Applied/);
+assert.match(paste, /commit\(`Pasted/);
 
 const profiles = runtime.match(/const FORMAT_PROPERTY_KEYS = Object\.freeze\(\{[\s\S]*?\n    \}\);/)?.[0];
 assert(profiles, 'property profiles must be extractable');
@@ -108,10 +110,20 @@ Object.assign(context, {
   undoLastChange:()=>{context.command='undo';},redoLastChange:()=>{context.command='redo';},
 });
 context.source={type:'text'}; context.state.ui.selectedKind='annotation';
-vm.runInContext(functionSource('onKeyDown'),context);
+vm.runInContext(functionSource('onFormatPropertyKeyDown')+'\n'+functionSource('onKeyDown'),context);
 for(const meta of [false,true]) for(const [key,shift,expected] of [['c',true,'copy'],['v',true,'paste'],['z',false,'undo'],['z',true,'redo']]) {
   let prevented=false;
   context.onKeyDown({key,shiftKey:shift,metaKey:meta,ctrlKey:!meta,altKey:false,target:{id:'',closest:()=>null,isContentEditable:false},preventDefault(){prevented=true;}});
   assert.equal(context.command,expected); assert(prevented);
+}
+// Real dispatcher must consume repeats without executing again, ignore composition,
+// and leave unrelated editable fields' browser shortcuts alone.
+for(const modifier of ['ctrlKey','metaKey'])for(const key of ['c','v']){
+ const event={key:key.toUpperCase(),shiftKey:true,ctrlKey:false,metaKey:false,altKey:false,[modifier]:true,target:{closest:()=>null,isContentEditable:false},preventDefault(){this.prevented=true;},stopImmediatePropagation(){this.stopped=true;}};
+ context.command='';assert.equal(context.onFormatPropertyKeyDown(event),true);assert(event.prevented&&event.stopped);assert.equal(context.command,key==='c'?'copy':'paste');
+ context.command='';assert.equal(context.onFormatPropertyKeyDown({...event,repeat:true}),true);assert.equal(context.command,'');
+ assert.equal(context.onFormatPropertyKeyDown({...event,isComposing:true}),false);
+ const field={closest:selector=>selector==='input,textarea,select'?{}:null,isContentEditable:false};
+ assert.equal(context.onFormatPropertyKeyDown({...event,target:field}),false);
 }
 console.log('Passed: actual Ctrl/Cmd property and undo/redo shortcuts; scalar profiles for text, drawn shapes, artwork shapes, cards and hotspots; geometry/content preservation; JavaScript parses.');
