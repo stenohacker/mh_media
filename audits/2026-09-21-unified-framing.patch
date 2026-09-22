@@ -1,0 +1,257 @@
+--- backups/2026-09-21-before-unified-tutorial-framing/tutorial-demo-builder-v2.html
++++ tutorial-demo-builder-v2.html
+@@ -3460,8 +3460,8 @@
+     .annotation-callout .numbered-list {
+       padding-left: 2cqw;
+     }
+-    .annotation-slide-intro .mixed-body > * + *,
+-    .annotation-callout .mixed-body > * + *,
++    .annotation-slide-intro .mixed-body > :not(.mixed-body-line) + :not(.mixed-body-line),
++    .annotation-callout .mixed-body > :not(.mixed-body-line) + :not(.mixed-body-line),
+     .annotation-slide-intro .mixed-body-line.is-pipe + .mixed-body-line.is-pipe,
+     .annotation-slide-intro .mixed-body-line.is-numbered + .mixed-body-line.is-numbered,
+     .annotation-callout .mixed-body-line.is-pipe + .mixed-body-line.is-pipe,
+@@ -6583,6 +6583,70 @@
+       .scroll-browser-close { width: 32px; min-width: 32px; height: 32px; min-height: 32px; font-size: 21px; }
+       .scroll-image-modal-caret { bottom: 8px; width: 72px; min-width: 72px; height: 66px; min-height: 66px; }
+     }
++
++    /* Approved tutorial framing: white page, lavender surround, white frame,
++       inner canvas, and navigation bounded by the same frame. */
++    .tutorial-layout-viewport { position: relative; margin-inline: auto; }
++    body[data-mode] .tutorial-shell.framed-tutorial {
++      position: absolute; inset: 0 auto auto 0;
++      width: 1616px; height: auto; max-width: none; min-height: 0;
++      display: block; margin: 0; padding: 30px 52px 0;
++      border: 2px solid #000;
++      background: linear-gradient(180deg, #f7f5ff 0%, #e3e6fc 44%, #b7c7f4 100%);
++      transform: scale(var(--tutorial-frame-scale, 1)); transform-origin: 0 0;
++      overflow: visible; box-shadow: none;
++    }
++    .framed-tutorial .tutorial-frame { width: 1508px; border: 4px solid #000; background: #fff; }
++    body[data-mode] .framed-tutorial .tutorial-body,
++    body[data-mode] .framed-tutorial .tutorial-body .stage-wrap {
++      position: relative; display: block; width: 1500px;
++      height: var(--tutorial-scene-height); min-height: 0; max-height: none;
++      margin: 0; padding: 0; background: #fff; overflow: visible;
++      --popup-scene-scale: 1;
++    }
++    body[data-mode] .framed-tutorial .tutorial-body .stage-wrap > .stage {
++      position: relative; left: 0; top: 0; width: 1500px !important;
++      height: var(--tutorial-scene-height) !important;
++      min-height: 0 !important; max-height: none !important; max-width: none;
++      transform: none; aspect-ratio: auto; background: #fff; box-shadow: none;
++    }
++    .framed-tutorial .slide-device-frame img { visibility: hidden; }
++    .framed-tutorial .slide-device-frame::after {
++      left: 1.3%; top: 2.3%; width: 97.4%; height: 95.4%; border: 4px solid #000;
++    }
++    body[data-mode] .framed-tutorial .reader-nav {
++      position: relative; inset: auto; transform: none;
++      display: flex; width: 100%; height: 104px; min-height: 104px;
++      padding: 16px 94px; gap: 16px; border: 0; border-top: 4px solid #000;
++      background: #fff;
++    }
++    body[data-mode] .framed-tutorial .reader-nav :is(.nav-button, .contents-button) {
++      width: 240px; height: 68px; min-width: 0; min-height: 0;
++      padding: 8px 14px; border: 4px solid #000; gap: 14px;
++      font-size: 28px; line-height: 1; background: var(--yellow);
++    }
++    .framed-tutorial .reader-nav .contents-button svg { width: 32px; height: 32px; }
++    .framed-tutorial .tutorial-open-cover {
++      inset: calc(2.3% + 4px) calc(1.3% + 4px);
++    }
++    .framed-tutorial .tutorial-viewer-close {
++      top: 4px; right: 4px; width: 40px; height: 40px; min-width: 0; min-height: 0;
++      border-width: 2px; font-size: 28px;
++    }
++    body[data-mode="builder"] .builder-toolbar {
++      position: relative; top: auto; width: 1536px; max-width: none;
++      zoom: var(--tutorial-toolbar-scale, 1);
++    }
++    .builder-toolbar :is(.shape-nav-panel, .toolbar-popup) {
++      zoom: calc(1 / var(--tutorial-toolbar-scale, 1));
++    }
++    body[data-mode="player"][data-tutorial-viewer] .builder-app {
++      position: relative; inset: auto; width: 100%; height: auto;
++      min-height: 100dvh; display: block; overflow: visible; background: #fff;
++    }
++    body[data-mode="player"][data-tutorial-viewer="open"] { overflow: hidden; }
++    body[data-mode="player"] .framed-tutorial .stage-wrap { overflow: hidden; }
++
+     /* Author-approved card designs and shared toolbar editing. */
+     .annotation-callout .object-frame::before { background: var(--yellow); }
+     .annotation-callout .object-frame { padding: 0; gap: 0; grid-template-rows: auto minmax(0, 1fr); box-shadow: none; }
+@@ -10510,21 +10574,26 @@
+       const selected = selectedObject();
+       const coverSlide = isDemoCoverSlide();
+       const centeredSlide = isDemoCenteredSlide(slide);
++      const framedTutorial = !IS_DEMO_PLAYER && !IS_READING_EXPORT;
+       root.innerHTML = `
+ 	        <div class="builder-app ${coverSlide ? "has-demo-cover" : ""} ${centeredSlide ? "has-demo-centered-slide" : ""}">
+ 	          ${MODE === "player" && !IS_DEMO_PLAYER ? renderSiteHeader() : ""}
+ 	          ${MODE === "builder" ? renderToolbar(slide, selected) : ""}
+ 	          ${MODE === "builder" ? renderDraftMorePopover() : ""}
+-	          <main class="tutorial-shell ${coverSlide ? "is-demo-cover" : ""} ${centeredSlide ? "is-demo-centered-slide" : ""}" aria-label="Interactive demo">
++	          ${framedTutorial ? `<div class="tutorial-layout-viewport" style="--tutorial-scene-height:${slideSceneHeight()}px">` : ""}
++          <main class="tutorial-shell ${framedTutorial ? "framed-tutorial" : ""} ${coverSlide ? "is-demo-cover" : ""} ${centeredSlide ? "is-demo-centered-slide" : ""}" aria-label="Interactive demo">
+             ${renderDemoPlayerChrome()}
+             ${renderTutorialViewerControls()}
++            ${framedTutorial ? '<div class="tutorial-frame">' : ""}
+             ${coverSlide ? `<div class="tutorial-title" ${MODE === "builder" ? 'contenteditable="true" role="textbox" aria-label="Demo title" data-bind="tutorial.title"' : ""} data-placeholder="DEMO TITLE">${escapeHtml(state.tutorial.title).replace(/\r?\n/g, "<br>")}</div>` : ""}
+             <div class="tutorial-body ${slide.kind === "video" ? "is-video" : ""} ${slide.kind === "scroll" ? "is-scroll" : ""} ${coverSlide ? "is-demo-cover" : ""} ${centeredSlide ? "is-demo-centered-slide" : ""}">
+               ${slide.kind === "video" || coverSlide ? "" : renderSidebar(slide)}
+               ${renderStage(slide)}
+             </div>
+             ${IS_DEMO_PLAYER ? renderDemoPlaybackControls() : renderReaderNav()}
++            ${framedTutorial ? "</div>" : ""}
+ 	          </main>
++          ${framedTutorial ? "</div>" : ""}
+           ${MODE === "player" && !IS_DEMO_PLAYER ? renderTutorialPageLinks() : ""}
+           ${MODE === "builder" ? renderMetadata() + renderMediaDropZone() : ""}
+           ${renderContentsModal()}
+@@ -10536,6 +10605,7 @@
+       syncRuntimeMedia();
+       scheduleDemoStageSize();
+       scheduleBuilderStageFit();
++      observeTutorialFrameChrome();
+       scheduleTextCardAutoFit();
+       if (activeBinding && activeRange) {
+         const [field, id] = activeBinding.split(":");
+@@ -10627,7 +10697,8 @@
+     }
+ 
+     function scheduleDemoStageSize() {
+-      if (MODE !== "player") return;
++      if (MODE !== "player" || IS_READING_EXPORT) return;
++      if (IS_TUTORIAL_PLAYER) { scheduleTutorialFrameFit(); return; }
+       cancelAnimationFrame(demoStageSizeFrame);
+       demoStageSizeFrame = requestAnimationFrame(() => {
+         demoStageSizeFrame = 0;
+@@ -10696,23 +10767,62 @@
+       });
+     }
+ 
+-    function scheduleBuilderStageFit() {
+-      if (MODE !== "builder") return;
++    // Builder and tutorial HTML use the same design-size frame. One scale
++    // includes its border, canvas, surround, and navigation, so they cannot
++    // independently stretch or letterbox. This never modifies authored data.
++    function observeTutorialFrameChrome() {
++      if (IS_DEMO_PLAYER || IS_READING_EXPORT) return;
++      observeTutorialFrameChrome.observer?.disconnect();
++      const observer = new ResizeObserver(scheduleTutorialFrameFit);
++      observeTutorialFrameChrome.observer = observer;
++      root.querySelectorAll(".builder-toolbar, .site-header").forEach(node => observer.observe(node));
++    }
++
++    function scheduleTutorialFrameFit() {
++      if (IS_DEMO_PLAYER || IS_READING_EXPORT) return;
+       cancelAnimationFrame(builderStageFitFrame);
+       builderStageFitFrame = requestAnimationFrame(() => {
+         builderStageFitFrame = 0;
+-        const shell = root.querySelector(".tutorial-shell");
+-        if (!shell) return;
+-
+-        // The builder and its toolbar share the same page-width contract. Do
+-        // not shrink the authored frame merely to keep it above the viewport
+-        // fold; that made the editing surface much smaller than the HTML
+-        // player and left most of a wide monitor unused. A full-width canvas
+-        // may extend below the fold, where normal page scrolling provides the
+-        // additional vertical room without changing any authored geometry.
+-        shell.style.removeProperty("width");
++        const viewport = root.querySelector(".tutorial-layout-viewport");
++        const shell = viewport?.querySelector(".framed-tutorial");
++        const stage = shell?.querySelector("[data-stage]");
++        if (!viewport || !shell || !stage) return;
++        const app = root.querySelector(".builder-app");
++        const toolbar = root.querySelector(".builder-toolbar");
++        const header = root.querySelector(".site-header");
++        const headerHeight = header?.getBoundingClientRect().height || 0;
++        const viewportWidth = document.documentElement.clientWidth || innerWidth;
++        const viewportHeight = document.documentElement.clientHeight || innerHeight;
++        const pageGap = Math.max(12, Math.min(32, viewportWidth * .03));
++        const toolbarGap = MODE === "builder" ? 28 : 0;
++        const sceneHeight = slideSceneHeight();
++        const designWidth = 1616;
++        const designHeight = sceneHeight + 146; // surround 30, borders 12, nav 104
++        const scale = Math.max(.01, Math.min(
++          (viewportWidth - 2 * pageGap) / designWidth,
++          (viewportHeight - 2 * pageGap) / designHeight
++        ));
++        app.style.setProperty("--tutorial-toolbar-scale", String(scale));
++        viewport.style.width = `${designWidth * scale}px`;
++        viewport.style.height = `${designHeight * scale}px`;
++        viewport.style.marginTop = `${toolbarGap}px`;
++        shell.style.setProperty("--tutorial-frame-scale", String(scale));
++        shell.style.setProperty("--tutorial-scene-height", `${sceneHeight}px`);
++        shell.dataset.frameScale = String(scale);
++        stage.dataset.compositionScale = String(scale);
++        // The toolbar/header never participate in the scale calculation.
++        // Builder and export at the same viewport must have identical widths.
++        // Header removal moves the same-sized frame upward after Start. The
++        // opening cover may extend below the fold while the header is visible.
++        app.style.paddingTop = `${pageGap + (MODE === "player" ? headerHeight : 0)}px`;
++        app.style.paddingBottom = `${pageGap}px`;
+         requestAnimationFrame(syncSelectionControls);
+       });
++    }
++
++    function scheduleBuilderStageFit() {
++      if (MODE !== "builder") return;
++      scheduleTutorialFrameFit();
+     }
+ 
+     function fitRenderedTextCardsToContent({ forceIds = null } = {}) {
+@@ -10728,7 +10838,8 @@
+           const shouldFit = Boolean(forceIds?.has(annotation.id));
+           if (shouldFit) {
+             object.classList.add("is-measuring-text-height");
+-            const naturalHeight = frame.getBoundingClientRect().height;
++            const displayScale = stage.getBoundingClientRect().height / stageHeight || 1;
++            const naturalHeight = frame.getBoundingClientRect().height / displayScale;
+             object.classList.remove("is-measuring-text-height");
+             const previousHeight = Number(annotation.h) || 1;
+             const desiredHeight = clamp((naturalHeight + 2) * 100 / stageHeight, 1, 90);
+@@ -11189,6 +11300,7 @@
+             ${stageContent}
+             ${renderSlideNarrationControl(slide)}
+             ${renderDemoVideoSoundGate()}
++            ${IS_TUTORIAL_PLAYER && !IS_READING_EXPORT ? renderTutorialOpeningCover() : ""}
+           </div>
+         </div>
+       `;
+@@ -11801,7 +11913,7 @@
+       `;
+     }
+ 
+-    function renderTutorialViewerControls() {
++    function renderTutorialOpeningCover() {
+       if (!IS_TUTORIAL_PLAYER) return "";
+       const openLabel = "Start";
+       return `
+@@ -11809,8 +11921,12 @@
+           <button type="button" class="tutorial-open-button" data-action="open-tutorial-viewer" aria-label="${openLabel}">
+             <span aria-hidden="true">↗</span>${openLabel}
+           </button>
+-        </div>
+-        <button type="button" class="tutorial-viewer-close" data-action="close-tutorial-viewer" aria-label="Close tutorial" title="Close tutorial">×</button>
++        </div>`;
++    }
++
++    function renderTutorialViewerControls() {
++      if (!IS_TUTORIAL_PLAYER) return "";
++      return `<button type="button" class="tutorial-viewer-close" data-action="close-tutorial-viewer" aria-label="Close tutorial" title="Close tutorial">×</button>
+       `;
+     }
+ 
+@@ -12892,6 +13008,9 @@
+       });
+       window.addEventListener("resize", sizeActiveVideoModal);
+       window.addEventListener("resize", scheduleDemoStageSize);
++      if (!IS_DEMO_PLAYER && !IS_READING_EXPORT) {
++        new ResizeObserver(scheduleTutorialFrameFit).observe(root);
++      }
+       if (MODE === "player") {
+         const observer = new ResizeObserver(scheduleDemoStageSize);
+         observer.observe(root);

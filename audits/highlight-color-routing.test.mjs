@@ -40,7 +40,7 @@ const cardControls = functionBody('renderWordFormatButtons');
 assert.match(cardControls, /highlightPalette\(wordHighlightColor\)/);
 
 assert.match(runtime, /menu\('C10','Selected words highlight',highlightPalette\(wordHighlightColor\)/);
-assert.match(runtime, /menu\('C11','Selected words underline',toolbarPalette\('underline',wordUnderlineColor\)/);
+assert.match(runtime, /menu\('C11','Underline',toolbarPalette\('underline',wordUnderlineColor\)/);
 
 for (const binding of ['hotspot.body:', 'annotation.introBody:', 'annotation.calloutBody:']) {
   assert(runtime.includes(binding), `${binding} must remain wired`);

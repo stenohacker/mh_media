@@ -8,11 +8,10 @@ const runtime = [...html.matchAll(/<script\b([^>]*)>([\s\S]*?)<\/script>/gi)]
 new vm.Script(runtime);
 
 assert.match(html, /\.annotation-slide-intro \.object-frame[\s\S]*?padding: var\(--intro-card-inset\)/);
-assert.match(html, /\.annotation-callout \.object-frame[\s\S]*?padding: var\(--callout-card-inset\)/);
-assert.match(html, /\.standalone-callout-card__title[\s\S]*?background: var\(--callout-header-color, var\(--black\)\)/);
-assert.match(html, /\.standalone-callout-card__title[\s\S]*?color: var\(--callout-header-ink, var\(--white\)\)/);
-assert.match(html, /\.slide-sidebar\.is-demo-popup[\s\S]*?padding: 3px/);
-assert.match(html, /\.slide-sidebar\.is-demo-popup \.hotspot-row[\s\S]*?margin: 0;[\s\S]*?background: var\(--hotspot-color, var\(--black\)\)/);
-assert.match(runtime, /item\.calloutHeaderColor \|\| "#000000"/);
-
-console.log('Passed: title, callout, and hotspot cards share the inset outer frame and top-header treatment; JavaScript parses.');
+assert.match(html, /\.annotation-callout \.object-frame::before[\s\S]*?content: ""[\s\S]*?border-right:/);
+assert.match(html, /\.annotation-callout \.object-frame::before \{ background: var\(--yellow\)/);
+assert.match(html, /\.standalone-callout-card__title[\s\S]*?background: transparent;[\s\S]*?color: var\(--black\)/);
+assert.match(html, /\.slide-sidebar\.is-demo-popup \.hotspot-row__title[\s\S]*?border: 1px solid var\(--black\);[\s\S]*?background: var\(--white\)/);
+assert.match(runtime, /function cardTextTarget\(/);
+assert.match(runtime, /referenceCardShadow \? item\.cardShadow !== false : item\.imageShadow/);
+console.log('Passed: original left-strip callout, inset white hotspot title, title-card header, and controllable card shadows; JavaScript parses.');

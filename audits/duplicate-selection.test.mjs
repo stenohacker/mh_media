@@ -1,0 +1,21 @@
+import fs from 'node:fs';import vm from 'node:vm';import assert from 'node:assert/strict';
+const html=fs.readFileSync(process.argv[2]||new URL('../tutorial-demo-builder-v2.html',import.meta.url),'utf8');
+const runtime=[...html.matchAll(/<script\b[^>]*>([\s\S]*?)<\/script>/gi)].map(m=>m[1]).find(s=>s.includes('function duplicateSelectedItems()'));new vm.Script(runtime);
+const fn=name=>{const start=runtime.indexOf(`    function ${name}(`);assert(start>=0,name);return runtime.slice(start,runtime.indexOf('\n    }',start)+6);};
+let id=0,syncCount=0,blurCount=0;
+const slide={annotations:[],hotspots:[]};
+const context=vm.createContext({MODE:'builder',state:{ui:{}},multiSelection:[],currentSlide:()=>slide,clone:structuredClone,uid:type=>`${type}-${++id}`,topZ:()=>Math.max(0,...[...slide.annotations,...slide.hotspots].map(i=>i.z||0)),fitStageObjectBounds:i=>i,normalizeAnnotation:i=>i,normalizeHotspot:i=>i,renumberHotspots(){},commit(){},showToast(){},syncLiveEditableBeforeRender(){syncCount++;},document:{activeElement:{blur(){blurCount++;}}},rememberWordSelection:{saved:{}},selectedLineLabelId:'',imageCropEditId:''});
+vm.runInContext(['selectionKey','selectionEntry','syncObjectSelection','selectedObjects','clipFrameMembers','duplicateSelectedItems'].map(fn).join('\n'),context);
+const one={id:'one',type:'text',x:20,y:30,w:25,h:10,z:8,text:'One',richText:{text:{html:'<b>One</b>'}},objectGroupId:'',contentScale:1.4};const two={id:'two',type:'text',x:60,y:30,w:20,h:8,z:2,text:'Two',objectGroupId:''};
+slide.annotations=[structuredClone(one),structuredClone(two)];context.multiSelection=['annotation:one','annotation:two'];context.state.ui={selectedId:'two',selectedKind:'annotation'};
+context.duplicateSelectedItems();assert.equal(slide.annotations.length,4);assert.equal(context.multiSelection.length,2);assert(syncCount>0&&blurCount>0);
+assert.deepEqual(slide.annotations[0],one);assert.deepEqual(slide.annotations[1],two);
+const copies=slide.annotations.slice(2);for(const copy of copies){const original=[one,two].find(o=>o.text===copy.text);assert.equal(copy.x-original.x,2.5);assert.equal(copy.y-original.y,2.5);assert.equal(copy.w,original.w);assert.equal(copy.h,original.h);assert.equal(copy.objectGroupId,'');assert.equal(JSON.stringify(copy.richText),JSON.stringify(original.richText));assert(context.multiSelection.includes(`annotation:${copy.id}`));}
+assert(copies.find(a=>a.text==='One').z>copies.find(a=>a.text==='Two').z);assert.equal(context.state.ui.selectedId,copies.find(a=>a.text==='Two').id);
+context.duplicateSelectedItems();assert.equal(slide.annotations.length,6);assert.equal(context.multiSelection.length,2);
+// A selected clipping frame brings its members exactly once and remaps ownership.
+slide.annotations=[{id:'frame',type:'clip-frame',x:50,y:40,w:20,h:20,z:1},{id:'member',type:'image',clipFrameId:'frame',x:50,y:40,w:18,h:18,z:2,cropX:20}];context.multiSelection=['annotation:frame','annotation:member'];context.state.ui={selectedKind:'annotation',selectedId:'frame'};context.duplicateSelectedItems();assert.equal(slide.annotations.length,4);assert.equal(slide.annotations[3].clipFrameId,slide.annotations[2].id);assert.equal(slide.annotations[3].cropX,20);
+// Group movement uses the existing selection, excludes locked items, and changes no membership.
+const selected=[{kind:'annotation',id:'a',item:{id:'a',type:'text',x:10,y:20,objectGroupId:''}},{kind:'annotation',id:'b',item:{id:'b',type:'text',x:40,y:30,objectGroupId:''}}];let capture=false,prevent=false;const stage={getBoundingClientRect:()=>({width:1000,height:600})};const handle={closest:()=>stage,setPointerCapture(){capture=true;}};
+context.transformSelectionEntries=()=>selected;context.state.ui={selectedKind:'annotation',selectedId:'b'};context.drag=null;vm.runInContext(fn('beginGroupMove'),context);context.beginGroupMove({pointerId:1,clientX:30,clientY:40,preventDefault(){prevent=true;}},handle);assert(capture&&prevent);assert.equal(context.drag.groupOriginals.length,2);assert.equal(context.drag.handle,'move');assert.equal(context.drag.id,'b');assert(selected.every(e=>e.item.objectGroupId===''));
+console.log('PASS duplicate ungrouped selections, preserve originals/content/spacing/stacking, repeat duplication, remap clipping frames, and initiate shared Move-handle drags.');

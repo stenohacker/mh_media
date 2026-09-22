@@ -9,8 +9,8 @@ const runtime = [...html.matchAll(/<script\b([^>]*)>([\s\S]*?)<\/script>/gi)]
 new vm.Script(runtime);
 
 const leftCenter = runtime.indexOf("['left','center'].forEach");
-const pipeButton = runtime.indexOf('data-action="toggle-annotation-pipe-list"', leftCenter);
-const numberedButton = runtime.indexOf('data-action="toggle-annotation-numbered-list"', leftCenter);
+const pipeButton = runtime.indexOf('data-action="toggle-toolbar-pipe-list"', leftCenter);
+const numberedButton = runtime.indexOf('data-action="toggle-toolbar-numbered-list"', leftCenter);
 const objectAlignment = runtime.indexOf("['left','center','middle','right','top','bottom'].forEach", leftCenter);
 assert(leftCenter >= 0 && pipeButton > leftCenter && numberedButton > pipeButton && objectAlignment > numberedButton,
   'plain-text list buttons must sit directly after Text left and Text center');
@@ -36,8 +36,8 @@ assert.match(runtime, /renderContentsPreviewText\(annotation\)/);
 assert.match(runtime, /function savedWordLines\(item, field\)/);
 assert.match(runtime, /saved\.text == null && typeof saved\.html === "string"/);
 assert.match(runtime, /if \(savedText === currentText\) return \{ \.\.\.saved, text: item\?\.\[field\] \}/);
-assert.match(runtime, /if \(Array\.isArray\(saved\?\.lines\)\) return saved\.lines/);
-assert.match(runtime, /holder\.innerHTML = safeWordHtml\(saved\.html\)/);
+assert(runtime.includes('saved.lines.map(line => safeWordHtml(line)).join("<br>")'), 'Saved row formatting also supports internal soft breaks');
+assert(runtime.includes('normalizeMultilineText(node.textContent).split("\\n").forEach'), 'Soft breaks expand to physical lines without duplicating later rows');
 assert.match(runtime, /const richLines = target \? savedWordLines\(target\.item, target\.field\) : null/);
 assert.match(html, /\.contents-preview-text-line\.is-pipe::before/);
 assert.match(html, /\.contents-preview-text-line\.is-numbered::before/);

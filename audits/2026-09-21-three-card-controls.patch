@@ -1,0 +1,826 @@
+--- before/tutorial-demo-builder-v2.html
++++ after/tutorial-demo-builder-v2.html
+@@ -3379,37 +3379,41 @@
+       max-height: none;
+     }
+     .annotation-callout .object-frame {
+-      --callout-card-inset: max(2px, .266667cqw);
+       position: relative;
+       height: 100%;
+       min-height: 0;
+       display: grid;
+-      grid-template-rows: auto minmax(0, auto);
+-      gap: var(--callout-card-inset);
++      grid-template-rows: auto minmax(0, 1fr);
+       border: max(1px, .2cqw) solid var(--black);
+-      padding: var(--callout-card-inset);
+       background: var(--white);
+       box-shadow: var(--shadow-medium);
+       overflow: hidden;
+       font-family: var(--body);
+     }
+     .annotation-callout .object-frame::before {
+-      content: none;
++      content: "";
++      position: absolute;
++      z-index: 0;
++      inset: 0 auto 0 0;
++      width: 1.2cqw;
++      border-right: max(1px, .133333cqw) solid var(--black);
++      background: var(--callout-header-color, var(--yellow));
++      pointer-events: none;
+     }
+     .annotation-callout[data-text-style="hand"] .object-frame { font-family: var(--hand); }
+     .standalone-callout-card__title {
+       position: relative;
+       z-index: 1;
+       min-height: 0;
+-      padding: .466667cqw .933333cqw;
++      padding: .8cqw 1.2cqw .333333cqw 2cqw;
+       border: 0;
+-      background: var(--callout-header-color, var(--black));
+-      color: var(--callout-header-ink, var(--white));
++      background: transparent;
++      color: var(--black);
+       font-size: var(--card-title-font-size, 1.266667cqw);
+       font-weight: 700;
+-      line-height: 1.15;
+-      letter-spacing: var(--text-letter-spacing, .025em);
+-      text-transform: uppercase;
++      line-height: var(--text-line-height, 1.25);
++      letter-spacing: var(--text-letter-spacing, .02em);
++      text-transform: none;
+       overflow-wrap: anywhere;
+       outline: 0;
+     }
+@@ -3427,8 +3431,8 @@
+     }
+     .standalone-callout-card__body {
+       min-height: 0;
+-      padding: 1cqw 1.133333cqw;
+-      background: var(--white);
++      padding: .4cqw 1.2cqw .9cqw 2cqw;
++      background: transparent;
+       font-size: var(--card-body-font-size, 1.133333cqw);
+       font-weight: 400;
+       letter-spacing: var(--text-letter-spacing, 0);
+@@ -3820,7 +3824,7 @@
+     .annotation-magnifier > .magnifier-viewport { border-width: var(--object-outline-width, 3px); border-color: var(--object-outline-color, #000000); box-shadow: none; }
+     .contents-preview-object { filter: var(--object-shadow-preview, none) !important; }
+     .annotation-slide-intro .slide-intro-card__title { color: var(--appearance-text, #ffffff); }
+-    .annotation-callout .standalone-callout-card__title { color: var(--callout-header-ink, #ffffff); }
++    .annotation-callout .standalone-callout-card__title { color: var(--appearance-text, #000000); }
+     .annotation-slide-intro .slide-intro-card__title,
+     .annotation-callout .standalone-callout-card__title { font-weight: 700; }
+     .annotation-slide-intro .slide-intro-card__body,
+@@ -6579,6 +6583,63 @@
+       .scroll-browser-close { width: 32px; min-width: 32px; height: 32px; min-height: 32px; font-size: 21px; }
+       .scroll-image-modal-caret { bottom: 8px; width: 72px; min-width: 72px; height: 66px; min-height: 66px; }
+     }
++    /* Author-approved card designs and shared toolbar editing. */
++    .annotation-callout .object-frame::before { background: var(--yellow); }
++    .annotation-callout .object-frame { padding: 0; gap: 0; grid-template-rows: auto minmax(0, 1fr); box-shadow: none; }
++    .annotation-slide-intro .object-frame { grid-template-rows: auto minmax(0, 1fr); box-shadow: none; }
++    .annotation-slide-intro .slide-intro-card__body-field,
++    .annotation-callout .standalone-callout-card__body-field { grid-template-rows: minmax(0, 1fr); }
++    .annotation-slide-intro .slide-intro-card__title,
++    .annotation-callout .standalone-callout-card__title { align-self: start; text-transform: none; }
++    .annotation-slide-intro .slide-intro-card__body,
++    .annotation-callout .standalone-callout-card__body { height: 100%; }
++    .annotation-slide-intro[data-intro-title-only="true"],
++    .annotation-callout[data-card-title-only="true"] { height: auto !important; }
++    .annotation-slide-intro[data-intro-title-only="true"] .object-frame,
++    .annotation-callout[data-card-title-only="true"] .object-frame { height: auto !important; grid-template-rows: auto; }
++    .annotation-slide-intro[data-intro-title-only="true"] .slide-intro-card__body-field,
++    .annotation-callout[data-card-title-only="true"] .standalone-callout-card__body-field { display: none; }
++    .tutorial-body.is-demo-centered-slide .slide-sidebar.is-demo-popup {
++      padding: calc(10px * var(--popup-display-scale, 1));
++      box-shadow: var(--card-popup-shadow, none);
++    }
++    .tutorial-body.is-demo-centered-slide .slide-sidebar.is-demo-popup .hotspot-row {
++      border: 2px solid var(--black); padding: 4px; margin: 0; min-height: 0;
++    }
++    .tutorial-body.is-demo-centered-slide .slide-sidebar.is-demo-popup .hotspot-row__title {
++      display: block; min-height: 0; border: 1px solid var(--black);
++      padding: 4px 6px; color: var(--black); background: var(--white);
++    }
++    .tutorial-body.is-demo-centered-slide .slide-sidebar.is-demo-popup .hotspot-detail-panel {
++      grid-template-rows: minmax(0, 1fr); gap: 0; padding: 12px 8px 6px;
++    }
++    .tutorial-body.is-demo-centered-slide .slide-sidebar.is-demo-popup .hotspot-detail {
++      min-height: 0; border: 0; padding: 0; margin: 0;
++    }
++    .tutorial-body.is-demo-centered-slide .slide-sidebar.is-demo-popup.is-title-only { height: auto; max-height: none; }
++    .tutorial-body.is-demo-centered-slide .slide-sidebar.is-demo-popup.is-title-only .hotspot-entry { height: auto; grid-template-rows: auto; }
++    .popup-move-handle {
++      position: absolute; z-index: 80; top: 50%; transform: translateY(-50%);
++      border: 2px solid #000; padding: 3px 5px; background: #fff; color: #000;
++      font: 700 11px var(--sans); cursor: grab; touch-action: none; user-select: none;
++    }
++    .popup-move-handle--left { right: calc(100% + 12px); }
++    .popup-move-handle--right { left: calc(100% + 12px); }
++    .card-toolbar-controls { display: flex; align-items: center; gap: 5px; flex-wrap: wrap; padding: 4px 0; font: 600 12px var(--sans); }
++    .card-toolbar-controls button { min-height: 28px; padding: 3px 8px; border: 1px solid #000; font-size: 12px; box-shadow: none; }
++    .card-toolbar-controls button[aria-pressed="true"] { background: var(--yellow); }
++    @media print { .popup-move-handle, .card-toolbar-controls { display: none !important; } }
++
++    .contents-preview-card { padding: .266667cqw; box-shadow: none; }
++    .contents-preview-card-inner { display: grid; grid-template-rows: auto minmax(0, 1fr); width: 100%; height: 100%; }
++    .contents-preview-card.contents-preview-callout { border: max(1px, .2cqw) solid #000; padding: 0; background: #fff; }
++    .contents-preview-callout::before { content: ""; position: absolute; inset: 0 auto 0 0; width: 1.2cqw; border-right: max(1px, .133333cqw) solid #000; background: var(--yellow); }
++    .contents-preview-callout .contents-preview-card-title { padding: .8cqw 1.2cqw .333333cqw 2cqw; }
++    .contents-preview-callout .contents-preview-card-body { padding: .4cqw 1.2cqw .9cqw 2cqw; }
++    :is(.annotation-slide-intro, .annotation-callout).is-measuring-text-height > .object-frame { height: auto; grid-template-rows: auto auto; }
++    :is(.annotation-slide-intro, .annotation-callout).is-measuring-text-height :is(.slide-intro-card__body-field, .standalone-callout-card__body-field, .slide-intro-card__body, .standalone-callout-card__body) { height: auto; display: block; overflow: visible; }
++    .contents-preview-card.contents-preview-card--title-only { min-height: 0; background: #fff; }
++    .contents-preview-callout::before { width: calc(1.2cqw * var(--content-scale, 1)); }
+   </style>
+ </head>
+ <body data-mode="builder">
+@@ -6664,7 +6725,7 @@
+   </script>
+ 
+   <script id="png-export-runtime" src="scripts/html2canvas.min.js"></script>
+-  <script id="reading-export-runtime" src="scripts/tutorial-reading-export.js"></script>
++  <script id="reading-export-runtime" src="scripts/tutorial-reading-export.js?v=20260921-card-controls"></script>
+ 
+   <script>
+   (() => {
+@@ -7501,9 +7562,9 @@
+       text: ["textStyle", "textColor", "textFontSize", "textLetterSpacing", "textLineHeight", "textAlign", "contentScale", "opacity"],
+       markup: ["markupColor", "fillColor", "strokeWidth", "contentScale", "opacity", "markupCornerRadius", "outerOutlineWidth", "outerOutlineColor", "outlineEnabled", "imageShadow", "shadowHeight", "shadowFlipped", "lineLabelColor", "lineLabelBackground", "lineLabelFont", "lineLabelSize", "lineLabelLetterSpacing"],
+       shape: ["opacity", "imageShadow", "shadowHeight", "shadowFlipped", "outerOutlineWidth", "outerOutlineColor", "outlineEnabled", "appearanceColor", "cornerRadius"],
+-      "slide-intro": ["introAlign", "introBodyAlign", "introTitleOnly", "textFontSize", "textLetterSpacing", "textLineHeight", "contentScale", "cardTypographyVersion", "appearanceColor", "shadowHeight", "shadowFlipped", "outerOutlineWidth", "outerOutlineColor", "outlineEnabled"],
+-      callout: ["calloutAlign", "calloutBodyAlign", "textStyle", "textFontSize", "textLetterSpacing", "textLineHeight", "contentScale", "cardTypographyVersion", "appearanceColor", "calloutHeaderColor", "shadowHeight", "shadowFlipped", "outerOutlineWidth", "outerOutlineColor", "outlineEnabled"],
+-      hotspot: ["textAlign", "textLetterSpacing", "textLineHeight", "contentScale", "opacity", "imageShadow", "shadowHeight"]
++      "slide-intro": ["cardText", "cardShadow", "cardTitleOffset", "cardTitleOnly", "introAlign", "introBodyAlign", "introTitleOnly", "textFontSize", "textLetterSpacing", "textLineHeight", "contentScale", "cardTypographyVersion", "appearanceColor", "shadowHeight", "shadowFlipped", "outerOutlineWidth", "outerOutlineColor", "outlineEnabled"],
++      callout: ["cardText", "cardShadow", "cardTitleOffset", "cardTitleOnly", "calloutAlign", "calloutBodyAlign", "textStyle", "textFontSize", "textLetterSpacing", "textLineHeight", "contentScale", "cardTypographyVersion", "appearanceColor", "calloutHeaderColor", "shadowHeight", "shadowFlipped", "outerOutlineWidth", "outerOutlineColor", "outlineEnabled"],
++      hotspot: ["cardText", "cardShadow", "cardTitleOffset", "cardTitleOnly", "textAlign", "textLetterSpacing", "textLineHeight", "contentScale", "opacity", "imageShadow", "shadowHeight"]
+     });
+     let multiSelection = [];
+     let lastVideoTriggerId = null;
+@@ -9902,6 +9963,7 @@
+ 
+     function renderWordText(item, field) {
+       const saved = savedWordHtml(item, field);
++      if (Array.isArray(saved?.lines)) return renderMixedBodyContent(item[field], saved.lines);
+       return saved?.html != null
+         ? safeWordHtml(saved.html)
+         : escapeHtml(normalizeMultilineText(item?.[field])).replace(/\n/g, "<br>");
+@@ -9996,8 +10058,10 @@
+       if (!wholeField) return null;
+       // A caret targets its own field. A selected box targets its text, never an old selection.
+       if (!editor) {
++        const card = cardTextTarget();
+         const object = root.querySelector(`[data-object][data-id="${CSS.escape(state.ui.selectedId || '')}"]`);
+-        editor = object?.querySelector('[contenteditable="true"][data-bind]');
++        editor = card ? root.querySelector(`[contenteditable="true"][data-bind="${CSS.escape(card.binding)}"]`)
++          : object?.querySelector('[contenteditable="true"][data-bind]');
+       }
+       if (!editor || !wordColorTarget(editor.dataset.bind) || !editor.textContent.trim()) return null;
+       rememberWordSelection.saved = { binding: editor.dataset.bind, start: 0, end: editor.textContent.length, text: editor.textContent };
+@@ -10258,7 +10322,7 @@
+       const height = clamp(item.shadowHeight ?? 9, 0, 40);
+       const direction = item.shadowFlipped ? -1 : 1;
+       const referenceCardShadow = item.type === "callout" || item.type === "slide-intro";
+-      const shadowEnabled = referenceCardShadow || item.imageShadow;
++      const shadowEnabled = referenceCardShadow ? item.cardShadow !== false : item.imageShadow;
+       const shadow = shadowEnabled && height > 0 ? `drop-shadow(0 ${height * direction}px ${Math.max(1, height * .45)}px rgba(0,0,0,.28))` : "none";
+       const previewShadow = shadowEnabled && height > 0 ? `drop-shadow(0 ${height * .22 * direction}px ${Math.max(.5,height*.1)}px rgba(0,0,0,.28))` : "none";
+       const color = item.appearanceColor;
+@@ -10400,11 +10464,16 @@
+     function demoPopupClasses(slide) {
+       const hotspot = slide.hotspots.find((item) => item.id === state.ui.activeHotspotId);
+       if (!hotspot) return "is-demo-popup is-empty";
+-      const customSize = Number.isFinite(hotspot.popupH) ? " is-custom-size" : "";
++      const customSize = (Number.isFinite(hotspot.popupH) ? " is-custom-size" : "") + (cardIsTitleOnly(hotspot) ? " is-title-only" : "");
+       if (Number.isFinite(hotspot.popupX) && Number.isFinite(hotspot.popupY)) return "is-demo-popup is-custom-position" + customSize;
+       const horizontal = hotspot.x <= 50 ? "demo-popup-right" : "demo-popup-left";
+       const vertical = hotspot.y <= 50 ? "demo-popup-bottom" : "demo-popup-top";
+       return `is-demo-popup ${horizontal} ${vertical}${customSize}`;
++    }
++
++    function cardPopupShadow(hotspot) {
++      const h = clamp(Number(hotspot.shadowHeight) || 0, 0, 40);
++      return hotspot.cardShadow === false || !h ? "none" : `0 calc(${h}px * var(--popup-display-scale, 1)) calc(${Math.max(1,h*.45)}px * var(--popup-display-scale, 1)) rgba(0,0,0,.28)`;
+     }
+ 
+     function demoPopupStyle(slide) {
+@@ -10420,7 +10489,7 @@
+       const position = Number.isFinite(hotspot.popupX) && Number.isFinite(hotspot.popupY)
+         ? `;--popup-x:${hotspot.popupX}%;--popup-y:${hotspot.popupY}%`
+         : "";
+-      return ` style="--content-scale:${hotspot.contentScale || 1};--popup-width:${popupWidth};--popup-height:${Number.isFinite(hotspot.popupH) ? hotspot.popupH + "%" : "auto"}${position}"`;
++      return ` style="--card-popup-shadow:${cardPopupShadow(hotspot)};--content-scale:${hotspot.contentScale || 1};--popup-width:${popupWidth};--popup-height:${Number.isFinite(hotspot.popupH) ? hotspot.popupH + "%" : "auto"}${position}"`;
+     }
+ 
+     function render() {
+@@ -10884,7 +10953,10 @@
+       const range = (label,field,value,min,max,step=1,disabled=false) => `<label class="toolbar-slider">${label}<input type="range" data-toolbar-field="${field}" min="${min}" max="${max}" step="${step}" value="${value}" aria-label="${label}" ${disabled?'disabled':''}><output>${value}</output></label>`;
+       const markup = selected?.type === "markup", mag=selected?.type === "magnifier", text=selected?.type === "text";
+       const lineLabel = activeLineLabel();
+-      const textTarget = selected && ['text','slide-intro','callout'].includes(selected.type);
++      const cardTarget = cardTextTarget(selected);
++      const cardSettings = cardTarget ? cardFieldSettings(selected, cardTarget.part, cardTarget.kind) : null;
++      const textTarget = Boolean(text || cardTarget);
++      const listValue = cardTarget ? selected[cardTarget.field] : text ? selected.text : "";
+       const corner=selectedCornerAnnotation(), shadow=Boolean(selected);
+       const selection=selectedObjects(), arrangement=arrangementEntries(selection), grouping=objectGroupingSelection(selection);
+       const hotspotGrouping=hotspotGroupingSelection(selection);
+@@ -10918,9 +10990,9 @@
+       rows[1].push(menu('B4','Legacy scrolling slide controls',command('Choose scrolling image…','choose-scrolling-image')+command('Replace background…','replace-slide-image')+command('Apply default background','apply-current-default-background')+(slide.backgroundLayout ? '' : `<label>Viewport width<input id="scrollViewportWidth" type="number" min="${SCROLL_VIEWPORT_MIN_WIDTH}" max="100" value="${slide.scrollViewportWidth??SCROLL_DEFAULT_VIEWPORT_WIDTH}"></label>`),slide.kind!=='scroll'));
+       rows[1].push(menu('B5','Video/Demo duration override',`<label>Seconds (blank = audio or 5-second default)<input id="demoManualDuration" type="number" min="1" max="300" step="0.5" value="${slide.demo.manualDuration??''}" placeholder="5"></label>`));
+       [['B6','Zoom background out','media-zoom-out'],['B7','Zoom background in','media-zoom-in'],['B8','Background left','media-left'],['B9','Background up','media-up'],['B10','Background down','media-down'],['B11','Background right','media-right']].forEach(([k,t,a])=>rows[1].push(button(k,t,a)));
+-      ['left','center'].forEach((align,i)=>rows[1].push(button('B'+(12+i),'Text '+align,'toolbar-text-align',`data-value="${align}"`,!textTarget&&state.ui.selectedKind!=='hotspot')));
+-      rows[1].push(`<button class="numbered-toolbar-button numbered-toolbar-text-list-button ${text && bodyHasPipeLines(selected.text) ? "is-active" : ""}" type="button" data-tooltip="Pipe bullets for selected plain-text lines" aria-label="Toggle pipe bullets on selected plain-text lines" data-action="toggle-annotation-pipe-list" data-id="${escapeHtml(text ? selected.id : "")}" aria-pressed="${Boolean(text && bodyHasPipeLines(selected.text))}" ${text ? "" : "disabled"}><span aria-hidden="true">|</span></button>`);
+-      rows[1].push(`<button class="numbered-toolbar-button numbered-toolbar-text-list-button ${text && bodyHasNumberedLines(selected.text) ? "is-active" : ""}" type="button" data-tooltip="Number selected plain-text lines" aria-label="Toggle numbering on selected plain-text lines" data-action="toggle-annotation-numbered-list" data-id="${escapeHtml(text ? selected.id : "")}" aria-pressed="${Boolean(text && bodyHasNumberedLines(selected.text))}" ${text ? "" : "disabled"}><span aria-hidden="true">1.</span></button>`);
++      ['left','center'].forEach((align,i)=>rows[1].push(button('B'+(12+i),'Text '+align,'toolbar-text-align',`data-value="${align}"`,!textTarget)));
++      rows[1].push(`<button class="numbered-toolbar-button numbered-toolbar-text-list-button ${textTarget && bodyHasPipeLines(listValue) ? "is-active" : ""}" type="button" data-tooltip="Pipe bullets for current or selected text lines" aria-label="Toggle pipe bullets on current or selected text lines" data-action="toggle-toolbar-pipe-list" data-id="${escapeHtml(textTarget ? selected.id : "")}" aria-pressed="${Boolean(textTarget && bodyHasPipeLines(listValue))}" ${textTarget ? "" : "disabled"}><span aria-hidden="true">|</span></button>`);
++      rows[1].push(`<button class="numbered-toolbar-button numbered-toolbar-text-list-button ${textTarget && bodyHasNumberedLines(listValue) ? "is-active" : ""}" type="button" data-tooltip="Number current or selected text lines" aria-label="Toggle numbering on current or selected text lines" data-action="toggle-toolbar-numbered-list" data-id="${escapeHtml(textTarget ? selected.id : "")}" aria-pressed="${Boolean(textTarget && bodyHasNumberedLines(listValue))}" ${textTarget ? "" : "disabled"}><span aria-hidden="true">1.</span></button>`);
+       ['left','center','middle','right','top','bottom'].forEach((align,i)=>rows[1].push(button('B'+(14+i),'Align objects '+align,'align-'+align,'',arrangement.entries.length<1)));
+       rows[1].push(button('B20','Distribute horizontally','distribute-horizontal','',arrangement.entries.length<3),button('B21','Distribute vertically','distribute-vertical','',arrangement.entries.length<3),menu('B22','Preview',command('Video/Demo player','preview-demo')+command('Tutorial player','preview-slides')));
+       const lockOptions=(selected
+@@ -10936,9 +11008,11 @@
+       rows[2].push(`<button class="numbered-toolbar-button numbered-toolbar-browser-button ${selected?.browserFrame ? "is-active" : ""}" type="button" data-tooltip="Add or remove browser frame" aria-label="Add or remove browser frame around selected image" data-browser-frame-button data-id="${escapeHtml(selected?.id || "")}" ${selected && ["image", "gif"].includes(selected.type) ? "" : "disabled"}><img class="numbered-toolbar-art" src="images/builder-toolbar-buttons/browser-boarder-button.png" alt="" aria-hidden="true"></button>`);
+       rows[2].push(menu('C9',lineLabel?'Text color':'Main color',toolbarPalette('main',lineLabel?.lineLabelColor||(selected?selectedObjectColor(selected):mainTextColorDefault))),menu('C10','Selected words highlight',highlightPalette(wordHighlightColor)+command('Remove highlight','clear-word-highlight')),menu('C11','Underline',toolbarPalette('underline',wordUnderlineColor)+range('Underline thickness','wordUnderlineWidth',wordUnderlineWidth,.5,10,.5)+range('Underline offset','wordUnderlineOffset',wordUnderlineOffset,0,16,.5)+range('Straight → Hand-drawn','wordUnderlineHandDrawn',wordUnderlineHandDrawn,0,100)+command('Toggle underline','toolbar-underline')));
+       rows[2].push(menu('C12',lineLabel?'Text background':'Background fill',toolbarPalette('background',lineLabel?.lineLabelBackground||slide.backgroundFill||slide.media.matte||'#ffffff')),menu('C13','Object transparency',range('Opacity %','opacity',(selected?.opacity??1)*100,10,100),!selected));
+-      [['C14','regular','regular'],['C15','handwriting','hand'],['C16','reversed Impact','impact-label-reversed'],['C17','Impact','impact-label']].forEach(([k,t,style])=>rows[2].push(button(k,'Add '+t+' text','add-text',`data-style="${style}"`)));
+-      rows[2].push(menu('C18','Text size and spacing',range('Font size',lineLabel?'lineLabelSize':'textFontSize',lineLabel?.lineLabelSize||selected?.textFontSize||16,TEXT_FONT_SIZE_MIN,TEXT_FONT_SIZE_MAX)+range('Character spacing',lineLabel?'lineLabelLetterSpacing':'textLetterSpacing',lineLabel?lineLabel.lineLabelLetterSpacing??0:selected?.textLetterSpacing||0,-2,12,.5,!text&&!lineLabel)+range('Line spacing','textLineHeight',selected?.textLineHeight||1.2,TEXT_LINE_HEIGHT_MIN,TEXT_LINE_HEIGHT_MAX,.05,!text),!textTarget&&!lineLabel),button('C19','Fit text frame','fit-text-frame','',!textTarget));
+-      return `<section class="builder-toolbar numbered-builder-toolbar" data-builder-only aria-label="Editing toolbar"><div class="builder-toolbar-tools">${rows.map((row,i)=>`<div class="numbered-toolbar-row" role="group" aria-label="Toolbar row ${i+1}">${row.join('')}</div>`).join('')}<datalist id="magic-hashtags-color-palette">${SITE_COLOR_PRESETS.map(([value,label])=>`<option value="${value}" label="${escapeHtml(label)}"></option>`).join('')}</datalist></div></section>`;
++      [['C14','regular','regular'],['C15','handwriting','hand'],['C16','reversed Impact','impact-label-reversed'],['C17','Impact','impact-label']].forEach(([k,t,style])=>rows[2].push(button(k,cardTarget?'Use '+t+' font':'Add '+t+' text','add-text',`data-style="${style}"`)));
++      rows[2].push(menu('C18','Text size and spacing',range('Font size',lineLabel?'lineLabelSize':'textFontSize',cardSettings?.fontSize||lineLabel?.lineLabelSize||selected?.textFontSize||16,TEXT_FONT_SIZE_MIN,TEXT_FONT_SIZE_MAX)+range('Character spacing',lineLabel?'lineLabelLetterSpacing':'textLetterSpacing',cardSettings?.letterSpacing??(lineLabel?lineLabel.lineLabelLetterSpacing??0:selected?.textLetterSpacing||0),-2,12,.5,!textTarget&&!lineLabel)+range('Line spacing','textLineHeight',cardSettings?.lineHeight||selected?.textLineHeight||1.2,TEXT_LINE_HEIGHT_MIN,TEXT_LINE_HEIGHT_MAX,.05,!textTarget),!textTarget&&!lineLabel),
++        cardTarget ? menu('C19','Fit text',command('Fit selected title/body text to its space','fit-card-text')+command('Fit card frame to content','fit-text-frame')) : button('C19','Fit text frame','fit-text-frame','',!textTarget));
++      rows[2].push(`<button class="numbered-toolbar-button numbered-toolbar-text-list-button" type="button" data-action="format-bold" aria-label="Bold selected text" data-tooltip="Bold selected text"><b>B</b></button><button class="numbered-toolbar-button numbered-toolbar-text-list-button" type="button" data-action="format-italic" aria-label="Italicize selected text" data-tooltip="Italicize selected text"><i>I</i></button>`);
++      return `<section class="builder-toolbar numbered-builder-toolbar" data-builder-only aria-label="Editing toolbar"><div class="builder-toolbar-tools">${rows.map((row,i)=>`<div class="numbered-toolbar-row" role="group" aria-label="Toolbar row ${i+1}">${row.join('')}</div>`).join('')}${renderCardToolbarControls(cardTarget)}<datalist id="magic-hashtags-color-palette">${SITE_COLOR_PRESETS.map(([value,label])=>`<option value="${value}" label="${escapeHtml(label)}"></option>`).join('')}</datalist></div></section>`;
+     }
+ 
+     function handleToolbarColor(target,color) {
+@@ -10992,13 +11066,15 @@
+         return;
+       }
+       if(!item) return;
++      const cardProperty = {textFontSize:"fontSize", textLetterSpacing:"letterSpacing", textLineHeight:"lineHeight"}[field];
++      if(cardProperty && setCardTextProperty(cardProperty, value, done)) return;
+       if(field==='corners') {
+         if(item.type==='markup') item.markupCornerRadius=value*43/50;
+         else { item.cornerRadius=value; item.cropSquaredEdges=""; }
+       }
+       else if(field==='opacity') item.opacity=value/100;
+       else item[field]=value;
+-      if(field==='shadowHeight') item.imageShadow=value>0;
++      if(field==='shadowHeight') { if (isTextCard(item)) item.cardShadow=value>0; else item.imageShadow=value>0; }
+       if(field==='outerOutlineWidth') item.outlineEnabled=value>0;
+       const element=root.querySelector(`[data-object][data-id="${CSS.escape(item.id)}"]`);
+       element?.setAttribute('style',objectStyle(item));
+@@ -11007,6 +11083,7 @@
+         if(svg) svg.outerHTML=markupSvg(item);
+         observeArrowGeometry();
+       }
++      if(field==='shadowHeight' && state.ui.selectedKind==='hotspot') { const popup=root.querySelector('.slide-sidebar.is-demo-popup'); popup?.style.setProperty('--card-popup-shadow', cardPopupShadow(item)); }
+       if(done) commit('Updated '+field+'.',false);
+     }
+ 
+@@ -11047,7 +11124,7 @@
+     function renderPopupResizeHandles(hotspot) {
+       return ["nw", "n", "ne", "e", "se", "s", "sw", "w"]
+         .map((handle) => `<span class="popup-resize-handle" data-popup-resize-handle data-handle="${handle}" data-id="${escapeHtml(hotspot.id)}" title="Resize hotspot text box" aria-hidden="true"></span>`)
+-        .join("");
++        .join("") + ["left", "right"].map(side => `<span class="popup-move-handle popup-move-handle--${side}" data-builder-only data-popup-drag-handle data-id="${escapeHtml(hotspot.id)}" role="button" tabindex="0" aria-label="Move hotspot text card from ${side} side">Move</span>`).join("");
+     }
+ 
+     function renderHotspotRow(hotspot, index) {
+@@ -11058,7 +11135,7 @@
+       return `
+         <div class="hotspot-entry ${active ? "is-active" : ""}" data-id="${hotspot.id}">
+           <div class="hotspot-row ${active ? "is-active" : ""}" style="--hotspot-color:${headerColor};--hotspot-ink:${hotspotTextColor(headerColor)}" data-action="activate-hotspot" data-id="${hotspot.id}" aria-expanded="${active}" aria-controls="${detailId}" ${MODE === "player" ? `role="button" tabindex="0" aria-label="Open ${escapeHtml(hotspot.title || `Hotspot ${index + 1}`)} details"` : ""}>
+-            <div class="hotspot-row__title" id="${titleId}" ${MODE === "builder" ? `contenteditable="true" role="textbox" aria-label="Hotspot ${index + 1} title" data-bind="hotspot.title:${hotspot.id}"` : ""}>${renderWordText(hotspot, "title")}</div>
++            ${renderCardTitle(hotspot, "hotspot", "hotspot-row__title", `Hotspot ${index + 1} title`, titleId)}
+           </div>
+           ${active ? renderHotspotDetail(hotspot) : ""}
+         </div>
+@@ -11066,6 +11143,7 @@
+     }
+ 
+     function renderHotspotDetail(hotspot) {
++      if (cardIsTitleOnly(hotspot)) return "";
+       const titleId = `hotspotTitle-${hotspot.id}`;
+       const detailId = `hotspotDetail-${hotspot.id}`;
+       const label = `${hotspot.title || "Hotspot"} details`;
+@@ -11074,6 +11152,7 @@
+         className: "hotspot-detail",
+         binding: `hotspot.body:${hotspot.id}`,
+         label,
++        style: cardFieldStyle(hotspot, "body", "hotspot"),
+         placeholder: "Type hotspot details here.",
+         listStyle: hotspot.bodyListStyle
+       });
+@@ -11082,7 +11161,6 @@
+       }
+       return `
+         <div class="hotspot-detail-panel" id="${detailId}" aria-live="polite" style="${bodyTextStyle(hotspot)}">
+-          ${renderBodyFormatBar("toggle-hotspot-pipe-list", "toggle-hotspot-numbered-list", hotspot.id, bodyHasPipeLines(hotspot.body), bodyHasNumberedLines(hotspot.body), `<button type="button" class="hotspot-bottom-control hotspot-bottom-move" data-popup-drag-handle data-id="${hotspot.id}" title="Drag to position this hotspot text box">Move</button><button type="button" class="hotspot-bottom-control hotspot-order-control" data-action="hotspot-row-up" data-id="${hotspot.id}" aria-label="Move ${escapeHtml(hotspot.title)} title and body up; keep hotspot ${hotspotIndex + 1} marker fixed" ${hotspotIndex > 0 ? "" : "disabled"}>↑</button><button type="button" class="hotspot-bottom-control hotspot-order-control" data-action="hotspot-row-down" data-id="${hotspot.id}" aria-label="Move ${escapeHtml(hotspot.title)} title and body down; keep hotspot ${hotspotIndex + 1} marker fixed" ${hotspotIndex < currentSlide().hotspots.length - 1 ? "" : "disabled"}>↓</button>`, renderWordFormatButtons() + renderBodySpacingControls("hotspot", hotspot.id, hotspot))}
+           ${detail}
+         </div>
+       `;
+@@ -11297,13 +11375,13 @@
+       } else if (annotation.type === "slide-intro") {
+         content = `<div class="object-frame slide-intro-card">
+           ${MODE === "builder" ? '<span class="card-top-drag-handle" data-handle="move" title="Drag this intro card" aria-label="Drag this intro card"></span>' : ""}
+-          <div class="slide-intro-card__title" ${MODE === "builder" ? `contenteditable="true" role="textbox" aria-label="Slide intro title" data-bind="annotation.introTitle:${annotation.id}"` : ""}>${renderWordText(annotation, "introTitle")}</div>
++          ${renderCardTitle(annotation, "annotation", "slide-intro-card__title", "Slide intro title")}
+           <div class="slide-intro-card__body-field">
+-            ${renderBodyFormatBar("toggle-intro-pipe-list", "toggle-intro-numbered-list", annotation.id, bodyHasPipeLines(annotation.introBody), bodyHasNumberedLines(annotation.introBody), `<button type="button" class="body-list-toggle ${annotation.introBodyAlign === "left" ? "is-active" : ""}" data-action="toggle-intro-body-left" data-id="${annotation.id}" aria-pressed="${annotation.introBodyAlign === "left"}" title="Left-align only the body; click again to follow the title alignment" ${annotation.introTitleOnly ? "disabled" : ""}>Body left</button>`, renderWordFormatButtons() + renderBodySpacingControls("annotation", annotation.id, annotation) + `<button type="button" class="body-list-toggle ${annotation.introTitleOnly ? "is-active" : ""}" data-action="toggle-intro-title-only" data-id="${annotation.id}" aria-pressed="${annotation.introTitleOnly}" title="Show only the black header; click again to restore the body">Header only</button>`, annotation.introTitleOnly)}
+-            ${annotation.introTitleOnly ? "" : renderBody(annotation.introBody, {
++            ${cardIsTitleOnly(annotation) ? "" : renderBody(annotation.introBody, {
+               className: "slide-intro-card__body",
+               binding: `annotation.introBody:${annotation.id}`,
+               label: "Slide intro body",
++              style: cardFieldStyle(annotation, "body", "annotation"),
+               placeholder: "Add the introductory text for this slide."
+             })}
+           </div>
+@@ -11311,13 +11389,13 @@
+       } else if (annotation.type === "callout") {
+         content = `<div class="object-frame standalone-callout-card">
+           ${MODE === "builder" ? '<span class="card-top-drag-handle" data-handle="move" title="Drag this callout" aria-label="Drag this callout"></span>' : ""}
+-          <div class="standalone-callout-card__title" ${MODE === "builder" ? `contenteditable="true" role="textbox" aria-label="Callout title" data-bind="annotation.calloutTitle:${annotation.id}"` : ""}>${renderWordText(annotation, "calloutTitle")}</div>
++          ${renderCardTitle(annotation, "annotation", "standalone-callout-card__title", "Callout title")}
+           <div class="standalone-callout-card__body-field">
+-            ${renderBodyFormatBar("toggle-callout-pipe-list", "toggle-callout-numbered-list", annotation.id, bodyHasPipeLines(annotation.calloutBody), bodyHasNumberedLines(annotation.calloutBody), `<button type="button" class="body-list-toggle ${annotation.calloutBodyAlign === "left" ? "is-active" : ""}" data-action="toggle-callout-body-left" data-id="${annotation.id}" aria-pressed="${annotation.calloutBodyAlign === "left"}" title="Left-align only the body; click again to follow the title alignment">Body left</button><button type="button" class="callout-text-format-toggle ${annotation.textStyle === "hand" ? "is-active" : ""}" data-action="toggle-callout-handwriting" data-id="${annotation.id}" aria-pressed="${annotation.textStyle === "hand"}" title="Use handwriting for this callout">Handwriting</button>${renderWordFormatButtons()}${renderBodySpacingControls("annotation", annotation.id, annotation)}`)}
+-            ${renderBody(annotation.calloutBody, {
++            ${cardIsTitleOnly(annotation) ? "" : renderBody(annotation.calloutBody, {
+               className: "standalone-callout-card__body",
+               binding: `annotation.calloutBody:${annotation.id}`,
+               label: "Callout body",
++              style: cardFieldStyle(annotation, "body", "annotation"),
+               placeholder: "Add callout text."
+             })}
+           </div>
+@@ -11379,7 +11457,7 @@
+         </div>`;
+       }
+       return `
+-        <div class="${classes}" data-object data-kind="annotation" data-id="${annotation.id}" data-text-style="${annotation.textStyle}" ${annotation.type === "magnifier" ? `data-magnifier-lens data-magnifier-z="${annotation.z}"` : ""} ${annotation.type === "clip-frame" ? "data-clip-frame" : ""} ${annotation.type === "slide-intro" ? `data-intro-align="${escapeHtml(annotation.introAlign)}" data-intro-body-align="${annotation.introBodyAlign || "inherit"}" data-intro-title-only="${Boolean(annotation.introTitleOnly)}"` : ""} ${annotation.type === "callout" ? `data-callout-align="${escapeHtml(annotation.calloutAlign)}" data-callout-body-align="${annotation.calloutBodyAlign || "inherit"}"` : ""} ${annotation.type === "markup" ? `data-markup-kind="${escapeHtml(annotation.markup)}"` : ""} ${["video", "scroll-image"].includes(annotation.type) ? `role="button" tabindex="0" aria-label="Open ${escapeHtml(annotation.label || (annotation.type === "video" ? "video" : "scrolling page"))}"` : ""} ${MODE === "builder" && ["video", "scroll-image"].includes(annotation.type) ? 'title="Click once to select; click the selected annotation again to preview"' : ""} style="${objectStyle(annotation)}">
++        <div class="${classes}" data-object data-kind="annotation" data-id="${annotation.id}" data-text-style="${annotation.textStyle}" ${annotation.type === "magnifier" ? `data-magnifier-lens data-magnifier-z="${annotation.z}"` : ""} ${annotation.type === "clip-frame" ? "data-clip-frame" : ""} ${annotation.type === "slide-intro" ? `data-intro-align="${escapeHtml(annotation.introAlign)}" data-intro-body-align="${annotation.introBodyAlign || "inherit"}" data-intro-title-only="${cardIsTitleOnly(annotation)}"` : ""} ${annotation.type === "callout" ? `data-callout-align="${escapeHtml(annotation.calloutAlign)}" data-callout-body-align="${annotation.calloutBodyAlign || "inherit"}" data-card-title-only="${cardIsTitleOnly(annotation)}"` : ""} ${annotation.type === "markup" ? `data-markup-kind="${escapeHtml(annotation.markup)}"` : ""} ${["video", "scroll-image"].includes(annotation.type) ? `role="button" tabindex="0" aria-label="Open ${escapeHtml(annotation.label || (annotation.type === "video" ? "video" : "scrolling page"))}"` : ""} ${MODE === "builder" && ["video", "scroll-image"].includes(annotation.type) ? 'title="Click once to select; click the selected annotation again to preview"' : ""} style="${objectStyle(annotation)}">
+           ${content}
+           ${primary && !annotation.locked ? renderHandles(annotation) : ""}
+         </div>
+@@ -11946,9 +12024,10 @@
+       if (type === "slide-intro" || type === "callout") {
+         const title = type === "slide-intro" ? annotation.introTitle : annotation.calloutTitle;
+         const body = type === "slide-intro" ? annotation.introBody : annotation.calloutBody;
+-        const titleOnly = type === "slide-intro" && annotation.introTitleOnly;
++        const titleOnly = cardIsTitleOnly(annotation);
+         const handwriting = type === "callout" && annotation.textStyle === "hand" ? " is-handwriting" : "";
+-        return `${open(`contents-preview-card${type === "callout" ? " contents-preview-callout" : ""}${handwriting}${titleOnly ? " contents-preview-card--title-only" : ""}`)}<span class="contents-preview-card-title">${escapeHtml(title || "")}</span>${titleOnly ? "" : `<span class="contents-preview-card-body">${escapeHtml(body || "")}</span>`}</span>`;
++        const [titleField, bodyField] = cardFieldNames(annotation, "annotation");
++        return `${open(`contents-preview-card${type === "callout" ? " contents-preview-callout" : ""}${handwriting}${titleOnly ? " contents-preview-card--title-only" : ""}`)}<span class="contents-preview-card-inner" style="zoom:${annotation.contentScale || 1}"><span class="contents-preview-card-title" style="${escapeHtml(cardFieldStyle(annotation, "title", "annotation"))}">${renderWordText(annotation, titleField)}</span>${titleOnly ? "" : `<span class="contents-preview-card-body" style="${escapeHtml(cardFieldStyle(annotation, "body", "annotation"))}">${renderMixedBodyContent(body, savedWordLines(annotation, bodyField))}</span>`}</span>`;
+       }
+       if (type === "link" && annotation.linkText) {
+         return `${open("contents-preview-link-text")}${renderWordText(annotation,"linkText")}</span>`;
+@@ -12941,6 +13020,7 @@
+         if (binding.startsWith("hotspot.title:")) {
+           activateHotspotForEditing(binding.split(":")[1]);
+         } else if (binding.startsWith("hotspot.body:")) {
++          activateHotspotForEditing(binding.split(":")[1]);
+           drawAttentionToHotspot(binding.split(":")[1], false);
+         } else if (binding.startsWith("annotation.text:") || binding.startsWith("annotation.introTitle:") || binding.startsWith("annotation.introBody:") || binding.startsWith("annotation.calloutTitle:") || binding.startsWith("annotation.calloutBody:") || binding.startsWith("annotation.lineLabel:")) {
+           selectedLineLabelId = binding.startsWith("annotation.lineLabel:") ? binding.split(":")[1] : "";
+@@ -12963,7 +13043,13 @@
+       const id = actionNode.dataset.id;
+       const actions = {
+         "toolbar-underline": () => toggleWordFormat("u"),
+-        "toolbar-text-align": () => state.ui.selectedKind==='hotspot' ? setHotspotTextAlign(actionNode.dataset.value) : selectedObject()?.type==='text' ? setSelectedAnnotationTextAlign(actionNode.dataset.value) : setSelectedTextBoxAlign(actionNode.dataset.value),
++        "toolbar-text-align": () => setToolbarTextAlign(actionNode.dataset.value),
++        "toggle-toolbar-pipe-list": () => toggleToolbarTextList(actionNode, "pipe"),
++        "toggle-toolbar-numbered-list": () => toggleToolbarTextList(actionNode, "numbered"),
++        "select-card-text": () => selectCardTextPart(actionNode.dataset.part),
++        "toggle-card-title-only": toggleCardTitleOnly,
++        "move-card-title": () => moveCardTitle(Number(actionNode.dataset.delta)),
++        "fit-card-text": fitCardTextToSpace,
+         "toolbar-reset-crop": () => {const item=selectedObject();if(!isCroppableAnnotation(item))return;item.cropEnabled=false;item.cropWindow=null;item.cropX=50;item.cropY=50;item.cropScale=1;item.cropSquaredEdges="";imageCropEditId="";commit("Reset crop; retained corners.");},
+         "persistent-slide-title": addSlideIntro,
+         "add-link-dialog": openLinkEditorDialog,
+@@ -13387,8 +13473,8 @@
+         button.classList.toggle("is-active", active);
+         button.setAttribute("aria-pressed", String(active));
+       });
+-      if (editor.dataset.bind?.startsWith("annotation.text:")) {
+-        root.querySelectorAll('[data-action="toggle-annotation-pipe-list"], [data-action="toggle-annotation-numbered-list"]').forEach((button) => {
++      if (editor === toolbarTextEditor()) {
++        root.querySelectorAll('[data-action="toggle-toolbar-pipe-list"], [data-action="toggle-toolbar-numbered-list"], [data-action="toggle-annotation-pipe-list"], [data-action="toggle-annotation-numbered-list"]').forEach((button) => {
+           const kind = button.dataset.action.includes("numbered") ? "numbered" : "pipe";
+           const active = lines.every((line) => lineListKind(line) === kind);
+           button.classList.toggle("is-active", active);
+@@ -14222,6 +14308,18 @@
+       if (editor && wordColorTarget(editor.dataset.bind) && rememberWordSelection.saved?.binding !== editor.dataset.bind) {
+         rememberWordSelection.saved = { binding: editor.dataset.bind, start: 0, end: 0, text: editor.textContent };
+       }
++      if (editor) {
++        const [owner, id] = editor.dataset.bind.split(":");
++        const kind = owner.split(".")[0];
++        const item = wordColorTarget(editor.dataset.bind)?.item;
++        if (isTextCard(item, kind)) {
++          state.ui.selectedKind = kind; state.ui.selectedId = id;
++          multiSelection = [selectionKey(kind, id)];
++          const toolbar = root.querySelector(".builder-toolbar");
++          if (toolbar) toolbar.outerHTML = renderToolbar(currentSlide(), item);
++          syncSelectedObjectUi(kind, id, item);
++        }
++      }
+       positionShapeNavigation(target.closest?.("[data-shape-menu]"));
+       if (target.id === "mainMediaUrl" && !currentSlide().media.url && target.value === mediaBase()) {
+         target.select();
+@@ -14327,7 +14425,7 @@
+         selectedLineLabelId = "";
+         if (rememberWordSelection.saved?.binding.startsWith('annotation.lineLabel:')) rememberWordSelection.saved = null;
+       }
+-      if (event.target.closest('.builder-toolbar [data-toolbar-field^="wordUnderline"]')) {
++      if (event.target.closest('.builder-toolbar [data-toolbar-field]')) {
+         // Range controls take focus while they are dragged. Save the exact word
+         // range first so handwriting and every other text style keep the same
+         // selection when thickness, offset, or hand-drawn amount is committed.
+@@ -14335,6 +14433,7 @@
+         return;
+       }
+       if (event.target.closest(".builder-toolbar button") && document.activeElement?.isContentEditable) {
++        rememberMixedBodySelection(); rememberWordSelection();
+         syncLiveEditableBeforeRender();
+         event.preventDefault();
+         return;
+@@ -14365,6 +14464,10 @@
+         const body = popup?.closest(".tutorial-body.is-demo-centered-slide");
+         const hotspot = currentSlide().hotspots.find((item) => item.id === popupResizeHandle.dataset.id);
+         if (!popup || !body || !hotspot) return;
++        state.ui.selectedKind = "hotspot"; state.ui.selectedId = hotspot.id;
++        multiSelection = [selectionKey("hotspot", hotspot.id)];
++        const toolbar = root.querySelector(".builder-toolbar");
++        if (toolbar) toolbar.outerHTML = renderToolbar(currentSlide(), hotspot);
+         const rect = body.getBoundingClientRect();
+         const popupRect = popup.getBoundingClientRect();
+         const left = clamp((popupRect.left - rect.left) / Math.max(rect.width, 1) * 100, 0, 100);
+@@ -14379,7 +14482,7 @@
+           startY: event.clientY,
+           scaling: scaleMode,
+           original: { x: (left + right) / 2, y: (popupRect.top + popupRect.height / 2 - rect.top) / Math.max(rect.height, 1) * 100,
+-            w: right - left, h: popupRect.height / Math.max(rect.height, 1) * 100, contentScale: hotspot.contentScale || 1 },
++            w: right - left, h: popupRect.height / Math.max(rect.height, 1) * 100, contentScale: hotspot.contentScale || 1, cardExpandedHeight: hotspot.cardExpandedHeight },
+           minW: clamp(48 / Math.max(rect.width, 1) * 100, 1, 50)
+         };
+         hotspot.popupX = (left + right) / 2;
+@@ -14402,6 +14505,10 @@
+         const body = popup?.closest(".tutorial-body.is-demo-centered-slide");
+         const hotspot = currentSlide().hotspots.find((item) => item.id === popupHandle.dataset.id);
+         if (!popup || !body || !hotspot) return;
++        state.ui.selectedKind = "hotspot"; state.ui.selectedId = hotspot.id;
++        multiSelection = [selectionKey("hotspot", hotspot.id)];
++        const toolbar = root.querySelector(".builder-toolbar");
++        if (toolbar) toolbar.outerHTML = renderToolbar(currentSlide(), hotspot);
+         const rect = body.getBoundingClientRect();
+         const popupRect = popup.getBoundingClientRect();
+         popupDrag = {
+@@ -14549,7 +14656,10 @@
+           hotspot.popupY = resized.y;
+           hotspot.popupW = resized.w;
+           hotspot.popupH = resized.h;
+-          if (popupDrag.scaling) hotspot.contentScale = popupDrag.original.contentScale * resized.w / popupDrag.original.w;
++          if (popupDrag.scaling) {
++            hotspot.contentScale = popupDrag.original.contentScale * resized.w / popupDrag.original.w;
++            if (cardIsTitleOnly(hotspot) && Number.isFinite(popupDrag.original.cardExpandedHeight)) hotspot.cardExpandedHeight = popupDrag.original.cardExpandedHeight * resized.w / popupDrag.original.w;
++          }
+           popupDrag.popup.style.setProperty("--popup-width", `${hotspot.popupW}%`);
+           popupDrag.popup.style.setProperty("--popup-height", `${hotspot.popupH}%`);
+           popupDrag.popup.style.setProperty("--content-scale", hotspot.contentScale || 1);
+@@ -14672,6 +14782,7 @@
+           Object.assign(item, resized);
+           if (["text", "slide-intro", "callout", "markup"].includes(item.type)) {
+             item.contentScale = drag.original.contentScale * resized.w / drag.original.w;
++            if (cardIsTitleOnly(item) && Number.isFinite(drag.original.cardExpandedHeight)) item.cardExpandedHeight = drag.original.cardExpandedHeight * resized.w / drag.original.w;
+           }
+         } else if (item.type === "shape" && (changesWidth || changesHeight)) {
+           const widthScale = changesWidth
+@@ -15420,6 +15531,14 @@
+ 
+     function changeSelectedFontOrAddText(style) {
+       const editor = selectedWordEditor();
++      const card = cardTextTarget();
++      if (card && !editor) {
++        setCardTextProperty("font", style);
++        const field = selectedWordEditor(true);
++        const family = {regular:"var(--sans)", hand:"var(--hand)", "impact-label":"var(--impact-label)", "impact-label-reversed":"var(--impact-label-reversed)"}[style];
++        if (field && family) applyWordStyles({"font-family":family});
++        return;
++      }
+       if (!editor) {
+         const label=activeLineLabel();
+         if(label) { label.lineLabelFont=style; commit('Updated line text font.'); }
+@@ -15435,6 +15554,7 @@
+         editor.closest('[data-text-style]')?.setAttribute('data-text-style', style);
+       }
+       if (family && target?.field === "lineLabel" && selected.start === 0 && selected.end === editor.textContent.length) target.item.lineLabelFont = style;
++      if (family && card && selected.start === 0 && selected.end === editor.textContent.length) setCardTextProperty("font", style, false);
+       if (family) applyWordStyles({ "font-family": family }, false);
+       else if (style === "italic") applyWordStyles({ "font-style": "italic" }, false);
+     }
+@@ -15594,6 +15714,186 @@
+       annotation.calloutBodyAlign = null;
+       multiSelection = [selectionKey("annotation", annotation.id)];
+       commit(`Aligned callout text ${annotation.calloutAlign}.`);
++    }
++
++    // The title and body are independent formatting targets. Legacy cards keep
++    // their existing typography until a field is explicitly changed.
++    function isTextCard(item, kind = state.ui.selectedKind) {
++      return Boolean(item && (kind === "hotspot" || ["slide-intro", "callout"].includes(item.type)));
++    }
++
++    function cardIsTitleOnly(item) {
++      return Boolean(item?.cardTitleOnly ?? item?.introTitleOnly);
++    }
++
++    function cardFieldNames(item, kind = state.ui.selectedKind) {
++      return kind === "hotspot" ? ["title", "body"] : item?.type === "slide-intro"
++        ? ["introTitle", "introBody"] : ["calloutTitle", "calloutBody"];
++    }
++
++    function cardTextTarget(item = selectedObject(), kind = state.ui.selectedKind) {
++      if (!isTextCard(item, kind)) return null;
++      const fields = cardFieldNames(item, kind);
++      const saved = rememberWordSelection.saved;
++      const bodyBinding = `${kind}.${fields[1]}:${item.id}`;
++      const part = saved?.binding === bodyBinding && !cardIsTitleOnly(item) ? "body" : "title";
++      const field = fields[part === "body" ? 1 : 0];
++      return { item, kind, part, field, binding: `${kind}.${field}:${item.id}` };
++    }
++
++    function cardFieldSettings(item, part, kind) {
++      const title = part === "title";
++      const current = item.cardTypographyVersion === 1;
++      const scale = (Number(item.textFontSize) || 16) / (current ? 28 : 16);
++      const base = title ? (current ? (item.type === "slide-intro" ? 32 : 36)
++        : (item.type === "slide-intro" ? 1.333333 : 1.266667) * SCENE_WIDTH / 100)
++        : (current ? 28 : 1.133333 * SCENE_WIDTH / 100);
++      const stored = item.cardText?.[part] || {};
++      return {
++        fontSize: clamp(Number(stored.fontSize) || (kind === "hotspot" ? 16 : base * scale), TEXT_FONT_SIZE_MIN, TEXT_FONT_SIZE_MAX),
++        font: ["regular", "hand", "impact-label", "impact-label-reversed"].includes(stored.font) ? stored.font
++          : item.textStyle === "hand" ? "hand" : "regular",
++        letterSpacing: clamp(Number(stored.letterSpacing ?? item.textLetterSpacing) || 0, -2, 12),
++        lineHeight: clamp(Number(stored.lineHeight) || (title ? 1.15 : Number(item.textLineHeight) || 1.5), TEXT_LINE_HEIGHT_MIN, TEXT_LINE_HEIGHT_MAX),
++        align: stored.align === "center" ? "center" : stored.align === "left" ? "left"
++          : kind === "hotspot" ? item.textAlign || "left"
++          : item.type === "slide-intro" ? (!title && item.introBodyAlign) || item.introAlign || "left"
++          : (!title && item.calloutBodyAlign) || item.calloutAlign || "left"
++      };
++    }
++
++    function cardFieldStyle(item, part, kind) {
++      const settings = cardFieldSettings(item, part, kind);
++      const unit = value => kind === "hotspot" ? value + "px" : value * 100 / SCENE_WIDTH + "cqw";
++      const family = { regular: "var(--sans)", hand: "var(--hand)", "impact-label": "var(--impact-label)", "impact-label-reversed": "var(--impact-label-reversed)" }[settings.font];
++      return `font-size:${unit(settings.fontSize)};font-family:${family};letter-spacing:${unit(settings.letterSpacing)};line-height:${settings.lineHeight};text-align:${settings.align};`
++        + (part === "title" ? `margin-top:${unit(clamp(Number(item.cardTitleOffset) || 0, 0, 200))};` : "");
++    }
++
++    function renderCardTitle(item, kind, className, label, id = "") {
++      const field = cardFieldNames(item, kind)[0];
++      return renderBody(item[field], { className, binding: `${kind}.${field}:${item.id}`, label, placeholder: "Title", style: cardFieldStyle(item, "title", kind) })
++        .replace('<div ', `<div ${id ? `id="${escapeHtml(id)}" ` : ""}`);
++    }
++
++    function updateCardFieldAppearance(item, kind) {
++      cardFieldNames(item, kind).forEach((field, index) => {
++        root.querySelectorAll(`[data-bind="${CSS.escape(`${kind}.${field}:${item.id}`)}"]`).forEach(editor => {
++          editor.setAttribute("style", cardFieldStyle(item, index ? "body" : "title", kind));
++        });
++      });
++    }
++
++    function setCardTextProperty(property, value, done = true) {
++      const target = cardTextTarget();
++      if (!target) return false;
++      target.item.cardText ||= {};
++      target.item.cardText[target.part] ||= {};
++      target.item.cardText[target.part][property] = value;
++      updateCardFieldAppearance(target.item, target.kind);
++      if (done) commit(`Updated ${target.part} ${property}.`, false);
++      return true;
++    }
++
++    function selectCardTextPart(part) {
++      const target = cardTextTarget();
++      if (!target || (part === "body" && cardIsTitleOnly(target.item))) return;
++      const field = cardFieldNames(target.item, target.kind)[part === "body" ? 1 : 0];
++      const binding = `${target.kind}.${field}:${target.item.id}`;
++      const editor = root.querySelector(`[contenteditable="true"][data-bind="${CSS.escape(binding)}"]`);
++      if (!editor) return;
++      editor.focus({ preventScroll: true });
++      const range = document.createRange();
++      range.selectNodeContents(editor);
++      range.collapse(false);
++      const selection = window.getSelection();
++      selection.removeAllRanges(); selection.addRange(range);
++      rememberWordSelection(); rememberMixedBodySelection();
++      const toolbar = root.querySelector(".builder-toolbar");
++      if (toolbar) toolbar.outerHTML = renderToolbar(currentSlide(), target.item);
++    }
++
++    function toolbarTextEditor() {
++      const card = cardTextTarget();
++      const binding = card?.binding || (selectedTextAnnotation() ? `annotation.text:${state.ui.selectedId}` : "");
++      return binding ? root.querySelector(`[contenteditable="true"][data-bind="${CSS.escape(binding)}"]`) : null;
++    }
++
++    function toggleToolbarTextList(button, kind) {
++      const editor = toolbarTextEditor();
++      if (editor) toggleMixedBodyListLines(editor, button, kind);
++    }
++
++    function setToolbarTextAlign(value) {
++      if (setCardTextProperty("align", value === "center" ? "center" : "left")) return;
++      setSelectedAnnotationTextAlign(value);
++    }
++
++    function toggleCardTitleOnly() {
++      const target = cardTextTarget();
++      if (!target) return;
++      syncLiveEditableBeforeRender();
++      const item = target.item, only = !cardIsTitleOnly(item);
++      item.cardTitleOnly = only;
++      if (item.type === "slide-intro") item.introTitleOnly = only;
++      // Keep the body and authored expanded height intact, including rich text.
++      if (only) {
++        item.cardExpandedHeight = target.kind === "hotspot" ? item.popupH : item.h;
++      } else if ("cardExpandedHeight" in item) {
++        if (target.kind === "hotspot") item.popupH = item.cardExpandedHeight;
++        else item.h = item.cardExpandedHeight;
++      }
++      rememberWordSelection.saved = { binding: `${target.kind}.${cardFieldNames(item, target.kind)[0]}:${item.id}`, start: 0, end: 0, text: "" };
++      commit(only ? "Showing the title only; body text is retained." : "Restored the card body.");
++    }
++
++    function moveCardTitle(delta) {
++      const target = cardTextTarget();
++      if (!target) return;
++      target.item.cardTitleOffset = clamp((Number(target.item.cardTitleOffset) || 0) + delta, 0, 200);
++      updateCardFieldAppearance(target.item, target.kind);
++      commit("Moved the title text container.", false);
++    }
++
++    function fitCardTextToSpace() {
++      const target = cardTextTarget();
++      if (!target) return;
++      const editor = toolbarTextEditor();
++      if (!editor) return;
++      const frame = target.kind === "hotspot" ? editor.closest(".slide-sidebar") : editor.closest(".object-frame");
++      const area = target.part === "title" ? editor : editor.parentElement;
++      const settings = cardFieldSettings(target.item, target.part, target.kind);
++      const availableHeight = target.part === "title" ? editor.clientHeight : area.clientHeight;
++      if (!availableHeight || !editor.clientWidth) return;
++      let lo = TEXT_FONT_SIZE_MIN, hi = TEXT_FONT_SIZE_MAX;
++      const fits = size => {
++        setCardTextProperty("fontSize", size, false);
++        return editor.scrollWidth <= editor.clientWidth + 1 && editor.scrollHeight <= availableHeight + 1
++          && (!frame || area.getBoundingClientRect().bottom <= frame.getBoundingClientRect().bottom + 1);
++      };
++      for (let i = 0; i < 12; i++) { const mid = (lo + hi) / 2; if (fits(mid)) lo = mid; else hi = mid; }
++      setCardTextProperty("fontSize", Math.round(lo * 10) / 10);
++    }
++
++    function fitHotspotFrameToText(item) {
++      const popup = root.querySelector(".slide-sidebar.is-demo-popup");
++      if (!popup || !item) return;
++      item.popupH = null;
++      commit("Fit the hotspot text card to its content.");
++    }
++
++    function renderCardToolbarControls(target) {
++      if (!target) return "";
++      const only = cardIsTitleOnly(target.item);
++      const button = (label, action, extra = "") => `<button type="button" data-action="${action}" ${extra}>${label}</button>`;
++      return `<div class="card-toolbar-controls" role="group" aria-label="Card text controls">
++        <span>Edit:</span>
++        ${button("Header text", "select-card-text", `data-part="title" aria-pressed="${target.part === "title"}"`)}
++        ${button("Body text", "select-card-text", `data-part="body" aria-pressed="${target.part === "body"}" ${only ? "disabled" : ""}`)}
++        ${button("Title only", "toggle-card-title-only", `aria-pressed="${only}"`)}
++        ${button("Title ↑", "move-card-title", 'data-delta="-2" aria-label="Raise title text container"')}
++        ${button("Title ↓", "move-card-title", 'data-delta="2" aria-label="Lower title text container"')}
++      </div>`;
+     }
+ 
+     function selectedTextAnnotation() {
+@@ -15671,7 +15971,7 @@
+       Object.entries(fields || {}).forEach(([field,styles])=>{
+         const declarations=Object.entries(styles).filter(([key,value])=>WORD_STYLE_PROPERTIES.includes(key) && CSS.supports(key,value)).map(([key,value])=>`${key}:${value}`).join(";");
+         const wrap=text=>safeWordHtml(`<span style="${escapeHtml(declarations)}">${escapeHtml(text)}</span>`);
+-        const mixed=field==="text" || /body$/i.test(field);
++        const mixed=field==="text" || /body$|title$/i.test(field);
+         item.richText[field]={text:item[field],...(mixed
+           ? {lines:mixedBodyLines(item[field]).map(line=>wrap(line.text))}
+           : {html:normalizeMultilineText(item[field]).split("\n").map(wrap).join("<br>")})};
+@@ -15687,7 +15987,7 @@
+         return false;
+       }
+       const values = {};
+-      FORMAT_PROPERTY_KEYS[kind].forEach((key) => { values[key] = source[key]; });
++      FORMAT_PROPERTY_KEYS[kind].forEach((key) => { values[key] = source[key] && typeof source[key] === "object" ? clone(source[key]) : source[key]; });
+       formatPropertiesClipboard = {
+         kind,
+         values,
+@@ -15717,7 +16017,7 @@
+       if(document.activeElement?.isContentEditable) document.activeElement.blur();
+       rememberWordSelection.saved=null;
+       targets.forEach((target) => {
+-        Object.entries(formatPropertiesClipboard.values).forEach(([key, value]) => { target[key] = value; });
++        Object.entries(formatPropertiesClipboard.values).forEach(([key, value]) => { target[key] = value && typeof value === "object" ? clone(value) : value; });
+         pasteFormatTextStyles(target, formatPropertiesClipboard.textStyles);
+         if (formatPropertiesClipboard.kind !== "markup") return;
+         const shape = normalizeMarkupKind(target.markup).split("-")[0];
+@@ -15779,6 +16079,7 @@
+     }
+ 
+     function fitSelectedTextFrame() {
++      if (state.ui.selectedKind === "hotspot") { fitHotspotFrameToText(selectedObject()); return; }
+       const annotation = state.ui.selectedKind === "annotation" ? selectedObject() : null;
+       if (!annotation || !["text", "slide-intro", "callout"].includes(annotation.type)) {
+         showToast("Select a text annotation, intro card, or callout first.");
+@@ -17116,6 +17417,12 @@
+         showToast("Select an object first.");
+         return;
+       }
++      if (isTextCard(image)) {
++        image.cardShadow = image.cardShadow === false;
++        if (image.cardShadow && !(image.shadowHeight > 0)) image.shadowHeight = 9;
++        commit(image.cardShadow ? "Added the card shadow." : "Removed the card shadow.");
++        return;
++      }
+       image.imageShadow = !image.imageShadow;
+       commit(image.imageShadow ? "Added a lifted shadow." : "Removed the shadow.");
+     }
+@@ -18435,7 +18742,7 @@
+           ["tutorial-pdf-runtime", "scripts/pdf-lib-1.17.1.min.js", "PDF library"],
+           ["tutorial-reading-runtime", "scripts/tutorial-reading-export.js", "reading-guide layout"]
+         ].map(async ([id, path, label]) => {
+-          const response = await fetch(new URL(path, document.baseURI), { signal: AbortSignal.timeout(12000) });
++          const response = await fetch(new URL(path, document.baseURI), { cache: "no-cache", signal: AbortSignal.timeout(12000) });
+           if (!response.ok) throw new Error(`The tutorial ${label} could not be included.`);
+           return { id, source: (await response.text()).replace(/<\/script/gi, "<\\/script") };
+         }));
+@@ -18726,6 +19033,18 @@
+       return new Blob([...localParts, ...centralParts, end.bytes], { type: "application/zip" });
+     }
+ 
++    function readingCardTextStyle(item, part) {
++      const stored = item.cardText?.[part];
++      if (!stored) return "";
++      const settings = cardFieldSettings(item, part, "hotspot");
++      const family = {regular:"var(--sans)", hand:"var(--hand)", "impact-label":"var(--impact-label)", "impact-label-reversed":"var(--impact-label-reversed)"}[settings.font];
++      return (stored.font ? `font-family:${family};` : "")
++        + (stored.fontSize != null ? `font-size:${settings.fontSize}px;` : "")
++        + (stored.letterSpacing != null ? `letter-spacing:${settings.letterSpacing}px;` : "")
++        + (stored.lineHeight != null ? `line-height:${settings.lineHeight};` : "")
++        + (stored.align ? `text-align:${settings.align};` : "");
++    }
++
+     async function prepareReadingExportDocument() {
+       if (!window.MHReadingExport) throw new Error("The reading-guide layout did not load.");
+       normalizeState();
+@@ -18738,6 +19057,7 @@
+         },
+         sceneBounds: playerCompositionBounds, sceneHeight: slideSceneHeight,
+         renderTitle: renderWordText,
++        cardTextStyle: readingCardTextStyle,
+         renderBody: (item, field, value) => renderMixedBodyContent(value, savedWordLines(item, field)),
+         colors: index => { const style = hotspotStyle(index); return { color: style.color, ink: hotspotTextColor(style.color) }; },
+         prepareAssets: async scene => {
+--- before/scripts/tutorial-reading-export.js
++++ after/scripts/tutorial-reading-export.js
+@@ -107,7 +107,7 @@
+ 
+   async function prepare(options) {
+     const { root, slides, title, escape, renderScene, sceneBounds, sceneHeight, renderTitle,
+-      renderBody, colors, prepareAssets, updateGeometry } = options;
++      renderBody, colors, prepareAssets, updateGeometry, cardTextStyle } = options;
+     const style = document.createElement("style");
+     style.textContent = CSS_TEXT;
+     document.head.append(style);
+@@ -139,7 +139,7 @@
+       const nextColumn = () => { page = newPage(); column = page.querySelector(".reading-cards"); };
+       const entries = [
+         ...(hasNotes ? [{ title: "About this slide", body: slide.description, item: slide, field: "description", index: -1 }] : []),
+-        ...slide.hotspots.map((item, index) => ({ title: item.title, body: item.body, item, field: "body", index }))
++        ...slide.hotspots.map((item, index) => ({ title: item.title, body: item.cardTitleOnly ? "" : item.body, item, field: "body", index }))
+       ];
+       for (const entry of entries) {
+         const { item, index, field } = entry;
+@@ -150,6 +150,10 @@
+           card.dataset.readingHotspot = index >= 0 ? item.id : "slide-description";
+           card.style.cssText = `--reading-color:${color.color};--reading-ink:${color.ink};text-align:${item.textAlign === "center" ? "center" : "left"};--text-letter-spacing:${Number(item.textLetterSpacing) || 0}px;--text-line-height:${Number(item.textLineHeight) || 1.55}`;
+           card.innerHTML = `<header class="reading-card-header">${index >= 0 ? `<span class="reading-card-number">${index + 1}</span>` : ""}<h2 class="reading-card-heading">${index >= 0 ? renderTitle(item, "title") || `Hotspot ${index + 1}` : escape(entry.title)}${continued ? '<small>Continued</small>' : ""}</h2></header><div class="reading-card-body"></div>`;
++          if (index >= 0 && cardTextStyle) {
++            card.querySelector(".reading-card-heading").style.cssText = cardTextStyle(item, "title");
++            card.querySelector(".reading-card-body").style.cssText = cardTextStyle(item, "body");
++          }
+           return card;
+         };
+         let card = makeCard(false);

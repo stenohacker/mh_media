@@ -1,0 +1,22 @@
+import fs from 'node:fs';
+import assert from 'node:assert/strict';
+import vm from 'node:vm';
+
+const root = new URL('../', import.meta.url);
+const html=fs.readFileSync(new URL('tutorial-demo-builder-v2.html',root),'utf8');
+const runtime=[...html.matchAll(/<script\b[^>]*>([\s\S]*?)<\/script>/gi)].map(m=>m[1]).find(s=>s.includes('function deleteSelected()'));
+new vm.Script(runtime);
+const start=runtime.indexOf('function scheduleTutorialFrameFit()');
+const end=runtime.indexOf('function scheduleBuilderStageFit()',start);
+const fit=runtime.slice(start,end);
+assert(start>=0,'shared tutorial-frame sizing is present');
+assert.doesNotMatch(fit,/state\.[\w.]+\s*=|commit\(|scheduleSave\(/,'layout must not edit the authored draft');
+assert.doesNotMatch(fit,/fitPlayerText\(/,'frame sizing must not refit authored text');
+assert.match(fit,/viewportHeight - 2 \* pageGap\) \/ designHeight/,'toolbar/header do not change the canvas scale');
+assert.match(runtime,/if \(IS_TUTORIAL_PLAYER\) \{ scheduleTutorialFrameFit\(\); return; \}/,'tutorial export uses shared sizing');
+assert.match(runtime,/function scheduleBuilderStageFit\(\) \{\s*if \(MODE !== "builder"\) return;\s*scheduleTutorialFrameFit\(\)/,'builder uses shared sizing');
+assert.match(runtime,/IS_TUTORIAL_PLAYER && !IS_READING_EXPORT \? renderTutorialOpeningCover\(\)/,'opening overlay belongs to the interactive canvas, not reading output');
+const before=fs.readFileSync(new URL('backups/2026-09-21-before-unified-tutorial-framing/tutorial-demo-builder-v2.html',root),'utf8');
+const state=s=>s.match(/<script id="project-state"[^>]*>([\s\S]*?)<\/script>/)[1];
+assert.equal(state(html),state(before),'embedded project remains byte-identical');
+console.log('Passed: shared builder/tutorial sizing, unchanged authored state and typography, and opening overlay scoped to interactive canvas. Browser geometry is covered by framing-qa-controls.js.');
