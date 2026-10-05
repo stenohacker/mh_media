@@ -8,16 +8,16 @@
   const CSS_TEXT = `
     html, body[data-reading-export="true"] { margin:0!important; padding:0!important; width:1584px!important; background:white!important; overflow:visible!important; }
     body[data-reading-export="true"] #app { display:block!important; width:1584px!important; max-width:none!important; margin:0!important; padding:0!important; }
-    .reading-page { box-sizing:border-box; width:1584px; height:1224px; padding:58px 64px 40px; display:grid; grid-template-rows:auto minmax(0,1fr) 34px; gap:28px; background:#fff; color:#18151b; font-family:var(--sans); overflow:hidden; }
-    .reading-header { display:grid; gap:10px; border-bottom:4px solid #18151b; padding:0 0 20px; }
+    .reading-page { box-sizing:border-box; width:1584px; height:1224px; padding:58px 64px 40px; display:grid; grid-template-rows:auto minmax(0,1fr) 34px; gap:28px; background:#fff; color:#272823; font-family:var(--sans); overflow:hidden; }
+    .reading-header { display:grid; gap:10px; border-bottom:1px solid #272823; padding:0 0 20px; }
     .reading-eyebrow { display:flex; justify-content:space-between; gap:32px; font-size:19px; line-height:1.35; font-weight:700; letter-spacing:.08em; text-transform:uppercase; }
-    .reading-eyebrow span:first-child { color:#9b146f; }
-    .reading-heading { margin:0; font-size:38px; line-height:1.2; font-weight:750; overflow-wrap:anywhere; }
+    .reading-eyebrow span:first-child { color:#B52626; }
+    .reading-heading { font-family:"RS Profile Headings",sans-serif; margin:0; font-size:38px; line-height:1.2; font-weight:300; overflow-wrap:anywhere; }
     .reading-main { min-height:0; display:grid; grid-template-columns:minmax(0, 1.58fr) minmax(0,1fr); gap:36px; align-items:stretch; }
     .reading-main.is-image-only { grid-template-columns:minmax(0,1fr); }
     .reading-picture { margin:0; min-width:0; min-height:0; display:grid; grid-template-rows:minmax(0,1fr) 28px; gap:12px; }
     .reading-picture-window { position:relative; min-height:0; overflow:hidden; background:#fff; }
-    .reading-picture-caption { font-size:18px; line-height:1.3; color:#625b66; }
+    .reading-picture-caption { font-size:18px; line-height:1.3; color:#272823; }
     .reading-scene { position:absolute; left:0; top:0; transform-origin:0 0; }
     .reading-scene .stage-wrap { display:block!important; padding:0!important; width:1500px!important; background:none!important; }
     .reading-scene .stage:not(.magnifier-scene) { position:relative!important; width:1500px!important; min-height:0!important; max-height:none!important; aspect-ratio:auto!important; transform:none!important; box-shadow:none!important; }
@@ -26,12 +26,12 @@
     .reading-page ::-webkit-scrollbar { display:none!important; }
     .reading-page [data-builder-only], .reading-page .body-format-bar, .reading-page .card-top-drag-handle, .reading-page .scroll-slide-caret, .reading-page .main-video-controls { display:none!important; }
     .reading-cards { min-width:0; min-height:0; display:flex; flex-direction:column; align-items:stretch; gap:20px; }
-    .reading-card { flex:0 0 auto; border:2px solid #29212d; border-radius:12px; background:#fff; overflow:hidden; }
+    .reading-card { flex:0 0 auto; border:1px solid #272823; border-radius:0; background:#fff; overflow:hidden; }
     .reading-card-header { display:flex; align-items:flex-start; gap:14px; padding:16px 20px; background:var(--reading-color); color:var(--reading-ink); }
-    .reading-card-number { flex:0 0 34px; height:34px; border:2px solid currentColor; border-radius:50%; display:flex; align-items:center; justify-content:center; font-size:22px; line-height:1; font-weight:750; }
-    .reading-card-heading { min-width:0; margin:0; font-size:28px; line-height:1.3; font-weight:750; overflow-wrap:anywhere; }
+    .reading-card-number { flex:0 0 34px; height:34px; border:1px solid currentColor; border-radius:50%; display:flex; align-items:center; justify-content:center; font-size:22px; line-height:1; font-weight:500; }
+    .reading-card-heading { min-width:0; margin:0; font-size:28px; line-height:1.3; font-weight:300; overflow-wrap:anywhere; }
     .reading-card-heading small { display:block; margin-top:4px; font-size:18px; font-weight:500; }
-    .reading-card-body { padding:18px 22px 22px; font-size:26px; line-height:var(--text-line-height,1.55); letter-spacing:var(--text-letter-spacing,0px); overflow-wrap:anywhere; }
+    .reading-card-body { font-weight:400; padding:18px 22px 22px; font-size:26px; line-height:var(--text-line-height,1.55); letter-spacing:var(--text-letter-spacing,0px); overflow-wrap:anywhere; }
     .reading-card-body:empty { display:none; }
     .reading-card-body > .mixed-body-line { margin:0; }
     .reading-card-body > .mixed-body-line + .mixed-body-line { margin-top:10px; }
@@ -39,7 +39,7 @@
     .reading-card-body > .is-numbered::before { min-width:30px; }
     .reading-card-body > .is-pipe { padding-left:20px; }
     .reading-line-continuation::before { display:none!important; }
-    .reading-footer { border-top:1px solid #d8d2dc; padding-top:12px; display:flex; justify-content:space-between; gap:32px; font-size:17px; line-height:1.2; color:#625b66; }
+    .reading-footer { border-top:1px solid #FFFFFF; padding-top:12px; display:flex; justify-content:space-between; gap:32px; font-size:17px; line-height:1.2; color:#272823; }
     @page { size: letter landscape; margin:0; }
     @media print {
       html, body[data-reading-export="true"], body[data-reading-export="true"] #app { width:1056px!important; height:auto!important; overflow:visible!important; }
@@ -143,7 +143,7 @@
       ];
       for (const entry of entries) {
         const { item, index, field } = entry;
-        const color = index >= 0 ? colors(index) : { color: "#eee8f4", ink: "#18151b" };
+        const color = index >= 0 ? colors(index) : { color: "#CBD5F3", ink: "#272823" };
         const makeCard = continued => {
           const card = document.createElement("article");
           card.className = "reading-card";

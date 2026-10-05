@@ -1,0 +1,2427 @@
+{
+  "annotations": [
+    {
+      "id": "address-book",
+      "name": "Address book",
+      "asset": "images/annotation-libraries/annotations/svg/address-book.svg",
+      "thumbnail": "images/annotation-libraries/annotations/thumbnails/address-book.png"
+    },
+    {
+      "id": "asterisk",
+      "name": "Asterisk",
+      "asset": "images/annotation-libraries/annotations/svg/asterisk.svg",
+      "thumbnail": "images/annotation-libraries/annotations/thumbnails/asterisk.png"
+    },
+    {
+      "id": "at-sign",
+      "name": "At sign",
+      "asset": "images/annotation-libraries/annotations/svg/at-sign.svg",
+      "thumbnail": "images/annotation-libraries/annotations/thumbnails/at-sign.png"
+    },
+    {
+      "id": "attention-rays",
+      "name": "Attention rays",
+      "asset": "images/annotation-libraries/annotations/svg/attention-rays.svg",
+      "thumbnail": "images/annotation-libraries/annotations/thumbnails/attention-rays.png"
+    },
+    {
+      "id": "binders",
+      "name": "Binders",
+      "asset": "images/annotation-libraries/annotations/svg/binders.svg",
+      "thumbnail": "images/annotation-libraries/annotations/thumbnails/binders.png"
+    },
+    {
+      "id": "bookmark",
+      "name": "Bookmark",
+      "asset": "images/annotation-libraries/annotations/svg/bookmark.svg",
+      "thumbnail": "images/annotation-libraries/annotations/thumbnails/bookmark.png"
+    },
+    {
+      "id": "briefcase",
+      "name": "Briefcase",
+      "asset": "images/annotation-libraries/annotations/svg/briefcase.svg",
+      "thumbnail": "images/annotation-libraries/annotations/thumbnails/briefcase.png"
+    },
+    {
+      "id": "calendar-clock",
+      "name": "Calendar clock",
+      "asset": "images/annotation-libraries/annotations/svg/calendar-clock.svg",
+      "thumbnail": "images/annotation-libraries/annotations/thumbnails/calendar-clock.png"
+    },
+    {
+      "id": "callout-left",
+      "name": "Callout left",
+      "asset": "images/annotation-libraries/annotations/svg/callout-left.svg",
+      "thumbnail": "images/annotation-libraries/annotations/thumbnails/callout-left.png"
+    },
+    {
+      "id": "callout-right",
+      "name": "Callout right",
+      "asset": "images/annotation-libraries/annotations/svg/callout-right.svg",
+      "thumbnail": "images/annotation-libraries/annotations/thumbnails/callout-right.png"
+    },
+    {
+      "id": "chatgpt",
+      "name": "ChatGPT",
+      "asset": "images/annotation-libraries/annotations/svg/chatgpt.svg",
+      "thumbnail": "images/annotation-libraries/annotations/thumbnails/chatgpt.png"
+    },
+    {
+      "id": "check",
+      "name": "Check",
+      "asset": "images/annotation-libraries/annotations/svg/check.svg",
+      "thumbnail": "images/annotation-libraries/annotations/thumbnails/check.png"
+    },
+    {
+      "id": "check-circle",
+      "name": "Check circle",
+      "asset": "images/annotation-libraries/annotations/svg/check-circle.svg",
+      "thumbnail": "images/annotation-libraries/annotations/thumbnails/check-circle.png"
+    },
+    {
+      "id": "checklist",
+      "name": "Checklist",
+      "asset": "images/annotation-libraries/annotations/svg/checklist.svg",
+      "thumbnail": "images/annotation-libraries/annotations/thumbnails/checklist.png"
+    },
+    {
+      "id": "click-marks",
+      "name": "Click marks",
+      "asset": "images/annotation-libraries/annotations/svg/click-marks.svg",
+      "thumbnail": "images/annotation-libraries/annotations/thumbnails/click-marks.png"
+    },
+    {
+      "id": "clipboard",
+      "name": "Clipboard",
+      "asset": "images/annotation-libraries/annotations/svg/clipboard.svg",
+      "thumbnail": "images/annotation-libraries/annotations/thumbnails/clipboard.png"
+    },
+    {
+      "id": "clipboard-note",
+      "name": "Clipboard note",
+      "asset": "images/annotation-libraries/annotations/svg/clipboard-note.svg",
+      "thumbnail": "images/annotation-libraries/annotations/thumbnails/clipboard-note.png"
+    },
+    {
+      "id": "clipboard-paper",
+      "name": "Clipboard paper",
+      "asset": "images/annotation-libraries/annotations/svg/clipboard-paper.svg",
+      "thumbnail": "images/annotation-libraries/annotations/thumbnails/clipboard-paper.png"
+    },
+    {
+      "id": "clock",
+      "name": "Clock",
+      "asset": "images/annotation-libraries/annotations/svg/clock.svg",
+      "thumbnail": "images/annotation-libraries/annotations/thumbnails/clock.png"
+    },
+    {
+      "id": "comment-add",
+      "name": "Comment add",
+      "asset": "images/annotation-libraries/annotations/svg/comment-add.svg",
+      "thumbnail": "images/annotation-libraries/annotations/thumbnails/comment-add.png"
+    },
+    {
+      "id": "contact-search",
+      "name": "Contact search",
+      "asset": "images/annotation-libraries/annotations/svg/contact-search.svg",
+      "thumbnail": "images/annotation-libraries/annotations/thumbnails/contact-search.png"
+    },
+    {
+      "id": "conversation-bubbles",
+      "name": "Conversation bubbles",
+      "asset": "images/annotation-libraries/annotations/svg/conversation-bubbles.svg",
+      "thumbnail": "images/annotation-libraries/annotations/thumbnails/conversation-bubbles.png"
+    },
+    {
+      "id": "conversation-sketch",
+      "name": "Conversation sketch",
+      "asset": "images/annotation-libraries/annotations/svg/conversation-sketch.svg",
+      "thumbnail": "images/annotation-libraries/annotations/thumbnails/conversation-sketch.png"
+    },
+    {
+      "id": "copy",
+      "name": "Copy",
+      "asset": "images/annotation-libraries/annotations/svg/copy.svg",
+      "thumbnail": "images/annotation-libraries/annotations/thumbnails/copy.png"
+    },
+    {
+      "id": "court-reporter-sketch",
+      "name": "Court reporter \u2014 sketch",
+      "asset": "images/annotation-libraries/annotations/png/court-reporter-sketch.png",
+      "thumbnail": "images/annotation-libraries/annotations/thumbnails/court-reporter-sketch.png"
+    },
+    {
+      "id": "cross",
+      "name": "Cross",
+      "asset": "images/annotation-libraries/annotations/svg/cross.svg",
+      "thumbnail": "images/annotation-libraries/annotations/thumbnails/cross.png"
+    },
+    {
+      "id": "cross-circle",
+      "name": "Cross circle",
+      "asset": "images/annotation-libraries/annotations/svg/cross-circle.svg",
+      "thumbnail": "images/annotation-libraries/annotations/thumbnails/cross-circle.png"
+    },
+    {
+      "id": "document-add",
+      "name": "Document add",
+      "asset": "images/annotation-libraries/annotations/svg/document-add.svg",
+      "thumbnail": "images/annotation-libraries/annotations/thumbnails/document-add.png"
+    },
+    {
+      "id": "double-chevron",
+      "name": "Double chevron",
+      "asset": "images/annotation-libraries/annotations/svg/double-chevron.svg",
+      "thumbnail": "images/annotation-libraries/annotations/thumbnails/double-chevron.png"
+    },
+    {
+      "id": "double-chevron-left",
+      "name": "Double chevron left",
+      "asset": "images/annotation-libraries/annotations/svg/double-chevron-left.svg",
+      "thumbnail": "images/annotation-libraries/annotations/thumbnails/double-chevron-left.png"
+    },
+    {
+      "id": "double-circle",
+      "name": "Double circle",
+      "asset": "images/annotation-libraries/annotations/svg/double-circle.svg",
+      "thumbnail": "images/annotation-libraries/annotations/thumbnails/double-circle.png"
+    },
+    {
+      "id": "drag-gesture",
+      "name": "Drag gesture",
+      "asset": "images/annotation-libraries/annotations/svg/drag-gesture.svg",
+      "thumbnail": "images/annotation-libraries/annotations/thumbnails/drag-gesture.png"
+    },
+    {
+      "id": "envelope",
+      "name": "Envelope",
+      "asset": "images/annotation-libraries/annotations/svg/envelope.svg",
+      "thumbnail": "images/annotation-libraries/annotations/thumbnails/envelope.png"
+    },
+    {
+      "id": "file-organizer",
+      "name": "File organizer",
+      "asset": "images/annotation-libraries/annotations/svg/file-organizer.svg",
+      "thumbnail": "images/annotation-libraries/annotations/thumbnails/file-organizer.png"
+    },
+    {
+      "id": "glasses",
+      "name": "Glasses",
+      "asset": "images/annotation-libraries/annotations/svg/glasses.svg",
+      "thumbnail": "images/annotation-libraries/annotations/thumbnails/glasses.png"
+    },
+    {
+      "id": "hashtag",
+      "name": "Hashtag",
+      "asset": "images/annotation-libraries/annotations/svg/hashtag.svg",
+      "thumbnail": "images/annotation-libraries/annotations/thumbnails/hashtag.png"
+    },
+    {
+      "id": "headphones",
+      "name": "Headphones",
+      "asset": "images/annotation-libraries/annotations/svg/headphones.svg",
+      "thumbnail": "images/annotation-libraries/annotations/thumbnails/headphones.png"
+    },
+    {
+      "id": "hotspot-1",
+      "name": "Hotspot 1",
+      "asset": "images/annotation-libraries/annotations/svg/hotspot-1.svg",
+      "thumbnail": "images/annotation-libraries/annotations/thumbnails/hotspot-1.png"
+    },
+    {
+      "id": "hotspot-10",
+      "name": "Hotspot 10",
+      "asset": "images/annotation-libraries/annotations/svg/hotspot-10.svg",
+      "thumbnail": "images/annotation-libraries/annotations/thumbnails/hotspot-10.png"
+    },
+    {
+      "id": "hotspot-11",
+      "name": "Hotspot 11",
+      "asset": "images/annotation-libraries/annotations/svg/hotspot-11.svg",
+      "thumbnail": "images/annotation-libraries/annotations/thumbnails/hotspot-11.png"
+    },
+    {
+      "id": "hotspot-12",
+      "name": "Hotspot 12",
+      "asset": "images/annotation-libraries/annotations/svg/hotspot-12.svg",
+      "thumbnail": "images/annotation-libraries/annotations/thumbnails/hotspot-12.png"
+    },
+    {
+      "id": "hotspot-2",
+      "name": "Hotspot 2",
+      "asset": "images/annotation-libraries/annotations/svg/hotspot-2.svg",
+      "thumbnail": "images/annotation-libraries/annotations/thumbnails/hotspot-2.png"
+    },
+    {
+      "id": "hotspot-3",
+      "name": "Hotspot 3",
+      "asset": "images/annotation-libraries/annotations/svg/hotspot-3.svg",
+      "thumbnail": "images/annotation-libraries/annotations/thumbnails/hotspot-3.png"
+    },
+    {
+      "id": "hotspot-4",
+      "name": "Hotspot 4",
+      "asset": "images/annotation-libraries/annotations/svg/hotspot-4.svg",
+      "thumbnail": "images/annotation-libraries/annotations/thumbnails/hotspot-4.png"
+    },
+    {
+      "id": "hotspot-5",
+      "name": "Hotspot 5",
+      "asset": "images/annotation-libraries/annotations/svg/hotspot-5.svg",
+      "thumbnail": "images/annotation-libraries/annotations/thumbnails/hotspot-5.png"
+    },
+    {
+      "id": "hotspot-6",
+      "name": "Hotspot 6",
+      "asset": "images/annotation-libraries/annotations/svg/hotspot-6.svg",
+      "thumbnail": "images/annotation-libraries/annotations/thumbnails/hotspot-6.png"
+    },
+    {
+      "id": "hotspot-7",
+      "name": "Hotspot 7",
+      "asset": "images/annotation-libraries/annotations/svg/hotspot-7.svg",
+      "thumbnail": "images/annotation-libraries/annotations/thumbnails/hotspot-7.png"
+    },
+    {
+      "id": "hotspot-8",
+      "name": "Hotspot 8",
+      "asset": "images/annotation-libraries/annotations/svg/hotspot-8.svg",
+      "thumbnail": "images/annotation-libraries/annotations/thumbnails/hotspot-8.png"
+    },
+    {
+      "id": "hotspot-9",
+      "name": "Hotspot 9",
+      "asset": "images/annotation-libraries/annotations/svg/hotspot-9.svg",
+      "thumbnail": "images/annotation-libraries/annotations/thumbnails/hotspot-9.png"
+    },
+    {
+      "id": "hotspot-blank",
+      "name": "Hotspot blank",
+      "asset": "images/annotation-libraries/annotations/svg/hotspot-blank.svg",
+      "thumbnail": "images/annotation-libraries/annotations/thumbnails/hotspot-blank.png"
+    },
+    {
+      "id": "image-add",
+      "name": "Image add",
+      "asset": "images/annotation-libraries/annotations/svg/image-add.svg",
+      "thumbnail": "images/annotation-libraries/annotations/thumbnails/image-add.png"
+    },
+    {
+      "id": "interactive-link",
+      "name": "Interactive link",
+      "asset": "images/annotation-libraries/annotations/svg/interactive-link.svg",
+      "thumbnail": "images/annotation-libraries/annotations/thumbnails/interactive-link.png",
+      "action": "add-link-dialog"
+    },
+    {
+      "id": "interactive-scroll",
+      "name": "Interactive scrolling page",
+      "asset": "images/annotation-libraries/annotations/svg/interactive-scroll.svg",
+      "thumbnail": "images/annotation-libraries/annotations/thumbnails/interactive-scroll.png",
+      "action": "add-scroll-image-dialog"
+    },
+    {
+      "id": "laptop",
+      "name": "Laptop",
+      "asset": "images/annotation-libraries/annotations/svg/laptop.svg",
+      "thumbnail": "images/annotation-libraries/annotations/thumbnails/laptop.png"
+    },
+    {
+      "id": "lightbulb",
+      "name": "Lightbulb",
+      "asset": "images/annotation-libraries/annotations/svg/lightbulb.svg",
+      "thumbnail": "images/annotation-libraries/annotations/thumbnails/lightbulb.png"
+    },
+    {
+      "id": "location-pin",
+      "name": "Location pin",
+      "asset": "images/annotation-libraries/annotations/svg/location-pin.svg",
+      "thumbnail": "images/annotation-libraries/annotations/thumbnails/location-pin.png"
+    },
+    {
+      "id": "mail-attachment",
+      "name": "Mail attachment",
+      "asset": "images/annotation-libraries/annotations/svg/mail-attachment.svg",
+      "thumbnail": "images/annotation-libraries/annotations/thumbnails/mail-attachment.png"
+    },
+    {
+      "id": "mailbox",
+      "name": "Mailbox",
+      "asset": "images/annotation-libraries/annotations/svg/mailbox.svg",
+      "thumbnail": "images/annotation-libraries/annotations/thumbnails/mailbox.png"
+    },
+    {
+      "id": "megaphone",
+      "name": "Megaphone",
+      "asset": "images/annotation-libraries/annotations/svg/megaphone.svg",
+      "thumbnail": "images/annotation-libraries/annotations/thumbnails/megaphone.png"
+    },
+    {
+      "id": "menu",
+      "name": "Menu",
+      "asset": "images/annotation-libraries/annotations/svg/menu.svg",
+      "thumbnail": "images/annotation-libraries/annotations/thumbnails/menu.png"
+    },
+    {
+      "id": "microphone",
+      "name": "Microphone",
+      "asset": "images/annotation-libraries/annotations/svg/microphone.svg",
+      "thumbnail": "images/annotation-libraries/annotations/thumbnails/microphone.png"
+    },
+    {
+      "id": "mobile-read-aloud-cue",
+      "name": "Mobile read aloud cue",
+      "asset": "images/annotation-libraries/annotations/svg/mobile-read-aloud-cue.svg",
+      "thumbnail": "images/annotation-libraries/annotations/thumbnails/mobile-read-aloud-cue.png"
+    },
+    {
+      "id": "more-menu",
+      "name": "More menu",
+      "asset": "images/annotation-libraries/annotations/svg/more-menu.svg",
+      "thumbnail": "images/annotation-libraries/annotations/thumbnails/more-menu.png"
+    },
+    {
+      "id": "more-three-dots",
+      "name": "More three dots",
+      "asset": "images/annotation-libraries/annotations/svg/more-three-dots.svg",
+      "thumbnail": "images/annotation-libraries/annotations/thumbnails/more-three-dots.png"
+    },
+    {
+      "id": "mouse-click",
+      "name": "Mouse click",
+      "asset": "images/annotation-libraries/annotations/svg/mouse-click.svg",
+      "thumbnail": "images/annotation-libraries/annotations/thumbnails/mouse-click.png"
+    },
+    {
+      "id": "notepad",
+      "name": "Notepad",
+      "asset": "images/annotation-libraries/annotations/svg/notepad.svg",
+      "thumbnail": "images/annotation-libraries/annotations/thumbnails/notepad.png"
+    },
+    {
+      "id": "one-person",
+      "name": "One person",
+      "asset": "images/annotation-libraries/annotations/svg/one-person.svg",
+      "thumbnail": "images/annotation-libraries/annotations/thumbnails/one-person.png"
+    },
+    {
+      "id": "open-mail",
+      "name": "Open mail",
+      "asset": "images/annotation-libraries/annotations/svg/open-mail.svg",
+      "thumbnail": "images/annotation-libraries/annotations/thumbnails/open-mail.png"
+    },
+    {
+      "id": "paperclip",
+      "name": "Paperclip",
+      "asset": "images/annotation-libraries/annotations/svg/paperclip.svg",
+      "thumbnail": "images/annotation-libraries/annotations/thumbnails/paperclip.png"
+    },
+    {
+      "id": "pencil",
+      "name": "Pencil",
+      "asset": "images/annotation-libraries/annotations/svg/pencil.svg",
+      "thumbnail": "images/annotation-libraries/annotations/thumbnails/pencil.png"
+    },
+    {
+      "id": "phone-frame",
+      "name": "Phone frame",
+      "asset": "images/annotation-libraries/annotations/svg/phone-frame.svg",
+      "thumbnail": "images/annotation-libraries/annotations/thumbnails/phone-frame.png"
+    },
+    {
+      "id": "pinned-callout",
+      "name": "Pinned callout",
+      "asset": "images/annotation-libraries/annotations/svg/pinned-callout.svg",
+      "thumbnail": "images/annotation-libraries/annotations/thumbnails/pinned-callout.png"
+    },
+    {
+      "id": "plugin-at",
+      "name": "Plugin at",
+      "asset": "images/annotation-libraries/annotations/svg/plugin-at.svg",
+      "thumbnail": "images/annotation-libraries/annotations/thumbnails/plugin-at.png"
+    },
+    {
+      "id": "plugin-plug",
+      "name": "Plugin plug",
+      "asset": "images/annotation-libraries/annotations/svg/plugin-plug.svg",
+      "thumbnail": "images/annotation-libraries/annotations/thumbnails/plugin-plug.png"
+    },
+    {
+      "id": "pointer-arrow",
+      "name": "Pointer arrow",
+      "asset": "images/annotation-libraries/annotations/svg/pointer-arrow.svg",
+      "thumbnail": "images/annotation-libraries/annotations/thumbnails/pointer-arrow.png"
+    },
+    {
+      "id": "pointer-click",
+      "name": "Pointer click",
+      "asset": "images/annotation-libraries/annotations/svg/pointer-click.svg",
+      "thumbnail": "images/annotation-libraries/annotations/thumbnails/pointer-click.png"
+    },
+    {
+      "id": "pointer-hand",
+      "name": "Pointer hand",
+      "asset": "images/annotation-libraries/annotations/svg/pointer-hand.svg",
+      "thumbnail": "images/annotation-libraries/annotations/thumbnails/pointer-hand.png"
+    },
+    {
+      "id": "pushpin",
+      "name": "Pushpin",
+      "asset": "images/annotation-libraries/annotations/svg/pushpin.svg",
+      "thumbnail": "images/annotation-libraries/annotations/thumbnails/pushpin.png"
+    },
+    {
+      "id": "radiating-circle",
+      "name": "Radiating circle",
+      "asset": "images/annotation-libraries/annotations/svg/radiating-circle.svg",
+      "thumbnail": "images/annotation-libraries/annotations/thumbnails/radiating-circle.png"
+    },
+    {
+      "id": "read-aloud",
+      "name": "Read aloud",
+      "asset": "images/annotation-libraries/annotations/svg/read-aloud.svg",
+      "thumbnail": "images/annotation-libraries/annotations/thumbnails/read-aloud.png"
+    },
+    {
+      "id": "rectangle-frame",
+      "name": "Rectangle frame",
+      "asset": "images/annotation-libraries/annotations/svg/rectangle-frame.svg",
+      "thumbnail": "images/annotation-libraries/annotations/thumbnails/rectangle-frame.png"
+    },
+    {
+      "id": "reminder-finger",
+      "name": "Reminder finger",
+      "asset": "images/annotation-libraries/annotations/svg/reminder-finger.svg",
+      "thumbnail": "images/annotation-libraries/annotations/thumbnails/reminder-finger.png"
+    },
+    {
+      "id": "reporter-sidekick-high-five",
+      "name": "Reporter Sidekick \u2014 high five",
+      "asset": "images/annotation-libraries/annotations/png/reporter-sidekick-high-five.png",
+      "thumbnail": "images/annotation-libraries/annotations/thumbnails/reporter-sidekick-high-five.png"
+    },
+    {
+      "id": "reporter-sidekick-sketch",
+      "name": "Reporter Sidekick \u2014 sketch",
+      "asset": "images/annotation-libraries/annotations/png/reporter-sidekick-sketch.png",
+      "thumbnail": "images/annotation-libraries/annotations/thumbnails/reporter-sidekick-sketch.png"
+    },
+    {
+      "id": "retry",
+      "name": "Retry",
+      "asset": "images/annotation-libraries/annotations/svg/retry.svg",
+      "thumbnail": "images/annotation-libraries/annotations/thumbnails/retry.png"
+    },
+    {
+      "id": "return-key",
+      "name": "Return key",
+      "asset": "images/annotation-libraries/annotations/svg/return-key.svg",
+      "thumbnail": "images/annotation-libraries/annotations/thumbnails/return-key.png"
+    },
+    {
+      "id": "rolodex",
+      "name": "Rolodex",
+      "asset": "images/annotation-libraries/annotations/svg/rolodex.svg",
+      "thumbnail": "images/annotation-libraries/annotations/thumbnails/rolodex.png"
+    },
+    {
+      "id": "rounded-frame-red",
+      "name": "Rounded frame red",
+      "asset": "images/annotation-libraries/annotations/svg/rounded-frame-red.svg",
+      "thumbnail": "images/annotation-libraries/annotations/thumbnails/rounded-frame-red.png"
+    },
+    {
+      "id": "search",
+      "name": "Search",
+      "asset": "images/annotation-libraries/annotations/svg/search.svg",
+      "thumbnail": "images/annotation-libraries/annotations/thumbnails/search.png"
+    },
+    {
+      "id": "sidekick-sign-appearance-pages",
+      "name": "Sidekick sign \u2014 Appearance pages",
+      "asset": "images/annotation-libraries/annotations/png/sidekick-sign-appearance-pages.png",
+      "thumbnail": "images/annotation-libraries/annotations/thumbnails/sidekick-sign-appearance-pages.png"
+    },
+    {
+      "id": "sidekick-sign-blank",
+      "name": "Sidekick sign \u2014 Blank",
+      "asset": "images/annotation-libraries/annotations/png/sidekick-sign-blank.png",
+      "thumbnail": "images/annotation-libraries/annotations/thumbnails/sidekick-sign-blank.png"
+    },
+    {
+      "id": "sidekick-sign-check-exhibits",
+      "name": "Sidekick sign \u2014 Check exhibits using paraphrased quotes or phonetic spellings",
+      "asset": "images/annotation-libraries/annotations/png/sidekick-sign-check-exhibits.png",
+      "thumbnail": "images/annotation-libraries/annotations/thumbnails/sidekick-sign-check-exhibits.png"
+    },
+    {
+      "id": "sidekick-sign-dictionary-building",
+      "name": "Sidekick sign \u2014 Dictionary building",
+      "asset": "images/annotation-libraries/annotations/png/sidekick-sign-dictionary-building.png",
+      "thumbnail": "images/annotation-libraries/annotations/thumbnails/sidekick-sign-dictionary-building.png"
+    },
+    {
+      "id": "sidekick-sign-exhibit-descriptions",
+      "name": "Sidekick sign \u2014 Exhibit descriptions",
+      "asset": "images/annotation-libraries/annotations/png/sidekick-sign-exhibit-descriptions.png",
+      "thumbnail": "images/annotation-libraries/annotations/thumbnails/sidekick-sign-exhibit-descriptions.png"
+    },
+    {
+      "id": "sidekick-sign-punctuating-the-impossible",
+      "name": "Sidekick sign \u2014 Help with punctuating the impossible",
+      "asset": "images/annotation-libraries/annotations/png/sidekick-sign-punctuating-the-impossible.png",
+      "thumbnail": "images/annotation-libraries/annotations/thumbnails/sidekick-sign-punctuating-the-impossible.png"
+    },
+    {
+      "id": "sidekick-sign-practice-dictation",
+      "name": "Sidekick sign \u2014 Practice dictation",
+      "asset": "images/annotation-libraries/annotations/png/sidekick-sign-practice-dictation.png",
+      "thumbnail": "images/annotation-libraries/annotations/thumbnails/sidekick-sign-practice-dictation.png"
+    },
+    {
+      "id": "sidekick-sign-proofreading",
+      "name": "Sidekick sign \u2014 Proofreading",
+      "asset": "images/annotation-libraries/annotations/png/sidekick-sign-proofreading.png",
+      "thumbnail": "images/annotation-libraries/annotations/thumbnails/sidekick-sign-proofreading.png"
+    },
+    {
+      "id": "sidekick-sign-realtime-prep",
+      "name": "Sidekick sign \u2014 Realtime prep (research and word lists)",
+      "asset": "images/annotation-libraries/annotations/png/sidekick-sign-realtime-prep.png",
+      "thumbnail": "images/annotation-libraries/annotations/thumbnails/sidekick-sign-realtime-prep.png"
+    },
+    {
+      "id": "sidekick-sign-resolve-technical-phonetic",
+      "name": "Sidekick sign \u2014 Resolves technical, phonetic, etc. fast",
+      "asset": "images/annotation-libraries/annotations/png/sidekick-sign-resolve-technical-phonetic.png",
+      "thumbnail": "images/annotation-libraries/annotations/thumbnails/sidekick-sign-resolve-technical-phonetic.png"
+    },
+    {
+      "id": "sparkle",
+      "name": "Sparkle",
+      "asset": "images/annotation-libraries/annotations/svg/sparkle.svg",
+      "thumbnail": "images/annotation-libraries/annotations/thumbnails/sparkle.png"
+    },
+    {
+      "id": "speaker",
+      "name": "Speaker",
+      "asset": "images/annotation-libraries/annotations/svg/speaker.svg",
+      "thumbnail": "images/annotation-libraries/annotations/thumbnails/speaker.png"
+    },
+    {
+      "id": "speech-bubble-left",
+      "name": "Speech bubble left",
+      "asset": "images/annotation-libraries/annotations/svg/speech-bubble-left.svg",
+      "thumbnail": "images/annotation-libraries/annotations/thumbnails/speech-bubble-left.png"
+    },
+    {
+      "id": "speech-bubble-right",
+      "name": "Speech bubble right",
+      "asset": "images/annotation-libraries/annotations/svg/speech-bubble-right.svg",
+      "thumbnail": "images/annotation-libraries/annotations/thumbnails/speech-bubble-right.png"
+    },
+    {
+      "id": "spiral-notepad",
+      "name": "Spiral notepad",
+      "asset": "images/annotation-libraries/annotations/svg/spiral-notepad.svg",
+      "thumbnail": "images/annotation-libraries/annotations/thumbnails/spiral-notepad.png"
+    },
+    {
+      "id": "starburst",
+      "name": "Starburst",
+      "asset": "images/annotation-libraries/annotations/svg/starburst.svg",
+      "thumbnail": "images/annotation-libraries/annotations/thumbnails/starburst.png"
+    },
+    {
+      "id": "steno-keyboard-artistic-sketch",
+      "name": "Steno keyboard \u2014 artistic sketch",
+      "asset": "images/annotation-libraries/annotations/png/steno-keyboard-artistic-sketch.png",
+      "thumbnail": "images/annotation-libraries/annotations/thumbnails/steno-keyboard-artistic-sketch.png"
+    },
+    {
+      "id": "steno-keyboard-highlight",
+      "name": "Steno keyboard \u2014 highlight keys",
+      "asset": "images/annotation-libraries/annotations/svg/steno-keyboard-highlight.svg",
+      "thumbnail": "images/annotation-libraries/annotations/thumbnails/steno-keyboard-highlight.png",
+      "action": "add-steno-annotation"
+    },
+    {
+      "id": "steno-keyboard-website",
+      "name": "Steno keyboard \u2014 website style",
+      "asset": "images/annotation-libraries/annotations/svg/steno-keyboard-website.svg",
+      "thumbnail": "images/annotation-libraries/annotations/thumbnails/steno-keyboard-website.png"
+    },
+    {
+      "id": "sticky-note",
+      "name": "Sticky note",
+      "asset": "images/annotation-libraries/annotations/svg/sticky-note.svg",
+      "thumbnail": "images/annotation-libraries/annotations/thumbnails/sticky-note.png"
+    },
+    {
+      "id": "stop",
+      "name": "Stop",
+      "asset": "images/annotation-libraries/annotations/svg/stop.svg",
+      "thumbnail": "images/annotation-libraries/annotations/thumbnails/stop.png"
+    },
+    {
+      "id": "stopwatch",
+      "name": "Stopwatch",
+      "asset": "images/annotation-libraries/annotations/svg/stopwatch.svg",
+      "thumbnail": "images/annotation-libraries/annotations/thumbnails/stopwatch.png"
+    },
+    {
+      "id": "tap",
+      "name": "Tap",
+      "asset": "images/annotation-libraries/annotations/svg/tap.svg",
+      "thumbnail": "images/annotation-libraries/annotations/thumbnails/tap.png"
+    },
+    {
+      "id": "taped-callout",
+      "name": "Taped callout",
+      "asset": "images/annotation-libraries/annotations/svg/taped-callout.svg",
+      "thumbnail": "images/annotation-libraries/annotations/thumbnails/taped-callout.png"
+    },
+    {
+      "id": "telephone",
+      "name": "Telephone",
+      "asset": "images/annotation-libraries/annotations/svg/telephone.svg",
+      "thumbnail": "images/annotation-libraries/annotations/thumbnails/telephone.png"
+    },
+    {
+      "id": "text-cursor",
+      "name": "Text cursor",
+      "asset": "images/annotation-libraries/annotations/svg/text-cursor.svg",
+      "thumbnail": "images/annotation-libraries/annotations/thumbnails/text-cursor.png"
+    },
+    {
+      "id": "thought-bubble",
+      "name": "Thought bubble",
+      "asset": "images/annotation-libraries/annotations/svg/thought-bubble.svg",
+      "thumbnail": "images/annotation-libraries/annotations/thumbnails/thought-bubble.png"
+    },
+    {
+      "id": "three-people",
+      "name": "Three people",
+      "asset": "images/annotation-libraries/annotations/svg/three-people.svg",
+      "thumbnail": "images/annotation-libraries/annotations/thumbnails/three-people.png"
+    },
+    {
+      "id": "torn-paper",
+      "name": "Torn paper",
+      "asset": "images/annotation-libraries/annotations/svg/torn-paper.svg",
+      "thumbnail": "images/annotation-libraries/annotations/thumbnails/torn-paper.png"
+    },
+    {
+      "id": "two-people",
+      "name": "Two people",
+      "asset": "images/annotation-libraries/annotations/svg/two-people.svg",
+      "thumbnail": "images/annotation-libraries/annotations/thumbnails/two-people.png"
+    },
+    {
+      "id": "typewriter",
+      "name": "Typewriter",
+      "asset": "images/annotation-libraries/annotations/svg/typewriter.svg",
+      "thumbnail": "images/annotation-libraries/annotations/thumbnails/typewriter.png"
+    },
+    {
+      "id": "upload",
+      "name": "Upload",
+      "asset": "images/annotation-libraries/annotations/svg/upload.svg",
+      "thumbnail": "images/annotation-libraries/annotations/thumbnails/upload.png"
+    },
+    {
+      "id": "vhs-play-video",
+      "name": "VHS play video",
+      "asset": "images/annotation-libraries/annotations/svg/vhs-play-video.svg",
+      "thumbnail": "images/annotation-libraries/annotations/thumbnails/vhs-play-video.png",
+      "action": "add-video-dialog"
+    },
+    {
+      "id": "video-meeting-link",
+      "name": "Video meeting link",
+      "asset": "images/annotation-libraries/annotations/svg/video-meeting-link.svg",
+      "thumbnail": "images/annotation-libraries/annotations/thumbnails/video-meeting-link.png"
+    },
+    {
+      "id": "warning",
+      "name": "Warning",
+      "asset": "images/annotation-libraries/annotations/svg/warning.svg",
+      "thumbnail": "images/annotation-libraries/annotations/thumbnails/warning.png"
+    },
+    {
+      "id": "workshop-free",
+      "name": "Workshop free",
+      "asset": "images/annotation-libraries/annotations/svg/workshop-free.svg",
+      "thumbnail": "images/annotation-libraries/annotations/thumbnails/workshop-free.png"
+    },
+    {
+      "id": "workshop-paid",
+      "name": "Workshop paid",
+      "asset": "images/annotation-libraries/annotations/svg/workshop-paid.svg",
+      "thumbnail": "images/annotation-libraries/annotations/thumbnails/workshop-paid.png"
+    }
+  ],
+  "shapes-v1": [
+    {
+      "id": "address_bar_purpleish.png",
+      "name": "address_bar_purpleish",
+      "asset": "images/annotation-libraries/shapes-v1/artwork/address_bar_purpleish.png",
+      "thumbnail": "images/annotation-libraries/shapes-v1/thumbnails/address_bar_purpleish.png",
+      "legacyAsset": "images/tutorial-annotations/old-annotations-for-dropdown/address_bar_purpleish.png"
+    },
+    {
+      "id": "arrows-3arrows-mint.png",
+      "name": "arrows 3arrows mint",
+      "asset": "images/annotation-libraries/shapes-v1/artwork/arrows-3arrows-mint.png",
+      "thumbnail": "images/annotation-libraries/shapes-v1/thumbnails/arrows-3arrows-mint.png",
+      "legacyAsset": "images/tutorial-annotations/old-annotations-for-dropdown/arrows-3arrows-mint.png"
+    },
+    {
+      "id": "arrows-3arrows-orangeyellow.png",
+      "name": "arrows 3arrows orangeyellow",
+      "asset": "images/annotation-libraries/shapes-v1/artwork/arrows-3arrows-orangeyellow.png",
+      "thumbnail": "images/annotation-libraries/shapes-v1/thumbnails/arrows-3arrows-orangeyellow.png",
+      "legacyAsset": "images/tutorial-annotations/old-annotations-for-dropdown/arrows-3arrows-orangeyellow.png"
+    },
+    {
+      "id": "arrows-3arrows-pink-1.png",
+      "name": "arrows 3arrows pink 1",
+      "asset": "images/annotation-libraries/shapes-v1/artwork/arrows-3arrows-pink-1.png",
+      "thumbnail": "images/annotation-libraries/shapes-v1/thumbnails/arrows-3arrows-pink-1.png",
+      "legacyAsset": "images/tutorial-annotations/old-annotations-for-dropdown/arrows-3arrows-pink-1.png"
+    },
+    {
+      "id": "arrows-3arrows-pink.png",
+      "name": "arrows 3arrows pink",
+      "asset": "images/annotation-libraries/shapes-v1/artwork/arrows-3arrows-pink.png",
+      "thumbnail": "images/annotation-libraries/shapes-v1/thumbnails/arrows-3arrows-pink.png",
+      "legacyAsset": "images/tutorial-annotations/old-annotations-for-dropdown/arrows-3arrows-pink.png"
+    },
+    {
+      "id": "arrows-3arrows-purple-1.png",
+      "name": "arrows 3arrows purple 1",
+      "asset": "images/annotation-libraries/shapes-v1/artwork/arrows-3arrows-purple-1.png",
+      "thumbnail": "images/annotation-libraries/shapes-v1/thumbnails/arrows-3arrows-purple-1.png",
+      "legacyAsset": "images/tutorial-annotations/old-annotations-for-dropdown/arrows-3arrows-purple-1.png"
+    },
+    {
+      "id": "arrows-3arrows-purple.png",
+      "name": "arrows 3arrows purple",
+      "asset": "images/annotation-libraries/shapes-v1/artwork/arrows-3arrows-purple.png",
+      "thumbnail": "images/annotation-libraries/shapes-v1/thumbnails/arrows-3arrows-purple.png",
+      "legacyAsset": "images/tutorial-annotations/old-annotations-for-dropdown/arrows-3arrows-purple.png"
+    },
+    {
+      "id": "arrows-3arrows-teal-1.png",
+      "name": "arrows 3arrows teal 1",
+      "asset": "images/annotation-libraries/shapes-v1/artwork/arrows-3arrows-teal-1.png",
+      "thumbnail": "images/annotation-libraries/shapes-v1/thumbnails/arrows-3arrows-teal-1.png",
+      "legacyAsset": "images/tutorial-annotations/old-annotations-for-dropdown/arrows-3arrows-teal-1.png"
+    },
+    {
+      "id": "arrows-3arrows-teal.png",
+      "name": "arrows 3arrows teal",
+      "asset": "images/annotation-libraries/shapes-v1/artwork/arrows-3arrows-teal.png",
+      "thumbnail": "images/annotation-libraries/shapes-v1/thumbnails/arrows-3arrows-teal.png",
+      "legacyAsset": "images/tutorial-annotations/old-annotations-for-dropdown/arrows-3arrows-teal.png"
+    },
+    {
+      "id": "arrows-3arrows-white.png",
+      "name": "arrows 3arrows white",
+      "asset": "images/annotation-libraries/shapes-v1/artwork/arrows-3arrows-white.png",
+      "thumbnail": "images/annotation-libraries/shapes-v1/thumbnails/arrows-3arrows-white.png",
+      "legacyAsset": "images/tutorial-annotations/old-annotations-for-dropdown/arrows-3arrows-white.png"
+    },
+    {
+      "id": "arrows-3arrows-yellow.png",
+      "name": "arrows 3arrows yellow",
+      "asset": "images/annotation-libraries/shapes-v1/artwork/arrows-3arrows-yellow.png",
+      "thumbnail": "images/annotation-libraries/shapes-v1/thumbnails/arrows-3arrows-yellow.png",
+      "legacyAsset": "images/tutorial-annotations/old-annotations-for-dropdown/arrows-3arrows-yellow.png"
+    },
+    {
+      "id": "arrows-3arrowsb-orangeyelllow.png",
+      "name": "arrows 3arrowsb orangeyelllow",
+      "asset": "images/annotation-libraries/shapes-v1/artwork/arrows-3arrowsb-orangeyelllow.png",
+      "thumbnail": "images/annotation-libraries/shapes-v1/thumbnails/arrows-3arrowsb-orangeyelllow.png",
+      "legacyAsset": "images/tutorial-annotations/old-annotations-for-dropdown/arrows-3arrowsb-orangeyelllow.png"
+    },
+    {
+      "id": "arrows-3arrowsb-yellow.png",
+      "name": "arrows 3arrowsb yellow",
+      "asset": "images/annotation-libraries/shapes-v1/artwork/arrows-3arrowsb-yellow.png",
+      "thumbnail": "images/annotation-libraries/shapes-v1/thumbnails/arrows-3arrowsb-yellow.png",
+      "legacyAsset": "images/tutorial-annotations/old-annotations-for-dropdown/arrows-3arrowsb-yellow.png"
+    },
+    {
+      "id": "arrows-c-curve-orangeyelllow.png",
+      "name": "arrows c curve orangeyelllow",
+      "asset": "images/annotation-libraries/shapes-v1/artwork/arrows-c-curve-orangeyelllow.png",
+      "thumbnail": "images/annotation-libraries/shapes-v1/thumbnails/arrows-c-curve-orangeyelllow.png",
+      "legacyAsset": "images/tutorial-annotations/old-annotations-for-dropdown/arrows-c-curve-orangeyelllow.png"
+    },
+    {
+      "id": "arrows-down-stripe.png",
+      "name": "arrows down stripe",
+      "asset": "images/annotation-libraries/shapes-v1/artwork/arrows-down-stripe.png",
+      "thumbnail": "images/annotation-libraries/shapes-v1/thumbnails/arrows-down-stripe.png",
+      "legacyAsset": "images/tutorial-annotations/old-annotations-for-dropdown/arrows-down-stripe.png"
+    },
+    {
+      "id": "arrows-left-back-stripe.png",
+      "name": "arrows left back stripe",
+      "asset": "images/annotation-libraries/shapes-v1/artwork/arrows-left-back-stripe.png",
+      "thumbnail": "images/annotation-libraries/shapes-v1/thumbnails/arrows-left-back-stripe.png",
+      "legacyAsset": "images/tutorial-annotations/old-annotations-for-dropdown/arrows-left-back-stripe.png"
+    },
+    {
+      "id": "arrows-left-stripe.png",
+      "name": "arrows left stripe",
+      "asset": "images/annotation-libraries/shapes-v1/artwork/arrows-left-stripe.png",
+      "thumbnail": "images/annotation-libraries/shapes-v1/thumbnails/arrows-left-stripe.png",
+      "legacyAsset": "images/tutorial-annotations/old-annotations-for-dropdown/arrows-left-stripe.png"
+    },
+    {
+      "id": "arrows-orangeyellow-bent.png",
+      "name": "arrows orangeyellow bent",
+      "asset": "images/annotation-libraries/shapes-v1/artwork/arrows-orangeyellow-bent.png",
+      "thumbnail": "images/annotation-libraries/shapes-v1/thumbnails/arrows-orangeyellow-bent.png",
+      "legacyAsset": "images/tutorial-annotations/old-annotations-for-dropdown/arrows-orangeyellow-bent.png"
+    },
+    {
+      "id": "arrows-purple-sticker.png",
+      "name": "arrows purple sticker",
+      "asset": "images/annotation-libraries/shapes-v1/artwork/arrows-purple-sticker.png",
+      "thumbnail": "images/annotation-libraries/shapes-v1/thumbnails/arrows-purple-sticker.png",
+      "legacyAsset": "images/tutorial-annotations/old-annotations-for-dropdown/arrows-purple-sticker.png"
+    },
+    {
+      "id": "arrows-right-back-stripe.png",
+      "name": "arrows right back stripe",
+      "asset": "images/annotation-libraries/shapes-v1/artwork/arrows-right-back-stripe.png",
+      "thumbnail": "images/annotation-libraries/shapes-v1/thumbnails/arrows-right-back-stripe.png",
+      "legacyAsset": "images/tutorial-annotations/old-annotations-for-dropdown/arrows-right-back-stripe.png"
+    },
+    {
+      "id": "arrows-right-stripe.png",
+      "name": "arrows right stripe",
+      "asset": "images/annotation-libraries/shapes-v1/artwork/arrows-right-stripe.png",
+      "thumbnail": "images/annotation-libraries/shapes-v1/thumbnails/arrows-right-stripe.png",
+      "legacyAsset": "images/tutorial-annotations/old-annotations-for-dropdown/arrows-right-stripe.png"
+    },
+    {
+      "id": "arrows-star-squig-sticker.png",
+      "name": "arrows star squig sticker",
+      "asset": "images/annotation-libraries/shapes-v1/artwork/arrows-star-squig-sticker.png",
+      "thumbnail": "images/annotation-libraries/shapes-v1/thumbnails/arrows-star-squig-sticker.png",
+      "legacyAsset": "images/tutorial-annotations/old-annotations-for-dropdown/arrows-star-squig-sticker.png"
+    },
+    {
+      "id": "arrows-tripple up-left.png",
+      "name": "arrows tripple up left",
+      "asset": "images/annotation-libraries/shapes-v1/artwork/arrows-tripple up-left.png",
+      "thumbnail": "images/annotation-libraries/shapes-v1/thumbnails/arrows-tripple up-left.png",
+      "legacyAsset": "images/tutorial-annotations/old-annotations-for-dropdown/arrows-tripple up-left.png"
+    },
+    {
+      "id": "arrows-tripple up-right.png",
+      "name": "arrows tripple up right",
+      "asset": "images/annotation-libraries/shapes-v1/artwork/arrows-tripple up-right.png",
+      "thumbnail": "images/annotation-libraries/shapes-v1/thumbnails/arrows-tripple up-right.png",
+      "legacyAsset": "images/tutorial-annotations/old-annotations-for-dropdown/arrows-tripple up-right.png"
+    },
+    {
+      "id": "arrows-up-stripe.png",
+      "name": "arrows up stripe",
+      "asset": "images/annotation-libraries/shapes-v1/artwork/arrows-up-stripe.png",
+      "thumbnail": "images/annotation-libraries/shapes-v1/thumbnails/arrows-up-stripe.png",
+      "legacyAsset": "images/tutorial-annotations/old-annotations-for-dropdown/arrows-up-stripe.png"
+    },
+    {
+      "id": "asterisk-teal.png",
+      "name": "asterisk teal",
+      "asset": "images/annotation-libraries/shapes-v1/artwork/asterisk-teal.png",
+      "thumbnail": "images/annotation-libraries/shapes-v1/thumbnails/asterisk-teal.png",
+      "legacyAsset": "images/tutorial-annotations/old-annotations-for-dropdown/asterisk-teal.png"
+    },
+    {
+      "id": "avatar-robot-sketch.png",
+      "name": "avatar robot sketch",
+      "asset": "images/annotation-libraries/shapes-v1/artwork/avatar-robot-sketch.png",
+      "thumbnail": "images/annotation-libraries/shapes-v1/thumbnails/avatar-robot-sketch.png",
+      "legacyAsset": "images/tutorial-annotations/old-annotations-for-dropdown/avatar-robot-sketch.png"
+    },
+    {
+      "id": "avatar-user-circle-sketch.png",
+      "name": "avatar user circle sketch",
+      "asset": "images/annotation-libraries/shapes-v1/artwork/avatar-user-circle-sketch.png",
+      "thumbnail": "images/annotation-libraries/shapes-v1/thumbnails/avatar-user-circle-sketch.png",
+      "legacyAsset": "images/tutorial-annotations/old-annotations-for-dropdown/avatar-user-circle-sketch.png"
+    },
+    {
+      "id": "browser-white.png",
+      "name": "browser white",
+      "asset": "images/annotation-libraries/shapes-v1/artwork/browser-white.png",
+      "thumbnail": "images/annotation-libraries/shapes-v1/thumbnails/browser-white.png",
+      "legacyAsset": "images/tutorial-annotations/old-annotations-for-dropdown/browser-white.png"
+    },
+    {
+      "id": "bubble-circle-left.png",
+      "name": "bubble circle left",
+      "asset": "images/annotation-libraries/shapes-v1/artwork/bubble-circle-left.png",
+      "thumbnail": "images/annotation-libraries/shapes-v1/thumbnails/bubble-circle-left.png",
+      "legacyAsset": "images/tutorial-annotations/old-annotations-for-dropdown/bubble-circle-left.png"
+    },
+    {
+      "id": "bubble-circle-right.png",
+      "name": "bubble circle right",
+      "asset": "images/annotation-libraries/shapes-v1/artwork/bubble-circle-right.png",
+      "thumbnail": "images/annotation-libraries/shapes-v1/thumbnails/bubble-circle-right.png",
+      "legacyAsset": "images/tutorial-annotations/old-annotations-for-dropdown/bubble-circle-right.png"
+    },
+    {
+      "id": "bubble-left-sketch.png",
+      "name": "bubble left sketch",
+      "asset": "images/annotation-libraries/shapes-v1/artwork/bubble-left-sketch.png",
+      "thumbnail": "images/annotation-libraries/shapes-v1/thumbnails/bubble-left-sketch.png",
+      "legacyAsset": "images/tutorial-annotations/old-annotations-for-dropdown/bubble-left-sketch.png"
+    },
+    {
+      "id": "bubble-long-oval-left.png",
+      "name": "bubble long oval left",
+      "asset": "images/annotation-libraries/shapes-v1/artwork/bubble-long-oval-left.png",
+      "thumbnail": "images/annotation-libraries/shapes-v1/thumbnails/bubble-long-oval-left.png",
+      "legacyAsset": "images/tutorial-annotations/old-annotations-for-dropdown/bubble-long-oval-left.png"
+    },
+    {
+      "id": "bubble-long-oval-rifght.png",
+      "name": "bubble long oval rifght",
+      "asset": "images/annotation-libraries/shapes-v1/artwork/bubble-long-oval-rifght.png",
+      "thumbnail": "images/annotation-libraries/shapes-v1/thumbnails/bubble-long-oval-rifght.png",
+      "legacyAsset": "images/tutorial-annotations/old-annotations-for-dropdown/bubble-long-oval-rifght.png"
+    },
+    {
+      "id": "bubble-oval-left.png",
+      "name": "bubble oval left",
+      "asset": "images/annotation-libraries/shapes-v1/artwork/bubble-oval-left.png",
+      "thumbnail": "images/annotation-libraries/shapes-v1/thumbnails/bubble-oval-left.png",
+      "legacyAsset": "images/tutorial-annotations/old-annotations-for-dropdown/bubble-oval-left.png"
+    },
+    {
+      "id": "bubble-oval-right.png",
+      "name": "bubble oval right",
+      "asset": "images/annotation-libraries/shapes-v1/artwork/bubble-oval-right.png",
+      "thumbnail": "images/annotation-libraries/shapes-v1/thumbnails/bubble-oval-right.png",
+      "legacyAsset": "images/tutorial-annotations/old-annotations-for-dropdown/bubble-oval-right.png"
+    },
+    {
+      "id": "bubble-oval-sketch-cleaner-left.png",
+      "name": "bubble oval sketch cleaner left",
+      "asset": "images/annotation-libraries/shapes-v1/artwork/bubble-oval-sketch-cleaner-left.png",
+      "thumbnail": "images/annotation-libraries/shapes-v1/thumbnails/bubble-oval-sketch-cleaner-left.png",
+      "legacyAsset": "images/tutorial-annotations/old-annotations-for-dropdown/bubble-oval-sketch-cleaner-left.png"
+    },
+    {
+      "id": "bubble-oval-sketch-cleaner-right.png",
+      "name": "bubble oval sketch cleaner right",
+      "asset": "images/annotation-libraries/shapes-v1/artwork/bubble-oval-sketch-cleaner-right.png",
+      "thumbnail": "images/annotation-libraries/shapes-v1/thumbnails/bubble-oval-sketch-cleaner-right.png",
+      "legacyAsset": "images/tutorial-annotations/old-annotations-for-dropdown/bubble-oval-sketch-cleaner-right.png"
+    },
+    {
+      "id": "bubble-rectangle-sketch-left.png",
+      "name": "bubble rectangle sketch left",
+      "asset": "images/annotation-libraries/shapes-v1/artwork/bubble-rectangle-sketch-left.png",
+      "thumbnail": "images/annotation-libraries/shapes-v1/thumbnails/bubble-rectangle-sketch-left.png",
+      "legacyAsset": "images/tutorial-annotations/old-annotations-for-dropdown/bubble-rectangle-sketch-left.png"
+    },
+    {
+      "id": "bubble-rectangle-sketch-right.png",
+      "name": "bubble rectangle sketch right",
+      "asset": "images/annotation-libraries/shapes-v1/artwork/bubble-rectangle-sketch-right.png",
+      "thumbnail": "images/annotation-libraries/shapes-v1/thumbnails/bubble-rectangle-sketch-right.png",
+      "legacyAsset": "images/tutorial-annotations/old-annotations-for-dropdown/bubble-rectangle-sketch-right.png"
+    },
+    {
+      "id": "bubble-rectangle-tall-left.png",
+      "name": "bubble rectangle tall left",
+      "asset": "images/annotation-libraries/shapes-v1/artwork/bubble-rectangle-tall-left.png",
+      "thumbnail": "images/annotation-libraries/shapes-v1/thumbnails/bubble-rectangle-tall-left.png",
+      "legacyAsset": "images/tutorial-annotations/old-annotations-for-dropdown/bubble-rectangle-tall-left.png"
+    },
+    {
+      "id": "bubble-rectangle-tall-right.png",
+      "name": "bubble rectangle tall right",
+      "asset": "images/annotation-libraries/shapes-v1/artwork/bubble-rectangle-tall-right.png",
+      "thumbnail": "images/annotation-libraries/shapes-v1/thumbnails/bubble-rectangle-tall-right.png",
+      "legacyAsset": "images/tutorial-annotations/old-annotations-for-dropdown/bubble-rectangle-tall-right.png"
+    },
+    {
+      "id": "bubble-right-sketch.png",
+      "name": "bubble right sketch",
+      "asset": "images/annotation-libraries/shapes-v1/artwork/bubble-right-sketch.png",
+      "thumbnail": "images/annotation-libraries/shapes-v1/thumbnails/bubble-right-sketch.png",
+      "legacyAsset": "images/tutorial-annotations/old-annotations-for-dropdown/bubble-right-sketch.png"
+    },
+    {
+      "id": "bubble-robot.png",
+      "name": "bubble robot",
+      "asset": "images/annotation-libraries/shapes-v1/artwork/bubble-robot.png",
+      "thumbnail": "images/annotation-libraries/shapes-v1/thumbnails/bubble-robot.png",
+      "legacyAsset": "images/tutorial-annotations/old-annotations-for-dropdown/bubble-robot.png"
+    },
+    {
+      "id": "bubble-sidekick.png",
+      "name": "bubble sidekick",
+      "asset": "images/annotation-libraries/shapes-v1/artwork/bubble-sidekick.png",
+      "thumbnail": "images/annotation-libraries/shapes-v1/thumbnails/bubble-sidekick.png",
+      "legacyAsset": "images/tutorial-annotations/old-annotations-for-dropdown/bubble-sidekick.png"
+    },
+    {
+      "id": "bubble-square-down.png",
+      "name": "bubble square down",
+      "asset": "images/annotation-libraries/shapes-v1/artwork/bubble-square-down.png",
+      "thumbnail": "images/annotation-libraries/shapes-v1/thumbnails/bubble-square-down.png",
+      "legacyAsset": "images/tutorial-annotations/old-annotations-for-dropdown/bubble-square-down.png"
+    },
+    {
+      "id": "bubble-thought.png",
+      "name": "bubble thought",
+      "asset": "images/annotation-libraries/shapes-v1/artwork/bubble-thought.png",
+      "thumbnail": "images/annotation-libraries/shapes-v1/thumbnails/bubble-thought.png",
+      "legacyAsset": "images/tutorial-annotations/old-annotations-for-dropdown/bubble-thought.png"
+    },
+    {
+      "id": "bubble-user.png",
+      "name": "bubble user",
+      "asset": "images/annotation-libraries/shapes-v1/artwork/bubble-user.png",
+      "thumbnail": "images/annotation-libraries/shapes-v1/thumbnails/bubble-user.png",
+      "legacyAsset": "images/tutorial-annotations/old-annotations-for-dropdown/bubble-user.png"
+    },
+    {
+      "id": "bubble-yellow.png",
+      "name": "bubble yellow",
+      "asset": "images/annotation-libraries/shapes-v1/artwork/bubble-yellow.png",
+      "thumbnail": "images/annotation-libraries/shapes-v1/thumbnails/bubble-yellow.png",
+      "legacyAsset": "images/tutorial-annotations/old-annotations-for-dropdown/bubble-yellow.png"
+    },
+    {
+      "id": "bubble-you 1.png",
+      "name": "bubble you 1",
+      "asset": "images/annotation-libraries/shapes-v1/artwork/bubble-you 1.png",
+      "thumbnail": "images/annotation-libraries/shapes-v1/thumbnails/bubble-you 1.png",
+      "legacyAsset": "images/tutorial-annotations/old-annotations-for-dropdown/bubble-you 1.png"
+    },
+    {
+      "id": "bulb-yellow.png",
+      "name": "bulb yellow",
+      "asset": "images/annotation-libraries/shapes-v1/artwork/bulb-yellow.png",
+      "thumbnail": "images/annotation-libraries/shapes-v1/thumbnails/bulb-yellow.png",
+      "legacyAsset": "images/tutorial-annotations/old-annotations-for-dropdown/bulb-yellow.png"
+    },
+    {
+      "id": "caution-box.png",
+      "name": "caution box",
+      "asset": "images/annotation-libraries/shapes-v1/artwork/caution-box.png",
+      "thumbnail": "images/annotation-libraries/shapes-v1/thumbnails/caution-box.png",
+      "legacyAsset": "images/tutorial-annotations/old-annotations-for-dropdown/caution-box.png"
+    },
+    {
+      "id": "caution-triangle-with-words.png",
+      "name": "caution triangle with words",
+      "asset": "images/annotation-libraries/shapes-v1/artwork/caution-triangle-with-words.png",
+      "thumbnail": "images/annotation-libraries/shapes-v1/thumbnails/caution-triangle-with-words.png",
+      "legacyAsset": "images/tutorial-annotations/old-annotations-for-dropdown/caution-triangle-with-words.png"
+    },
+    {
+      "id": "caution-triangle-words.png",
+      "name": "caution triangle words",
+      "asset": "images/annotation-libraries/shapes-v1/artwork/caution-triangle-words.png",
+      "thumbnail": "images/annotation-libraries/shapes-v1/thumbnails/caution-triangle-words.png",
+      "legacyAsset": "images/tutorial-annotations/old-annotations-for-dropdown/caution-triangle-words.png"
+    },
+    {
+      "id": "circle-light-pink.png",
+      "name": "circle light pink",
+      "asset": "images/annotation-libraries/shapes-v1/artwork/circle-light-pink.png",
+      "thumbnail": "images/annotation-libraries/shapes-v1/thumbnails/circle-light-pink.png",
+      "legacyAsset": "images/tutorial-annotations/old-annotations-for-dropdown/circle-light-pink.png"
+    },
+    {
+      "id": "circle-mint.png",
+      "name": "circle mint",
+      "asset": "images/annotation-libraries/shapes-v1/artwork/circle-mint.png",
+      "thumbnail": "images/annotation-libraries/shapes-v1/thumbnails/circle-mint.png",
+      "legacyAsset": "images/tutorial-annotations/old-annotations-for-dropdown/circle-mint.png"
+    },
+    {
+      "id": "circle-orange.png",
+      "name": "circle orange",
+      "asset": "images/annotation-libraries/shapes-v1/artwork/circle-orange.png",
+      "thumbnail": "images/annotation-libraries/shapes-v1/thumbnails/circle-orange.png",
+      "legacyAsset": "images/tutorial-annotations/old-annotations-for-dropdown/circle-orange.png"
+    },
+    {
+      "id": "circle-orangle-yellow.png",
+      "name": "circle orangle yellow",
+      "asset": "images/annotation-libraries/shapes-v1/artwork/circle-orangle-yellow.png",
+      "thumbnail": "images/annotation-libraries/shapes-v1/thumbnails/circle-orangle-yellow.png",
+      "legacyAsset": "images/tutorial-annotations/old-annotations-for-dropdown/circle-orangle-yellow.png"
+    },
+    {
+      "id": "circle-pink.png",
+      "name": "circle pink",
+      "asset": "images/annotation-libraries/shapes-v1/artwork/circle-pink.png",
+      "thumbnail": "images/annotation-libraries/shapes-v1/thumbnails/circle-pink.png",
+      "legacyAsset": "images/tutorial-annotations/old-annotations-for-dropdown/circle-pink.png"
+    },
+    {
+      "id": "circle-purple.png",
+      "name": "circle purple",
+      "asset": "images/annotation-libraries/shapes-v1/artwork/circle-purple.png",
+      "thumbnail": "images/annotation-libraries/shapes-v1/thumbnails/circle-purple.png",
+      "legacyAsset": "images/tutorial-annotations/old-annotations-for-dropdown/circle-purple.png"
+    },
+    {
+      "id": "circle-teal.png",
+      "name": "circle teal",
+      "asset": "images/annotation-libraries/shapes-v1/artwork/circle-teal.png",
+      "thumbnail": "images/annotation-libraries/shapes-v1/thumbnails/circle-teal.png",
+      "legacyAsset": "images/tutorial-annotations/old-annotations-for-dropdown/circle-teal.png"
+    },
+    {
+      "id": "circle-yellow.png",
+      "name": "circle yellow",
+      "asset": "images/annotation-libraries/shapes-v1/artwork/circle-yellow.png",
+      "thumbnail": "images/annotation-libraries/shapes-v1/thumbnails/circle-yellow.png",
+      "legacyAsset": "images/tutorial-annotations/old-annotations-for-dropdown/circle-yellow.png"
+    },
+    {
+      "id": "cog-white.png",
+      "name": "cog white",
+      "asset": "images/annotation-libraries/shapes-v1/artwork/cog-white.png",
+      "thumbnail": "images/annotation-libraries/shapes-v1/thumbnails/cog-white.png",
+      "legacyAsset": "images/tutorial-annotations/old-annotations-for-dropdown/cog-white.png"
+    },
+    {
+      "id": "cog-yellow.png",
+      "name": "cog yellow",
+      "asset": "images/annotation-libraries/shapes-v1/artwork/cog-yellow.png",
+      "thumbnail": "images/annotation-libraries/shapes-v1/thumbnails/cog-yellow.png",
+      "legacyAsset": "images/tutorial-annotations/old-annotations-for-dropdown/cog-yellow.png"
+    },
+    {
+      "id": "computer-white 1.png",
+      "name": "computer white 1",
+      "asset": "images/annotation-libraries/shapes-v1/artwork/computer-white 1.png",
+      "thumbnail": "images/annotation-libraries/shapes-v1/thumbnails/computer-white 1.png",
+      "legacyAsset": "images/tutorial-annotations/old-annotations-for-dropdown/computer-white 1.png"
+    },
+    {
+      "id": "computer-yellow2.png",
+      "name": "computer yellow2",
+      "asset": "images/annotation-libraries/shapes-v1/artwork/computer-yellow2.png",
+      "thumbnail": "images/annotation-libraries/shapes-v1/thumbnails/computer-yellow2.png",
+      "legacyAsset": "images/tutorial-annotations/old-annotations-for-dropdown/computer-yellow2.png"
+    },
+    {
+      "id": "copy-icon.png",
+      "name": "copy icon",
+      "asset": "images/annotation-libraries/shapes-v1/artwork/copy-icon.png",
+      "thumbnail": "images/annotation-libraries/shapes-v1/thumbnails/copy-icon.png",
+      "legacyAsset": "images/tutorial-annotations/old-annotations-for-dropdown/copy-icon.png"
+    },
+    {
+      "id": "email-teal.png",
+      "name": "email teal",
+      "asset": "images/annotation-libraries/shapes-v1/artwork/email-teal.png",
+      "thumbnail": "images/annotation-libraries/shapes-v1/thumbnails/email-teal.png",
+      "legacyAsset": "images/tutorial-annotations/old-annotations-for-dropdown/email-teal.png"
+    },
+    {
+      "id": "find-result-blocks.png",
+      "name": "find result blocks",
+      "asset": "images/annotation-libraries/shapes-v1/artwork/find-result-blocks.png",
+      "thumbnail": "images/annotation-libraries/shapes-v1/thumbnails/find-result-blocks.png",
+      "legacyAsset": "images/tutorial-annotations/old-annotations-for-dropdown/find-result-blocks.png"
+    },
+    {
+      "id": "find-results-cat.png",
+      "name": "find results cat",
+      "asset": "images/annotation-libraries/shapes-v1/artwork/find-results-cat.png",
+      "thumbnail": "images/annotation-libraries/shapes-v1/thumbnails/find-results-cat.png",
+      "legacyAsset": "images/tutorial-annotations/old-annotations-for-dropdown/find-results-cat.png"
+    },
+    {
+      "id": "find-results-taller-block.png",
+      "name": "find results taller block",
+      "asset": "images/annotation-libraries/shapes-v1/artwork/find-results-taller-block.png",
+      "thumbnail": "images/annotation-libraries/shapes-v1/thumbnails/find-results-taller-block.png",
+      "legacyAsset": "images/tutorial-annotations/old-annotations-for-dropdown/find-results-taller-block.png"
+    },
+    {
+      "id": "flag-sketch-yellow.png",
+      "name": "flag sketch yellow",
+      "asset": "images/annotation-libraries/shapes-v1/artwork/flag-sketch-yellow.png",
+      "thumbnail": "images/annotation-libraries/shapes-v1/thumbnails/flag-sketch-yellow.png",
+      "legacyAsset": "images/tutorial-annotations/old-annotations-for-dropdown/flag-sketch-yellow.png"
+    },
+    {
+      "id": "folder-yellow 1.png",
+      "name": "folder yellow 1",
+      "asset": "images/annotation-libraries/shapes-v1/artwork/folder-yellow 1.png",
+      "thumbnail": "images/annotation-libraries/shapes-v1/thumbnails/folder-yellow 1.png",
+      "legacyAsset": "images/tutorial-annotations/old-annotations-for-dropdown/folder-yellow 1.png"
+    },
+    {
+      "id": "free-workshop-purple.png",
+      "name": "free workshop purple",
+      "asset": "images/annotation-libraries/shapes-v1/artwork/free-workshop-purple.png",
+      "thumbnail": "images/annotation-libraries/shapes-v1/thumbnails/free-workshop-purple.png",
+      "legacyAsset": "images/tutorial-annotations/old-annotations-for-dropdown/free-workshop-purple.png"
+    },
+    {
+      "id": "hand-pen-orange-yellow.png",
+      "name": "hand pen orange yellow",
+      "asset": "images/annotation-libraries/shapes-v1/artwork/hand-pen-orange-yellow.png",
+      "thumbnail": "images/annotation-libraries/shapes-v1/thumbnails/hand-pen-orange-yellow.png",
+      "legacyAsset": "images/tutorial-annotations/old-annotations-for-dropdown/hand-pen-orange-yellow.png"
+    },
+    {
+      "id": "hand-pin-mint.png",
+      "name": "hand pin mint",
+      "asset": "images/annotation-libraries/shapes-v1/artwork/hand-pin-mint.png",
+      "thumbnail": "images/annotation-libraries/shapes-v1/thumbnails/hand-pin-mint.png",
+      "legacyAsset": "images/tutorial-annotations/old-annotations-for-dropdown/hand-pin-mint.png"
+    },
+    {
+      "id": "hand-pin-yellow-no-border.png",
+      "name": "hand pin yellow no border",
+      "asset": "images/annotation-libraries/shapes-v1/artwork/hand-pin-yellow-no-border.png",
+      "thumbnail": "images/annotation-libraries/shapes-v1/thumbnails/hand-pin-yellow-no-border.png",
+      "legacyAsset": "images/tutorial-annotations/old-annotations-for-dropdown/hand-pin-yellow-no-border.png"
+    },
+    {
+      "id": "hashtag-pink 1.png",
+      "name": "hashtag pink 1",
+      "asset": "images/annotation-libraries/shapes-v1/artwork/hashtag-pink 1.png",
+      "thumbnail": "images/annotation-libraries/shapes-v1/thumbnails/hashtag-pink 1.png",
+      "legacyAsset": "images/tutorial-annotations/old-annotations-for-dropdown/hashtag-pink 1.png"
+    },
+    {
+      "id": "home 1.png",
+      "name": "home 1",
+      "asset": "images/annotation-libraries/shapes-v1/artwork/home 1.png",
+      "thumbnail": "images/annotation-libraries/shapes-v1/thumbnails/home 1.png",
+      "legacyAsset": "images/tutorial-annotations/old-annotations-for-dropdown/home 1.png"
+    },
+    {
+      "id": "index-card-not-rounded.png",
+      "name": "index card not rounded",
+      "asset": "images/annotation-libraries/shapes-v1/artwork/index-card-not-rounded.png",
+      "thumbnail": "images/annotation-libraries/shapes-v1/thumbnails/index-card-not-rounded.png",
+      "legacyAsset": "images/tutorial-annotations/old-annotations-for-dropdown/index-card-not-rounded.png"
+    },
+    {
+      "id": "index-card-rounded.png",
+      "name": "index card rounded",
+      "asset": "images/annotation-libraries/shapes-v1/artwork/index-card-rounded.png",
+      "thumbnail": "images/annotation-libraries/shapes-v1/thumbnails/index-card-rounded.png",
+      "legacyAsset": "images/tutorial-annotations/old-annotations-for-dropdown/index-card-rounded.png"
+    },
+    {
+      "id": "laptop-white.png",
+      "name": "laptop white",
+      "asset": "images/annotation-libraries/shapes-v1/artwork/laptop-white.png",
+      "thumbnail": "images/annotation-libraries/shapes-v1/thumbnails/laptop-white.png",
+      "legacyAsset": "images/tutorial-annotations/old-annotations-for-dropdown/laptop-white.png"
+    },
+    {
+      "id": "laptop-yellow.png",
+      "name": "laptop yellow",
+      "asset": "images/annotation-libraries/shapes-v1/artwork/laptop-yellow.png",
+      "thumbnail": "images/annotation-libraries/shapes-v1/thumbnails/laptop-yellow.png",
+      "legacyAsset": "images/tutorial-annotations/old-annotations-for-dropdown/laptop-yellow.png"
+    },
+    {
+      "id": "line-3d-yellow-fat.png",
+      "name": "line 3d yellow fat",
+      "asset": "images/annotation-libraries/shapes-v1/artwork/line-3d-yellow-fat.png",
+      "thumbnail": "images/annotation-libraries/shapes-v1/thumbnails/line-3d-yellow-fat.png",
+      "legacyAsset": "images/tutorial-annotations/old-annotations-for-dropdown/line-3d-yellow-fat.png"
+    },
+    {
+      "id": "line-bubbles-verticle.png",
+      "name": "line bubbles verticle",
+      "asset": "images/annotation-libraries/shapes-v1/artwork/line-bubbles-verticle.png",
+      "thumbnail": "images/annotation-libraries/shapes-v1/thumbnails/line-bubbles-verticle.png",
+      "legacyAsset": "images/tutorial-annotations/old-annotations-for-dropdown/line-bubbles-verticle.png"
+    },
+    {
+      "id": "line-squiggle-yellow.png",
+      "name": "line squiggle yellow",
+      "asset": "images/annotation-libraries/shapes-v1/artwork/line-squiggle-yellow.png",
+      "thumbnail": "images/annotation-libraries/shapes-v1/thumbnails/line-squiggle-yellow.png",
+      "legacyAsset": "images/tutorial-annotations/old-annotations-for-dropdown/line-squiggle-yellow.png"
+    },
+    {
+      "id": "logo-v2-smaller.png",
+      "name": "logo v2 smaller",
+      "asset": "images/annotation-libraries/shapes-v1/artwork/logo-v2-smaller.png",
+      "thumbnail": "images/annotation-libraries/shapes-v1/thumbnails/logo-v2-smaller.png",
+      "legacyAsset": "images/tutorial-annotations/old-annotations-for-dropdown/logo-v2-smaller.png"
+    },
+    {
+      "id": "magnifiy-teal.png",
+      "name": "magnifiy teal",
+      "asset": "images/annotation-libraries/shapes-v1/artwork/magnifiy-teal.png",
+      "thumbnail": "images/annotation-libraries/shapes-v1/thumbnails/magnifiy-teal.png",
+      "legacyAsset": "images/tutorial-annotations/old-annotations-for-dropdown/magnifiy-teal.png"
+    },
+    {
+      "id": "megaphone-orangeyellow-sketch.png",
+      "name": "megaphone orangeyellow sketch",
+      "asset": "images/annotation-libraries/shapes-v1/artwork/megaphone-orangeyellow-sketch.png",
+      "thumbnail": "images/annotation-libraries/shapes-v1/thumbnails/megaphone-orangeyellow-sketch.png",
+      "legacyAsset": "images/tutorial-annotations/old-annotations-for-dropdown/megaphone-orangeyellow-sketch.png"
+    },
+    {
+      "id": "note-hand-mint 1.png",
+      "name": "note hand mint 1",
+      "asset": "images/annotation-libraries/shapes-v1/artwork/note-hand-mint 1.png",
+      "thumbnail": "images/annotation-libraries/shapes-v1/thumbnails/note-hand-mint 1.png",
+      "legacyAsset": "images/tutorial-annotations/old-annotations-for-dropdown/note-hand-mint 1.png"
+    },
+    {
+      "id": "notecard-yellow-edges.png",
+      "name": "notecard yellow edges",
+      "asset": "images/annotation-libraries/shapes-v1/artwork/notecard-yellow-edges.png",
+      "thumbnail": "images/annotation-libraries/shapes-v1/thumbnails/notecard-yellow-edges.png",
+      "legacyAsset": "images/tutorial-annotations/old-annotations-for-dropdown/notecard-yellow-edges.png"
+    },
+    {
+      "id": "number-pound-1.png",
+      "name": "number pound 1",
+      "asset": "images/annotation-libraries/shapes-v1/artwork/number-pound-1.png",
+      "thumbnail": "images/annotation-libraries/shapes-v1/thumbnails/number-pound-1.png",
+      "legacyAsset": "images/tutorial-annotations/old-annotations-for-dropdown/number-pound-1.png"
+    },
+    {
+      "id": "number-pound-2.png",
+      "name": "number pound 2",
+      "asset": "images/annotation-libraries/shapes-v1/artwork/number-pound-2.png",
+      "thumbnail": "images/annotation-libraries/shapes-v1/thumbnails/number-pound-2.png",
+      "legacyAsset": "images/tutorial-annotations/old-annotations-for-dropdown/number-pound-2.png"
+    },
+    {
+      "id": "number-pound-3.png",
+      "name": "number pound 3",
+      "asset": "images/annotation-libraries/shapes-v1/artwork/number-pound-3.png",
+      "thumbnail": "images/annotation-libraries/shapes-v1/thumbnails/number-pound-3.png",
+      "legacyAsset": "images/tutorial-annotations/old-annotations-for-dropdown/number-pound-3.png"
+    },
+    {
+      "id": "number-pound-4.png",
+      "name": "number pound 4",
+      "asset": "images/annotation-libraries/shapes-v1/artwork/number-pound-4.png",
+      "thumbnail": "images/annotation-libraries/shapes-v1/thumbnails/number-pound-4.png",
+      "legacyAsset": "images/tutorial-annotations/old-annotations-for-dropdown/number-pound-4.png"
+    },
+    {
+      "id": "number-pound-5.png",
+      "name": "number pound 5",
+      "asset": "images/annotation-libraries/shapes-v1/artwork/number-pound-5.png",
+      "thumbnail": "images/annotation-libraries/shapes-v1/thumbnails/number-pound-5.png",
+      "legacyAsset": "images/tutorial-annotations/old-annotations-for-dropdown/number-pound-5.png"
+    },
+    {
+      "id": "number-pound-6-1.png",
+      "name": "number pound 6 1",
+      "asset": "images/annotation-libraries/shapes-v1/artwork/number-pound-6-1.png",
+      "thumbnail": "images/annotation-libraries/shapes-v1/thumbnails/number-pound-6-1.png",
+      "legacyAsset": "images/tutorial-annotations/old-annotations-for-dropdown/number-pound-6-1.png"
+    },
+    {
+      "id": "number-pound-6.png",
+      "name": "number pound 6",
+      "asset": "images/annotation-libraries/shapes-v1/artwork/number-pound-6.png",
+      "thumbnail": "images/annotation-libraries/shapes-v1/thumbnails/number-pound-6.png",
+      "legacyAsset": "images/tutorial-annotations/old-annotations-for-dropdown/number-pound-6.png"
+    },
+    {
+      "id": "number-pound-7.png",
+      "name": "number pound 7",
+      "asset": "images/annotation-libraries/shapes-v1/artwork/number-pound-7.png",
+      "thumbnail": "images/annotation-libraries/shapes-v1/thumbnails/number-pound-7.png",
+      "legacyAsset": "images/tutorial-annotations/old-annotations-for-dropdown/number-pound-7.png"
+    },
+    {
+      "id": "numbers-1-oy.png",
+      "name": "numbers 1 oy",
+      "asset": "images/annotation-libraries/shapes-v1/artwork/numbers-1-oy.png",
+      "thumbnail": "images/annotation-libraries/shapes-v1/thumbnails/numbers-1-oy.png",
+      "legacyAsset": "images/tutorial-annotations/old-annotations-for-dropdown/numbers-1-oy.png"
+    },
+    {
+      "id": "numbers-2.png",
+      "name": "numbers 2",
+      "asset": "images/annotation-libraries/shapes-v1/artwork/numbers-2.png",
+      "thumbnail": "images/annotation-libraries/shapes-v1/thumbnails/numbers-2.png",
+      "legacyAsset": "images/tutorial-annotations/old-annotations-for-dropdown/numbers-2.png"
+    },
+    {
+      "id": "numbers-3-pur.png",
+      "name": "numbers 3 pur",
+      "asset": "images/annotation-libraries/shapes-v1/artwork/numbers-3-pur.png",
+      "thumbnail": "images/annotation-libraries/shapes-v1/thumbnails/numbers-3-pur.png",
+      "legacyAsset": "images/tutorial-annotations/old-annotations-for-dropdown/numbers-3-pur.png"
+    },
+    {
+      "id": "numbers-4-tea.png",
+      "name": "numbers 4 tea",
+      "asset": "images/annotation-libraries/shapes-v1/artwork/numbers-4-tea.png",
+      "thumbnail": "images/annotation-libraries/shapes-v1/thumbnails/numbers-4-tea.png",
+      "legacyAsset": "images/tutorial-annotations/old-annotations-for-dropdown/numbers-4-tea.png"
+    },
+    {
+      "id": "numbers-5-yel.png",
+      "name": "numbers 5 yel",
+      "asset": "images/annotation-libraries/shapes-v1/artwork/numbers-5-yel.png",
+      "thumbnail": "images/annotation-libraries/shapes-v1/thumbnails/numbers-5-yel.png",
+      "legacyAsset": "images/tutorial-annotations/old-annotations-for-dropdown/numbers-5-yel.png"
+    },
+    {
+      "id": "numbers-6-mar.png",
+      "name": "numbers 6 mar",
+      "asset": "images/annotation-libraries/shapes-v1/artwork/numbers-6-mar.png",
+      "thumbnail": "images/annotation-libraries/shapes-v1/thumbnails/numbers-6-mar.png",
+      "legacyAsset": "images/tutorial-annotations/old-annotations-for-dropdown/numbers-6-mar.png"
+    },
+    {
+      "id": "numbers-7-oryel.png",
+      "name": "numbers 7 oryel",
+      "asset": "images/annotation-libraries/shapes-v1/artwork/numbers-7-oryel.png",
+      "thumbnail": "images/annotation-libraries/shapes-v1/thumbnails/numbers-7-oryel.png",
+      "legacyAsset": "images/tutorial-annotations/old-annotations-for-dropdown/numbers-7-oryel.png"
+    },
+    {
+      "id": "numbers-8-pink.png",
+      "name": "numbers 8 pink",
+      "asset": "images/annotation-libraries/shapes-v1/artwork/numbers-8-pink.png",
+      "thumbnail": "images/annotation-libraries/shapes-v1/thumbnails/numbers-8-pink.png",
+      "legacyAsset": "images/tutorial-annotations/old-annotations-for-dropdown/numbers-8-pink.png"
+    },
+    {
+      "id": "numbers-9-pur.png",
+      "name": "numbers 9 pur",
+      "asset": "images/annotation-libraries/shapes-v1/artwork/numbers-9-pur.png",
+      "thumbnail": "images/annotation-libraries/shapes-v1/thumbnails/numbers-9-pur.png",
+      "legacyAsset": "images/tutorial-annotations/old-annotations-for-dropdown/numbers-9-pur.png"
+    },
+    {
+      "id": "okay-mint.png",
+      "name": "okay mint",
+      "asset": "images/annotation-libraries/shapes-v1/artwork/okay-mint.png",
+      "thumbnail": "images/annotation-libraries/shapes-v1/thumbnails/okay-mint.png",
+      "legacyAsset": "images/tutorial-annotations/old-annotations-for-dropdown/okay-mint.png"
+    },
+    {
+      "id": "paintbrush 1.png",
+      "name": "paintbrush 1",
+      "asset": "images/annotation-libraries/shapes-v1/artwork/paintbrush 1.png",
+      "thumbnail": "images/annotation-libraries/shapes-v1/thumbnails/paintbrush 1.png",
+      "legacyAsset": "images/tutorial-annotations/old-annotations-for-dropdown/paintbrush 1.png"
+    },
+    {
+      "id": "paper-white-pen-yellowpen.png",
+      "name": "paper white pen yellowpen",
+      "asset": "images/annotation-libraries/shapes-v1/artwork/paper-white-pen-yellowpen.png",
+      "thumbnail": "images/annotation-libraries/shapes-v1/thumbnails/paper-white-pen-yellowpen.png",
+      "legacyAsset": "images/tutorial-annotations/old-annotations-for-dropdown/paper-white-pen-yellowpen.png"
+    },
+    {
+      "id": "paperclip-mauve.png",
+      "name": "paperclip mauve",
+      "asset": "images/annotation-libraries/shapes-v1/artwork/paperclip-mauve.png",
+      "thumbnail": "images/annotation-libraries/shapes-v1/thumbnails/paperclip-mauve.png",
+      "legacyAsset": "images/tutorial-annotations/old-annotations-for-dropdown/paperclip-mauve.png"
+    },
+    {
+      "id": "paperclip-yellow.png",
+      "name": "paperclip yellow",
+      "asset": "images/annotation-libraries/shapes-v1/artwork/paperclip-yellow.png",
+      "thumbnail": "images/annotation-libraries/shapes-v1/thumbnails/paperclip-yellow.png",
+      "legacyAsset": "images/tutorial-annotations/old-annotations-for-dropdown/paperclip-yellow.png"
+    },
+    {
+      "id": "pen-and-paper-transparent.png",
+      "name": "pen and paper transparent",
+      "asset": "images/annotation-libraries/shapes-v1/artwork/pen-and-paper-transparent.png",
+      "thumbnail": "images/annotation-libraries/shapes-v1/thumbnails/pen-and-paper-transparent.png",
+      "legacyAsset": "images/tutorial-annotations/old-annotations-for-dropdown/pen-and-paper-transparent.png"
+    },
+    {
+      "id": "pin-orangeyellow-sketch.png",
+      "name": "pin orangeyellow sketch",
+      "asset": "images/annotation-libraries/shapes-v1/artwork/pin-orangeyellow-sketch.png",
+      "thumbnail": "images/annotation-libraries/shapes-v1/thumbnails/pin-orangeyellow-sketch.png",
+      "legacyAsset": "images/tutorial-annotations/old-annotations-for-dropdown/pin-orangeyellow-sketch.png"
+    },
+    {
+      "id": "pin-yellow 1.png",
+      "name": "pin yellow 1",
+      "asset": "images/annotation-libraries/shapes-v1/artwork/pin-yellow 1.png",
+      "thumbnail": "images/annotation-libraries/shapes-v1/thumbnails/pin-yellow 1.png",
+      "legacyAsset": "images/tutorial-annotations/old-annotations-for-dropdown/pin-yellow 1.png"
+    },
+    {
+      "id": "plus-mauve.png",
+      "name": "plus mauve",
+      "asset": "images/annotation-libraries/shapes-v1/artwork/plus-mauve.png",
+      "thumbnail": "images/annotation-libraries/shapes-v1/thumbnails/plus-mauve.png",
+      "legacyAsset": "images/tutorial-annotations/old-annotations-for-dropdown/plus-mauve.png"
+    },
+    {
+      "id": "pointer-finger-yellow-sketch.png",
+      "name": "pointer finger yellow sketch",
+      "asset": "images/annotation-libraries/shapes-v1/artwork/pointer-finger-yellow-sketch.png",
+      "thumbnail": "images/annotation-libraries/shapes-v1/thumbnails/pointer-finger-yellow-sketch.png",
+      "legacyAsset": "images/tutorial-annotations/old-annotations-for-dropdown/pointer-finger-yellow-sketch.png"
+    },
+    {
+      "id": "pointer-orange-yellow-sketch.png",
+      "name": "pointer orange yellow sketch",
+      "asset": "images/annotation-libraries/shapes-v1/artwork/pointer-orange-yellow-sketch.png",
+      "thumbnail": "images/annotation-libraries/shapes-v1/thumbnails/pointer-orange-yellow-sketch.png",
+      "legacyAsset": "images/tutorial-annotations/old-annotations-for-dropdown/pointer-orange-yellow-sketch.png"
+    },
+    {
+      "id": "pound-teal.png",
+      "name": "pound teal",
+      "asset": "images/annotation-libraries/shapes-v1/artwork/pound-teal.png",
+      "thumbnail": "images/annotation-libraries/shapes-v1/thumbnails/pound-teal.png",
+      "legacyAsset": "images/tutorial-annotations/old-annotations-for-dropdown/pound-teal.png"
+    },
+    {
+      "id": "pound-white-pink-black.png",
+      "name": "pound white pink black",
+      "asset": "images/annotation-libraries/shapes-v1/artwork/pound-white-pink-black.png",
+      "thumbnail": "images/annotation-libraries/shapes-v1/thumbnails/pound-white-pink-black.png",
+      "legacyAsset": "images/tutorial-annotations/old-annotations-for-dropdown/pound-white-pink-black.png"
+    },
+    {
+      "id": "rectangle-doodle-longer.png",
+      "name": "rectangle doodle longer",
+      "asset": "images/annotation-libraries/shapes-v1/artwork/rectangle-doodle-longer.png",
+      "thumbnail": "images/annotation-libraries/shapes-v1/thumbnails/rectangle-doodle-longer.png",
+      "legacyAsset": "images/tutorial-annotations/old-annotations-for-dropdown/rectangle-doodle-longer.png"
+    },
+    {
+      "id": "rectangle-doodle-small.png",
+      "name": "rectangle doodle small",
+      "asset": "images/annotation-libraries/shapes-v1/artwork/rectangle-doodle-small.png",
+      "thumbnail": "images/annotation-libraries/shapes-v1/thumbnails/rectangle-doodle-small.png",
+      "legacyAsset": "images/tutorial-annotations/old-annotations-for-dropdown/rectangle-doodle-small.png"
+    },
+    {
+      "id": "rectangle-doodle-taller.png",
+      "name": "rectangle doodle taller",
+      "asset": "images/annotation-libraries/shapes-v1/artwork/rectangle-doodle-taller.png",
+      "thumbnail": "images/annotation-libraries/shapes-v1/thumbnails/rectangle-doodle-taller.png",
+      "legacyAsset": "images/tutorial-annotations/old-annotations-for-dropdown/rectangle-doodle-taller.png"
+    },
+    {
+      "id": "rectangle-grey-white.png",
+      "name": "rectangle grey white",
+      "asset": "images/annotation-libraries/shapes-v1/artwork/rectangle-grey-white.png",
+      "thumbnail": "images/annotation-libraries/shapes-v1/thumbnails/rectangle-grey-white.png",
+      "legacyAsset": "images/tutorial-annotations/old-annotations-for-dropdown/rectangle-grey-white.png"
+    },
+    {
+      "id": "rectangle-semitransparent-narrow.png",
+      "name": "rectangle semitransparent narrow",
+      "asset": "images/annotation-libraries/shapes-v1/artwork/rectangle-semitransparent-narrow.png",
+      "thumbnail": "images/annotation-libraries/shapes-v1/thumbnails/rectangle-semitransparent-narrow.png",
+      "legacyAsset": "images/tutorial-annotations/old-annotations-for-dropdown/rectangle-semitransparent-narrow.png"
+    },
+    {
+      "id": "rectangle-semitransparent-wide.png",
+      "name": "rectangle semitransparent wide",
+      "asset": "images/annotation-libraries/shapes-v1/artwork/rectangle-semitransparent-wide.png",
+      "thumbnail": "images/annotation-libraries/shapes-v1/thumbnails/rectangle-semitransparent-wide.png",
+      "legacyAsset": "images/tutorial-annotations/old-annotations-for-dropdown/rectangle-semitransparent-wide.png"
+    },
+    {
+      "id": "search-bar-white-no-shadow.png",
+      "name": "search bar white no shadow",
+      "asset": "images/annotation-libraries/shapes-v1/artwork/search-bar-white-no-shadow.png",
+      "thumbnail": "images/annotation-libraries/shapes-v1/thumbnails/search-bar-white-no-shadow.png",
+      "legacyAsset": "images/tutorial-annotations/old-annotations-for-dropdown/search-bar-white-no-shadow.png"
+    },
+    {
+      "id": "search-bar-white.png",
+      "name": "search bar white",
+      "asset": "images/annotation-libraries/shapes-v1/artwork/search-bar-white.png",
+      "thumbnail": "images/annotation-libraries/shapes-v1/thumbnails/search-bar-white.png",
+      "legacyAsset": "images/tutorial-annotations/old-annotations-for-dropdown/search-bar-white.png"
+    },
+    {
+      "id": "sparkle-left 1.png",
+      "name": "sparkle left 1",
+      "asset": "images/annotation-libraries/shapes-v1/artwork/sparkle-left 1.png",
+      "thumbnail": "images/annotation-libraries/shapes-v1/thumbnails/sparkle-left 1.png",
+      "legacyAsset": "images/tutorial-annotations/old-annotations-for-dropdown/sparkle-left 1.png"
+    },
+    {
+      "id": "sparkle-mint.png",
+      "name": "sparkle mint",
+      "asset": "images/annotation-libraries/shapes-v1/artwork/sparkle-mint.png",
+      "thumbnail": "images/annotation-libraries/shapes-v1/thumbnails/sparkle-mint.png",
+      "legacyAsset": "images/tutorial-annotations/old-annotations-for-dropdown/sparkle-mint.png"
+    },
+    {
+      "id": "sparkle-right 1.png",
+      "name": "sparkle right 1",
+      "asset": "images/annotation-libraries/shapes-v1/artwork/sparkle-right 1.png",
+      "thumbnail": "images/annotation-libraries/shapes-v1/thumbnails/sparkle-right 1.png",
+      "legacyAsset": "images/tutorial-annotations/old-annotations-for-dropdown/sparkle-right 1.png"
+    },
+    {
+      "id": "star-purple 1.png",
+      "name": "star purple 1",
+      "asset": "images/annotation-libraries/shapes-v1/artwork/star-purple 1.png",
+      "thumbnail": "images/annotation-libraries/shapes-v1/thumbnails/star-purple 1.png",
+      "legacyAsset": "images/tutorial-annotations/old-annotations-for-dropdown/star-purple 1.png"
+    },
+    {
+      "id": "steno-keys-white-magic-hashtags.png",
+      "name": "steno keys white magic hashtags",
+      "asset": "images/annotation-libraries/shapes-v1/artwork/steno-keys-white-magic-hashtags.png",
+      "thumbnail": "images/annotation-libraries/shapes-v1/thumbnails/steno-keys-white-magic-hashtags.png",
+      "legacyAsset": "images/tutorial-annotations/old-annotations-for-dropdown/steno-keys-white-magic-hashtags.png"
+    },
+    {
+      "id": "stenokeys-simple-white-no shadow.png",
+      "name": "stenokeys simple white no shadow",
+      "asset": "images/annotation-libraries/shapes-v1/artwork/stenokeys-simple-white-no shadow.png",
+      "thumbnail": "images/annotation-libraries/shapes-v1/thumbnails/stenokeys-simple-white-no shadow.png",
+      "legacyAsset": "images/tutorial-annotations/old-annotations-for-dropdown/stenokeys-simple-white-no shadow.png"
+    },
+    {
+      "id": "stenokeys-white-simple.png",
+      "name": "stenokeys white simple",
+      "asset": "images/annotation-libraries/shapes-v1/artwork/stenokeys-white-simple.png",
+      "thumbnail": "images/annotation-libraries/shapes-v1/thumbnails/stenokeys-white-simple.png",
+      "legacyAsset": "images/tutorial-annotations/old-annotations-for-dropdown/stenokeys-white-simple.png"
+    },
+    {
+      "id": "sticky-short-rectangle-sketch.png",
+      "name": "sticky short rectangle sketch",
+      "asset": "images/annotation-libraries/shapes-v1/artwork/sticky-short-rectangle-sketch.png",
+      "thumbnail": "images/annotation-libraries/shapes-v1/thumbnails/sticky-short-rectangle-sketch.png",
+      "legacyAsset": "images/tutorial-annotations/old-annotations-for-dropdown/sticky-short-rectangle-sketch.png"
+    },
+    {
+      "id": "sticky-square-yellow-sketch.png",
+      "name": "sticky square yellow sketch",
+      "asset": "images/annotation-libraries/shapes-v1/artwork/sticky-square-yellow-sketch.png",
+      "thumbnail": "images/annotation-libraries/shapes-v1/thumbnails/sticky-square-yellow-sketch.png",
+      "legacyAsset": "images/tutorial-annotations/old-annotations-for-dropdown/sticky-square-yellow-sketch.png"
+    },
+    {
+      "id": "sticky-yellow-sketch.png",
+      "name": "sticky yellow sketch",
+      "asset": "images/annotation-libraries/shapes-v1/artwork/sticky-yellow-sketch.png",
+      "thumbnail": "images/annotation-libraries/shapes-v1/thumbnails/sticky-yellow-sketch.png",
+      "legacyAsset": "images/tutorial-annotations/old-annotations-for-dropdown/sticky-yellow-sketch.png"
+    },
+    {
+      "id": "tape-black-long.png",
+      "name": "tape black long",
+      "asset": "images/annotation-libraries/shapes-v1/artwork/tape-black-long.png",
+      "thumbnail": "images/annotation-libraries/shapes-v1/thumbnails/tape-black-long.png",
+      "legacyAsset": "images/tutorial-annotations/old-annotations-for-dropdown/tape-black-long.png"
+    },
+    {
+      "id": "tape-pink-long.png",
+      "name": "tape pink long",
+      "asset": "images/annotation-libraries/shapes-v1/artwork/tape-pink-long.png",
+      "thumbnail": "images/annotation-libraries/shapes-v1/thumbnails/tape-pink-long.png",
+      "legacyAsset": "images/tutorial-annotations/old-annotations-for-dropdown/tape-pink-long.png"
+    },
+    {
+      "id": "tape-pink.png",
+      "name": "tape pink",
+      "asset": "images/annotation-libraries/shapes-v1/artwork/tape-pink.png",
+      "thumbnail": "images/annotation-libraries/shapes-v1/thumbnails/tape-pink.png",
+      "legacyAsset": "images/tutorial-annotations/old-annotations-for-dropdown/tape-pink.png"
+    },
+    {
+      "id": "tape-short-black.png",
+      "name": "tape short black",
+      "asset": "images/annotation-libraries/shapes-v1/artwork/tape-short-black.png",
+      "thumbnail": "images/annotation-libraries/shapes-v1/thumbnails/tape-short-black.png",
+      "legacyAsset": "images/tutorial-annotations/old-annotations-for-dropdown/tape-short-black.png"
+    },
+    {
+      "id": "tape-short-white.png",
+      "name": "tape short white",
+      "asset": "images/annotation-libraries/shapes-v1/artwork/tape-short-white.png",
+      "thumbnail": "images/annotation-libraries/shapes-v1/thumbnails/tape-short-white.png",
+      "legacyAsset": "images/tutorial-annotations/old-annotations-for-dropdown/tape-short-white.png"
+    },
+    {
+      "id": "tape-teal-long.png",
+      "name": "tape teal long",
+      "asset": "images/annotation-libraries/shapes-v1/artwork/tape-teal-long.png",
+      "thumbnail": "images/annotation-libraries/shapes-v1/thumbnails/tape-teal-long.png",
+      "legacyAsset": "images/tutorial-annotations/old-annotations-for-dropdown/tape-teal-long.png"
+    },
+    {
+      "id": "tape-white-long.png",
+      "name": "tape white long",
+      "asset": "images/annotation-libraries/shapes-v1/artwork/tape-white-long.png",
+      "thumbnail": "images/annotation-libraries/shapes-v1/thumbnails/tape-white-long.png",
+      "legacyAsset": "images/tutorial-annotations/old-annotations-for-dropdown/tape-white-long.png"
+    },
+    {
+      "id": "tech-support-teal.png",
+      "name": "tech support teal",
+      "asset": "images/annotation-libraries/shapes-v1/artwork/tech-support-teal.png",
+      "thumbnail": "images/annotation-libraries/shapes-v1/thumbnails/tech-support-teal.png",
+      "legacyAsset": "images/tutorial-annotations/old-annotations-for-dropdown/tech-support-teal.png"
+    },
+    {
+      "id": "text-box-cgt-short.png",
+      "name": "text box cgt short",
+      "asset": "images/annotation-libraries/shapes-v1/artwork/text-box-cgt-short.png",
+      "thumbnail": "images/annotation-libraries/shapes-v1/thumbnails/text-box-cgt-short.png",
+      "legacyAsset": "images/tutorial-annotations/old-annotations-for-dropdown/text-box-cgt-short.png"
+    },
+    {
+      "id": "text-box-cgt-tall.png",
+      "name": "text box cgt tall",
+      "asset": "images/annotation-libraries/shapes-v1/artwork/text-box-cgt-tall.png",
+      "thumbnail": "images/annotation-libraries/shapes-v1/thumbnails/text-box-cgt-tall.png",
+      "legacyAsset": "images/tutorial-annotations/old-annotations-for-dropdown/text-box-cgt-tall.png"
+    },
+    {
+      "id": "thumbs-up-pink.png",
+      "name": "thumbs up pink",
+      "asset": "images/annotation-libraries/shapes-v1/artwork/thumbs-up-pink.png",
+      "thumbnail": "images/annotation-libraries/shapes-v1/thumbnails/thumbs-up-pink.png",
+      "legacyAsset": "images/tutorial-annotations/old-annotations-for-dropdown/thumbs-up-pink.png"
+    },
+    {
+      "id": "upload-teal 1.png",
+      "name": "upload teal 1",
+      "asset": "images/annotation-libraries/shapes-v1/artwork/upload-teal 1.png",
+      "thumbnail": "images/annotation-libraries/shapes-v1/thumbnails/upload-teal 1.png",
+      "legacyAsset": "images/tutorial-annotations/old-annotations-for-dropdown/upload-teal 1.png"
+    },
+    {
+      "id": "upload-yellow 1.png",
+      "name": "upload yellow 1",
+      "asset": "images/annotation-libraries/shapes-v1/artwork/upload-yellow 1.png",
+      "thumbnail": "images/annotation-libraries/shapes-v1/thumbnails/upload-yellow 1.png",
+      "legacyAsset": "images/tutorial-annotations/old-annotations-for-dropdown/upload-yellow 1.png"
+    },
+    {
+      "id": "wand-black.png",
+      "name": "wand black",
+      "asset": "images/annotation-libraries/shapes-v1/artwork/wand-black.png",
+      "thumbnail": "images/annotation-libraries/shapes-v1/thumbnails/wand-black.png",
+      "legacyAsset": "images/tutorial-annotations/old-annotations-for-dropdown/wand-black.png"
+    },
+    {
+      "id": "wand-mint.png",
+      "name": "wand mint",
+      "asset": "images/annotation-libraries/shapes-v1/artwork/wand-mint.png",
+      "thumbnail": "images/annotation-libraries/shapes-v1/thumbnails/wand-mint.png",
+      "legacyAsset": "images/tutorial-annotations/old-annotations-for-dropdown/wand-mint.png"
+    },
+    {
+      "id": "warning-box.png",
+      "name": "warning box",
+      "asset": "images/annotation-libraries/shapes-v1/artwork/warning-box.png",
+      "thumbnail": "images/annotation-libraries/shapes-v1/thumbnails/warning-box.png",
+      "legacyAsset": "images/tutorial-annotations/old-annotations-for-dropdown/warning-box.png"
+    },
+    {
+      "id": "white-rectangle-big-shadow.png",
+      "name": "white rectangle big shadow",
+      "asset": "images/annotation-libraries/shapes-v1/artwork/white-rectangle-big-shadow.png",
+      "thumbnail": "images/annotation-libraries/shapes-v1/thumbnails/white-rectangle-big-shadow.png",
+      "legacyAsset": "images/tutorial-annotations/old-annotations-for-dropdown/white-rectangle-big-shadow.png"
+    },
+    {
+      "id": "x-black.png",
+      "name": "x black",
+      "asset": "images/annotation-libraries/shapes-v1/artwork/x-black.png",
+      "thumbnail": "images/annotation-libraries/shapes-v1/thumbnails/x-black.png",
+      "legacyAsset": "images/tutorial-annotations/old-annotations-for-dropdown/x-black.png"
+    },
+    {
+      "id": "x-teal.png",
+      "name": "x teal",
+      "asset": "images/annotation-libraries/shapes-v1/artwork/x-teal.png",
+      "thumbnail": "images/annotation-libraries/shapes-v1/thumbnails/x-teal.png",
+      "legacyAsset": "images/tutorial-annotations/old-annotations-for-dropdown/x-teal.png"
+    }
+  ],
+  "shapes-v2": [
+    {
+      "id": "accent-bubbles.png",
+      "name": "accent bubbles",
+      "asset": "images/annotation-libraries/shapes-v2/artwork/accent-bubbles.png",
+      "thumbnail": "images/annotation-libraries/shapes-v2/thumbnails/accent-bubbles.png",
+      "legacyAsset": "images/tutorial-annotations/new-annotations/accent-bubbles.png"
+    },
+    {
+      "id": "accent-underline.png",
+      "name": "accent underline",
+      "asset": "images/annotation-libraries/shapes-v2/artwork/accent-underline.png",
+      "thumbnail": "images/annotation-libraries/shapes-v2/thumbnails/accent-underline.png",
+      "legacyAsset": "images/tutorial-annotations/new-annotations/accent-underline.png"
+    },
+    {
+      "id": "ampersand.png",
+      "name": "ampersand",
+      "asset": "images/annotation-libraries/shapes-v2/artwork/ampersand.png",
+      "thumbnail": "images/annotation-libraries/shapes-v2/thumbnails/ampersand.png",
+      "legacyAsset": "images/tutorial-annotations/new-annotations/ampersand.png"
+    },
+    {
+      "id": "arrow-caret-down.png",
+      "name": "arrow caret down",
+      "asset": "images/annotation-libraries/shapes-v2/artwork/arrow-caret-down.png",
+      "thumbnail": "images/annotation-libraries/shapes-v2/thumbnails/arrow-caret-down.png",
+      "legacyAsset": "images/tutorial-annotations/new-annotations/arrow-caret-down.png"
+    },
+    {
+      "id": "arrow-caret-left-front.png",
+      "name": "arrow caret left front",
+      "asset": "images/annotation-libraries/shapes-v2/artwork/arrow-caret-left-front.png",
+      "thumbnail": "images/annotation-libraries/shapes-v2/thumbnails/arrow-caret-left-front.png",
+      "legacyAsset": "images/tutorial-annotations/new-annotations/arrow-caret-left-front.png"
+    },
+    {
+      "id": "arrow-caret-left.png",
+      "name": "arrow caret left",
+      "asset": "images/annotation-libraries/shapes-v2/artwork/arrow-caret-left.png",
+      "thumbnail": "images/annotation-libraries/shapes-v2/thumbnails/arrow-caret-left.png",
+      "legacyAsset": "images/tutorial-annotations/new-annotations/arrow-caret-left.png"
+    },
+    {
+      "id": "arrow-caret-right-front.png",
+      "name": "arrow caret right front",
+      "asset": "images/annotation-libraries/shapes-v2/artwork/arrow-caret-right-front.png",
+      "thumbnail": "images/annotation-libraries/shapes-v2/thumbnails/arrow-caret-right-front.png",
+      "legacyAsset": "images/tutorial-annotations/new-annotations/arrow-caret-right-front.png"
+    },
+    {
+      "id": "arrow-caret-right.png",
+      "name": "arrow caret right",
+      "asset": "images/annotation-libraries/shapes-v2/artwork/arrow-caret-right.png",
+      "thumbnail": "images/annotation-libraries/shapes-v2/thumbnails/arrow-caret-right.png",
+      "legacyAsset": "images/tutorial-annotations/new-annotations/arrow-caret-right.png"
+    },
+    {
+      "id": "arrow-caret-up.png",
+      "name": "arrow caret up",
+      "asset": "images/annotation-libraries/shapes-v2/artwork/arrow-caret-up.png",
+      "thumbnail": "images/annotation-libraries/shapes-v2/thumbnails/arrow-caret-up.png",
+      "legacyAsset": "images/tutorial-annotations/new-annotations/arrow-caret-up.png"
+    },
+    {
+      "id": "arrow-curved-pink.png",
+      "name": "arrow curved pink",
+      "asset": "images/annotation-libraries/shapes-v2/artwork/arrow-curved-pink.png",
+      "thumbnail": "images/annotation-libraries/shapes-v2/thumbnails/arrow-curved-pink.png",
+      "legacyAsset": "images/tutorial-annotations/new-annotations/arrow-curved-pink.png"
+    },
+    {
+      "id": "arrow-curved-purple.png",
+      "name": "arrow curved purple",
+      "asset": "images/annotation-libraries/shapes-v2/artwork/arrow-curved-purple.png",
+      "thumbnail": "images/annotation-libraries/shapes-v2/thumbnails/arrow-curved-purple.png",
+      "legacyAsset": "images/tutorial-annotations/new-annotations/arrow-curved-purple.png"
+    },
+    {
+      "id": "arrow-down.png",
+      "name": "arrow down",
+      "asset": "images/annotation-libraries/shapes-v2/artwork/arrow-down.png",
+      "thumbnail": "images/annotation-libraries/shapes-v2/thumbnails/arrow-down.png",
+      "legacyAsset": "images/tutorial-annotations/new-annotations/arrow-down.png"
+    },
+    {
+      "id": "arrow-up.png",
+      "name": "arrow up",
+      "asset": "images/annotation-libraries/shapes-v2/artwork/arrow-up.png",
+      "thumbnail": "images/annotation-libraries/shapes-v2/thumbnails/arrow-up.png",
+      "legacyAsset": "images/tutorial-annotations/new-annotations/arrow-up.png"
+    },
+    {
+      "id": "avatar-sidekick.png",
+      "name": "avatar sidekick",
+      "asset": "images/annotation-libraries/shapes-v2/artwork/avatar-sidekick.png",
+      "thumbnail": "images/annotation-libraries/shapes-v2/thumbnails/avatar-sidekick.png",
+      "legacyAsset": "images/tutorial-annotations/new-annotations/avatar-sidekick.png"
+    },
+    {
+      "id": "avatar-steno.png",
+      "name": "avatar steno",
+      "asset": "images/annotation-libraries/shapes-v2/artwork/avatar-steno.png",
+      "thumbnail": "images/annotation-libraries/shapes-v2/thumbnails/avatar-steno.png",
+      "legacyAsset": "images/tutorial-annotations/new-annotations/avatar-steno.png"
+    },
+    {
+      "id": "bubble-rectangle.png",
+      "name": "bubble rectangle",
+      "asset": "images/annotation-libraries/shapes-v2/artwork/bubble-rectangle.png",
+      "thumbnail": "images/annotation-libraries/shapes-v2/thumbnails/bubble-rectangle.png",
+      "legacyAsset": "images/tutorial-annotations/new-annotations/bubble-rectangle.png"
+    },
+    {
+      "id": "bulb.png",
+      "name": "bulb",
+      "asset": "images/annotation-libraries/shapes-v2/artwork/bulb.png",
+      "thumbnail": "images/annotation-libraries/shapes-v2/thumbnails/bulb.png",
+      "legacyAsset": "images/tutorial-annotations/new-annotations/bulb.png"
+    },
+    {
+      "id": "caution-box.png",
+      "name": "caution box",
+      "asset": "images/annotation-libraries/shapes-v2/artwork/caution-box.png",
+      "thumbnail": "images/annotation-libraries/shapes-v2/thumbnails/caution-box.png",
+      "legacyAsset": "images/tutorial-annotations/new-annotations/caution-box.png"
+    },
+    {
+      "id": "caution-icon.png",
+      "name": "caution icon",
+      "asset": "images/annotation-libraries/shapes-v2/artwork/caution-icon.png",
+      "thumbnail": "images/annotation-libraries/shapes-v2/thumbnails/caution-icon.png",
+      "legacyAsset": "images/tutorial-annotations/new-annotations/caution-icon.png"
+    },
+    {
+      "id": "h-coral.png",
+      "name": "Troubleshoot, Help, or Caution",
+      "asset": "images/annotation-libraries/shapes-v2/artwork/h-coral.png",
+      "thumbnail": "images/annotation-libraries/shapes-v2/thumbnails/h-coral.png",
+      "legacyAsset": "images/tutorial-annotations/new-annotations/h-coral.png"
+    },
+    {
+      "id": "chat-box-round.png",
+      "name": "chat box round",
+      "asset": "images/annotation-libraries/shapes-v2/artwork/chat-box-round.png",
+      "thumbnail": "images/annotation-libraries/shapes-v2/thumbnails/chat-box-round.png",
+      "legacyAsset": "images/tutorial-annotations/new-annotations/chat-box-round.png"
+    },
+    {
+      "id": "chat-box-square.png",
+      "name": "chat box square",
+      "asset": "images/annotation-libraries/shapes-v2/artwork/chat-box-square.png",
+      "thumbnail": "images/annotation-libraries/shapes-v2/thumbnails/chat-box-square.png",
+      "legacyAsset": "images/tutorial-annotations/new-annotations/chat-box-square.png"
+    },
+    {
+      "id": "chat-box-yellow.png",
+      "name": "chat box yellow",
+      "asset": "images/annotation-libraries/shapes-v2/artwork/chat-box-yellow.png",
+      "thumbnail": "images/annotation-libraries/shapes-v2/thumbnails/chat-box-yellow.png",
+      "legacyAsset": "images/tutorial-annotations/new-annotations/chat-box-yellow.png"
+    },
+    {
+      "id": "checkmark.png",
+      "name": "Checkmark",
+      "asset": "images/annotation-libraries/shapes-v2/artwork/checkmark.png",
+      "thumbnail": "images/annotation-libraries/shapes-v2/thumbnails/checkmark.png",
+      "legacyAsset": "images/tutorial-annotations/new-annotations/checkmark.png"
+    },
+    {
+      "id": "computer-icon.png",
+      "name": "computer icon",
+      "asset": "images/annotation-libraries/shapes-v2/artwork/computer-icon.png",
+      "thumbnail": "images/annotation-libraries/shapes-v2/thumbnails/computer-icon.png",
+      "legacyAsset": "images/tutorial-annotations/new-annotations/computer-icon.png"
+    },
+    {
+      "id": "copy.png",
+      "name": "copy",
+      "asset": "images/annotation-libraries/shapes-v2/artwork/copy.png",
+      "thumbnail": "images/annotation-libraries/shapes-v2/thumbnails/copy.png",
+      "legacyAsset": "images/tutorial-annotations/new-annotations/copy.png"
+    },
+    {
+      "id": "demo.png",
+      "name": "demo",
+      "asset": "images/annotation-libraries/shapes-v2/artwork/demo.png",
+      "thumbnail": "images/annotation-libraries/shapes-v2/thumbnails/demo.png",
+      "legacyAsset": "images/tutorial-annotations/new-annotations/demo.png"
+    },
+    {
+      "id": "find-cat-results.png",
+      "name": "find cat results",
+      "asset": "images/annotation-libraries/shapes-v2/artwork/find-cat-results.png",
+      "thumbnail": "images/annotation-libraries/shapes-v2/thumbnails/find-cat-results.png",
+      "legacyAsset": "images/tutorial-annotations/new-annotations/find-cat-results.png"
+    },
+    {
+      "id": "find-results.png",
+      "name": "find results",
+      "asset": "images/annotation-libraries/shapes-v2/artwork/find-results.png",
+      "thumbnail": "images/annotation-libraries/shapes-v2/thumbnails/find-results.png",
+      "legacyAsset": "images/tutorial-annotations/new-annotations/find-results.png"
+    },
+    {
+      "id": "find-text.png",
+      "name": "find text",
+      "asset": "images/annotation-libraries/shapes-v2/artwork/find-text.png",
+      "thumbnail": "images/annotation-libraries/shapes-v2/thumbnails/find-text.png",
+      "legacyAsset": "images/tutorial-annotations/new-annotations/find-text.png"
+    },
+    {
+      "id": "folder-icon.png",
+      "name": "folder icon",
+      "asset": "images/annotation-libraries/shapes-v2/artwork/folder-icon.png",
+      "thumbnail": "images/annotation-libraries/shapes-v2/thumbnails/folder-icon.png",
+      "legacyAsset": "images/tutorial-annotations/new-annotations/folder-icon.png"
+    },
+    {
+      "id": "free-workshop.png",
+      "name": "free workshop",
+      "asset": "images/annotation-libraries/shapes-v2/artwork/free-workshop.png",
+      "thumbnail": "images/annotation-libraries/shapes-v2/thumbnails/free-workshop.png",
+      "legacyAsset": "images/tutorial-annotations/new-annotations/free-workshop.png"
+    },
+    {
+      "id": "hand-pen.png",
+      "name": "hand pen",
+      "asset": "images/annotation-libraries/shapes-v2/artwork/hand-pen.png",
+      "thumbnail": "images/annotation-libraries/shapes-v2/thumbnails/hand-pen.png",
+      "legacyAsset": "images/tutorial-annotations/new-annotations/hand-pen.png"
+    },
+    {
+      "id": "hashtag.png",
+      "name": "hashtag",
+      "asset": "images/annotation-libraries/shapes-v2/artwork/hashtag.png",
+      "thumbnail": "images/annotation-libraries/shapes-v2/thumbnails/hashtag.png",
+      "legacyAsset": "images/tutorial-annotations/new-annotations/hashtag.png"
+    },
+    {
+      "id": "home-icon.png",
+      "name": "home icon",
+      "asset": "images/annotation-libraries/shapes-v2/artwork/home-icon.png",
+      "thumbnail": "images/annotation-libraries/shapes-v2/thumbnails/home-icon.png",
+      "legacyAsset": "images/tutorial-annotations/new-annotations/home-icon.png"
+    },
+    {
+      "id": "how-to.png",
+      "name": "how to",
+      "asset": "images/annotation-libraries/shapes-v2/artwork/how-to.png",
+      "thumbnail": "images/annotation-libraries/shapes-v2/thumbnails/how-to.png",
+      "legacyAsset": "images/tutorial-annotations/new-annotations/how-to.png"
+    },
+    {
+      "id": "index-card.png",
+      "name": "index card",
+      "asset": "images/annotation-libraries/shapes-v2/artwork/index-card.png",
+      "thumbnail": "images/annotation-libraries/shapes-v2/thumbnails/index-card.png",
+      "legacyAsset": "images/tutorial-annotations/new-annotations/index-card.png"
+    },
+    {
+      "id": "indexcard.png",
+      "name": "indexcard",
+      "asset": "images/annotation-libraries/shapes-v2/artwork/indexcard.png",
+      "thumbnail": "images/annotation-libraries/shapes-v2/thumbnails/indexcard.png",
+      "legacyAsset": "images/tutorial-annotations/new-annotations/indexcard.png"
+    },
+    {
+      "id": "jet.png",
+      "name": "jet",
+      "asset": "images/annotation-libraries/shapes-v2/artwork/jet.png",
+      "thumbnail": "images/annotation-libraries/shapes-v2/thumbnails/jet.png",
+      "legacyAsset": "images/tutorial-annotations/new-annotations/jet.png"
+    },
+    {
+      "id": "kbd-black.png",
+      "name": "kbd black",
+      "asset": "images/annotation-libraries/shapes-v2/artwork/kbd-black.png",
+      "thumbnail": "images/annotation-libraries/shapes-v2/thumbnails/kbd-black.png",
+      "legacyAsset": "images/tutorial-annotations/new-annotations/kbd-black.png"
+    },
+    {
+      "id": "kbd-gray-no-outline.png",
+      "name": "kbd gray no outline",
+      "asset": "images/annotation-libraries/shapes-v2/artwork/kbd-gray-no-outline.png",
+      "thumbnail": "images/annotation-libraries/shapes-v2/thumbnails/kbd-gray-no-outline.png",
+      "legacyAsset": "images/tutorial-annotations/new-annotations/kbd-gray-no-outline.png"
+    },
+    {
+      "id": "kbd-gray.png",
+      "name": "kbd gray",
+      "asset": "images/annotation-libraries/shapes-v2/artwork/kbd-gray.png",
+      "thumbnail": "images/annotation-libraries/shapes-v2/thumbnails/kbd-gray.png",
+      "legacyAsset": "images/tutorial-annotations/new-annotations/kbd-gray.png"
+    },
+    {
+      "id": "kbd-pink.png",
+      "name": "kbd pink",
+      "asset": "images/annotation-libraries/shapes-v2/artwork/kbd-pink.png",
+      "thumbnail": "images/annotation-libraries/shapes-v2/thumbnails/kbd-pink.png",
+      "legacyAsset": "images/tutorial-annotations/new-annotations/kbd-pink.png"
+    },
+    {
+      "id": "kbd-white.png",
+      "name": "kbd white",
+      "asset": "images/annotation-libraries/shapes-v2/artwork/kbd-white.png",
+      "thumbnail": "images/annotation-libraries/shapes-v2/thumbnails/kbd-white.png",
+      "legacyAsset": "images/tutorial-annotations/new-annotations/kbd-white.png"
+    },
+    {
+      "id": "logo.png",
+      "name": "logo",
+      "asset": "images/annotation-libraries/shapes-v2/artwork/logo.png",
+      "thumbnail": "images/annotation-libraries/shapes-v2/thumbnails/logo.png",
+      "legacyAsset": "images/tutorial-annotations/new-annotations/logo.png"
+    },
+    {
+      "id": "magnifier.png",
+      "name": "magnifier",
+      "asset": "images/annotation-libraries/shapes-v2/artwork/magnifier.png",
+      "thumbnail": "images/annotation-libraries/shapes-v2/thumbnails/magnifier.png",
+      "legacyAsset": "images/tutorial-annotations/new-annotations/magnifier.png"
+    },
+    {
+      "id": "mail-icon.png",
+      "name": "mail icon",
+      "asset": "images/annotation-libraries/shapes-v2/artwork/mail-icon.png",
+      "thumbnail": "images/annotation-libraries/shapes-v2/thumbnails/mail-icon.png",
+      "legacyAsset": "images/tutorial-annotations/new-annotations/mail-icon.png"
+    },
+    {
+      "id": "notecard.png",
+      "name": "notecard",
+      "asset": "images/annotation-libraries/shapes-v2/artwork/notecard.png",
+      "thumbnail": "images/annotation-libraries/shapes-v2/thumbnails/notecard.png",
+      "legacyAsset": "images/tutorial-annotations/new-annotations/notecard.png"
+    },
+    {
+      "id": "numbers-0.png",
+      "name": "numbers 0",
+      "asset": "images/annotation-libraries/shapes-v2/artwork/numbers-0.png",
+      "thumbnail": "images/annotation-libraries/shapes-v2/thumbnails/numbers-0.png",
+      "legacyAsset": "images/tutorial-annotations/new-annotations/numbers-0.png"
+    },
+    {
+      "id": "numbers-1.png",
+      "name": "numbers 1",
+      "asset": "images/annotation-libraries/shapes-v2/artwork/numbers-1.png",
+      "thumbnail": "images/annotation-libraries/shapes-v2/thumbnails/numbers-1.png",
+      "legacyAsset": "images/tutorial-annotations/new-annotations/numbers-1.png"
+    },
+    {
+      "id": "numbers-2.png",
+      "name": "numbers 2",
+      "asset": "images/annotation-libraries/shapes-v2/artwork/numbers-2.png",
+      "thumbnail": "images/annotation-libraries/shapes-v2/thumbnails/numbers-2.png",
+      "legacyAsset": "images/tutorial-annotations/new-annotations/numbers-2.png"
+    },
+    {
+      "id": "numbers-3.png",
+      "name": "numbers 3",
+      "asset": "images/annotation-libraries/shapes-v2/artwork/numbers-3.png",
+      "thumbnail": "images/annotation-libraries/shapes-v2/thumbnails/numbers-3.png",
+      "legacyAsset": "images/tutorial-annotations/new-annotations/numbers-3.png"
+    },
+    {
+      "id": "numbers-4.png",
+      "name": "numbers 4",
+      "asset": "images/annotation-libraries/shapes-v2/artwork/numbers-4.png",
+      "thumbnail": "images/annotation-libraries/shapes-v2/thumbnails/numbers-4.png",
+      "legacyAsset": "images/tutorial-annotations/new-annotations/numbers-4.png"
+    },
+    {
+      "id": "numbers-5.png",
+      "name": "numbers 5",
+      "asset": "images/annotation-libraries/shapes-v2/artwork/numbers-5.png",
+      "thumbnail": "images/annotation-libraries/shapes-v2/thumbnails/numbers-5.png",
+      "legacyAsset": "images/tutorial-annotations/new-annotations/numbers-5.png"
+    },
+    {
+      "id": "numbers-6.png",
+      "name": "numbers 6",
+      "asset": "images/annotation-libraries/shapes-v2/artwork/numbers-6.png",
+      "thumbnail": "images/annotation-libraries/shapes-v2/thumbnails/numbers-6.png",
+      "legacyAsset": "images/tutorial-annotations/new-annotations/numbers-6.png"
+    },
+    {
+      "id": "numbers-7.png",
+      "name": "numbers 7",
+      "asset": "images/annotation-libraries/shapes-v2/artwork/numbers-7.png",
+      "thumbnail": "images/annotation-libraries/shapes-v2/thumbnails/numbers-7.png",
+      "legacyAsset": "images/tutorial-annotations/new-annotations/numbers-7.png"
+    },
+    {
+      "id": "numbers-8.png",
+      "name": "numbers 8",
+      "asset": "images/annotation-libraries/shapes-v2/artwork/numbers-8.png",
+      "thumbnail": "images/annotation-libraries/shapes-v2/thumbnails/numbers-8.png",
+      "legacyAsset": "images/tutorial-annotations/new-annotations/numbers-8.png"
+    },
+    {
+      "id": "numbers-9.png",
+      "name": "numbers 9",
+      "asset": "images/annotation-libraries/shapes-v2/artwork/numbers-9.png",
+      "thumbnail": "images/annotation-libraries/shapes-v2/thumbnails/numbers-9.png",
+      "legacyAsset": "images/tutorial-annotations/new-annotations/numbers-9.png"
+    },
+    {
+      "id": "ok.png",
+      "name": "ok",
+      "asset": "images/annotation-libraries/shapes-v2/artwork/ok.png",
+      "thumbnail": "images/annotation-libraries/shapes-v2/thumbnails/ok.png",
+      "legacyAsset": "images/tutorial-annotations/new-annotations/ok.png"
+    },
+    {
+      "id": "paperclip-teal.png",
+      "name": "paperclip teal",
+      "asset": "images/annotation-libraries/shapes-v2/artwork/paperclip-teal.png",
+      "thumbnail": "images/annotation-libraries/shapes-v2/thumbnails/paperclip-teal.png",
+      "legacyAsset": "images/tutorial-annotations/new-annotations/paperclip-teal.png"
+    },
+    {
+      "id": "paperclip-yellow.png",
+      "name": "paperclip yellow",
+      "asset": "images/annotation-libraries/shapes-v2/artwork/paperclip-yellow.png",
+      "thumbnail": "images/annotation-libraries/shapes-v2/thumbnails/paperclip-yellow.png",
+      "legacyAsset": "images/tutorial-annotations/new-annotations/paperclip-yellow.png"
+    },
+    {
+      "id": "pen-paper.png",
+      "name": "pen paper",
+      "asset": "images/annotation-libraries/shapes-v2/artwork/pen-paper.png",
+      "thumbnail": "images/annotation-libraries/shapes-v2/thumbnails/pen-paper.png",
+      "legacyAsset": "images/tutorial-annotations/new-annotations/pen-paper.png"
+    },
+    {
+      "id": "pink-outline.png",
+      "name": "pink outline",
+      "asset": "images/annotation-libraries/shapes-v2/artwork/pink-outline.png",
+      "thumbnail": "images/annotation-libraries/shapes-v2/thumbnails/pink-outline.png",
+      "legacyAsset": "images/tutorial-annotations/new-annotations/pink-outline.png"
+    },
+    {
+      "id": "plus.png",
+      "name": "plus",
+      "asset": "images/annotation-libraries/shapes-v2/artwork/plus.png",
+      "thumbnail": "images/annotation-libraries/shapes-v2/thumbnails/plus.png",
+      "legacyAsset": "images/tutorial-annotations/new-annotations/plus.png"
+    },
+    {
+      "id": "pointer-lines.png",
+      "name": "pointer lines",
+      "asset": "images/annotation-libraries/shapes-v2/artwork/pointer-lines.png",
+      "thumbnail": "images/annotation-libraries/shapes-v2/thumbnails/pointer-lines.png",
+      "legacyAsset": "images/tutorial-annotations/new-annotations/pointer-lines.png"
+    },
+    {
+      "id": "pushpin.png",
+      "name": "pushpin",
+      "asset": "images/annotation-libraries/shapes-v2/artwork/pushpin.png",
+      "thumbnail": "images/annotation-libraries/shapes-v2/thumbnails/pushpin.png",
+      "legacyAsset": "images/tutorial-annotations/new-annotations/pushpin.png"
+    },
+    {
+      "id": "sparkles.png",
+      "name": "sparkles",
+      "asset": "images/annotation-libraries/shapes-v2/artwork/sparkles.png",
+      "thumbnail": "images/annotation-libraries/shapes-v2/thumbnails/sparkles.png",
+      "legacyAsset": "images/tutorial-annotations/new-annotations/sparkles.png"
+    },
+    {
+      "id": "square-bubble.png",
+      "name": "square bubble",
+      "asset": "images/annotation-libraries/shapes-v2/artwork/square-bubble.png",
+      "thumbnail": "images/annotation-libraries/shapes-v2/thumbnails/square-bubble.png",
+      "legacyAsset": "images/tutorial-annotations/new-annotations/square-bubble.png"
+    },
+    {
+      "id": "star-orange.png",
+      "name": "star orange",
+      "asset": "images/annotation-libraries/shapes-v2/artwork/star-orange.png",
+      "thumbnail": "images/annotation-libraries/shapes-v2/thumbnails/star-orange.png",
+      "legacyAsset": "images/tutorial-annotations/new-annotations/star-orange.png"
+    },
+    {
+      "id": "star-yellow.png",
+      "name": "star yellow",
+      "asset": "images/annotation-libraries/shapes-v2/artwork/star-yellow.png",
+      "thumbnail": "images/annotation-libraries/shapes-v2/thumbnails/star-yellow.png",
+      "legacyAsset": "images/tutorial-annotations/new-annotations/star-yellow.png"
+    },
+    {
+      "id": "thumbs-down.png",
+      "name": "thumbs down",
+      "asset": "images/annotation-libraries/shapes-v2/artwork/thumbs-down.png",
+      "thumbnail": "images/annotation-libraries/shapes-v2/thumbnails/thumbs-down.png",
+      "legacyAsset": "images/tutorial-annotations/new-annotations/thumbs-down.png"
+    },
+    {
+      "id": "thumbs-up.png",
+      "name": "thumbs up",
+      "asset": "images/annotation-libraries/shapes-v2/artwork/thumbs-up.png",
+      "thumbnail": "images/annotation-libraries/shapes-v2/thumbnails/thumbs-up.png",
+      "legacyAsset": "images/tutorial-annotations/new-annotations/thumbs-up.png"
+    },
+    {
+      "id": "tutorial.png",
+      "name": "tutorial",
+      "asset": "images/annotation-libraries/shapes-v2/artwork/tutorial.png",
+      "thumbnail": "images/annotation-libraries/shapes-v2/thumbnails/tutorial.png",
+      "legacyAsset": "images/tutorial-annotations/new-annotations/tutorial.png"
+    },
+    {
+      "id": "upload.png",
+      "name": "upload",
+      "asset": "images/annotation-libraries/shapes-v2/artwork/upload.png",
+      "thumbnail": "images/annotation-libraries/shapes-v2/thumbnails/upload.png",
+      "legacyAsset": "images/tutorial-annotations/new-annotations/upload.png"
+    },
+    {
+      "id": "wand-pink.png",
+      "name": "wand pink",
+      "asset": "images/annotation-libraries/shapes-v2/artwork/wand-pink.png",
+      "thumbnail": "images/annotation-libraries/shapes-v2/thumbnails/wand-pink.png",
+      "legacyAsset": "images/tutorial-annotations/new-annotations/wand-pink.png"
+    },
+    {
+      "id": "wand-yellow.png",
+      "name": "wand yellow",
+      "asset": "images/annotation-libraries/shapes-v2/artwork/wand-yellow.png",
+      "thumbnail": "images/annotation-libraries/shapes-v2/thumbnails/wand-yellow.png",
+      "legacyAsset": "images/tutorial-annotations/new-annotations/wand-yellow.png"
+    },
+    {
+      "id": "warning-box.png",
+      "name": "warning box",
+      "asset": "images/annotation-libraries/shapes-v2/artwork/warning-box.png",
+      "thumbnail": "images/annotation-libraries/shapes-v2/thumbnails/warning-box.png",
+      "legacyAsset": "images/tutorial-annotations/new-annotations/warning-box.png"
+    },
+    {
+      "id": "workshop.png",
+      "name": "workshop",
+      "asset": "images/annotation-libraries/shapes-v2/artwork/workshop.png",
+      "thumbnail": "images/annotation-libraries/shapes-v2/thumbnails/workshop.png",
+      "legacyAsset": "images/tutorial-annotations/new-annotations/workshop.png"
+    },
+    {
+      "id": "x.png",
+      "name": "x",
+      "asset": "images/annotation-libraries/shapes-v2/artwork/x.png",
+      "thumbnail": "images/annotation-libraries/shapes-v2/thumbnails/x.png",
+      "legacyAsset": "images/tutorial-annotations/new-annotations/x.png"
+    }
+  ]
+}

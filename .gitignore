@@ -1,10 +1,6 @@
 .DS_Store
 archive/
-tutorial-builder-work/*
-!tutorial-builder-work/tutorial-builder-v3.html
-!tutorial-builder-work/TUTORIAL_BUILDER_V3_HANDOFF.md
-!tutorial-builder-work/tutorial-demo-builder-v1.html
-!tutorial-builder-work/TUTORIAL_DEMO_BUILDER_V1_HANDOFF.md
+/tutorial-builder-work/
 
 # Root-level local builder apps and their Finder launchers never publish.
 /tutorial-demo-builder-v*.html
@@ -16,3 +12,15 @@ tutorial-builder-work/*
 
 # Local Netlify folder
 .netlify
+
+# Local authoring recovery and verification files are not media-site assets.
+/backups/
+/audits/
+/.tutorial-project-history/
+/frame-export-check.html
+
+# Local builder fixtures and the active editable Appearance Pages draft.
+/qa-*.html
+/*-check-*.html
+/tutorials/ap-demo/appearance-pages-demo.html
+/tutorials/ap-demo/backups/

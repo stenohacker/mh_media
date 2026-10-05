@@ -1,0 +1,40 @@
+{
+  "currentFunctionalArtwork": [
+    {
+      "role": "video",
+      "file": "play-video-annotation.svg",
+      "compatibilityPNG": "play-video-annotation.png",
+      "setupAction": "add-video-dialog",
+      "sha256": "1d3744f5aee807f3d5999387e800584e538d527d7b62f2a98cd9c55f5164f4d7",
+      "runtime": "Embedded copy of this SVG, with this folder as fallback"
+    },
+    {
+      "role": "link",
+      "file": "link-annotation.svg",
+      "compatibilityPNG": "link-annotation.png",
+      "setupAction": "add-link-dialog",
+      "sha256": "2cbf5b52d5a5da500dcfb66990e49403ca95e1940e376c3256c7dd30758eebc7",
+      "runtime": "Embedded copy of this SVG, with this folder as fallback"
+    },
+    {
+      "role": "scroll",
+      "file": "scrolling-annotation.svg",
+      "compatibilityPNG": "scrolling-annotation.png",
+      "setupAction": "add-scroll-image-dialog",
+      "sha256": "172f5a74cfec004de63238d5064a49ae70302f8f750fb17778289298436966d0",
+      "runtime": "Embedded copy of this SVG, with this folder as fallback"
+    },
+    {
+      "role": "audio-play",
+      "file": "play-audio-annotation.png",
+      "runtime": "Hosted artwork used by existing audio toggle",
+      "sha256": "7d48a6cc62662666728fdd2ae43810f7ecbd42db1f80599b9ee78e790af64a4b"
+    },
+    {
+      "role": "audio-pause",
+      "file": "pause-audio-annotation.gif",
+      "runtime": "Hosted artwork used by existing audio toggle",
+      "sha256": "df42a76ef29b820a0d7930ea9f9c6721df292d9108d4a4818fddf16b590f67cb"
+    }
+  ]
+}

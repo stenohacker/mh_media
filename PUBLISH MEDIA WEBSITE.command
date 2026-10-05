@@ -12,6 +12,15 @@ LIVE_WEBSITE="https://iridescent-wisp-57bcb1.netlify.app"
 PUBLISH_LOCK_DIRECTORY="$REPOSITORY_FOLDER/.git/mh-media-publish.lock"
 PUBLISH_LOG="$REPOSITORY_FOLDER/.git/MEDIA_PUBLISH_LAST_RUN.log"
 
+# Authoring history, backups and verification artifacts stay on this Mac.
+LOCAL_ONLY_PATHS=(tutorial-builder-work backups audits .tutorial-project-history frame-export-check.html)
+PUBLISH_PATHS=(.)
+for local_only_path in "${LOCAL_ONLY_PATHS[@]}"; do
+  PUBLISH_PATHS+=(":(exclude)$local_only_path" ":(exclude)$local_only_path/**")
+done
+PUBLISH_PATHS+=(':(exclude)archive' ':(exclude)archive/**')
+
+
 pause_before_closing() {
   echo
   echo "Press Return to close this window."
@@ -180,29 +189,18 @@ fi
 
 echo
 echo "Website changes eligible for publication:"
-git status --short -- . \
-  ':(exclude)tutorial-builder-work' \
-  ':(exclude)tutorial-builder-work/**' \
-  ':(exclude)archive' \
-  ':(exclude)archive/**'
+ruby scripts/media-publish-files.rb check || stop_with_message "The media publication file check failed. Nothing was pushed."
 
 echo
 echo "Builder drafts kept local and excluded from publication:"
-git status --short -- tutorial-builder-work || true
+echo "Builders, autosaves, backups and verification files are excluded; any previously tracked copies will be removed from the published tree, preserving local files."
 
 echo
 echo "Checking the publishable website files..."
-if ! git diff --check -- . ':(exclude)tutorial-builder-work' ':(exclude)tutorial-builder-work/**'; then
+if ! git diff --check -- "${PUBLISH_PATHS[@]}"; then
   stop_with_message "A publishable website file failed the Git safety check. Nothing was committed or pushed."
 fi
 
-LARGE_FILES="$(find . -path './.git' -prune -o -path './.netlify' -prune -o -path './archive' -prune -o -path './tutorial-builder-work' -prune -o -type f -size +95M -print)"
-if [[ -n "$LARGE_FILES" ]]; then
-  echo
-  echo "These files are too large for a normal GitHub push:"
-  echo "$LARGE_FILES"
-  stop_with_message "Move or reduce those files before publishing. Nothing was pushed."
-fi
 
 COMMIT_MESSAGE="Publish Magic Hashtags media $(date '+%Y-%m-%d %H:%M')"
 
@@ -220,21 +218,8 @@ if ! remove_tracked_repository_junk; then
   stop_with_message "Git could not remove repository-only junk. Nothing was pushed."
 fi
 
-if ! git restore --staged -- tutorial-builder-work 2>/dev/null; then
-  stop_with_message "Git could not remove builder work from the publication list. Nothing was pushed."
-fi
-
-if ! git add -A -- . \
-  ':(exclude)tutorial-builder-work' \
-  ':(exclude)tutorial-builder-work/**'; then
-  stop_with_message "Git could not stage the media changes. Nothing was committed or pushed."
-fi
-
-BUILDER_FILES_STAGED="$(git diff --cached --name-only -- tutorial-builder-work)"
-if [[ -n "$BUILDER_FILES_STAGED" ]]; then
-  echo
-  echo "$BUILDER_FILES_STAGED"
-  stop_with_message "Safety stop: tutorial-builder-work was found in the publication list. Nothing was committed or pushed."
+if ! ruby scripts/media-publish-files.rb stage; then
+  stop_with_message "Git could not safely stage the media changes. Nothing was committed or pushed."
 fi
 
 PUBLISH_PROBE_PATH="$(git diff --cached --name-only --diff-filter=AM | while IFS= read -r path; do
