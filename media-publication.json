@@ -1,0 +1,18 @@
+{
+  "public_pages": [
+    "test-folder/test-1.html",
+    "video/test-tutorial.html"
+  ],
+  "public_files": [
+    "logocircle.png",
+    "logosquare.png",
+    "shapes.csv",
+    "tutorials/catalog.json",
+    "images/annotation-libraries/catalog.json",
+    "images/tutorial-annotations/interactive-artwork.json",
+    "scripts/html2canvas.min.js",
+    "scripts/pdf-lib-1.17.1.min.js",
+    "scripts/pdf-lib-LICENSE.md",
+    "scripts/tutorial-reading-export.js"
+  ]
+}

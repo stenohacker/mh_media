@@ -1,10 +1,12 @@
 #!/usr/bin/env ruby
 
 require "json"
+require_relative "media-publication-policy"
 
 repository = File.expand_path(ARGV.fetch(0, File.join(__dir__, "..")))
 tutorials_root = File.join(repository, "tutorials")
 catalog_path = File.join(tutorials_root, "catalog.json")
+publication = MediaPublication.manifest(repository)
 extensions = %w[.avif .bmp .gif .jpeg .jpg .png .svg .webp]
 
 tutorials = Dir.children(tutorials_root).each_with_object([]) do |folder, tutorial_entries|
@@ -15,6 +17,7 @@ tutorials = Dir.children(tutorials_root).each_with_object([]) do |folder, tutori
   images = Dir.children(absolute_folder).each_with_object([]) do |filename, image_entries|
     absolute_file = File.join(absolute_folder, filename)
     next unless File.file?(absolute_file)
+    next unless MediaPublication.public_path?("tutorials/#{folder}/#{filename}", publication)
     next if filename.start_with?(".")
     next unless extensions.include?(File.extname(filename).downcase)
 

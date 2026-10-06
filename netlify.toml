@@ -1,3 +1,8 @@
+# Never deploy the working folder. Only the verified media build is public.
+[build]
+  command = "ruby scripts/build-media-site.rb"
+  publish = ".media-public"
+
 # Allow the tutorial builder and exported tutorial pages to load hosted media
 # from another origin. The browser requires this before a remote image or video
 # can be included in an exported PNG canvas.

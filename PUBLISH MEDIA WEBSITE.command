@@ -13,7 +13,7 @@ PUBLISH_LOCK_DIRECTORY="$REPOSITORY_FOLDER/.git/mh-media-publish.lock"
 PUBLISH_LOG="$REPOSITORY_FOLDER/.git/MEDIA_PUBLISH_LAST_RUN.log"
 
 # Authoring history, backups and verification artifacts stay on this Mac.
-LOCAL_ONLY_PATHS=(tutorial-builder-work backups audits .tutorial-project-history frame-export-check.html)
+LOCAL_ONLY_PATHS=(tutorial-builder-work backups audits tmp exports .tutorial-project-history .media-public frame-export-check.html)
 PUBLISH_PATHS=(.)
 for local_only_path in "${LOCAL_ONLY_PATHS[@]}"; do
   PUBLISH_PATHS+=(":(exclude)$local_only_path" ":(exclude)$local_only_path/**")
@@ -52,6 +52,8 @@ refresh_shapes_catalog() {
 
   if ! ruby -rcsv -ruri -e '
     repository, output_path, live_website = ARGV
+    require File.join(repository, "scripts/media-publication-policy")
+    publication = MediaPublication.manifest(repository)
     annotation_root = File.join(repository, "images/tutorial-annotations")
     extensions = %w[.gif .jpeg .jpg .png .svg .webp]
     fixed_root_files = %w[
@@ -63,6 +65,8 @@ refresh_shapes_catalog() {
 
     entries = Dir.glob(File.join(annotation_root, "**", "*"), File::FNM_DOTMATCH).each_with_object([]) do |absolute_path, catalog_entries|
       next unless File.file?(absolute_path)
+      repository_path = absolute_path.delete_prefix("#{repository}/")
+      next unless MediaPublication.public_path?(repository_path, publication)
 
       relative_path = absolute_path.delete_prefix("#{annotation_root}/")
       path_parts = relative_path.split("/")
@@ -188,12 +192,9 @@ if ! refresh_tutorials_catalog; then
 fi
 
 echo
-echo "Website changes eligible for publication:"
+echo "Media publication preflight:"
 ruby scripts/media-publish-files.rb check || stop_with_message "The media publication file check failed. Nothing was pushed."
 
-echo
-echo "Builder drafts kept local and excluded from publication:"
-echo "Builders, autosaves, backups and verification files are excluded; any previously tracked copies will be removed from the published tree, preserving local files."
 
 echo
 echo "Checking the publishable website files..."
@@ -222,6 +223,11 @@ if ! ruby scripts/media-publish-files.rb stage; then
   stop_with_message "Git could not safely stage the media changes. Nothing was committed or pushed."
 fi
 
+# Build before committing or pushing. Failure leaves production unchanged.
+if ! ruby scripts/build-media-site.rb; then
+  stop_with_message "The public media build failed. Nothing was committed or pushed."
+fi
+
 PUBLISH_PROBE_PATH="$(git diff --cached --name-only --diff-filter=AM | while IFS= read -r path; do
   case "$path" in
     images/*|tutorials/*|gifs/*|video/*|audio/*)
@@ -233,8 +239,8 @@ done)"
 
 if ! git diff --cached --quiet; then
   echo
-  echo "Files being committed:"
-  git diff --cached --stat
+  echo "Publication change summary (local recovery cleanup may appear as deletions):"
+  git diff --cached --shortstat
   if ! git commit -m "$COMMIT_MESSAGE"; then
     stop_with_message "Git could not create the media commit. Nothing was pushed."
   fi
@@ -282,7 +288,11 @@ if [[ -n "$PUBLISH_PROBE_PATH" ]]; then
 fi
 
 echo
-echo "SUCCESS: GitHub and Netlify both confirmed the media publication."
+if ! ruby scripts/verify-media-deploy.rb; then
+  stop_with_message "Netlify deployed the commit, but the live publication boundary did not pass verification. Check the last-run log before publishing again."
+fi
+
+echo "SUCCESS: GitHub, Netlify and the live media boundary all passed verification."
 echo "$LIVE_WEBSITE"
 echo "Last-run log: $PUBLISH_LOG"
 pause_before_closing
