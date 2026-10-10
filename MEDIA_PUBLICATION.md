@@ -67,3 +67,7 @@ ruby scripts/verify-media-deploy.rb
 The live check is expected to fail until this repair is actually published,
 because the previous deployment still contains temporary output and internal
 files. No publication was performed while preparing this repair.
+
+## Hosted downloads
+
+`downloads/` is for deliberately public PDF, TXT, CSV, RTF, DOCX, XLSX, PPTX, ZIP and JSON downloads. Put only files intended for viewers here. The publisher includes eligible tracked files and sends attachment and cross-origin headers. Publish newly added files before using their URLs in exported players. Builder drafts, hidden files, backup and audit folders remain excluded.

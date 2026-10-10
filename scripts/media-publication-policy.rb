@@ -9,6 +9,7 @@ module MediaPublication
     'audio' => %w[.mp3 .wav .m4a .ogg .aac .flac],
     'video' => %w[.mp4 .webm .mov .m4v],
     'tutorials' => %w[.avif .bmp .gif .jpeg .jpg .png .svg .webp .mp3 .wav .m4a .ogg .mp4 .webm],
+    'downloads' => %w[.pdf .txt .csv .rtf .docx .xlsx .pptx .zip .json],
     'fonts' => %w[.ttf .otf .woff .woff2 .txt]
   }.freeze
   LOCAL_PART = /\A(?:backups?|audits?|tmp|archive|node_modules|exports|tutorial[- _]builders?(?:[- _]work)?)\z/i

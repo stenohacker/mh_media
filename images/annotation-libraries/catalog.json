@@ -67,6 +67,12 @@
       "thumbnail": "images/annotation-libraries/annotations/thumbnails/chatgpt.png"
     },
     {
+      "id": "chatgpt-overlay",
+      "name": "ChatGPT overlay",
+      "asset": "images/annotation-libraries/annotations/png/ChatGPT-overlay.png",
+      "thumbnail": "images/annotation-libraries/annotations/png/ChatGPT-overlay.png"
+    },
+    {
       "id": "check",
       "name": "Check",
       "asset": "images/annotation-libraries/annotations/svg/check.svg",

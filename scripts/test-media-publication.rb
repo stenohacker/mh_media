@@ -53,6 +53,18 @@ class MediaPublicationTest < Minitest::Test
     end
   end
 
+  def test_hosted_downloads_preserve_bytes_and_exclude_private_or_executable_files
+    payload = "\x00\xff\x50\x4b".b
+    write('downloads/guide.pdf', payload)
+    write('downloads/bundle.zip', payload)
+    private_paths = %w[downloads/backups/draft.pdf downloads/.private.txt downloads/run.js downloads/page.html]
+    private_paths.each { |path| write(path, 'private') }
+    run!('git', 'add', '.')
+    build
+    %w[downloads/guide.pdf downloads/bundle.zip].each { |path| assert_equal payload, File.binread(File.join(@root, '.media-public', path)) }
+    private_paths.each { |path| refute File.exist?(File.join(@root, '.media-public', path)), path }
+  end
+
   def test_builder_cannot_replace_an_approved_player
     build
     write('test-folder/player.html', '<body data-mode="builder">Draft</body>')

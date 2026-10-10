@@ -56,3 +56,11 @@
   for = "/test-folder/*"
   [headers.values]
     X-Robots-Tag = "noindex, nofollow, noarchive"
+
+# Download annotations fetch binary files from exported players on other sites.
+[[headers]]
+  for = "/downloads/*"
+  [headers.values]
+    Access-Control-Allow-Origin = "*"
+    Cross-Origin-Resource-Policy = "cross-origin"
+    Content-Disposition = "attachment"
