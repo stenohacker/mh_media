@@ -2,6 +2,21 @@ group,name,url
 BUILT-IN CONTROLS,PAUSE-AUDIO-ANNOTATION,https://iridescent-wisp-57bcb1.netlify.app/images/tutorial-annotations/pause-audio-annotation.gif
 BUILT-IN CONTROLS,PLAY-AUDIO-ANNOTATION,https://iridescent-wisp-57bcb1.netlify.app/images/tutorial-annotations/play-audio-annotation.png
 BUILT-IN CONTROLS,PLAY-VIDEO-ANNOTATION,https://iridescent-wisp-57bcb1.netlify.app/images/tutorial-annotations/play-video-annotation.png
+CHATGPT-OVERLAY,1-HOUSE,https://iridescent-wisp-57bcb1.netlify.app/images/tutorial-annotations/chatgpt-overlay/1-house.png
+CHATGPT-OVERLAY,1-HOUSE,https://iridescent-wisp-57bcb1.netlify.app/images/tutorial-annotations/chatgpt-overlay/1-house.svg
+CHATGPT-OVERLAY,2-BOXES,https://iridescent-wisp-57bcb1.netlify.app/images/tutorial-annotations/chatgpt-overlay/2-boxes.png
+CHATGPT-OVERLAY,2-BOXES,https://iridescent-wisp-57bcb1.netlify.app/images/tutorial-annotations/chatgpt-overlay/2-boxes.svg
+CHATGPT-OVERLAY,3-REMINDERS,https://iridescent-wisp-57bcb1.netlify.app/images/tutorial-annotations/chatgpt-overlay/3-reminders.png
+CHATGPT-OVERLAY,3-REMINDERS,https://iridescent-wisp-57bcb1.netlify.app/images/tutorial-annotations/chatgpt-overlay/3-reminders.svg
+CHATGPT-OVERLAY,4-PLUGIN,https://iridescent-wisp-57bcb1.netlify.app/images/tutorial-annotations/chatgpt-overlay/4-plugin.png
+CHATGPT-OVERLAY,4-PLUGIN,https://iridescent-wisp-57bcb1.netlify.app/images/tutorial-annotations/chatgpt-overlay/4-plugin.svg
+CHATGPT-OVERLAY,5-THREE-DOT,https://iridescent-wisp-57bcb1.netlify.app/images/tutorial-annotations/chatgpt-overlay/5-three-dot.png
+CHATGPT-OVERLAY,5-THREE-DOT,https://iridescent-wisp-57bcb1.netlify.app/images/tutorial-annotations/chatgpt-overlay/5-three-dot.svg
+CHATGPT-OVERLAY,6-DIVIDER,https://iridescent-wisp-57bcb1.netlify.app/images/tutorial-annotations/chatgpt-overlay/6-divider.png
+CHATGPT-OVERLAY,6-DIVIDER,https://iridescent-wisp-57bcb1.netlify.app/images/tutorial-annotations/chatgpt-overlay/6-divider.svg
+CHATGPT-OVERLAY,RENAME-CHAT,https://iridescent-wisp-57bcb1.netlify.app/images/tutorial-annotations/chatgpt-overlay/rename-chat.png
+CHATGPT-OVERLAY,RENAME-CHAT,https://iridescent-wisp-57bcb1.netlify.app/images/tutorial-annotations/chatgpt-overlay/rename-chat.svg
+CHATGPT-OVERLAY,TEXT-BOX,https://iridescent-wisp-57bcb1.netlify.app/images/tutorial-annotations/chatgpt-overlay/text-box.svg
 FOOTERS,AP-DRD,https://iridescent-wisp-57bcb1.netlify.app/images/tutorial-annotations/footers/AP-DrD.png
 FOOTERS,AP-FOOTER,https://iridescent-wisp-57bcb1.netlify.app/images/tutorial-annotations/footers/ap-footer.png
 FOOTERS,AP-FOOTER-FINAL-FINAL,https://iridescent-wisp-57bcb1.netlify.app/images/tutorial-annotations/footers/ap-footer-final-final.png
@@ -261,6 +276,7 @@ OLD-ANNOTATIONS-FOR-DROPDOWN,WARNING-BOX,https://iridescent-wisp-57bcb1.netlify.
 OLD-ANNOTATIONS-FOR-DROPDOWN,WHITE-RECTANGLE-BIG-SHADOW,https://iridescent-wisp-57bcb1.netlify.app/images/tutorial-annotations/old-annotations-for-dropdown/white-rectangle-big-shadow.png
 OLD-ANNOTATIONS-FOR-DROPDOWN,X-BLACK,https://iridescent-wisp-57bcb1.netlify.app/images/tutorial-annotations/old-annotations-for-dropdown/x-black.png
 OLD-ANNOTATIONS-FOR-DROPDOWN,X-TEAL,https://iridescent-wisp-57bcb1.netlify.app/images/tutorial-annotations/old-annotations-for-dropdown/x-teal.png
+OTHER,CHATGPT-FIXED-OVERLAY,https://iridescent-wisp-57bcb1.netlify.app/images/tutorial-annotations/chatgpt-fixed-overlay.svg
 OTHER,CLOUD-LEFT,https://iridescent-wisp-57bcb1.netlify.app/images/tutorial-annotations/cloud-left.png
 OTHER,COPY-DOWNLOAD-DONE,https://iridescent-wisp-57bcb1.netlify.app/images/tutorial-annotations/copy-download-done.png
 OTHER,COPY-DOWNLOAD-DONE,https://iridescent-wisp-57bcb1.netlify.app/images/tutorial-annotations/copy-download-done.svg

@@ -1,7 +1,6 @@
 {
   "public_pages": [
-    "test-folder/test-1.html",
-    "video/test-tutorial.html"
+    "test-folder/test-1.html"
   ],
   "public_files": [
     "logocircle.png",

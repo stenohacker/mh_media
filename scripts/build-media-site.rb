@@ -10,9 +10,11 @@ Dir.chdir(root)
 manifest = MediaPublication.manifest(root)
 listed, error, status = Open3.capture3('git', 'ls-files', '-z')
 abort(error) unless status.success?
-paths = listed.split("\0").select { |path| MediaPublication.public_path?(path, manifest) && (File.exist?(path) || File.symlink?(path)) }.sort
+tracked = listed.split("\0")
+paths = tracked.select { |path| MediaPublication.public_path?(path, manifest) && (File.exist?(path) || File.symlink?(path)) }.sort
 required = manifest['public_pages'] + manifest['public_files']
-missing = required - paths
+deleted_listed = MediaPublication.deleted_listed_paths(root, manifest, tracked)
+missing = required - paths - deleted_listed
 abort "Required public files are not tracked: #{missing.join(', ')}" unless missing.empty?
 abort 'Refusing an empty media build.' if paths.empty?
 paths.each { |path| MediaPublication.validate_file!(root, path) }

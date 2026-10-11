@@ -1,5 +1,6 @@
 # frozen_string_literal: true
 require 'json'
+require 'open3'
 
 # The repository is a workspace, never the deployment directory.
 module MediaPublication
@@ -34,6 +35,16 @@ module MediaPublication
       end
     end
     data
+  end
+
+  # An absent previously tracked file is a deletion, including deletions already
+  # staged in Git. A never-existing required entry still indicates a bad manifest.
+  def self.deleted_listed_paths(root, manifest, tracked)
+    committed, = Open3.capture3('git', 'ls-tree', '-r', '-z', '--name-only', 'HEAD', chdir: root)
+    known = tracked.to_a + committed.split("\0")
+    (manifest['public_pages'] + manifest['public_files']).select do |path|
+      known.include?(path) && !File.exist?(File.join(root, path)) && !File.symlink?(File.join(root, path))
+    end
   end
 
   def self.public_path?(path, manifest)

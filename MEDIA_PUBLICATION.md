@@ -12,7 +12,7 @@ is short; `.git/MEDIA_PUBLISH_LAST_RUN.log` records the run.
 - All existing tutorial media, including the media inside `tutorials/DRAFT-1/`.
   A hosted media folder with DRAFT in its name is not a builder draft database.
 - Public catalogs and browser runtime dependencies listed in `media-publication.json`.
-- The two previously published standalone test players explicitly listed there.
+- Standalone test players explicitly listed there.
 
 New HTML pages require an explicit entry in `public_pages`; they must be player
 exports, never builder-mode documents. New asset formats or top-level media
@@ -71,3 +71,21 @@ files. No publication was performed while preparing this repair.
 ## Hosted downloads
 
 `downloads/` is for deliberately public PDF, TXT, CSV, RTF, DOCX, XLSX, PPTX, ZIP and JSON downloads. Put only files intended for viewers here. The publisher includes eligible tracked files and sends attachment and cross-origin headers. Publish newly added files before using their URLs in exported players. Builder drafts, hidden files, backup and audit folders remain excluded.
+
+## October 10, 2026 — deleted video test player
+
+The owner deleted `video/test-tutorial.html`. It is no longer a required public
+page; post-publication verification expects that retired URL to return 404.
+`test-folder/test-1.html` remains an approved public test player. Trailing spaces
+on its blank lines were removed to pass the existing publication whitespace check.
+
+## Automatic deletion handling — October 10, 2026
+
+Deleting a previously tracked public file is sufficient. Preflight recognizes
+both unstaged and already-staged deletions; publication staging removes the
+file from Git and retires any corresponding public-page/public-file listing.
+The build drops it from public output, and live verification follows the current
+publication list. Never-existing required entries still report a configuration
+error instead of being silently discarded. Existing builder/draft exclusions
+remain enforced. Regression tests cover deletion, repeat preflight after staging,
+and removal of the published copy. No publication performed during this repair.

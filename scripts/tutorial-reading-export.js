@@ -12,7 +12,7 @@
     .reading-header { display:grid; gap:10px; border-bottom:1px solid #272823; padding:0 0 20px; }
     .reading-eyebrow { display:flex; justify-content:space-between; gap:32px; font-size:19px; line-height:1.35; font-weight:700; letter-spacing:.08em; text-transform:uppercase; }
     .reading-eyebrow span:first-child { color:#B52626; }
-    .reading-heading { font-family:"RS Profile Headings",sans-serif; margin:0; font-size:38px; line-height:1.2; font-weight:300; overflow-wrap:anywhere; }
+    .reading-heading { font-family:"Hanken Grotesk",sans-serif; margin:0; font-size:38px; line-height:1.2; font-weight:500; overflow-wrap:anywhere; }
     .reading-main { min-height:0; display:grid; grid-template-columns:minmax(0,1fr); grid-template-rows:580px minmax(0,1fr); gap:24px; align-items:stretch; }
     .reading-main.is-image-only { grid-template-rows:minmax(0,1fr); }
     .reading-picture { margin:0; min-width:0; min-height:0; display:grid; grid-template-rows:minmax(0,1fr) 28px; gap:12px; }

@@ -1,9 +1,9 @@
 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 2048 834" role="img" aria-labelledby="keyboard-title keyboard-desc">
 <title id="keyboard-title">Steno keyboard — Reporter Sidekick</title>
 <desc id="keyboard-desc">Blank reference layout: number bar, ten top keys, ten rounded lower keys, and four thumb keys. Each key can be highlighted independently.</desc>
-<style>.key-face{fill:var(--key-fill,#FFFDF7);stroke:#272823;stroke-width:3.5;stroke-linejoin:round;stroke-linecap:round}.key.is-active .key-face{fill:var(--highlight-color,#F2D968)}.key-shadow{fill:#DEDED7}</style>
+<style>.key-face{fill:var(--key-fill,#FFFDF7);stroke:#272823;stroke-width:12.0;stroke-linejoin:round;stroke-linecap:round}.key.is-active .key-face{fill:var(--highlight-color,#F2D968)}.key-shadow{fill:#DEDED7}</style>
 <rect x="66" y="69" width="1916" height="706" rx="58" fill="#DEDED7"/>
-<rect id="keyboard-body" x="64" y="63" width="1916" height="706" rx="58" fill="#F7F5EE" stroke="#B9BAB1" stroke-width="2.5"/>
+<rect id="keyboard-body" x="64" y="63" width="1916" height="706" rx="58" fill="#F7F5EE" stroke="#B9BAB1" stroke-width="12.0"/>
 <g id="key-number-bar" class="key" data-key="number-bar"><title>number bar</title><path class="key-shadow" d="M190 187 Q989.68 185 1856 186 L1855.5 242 Q1039.6599999999999 243 190 241.5 Z" transform="translate(1.5 4)"/><path class="key-face" d="M190 187 Q989.68 185 1856 186 L1855.5 242 Q1039.6599999999999 243 190 241.5 Z"/></g>
 <g id="key-top-01" class="key" data-key="top-01"><title>top 01</title><path class="key-shadow" d="M186 275 Q247.44 273 314 274 L313.5 374 Q251.28 375 186 373.5 Z" transform="translate(1.5 4)"/><path class="key-face" d="M186 275 Q247.44 273 314 274 L313.5 374 Q251.28 375 186 373.5 Z"/></g>
 <g id="key-top-02" class="key" data-key="top-02"><title>top 02</title><path class="key-shadow" d="M350 275 Q411.44 273 478 274 L477.5 374 Q415.28 375 350 373.5 Z" transform="translate(1.5 4)"/><path class="key-face" d="M350 275 Q411.44 273 478 274 L477.5 374 Q415.28 375 350 373.5 Z"/></g>

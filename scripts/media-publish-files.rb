@@ -28,12 +28,19 @@ eligible = candidates.select do |path|
 end
 public_files = eligible.select { |path| MediaPublication.public_path?(path, manifest) && (File.exist?(path) || File.symlink?(path)) }
 public_files.each { |path| MediaPublication.validate_file!(Dir.pwd, path) }
-missing = manifest.values.flatten - public_files
+deleted_listed = MediaPublication.deleted_listed_paths(Dir.pwd, manifest, tracked)
+missing = manifest.values.flatten - public_files - deleted_listed
 abort "Required public files are missing: #{missing.join(', ')}" unless missing.empty?
 puts "Public media files: #{public_files.length}"
+puts "Previously tracked public files deleted: #{deleted_listed.length}" unless deleted_listed.empty?
 puts "Local-only files to remove from Git tracking: #{(tracked & local).length}; local copies stay intact."
 puts 'Other workspace files are excluded from the public build.'
 exit if mode == 'check'
+
+unless deleted_listed.empty?
+  %w[public_pages public_files].each { |key| manifest[key] -= deleted_listed }
+  File.write('media-publication.json', JSON.pretty_generate(manifest) + "\n")
+end
 
 (tracked & local).to_a.each_slice(100) do |paths|
   git('--literal-pathspecs', 'rm', '--cached', '--ignore-unmatch', '--', *paths)

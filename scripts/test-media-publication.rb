@@ -104,7 +104,9 @@ class MediaPublicationTest < Minitest::Test
   end
 
   def test_missing_required_media_stops_the_build
-    File.unlink(File.join(@root, 'tutorials/catalog.json'))
+    data = JSON.parse(File.read(File.join(@root, 'media-publication.json')))
+    data['public_files'] << 'tutorials/missing.json'
+    write('media-publication.json', JSON.generate(data))
     _, error, status = Open3.capture3('ruby', 'scripts/build-media-site.rb', chdir: @root)
     refute status.success?
     assert_includes error, 'Required public files'
@@ -115,4 +117,37 @@ class MediaPublicationTest < Minitest::Test
     build
     refute File.exist?(File.join(@root, '.media-public/images/untracked.png'))
   end
+  def test_deleted_listed_player_is_retired_and_staged_automatically
+    build
+    File.unlink(File.join(@root, 'test-folder/player.html'))
+    run!('ruby', 'scripts/media-publish-files.rb', 'check')
+    build
+    refute File.exist?(File.join(@root, '.media-public/test-folder/player.html'))
+    run!('ruby', 'scripts/media-publish-files.rb', 'stage')
+    refute_includes run!('git', 'ls-files').lines.map(&:strip), 'test-folder/player.html'
+    refute_includes JSON.parse(File.read(File.join(@root, 'media-publication.json')))['public_pages'], 'test-folder/player.html'
+    run!('ruby', 'scripts/media-publish-files.rb', 'check')
+  end
+
+  def test_already_staged_deletion_is_recognized_from_previous_commit
+    run!('git', '-c', 'user.name=Test', '-c', 'user.email=test@example.com', 'commit', '-qm', 'Fixture')
+    File.unlink(File.join(@root, 'tutorials/catalog.json'))
+    run!('git', 'add', '-u')
+    run!('ruby', 'scripts/media-publish-files.rb', 'check')
+    run!('ruby', 'scripts/media-publish-files.rb', 'stage')
+    refute_includes JSON.parse(File.read(File.join(@root, 'media-publication.json')))['public_files'], 'tutorials/catalog.json'
+    build
+    refute File.exist?(File.join(@root, '.media-public/tutorials/catalog.json'))
+  end
+
+  def test_never_existing_required_entry_still_reports_configuration_error
+    data = JSON.parse(File.read(File.join(@root, 'media-publication.json')))
+    data['public_pages'] << 'test-folder/never-existed.html'
+    write('media-publication.json', JSON.generate(data))
+    _, error, status = Open3.capture3('ruby', 'scripts/media-publish-files.rb', 'check', chdir: @root)
+    refute status.success?
+    assert_includes error, 'never-existed.html'
+    assert_includes JSON.parse(File.read(File.join(@root, 'media-publication.json')))['public_pages'], 'test-folder/never-existed.html'
+  end
+
 end
