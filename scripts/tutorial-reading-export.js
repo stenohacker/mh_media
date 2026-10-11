@@ -111,7 +111,7 @@
 
   async function prepare(options) {
     const { root, slides, title, escape, renderScene, sceneBounds, sceneHeight, renderTitle,
-      renderBody, colors, prepareAssets, updateGeometry, cardTextStyle } = options;
+      renderBody, colors, prepareAssets, updateGeometry, cardTextStyle, sceneHeaderHeight = () => 0 } = options;
     const style = document.createElement("style");
     style.textContent = CSS_TEXT;
     document.head.append(style);
@@ -203,7 +203,8 @@
       const stage = scene.querySelector("[data-stage]");
       stage.style.height = `${sceneHeight(slide)}px`;
       await prepareAssets(scene);
-      let bounds = sceneBounds(slide);
+      const headerHeight = sceneHeaderHeight(slide);
+      let bounds = { ...sceneBounds(slide), bottom: sceneBounds(slide).bottom + headerHeight };
       if (slide.kind === "scroll") {
         const viewport = scene.querySelector("[data-scroll-slide]");
         const content = viewport?.querySelector(".scroll-slide-content");
@@ -212,9 +213,13 @@
           viewport.style.height = `${height}px`;
           viewport.style.bottom = "auto";
           viewport.style.overflow = "visible";
-          bounds = { ...bounds, bottom: Math.max(bounds.bottom, viewport.offsetTop + height) };
+          bounds = { ...bounds, bottom: Math.max(bounds.bottom, headerHeight + viewport.offsetTop + height) };
         }
       }
+      // A fixed composer belongs to the visible scrolling window, not to a
+      // position in the long image. Keep it intact on each printed section.
+      const fixedOverlay = slide.kind === "scroll" ? scene.querySelector(".chatgpt-fixed-overlay") : null;
+      fixedOverlay?.remove();
       const width = bounds.right - bounds.left;
       const height = bounds.bottom - bounds.top;
       const scale = slide.kind === "scroll" ? firstWindow.clientWidth / width : Math.min(firstWindow.clientWidth / width, firstWindow.clientHeight / height);
@@ -227,6 +232,15 @@
         const part = Math.min(partIndex, slices - 1);
         copy.style.transform = `translate(${(firstWindow.clientWidth - width * scale) / 2 - bounds.left * scale}px,${-bounds.top * scale - part * sliceHeight}px) scale(${scale})`;
         picture.append(copy);
+        if (fixedOverlay) {
+          const overlayScene = document.createElement("div");
+          overlayScene.className = "reading-fixed-overlay";
+          overlayScene.style.cssText = `position:absolute;left:${(firstWindow.clientWidth - width * scale) / 2 - bounds.left * scale}px;top:0;width:${stage.offsetWidth}px;height:${sliceHeight / scale}px;transform:scale(${scale});transform-origin:top left;pointer-events:none;--stage-matte:${slide.backgroundFill || slide.media?.matte || '#ffffff'};`;
+          const overlayCopy = fixedOverlay.cloneNode(true);
+          overlayCopy.style.cssText = 'left:0;top:0;width:100%;height:100%;';
+          overlayScene.append(overlayCopy);
+          picture.append(overlayScene);
+        }
         sectionPage.querySelector(".reading-picture-caption").textContent = slices > 1
           ? `Image section ${part + 1} of ${slices} / markers remain in their placed positions`
           : slide.hotspots.length ? "Match the numbered markers to the cards." : "";
