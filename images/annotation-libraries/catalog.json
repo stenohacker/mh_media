@@ -63,8 +63,8 @@
     {
       "id": "chatgpt",
       "name": "ChatGPT",
-      "asset": "images/annotation-libraries/annotations/svg/chatgpt.svg",
-      "thumbnail": "images/annotation-libraries/annotations/thumbnails/chatgpt.png"
+      "asset": "images/annotation-libraries/annotations/svg/chatgpt.svg?v=aeeeb73b62f0",
+      "thumbnail": "images/annotation-libraries/annotations/png/chatgpt.png?v=320408dab73c"
     },
     {
       "id": "chatgpt-overlay",
@@ -2428,6 +2428,15 @@
       "asset": "images/annotation-libraries/shapes-v2/artwork/x.png",
       "thumbnail": "images/annotation-libraries/shapes-v2/thumbnails/x.png",
       "legacyAsset": "images/tutorial-annotations/new-annotations/x.png"
+    }
+  ],
+  "gifs": [
+    {
+      "id": "animatedbrackets",
+      "name": "Animated brackets",
+      "type": "gif",
+      "asset": "images/annotation-libraries/annotations/gifs/animatedbrackets.gif",
+      "thumbnail": "images/annotation-libraries/annotations/gifs/animatedbrackets.gif"
     }
   ]
 }
