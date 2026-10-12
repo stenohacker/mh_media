@@ -33,6 +33,18 @@
     .reading-card-heading small { display:block; margin-top:4px; font-size:18px; font-weight:500; }
     .reading-card-body { font-weight:400; padding:12px 18px 16px; font-size:24px; line-height:var(--text-line-height,1.55); letter-spacing:var(--text-letter-spacing,0px); overflow-wrap:anywhere; }
     .reading-card-body:empty { display:none; }
+    .reading-brand-logo {display:block;width:220px;height:auto;max-height:58px;object-fit:contain;object-position:left center;}
+    .reading-header .reading-heading {margin-top:14px;}
+    .reading-footer a {color:#272823;text-decoration:none;}
+    .reading-contents-heading {margin:16px 0 0;font-size:28px;font-weight:500;}
+    .reading-contents-main {min-height:0;display:grid;grid-template-columns:repeat(2,minmax(0,1fr));grid-template-rows:repeat(3,minmax(0,1fr));gap:22px;}
+    .reading-contents-entry {display:flex;flex-direction:column;min-width:0;min-height:0;border:1px solid #B9BAB1;background:white;color:#272823;text-decoration:none;overflow:hidden;}
+    .reading-contents-preview {position:relative;display:block;min-height:0;flex:1;background:white;overflow:hidden;}
+    .reading-contents-preview .contents-preview-stage {position:absolute;inset:0;}
+    .reading-contents-caption {display:grid;grid-template-columns:34px minmax(0,1fr) auto;align-items:start;gap:12px;padding:14px;border-top:1px solid #B9BAB1;font-size:23px;line-height:1.3;}
+    .reading-contents-caption strong {font-weight:500;overflow-wrap:anywhere;}
+    .reading-contents-caption .reading-contents-number {border:1px solid #B9BAB1;text-align:center;border-radius:50%;line-height:32px;}
+    .reading-contents-caption small {font-size:18px;white-space:nowrap;}
     .reading-card-body > .mixed-body-line { margin:0; }
     .reading-card-body > .mixed-body-line + .mixed-body-line { margin-top:10px; }
     .reading-card-body > .is-numbered { padding-left:38px; }
@@ -111,12 +123,38 @@
 
   async function prepare(options) {
     const { root, slides, title, escape, renderScene, sceneBounds, sceneHeight, renderTitle,
-      renderBody, colors, prepareAssets, updateGeometry, cardTextStyle, sceneHeaderHeight = () => 0 } = options;
+      renderBody, colors, prepareAssets, updateGeometry, cardTextStyle, applyScrollVisibility, sceneAspect, logo, renderContentsPreview, landscape = false, sceneHeaderHeight = () => 0 } = options;
+    const PAGE_WIDTH = landscape ? 1584 : 1224;
+    const PAGE_HEIGHT = landscape ? 1224 : 1584;
+    const OUTPUT_WIDTH = landscape ? 3300 : 2550;
+    const PDF_WIDTH = landscape ? 792 : 612;
+    const PDF_HEIGHT = landscape ? 612 : 792;
     const style = document.createElement("style");
-    style.textContent = CSS_TEXT;
+    style.textContent = CSS_TEXT + (landscape ? `
+      html,body[data-reading-export="true"],body[data-reading-export="true"] #app {width:1584px!important;}
+      .reading-page {width:1584px;height:1224px;}
+      .reading-main {grid-template-columns:290px minmax(0,1fr) 290px;grid-template-rows:minmax(0,1fr);gap:12px;}
+      .reading-main.is-image-only {grid-template-columns:minmax(0,1fr);}
+      .reading-contents-main {grid-template-columns:repeat(3,minmax(0,1fr));grid-template-rows:repeat(2,minmax(0,1fr));}
+      .reading-card-header {gap:8px;padding:12px;}
+      .reading-card-heading {font-size:24px;}
+      .reading-card-body {padding:12px;font-size:22px;line-height:1.45;}
+      @page {size:letter landscape;}
+      @media print {html,body[data-reading-export="true"],body[data-reading-export="true"] #app {width:1056px!important;}}
+    ` : '');
     document.head.append(style);
     root.replaceChildren();
     const pages = [];
+    const firstSlidePages = new Map();
+    const brand = logo ? `<img class="reading-brand-logo" src="${escape(logo)}" alt="Reporter Sidekick">` : '<span>Reporter Sidekick</span>';
+    const footer = '<footer class="reading-footer"><a data-reading-website href="https://reportersidekick.com">reportersidekick.com</a><span data-reading-page-number></span></footer>';
+    if (renderContentsPreview) {
+      for (let start=0;start<slides.length;start+=6) {
+        const page=document.createElement('section');page.className='reading-page reading-contents-page';
+        page.innerHTML=`<header class="reading-header"><div class="reading-eyebrow">${brand}<span>Tutorial guide</span></div><h1 class="reading-heading">${escape(title || 'Tutorial')}</h1><h2 class="reading-contents-heading">Table of contents${start ? ' — continued' : ''}</h2></header><main class="reading-contents-main">${slides.slice(start,start+6).map((slide,index)=>`<a class="reading-contents-entry" data-reading-contents-slide="${start+index}" href="#reading-slide-${start+index}"><span class="reading-contents-preview">${renderContentsPreview(slide)}</span><span class="reading-contents-caption"><span class="reading-contents-number">${start+index+1}</span><strong>${escape(slide.title || 'Untitled slide')}</strong><small data-reading-contents-page-label></small></span></a>`).join('')}</main>${footer}`;
+        root.append(page);pages.push(page);await prepareAssets(page);
+      }
+    }
 
     for (let slideIndex = 0; slideIndex < slides.length; slideIndex++) {
       const slide = slides[slideIndex];
@@ -128,31 +166,44 @@
         const page = document.createElement("section");
         page.className = "reading-page";
         page.dataset.slideIndex = slideIndex;
-        page.innerHTML = `<header class="reading-header"><div class="reading-eyebrow"><span>Magic Hashtags / Tutorial</span><span>Slide ${slideIndex + 1} of ${slides.length}</span></div><h1 class="reading-heading">${escape(slide.title || title || "Tutorial")}</h1></header>
-          <main class="reading-main${hasCards ? "" : " is-image-only"}"><figure class="reading-picture"><div class="reading-picture-window"></div><figcaption class="reading-picture-caption"></figcaption></figure>${hasCards ? '<div class="reading-cards"></div>' : ""}</main>
-          <footer class="reading-footer"><span>${escape(title || "Tutorial")}</span><span data-reading-page-number></span></footer>`;
+        page.innerHTML = `<header class="reading-header"><div class="reading-eyebrow">${brand}<span>Slide ${slideIndex + 1} of ${slides.length}</span></div><h1 class="reading-heading">${escape(slide.title || title || "Tutorial")}</h1></header>
+          <main class="reading-main${hasCards ? "" : " is-image-only"}">${landscape&&hasCards?'<div class="reading-cards reading-cards-left"></div>':''}<figure class="reading-picture"><div class="reading-picture-window"></div><figcaption class="reading-picture-caption"></figcaption></figure>${hasCards ? `<div class="reading-cards${landscape?' reading-cards-right':''}"></div>` : ""}</main>
+          ${footer}`;
         root.append(page);
-        if (hasCards) {
+        if (hasCards && !landscape) {
           const bounds = sceneBounds(slide);
           const pictureWidth = page.querySelector('.reading-picture-window').clientWidth;
           const pictureHeight = Math.min(580, Math.max(260, (bounds.bottom - bounds.top) * pictureWidth / (bounds.right - bounds.left) + 40));
           page.querySelector('.reading-main').style.gridTemplateRows = `${pictureHeight}px minmax(0,1fr)`;
         }
         if (page.querySelector(".reading-main").clientHeight < 300) throw new Error(`Slide ${slideIndex + 1}'s title is too long for a reading-guide page.`);
+        if(!firstSlidePages.has(slideIndex)) {firstSlidePages.set(slideIndex,pages.length);page.id=`reading-slide-${slideIndex}`;}
         pages.push(page);
         sectionPages.push(page);
         return page;
       };
       let page = newPage();
       let column = page.querySelector(".reading-cards");
+      let activeSide = 0;
+      const sidePages = [page, page];
       const fits = () => column.scrollHeight <= column.clientHeight + 1;
-      const nextColumn = () => { page = newPage(); column = page.querySelector(".reading-cards"); };
+      const nextColumn = () => {
+        const nextIndex = sectionPages.indexOf(page) + 1;
+        page = landscape ? sectionPages[nextIndex] || newPage() : newPage();
+        column = page.querySelectorAll('.reading-cards')[activeSide];
+        sidePages[activeSide] = page;
+      };
       const entries = [
         ...(hasNotes ? [{ title: "About this slide", body: slide.description, item: slide, field: "description", index: -1 }] : []),
         ...slide.hotspots.map((item, index) => ({ title: item.title, body: item.cardTitleOnly ? "" : item.body, item, field: "body", index }))
       ];
       for (const entry of entries) {
         const { item, index, field } = entry;
+        if (landscape) {
+          activeSide = index < 0 ? 0 : index % 2;
+          page = sidePages[activeSide];
+          column = page.querySelectorAll('.reading-cards')[activeSide];
+        }
         const color = index >= 0 ? colors(index) : { color: "#CBD5F3", ink: "#272823" };
         const makeCard = continued => {
           const card = document.createElement("article");
@@ -230,8 +281,20 @@
         const picture = sectionPage.querySelector(".reading-picture-window");
         const copy = partIndex === 0 ? scene : scene.cloneNode(true);
         const part = Math.min(partIndex, slices - 1);
-        copy.style.transform = `translate(${(firstWindow.clientWidth - width * scale) / 2 - bounds.left * scale}px,${-bounds.top * scale - part * sliceHeight}px) scale(${scale})`;
+        const centerY = landscape && slide.kind !== 'scroll' ? Math.max(0,(firstWindow.clientHeight-height*scale)/2) : 0;
+        copy.style.transform = `translate(${(firstWindow.clientWidth - width * scale) / 2 - bounds.left * scale}px,${centerY-bounds.top * scale - part * sliceHeight}px) scale(${scale})`;
         picture.append(copy);
+        if (slide.kind === 'scroll' && applyScrollVisibility) {
+          const viewport = copy.querySelector('[data-scroll-slide]');
+          const scrollPixels = Math.max(0, bounds.top + part * sliceHeight / scale - headerHeight - (viewport?.offsetTop || 0));
+          const unitHeight = Math.max((viewport?.clientWidth || stage.offsetWidth) / sceneAspect(slide), 1);
+          const offset = scrollPixels / unitHeight * 100;
+          // A printed section represents a span of scrolling positions. Retain
+          // annotations whose ON/OFF interval overlaps that span, including a
+          // short interval entirely inside one section.
+          const endPixels = Math.max(0, bounds.top + (part + 1) * sliceHeight / scale - headerHeight - (viewport?.offsetTop || 0));
+          applyScrollVisibility(copy, slide, offset, endPixels / unitHeight * 100);
+        }
         if (fixedOverlay) {
           const overlayScene = document.createElement("div");
           overlayScene.className = "reading-fixed-overlay";
@@ -247,9 +310,20 @@
       });
     }
     pages.forEach((page, index) => { page.querySelector("[data-reading-page-number]").textContent = `${index + 1} / ${pages.length}`; });
+    root.querySelectorAll('[data-reading-contents-slide]').forEach(entry=>{
+      entry.querySelector('[data-reading-contents-page-label]').textContent=`p. ${firstSlidePages.get(Number(entry.dataset.readingContentsSlide))+1}`;
+    });
     await updateGeometry();
     await new Promise(resolve => requestAnimationFrame(() => requestAnimationFrame(resolve)));
-    return { pages, width: PAGE_WIDTH, height: PAGE_HEIGHT, outputWidth: OUTPUT_WIDTH };
+    const pdfLinks=[];
+    pages.forEach((page,index)=>{
+      const bounds=page.getBoundingClientRect();
+      page.querySelectorAll('[data-reading-contents-slide],[data-reading-website]').forEach(link=>{
+        const box=link.getBoundingClientRect();
+        pdfLinks.push({page:index,rect:[(box.left-bounds.left)/PAGE_WIDTH*PDF_WIDTH,PDF_HEIGHT-(box.bottom-bounds.top)/PAGE_HEIGHT*PDF_HEIGHT,(box.right-bounds.left)/PAGE_WIDTH*PDF_WIDTH,PDF_HEIGHT-(box.top-bounds.top)/PAGE_HEIGHT*PDF_HEIGHT],...(link.hasAttribute('data-reading-website')?{url:'https://reportersidekick.com'}:{targetPage:firstSlidePages.get(Number(link.dataset.readingContentsSlide))})});
+      });
+    });
+    return { pages, pdfLinks, pdfWidth:PDF_WIDTH, pdfHeight:PDF_HEIGHT, width: PAGE_WIDTH, height: PAGE_HEIGHT, outputWidth: OUTPUT_WIDTH };
   }
 
   window.MHReadingExport = Object.freeze({ prepare, PAGE_WIDTH, PAGE_HEIGHT, OUTPUT_WIDTH });
