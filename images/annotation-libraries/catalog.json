@@ -190,7 +190,7 @@
     },
     {
       "id": "court-reporter-sketch",
-      "name": "Court reporter \u2014 sketch",
+      "name": "Court reporter — sketch",
       "asset": "images/annotation-libraries/annotations/png/court-reporter-sketch.png",
       "thumbnail": "images/annotation-libraries/annotations/thumbnails/court-reporter-sketch.png?v=f772854a68fa",
       "revision": "f4ca162f38fc"
@@ -598,14 +598,14 @@
     },
     {
       "id": "reporter-sidekick-high-five",
-      "name": "Reporter Sidekick \u2014 high five",
+      "name": "Reporter Sidekick — high five",
       "asset": "images/annotation-libraries/annotations/png/reporter-sidekick-high-five.png",
       "thumbnail": "images/annotation-libraries/annotations/thumbnails/reporter-sidekick-high-five.png?v=9191e886ca15",
       "revision": "007c5a9fcdac"
     },
     {
       "id": "reporter-sidekick-sketch",
-      "name": "Reporter Sidekick \u2014 sketch",
+      "name": "Reporter Sidekick — sketch",
       "asset": "images/annotation-libraries/annotations/png/reporter-sidekick-sketch.png",
       "thumbnail": "images/annotation-libraries/annotations/thumbnails/reporter-sidekick-sketch.png?v=4aa06cd575cf",
       "revision": "6a2d78c36a45"
@@ -654,70 +654,70 @@
     },
     {
       "id": "sidekick-sign-appearance-pages",
-      "name": "Sidekick sign \u2014 Appearance pages",
+      "name": "Sidekick sign — Appearance pages",
       "asset": "images/annotation-libraries/annotations/png/sidekick-sign-appearance-pages.png",
       "thumbnail": "images/annotation-libraries/annotations/thumbnails/sidekick-sign-appearance-pages.png?v=225f32ca3ef9",
       "revision": "d19cfb16bb55"
     },
     {
       "id": "sidekick-sign-blank",
-      "name": "Sidekick sign \u2014 Blank",
+      "name": "Sidekick sign — Blank",
       "asset": "images/annotation-libraries/annotations/png/sidekick-sign-blank.png",
       "thumbnail": "images/annotation-libraries/annotations/thumbnails/sidekick-sign-blank.png?v=39fd94007585",
       "revision": "6e95cc395abb"
     },
     {
       "id": "sidekick-sign-check-exhibits",
-      "name": "Sidekick sign \u2014 Check exhibits using paraphrased quotes or phonetic spellings",
+      "name": "Sidekick sign — Check exhibits using paraphrased quotes or phonetic spellings",
       "asset": "images/annotation-libraries/annotations/png/sidekick-sign-check-exhibits.png",
       "thumbnail": "images/annotation-libraries/annotations/thumbnails/sidekick-sign-check-exhibits.png?v=3c39f5caaad2",
       "revision": "92efb8370679"
     },
     {
       "id": "sidekick-sign-dictionary-building",
-      "name": "Sidekick sign \u2014 Dictionary building",
+      "name": "Sidekick sign — Dictionary building",
       "asset": "images/annotation-libraries/annotations/png/sidekick-sign-dictionary-building.png",
       "thumbnail": "images/annotation-libraries/annotations/thumbnails/sidekick-sign-dictionary-building.png?v=f969d3a2e742",
       "revision": "035058d865c6"
     },
     {
       "id": "sidekick-sign-exhibit-descriptions",
-      "name": "Sidekick sign \u2014 Exhibit descriptions",
+      "name": "Sidekick sign — Exhibit descriptions",
       "asset": "images/annotation-libraries/annotations/png/sidekick-sign-exhibit-descriptions.png",
       "thumbnail": "images/annotation-libraries/annotations/thumbnails/sidekick-sign-exhibit-descriptions.png?v=10ba09a16926",
       "revision": "e488f10527cc"
     },
     {
       "id": "sidekick-sign-punctuating-the-impossible",
-      "name": "Sidekick sign \u2014 Help with punctuating the impossible",
+      "name": "Sidekick sign — Help with punctuating the impossible",
       "asset": "images/annotation-libraries/annotations/png/sidekick-sign-punctuating-the-impossible.png",
       "thumbnail": "images/annotation-libraries/annotations/thumbnails/sidekick-sign-punctuating-the-impossible.png?v=ac0fe7f4b779",
       "revision": "99c91191dfb8"
     },
     {
       "id": "sidekick-sign-practice-dictation",
-      "name": "Sidekick sign \u2014 Practice dictation",
+      "name": "Sidekick sign — Practice dictation",
       "asset": "images/annotation-libraries/annotations/png/sidekick-sign-practice-dictation.png",
       "thumbnail": "images/annotation-libraries/annotations/thumbnails/sidekick-sign-practice-dictation.png?v=e81c5b66a740",
       "revision": "2efca09a503f"
     },
     {
       "id": "sidekick-sign-proofreading",
-      "name": "Sidekick sign \u2014 Proofreading",
+      "name": "Sidekick sign — Proofreading",
       "asset": "images/annotation-libraries/annotations/png/sidekick-sign-proofreading.png",
       "thumbnail": "images/annotation-libraries/annotations/thumbnails/sidekick-sign-proofreading.png?v=d76290893f99",
       "revision": "335912306050"
     },
     {
       "id": "sidekick-sign-realtime-prep",
-      "name": "Sidekick sign \u2014 Realtime prep (research and word lists)",
+      "name": "Sidekick sign — Realtime prep (research and word lists)",
       "asset": "images/annotation-libraries/annotations/png/sidekick-sign-realtime-prep.png",
       "thumbnail": "images/annotation-libraries/annotations/thumbnails/sidekick-sign-realtime-prep.png?v=cf2a0741e708",
       "revision": "aa32e141b71c"
     },
     {
       "id": "sidekick-sign-resolve-technical-phonetic",
-      "name": "Sidekick sign \u2014 Resolves technical, phonetic, etc. fast",
+      "name": "Sidekick sign — Resolves technical, phonetic, etc. fast",
       "asset": "images/annotation-libraries/annotations/png/sidekick-sign-resolve-technical-phonetic.png",
       "thumbnail": "images/annotation-libraries/annotations/thumbnails/sidekick-sign-resolve-technical-phonetic.png?v=479d76840b4f",
       "revision": "28d3d8c52a0b"
@@ -766,25 +766,25 @@
     },
     {
       "id": "steno-keyboard-artistic-sketch",
-      "name": "Steno keyboard \u2014 artistic sketch",
+      "name": "Steno keyboard — artistic sketch",
       "asset": "images/annotation-libraries/annotations/png/steno-keyboard-artistic-sketch.png",
-      "thumbnail": "images/annotation-libraries/annotations/thumbnails/steno-keyboard-artistic-sketch.png?v=43159755aff0",
-      "revision": "0e4e10812106"
+      "thumbnail": "images/annotation-libraries/annotations/thumbnails/steno-keyboard-artistic-sketch.png?v=227d69e9e9ad",
+      "revision": "7976452044f8"
     },
     {
       "id": "steno-keyboard-highlight",
-      "name": "Steno keyboard \u2014 highlight keys",
+      "name": "Steno keyboard — highlight keys",
       "asset": "images/annotation-libraries/annotations/svg/steno-keyboard-highlight.svg",
       "thumbnail": "images/annotation-libraries/annotations/thumbnails/steno-keyboard-highlight.png?v=8b941a7f90a5",
       "action": "add-steno-annotation",
-      "revision": "53a72635d943"
+      "revision": "e65ad96e1305"
     },
     {
       "id": "steno-keyboard-website",
-      "name": "Steno keyboard \u2014 website style",
+      "name": "Steno keyboard — website style",
       "asset": "images/annotation-libraries/annotations/svg/steno-keyboard-website.svg",
       "thumbnail": "images/annotation-libraries/annotations/thumbnails/steno-keyboard-website.png?v=86ae59c2bc5f",
-      "revision": "94c398584c3c"
+      "revision": "30b49e9429be"
     },
     {
       "id": "sticky-note",
@@ -1983,25 +1983,25 @@
       "id": "steno-keys-white-magic-hashtags.png",
       "name": "steno keys white magic hashtags",
       "asset": "images/annotation-libraries/shapes-v1/artwork/steno-keys-white-magic-hashtags.png",
-      "thumbnail": "images/annotation-libraries/shapes-v1/thumbnails/steno-keys-white-magic-hashtags.png?v=0b99e52f0e8b",
+      "thumbnail": "images/annotation-libraries/shapes-v1/thumbnails/steno-keys-white-magic-hashtags.png?v=5f14e84b8a8a",
       "legacyAsset": "images/tutorial-annotations/old-annotations-for-dropdown/steno-keys-white-magic-hashtags.png",
-      "revision": "0c080c88021d"
+      "revision": "bb6047fa1ede"
     },
     {
       "id": "stenokeys-simple-white-no shadow.png",
       "name": "stenokeys simple white no shadow",
       "asset": "images/annotation-libraries/shapes-v1/artwork/stenokeys-simple-white-no shadow.png",
-      "thumbnail": "images/annotation-libraries/shapes-v1/thumbnails/stenokeys-simple-white-no shadow.png?v=192725d9d64f",
+      "thumbnail": "images/annotation-libraries/shapes-v1/thumbnails/stenokeys-simple-white-no shadow.png?v=1b9cabfe0463",
       "legacyAsset": "images/tutorial-annotations/old-annotations-for-dropdown/stenokeys-simple-white-no shadow.png",
-      "revision": "40ca7d628299"
+      "revision": "63aa678fa80d"
     },
     {
       "id": "stenokeys-white-simple.png",
       "name": "stenokeys white simple",
       "asset": "images/annotation-libraries/shapes-v1/artwork/stenokeys-white-simple.png",
-      "thumbnail": "images/annotation-libraries/shapes-v1/thumbnails/stenokeys-white-simple.png?v=638d403462f8",
+      "thumbnail": "images/annotation-libraries/shapes-v1/thumbnails/stenokeys-white-simple.png?v=73db8b12db18",
       "legacyAsset": "images/tutorial-annotations/old-annotations-for-dropdown/stenokeys-white-simple.png",
-      "revision": "73b17dd66e36"
+      "revision": "027e489e0b53"
     },
     {
       "id": "sticky-short-rectangle-sketch.png",
@@ -2497,41 +2497,41 @@
       "id": "kbd-black.png",
       "name": "kbd black",
       "asset": "images/annotation-libraries/shapes-v2/artwork/kbd-black.png",
-      "thumbnail": "images/annotation-libraries/shapes-v2/thumbnails/kbd-black.png?v=3ccbad34149c",
+      "thumbnail": "images/annotation-libraries/shapes-v2/thumbnails/kbd-black.png?v=6745f69ca42a",
       "legacyAsset": "images/tutorial-annotations/new-annotations/kbd-black.png",
-      "revision": "de6ac2aa705b"
+      "revision": "2cc3459dab59"
     },
     {
       "id": "kbd-gray-no-outline.png",
       "name": "kbd gray no outline",
       "asset": "images/annotation-libraries/shapes-v2/artwork/kbd-gray-no-outline.png",
-      "thumbnail": "images/annotation-libraries/shapes-v2/thumbnails/kbd-gray-no-outline.png?v=d64807c233e9",
+      "thumbnail": "images/annotation-libraries/shapes-v2/thumbnails/kbd-gray-no-outline.png?v=622df474fc0a",
       "legacyAsset": "images/tutorial-annotations/new-annotations/kbd-gray-no-outline.png",
-      "revision": "fd888356369f"
+      "revision": "3f5485c8a98b"
     },
     {
       "id": "kbd-gray.png",
       "name": "kbd gray",
       "asset": "images/annotation-libraries/shapes-v2/artwork/kbd-gray.png",
-      "thumbnail": "images/annotation-libraries/shapes-v2/thumbnails/kbd-gray.png?v=8033cad74d3d",
+      "thumbnail": "images/annotation-libraries/shapes-v2/thumbnails/kbd-gray.png?v=3efcabf621ab",
       "legacyAsset": "images/tutorial-annotations/new-annotations/kbd-gray.png",
-      "revision": "4c779309a750"
+      "revision": "275b67549535"
     },
     {
       "id": "kbd-pink.png",
       "name": "kbd pink",
       "asset": "images/annotation-libraries/shapes-v2/artwork/kbd-pink.png",
-      "thumbnail": "images/annotation-libraries/shapes-v2/thumbnails/kbd-pink.png?v=2ffc836f635a",
+      "thumbnail": "images/annotation-libraries/shapes-v2/thumbnails/kbd-pink.png?v=ee1de99eace5",
       "legacyAsset": "images/tutorial-annotations/new-annotations/kbd-pink.png",
-      "revision": "b4aca830c284"
+      "revision": "6d7ec7705d7c"
     },
     {
       "id": "kbd-white.png",
       "name": "kbd white",
       "asset": "images/annotation-libraries/shapes-v2/artwork/kbd-white.png",
-      "thumbnail": "images/annotation-libraries/shapes-v2/thumbnails/kbd-white.png?v=5fbd9b17d8e3",
+      "thumbnail": "images/annotation-libraries/shapes-v2/thumbnails/kbd-white.png?v=e29150201757",
       "legacyAsset": "images/tutorial-annotations/new-annotations/kbd-white.png",
-      "revision": "4fa970373b62"
+      "revision": "a8bd45bb7b21"
     },
     {
       "id": "logo.png",
