@@ -283,92 +283,92 @@
       "id": "hotspot-1",
       "name": "Hotspot 1",
       "asset": "images/annotation-libraries/annotations/svg/hotspot-1.svg",
-      "thumbnail": "images/annotation-libraries/annotations/thumbnails/hotspot-1.png?v=cb4bd72d0e57",
-      "revision": "2bdee95ebdb9"
+      "thumbnail": "images/annotation-libraries/annotations/thumbnails/hotspot-1.png?v=f3a297ef5ebf",
+      "revision": "7d896b08c053"
     },
     {
       "id": "hotspot-10",
       "name": "Hotspot 10",
       "asset": "images/annotation-libraries/annotations/svg/hotspot-10.svg",
-      "thumbnail": "images/annotation-libraries/annotations/thumbnails/hotspot-10.png?v=8ac417295281",
-      "revision": "f291c003569a"
+      "thumbnail": "images/annotation-libraries/annotations/thumbnails/hotspot-10.png?v=07016f5a2197",
+      "revision": "f7150e99515f"
     },
     {
       "id": "hotspot-11",
       "name": "Hotspot 11",
       "asset": "images/annotation-libraries/annotations/svg/hotspot-11.svg",
-      "thumbnail": "images/annotation-libraries/annotations/thumbnails/hotspot-11.png?v=d1b82db909ef",
-      "revision": "5be8bbda526a"
+      "thumbnail": "images/annotation-libraries/annotations/thumbnails/hotspot-11.png?v=283f0df7aef3",
+      "revision": "10ec5fe6ce2a"
     },
     {
       "id": "hotspot-12",
       "name": "Hotspot 12",
       "asset": "images/annotation-libraries/annotations/svg/hotspot-12.svg",
-      "thumbnail": "images/annotation-libraries/annotations/thumbnails/hotspot-12.png?v=ca1801b4d57d",
-      "revision": "b584eaee3850"
+      "thumbnail": "images/annotation-libraries/annotations/thumbnails/hotspot-12.png?v=fb43a365a35d",
+      "revision": "b830ad6b9c4d"
     },
     {
       "id": "hotspot-2",
       "name": "Hotspot 2",
       "asset": "images/annotation-libraries/annotations/svg/hotspot-2.svg",
-      "thumbnail": "images/annotation-libraries/annotations/thumbnails/hotspot-2.png?v=b94616a669d5",
-      "revision": "b60443b54ab5"
+      "thumbnail": "images/annotation-libraries/annotations/thumbnails/hotspot-2.png?v=48d66b3ea135",
+      "revision": "42a1fe175814"
     },
     {
       "id": "hotspot-3",
       "name": "Hotspot 3",
       "asset": "images/annotation-libraries/annotations/svg/hotspot-3.svg",
-      "thumbnail": "images/annotation-libraries/annotations/thumbnails/hotspot-3.png?v=ee3df1fe4909",
-      "revision": "2d4532968c93"
+      "thumbnail": "images/annotation-libraries/annotations/thumbnails/hotspot-3.png?v=d1d1969be4bd",
+      "revision": "b4cc332e0d0c"
     },
     {
       "id": "hotspot-4",
       "name": "Hotspot 4",
       "asset": "images/annotation-libraries/annotations/svg/hotspot-4.svg",
-      "thumbnail": "images/annotation-libraries/annotations/thumbnails/hotspot-4.png?v=3eeae761aed8",
-      "revision": "efb17519a4c8"
+      "thumbnail": "images/annotation-libraries/annotations/thumbnails/hotspot-4.png?v=ee5ca7c4f7eb",
+      "revision": "694cdf058a13"
     },
     {
       "id": "hotspot-5",
       "name": "Hotspot 5",
       "asset": "images/annotation-libraries/annotations/svg/hotspot-5.svg",
-      "thumbnail": "images/annotation-libraries/annotations/thumbnails/hotspot-5.png?v=fd975413f69e",
-      "revision": "69b9155d8558"
+      "thumbnail": "images/annotation-libraries/annotations/thumbnails/hotspot-5.png?v=ccda0d2d3c23",
+      "revision": "9b66589d5959"
     },
     {
       "id": "hotspot-6",
       "name": "Hotspot 6",
       "asset": "images/annotation-libraries/annotations/svg/hotspot-6.svg",
-      "thumbnail": "images/annotation-libraries/annotations/thumbnails/hotspot-6.png?v=5af1d1661fda",
-      "revision": "b953cdfdfc0a"
+      "thumbnail": "images/annotation-libraries/annotations/thumbnails/hotspot-6.png?v=0b3c0870d438",
+      "revision": "3ee1de8b2ec9"
     },
     {
       "id": "hotspot-7",
       "name": "Hotspot 7",
       "asset": "images/annotation-libraries/annotations/svg/hotspot-7.svg",
-      "thumbnail": "images/annotation-libraries/annotations/thumbnails/hotspot-7.png?v=439d0b7c3f5b",
-      "revision": "21a83df674c8"
+      "thumbnail": "images/annotation-libraries/annotations/thumbnails/hotspot-7.png?v=213f5cc7f8c6",
+      "revision": "e320aafb280d"
     },
     {
       "id": "hotspot-8",
       "name": "Hotspot 8",
       "asset": "images/annotation-libraries/annotations/svg/hotspot-8.svg",
-      "thumbnail": "images/annotation-libraries/annotations/thumbnails/hotspot-8.png?v=7e797fd69661",
-      "revision": "c2ad6d5a2cf1"
+      "thumbnail": "images/annotation-libraries/annotations/thumbnails/hotspot-8.png?v=06100a93e008",
+      "revision": "b32b3f5cbfbe"
     },
     {
       "id": "hotspot-9",
       "name": "Hotspot 9",
       "asset": "images/annotation-libraries/annotations/svg/hotspot-9.svg",
-      "thumbnail": "images/annotation-libraries/annotations/thumbnails/hotspot-9.png?v=7b94e737559d",
-      "revision": "0c5d22273661"
+      "thumbnail": "images/annotation-libraries/annotations/thumbnails/hotspot-9.png?v=ae058b854612",
+      "revision": "54bcad9e961c"
     },
     {
       "id": "hotspot-blank",
       "name": "Hotspot blank",
       "asset": "images/annotation-libraries/annotations/svg/hotspot-blank.svg",
-      "thumbnail": "images/annotation-libraries/annotations/thumbnails/hotspot-blank.png?v=775c5e811949",
-      "revision": "5421717e9a26"
+      "thumbnail": "images/annotation-libraries/annotations/thumbnails/hotspot-blank.png?v=6c4582a2b46f",
+      "revision": "edb8dd6d3c45"
     },
     {
       "id": "image-add",
