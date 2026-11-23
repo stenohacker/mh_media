@@ -768,23 +768,23 @@
       "id": "steno-keyboard-artistic-sketch",
       "name": "Steno keyboard — artistic sketch",
       "asset": "images/annotation-libraries/annotations/png/steno-keyboard-artistic-sketch.png",
-      "thumbnail": "images/annotation-libraries/annotations/thumbnails/steno-keyboard-artistic-sketch.png?v=227d69e9e9ad",
-      "revision": "7976452044f8"
+      "thumbnail": "images/annotation-libraries/annotations/thumbnails/steno-keyboard-artistic-sketch.png?v=5f2742fbdc94",
+      "revision": "035c686384f9"
     },
     {
       "id": "steno-keyboard-highlight",
       "name": "Steno keyboard — highlight keys",
       "asset": "images/annotation-libraries/annotations/svg/steno-keyboard-highlight.svg",
-      "thumbnail": "images/annotation-libraries/annotations/thumbnails/steno-keyboard-highlight.png?v=8b941a7f90a5",
+      "thumbnail": "images/annotation-libraries/annotations/thumbnails/steno-keyboard-highlight.png?v=d9e2a3d1f81b",
       "action": "add-steno-annotation",
-      "revision": "e65ad96e1305"
+      "revision": "94a54b695040"
     },
     {
       "id": "steno-keyboard-website",
       "name": "Steno keyboard — website style",
       "asset": "images/annotation-libraries/annotations/svg/steno-keyboard-website.svg",
-      "thumbnail": "images/annotation-libraries/annotations/thumbnails/steno-keyboard-website.png?v=86ae59c2bc5f",
-      "revision": "30b49e9429be"
+      "thumbnail": "images/annotation-libraries/annotations/thumbnails/steno-keyboard-website.png?v=06c58b706bb5",
+      "revision": "f7da6cc180d0"
     },
     {
       "id": "sticky-note",
@@ -1623,9 +1623,9 @@
       "id": "megaphone-orangeyellow-sketch.png",
       "name": "megaphone orangeyellow sketch",
       "asset": "images/annotation-libraries/shapes-v1/artwork/megaphone-orangeyellow-sketch.png",
-      "thumbnail": "images/annotation-libraries/shapes-v1/thumbnails/megaphone-orangeyellow-sketch.png?v=f79533e53b48",
+      "thumbnail": "images/annotation-libraries/shapes-v1/thumbnails/megaphone-orangeyellow-sketch.png?v=97c9ec2a2e2d",
       "legacyAsset": "images/tutorial-annotations/old-annotations-for-dropdown/megaphone-orangeyellow-sketch.png",
-      "revision": "f837d9a76ab8"
+      "revision": "073cb8c1d3fc"
     },
     {
       "id": "note-hand-mint 1.png",
@@ -1831,9 +1831,9 @@
       "id": "pin-orangeyellow-sketch.png",
       "name": "pin orangeyellow sketch",
       "asset": "images/annotation-libraries/shapes-v1/artwork/pin-orangeyellow-sketch.png",
-      "thumbnail": "images/annotation-libraries/shapes-v1/thumbnails/pin-orangeyellow-sketch.png?v=c6f93fb69cc0",
+      "thumbnail": "images/annotation-libraries/shapes-v1/thumbnails/pin-orangeyellow-sketch.png?v=1d0b0de5f356",
       "legacyAsset": "images/tutorial-annotations/old-annotations-for-dropdown/pin-orangeyellow-sketch.png",
-      "revision": "9822cf0f9510"
+      "revision": "a53c8e8fed49"
     },
     {
       "id": "pin-yellow 1.png",
@@ -1983,25 +1983,25 @@
       "id": "steno-keys-white-magic-hashtags.png",
       "name": "steno keys white magic hashtags",
       "asset": "images/annotation-libraries/shapes-v1/artwork/steno-keys-white-magic-hashtags.png",
-      "thumbnail": "images/annotation-libraries/shapes-v1/thumbnails/steno-keys-white-magic-hashtags.png?v=5f14e84b8a8a",
+      "thumbnail": "images/annotation-libraries/shapes-v1/thumbnails/steno-keys-white-magic-hashtags.png?v=79ee34ad9a10",
       "legacyAsset": "images/tutorial-annotations/old-annotations-for-dropdown/steno-keys-white-magic-hashtags.png",
-      "revision": "bb6047fa1ede"
+      "revision": "77295025c2ac"
     },
     {
       "id": "stenokeys-simple-white-no shadow.png",
       "name": "stenokeys simple white no shadow",
       "asset": "images/annotation-libraries/shapes-v1/artwork/stenokeys-simple-white-no shadow.png",
-      "thumbnail": "images/annotation-libraries/shapes-v1/thumbnails/stenokeys-simple-white-no shadow.png?v=1b9cabfe0463",
+      "thumbnail": "images/annotation-libraries/shapes-v1/thumbnails/stenokeys-simple-white-no shadow.png?v=530c5b44cc04",
       "legacyAsset": "images/tutorial-annotations/old-annotations-for-dropdown/stenokeys-simple-white-no shadow.png",
-      "revision": "63aa678fa80d"
+      "revision": "75e2b8362863"
     },
     {
       "id": "stenokeys-white-simple.png",
       "name": "stenokeys white simple",
       "asset": "images/annotation-libraries/shapes-v1/artwork/stenokeys-white-simple.png",
-      "thumbnail": "images/annotation-libraries/shapes-v1/thumbnails/stenokeys-white-simple.png?v=73db8b12db18",
+      "thumbnail": "images/annotation-libraries/shapes-v1/thumbnails/stenokeys-white-simple.png?v=c8ff4b4c3b4e",
       "legacyAsset": "images/tutorial-annotations/old-annotations-for-dropdown/stenokeys-white-simple.png",
-      "revision": "027e489e0b53"
+      "revision": "5724fce670dd"
     },
     {
       "id": "sticky-short-rectangle-sketch.png",
@@ -2297,9 +2297,9 @@
       "id": "avatar-steno.png",
       "name": "avatar steno",
       "asset": "images/annotation-libraries/shapes-v2/artwork/avatar-steno.png",
-      "thumbnail": "images/annotation-libraries/shapes-v2/thumbnails/avatar-steno.png?v=c30bf95f4fd3",
+      "thumbnail": "images/annotation-libraries/shapes-v2/thumbnails/avatar-steno.png?v=87b0bd24d0e2",
       "legacyAsset": "images/tutorial-annotations/new-annotations/avatar-steno.png",
-      "revision": "12ae16b97ba4"
+      "revision": "d2848ecb3b63"
     },
     {
       "id": "bubble-rectangle.png",
