@@ -4,78 +4,78 @@
       "id": "address-book",
       "name": "Address book",
       "asset": "images/annotation-libraries/annotations/svg/address-book.svg",
-      "thumbnail": "images/annotation-libraries/annotations/thumbnails/address-book.png?v=fa2beae6f15f",
-      "revision": "7220eec65851"
+      "thumbnail": "images/annotation-libraries/annotations/thumbnails/address-book.png?v=f9e9f35569b2",
+      "revision": "ae4f7c131eb6"
     },
     {
       "id": "asterisk",
       "name": "Asterisk",
       "asset": "images/annotation-libraries/annotations/svg/asterisk.svg",
-      "thumbnail": "images/annotation-libraries/annotations/thumbnails/asterisk.png?v=6738970dac89",
-      "revision": "d6a22773f3b0"
+      "thumbnail": "images/annotation-libraries/annotations/thumbnails/asterisk.png?v=07a0f5ccaac6",
+      "revision": "a056b9392314"
     },
     {
       "id": "at-sign",
       "name": "At sign",
       "asset": "images/annotation-libraries/annotations/svg/at-sign.svg",
-      "thumbnail": "images/annotation-libraries/annotations/thumbnails/at-sign.png?v=89dee3478d9a",
-      "revision": "651563896ada"
+      "thumbnail": "images/annotation-libraries/annotations/thumbnails/at-sign.png?v=e3c7af1ed95a",
+      "revision": "7579ba7a047c"
     },
     {
       "id": "attention-rays",
       "name": "Attention rays",
       "asset": "images/annotation-libraries/annotations/svg/attention-rays.svg",
-      "thumbnail": "images/annotation-libraries/annotations/thumbnails/attention-rays.png?v=2acb09bb6b36",
-      "revision": "d8ad7ac5f755"
+      "thumbnail": "images/annotation-libraries/annotations/thumbnails/attention-rays.png?v=8a5e3736bc25",
+      "revision": "27b7aa268095"
     },
     {
       "id": "bates-numbers",
       "name": "Bates numbers",
       "asset": "images/annotation-libraries/annotations/svg/bates-numbers.svg",
-      "thumbnail": "images/annotation-libraries/annotations/thumbnails/bates-numbers.png?v=3e94cfa26f0a",
-      "revision": "fb7c3aadbbe6"
+      "thumbnail": "images/annotation-libraries/annotations/thumbnails/bates-numbers.png?v=eadbae51437f",
+      "revision": "9bb911e85de4"
     },
     {
       "id": "binders",
       "name": "Binders",
       "asset": "images/annotation-libraries/annotations/svg/binders.svg",
-      "thumbnail": "images/annotation-libraries/annotations/thumbnails/binders.png?v=8d66ea095523",
-      "revision": "00a561136067"
+      "thumbnail": "images/annotation-libraries/annotations/thumbnails/binders.png?v=21a264582a82",
+      "revision": "7053ac27f5c6"
     },
     {
       "id": "bookmark",
       "name": "Bookmark",
       "asset": "images/annotation-libraries/annotations/svg/bookmark.svg",
-      "thumbnail": "images/annotation-libraries/annotations/thumbnails/bookmark.png?v=a40a4c7eabe3",
-      "revision": "d141687da437"
+      "thumbnail": "images/annotation-libraries/annotations/thumbnails/bookmark.png?v=e5aa51d9efad",
+      "revision": "96423c50766d"
     },
     {
       "id": "briefcase",
       "name": "Briefcase",
       "asset": "images/annotation-libraries/annotations/svg/briefcase.svg",
-      "thumbnail": "images/annotation-libraries/annotations/thumbnails/briefcase.png?v=abe4234a0630",
-      "revision": "ae55acaa5a0a"
+      "thumbnail": "images/annotation-libraries/annotations/thumbnails/briefcase.png?v=a20c35141400",
+      "revision": "4748a2c84772"
     },
     {
       "id": "calendar",
       "name": "Calendar",
       "asset": "images/annotation-libraries/annotations/svg/calendar.svg",
-      "thumbnail": "images/annotation-libraries/annotations/thumbnails/calendar.png?v=8077931bb84a",
-      "revision": "103c59447605"
+      "thumbnail": "images/annotation-libraries/annotations/thumbnails/calendar.png?v=fdc8279a5f64",
+      "revision": "3d4a9bd87778"
     },
     {
       "id": "calendar-clock",
       "name": "Calendar clock",
       "asset": "images/annotation-libraries/annotations/svg/calendar-clock.svg",
-      "thumbnail": "images/annotation-libraries/annotations/thumbnails/calendar-clock.png?v=0803aa363473",
-      "revision": "aa4ba18c33b7"
+      "thumbnail": "images/annotation-libraries/annotations/thumbnails/calendar-clock.png?v=6c739aa2c296",
+      "revision": "ca263ae79c43"
     },
     {
       "id": "callout-left",
       "name": "Callout left",
       "asset": "images/annotation-libraries/annotations/svg/callout-left.svg",
-      "thumbnail": "images/annotation-libraries/annotations/thumbnails/callout-left.png?v=afc474ef40cf",
-      "revision": "1993d4ce7198"
+      "thumbnail": "images/annotation-libraries/annotations/thumbnails/callout-left.png?v=41e378bce370",
+      "revision": "1c177c3b0032"
     },
     {
       "id": "callout-right",
@@ -101,92 +101,92 @@
       "id": "check",
       "name": "Check",
       "asset": "images/annotation-libraries/annotations/svg/check.svg",
-      "thumbnail": "images/annotation-libraries/annotations/thumbnails/check.png?v=cc52d119a5ea",
-      "revision": "cc513c85fe79"
+      "thumbnail": "images/annotation-libraries/annotations/thumbnails/check.png?v=73881479b8ab",
+      "revision": "79c128d18153"
     },
     {
       "id": "check-circle",
       "name": "Check circle",
       "asset": "images/annotation-libraries/annotations/svg/check-circle.svg",
-      "thumbnail": "images/annotation-libraries/annotations/thumbnails/check-circle.png?v=26869e859219",
-      "revision": "a93feb24ef1b"
+      "thumbnail": "images/annotation-libraries/annotations/thumbnails/check-circle.png?v=8230aee3be22",
+      "revision": "64db469289ac"
     },
     {
       "id": "checklist",
       "name": "Checklist",
       "asset": "images/annotation-libraries/annotations/svg/checklist.svg",
-      "thumbnail": "images/annotation-libraries/annotations/thumbnails/checklist.png?v=95a18c414799",
-      "revision": "e93f121f6d87"
+      "thumbnail": "images/annotation-libraries/annotations/thumbnails/checklist.png?v=ad5e161b0162",
+      "revision": "04ec433a0db4"
     },
     {
       "id": "click-marks",
       "name": "Click marks",
       "asset": "images/annotation-libraries/annotations/svg/click-marks.svg",
-      "thumbnail": "images/annotation-libraries/annotations/thumbnails/click-marks.png?v=52e0b1e19e07",
-      "revision": "c128f408efc0"
+      "thumbnail": "images/annotation-libraries/annotations/thumbnails/click-marks.png?v=08963b2e90c4",
+      "revision": "4993c4a6c2bd"
     },
     {
       "id": "clipboard",
       "name": "Clipboard",
       "asset": "images/annotation-libraries/annotations/svg/clipboard.svg",
-      "thumbnail": "images/annotation-libraries/annotations/thumbnails/clipboard.png?v=a5ab5a6d450d",
-      "revision": "580d2b8c3614"
+      "thumbnail": "images/annotation-libraries/annotations/thumbnails/clipboard.png?v=7fe119a9921b",
+      "revision": "79e9158ca733"
     },
     {
       "id": "clipboard-note",
       "name": "Clipboard note",
       "asset": "images/annotation-libraries/annotations/svg/clipboard-note.svg",
-      "thumbnail": "images/annotation-libraries/annotations/thumbnails/clipboard-note.png?v=9b1881e6bbb2",
-      "revision": "24441ffabb81"
+      "thumbnail": "images/annotation-libraries/annotations/thumbnails/clipboard-note.png?v=d6c492dea851",
+      "revision": "0715d1fb0c8e"
     },
     {
       "id": "clipboard-paper",
       "name": "Clipboard paper",
       "asset": "images/annotation-libraries/annotations/svg/clipboard-paper.svg",
-      "thumbnail": "images/annotation-libraries/annotations/thumbnails/clipboard-paper.png?v=910ddf925496",
-      "revision": "bd654cc68760"
+      "thumbnail": "images/annotation-libraries/annotations/thumbnails/clipboard-paper.png?v=0775a66d8c00",
+      "revision": "7fceddd266c2"
     },
     {
       "id": "clock",
       "name": "Clock",
       "asset": "images/annotation-libraries/annotations/svg/clock.svg",
-      "thumbnail": "images/annotation-libraries/annotations/thumbnails/clock.png?v=fdc416478495",
-      "revision": "89d09ff471fd"
+      "thumbnail": "images/annotation-libraries/annotations/thumbnails/clock.png?v=215fddf74d0c",
+      "revision": "ecc65de2ba77"
     },
     {
       "id": "comment-add",
       "name": "Comment add",
       "asset": "images/annotation-libraries/annotations/svg/comment-add.svg",
-      "thumbnail": "images/annotation-libraries/annotations/thumbnails/comment-add.png?v=469e626f3820",
-      "revision": "0e495c45adff"
+      "thumbnail": "images/annotation-libraries/annotations/thumbnails/comment-add.png?v=e70073018e0c",
+      "revision": "0c6b077760c0"
     },
     {
       "id": "contact-search",
       "name": "Contact search",
       "asset": "images/annotation-libraries/annotations/svg/contact-search.svg",
-      "thumbnail": "images/annotation-libraries/annotations/thumbnails/contact-search.png?v=ba7bfd2b4abf",
-      "revision": "65f5d4fa1bab"
+      "thumbnail": "images/annotation-libraries/annotations/thumbnails/contact-search.png?v=93d9050df831",
+      "revision": "7e6100999acd"
     },
     {
       "id": "conversation-bubbles",
       "name": "Conversation bubbles",
       "asset": "images/annotation-libraries/annotations/svg/conversation-bubbles.svg",
-      "thumbnail": "images/annotation-libraries/annotations/thumbnails/conversation-bubbles.png?v=05c37e1df92e",
-      "revision": "db5f361de8eb"
+      "thumbnail": "images/annotation-libraries/annotations/thumbnails/conversation-bubbles.png?v=2e060eb0a5ea",
+      "revision": "de482b2903ab"
     },
     {
       "id": "conversation-sketch",
       "name": "Conversation sketch",
       "asset": "images/annotation-libraries/annotations/svg/conversation-sketch.svg",
-      "thumbnail": "images/annotation-libraries/annotations/thumbnails/conversation-sketch.png?v=6c81f65ec828",
-      "revision": "ce267b084ce6"
+      "thumbnail": "images/annotation-libraries/annotations/thumbnails/conversation-sketch.png?v=79f6bb23c69f",
+      "revision": "9bcf2019e810"
     },
     {
       "id": "copy",
       "name": "Copy",
       "asset": "images/annotation-libraries/annotations/svg/copy.svg",
-      "thumbnail": "images/annotation-libraries/annotations/thumbnails/copy.png?v=ed3b613a86bf",
-      "revision": "04a5966bc383"
+      "thumbnail": "images/annotation-libraries/annotations/thumbnails/copy.png?v=e161cc52109a",
+      "revision": "cadf185553a0"
     },
     {
       "id": "court-reporter-sketch",
@@ -199,402 +199,402 @@
       "id": "cross",
       "name": "Cross",
       "asset": "images/annotation-libraries/annotations/svg/cross.svg",
-      "thumbnail": "images/annotation-libraries/annotations/thumbnails/cross.png?v=9915ab38ce53",
-      "revision": "05c631bc09ad"
+      "thumbnail": "images/annotation-libraries/annotations/thumbnails/cross.png?v=288abbd2e398",
+      "revision": "d36501139b2e"
     },
     {
       "id": "cross-circle",
       "name": "Cross circle",
       "asset": "images/annotation-libraries/annotations/svg/cross-circle.svg",
-      "thumbnail": "images/annotation-libraries/annotations/thumbnails/cross-circle.png?v=b7a1c35b53f4",
-      "revision": "4983ba73d15f"
+      "thumbnail": "images/annotation-libraries/annotations/thumbnails/cross-circle.png?v=032dd7b6ceec",
+      "revision": "6a4f85ded685"
     },
     {
       "id": "document-add",
       "name": "Document add",
       "asset": "images/annotation-libraries/annotations/svg/document-add.svg",
-      "thumbnail": "images/annotation-libraries/annotations/thumbnails/document-add.png?v=9df877e4f0be",
-      "revision": "788579c6afb0"
+      "thumbnail": "images/annotation-libraries/annotations/thumbnails/document-add.png?v=b0a39e81bdaf",
+      "revision": "c2253597395d"
     },
     {
       "id": "double-chevron",
       "name": "Double chevron",
       "asset": "images/annotation-libraries/annotations/svg/double-chevron.svg",
-      "thumbnail": "images/annotation-libraries/annotations/thumbnails/double-chevron.png?v=7648b9725e7a",
-      "revision": "c419f1a1762a"
+      "thumbnail": "images/annotation-libraries/annotations/thumbnails/double-chevron.png?v=c65b357fcd78",
+      "revision": "68ff23aab330"
     },
     {
       "id": "double-chevron-left",
       "name": "Double chevron left",
       "asset": "images/annotation-libraries/annotations/svg/double-chevron-left.svg",
-      "thumbnail": "images/annotation-libraries/annotations/thumbnails/double-chevron-left.png?v=b77820b1a1fa",
-      "revision": "1eb5254fbdbe"
+      "thumbnail": "images/annotation-libraries/annotations/thumbnails/double-chevron-left.png?v=03fd6634221e",
+      "revision": "542e02fed4ea"
     },
     {
       "id": "double-circle",
       "name": "Double circle",
       "asset": "images/annotation-libraries/annotations/svg/double-circle.svg",
-      "thumbnail": "images/annotation-libraries/annotations/thumbnails/double-circle.png?v=ce1a543fe2a4",
-      "revision": "e5a8dad99ed4"
+      "thumbnail": "images/annotation-libraries/annotations/thumbnails/double-circle.png?v=838156f57a93",
+      "revision": "524b9954ac1c"
     },
     {
       "id": "drag-gesture",
       "name": "Drag gesture",
       "asset": "images/annotation-libraries/annotations/svg/drag-gesture.svg",
-      "thumbnail": "images/annotation-libraries/annotations/thumbnails/drag-gesture.png?v=cdddba1ffc83",
-      "revision": "e1884f76576c"
+      "thumbnail": "images/annotation-libraries/annotations/thumbnails/drag-gesture.png?v=6b3c8861da80",
+      "revision": "ad1536dccb94"
     },
     {
       "id": "envelope",
       "name": "Envelope",
       "asset": "images/annotation-libraries/annotations/svg/envelope.svg",
-      "thumbnail": "images/annotation-libraries/annotations/thumbnails/envelope.png?v=b9467ec990f8",
-      "revision": "656ce00ed407"
+      "thumbnail": "images/annotation-libraries/annotations/thumbnails/envelope.png?v=3ca335a72097",
+      "revision": "018b63de4369"
     },
     {
       "id": "file-organizer",
       "name": "File organizer",
       "asset": "images/annotation-libraries/annotations/svg/file-organizer.svg",
-      "thumbnail": "images/annotation-libraries/annotations/thumbnails/file-organizer.png?v=0abe8b3216b8",
-      "revision": "33ebde4c49a9"
+      "thumbnail": "images/annotation-libraries/annotations/thumbnails/file-organizer.png?v=600c37d4072a",
+      "revision": "82ea2431c899"
     },
     {
       "id": "glasses",
       "name": "Glasses",
       "asset": "images/annotation-libraries/annotations/svg/glasses.svg",
-      "thumbnail": "images/annotation-libraries/annotations/thumbnails/glasses.png?v=bceb75769386",
-      "revision": "14e752f7a9a9"
+      "thumbnail": "images/annotation-libraries/annotations/thumbnails/glasses.png?v=d5aeff46881b",
+      "revision": "d86d7e09b148"
     },
     {
       "id": "hashtag",
       "name": "Hashtag",
       "asset": "images/annotation-libraries/annotations/svg/hashtag.svg",
-      "thumbnail": "images/annotation-libraries/annotations/thumbnails/hashtag.png?v=6c4c80008bce",
-      "revision": "a1e2dca6e9ff"
+      "thumbnail": "images/annotation-libraries/annotations/thumbnails/hashtag.png?v=ba9df7e1977e",
+      "revision": "30073f276305"
     },
     {
       "id": "headphones",
       "name": "Headphones",
       "asset": "images/annotation-libraries/annotations/svg/headphones.svg",
-      "thumbnail": "images/annotation-libraries/annotations/thumbnails/headphones.png?v=ef3ef2acd7c4",
-      "revision": "a0cdded199a4"
+      "thumbnail": "images/annotation-libraries/annotations/thumbnails/headphones.png?v=d3a212ba086a",
+      "revision": "2f53655f4630"
     },
     {
       "id": "hotspot-1",
       "name": "Hotspot 1",
       "asset": "images/annotation-libraries/annotations/svg/hotspot-1.svg",
-      "thumbnail": "images/annotation-libraries/annotations/thumbnails/hotspot-1.png?v=f3a297ef5ebf",
-      "revision": "7d896b08c053"
+      "thumbnail": "images/annotation-libraries/annotations/thumbnails/hotspot-1.png?v=bbad9ce10f0c",
+      "revision": "052d820980b0"
     },
     {
       "id": "hotspot-10",
       "name": "Hotspot 10",
       "asset": "images/annotation-libraries/annotations/svg/hotspot-10.svg",
-      "thumbnail": "images/annotation-libraries/annotations/thumbnails/hotspot-10.png?v=07016f5a2197",
-      "revision": "f7150e99515f"
+      "thumbnail": "images/annotation-libraries/annotations/thumbnails/hotspot-10.png?v=1ad2ce6c20f9",
+      "revision": "994506ba2b4f"
     },
     {
       "id": "hotspot-11",
       "name": "Hotspot 11",
       "asset": "images/annotation-libraries/annotations/svg/hotspot-11.svg",
-      "thumbnail": "images/annotation-libraries/annotations/thumbnails/hotspot-11.png?v=283f0df7aef3",
-      "revision": "10ec5fe6ce2a"
+      "thumbnail": "images/annotation-libraries/annotations/thumbnails/hotspot-11.png?v=b8f6349ffe7e",
+      "revision": "dd246bc41879"
     },
     {
       "id": "hotspot-12",
       "name": "Hotspot 12",
       "asset": "images/annotation-libraries/annotations/svg/hotspot-12.svg",
-      "thumbnail": "images/annotation-libraries/annotations/thumbnails/hotspot-12.png?v=fb43a365a35d",
-      "revision": "b830ad6b9c4d"
+      "thumbnail": "images/annotation-libraries/annotations/thumbnails/hotspot-12.png?v=ca30a69d975a",
+      "revision": "712eafe741d3"
     },
     {
       "id": "hotspot-2",
       "name": "Hotspot 2",
       "asset": "images/annotation-libraries/annotations/svg/hotspot-2.svg",
-      "thumbnail": "images/annotation-libraries/annotations/thumbnails/hotspot-2.png?v=48d66b3ea135",
-      "revision": "42a1fe175814"
+      "thumbnail": "images/annotation-libraries/annotations/thumbnails/hotspot-2.png?v=fe0f53385b0d",
+      "revision": "e484bc49b5a0"
     },
     {
       "id": "hotspot-3",
       "name": "Hotspot 3",
       "asset": "images/annotation-libraries/annotations/svg/hotspot-3.svg",
-      "thumbnail": "images/annotation-libraries/annotations/thumbnails/hotspot-3.png?v=d1d1969be4bd",
-      "revision": "b4cc332e0d0c"
+      "thumbnail": "images/annotation-libraries/annotations/thumbnails/hotspot-3.png?v=dd29a4923aa8",
+      "revision": "274fa92801c5"
     },
     {
       "id": "hotspot-4",
       "name": "Hotspot 4",
       "asset": "images/annotation-libraries/annotations/svg/hotspot-4.svg",
-      "thumbnail": "images/annotation-libraries/annotations/thumbnails/hotspot-4.png?v=ee5ca7c4f7eb",
-      "revision": "694cdf058a13"
+      "thumbnail": "images/annotation-libraries/annotations/thumbnails/hotspot-4.png?v=a2d388def06e",
+      "revision": "5088e554a11c"
     },
     {
       "id": "hotspot-5",
       "name": "Hotspot 5",
       "asset": "images/annotation-libraries/annotations/svg/hotspot-5.svg",
-      "thumbnail": "images/annotation-libraries/annotations/thumbnails/hotspot-5.png?v=ccda0d2d3c23",
-      "revision": "9b66589d5959"
+      "thumbnail": "images/annotation-libraries/annotations/thumbnails/hotspot-5.png?v=4c7ad53c0e1b",
+      "revision": "8db104ec2dbe"
     },
     {
       "id": "hotspot-6",
       "name": "Hotspot 6",
       "asset": "images/annotation-libraries/annotations/svg/hotspot-6.svg",
-      "thumbnail": "images/annotation-libraries/annotations/thumbnails/hotspot-6.png?v=0b3c0870d438",
-      "revision": "3ee1de8b2ec9"
+      "thumbnail": "images/annotation-libraries/annotations/thumbnails/hotspot-6.png?v=9eaf513575a6",
+      "revision": "13ff2e646ea3"
     },
     {
       "id": "hotspot-7",
       "name": "Hotspot 7",
       "asset": "images/annotation-libraries/annotations/svg/hotspot-7.svg",
-      "thumbnail": "images/annotation-libraries/annotations/thumbnails/hotspot-7.png?v=213f5cc7f8c6",
-      "revision": "e320aafb280d"
+      "thumbnail": "images/annotation-libraries/annotations/thumbnails/hotspot-7.png?v=27b502645706",
+      "revision": "e019cc42f5a3"
     },
     {
       "id": "hotspot-8",
       "name": "Hotspot 8",
       "asset": "images/annotation-libraries/annotations/svg/hotspot-8.svg",
-      "thumbnail": "images/annotation-libraries/annotations/thumbnails/hotspot-8.png?v=06100a93e008",
-      "revision": "b32b3f5cbfbe"
+      "thumbnail": "images/annotation-libraries/annotations/thumbnails/hotspot-8.png?v=d822f5ee5c77",
+      "revision": "d36281125088"
     },
     {
       "id": "hotspot-9",
       "name": "Hotspot 9",
       "asset": "images/annotation-libraries/annotations/svg/hotspot-9.svg",
-      "thumbnail": "images/annotation-libraries/annotations/thumbnails/hotspot-9.png?v=ae058b854612",
-      "revision": "54bcad9e961c"
+      "thumbnail": "images/annotation-libraries/annotations/thumbnails/hotspot-9.png?v=f049ef001962",
+      "revision": "f7750b28aa0c"
     },
     {
       "id": "hotspot-blank",
       "name": "Hotspot blank",
       "asset": "images/annotation-libraries/annotations/svg/hotspot-blank.svg",
-      "thumbnail": "images/annotation-libraries/annotations/thumbnails/hotspot-blank.png?v=6c4582a2b46f",
-      "revision": "edb8dd6d3c45"
+      "thumbnail": "images/annotation-libraries/annotations/thumbnails/hotspot-blank.png?v=87a016fe3003",
+      "revision": "f92942c53341"
     },
     {
       "id": "image-add",
       "name": "Image add",
       "asset": "images/annotation-libraries/annotations/svg/image-add.svg",
-      "thumbnail": "images/annotation-libraries/annotations/thumbnails/image-add.png?v=386faa5a6a30",
-      "revision": "0e165ea301d0"
+      "thumbnail": "images/annotation-libraries/annotations/thumbnails/image-add.png?v=9f634ab41b36",
+      "revision": "aad5f6989bfb"
     },
     {
       "id": "interactive-link",
       "name": "Interactive link",
       "asset": "images/annotation-libraries/annotations/svg/interactive-link.svg",
-      "thumbnail": "images/annotation-libraries/annotations/thumbnails/interactive-link.png?v=37699a9464fd",
+      "thumbnail": "images/annotation-libraries/annotations/thumbnails/interactive-link.png?v=7be55004e54e",
       "action": "add-link-dialog",
-      "revision": "0860ff90f8f3"
+      "revision": "a3b0f29cee20"
     },
     {
       "id": "interactive-scroll",
       "name": "Interactive scrolling page",
       "asset": "images/annotation-libraries/annotations/svg/interactive-scroll.svg",
-      "thumbnail": "images/annotation-libraries/annotations/thumbnails/interactive-scroll.png?v=e2ed2939fa1b",
+      "thumbnail": "images/annotation-libraries/annotations/thumbnails/interactive-scroll.png?v=aa237d1685fd",
       "action": "add-scroll-image-dialog",
-      "revision": "5fa2ba8a37dd"
+      "revision": "f06b27eba359"
     },
     {
       "id": "laptop",
       "name": "Laptop",
       "asset": "images/annotation-libraries/annotations/svg/laptop.svg",
-      "thumbnail": "images/annotation-libraries/annotations/thumbnails/laptop.png?v=16879b0c5b0f",
-      "revision": "c85d97614d63"
+      "thumbnail": "images/annotation-libraries/annotations/thumbnails/laptop.png?v=1977fc6041dc",
+      "revision": "5209acf3aebb"
     },
     {
       "id": "lightbulb",
       "name": "Lightbulb",
       "asset": "images/annotation-libraries/annotations/svg/lightbulb.svg",
-      "thumbnail": "images/annotation-libraries/annotations/thumbnails/lightbulb.png?v=ee06fda90bb4",
-      "revision": "32ca8672d538"
+      "thumbnail": "images/annotation-libraries/annotations/thumbnails/lightbulb.png?v=b8b17cc53ffe",
+      "revision": "0b8f9f548379"
     },
     {
       "id": "location-pin",
       "name": "Location pin",
       "asset": "images/annotation-libraries/annotations/svg/location-pin.svg",
-      "thumbnail": "images/annotation-libraries/annotations/thumbnails/location-pin.png?v=0c4583af96ab",
-      "revision": "053d04d5178d"
+      "thumbnail": "images/annotation-libraries/annotations/thumbnails/location-pin.png?v=1ec088786ec6",
+      "revision": "c0a2648a3a5c"
     },
     {
       "id": "mail-attachment",
       "name": "Mail attachment",
       "asset": "images/annotation-libraries/annotations/svg/mail-attachment.svg",
-      "thumbnail": "images/annotation-libraries/annotations/thumbnails/mail-attachment.png?v=fd2bec8b1859",
-      "revision": "41d47f55014a"
+      "thumbnail": "images/annotation-libraries/annotations/thumbnails/mail-attachment.png?v=d2b2b2f07d92",
+      "revision": "85c07e8b2c75"
     },
     {
       "id": "mailbox",
       "name": "Mailbox",
       "asset": "images/annotation-libraries/annotations/svg/mailbox.svg",
-      "thumbnail": "images/annotation-libraries/annotations/thumbnails/mailbox.png?v=08cfbb669f89",
-      "revision": "280a8bf4deeb"
+      "thumbnail": "images/annotation-libraries/annotations/thumbnails/mailbox.png?v=3d69286b4131",
+      "revision": "ad6d788e20cf"
     },
     {
       "id": "megaphone",
       "name": "Megaphone",
       "asset": "images/annotation-libraries/annotations/svg/megaphone.svg",
-      "thumbnail": "images/annotation-libraries/annotations/thumbnails/megaphone.png?v=898cd0d2d65a",
-      "revision": "8df5a6e43638"
+      "thumbnail": "images/annotation-libraries/annotations/thumbnails/megaphone.png?v=1c0684d025ff",
+      "revision": "22d2d9043b8c"
     },
     {
       "id": "menu",
       "name": "Menu",
       "asset": "images/annotation-libraries/annotations/svg/menu.svg",
-      "thumbnail": "images/annotation-libraries/annotations/thumbnails/menu.png?v=04e2f27bfe14",
-      "revision": "0e9ca794aece"
+      "thumbnail": "images/annotation-libraries/annotations/thumbnails/menu.png?v=ce523136c78b",
+      "revision": "5b7c74aacfb0"
     },
     {
       "id": "microphone",
       "name": "Microphone",
       "asset": "images/annotation-libraries/annotations/svg/microphone.svg",
-      "thumbnail": "images/annotation-libraries/annotations/thumbnails/microphone.png?v=b1ac9939a708",
-      "revision": "5a3817cc2a27"
+      "thumbnail": "images/annotation-libraries/annotations/thumbnails/microphone.png?v=f1bb4f5f52bc",
+      "revision": "6de42495fa5d"
     },
     {
       "id": "mobile-read-aloud-cue",
       "name": "Mobile read aloud cue",
       "asset": "images/annotation-libraries/annotations/svg/mobile-read-aloud-cue.svg",
-      "thumbnail": "images/annotation-libraries/annotations/thumbnails/mobile-read-aloud-cue.png?v=9baecf236d66",
-      "revision": "ee19ee9bb4b1"
+      "thumbnail": "images/annotation-libraries/annotations/thumbnails/mobile-read-aloud-cue.png?v=bc399e6e5f76",
+      "revision": "3d1322bf98c1"
     },
     {
       "id": "more-menu",
       "name": "More menu",
       "asset": "images/annotation-libraries/annotations/svg/more-menu.svg",
-      "thumbnail": "images/annotation-libraries/annotations/thumbnails/more-menu.png?v=4d1f10301df4",
-      "revision": "87ce89283cb2"
+      "thumbnail": "images/annotation-libraries/annotations/thumbnails/more-menu.png?v=de49217fd06c",
+      "revision": "fd6fbc3f96c2"
     },
     {
       "id": "more-three-dots",
       "name": "More three dots",
       "asset": "images/annotation-libraries/annotations/svg/more-three-dots.svg",
-      "thumbnail": "images/annotation-libraries/annotations/thumbnails/more-three-dots.png?v=9feed5708c91",
-      "revision": "7e1610f5092a"
+      "thumbnail": "images/annotation-libraries/annotations/thumbnails/more-three-dots.png?v=8b3c9d2022c8",
+      "revision": "9b3d3d5ceff2"
     },
     {
       "id": "mouse-click",
       "name": "Mouse click",
       "asset": "images/annotation-libraries/annotations/svg/mouse-click.svg",
-      "thumbnail": "images/annotation-libraries/annotations/thumbnails/mouse-click.png?v=fdaac1068e76",
-      "revision": "850dc9741c78"
+      "thumbnail": "images/annotation-libraries/annotations/thumbnails/mouse-click.png?v=2245871f03e5",
+      "revision": "94b4c8b4e9aa"
     },
     {
       "id": "notepad",
       "name": "Notepad",
       "asset": "images/annotation-libraries/annotations/svg/notepad.svg",
-      "thumbnail": "images/annotation-libraries/annotations/thumbnails/notepad.png?v=d1ae372091a8",
-      "revision": "4b27957fa789"
+      "thumbnail": "images/annotation-libraries/annotations/thumbnails/notepad.png?v=9a8754dfdd0c",
+      "revision": "2f3278bc6268"
     },
     {
       "id": "one-person",
       "name": "One person",
       "asset": "images/annotation-libraries/annotations/svg/one-person.svg",
-      "thumbnail": "images/annotation-libraries/annotations/thumbnails/one-person.png?v=377871535077",
-      "revision": "aa1114b17e58"
+      "thumbnail": "images/annotation-libraries/annotations/thumbnails/one-person.png?v=b2795b2821d0",
+      "revision": "71908db33b32"
     },
     {
       "id": "open-mail",
       "name": "Open mail",
       "asset": "images/annotation-libraries/annotations/svg/open-mail.svg",
-      "thumbnail": "images/annotation-libraries/annotations/thumbnails/open-mail.png?v=629c40194302",
-      "revision": "6b7d7820ce7b"
+      "thumbnail": "images/annotation-libraries/annotations/thumbnails/open-mail.png?v=b1fad7ed86cf",
+      "revision": "2bef2616fe32"
     },
     {
       "id": "paperclip",
       "name": "Paperclip",
       "asset": "images/annotation-libraries/annotations/svg/paperclip.svg",
-      "thumbnail": "images/annotation-libraries/annotations/thumbnails/paperclip.png?v=81a138027a63",
-      "revision": "2986a5e5fe1a"
+      "thumbnail": "images/annotation-libraries/annotations/thumbnails/paperclip.png?v=f539af784bf4",
+      "revision": "c1f5175a30a9"
     },
     {
       "id": "pencil",
       "name": "Pencil",
       "asset": "images/annotation-libraries/annotations/svg/pencil.svg",
-      "thumbnail": "images/annotation-libraries/annotations/thumbnails/pencil.png?v=439f61d941f8",
-      "revision": "22ed8e2957c0"
+      "thumbnail": "images/annotation-libraries/annotations/thumbnails/pencil.png?v=e0339a102f64",
+      "revision": "859afefae0e6"
     },
     {
       "id": "phone-frame",
       "name": "Phone frame",
       "asset": "images/annotation-libraries/annotations/svg/phone-frame.svg",
-      "thumbnail": "images/annotation-libraries/annotations/thumbnails/phone-frame.png?v=a77a7da5b46f",
-      "revision": "730657f38b78"
+      "thumbnail": "images/annotation-libraries/annotations/thumbnails/phone-frame.png?v=5268867b34d0",
+      "revision": "b4a6e48761e8"
     },
     {
       "id": "pinned-callout",
       "name": "Pinned callout",
       "asset": "images/annotation-libraries/annotations/svg/pinned-callout.svg",
-      "thumbnail": "images/annotation-libraries/annotations/thumbnails/pinned-callout.png?v=2d30509c8df1",
-      "revision": "c4ff0d5907c6"
+      "thumbnail": "images/annotation-libraries/annotations/thumbnails/pinned-callout.png?v=95952bec91c5",
+      "revision": "a4625f251bf8"
     },
     {
       "id": "plugin-at",
       "name": "Plugin at",
       "asset": "images/annotation-libraries/annotations/svg/plugin-at.svg",
-      "thumbnail": "images/annotation-libraries/annotations/thumbnails/plugin-at.png?v=2c32d191f434",
-      "revision": "d63dff25305d"
+      "thumbnail": "images/annotation-libraries/annotations/thumbnails/plugin-at.png?v=5f6bda7ab739",
+      "revision": "33c333ce72c6"
     },
     {
       "id": "plugin-plug",
       "name": "Plugin plug",
       "asset": "images/annotation-libraries/annotations/svg/plugin-plug.svg",
-      "thumbnail": "images/annotation-libraries/annotations/thumbnails/plugin-plug.png?v=6a6493e4bdf1",
-      "revision": "382102959ba1"
+      "thumbnail": "images/annotation-libraries/annotations/thumbnails/plugin-plug.png?v=f84a005aec7b",
+      "revision": "67bccac85082"
     },
     {
       "id": "pointer-arrow",
       "name": "Pointer arrow",
       "asset": "images/annotation-libraries/annotations/svg/pointer-arrow.svg",
-      "thumbnail": "images/annotation-libraries/annotations/thumbnails/pointer-arrow.png?v=6ddaa5997673",
-      "revision": "297b5339cb09"
+      "thumbnail": "images/annotation-libraries/annotations/thumbnails/pointer-arrow.png?v=35a418c8eeb2",
+      "revision": "83a95ee0a9c6"
     },
     {
       "id": "pointer-click",
       "name": "Pointer click",
       "asset": "images/annotation-libraries/annotations/svg/pointer-click.svg",
-      "thumbnail": "images/annotation-libraries/annotations/thumbnails/pointer-click.png?v=d889981832bc",
-      "revision": "ec50fd88d2d4"
+      "thumbnail": "images/annotation-libraries/annotations/thumbnails/pointer-click.png?v=6e58ca05863c",
+      "revision": "ceb6e6f181f2"
     },
     {
       "id": "pointer-hand",
       "name": "Pointer hand",
       "asset": "images/annotation-libraries/annotations/svg/pointer-hand.svg",
-      "thumbnail": "images/annotation-libraries/annotations/thumbnails/pointer-hand.png?v=0e81fa46828d",
-      "revision": "7d7c6a2c8d4c"
+      "thumbnail": "images/annotation-libraries/annotations/thumbnails/pointer-hand.png?v=0540d05ec651",
+      "revision": "40718c42ce6a"
     },
     {
       "id": "pushpin",
       "name": "Pushpin",
       "asset": "images/annotation-libraries/annotations/svg/pushpin.svg",
-      "thumbnail": "images/annotation-libraries/annotations/thumbnails/pushpin.png?v=3804d0fd8c91",
-      "revision": "8a7d216238cb"
+      "thumbnail": "images/annotation-libraries/annotations/thumbnails/pushpin.png?v=ca4015f955fc",
+      "revision": "3ff1bec636d3"
     },
     {
       "id": "radiating-circle",
       "name": "Radiating circle",
       "asset": "images/annotation-libraries/annotations/svg/radiating-circle.svg",
-      "thumbnail": "images/annotation-libraries/annotations/thumbnails/radiating-circle.png?v=f6324415d305",
-      "revision": "453521a1ace7"
+      "thumbnail": "images/annotation-libraries/annotations/thumbnails/radiating-circle.png?v=918172126b7d",
+      "revision": "3429bbd4f96c"
     },
     {
       "id": "read-aloud",
       "name": "Read aloud",
       "asset": "images/annotation-libraries/annotations/svg/read-aloud.svg",
-      "thumbnail": "images/annotation-libraries/annotations/thumbnails/read-aloud.png?v=8a343eb57ac8",
-      "revision": "c2836bd69e97"
+      "thumbnail": "images/annotation-libraries/annotations/thumbnails/read-aloud.png?v=ce715f5bed1b",
+      "revision": "7d7be5204201"
     },
     {
       "id": "rectangle-frame",
       "name": "Rectangle frame",
       "asset": "images/annotation-libraries/annotations/svg/rectangle-frame.svg",
-      "thumbnail": "images/annotation-libraries/annotations/thumbnails/rectangle-frame.png?v=b70d5e74f17e",
-      "revision": "2b3984144682"
+      "thumbnail": "images/annotation-libraries/annotations/thumbnails/rectangle-frame.png?v=187410b540c9",
+      "revision": "6f75d049c759"
     },
     {
       "id": "reminder-finger",
       "name": "Reminder finger",
       "asset": "images/annotation-libraries/annotations/svg/reminder-finger.svg",
-      "thumbnail": "images/annotation-libraries/annotations/thumbnails/reminder-finger.png?v=a6c8dd3309fd",
-      "revision": "482d4b842443"
+      "thumbnail": "images/annotation-libraries/annotations/thumbnails/reminder-finger.png?v=1147cdcd40ea",
+      "revision": "d75411ac5fdf"
     },
     {
       "id": "reporter-sidekick-high-five",
@@ -614,43 +614,43 @@
       "id": "retry",
       "name": "Retry",
       "asset": "images/annotation-libraries/annotations/svg/retry.svg",
-      "thumbnail": "images/annotation-libraries/annotations/thumbnails/retry.png?v=93fcee6f72da",
-      "revision": "438c589526a8"
+      "thumbnail": "images/annotation-libraries/annotations/thumbnails/retry.png?v=40214683223b",
+      "revision": "a88cfc5fdeae"
     },
     {
       "id": "return-key",
       "name": "Return key",
       "asset": "images/annotation-libraries/annotations/svg/return-key.svg",
-      "thumbnail": "images/annotation-libraries/annotations/thumbnails/return-key.png?v=a242fb66e5da",
-      "revision": "c9028765b6e8"
+      "thumbnail": "images/annotation-libraries/annotations/thumbnails/return-key.png?v=d6ac2ff826da",
+      "revision": "ee66587447ec"
     },
     {
       "id": "rolodex",
       "name": "Rolodex",
       "asset": "images/annotation-libraries/annotations/svg/rolodex.svg",
-      "thumbnail": "images/annotation-libraries/annotations/thumbnails/rolodex.png?v=661fcdaf0ac0",
-      "revision": "d634721911cd"
+      "thumbnail": "images/annotation-libraries/annotations/thumbnails/rolodex.png?v=f6ed486759c2",
+      "revision": "4ea9461b9658"
     },
     {
       "id": "rounded-frame-red",
       "name": "Rounded frame red",
       "asset": "images/annotation-libraries/annotations/svg/rounded-frame-red.svg",
-      "thumbnail": "images/annotation-libraries/annotations/thumbnails/rounded-frame-red.png?v=2392ce64358f",
-      "revision": "91e315d8bd35"
+      "thumbnail": "images/annotation-libraries/annotations/thumbnails/rounded-frame-red.png?v=5fa9a5db5d5f",
+      "revision": "5d5abd9a439b"
     },
     {
       "id": "search",
       "name": "Search",
       "asset": "images/annotation-libraries/annotations/svg/search.svg",
-      "thumbnail": "images/annotation-libraries/annotations/thumbnails/search.png?v=26124cb687c6",
-      "revision": "648d135e93f7"
+      "thumbnail": "images/annotation-libraries/annotations/thumbnails/search.png?v=578b98c66c4e",
+      "revision": "dee014d53e72"
     },
     {
       "id": "sidekick-pro-access",
       "name": "Sidekick Pro access",
       "asset": "images/annotation-libraries/annotations/svg/sidekick-pro-access.svg",
-      "thumbnail": "images/annotation-libraries/annotations/thumbnails/sidekick-pro-access.png?v=aa58f14e7928",
-      "revision": "6f2a9841261c"
+      "thumbnail": "images/annotation-libraries/annotations/thumbnails/sidekick-pro-access.png?v=141dfbeb856d",
+      "revision": "1ef705d4bd04"
     },
     {
       "id": "sidekick-sign-appearance-pages",
@@ -726,43 +726,43 @@
       "id": "sparkle",
       "name": "Sparkle",
       "asset": "images/annotation-libraries/annotations/svg/sparkle.svg",
-      "thumbnail": "images/annotation-libraries/annotations/thumbnails/sparkle.png?v=6fa51f69ac28",
-      "revision": "427e2382dd6a"
+      "thumbnail": "images/annotation-libraries/annotations/thumbnails/sparkle.png?v=3f171341731c",
+      "revision": "0f8cffc7bd86"
     },
     {
       "id": "speaker",
       "name": "Speaker",
       "asset": "images/annotation-libraries/annotations/svg/speaker.svg",
-      "thumbnail": "images/annotation-libraries/annotations/thumbnails/speaker.png?v=636f461c6d06",
-      "revision": "af626f29af37"
+      "thumbnail": "images/annotation-libraries/annotations/thumbnails/speaker.png?v=5fd119503198",
+      "revision": "94dfe1591a62"
     },
     {
       "id": "speech-bubble-left",
       "name": "Speech bubble left",
       "asset": "images/annotation-libraries/annotations/svg/speech-bubble-left.svg",
-      "thumbnail": "images/annotation-libraries/annotations/thumbnails/speech-bubble-left.png?v=532fed59abd3",
-      "revision": "4ee9437499e6"
+      "thumbnail": "images/annotation-libraries/annotations/thumbnails/speech-bubble-left.png?v=5f3fe6b2b4b0",
+      "revision": "f08da7929b71"
     },
     {
       "id": "speech-bubble-right",
       "name": "Speech bubble right",
       "asset": "images/annotation-libraries/annotations/svg/speech-bubble-right.svg",
-      "thumbnail": "images/annotation-libraries/annotations/thumbnails/speech-bubble-right.png?v=a86ff8b99b2c",
-      "revision": "897352233432"
+      "thumbnail": "images/annotation-libraries/annotations/thumbnails/speech-bubble-right.png?v=f9728bf6f647",
+      "revision": "fc4934de7702"
     },
     {
       "id": "spiral-notepad",
       "name": "Spiral notepad",
       "asset": "images/annotation-libraries/annotations/svg/spiral-notepad.svg",
-      "thumbnail": "images/annotation-libraries/annotations/thumbnails/spiral-notepad.png?v=e55e2855b030",
-      "revision": "919e16bba5d1"
+      "thumbnail": "images/annotation-libraries/annotations/thumbnails/spiral-notepad.png?v=8287dcb32485",
+      "revision": "42daffa16d23"
     },
     {
       "id": "starburst",
       "name": "Starburst",
       "asset": "images/annotation-libraries/annotations/svg/starburst.svg",
-      "thumbnail": "images/annotation-libraries/annotations/thumbnails/starburst.png?v=feb51142468c",
-      "revision": "6e77d70f2cad"
+      "thumbnail": "images/annotation-libraries/annotations/thumbnails/starburst.png?v=52ec63630095",
+      "revision": "6b4d1de7f83b"
     },
     {
       "id": "steno-keyboard-artistic-sketch",
@@ -790,128 +790,128 @@
       "id": "sticky-note",
       "name": "Sticky note",
       "asset": "images/annotation-libraries/annotations/svg/sticky-note.svg",
-      "thumbnail": "images/annotation-libraries/annotations/thumbnails/sticky-note.png?v=339cdb319e45",
-      "revision": "a3a2ae962b12"
+      "thumbnail": "images/annotation-libraries/annotations/thumbnails/sticky-note.png?v=18d5339ea01e",
+      "revision": "dd2f9c790192"
     },
     {
       "id": "stop",
       "name": "Stop",
       "asset": "images/annotation-libraries/annotations/svg/stop.svg",
-      "thumbnail": "images/annotation-libraries/annotations/thumbnails/stop.png?v=b6aa66af44fb",
-      "revision": "53fd1ba4e716"
+      "thumbnail": "images/annotation-libraries/annotations/thumbnails/stop.png?v=6f11ae66f93a",
+      "revision": "6f60436f4afb"
     },
     {
       "id": "stopwatch",
       "name": "Stopwatch",
       "asset": "images/annotation-libraries/annotations/svg/stopwatch.svg",
-      "thumbnail": "images/annotation-libraries/annotations/thumbnails/stopwatch.png?v=33b78e72d7f5",
-      "revision": "5cf9b320044d"
+      "thumbnail": "images/annotation-libraries/annotations/thumbnails/stopwatch.png?v=4ca975b75f36",
+      "revision": "84923d959aa7"
     },
     {
       "id": "tap",
       "name": "Tap",
       "asset": "images/annotation-libraries/annotations/svg/tap.svg",
-      "thumbnail": "images/annotation-libraries/annotations/thumbnails/tap.png?v=3b47c95a4d23",
-      "revision": "fce6f5a8aa47"
+      "thumbnail": "images/annotation-libraries/annotations/thumbnails/tap.png?v=11318a486442",
+      "revision": "a4e7e6ee666f"
     },
     {
       "id": "taped-callout",
       "name": "Taped callout",
       "asset": "images/annotation-libraries/annotations/svg/taped-callout.svg",
-      "thumbnail": "images/annotation-libraries/annotations/thumbnails/taped-callout.png?v=dea7df28e0ee",
-      "revision": "d4cba5c9394a"
+      "thumbnail": "images/annotation-libraries/annotations/thumbnails/taped-callout.png?v=bfd545e191e0",
+      "revision": "52f1d0e5e9ca"
     },
     {
       "id": "telephone",
       "name": "Telephone",
       "asset": "images/annotation-libraries/annotations/svg/telephone.svg",
-      "thumbnail": "images/annotation-libraries/annotations/thumbnails/telephone.png?v=0801e60b11ca",
-      "revision": "4c6c9a467f9f"
+      "thumbnail": "images/annotation-libraries/annotations/thumbnails/telephone.png?v=abce679e336b",
+      "revision": "6d5a8faacb27"
     },
     {
       "id": "text-cursor",
       "name": "Text cursor",
       "asset": "images/annotation-libraries/annotations/svg/text-cursor.svg",
-      "thumbnail": "images/annotation-libraries/annotations/thumbnails/text-cursor.png?v=2e986cc64490",
-      "revision": "77b0cd14123a"
+      "thumbnail": "images/annotation-libraries/annotations/thumbnails/text-cursor.png?v=f50376b6b579",
+      "revision": "9f0606294b46"
     },
     {
       "id": "thought-bubble",
       "name": "Thought bubble",
       "asset": "images/annotation-libraries/annotations/svg/thought-bubble.svg",
-      "thumbnail": "images/annotation-libraries/annotations/thumbnails/thought-bubble.png?v=ba60624d0106",
-      "revision": "cfdab8cb1a91"
+      "thumbnail": "images/annotation-libraries/annotations/thumbnails/thought-bubble.png?v=4d0a3b103068",
+      "revision": "5aceb32bf482"
     },
     {
       "id": "three-people",
       "name": "Three people",
       "asset": "images/annotation-libraries/annotations/svg/three-people.svg",
-      "thumbnail": "images/annotation-libraries/annotations/thumbnails/three-people.png?v=594bf80beb5d",
-      "revision": "173b31c2e179"
+      "thumbnail": "images/annotation-libraries/annotations/thumbnails/three-people.png?v=2f54ca501693",
+      "revision": "c57891d79c90"
     },
     {
       "id": "torn-paper",
       "name": "Torn paper",
       "asset": "images/annotation-libraries/annotations/svg/torn-paper.svg",
-      "thumbnail": "images/annotation-libraries/annotations/thumbnails/torn-paper.png?v=21f7fed44426",
-      "revision": "63e7de669700"
+      "thumbnail": "images/annotation-libraries/annotations/thumbnails/torn-paper.png?v=d79313400f9a",
+      "revision": "9e76ae55fef7"
     },
     {
       "id": "two-people",
       "name": "Two people",
       "asset": "images/annotation-libraries/annotations/svg/two-people.svg",
-      "thumbnail": "images/annotation-libraries/annotations/thumbnails/two-people.png?v=22f030e374e8",
-      "revision": "fb9e5cc2c820"
+      "thumbnail": "images/annotation-libraries/annotations/thumbnails/two-people.png?v=3e4ab8d7646f",
+      "revision": "49758793c47d"
     },
     {
       "id": "typewriter",
       "name": "Typewriter",
       "asset": "images/annotation-libraries/annotations/svg/typewriter.svg",
-      "thumbnail": "images/annotation-libraries/annotations/thumbnails/typewriter.png?v=43d574dd2ddf",
-      "revision": "aa376a574876"
+      "thumbnail": "images/annotation-libraries/annotations/thumbnails/typewriter.png?v=2d50326ef2c3",
+      "revision": "7b46f358fe35"
     },
     {
       "id": "upload",
       "name": "Upload",
       "asset": "images/annotation-libraries/annotations/svg/upload.svg",
-      "thumbnail": "images/annotation-libraries/annotations/thumbnails/upload.png?v=7fc0b7345106",
-      "revision": "627119dd9267"
+      "thumbnail": "images/annotation-libraries/annotations/thumbnails/upload.png?v=92de0190dac4",
+      "revision": "af0a2fde0522"
     },
     {
       "id": "vhs-play-video",
       "name": "VHS play video",
       "asset": "images/annotation-libraries/annotations/svg/vhs-play-video.svg",
-      "thumbnail": "images/annotation-libraries/annotations/thumbnails/vhs-play-video.png?v=d08f4424b544",
+      "thumbnail": "images/annotation-libraries/annotations/thumbnails/vhs-play-video.png?v=c9435621bd12",
       "action": "add-video-dialog",
-      "revision": "53768b138dd7"
+      "revision": "a5ee7cf2b7f4"
     },
     {
       "id": "video-meeting-link",
       "name": "Video meeting link",
       "asset": "images/annotation-libraries/annotations/svg/video-meeting-link.svg",
-      "thumbnail": "images/annotation-libraries/annotations/thumbnails/video-meeting-link.png?v=de14fb0fb4ba",
-      "revision": "80d5d729f01d"
+      "thumbnail": "images/annotation-libraries/annotations/thumbnails/video-meeting-link.png?v=8d169fd12bd3",
+      "revision": "a8b388891868"
     },
     {
       "id": "warning",
       "name": "Warning",
       "asset": "images/annotation-libraries/annotations/svg/warning.svg",
-      "thumbnail": "images/annotation-libraries/annotations/thumbnails/warning.png?v=a89452b8cdb5",
-      "revision": "3ab54c29d3af"
+      "thumbnail": "images/annotation-libraries/annotations/thumbnails/warning.png?v=ce2e76f3f850",
+      "revision": "d72982c443d0"
     },
     {
       "id": "workshop-free",
       "name": "Workshop free",
       "asset": "images/annotation-libraries/annotations/svg/workshop-free.svg",
-      "thumbnail": "images/annotation-libraries/annotations/thumbnails/workshop-free.png?v=5f4171dd6f7f",
-      "revision": "2e78847993da"
+      "thumbnail": "images/annotation-libraries/annotations/thumbnails/workshop-free.png?v=6b8ae687f997",
+      "revision": "319b41bd90b3"
     },
     {
       "id": "workshop-paid",
       "name": "Workshop paid",
       "asset": "images/annotation-libraries/annotations/svg/workshop-paid.svg",
-      "thumbnail": "images/annotation-libraries/annotations/thumbnails/workshop-paid.png?v=f83b5dea84f7",
-      "revision": "4114f4f3a882"
+      "thumbnail": "images/annotation-libraries/annotations/thumbnails/workshop-paid.png?v=047ec59a3aae",
+      "revision": "f0403dbc3a05"
     }
   ],
   "shapes-v1": [

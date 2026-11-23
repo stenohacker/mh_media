@@ -1,7 +1,7 @@
 <svg xmlns="http://www.w3.org/2000/svg" width="512" height="512" viewBox="0 0 512 512" fill="none" role="img" aria-labelledby="hotspot-blank-title">
 <title id="hotspot-blank-title">Blank circle annotation</title>
 <desc>Cream circle with a rounded red accent.</desc>
-<circle cx="246" cy="270" r="203" fill="#F2F0E7" stroke="#0A0906" stroke-width="16"/>
-<path d="M312 39 C390 54 450 113 468 200" fill="none" stroke="#BD0C08" stroke-width="17" stroke-linecap="round"/>
+<circle cx="246" cy="270" r="203" fill="#F2F0E7" stroke="#0A0906" stroke-width="9.92" />
+<path d="M312 39 C390 54 450 113 468 200" fill="none" stroke="#BD0C08" stroke-width="11.39" stroke-linecap="round" />
 
 </svg>
