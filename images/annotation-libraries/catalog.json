@@ -192,8 +192,8 @@
       "id": "court-reporter-sketch",
       "name": "Court reporter — sketch",
       "asset": "images/annotation-libraries/annotations/png/court-reporter-sketch.png",
-      "thumbnail": "images/annotation-libraries/annotations/thumbnails/court-reporter-sketch.png?v=f772854a68fa",
-      "revision": "f4ca162f38fc"
+      "thumbnail": "images/annotation-libraries/annotations/thumbnails/court-reporter-sketch.png?v=af5eeff62505",
+      "revision": "ca41d9b2aa65"
     },
     {
       "id": "cross",
@@ -607,8 +607,8 @@
       "id": "reporter-sidekick-sketch",
       "name": "Reporter Sidekick — sketch",
       "asset": "images/annotation-libraries/annotations/png/reporter-sidekick-sketch.png",
-      "thumbnail": "images/annotation-libraries/annotations/thumbnails/reporter-sidekick-sketch.png?v=4aa06cd575cf",
-      "revision": "6a2d78c36a45"
+      "thumbnail": "images/annotation-libraries/annotations/thumbnails/reporter-sidekick-sketch.png?v=9cf08252286c",
+      "revision": "d8d4fd2b463b"
     },
     {
       "id": "retry",
@@ -656,71 +656,71 @@
       "id": "sidekick-sign-appearance-pages",
       "name": "Sidekick sign — Appearance pages",
       "asset": "images/annotation-libraries/annotations/png/sidekick-sign-appearance-pages.png",
-      "thumbnail": "images/annotation-libraries/annotations/thumbnails/sidekick-sign-appearance-pages.png?v=225f32ca3ef9",
-      "revision": "d19cfb16bb55"
+      "thumbnail": "images/annotation-libraries/annotations/thumbnails/sidekick-sign-appearance-pages.png?v=0f0880fab137",
+      "revision": "3856a64b11ca"
     },
     {
       "id": "sidekick-sign-blank",
       "name": "Sidekick sign — Blank",
       "asset": "images/annotation-libraries/annotations/png/sidekick-sign-blank.png",
-      "thumbnail": "images/annotation-libraries/annotations/thumbnails/sidekick-sign-blank.png?v=39fd94007585",
-      "revision": "6e95cc395abb"
+      "thumbnail": "images/annotation-libraries/annotations/thumbnails/sidekick-sign-blank.png?v=4c656083b9ad",
+      "revision": "3d0be832bd5e"
     },
     {
       "id": "sidekick-sign-check-exhibits",
       "name": "Sidekick sign — Check exhibits using paraphrased quotes or phonetic spellings",
       "asset": "images/annotation-libraries/annotations/png/sidekick-sign-check-exhibits.png",
-      "thumbnail": "images/annotation-libraries/annotations/thumbnails/sidekick-sign-check-exhibits.png?v=3c39f5caaad2",
-      "revision": "92efb8370679"
+      "thumbnail": "images/annotation-libraries/annotations/thumbnails/sidekick-sign-check-exhibits.png?v=cdb092246d11",
+      "revision": "47d1e8635688"
     },
     {
       "id": "sidekick-sign-dictionary-building",
       "name": "Sidekick sign — Dictionary building",
       "asset": "images/annotation-libraries/annotations/png/sidekick-sign-dictionary-building.png",
-      "thumbnail": "images/annotation-libraries/annotations/thumbnails/sidekick-sign-dictionary-building.png?v=f969d3a2e742",
-      "revision": "035058d865c6"
+      "thumbnail": "images/annotation-libraries/annotations/thumbnails/sidekick-sign-dictionary-building.png?v=d4c43bb7fc37",
+      "revision": "d751ccbbe15c"
     },
     {
       "id": "sidekick-sign-exhibit-descriptions",
       "name": "Sidekick sign — Exhibit descriptions",
       "asset": "images/annotation-libraries/annotations/png/sidekick-sign-exhibit-descriptions.png",
-      "thumbnail": "images/annotation-libraries/annotations/thumbnails/sidekick-sign-exhibit-descriptions.png?v=10ba09a16926",
-      "revision": "e488f10527cc"
+      "thumbnail": "images/annotation-libraries/annotations/thumbnails/sidekick-sign-exhibit-descriptions.png?v=39a439a7ace6",
+      "revision": "44b7607d363e"
     },
     {
       "id": "sidekick-sign-punctuating-the-impossible",
       "name": "Sidekick sign — Help with punctuating the impossible",
       "asset": "images/annotation-libraries/annotations/png/sidekick-sign-punctuating-the-impossible.png",
-      "thumbnail": "images/annotation-libraries/annotations/thumbnails/sidekick-sign-punctuating-the-impossible.png?v=ac0fe7f4b779",
-      "revision": "99c91191dfb8"
+      "thumbnail": "images/annotation-libraries/annotations/thumbnails/sidekick-sign-punctuating-the-impossible.png?v=c74d293e1a3c",
+      "revision": "90931a291552"
     },
     {
       "id": "sidekick-sign-practice-dictation",
       "name": "Sidekick sign — Practice dictation",
       "asset": "images/annotation-libraries/annotations/png/sidekick-sign-practice-dictation.png",
-      "thumbnail": "images/annotation-libraries/annotations/thumbnails/sidekick-sign-practice-dictation.png?v=e81c5b66a740",
-      "revision": "2efca09a503f"
+      "thumbnail": "images/annotation-libraries/annotations/thumbnails/sidekick-sign-practice-dictation.png?v=85d3c872b220",
+      "revision": "c574d8635869"
     },
     {
       "id": "sidekick-sign-proofreading",
       "name": "Sidekick sign — Proofreading",
       "asset": "images/annotation-libraries/annotations/png/sidekick-sign-proofreading.png",
-      "thumbnail": "images/annotation-libraries/annotations/thumbnails/sidekick-sign-proofreading.png?v=d76290893f99",
-      "revision": "335912306050"
+      "thumbnail": "images/annotation-libraries/annotations/thumbnails/sidekick-sign-proofreading.png?v=0bcbad4f5c28",
+      "revision": "06719d1a60e1"
     },
     {
       "id": "sidekick-sign-realtime-prep",
       "name": "Sidekick sign — Realtime prep (research and word lists)",
       "asset": "images/annotation-libraries/annotations/png/sidekick-sign-realtime-prep.png",
-      "thumbnail": "images/annotation-libraries/annotations/thumbnails/sidekick-sign-realtime-prep.png?v=cf2a0741e708",
-      "revision": "aa32e141b71c"
+      "thumbnail": "images/annotation-libraries/annotations/thumbnails/sidekick-sign-realtime-prep.png?v=29535e8951e2",
+      "revision": "0117c9c4e3dd"
     },
     {
       "id": "sidekick-sign-resolve-technical-phonetic",
       "name": "Sidekick sign — Resolves technical, phonetic, etc. fast",
       "asset": "images/annotation-libraries/annotations/png/sidekick-sign-resolve-technical-phonetic.png",
-      "thumbnail": "images/annotation-libraries/annotations/thumbnails/sidekick-sign-resolve-technical-phonetic.png?v=479d76840b4f",
-      "revision": "28d3d8c52a0b"
+      "thumbnail": "images/annotation-libraries/annotations/thumbnails/sidekick-sign-resolve-technical-phonetic.png?v=6ad773bb0bee",
+      "revision": "2e4b6a5b5720"
     },
     {
       "id": "sparkle",
@@ -1143,9 +1143,9 @@
       "id": "browser-white.png",
       "name": "browser white",
       "asset": "images/annotation-libraries/shapes-v1/artwork/browser-white.png",
-      "thumbnail": "images/annotation-libraries/shapes-v1/thumbnails/browser-white.png?v=ed953c7cf6bb",
+      "thumbnail": "images/annotation-libraries/shapes-v1/thumbnails/browser-white.png?v=47ca243264fd",
       "legacyAsset": "images/tutorial-annotations/old-annotations-for-dropdown/browser-white.png",
-      "revision": "449e645ca6ba"
+      "revision": "4828dda88190"
     },
     {
       "id": "bubble-circle-left.png",
@@ -1919,9 +1919,9 @@
       "id": "rectangle-semitransparent-narrow.png",
       "name": "rectangle semitransparent narrow",
       "asset": "images/annotation-libraries/shapes-v1/artwork/rectangle-semitransparent-narrow.png",
-      "thumbnail": "images/annotation-libraries/shapes-v1/thumbnails/rectangle-semitransparent-narrow.png?v=5fa287160af6",
+      "thumbnail": "images/annotation-libraries/shapes-v1/thumbnails/rectangle-semitransparent-narrow.png?v=06c417602dcf",
       "legacyAsset": "images/tutorial-annotations/old-annotations-for-dropdown/rectangle-semitransparent-narrow.png",
-      "revision": "c48cb49bccc1"
+      "revision": "5a8dce69018a"
     },
     {
       "id": "rectangle-semitransparent-wide.png",
@@ -2497,9 +2497,9 @@
       "id": "kbd-black.png",
       "name": "kbd black",
       "asset": "images/annotation-libraries/shapes-v2/artwork/kbd-black.png",
-      "thumbnail": "images/annotation-libraries/shapes-v2/thumbnails/kbd-black.png?v=6745f69ca42a",
+      "thumbnail": "images/annotation-libraries/shapes-v2/thumbnails/kbd-black.png?v=598c5ca663e1",
       "legacyAsset": "images/tutorial-annotations/new-annotations/kbd-black.png",
-      "revision": "2cc3459dab59"
+      "revision": "6a40a6e68887"
     },
     {
       "id": "kbd-gray-no-outline.png",
