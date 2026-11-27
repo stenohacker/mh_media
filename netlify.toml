@@ -64,3 +64,10 @@
     Access-Control-Allow-Origin = "*"
     Cross-Origin-Resource-Policy = "cross-origin"
     Content-Disposition = "attachment"
+
+# Hosted tutorial players and their media support cross-origin embeds/exports.
+[[headers]]
+  for = "/hosted_tutorials/*"
+  [headers.values]
+    Access-Control-Allow-Origin = "*"
+    Cross-Origin-Resource-Policy = "cross-origin"
